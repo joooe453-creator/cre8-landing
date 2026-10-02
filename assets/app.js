@@ -440,7 +440,8 @@
   /* ------------------------------------------------------------------ */
   const brandLogo = (background = "light") => {
     const file = `cre8-on-${background === "light" ? "light" : "dark"}.svg`;
-    const src = STATIC_PREVIEW ? `assets/logos/${file}` : `${BASE_PATH}/logos/${file}`;
+    const version = background === "light" ? "d9345aa0" : "68eabe01";
+    const src = (STATIC_PREVIEW ? `assets/logos/${file}` : `${BASE_PATH}/logos/${file}`) + `?v=${version}`;
     return `<img class="brand-logo" src="${src}" alt="CRE8" width="224" height="112">`;
   };
   const SEAL = brandLogo();
