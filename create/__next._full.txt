@@ -1,0 +1,1476 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/1snr1y__-1i0h.js"],"PrototypePage"]
+b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
+:HL["/_next/static/chunks/13u1gglp0teg6.css","style"]
+5:T4fa6,
+<section class="page-head create-hero">
+  <div class="wrap wide"><h1>Open a vault</h1><p class="lede">Choose the assets, where each is held, and how much of the vault it may use. Your agent then operates only inside those limits.</p></div>
+</section>
+<main class="wrap wide create-main">
+  <nav class="create-stepper" id="toc" aria-label="Open a vault steps">
+    <a href="#s-1" data-create-step="1" aria-current="step"><span class="step-number">1</span><span class="step-copy"><small>Step 1</small><b>Choose assets</b></span><span class="ck" aria-hidden="true"></span></a>
+    <a href="#s-2" data-create-step="2"><span class="step-number">2</span><span class="step-copy"><small>Step 2</small><b>Buy &amp; store</b></span><span class="ck" aria-hidden="true"></span></a>
+    <a href="#s-3" data-create-step="3"><span class="step-number">3</span><span class="step-copy"><small>Step 3</small><b>Review &amp; open</b></span><span class="ck" aria-hidden="true"></span></a>
+  </nav>
+  <div class="create-grid asset-first-create">
+    <form id="f" autocomplete="off" onsubmit="return false">
+      <section id="s-1" class="create-step" data-create-panel="1">
+        <section class="create-card create-catalog">
+          <header class="create-card-heading"><h2>Choose assets</h2><p id="catalog-note">Loading design catalog…</p></header>
+          <div class="create-search-bar">
+            <div class="target-search"><input id="search" placeholder="Name, symbol or BSC token address (0x…)" aria-label="Search assets by name, symbol or BSC token address"><button type="button" class="btn" id="find-ca">Search</button></div>
+            <div class="radio-row create-filter" aria-label="Asset category"><label><input type="radio" name="filter" value="all" checked><span>All</span></label><label><input type="radio" name="filter" value="crypto"><span>Crypto</span></label><label><input type="radio" name="filter" value="bstock"><span>bStocks</span></label></div>
+          </div>
+          <div id="ca-status" class="hide" aria-live="polite"></div>
+          <p class="create-results-count" id="target-count" aria-live="polite">Loading…</p>
+          <div class="mkt-list hide" id="token-search-results" tabindex="0" role="region" aria-label="Token search results"></div>
+          <div class="mkt-list" id="target-list" tabindex="0" role="region" aria-label="Available basket assets"><div class="allocation-empty">Loading asset catalog…</div></div>
+        </section>
+        <section class="create-card create-selection">
+          <header class="create-card-heading"><h2>Selected · <span id="selected-count">0</span>/10</h2><p>One destination per underlying</p></header>
+          <div class="create-selection-explainer"><p><b>Strategy weight</b> — agent’s plan between assets. Must total 100%. Not enforced.</p><p><b>Investment limit</b> — contract max, % of whole vault NAV. Total ≤ 95%.</p></div>
+          <div class="allocation-inputs" id="selected-list"><div class="allocation-empty">Add at least one asset to continue.</div></div>
+          <div class="create-selection-totals"><span>Weights total <b id="weight-total">0%</b> / 100%</span><span>Limits total <b id="selected-limit-total">0%</b> / max 95%</span><span>Cash kept ≥ <b id="selected-cash">100%</b></span></div>
+          <ul class="checks create-step-errors" id="step-one-issues" aria-live="polite"></ul>
+          <details class="create-explain"><summary>How investment limits work</summary><p>Vault value is the current estimated value of all its assets. In a $10,000 vault, a 70% limit allows up to $7,000 in that investment. It uses today’s value and does not guarantee a withdrawal amount. Prices above the limit block new investment; they do not force a sale.</p></details>
+        </section>
+        <div class="create-step-actions"><button type="button" class="btn" data-create-next="2">Continue to Buy &amp; store →</button></div>
+      </section>
+      <section id="s-2" class="create-step" data-create-panel="2" hidden>
+        <section class="create-card">
+          <h2>Buy &amp; store</h2>
+          <div class="choice-chips" id="mode-choices"><button type="button" class="choice-card on" data-mode="agent-managed"><b>Agent-managed <span class="tag">Current mode</span></b><small>Your agent decides when to buy and supply, only within the assets, destinations and limits below. The 100 USDT seed stays in cash at open — nothing is bought until the agent acts.</small></button></div>
+          <details class="create-planning"><summary><span>Planning strategies <span class="tag">Plan only</span></span><span aria-hidden="true">+</span></summary>
+            <p class="fine">These describe intent and can be exported. They are not contract automation; selecting them makes live launch unavailable.</p>
+            <div class="choice-chips planning-choices"><button type="button" class="choice-card" data-mode="lump-sum"><b>Buy once</b><small>Describe a one-time purchase.</small></button><button type="button" class="choice-card" data-mode="accumulate"><b>Accumulate</b><small>Design a schedule or drawdown trigger.</small></button></div>
+          <div id="accumulate" class="hide" style="margin-top:24px"><div class="state-note"><span>Schedule and drawdown settings are a design reference. They are not executed or enforced by the continuous vault contract.</span></div>
+            <div class="operation-block">
+              <div class="toggle-row">
+                <div class="t">Scheduled buy<small>Set the exact cadence, start and end.</small></div>
+                <div class="ctl"><input type="checkbox" class="sw" id="schedule-on" checked></div>
+              </div>
+              <div class="operation-settings" id="schedule-settings">
+                <div class="fields three">
+                  <label class="field"><span>Every</span><input id="interval" value="7" inputmode="numeric"></label>
+                  <label class="field"><span>Cadence</span><select id="interval-unit"><option value="days">Days</option><option value="weeks">Weeks</option><option value="months">Months</option></select></label>
+                  <label class="field"><span>Start date &amp; time</span><input id="schedule-start" type="datetime-local"></label>
+                </div>
+                <div class="fields" style="margin-top:16px">
+                  <div class="field"><span>Time zone</span><div class="locked"><span id="schedule-timezone">Local time</span><span class="label">Calendar based</span></div></div>
+                  <label class="field"><span>End</span><select id="schedule-end"><option value="until-stopped">Until stopped</option><option value="after-executions">After a number of buys</option><option value="on-date">On a date</option></select></label>
+                  <label class="field hide" id="schedule-count-field"><span>Number of buys</span><input id="schedule-count" value="12" inputmode="numeric"></label>
+                  <label class="field hide" id="schedule-end-date-field"><span>End date &amp; time</span><input id="schedule-end-date" type="datetime-local"></label>
+                </div>
+                <div class="execution-policy">First buy runs at the start time. Missed or failed runs are skipped—never queued or caught up later.</div>
+              </div>
+            </div>
+            <div class="operation-block">
+              <div class="toggle-row">
+                <div class="t">Buy the dip<small>Reference resets only after a successful buy.</small></div>
+                <div class="ctl"><div class="suffix"><input id="dip" value="5" inputmode="decimal" disabled><b>%</b></div><input type="checkbox" class="sw" id="dip-on"></div>
+              </div>
+            </div>
+            <div class="fields" style="margin-top:20px">
+              <label class="field"><span>Tranche size <em>1–25% of available cash</em></span><div class="suffix"><input id="tranche" value="10" inputmode="decimal"><b>%</b></div></label>
+              <div class="field"><span>Shared cooldown</span><div class="locked"><span>24 hours</span><span class="label">Both triggers</span></div></div>
+            </div>
+            <div class="execution-policy" style="margin-top:14px">If schedule and dip trigger together, execute one tranche. A failed order does not reset the reference or consume cooldown.</div>
+          </div>
+          <details class="advanced-options automation-reference" style="margin-top:22px"><summary>Additional automation · design only</summary>
+          <p class="fine">Rebalancing and custom drawdown rules can be exported for an agent plan. They are not contract automation and cannot be included in a live launch.</p>
+          <div class="sub-h" style="margin-top:28px"><span>Optional rebalancing</span><em>Off by default</em></div>
+          <div class="operation-block">
+            <div class="toggle-row">
+              <div class="t">Keep basket weights on target<small>Use new cash first; selling is optional.</small></div>
+              <div class="ctl"><input type="checkbox" class="sw" id="rebalance-on"></div>
+            </div>
+            <div class="operation-settings hide" id="rebalance-settings">
+              <div class="fields three">
+                <label class="field"><span>Method</span><select id="rebalance-method"><option value="cashflow-only">Cashflow only · no selling</option><option value="full">Full · buy and sell</option></select></label>
+                <label class="field"><span>Trigger</span><select id="rebalance-trigger"><option value="threshold">Weight drift</option><option value="scheduled">Schedule</option></select></label>
+                <label class="field"><span>Minimum drift <em>absolute weight</em></span><div class="suffix"><input id="rebalance-drift" value="5" inputmode="decimal"><b>%</b></div></label>
+              </div>
+              <div class="fields three hide" id="rebalance-schedule-fields" style="margin-top:16px">
+                <label class="field"><span>Check every</span><input id="rebalance-interval" value="1" inputmode="numeric"></label>
+                <label class="field"><span>Cadence</span><select id="rebalance-unit"><option value="days">Days</option><option value="weeks">Weeks</option><option value="months" selected>Months</option></select></label>
+                <label class="field"><span>Start date &amp; time</span><input id="rebalance-start" type="datetime-local"></label>
+              </div>
+              <div class="fields hide" id="rebalance-turnover-field" style="margin-top:16px">
+                <label class="field"><span>Max turnover per rebalance</span><div class="suffix vault-value-suffix"><input id="rebalance-turnover" value="10" inputmode="decimal"><b>% of vault value</b></div></label>
+              </div>
+              <div class="execution-policy">Rebalance only above the drift threshold, with a 24-hour cooldown and the same route, liquidity and slippage checks.</div>
+            </div>
+          </div>
+          <details class="advanced-options" style="margin-top:18px">
+            <summary>Advanced risk control</summary>
+            <div class="toggle-row">
+              <div class="t">Portfolio drawdown pause<small>Pause new automated orders; never auto-liquidate.</small></div>
+              <div class="ctl"><div class="suffix"><input id="drawdown-pause" value="20" inputmode="decimal" disabled><b>%</b></div><input type="checkbox" class="sw" id="drawdown-pause-on"></div>
+            </div>
+          </details>
+          </details>
+          </details>
+        </section>
+        <div class="allocation-inputs" id="post-purchase-list"></div>
+        <div class="yield-estimate create-yield-card">
+          <div class="yield-estimate-head"><span>Estimated portfolio yield APY</span><b id="portfolio-yield">—</b></div>
+          <p>Static estimate from APY snapshots: each leg at its strategy weight × 95% of NAV, capped by its investment limit. Excludes price returns, extra rewards, external costs and performance fee. Not comparable to historical share returns.</p>
+          <div class="yield-estimate-foot"><span id="yield-update">Loading rate snapshot…</span><button type="button" class="link" id="refresh-yields">Refresh rates</button></div>
+        </div>
+        <ul class="checks create-step-errors" id="step-two-issues" aria-live="polite"></ul>
+        <div class="create-step-actions"><button type="button" class="btn ghost" data-create-back="1">← Back</button><button type="button" class="btn" data-create-next="3">Continue to Review →</button></div>
+      </section>
+      <section id="s-3" class="create-step" data-create-panel="3" hidden>
+        <div id="mandate-form">
+          <section class="create-card create-review-fields">
+            <h2>Review &amp; open</h2>
+            <div class="fields">
+              <label class="field"><span>Vault name</span><input id="name" value="Sherwood Core Basket" maxlength="64" required></label>
+              <div class="field"><span>Share symbol</span><div class="locked"><span id="symbol">avSCB</span></div></div>
+              <label class="field full"><span>Strategy note</span><small>Description only — not binding</small><textarea id="note" placeholder="Describe your strategy."></textarea></label>
+              <label class="field full"><span>Agent operator address</span><input id="mandate-agent" placeholder="0x…" pattern="0x[a-fA-F0-9]{40}" required><small>Required. Must be a different address from your creator wallet. Never enter a private key.</small></label>
+            </div>
+            <div class="create-fee-control"><label for="pf">Total performance fee</label><div class="suffix"><input id="pf" value="20" inputmode="decimal" required aria-label="Total performance fee, percent"><b>%</b></div><input type="range" id="fee-slider" min="0" max="30" step="0.01" value="20" aria-label="Adjust total performance fee"><p id="fee-split-note">Of new profit above the high-water mark: Creator 18.0% · Protocol 2.0% (90/10 of the total, not added on top). Fixed after open. Management fee: None.</p><input id="mf" type="hidden" value="0"></div>
+            <div class="create-seed-facts"><div><span>Seed</span><div class="suffix"><input id="seed" value="100" readonly aria-label="Fixed creator seed"><b>USDT</b></div></div><div><span>Seed share lock</span><b>90 days (creator only)</b></div><div><span>Accounting asset</span><b id="mandate-asset-label">USDT · BNB Chain</b></div></div>
+          </section>
+          <section class="mandate-preview launch-review create-readout">
+            <h3>What depositors will read</h3>
+            <dl class="kv"><dt>Assets &amp; destinations</dt><dd><div id="mandate-caps" class="review-positions"></div></dd><dt>Cash reserve</dt><dd><span id="mandate-idle">At least 5%</span> required after new investment. Market movements may change this proportion later.</dd><dt>Performance fee</dt><dd><span id="mandate-fee-summary">20% total · 18% creator + 2% protocol</span> on new profit above the fee-adjusted high-water mark · no management fee</dd><dt>Creator seed</dt><dd>100 USDT, seed shares locked 90 days. Depositors have no lock.</dd><dt>Rule changes</dt><dd>Lowering limits is immediate; raising waits ≥ 24h. Markets and operator are fixed.</dd><dt>Daily loss guard</dt><dd>2% observed fee-adjusted share-value loss blocks new activity; it does not guarantee a stop-loss fill.</dd><dt>Exit</dt><dd>Cash redeem with minimum received + deadline, or in-kind redeem of underlying tokens and receipts.</dd></dl>
+            <details class="create-explain"><summary>Mandate and execution details</summary><p class="sentence" id="mandate-sentence">Choose assets and destinations to build your mandate.</p><p>The operator has no withdrawal rights. If a selected swap or supply fails, the whole action reverts without changing the vault’s assets. The fee basis may include gains on assets still held. External protocols keep their own governance and may charge additional fees. Borrowing, leverage, LP and Aster are not executable by this vault.</p></details>
+          </section>
+          <section class="create-card create-preopen">
+            <h3>Pre-open checks</h3>
+            <div id="preopen-checks" class="create-checks" aria-live="polite"></div>
+            <div id="mandate-binding" class="state-note" role="status"><span>Opening requires your complete selection to have a verified deployment.</span></div>
+            <ul class="checks" id="issues" aria-live="polite"></ul><ul class="checks" id="mandate-issues" aria-live="polite"></ul>
+            <div class="create-preopen-facts"><div><span>Minimum seed shares</span><span id="seed-share-preview">At least 100 whole shares · precision after approval</span></div><div><span>Deadline</span><span>20 min after preparing · re-prepare when expired</span></div><div><span>Signatures</span><span>Allowance reset/approve (if needed) + Launch</span></div></div>
+            <details class="advanced-options create-technical"><summary>Show technical configuration</summary><p class="fine">The reference records planning instructions. It does not certify a contract simulation or a launch.</p><button type="button" class="btn ghost" id="sign">Recheck routes &amp; export reference</button><ul class="dry" id="steps"></ul><div id="launch-result"></div><button type="button" class="link" id="toggle-json">View reference JSON</button><pre class="json hide" id="json"></pre></details>
+            <div class="mandate-cta"><button type="button" class="btn ghost" id="mandate-connect" disabled>Connect creator wallet</button><button type="button" class="btn" id="mandate-launch" disabled>Deployment required to open</button><button type="button" class="btn ghost" id="mandate-export">Export vault design</button></div>
+            <p class="fine">Opens only when the full selection resolves to an approved configuration, a verified deployment exists, and wallet pre-checks pass. Launch deploys the vault and deposits the seed; the agent trades later. An insufficient allowance needs a separate exact-100-USDT approval and may first need a reset.</p>
+            <div id="mandate-status" class="state-note live-status" role="status" aria-live="polite"><span>Loading deployment configuration. Design examples cannot receive funds.</span></div>
+            <div id="mandate-pending" class="state-note create-pending-transaction" hidden><div><b>Submitted launch</b><p id="mandate-pending-message" aria-live="polite"></p><a id="mandate-transaction-link" target="_blank" rel="noopener noreferrer">View transaction on explorer</a> <button type="button" class="link" id="mandate-copy-transaction">Copy hash</button><p class="fine">Checking a receipt sends no transaction. A mined receipt alone does not verify that this vault was opened.</p><button type="button" class="btn ghost" id="mandate-check-transaction">Check transaction receipt</button></div></div>
+          </section>
+        </div>
+        <div class="create-step-actions"><button type="button" class="btn ghost" data-create-back="2">← Back</button></div>
+      </section>
+    </form>
+    <aside class="aside create-summary">
+      <section class="create-card"><h2>Vault summary</h2><div id="create-summary-positions"></div><div class="create-summary-totals"><div><span>Limits total</span><b id="summary-limit-total">0% / 95%</b></div><div class="create-limit-track"><span id="summary-limit-bar"></span></div><div><span>Cash kept ≥</span><span id="summary-cash">100%</span></div><div><span>Performance fee</span><span id="summary-fee">20% total</span></div><div><span>Seed</span><span>100 USDT · 90d lock</span></div><div><span>Mode</span><span id="summary-mode">Agent-managed</span></div></div><p class="create-summary-note">Buy + supply is atomic: if the swap or supply fails, the whole action reverts and USDT stays as cash. Raising a limit later waits 24h; new markets need a new vault.</p><details class="create-explain"><summary>Market gate &amp; mandate details</summary><p class="fine" id="registry-note">Verifying the phase-one registry…</p><p class="sentence" id="sentence">Loading registry…</p><div class="meta-row" id="meta"></div><ul class="rules" id="rules"></ul></details></section>
+    </aside>
+  </div>
+</main>
+<div hidden><span id="s-targets"></span><span id="s-plan"></span><span id="s-markets"></span><span id="mc-state"></span></div>
+
+
+
+6:T16fff,
+(function () {
+  "use strict";
+  const { $, $$, esc, toast, DEMO_OWNER, hexAddr } = BAV;
+  BAV.shell("create.html");
+
+  const S = {
+    registry: null,
+    mode: "agent-managed",
+    filter: "all",
+    search: "",
+    tokenSearchResults: [],
+    selected: new Map(),
+    yieldTools: null,
+    yieldSnapshot: null,
+    forkPassed: false,
+    launched: false,
+  };
+  const manager = hexAddr("phase1-manager");
+  const num = (value) => Number(String(value).trim());
+  const formatUsd = (value) => {
+    if (!Number.isFinite(value)) return "Unavailable";
+    if (value >= 1e6) return `$${(value / 1e6).toFixed(value >= 1e7 ? 1 : 2)}M`;
+    if (value >= 1e3) return `$${(value / 1e3).toFixed(value >= 1e5 ? 0 : 1)}K`;
+    return `$${value.toFixed(value >= 100 ? 0 : 2)}`;
+  };
+  const registryUrl = BAV.assetUrl("phase1-registry.json");
+  const ADDRESS_RE = /^0x[0-9a-fA-F]{40}$/;
+  const TOKEN_SEARCH_URL = "https://api.geckoterminal.com/api/v2/search/pools";
+  const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
+  const Q192 = 2n ** 192n;
+  const PRICE_SCALE = 10n ** 30n;
+  let rpcId = 1;
+
+  const addressWord = (address) => address.toLowerCase().slice(2).padStart(64, "0");
+  const uintWord = (value) => BigInt(value).toString(16).padStart(64, "0");
+  const decodeAddress = (hex) => "0x" + String(hex).slice(-40).toLowerCase();
+  const pow10 = (decimals) => 10n ** BigInt(decimals);
+  const toTokenNumber = (raw, decimals) => {
+    const scale = pow10(decimals);
+    return Number(raw / scale) + Number(raw % scale) / (10 ** decimals);
+  };
+  const decodeText = (hex) => {
+    const raw = String(hex || "").replace(/^0x/, "");
+    let bytes = "";
+    try {
+      if (raw.length >= 128) {
+        const offset = Number(BigInt("0x" + raw.slice(0, 64))) * 2;
+        const length = Number(BigInt("0x" + raw.slice(offset, offset + 64)));
+        if (length > 0 && length <= 64 && raw.length >= offset + 64 + length * 2) bytes = raw.slice(offset + 64, offset + 64 + length * 2);
+      }
+      if (!bytes && raw.length >= 64) bytes = raw.slice(0, 64).replace(/(?:00)+$/, "");
+      const values = bytes.match(/.{2}/g)?.map((value) => parseInt(value, 16)) || [];
+      return new TextDecoder().decode(new Uint8Array(values)).replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, 16);
+    } catch {
+      return "";
+    }
+  };
+
+  async function rpc(method, params) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 12000);
+    try {
+      const response = await fetch(S.registry.discovery.rpcUrl, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ jsonrpc: "2.0", id: rpcId++, method, params: params || [] }),
+        signal: controller.signal,
+      });
+      if (!response.ok) throw new Error("BSC RPC returned " + response.status);
+      const body = await response.json();
+      if (body.error) throw new Error(body.error.message || "BSC RPC error");
+      return body.result;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  const ethCall = (to, data, blockTag) => rpc("eth_call", [{ to, data }, blockTag]);
+
+  async function inspectV3Pool(target, quote, quoteUsdPrice, poolAddress, fee, blockTag) {
+    const [code, token0Hex, token1Hex, slot0Hex, targetBalanceHex, quoteBalanceHex] = await Promise.all([
+      rpc("eth_getCode", [poolAddress, blockTag]),
+      ethCall(poolAddress, "0x0dfe1681", blockTag),
+      ethCall(poolAddress, "0xd21220a7", blockTag),
+      ethCall(poolAddress, "0x3850c7bd", blockTag),
+      ethCall(target.address, "0x70a08231" + addressWord(poolAddress), blockTag),
+      ethCall(quote.address, "0x70a08231" + addressWord(poolAddress), blockTag),
+    ]);
+    if (!code || code === "0x") throw new Error("Pool has no contract code");
+    const token0 = decodeAddress(token0Hex);
+    const token1 = decodeAddress(token1Hex);
+    const targetAddress = target.address.toLowerCase();
+    const quoteAddress = quote.address.toLowerCase();
+    if (!([token0, token1].includes(targetAddress) && [token0, token1].includes(quoteAddress))) throw new Error("Factory pool token mismatch");
+    const sqrtPriceX96 = BigInt("0x" + slot0Hex.slice(2, 66));
+    if (sqrtPriceX96 === 0n) throw new Error("Pool is not initialized");
+    const decimals0 = token0 === targetAddress ? target.decimals : quote.decimals;
+    const decimals1 = token1 === targetAddress ? target.decimals : quote.decimals;
+    const ratio = sqrtPriceX96 * sqrtPriceX96 * pow10(decimals0) * PRICE_SCALE / (Q192 * pow10(decimals1));
+    const token1PerToken0 = Number(ratio) / Number(PRICE_SCALE);
+    const spotPriceQuote = token0 === targetAddress ? token1PerToken0 : 1 / token1PerToken0;
+    const spotPriceUsd = spotPriceQuote * quoteUsdPrice;
+    const targetBalance = toTokenNumber(BigInt(targetBalanceHex), target.decimals);
+    const quoteBalance = toTokenNumber(BigInt(quoteBalanceHex), quote.decimals);
+    const liquidityUsd = targetBalance * spotPriceUsd + quoteBalance * quoteUsdPrice;
+    if (!(Number.isFinite(liquidityUsd) && liquidityUsd > 0 && Number.isFinite(spotPriceUsd) && spotPriceUsd > 0)) throw new Error("Pool has no usable liquidity");
+    return { protocol: "v3", venue: "PancakeSwap V3", poolAddress, fee, liquidityUsd, spotPriceUsd };
+  }
+
+  async function inspectV2Pool(target, quote, quoteUsdPrice, poolAddress, blockTag) {
+    const [code, token0Hex, token1Hex, reservesHex] = await Promise.all([
+      rpc("eth_getCode", [poolAddress, blockTag]),
+      ethCall(poolAddress, "0x0dfe1681", blockTag),
+      ethCall(poolAddress, "0xd21220a7", blockTag),
+      ethCall(poolAddress, "0x0902f1ac", blockTag),
+    ]);
+    if (!code || code === "0x") throw new Error("Pair has no contract code");
+    const token0 = decodeAddress(token0Hex);
+    const token1 = decodeAddress(token1Hex);
+    const targetAddress = target.address.toLowerCase();
+    const quoteAddress = quote.address.toLowerCase();
+    if (!([token0, token1].includes(targetAddress) && [token0, token1].includes(quoteAddress))) throw new Error("Factory pair token mismatch");
+    const raw = reservesHex.slice(2);
+    const reserve0 = BigInt("0x" + raw.slice(0, 64));
+    const reserve1 = BigInt("0x" + raw.slice(64, 128));
+    const targetReserve = toTokenNumber(token0 === targetAddress ? reserve0 : reserve1, target.decimals);
+    const quoteReserve = toTokenNumber(token0 === quoteAddress ? reserve0 : reserve1, quote.decimals);
+    const spotPriceUsd = quoteReserve / targetReserve * quoteUsdPrice;
+    const liquidityUsd = quoteReserve * quoteUsdPrice * 2;
+    if (!(Number.isFinite(liquidityUsd) && liquidityUsd > 0 && Number.isFinite(spotPriceUsd) && spotPriceUsd > 0)) throw new Error("Pair has no usable liquidity");
+    return { protocol: "v2", venue: "PancakeSwap V2", poolAddress, fee: 2500, liquidityUsd, spotPriceUsd };
+  }
+
+  async function discoverContractTarget(address, skipKnown, requestedPoolAddress) {
+    const normalized = address.toLowerCase();
+    const known = S.registry.targets.find((target) => target.address.toLowerCase() === normalized);
+    const requestedPool = String(requestedPoolAddress || "").toLowerCase();
+    if (requestedPoolAddress && !ADDRESS_RE.test(requestedPool)) throw new Error("Selected pool address is invalid.");
+    if (known && !known.dynamic && !skipKnown && !requestedPool) return known;
+    if (normalized === S.registry.quoteAsset.address.toLowerCase()) throw new Error("Accounting USDT uses its direct supply destination, without a swap pool. Select USDT from the asset catalog.");
+    const chainId = await rpc("eth_chainId");
+    if (Number(BigInt(chainId)) !== 56) throw new Error("RPC is not connected to BNB Chain.");
+    const blockTag = await rpc("eth_blockNumber");
+    const [code, symbolHex, decimalsHex] = await Promise.all([
+      rpc("eth_getCode", [normalized, blockTag]),
+      ethCall(normalized, "0x95d89b41", blockTag).catch(() => "0x"),
+      ethCall(normalized, "0x313ce567", blockTag),
+    ]);
+    if (!code || code === "0x") throw new Error("No token contract exists at this address.");
+    const decimals = Number(BigInt(decimalsHex));
+    if (!Number.isInteger(decimals) || decimals < 0 || decimals > 36) throw new Error("Unsupported token decimals.");
+    const symbol = decodeText(symbolHex).replace(/[^A-Za-z0-9._-]/g, "").slice(0, 16) || ("TOKEN-" + normalized.slice(-4));
+    const target = { address: normalized, decimals };
+    const discovery = S.registry.discovery;
+    const wrappedNative = S.registry.targets.find((candidate) => candidate.id === "crypto:WBNB");
+    if (!wrappedNative?.liquidity?.spotPriceUsd) throw new Error("BNB bridge price is unavailable.");
+    const quotes = [
+      { symbol: "USDT", address: discovery.quoteAddress, decimals: discovery.quoteDecimals, usdPrice: 1, bridge: null },
+      { symbol: "WBNB", address: wrappedNative.address, decimals: wrappedNative.decimals, usdPrice: wrappedNative.liquidity.spotPriceUsd, bridge: wrappedNative.swap },
+    ].filter((quote) => quote.address.toLowerCase() !== normalized);
+    const checks = [];
+    for (const quote of quotes) {
+      const v3Addresses = await Promise.all(discovery.v3FeeTiers.map(async (fee) => {
+        const data = "0x1698ee82" + addressWord(normalized) + addressWord(quote.address) + uintWord(fee);
+        return { fee, poolAddress: decodeAddress(await ethCall(discovery.pancakeV3Factory, data, blockTag)) };
+      }));
+      const v2Data = "0xe6a43905" + addressWord(normalized) + addressWord(quote.address);
+      const v2Address = decodeAddress(await ethCall(discovery.pancakeV2Factory, v2Data, blockTag));
+      const decorate = async (promise) => {
+        const route = await promise;
+        const firstHop = { tokenIn: normalized, tokenOut: quote.address, protocol: route.protocol, poolAddress: route.poolAddress, fee: route.fee };
+        route.path = quote.bridge ? [firstHop, ...quote.bridge.path] : [firstHop];
+        route.liquidityUsd = quote.bridge ? Math.min(route.liquidityUsd, wrappedNative.liquidity.usd) : route.liquidityUsd;
+        route.venue = quote.bridge ? "PancakeSwap via BNB" : route.venue;
+        route.protocol = quote.bridge ? "multi-hop" : route.protocol;
+        return route;
+      };
+      v3Addresses.filter((candidate) => candidate.poolAddress !== ZERO_ADDRESS).forEach((candidate) => {
+        checks.push(decorate(inspectV3Pool(target, quote, quote.usdPrice, candidate.poolAddress, candidate.fee, blockTag)));
+      });
+      if (v2Address !== ZERO_ADDRESS) checks.push(decorate(inspectV2Pool(target, quote, quote.usdPrice, v2Address, blockTag)));
+    }
+    const inspected = await Promise.allSettled(checks);
+    const routes = inspected.filter((result) => result.status === "fulfilled").map((result) => result.value);
+    if (!routes.length) throw new Error("No initialized Pancake V2/V3 pool to USDT or BNB found.");
+    routes.sort((left, right) => right.liquidityUsd - left.liquidityUsd);
+    const route = requestedPool
+      ? routes.find((candidate) => candidate.path[0]?.poolAddress.toLowerCase() === requestedPool)
+      : routes[0];
+    if (!route) throw new Error("Selected pool is not an executable USDT/BNB route. Choose another pool or search the CA for automatic routing.");
+    return {
+      id: known?.id || ("crypto:custom:" + normalized),
+      category: known?.category || "crypto",
+      symbol,
+      displaySymbol: known?.displaySymbol || symbol,
+      ticker: known?.ticker || symbol,
+      underlyingName: known?.underlyingName,
+      address: normalized,
+      decimals,
+      dynamic: true,
+      swap: { venue: route.venue, protocol: route.protocol, quoteSymbol: "USDT", poolAddress: route.poolAddress, fee: route.fee, path: route.path },
+      liquidity: {
+        usd: Number(route.liquidityUsd.toFixed(2)),
+        verifiedAt: new Date().toISOString(),
+        verifiedAtBlock: Number(BigInt(blockTag)),
+        methodology: "Every route hop was checked against a Pancake factory on BNB Chain; effective TVL uses the route bottleneck and is not guaranteed execution depth.",
+      },
+      discovery: { source: "BSC JSON-RPC + Pancake factory", exactPair: true, customToken: true, verifiedAtBlock: Number(BigInt(blockTag)) },
+      routeSelection: requestedPool
+        ? { mode: "pinned-pool", poolAddress: route.path[0].poolAddress, protocol: route.path[0].protocol, fee: route.path[0].fee }
+        : { mode: "best-liquidity" },
+    };
+  }
+
+  fetch(registryUrl)
+    .then((response) => {
+      if (!response.ok) throw new Error(`Registry request failed (${response.status})`);
+      return response.json();
+    })
+    .then(async (registry) => {
+      const liquidityValid = Array.isArray(registry.targets)
+        && registry.targets.length > 0
+        && registry.targets.every((target) => Number.isFinite(target.liquidity?.usd) && target.liquidity.usd > 0);
+      const destinationKindsValid = Array.isArray(registry.yieldMarkets)
+        && registry.yieldMarkets.every((market) => ["supply-market", "vault"].includes(market.kind));
+      const discoveryValid = registry.discovery?.scope === "direct-USDT-or-via-BNB-v2-v3"
+        && ADDRESS_RE.test(registry.discovery.pancakeV3Factory)
+        && ADDRESS_RE.test(registry.discovery.pancakeV2Factory)
+        && ADDRESS_RE.test(registry.discovery.wrappedNativeAddress)
+        && registry.discovery.quoteAddress?.toLowerCase() === registry.quoteAsset?.address?.toLowerCase();
+      if (registry.schema !== "bnb-agent-vaults/phase1-market-registry@1" || registry.chainId !== 56 || !liquidityValid || !destinationKindsValid || !discoveryValid) {
+        throw new Error("Unexpected market registry");
+      }
+      const cryptoCount = registry.targets.filter((target) => target.category === "crypto").length;
+      const stockCount = registry.targets.filter((target) => target.category === "bstock").length;
+      // The accounting-token supply example comes from the reviewed repo configuration;
+      // the original registry and rate snapshots remain untouched.
+      let accountingNote = "Accounting supply source unavailable.";
+      try {
+        const response = await fetch(BAV.assetUrl(window.__BAV_BASE_PATH__ === undefined ? "assets/accounting-markets.json" : "accounting-markets.json"));
+        if (!response.ok) throw new Error("Accounting supply source unavailable");
+        const supplement = await response.json();
+        const target = supplement.target;
+        if (supplement.schema !== "bnb-agent-vaults/accounting-markets@1" || supplement.chainId !== registry.chainId || target?.accountingAsset !== true || target.swap !== null || target.address?.toLowerCase() !== registry.quoteAsset.address.toLowerCase() || target.decimals !== registry.quoteAsset.decimals || !Array.isArray(supplement.markets) || supplement.markets.length !== 1 || !supplement.markets.every((market) => market.targetId === target.id && market.assetAddress?.toLowerCase() === target.address.toLowerCase() && market.protocol === "Venus" && market.kind === "supply-market" && ADDRESS_RE.test(market.marketAddress) && market.configurationHash === supplement.source?.configurationHash)) throw new Error("Invalid accounting supply source");
+        registry = { ...registry, targets: [target, ...registry.targets], yieldMarkets: [...registry.yieldMarkets, ...supplement.markets] };
+        accountingNote = "Plus USDT → Venus supply from the reviewed configuration; APY requires a live rate read.";
+      } catch (error) { accountingNote = `${error.message}. The original catalog remains available.`; }
+      S.registry = registry;
+      $("#catalog-note").textContent = `Design catalog: ${cryptoCount + stockCount} original assets (${cryptoCount} crypto / ${stockCount} bStocks). ${accountingNote} Listed ≠ approved.`;
+      loadYieldSnapshot();
+      $("#registry-note").textContent = `${registry.targets.length} targets · swap liquidity at block ${registry.targets.find((target) => target.liquidity)?.liquidity?.verifiedAtBlock ?? "—"} · exact destinations rechecked before execution.`;
+      draw();
+    })
+    .catch((error) => {
+      $("#target-list").innerHTML = `<div class="state-note error-note"><span class="dot"></span><span>${esc(error.message)}. Launch is disabled.</span></div>`;
+      $("#target-count").textContent = "Unavailable";
+      $("#registry-note").textContent = "Registry unavailable. No target or yield market can be selected.";
+      validate();
+    });
+
+  const formatApy = (apy) => apy > 0 && apy < 0.0001 ? "<0.01%" : `${(apy * 100).toFixed(2)}%`;
+  const assetUrl = (name) => BAV.assetUrl(name);
+
+  async function loadYieldSnapshot() {
+    try {
+      const [module, response] = await Promise.all([
+        import(assetUrl("assets/yield-rates.mjs")), fetch(assetUrl("phase1-yields.json")),
+      ]);
+      S.yieldTools = module;
+      if (!response.ok) throw new Error("Rate snapshot unavailable");
+      const snapshot = await response.json();
+      if (snapshot.schema !== "bnb-agent-vaults/yield-rates@1" || snapshot.chainId !== 56) throw new Error("Invalid rate snapshot");
+      S.yieldSnapshot = snapshot;
+    } catch (error) {
+      $("#yield-update").textContent = error.message;
+    }
+    drawPostPurchase();
+    refresh();
+  }
+
+  $("#refresh-yields").addEventListener("click", async () => {
+    const button = $("#refresh-yields");
+    button.disabled = true;
+    button.textContent = "Refreshing…";
+    try {
+      if (!S.registry) throw new Error("Market registry is still loading.");
+      S.yieldTools ||= await import(assetUrl("assets/yield-rates.mjs"));
+      S.yieldSnapshot = await S.yieldTools.fetchYieldRates(S.registry);
+      drawPostPurchase();
+      refresh();
+    } catch (error) {
+      $("#yield-update").textContent = `Refresh failed: ${error.message}`;
+    } finally {
+      button.disabled = false;
+      button.textContent = "Refresh rates";
+    }
+  });
+
+  function compatibleMarkets(targetId) {
+    return S.registry ? S.registry.yieldMarkets.filter((market) => market.targetId === targetId) : [];
+  }
+
+  const displayName = (target) => target.displaySymbol || target.symbol;
+  const assetName = (target) => target.underlyingName || target.name || displayName(target);
+  const venueLogo = (protocol) => {
+    const name = String(protocol || "").toLowerCase();
+    const key = name.includes("venus") ? "venus" : name.includes("aave") ? "aave" : name.includes("lista") ? "lista" : name.includes("pancake") ? "pancakeswap" : null;
+    return key ? BAV.logo(key, "create-venue-logo") : "";
+  };
+  const shortAddress = (address) => `${address.slice(0, 6)}…${address.slice(-4)}`;
+  const targetStatus = (target) => {
+    const count = compatibleMarkets(target.id).length;
+    const destinationCount = `${count} ${count === 1 ? "destination" : "destinations"}`;
+    if (target.accountingAsset) return `Accounting asset · direct supply, no swap · ${destinationCount}`;
+    if (target.dynamic) return `Custom CA ${shortAddress(target.address)} · ${target.routeSelection?.mode === "pinned-pool" ? "Pinned pool" : "Verified discovery route"} · planning only`;
+    const routing = target.swap?.protocol === "v3" && target.swap?.path?.length === 1 ? "Verified V3 direct pool" : `${routeName(target)} route`;
+    return `${routing} · ${destinationCount}${target.category === "bstock" ? " · planning only" : ""}`;
+  };
+  const routeName = (target) => !target.swap ? "Direct accounting-asset supply" : target.swap.protocol === "multi-hop" ? "Pancake via BNB" : (target.swap.protocol === "v2" ? "Pancake V2" : "Pancake V3");
+
+  function equalize() {
+    const ids = [...S.selected.keys()];
+    if (!ids.length) return;
+    const base = Math.floor(10000 / ids.length);
+    let remainder = 10000 - base * ids.length;
+    ids.forEach((id) => {
+      const row = S.selected.get(id);
+      row.weightBps = base + (remainder-- > 0 ? 1 : 0);
+      if (!row.capEdited) row.capBps = ids.length === 1 ? 7000 : Math.floor(row.weightBps * .95);
+    });
+  }
+
+  function drawTargets() {
+    if (!S.registry) return;
+    const query = S.search.toLowerCase();
+    const targets = S.registry.targets.filter((target) => {
+      const typeMatch = S.filter === "all" || target.category === S.filter;
+      const textMatch = !query || `${displayName(target)} ${target.symbol} ${target.ticker} ${target.underlyingName || ""} ${target.address}`.toLowerCase().includes(query);
+      return typeMatch && textMatch;
+    });
+    $("#target-count").textContent = `${targets.length} assets${targets.length > 5 ? " · Scroll to browse" : ""}`;
+    $("#target-list").innerHTML = targets.map((target) => {
+      const checked = S.selected.has(target.id);
+      const full = S.selected.size >= S.registry.policy.maxTargets;
+      return `<label class="mkt ${checked ? "selected" : "off"}"><input type="checkbox" data-target="${esc(target.id)}" ${checked ? "checked" : ""} ${full && !checked ? "disabled" : ""} aria-label="${checked ? "Remove" : "Add"} ${esc(assetName(target))}"><span class="asset-monogram" aria-hidden="true">${esc(target.symbol.slice(0, 4))}</span><span class="t"><span class="create-asset-name"><b>${esc(assetName(target))}</b><span>${esc(target.symbol)} · ${target.category === "bstock" ? "bStock" : "Crypto"}</span></span><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(targetStatus(target))}</small></span><span class="asset-toggle">${checked ? "Added ✓" : full ? "Max 10" : "Add"}</span></label>`;
+    }).join("") || `<div class="allocation-empty">No target matches this filter.</div>`;
+    $$('[data-target]').forEach((input) => input.addEventListener("change", () => {
+      if (input.checked) {
+        if (S.selected.size >= S.registry.policy.maxTargets) {
+          input.checked = false;
+          toast(`Maximum ${S.registry.policy.maxTargets} targets`);
+          return;
+        }
+        const target = S.registry.targets.find((candidate) => candidate.id === input.dataset.target);
+        S.selected.set(input.dataset.target, { weightBps: 0, marketId: target.accountingAsset ? compatibleMarkets(target.id)[0]?.id || "" : "", capBps: 7000 });
+        equalize();
+      } else {
+        S.selected.delete(input.dataset.target);
+        equalize();
+      }
+      S.forkPassed = false;
+      draw();
+    }));
+  }
+
+  function drawSelected() {
+    if (!S.registry) return;
+    const rows = [...S.selected.entries()].map(([id, selected]) => {
+      const target = S.registry.targets.find((candidate) => candidate.id === id);
+      const routing = target.routeSelection?.mode === "pinned-pool" ? "Pinned pool" : "Best route";
+      const poolFee = target.routeSelection?.fee ?? target.swap?.path?.[0]?.fee;
+      const fee = Number.isFinite(poolFee) ? `${poolFee / 10000}% fee` : "fee unavailable";
+      const pool = target.routeSelection?.poolAddress || target.swap?.poolAddress;
+      return `<div class="launch-leg create-selected-leg" data-selected="${esc(id)}"><div class="create-leg-identity"><b>${esc(assetName(target))}</b><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(target.symbol)} · ${esc(targetStatus(target))}</small></div><label class="field create-leg-weight"><span>Strategy weight</span><div class="suffix"><input data-weight="${esc(id)}" value="${selected.weightBps / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} strategy weight"><b>%</b></div></label><label class="field create-leg-cap"><span>Investment limit</span><div class="suffix"><input data-cap="${esc(id)}" value="${(selected.capBps ?? 7000) / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} investment limit"><b>% NAV</b></div></label><button type="button" class="rm" data-remove="${esc(id)}" aria-label="Remove ${esc(assetName(target))}">×</button><details class="create-leg-details"><summary>Route details</summary><span title="${esc(target.address)}">CA ${esc(shortAddress(target.address))}</span><span>${target.accountingAsset ? "No swap or pool-liquidity requirement; exact lending-market checks still apply." : `${routing} · ${esc(fee)} · ${formatUsd(target.liquidity?.usd)} TVL · ${esc(routeName(target))}`}</span>${pool ? `<span title="${esc(pool)}">Pool ${esc(shortAddress(pool))}</span>` : ""}</details></div>`;
+    });
+    $("#selected-list").innerHTML = rows.join("") || `<div class="allocation-empty">Select at least one crypto or bStock target.</div>`;
+    $$('[data-cap]').forEach((input) => input.addEventListener("input", () => {
+      const value = input.value.trim();
+      S.selected.get(input.dataset.cap).capBps = /^\d+(?:\.\d{1,2})?$/.test(value) ? Math.round(Number(value) * 100) : NaN;
+      S.selected.get(input.dataset.cap).capEdited = true;
+      S.forkPassed = false; refresh();
+    }));
+    $$('[data-weight]').forEach((input) => input.addEventListener("input", () => {
+      S.selected.get(input.dataset.weight).weightBps = Math.round(num(input.value) * 100);
+      S.forkPassed = false;
+      refresh();
+    }));
+    $$('[data-remove]').forEach((button) => button.addEventListener("click", () => {
+      S.selected.delete(button.dataset.remove);
+      equalize();
+      S.forkPassed = false;
+      draw();
+    }));
+  }
+
+  function drawPostPurchase() {
+    if (!S.registry) return;
+    const rows = [...S.selected.entries()].map(([id, selected]) => {
+      const target = S.registry.targets.find((candidate) => candidate.id === id);
+      const markets = compatibleMarkets(id);
+      const options = (target.accountingAsset ? [] : [`<option value="">Keep in portfolio</option>`])
+        .concat(markets.map((market) => {
+          const kind = market.kind === "supply-market" ? "Supply market" : "Vault";
+          const deposit = S.yieldTools?.currentDepositStatus(S.yieldSnapshot, market);
+          const apy = S.yieldTools?.currentRate(S.yieldSnapshot, market);
+          return `<option value="${esc(market.id)}" ${selected.marketId === market.id ? "selected" : ""} >${esc(market.protocol)} · ${kind} · ${esc(market.label)} · ${apy === null || apy === undefined ? "APY unavailable" : `${formatApy(apy)} base APY`}${deposit?.supplyEnabled ? "" : ` · ${esc(deposit?.reason || "Status unverified")}`}</option>`;
+        }));
+      const unavailable = (S.registry.unavailableMarkets || []).filter((market) => market.targetId === id);
+      const unavailableOptions = unavailable.map((market) => `<option disabled>${esc(market.label)} · ${esc(market.reason)}</option>`);
+      const references = (S.registry.collateralMarkets || []).filter((market) => market.targetId === id);
+      const referenceOptions = references.map((market) => `<option disabled>Lista · Collateral market · ${esc(market.collateralSymbol)}/${esc(market.loanSymbol)} · View below</option>`);
+      const rate = selected.marketId ? markets.find((market) => market.id === selected.marketId) : null;
+      const apy = rate && S.yieldTools ? S.yieldTools.currentRate(S.yieldSnapshot, rate) : null;
+      const deposit = rate && S.yieldTools ? S.yieldTools.currentDepositStatus(S.yieldSnapshot, rate) : null;
+      const capacity = deposit?.headroomRaw === null ? "Uncapped" : deposit?.headroomRaw
+        ? `${(Number(deposit.headroomRaw) / (10 ** target.decimals)).toLocaleString(undefined, { maximumFractionDigits: 2 })} ${target.symbol}` : null;
+      const depositDetail = rate ? `<p class="market-note" data-deposit-status="${esc(id)}">${esc(deposit?.reason || "Supply status unverified — refresh rates")}${deposit?.supplyEnabled && capacity ? ` · Remaining deposit capacity: ${esc(capacity)}` : ""}. Rechecked before execution; unavailable status does not prevent design.</p>` : "";
+      const rateDetail = rate
+        ? `<p class="market-note" data-yield-rate="${esc(id)}"><b>Base lending APY ${apy === null ? "Unavailable" : formatApy(apy)}</b> · rewards excluded${S.yieldSnapshot?.markets?.[rate.id]?.sourceUrl ? ` · <a href="${esc(S.yieldSnapshot.markets[rate.id].sourceUrl)}" target="_blank" rel="noopener noreferrer">Rate source</a>` : ""}</p>`
+        : `<p class="market-note" data-yield-rate="${esc(id)}">Base lending APY 0.00% · holding earns no lending interest.</p>`;
+      const note = !markets.length ? `<p class="market-note">No verified exact-asset yield destination.</p>` : "";
+      const referenceNotes = references.map((market) => {
+        const reference = S.yieldSnapshot?.collateralMarkets?.[market.id];
+        const age = Date.now() - Date.parse(reference?.fetchedAt);
+        const nativeApy = reference?.status === "available" && age >= -60000 && age <= 86400000 ? reference.nativeApy : null;
+        return `<p class="market-note collateral-reference"><a href="${esc(market.sourceUrl)}" target="_blank" rel="noopener noreferrer">Lista ${esc(market.collateralSymbol)}/${esc(market.loanSymbol)} market ↗</a><span>${esc(market.collateralSymbol)} is collateral; lenders supply ${esc(market.loanSymbol)}. Collateral native APY ${nativeApy === null ? "unavailable" : formatApy(nativeApy)}. Campaign rewards are separate. Collateral deposits are not enabled in this vault.</span></p>`;
+      }).join("");
+      const unavailableNotes = unavailable.map((market) => `<p class="market-note"><a href="${esc(market.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(market.label)}</a> · ${esc(market.reason)} · checked ${esc(new Date(market.verifiedAt).toLocaleString())}.</p>`).join("");
+      const destinationOptions = [...(target.accountingAsset ? [] : [{ id: "", label: "Hold in vault", sub: "Token held as-is, no lending yield", apy: "—", status: "Available", logo: "" }]), ...markets.map((market) => {
+        const current = S.yieldTools?.currentRate(S.yieldSnapshot, market);
+        const currentDeposit = S.yieldTools?.currentDepositStatus(S.yieldSnapshot, market);
+        const entry = S.yieldSnapshot?.markets?.[market.id];
+        const snapshotTime = entry?.fetchedAt || S.yieldSnapshot?.fetchedAt;
+        const stale = !snapshotTime || Date.now() - Date.parse(snapshotTime) > 86400000;
+        return { id: market.id, label: market.label, sub: `${market.protocol === "Aave" ? "Aave V3" : market.protocol} · ${market.kind === "supply-market" ? "Supply market" : "Exact ERC-4626 vault"} · accepts ${target.symbol}`, apy: current == null ? "—" : `${formatApy(current)} APY`, status: currentDeposit?.supplyEnabled === false ? currentDeposit.reason || "Supply unavailable" : stale ? "Snapshot stale · refresh rates" : currentDeposit?.supplyEnabled ? `Snapshot · ${new Date(snapshotTime).toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}` : "Supply status unverified", logo: venueLogo(market.protocol) };
+      })];
+      return `<section class="launch-leg create-card create-destination-leg" data-post-purchase="${esc(id)}"><div class="create-destination-head"><h3>${esc(assetName(target))} <small>${esc(target.symbol)}</small></h3><span>Limit ${Number.isFinite(selected.capBps) ? selected.capBps / 100 : "—"}% NAV</span></div><select data-market="${esc(id)}" hidden aria-label="${esc(assetName(target))} destination">${options.join("")}${unavailableOptions.join("")}${referenceOptions.join("")}</select><div class="create-destination-options" role="radiogroup" aria-label="${esc(assetName(target))} destination">${destinationOptions.map((option) => `<button type="button" class="create-destination-option ${selected.marketId === option.id ? "on" : ""}" role="radio" aria-checked="${selected.marketId === option.id}" data-destination-target="${esc(id)}" data-destination-market="${esc(option.id)}"><span class="create-radio-dot" aria-hidden="true"></span>${option.logo}<span class="create-destination-copy"><b>${esc(option.label)}</b><small>${esc(option.sub)}</small></span><span class="create-destination-rate"><b>${esc(option.apy)}</b><small>${esc(option.status)}</small></span></button>`).join("")}</div>${rateDetail}${depositDetail}${note}${unavailableNotes}${referenceNotes}</section>`;
+    });
+    $("#post-purchase-list").innerHTML = rows.join("") || `<div class="allocation-empty">Choose targets in step 1 before configuring post-purchase handling.</div>`;
+    $$('[data-destination-target]').forEach((button) => button.addEventListener("click", () => {
+      const select = $$('[data-market]').find((candidate) => candidate.dataset.market === button.dataset.destinationTarget);
+      if (!select || select.disabled) return;
+      select.value = button.dataset.destinationMarket;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+    }));
+    $$('[data-market]').forEach((select) => select.addEventListener("change", () => {
+      S.selected.get(select.dataset.market).marketId = select.value;
+      S.forkPassed = false;
+      drawPostPurchase();
+      refresh();
+    }));
+  }
+
+  function buildManifest() {
+    if (!S.registry) return null;
+    const targets = [...S.selected.entries()].map(([id, selected]) => {
+      const target = S.registry.targets.find((candidate) => candidate.id === id);
+      const market = selected.marketId
+        ? S.registry.yieldMarkets.find((candidate) => candidate.id === selected.marketId && candidate.targetId === id)
+        : null;
+      return {
+        targetId: target.id,
+        symbol: target.symbol,
+        displaySymbol: displayName(target),
+        category: target.category,
+        tokenAddress: target.address,
+        weightBps: selected.weightBps,
+        swap: target.swap,
+        routing: target.routeSelection || { mode: "registry-pinned" },
+        discovery: target.discovery || null,
+        postPurchase: market ? {
+          mode: "yield-market",
+          marketId: market.id,
+          protocol: market.protocol,
+          marketKind: market.kind,
+          marketAddress: market.marketAddress,
+          fallback: "hold",
+          revalidateBeforeEveryDeposit: true,
+        } : { mode: "hold" },
+      };
+    });
+    const scheduleEndMode = $("#schedule-end").value;
+    const scheduleEnd = scheduleEndMode === "after-executions"
+      ? { mode: scheduleEndMode, maxExecutions: Math.round(num($("#schedule-count").value)) }
+      : scheduleEndMode === "on-date"
+        ? { mode: scheduleEndMode, endAt: localDateToIso($("#schedule-end-date").value) }
+        : { mode: scheduleEndMode };
+    const execution = S.mode === "agent-managed" ? { mode: "agent-managed", automatedOrders: false } : S.mode === "lump-sum" ? {
+      mode: "lump-sum",
+      deploymentBps: 9500,
+    } : {
+      mode: "accumulate",
+      trancheBps: Math.round(num($("#tranche").value) * 100),
+      schedule: {
+        enabled: $("#schedule-on").checked,
+        cadence: { every: Math.round(num($("#interval").value)), unit: $("#interval-unit").value },
+        startAt: localDateToIso($("#schedule-start").value),
+        timeZone: $("#schedule-timezone").textContent,
+        end: scheduleEnd,
+        missedExecutionPolicy: "skip",
+        editPolicy: "next-cycle",
+        executionCountPolicy: "successful-buys-only",
+        calendarPolicy: { daylightSaving: "preserve-local-time", invalidMonthDay: "last-valid-day" },
+      },
+      drawdown: {
+        enabled: $("#dip-on").checked,
+        thresholdBps: Math.round(num($("#dip").value) * 100),
+        reference: "last-executed-basket-index",
+        resetAfterSuccessfulBuy: true,
+      },
+      sharedCooldownHours: 24,
+      maxDeploymentBps: 9500,
+      insufficientCashPolicy: "skip-no-catch-up",
+    };
+    const rebalancing = $("#rebalance-on").checked ? {
+      enabled: true,
+      method: $("#rebalance-method").value,
+      trigger: {
+        type: $("#rebalance-trigger").value,
+        driftBps: Math.round(num($("#rebalance-drift").value) * 100),
+        ...($("#rebalance-trigger").value === "scheduled" ? {
+          cadence: { every: Math.round(num($("#rebalance-interval").value)), unit: $("#rebalance-unit").value },
+          startAt: localDateToIso($("#rebalance-start").value),
+          timeZone: $("#schedule-timezone").textContent,
+          missedCheckPolicy: "skip",
+        } : {}),
+        driftReference: "absolute-target-weight",
+        activation: "any-target-exceeds",
+      },
+      cashflowFirst: true,
+      maxTurnoverBps: Math.round(num($("#rebalance-turnover").value) * 100),
+      cooldownHours: 24,
+      minTradeUsd: 10,
+      preflightAllLegs: true,
+      turnoverDefinition: "gross-traded-notional",
+    } : { enabled: false };
+    return {
+      schema: "bnb-agent-vaults/manifest@0.8",
+      referenceOnly: true, deploymentEligible: false,
+      historicalFieldNotes: { postPurchaseFallback: "Historical planning field only. Continuous vault swap/supply failure reverts the entire action.", creatorPerformancePct: "Gross total performance fee before the fixed 10% protocol share; not an additional creator-only fee." },
+      chainId: 56,
+      identity: { name: $("#name").value.trim(), symbol: $("#symbol").textContent, note: $("#note").value.trim(), noteBinding: false },
+      denomination: S.registry.quoteAsset,
+      owner: DEMO_OWNER,
+      manager: { address: manager, type: "dedicated-key" },
+      execution,
+      rebalancing,
+      portfolio: { targets },
+      fees: { creatorPerformancePct: num($("#pf").value), creatorManagementPct: num($("#mf").value), highWaterMark: "vault-level", entryFeePct: 0, exitFeePct: 0 },
+      seed: { amount: num($("#seed").value), asset: "USDT", lockDays: 90, creatorSeedSharesOnly: true },
+      riskControls: {
+        minIdleBps: 500,
+        maxSlippageBps: 100,
+        maxTradePoolTvlBps: 10,
+        bstockOracleMaxAgeSeconds: 3900,
+        maxOracleDeviationBps: 200,
+        marketRevalidation: "before-every-deposit",
+        portfolioDrawdownPause: {
+          enabled: $("#drawdown-pause-on").checked,
+          thresholdBps: Math.round(num($("#drawdown-pause").value) * 100),
+          reference: "settled-nav-high-water-mark",
+          action: "pause-new-automated-orders",
+          resume: "manual",
+        },
+        arbitraryCalls: false,
+      },
+      forkDryRun: "not run — reference planner only",
+    };
+  }
+
+  function problems() {
+    const out = [];
+    if (!S.registry) out.push(["s-1", "Verified market registry is unavailable."]);
+    if (!S.selected.size) out.push(["s-1", "Select at least one target."]);
+    if (S.registry && [...S.selected.keys()].some((id) => !S.registry.targets.some((target) => target.id === id))) out.push(["s-1", "A selected target is no longer available."]);
+    if (S.registry && [...S.selected.keys()].some((id) => {
+      const target = S.registry.targets.find((candidate) => candidate.id === id);
+      return target?.dynamic && !(target.discovery?.exactPair && target.swap?.path?.length && target.liquidity?.usd > 0);
+    })) out.push(["s-1", "A custom token route has not passed the on-chain pool checks."]);
+    const total = [...S.selected.values()].reduce((sum, row) => sum + row.weightBps, 0);
+    const caps = [...S.selected.values()].map((row) => row.capBps);
+    if (caps.some((cap) => !Number.isInteger(cap) || cap < 0 || cap > 9500)) out.push(["s-1", "Each investment limit must be 0–95% of vault value, with at most two decimal places."]);
+    if (caps.reduce((sum, cap) => sum + cap, 0) > 9500) out.push(["s-1", "Investment limits must total at most 95%; keep at least 5% idle cash."]);
+    if (total !== 10000) out.push(["s-1", `Strategy weights must total 100% (currently ${(total / 100).toFixed(2)}%).`]);
+    if ([...S.selected.values()].some((row) => !(row.weightBps > 0))) out.push(["s-1", "Every selected target needs a positive weight."]);
+    for (const [id, row] of S.selected.entries()) {
+      const target = S.registry?.targets.find((candidate) => candidate.id === id);
+      if (target?.accountingAsset && !row.marketId) out.push(["s-2", "Accounting USDT must use its exact supply destination; uninvested USDT stays in the idle reserve."]);
+      if (!row.marketId) continue;
+      const market = compatibleMarkets(id).find((candidate) => candidate.id === row.marketId);
+      if (!market) {
+        out.push(["s-2", "A selected destination is not a verified exact-asset market."]);
+      }
+    }
+    if (S.registry && S.mode !== "agent-managed" && num($("#seed").value) > 0) {
+      const deploymentBps = S.mode === "lump-sum" ? 9500 : Math.round(num($("#tranche").value) * 100);
+      for (const [id, row] of S.selected.entries()) {
+        const target = S.registry.targets.find((candidate) => candidate.id === id);
+        const initialOrderUsd = num($("#seed").value) * deploymentBps / 10000 * row.weightBps / 10000;
+        const capacityUsd = target?.liquidity?.usd * 0.001;
+        if (Number.isFinite(capacityUsd) && initialOrderUsd > capacityUsd) {
+          out.push(["s-1", `${displayName(target)} initial order exceeds the 0.1% pool-TVL limit.`]);
+        }
+      }
+    }
+    if (S.mode === "accumulate") {
+      if (!$("#schedule-on").checked && !$("#dip-on").checked) out.push(["s-2", "Enable a schedule, a drawdown trigger, or both."]);
+      if ($("#schedule-on").checked && !validCadence($("#interval").value, $("#interval-unit").value)) out.push(["s-2", "Choose a valid schedule: up to 365 days, 52 weeks or 12 months per interval."]);
+      const startAt = Date.parse($("#schedule-start").value);
+      if ($("#schedule-on").checked && (!Number.isFinite(startAt) || startAt <= Date.now())) out.push(["s-2", "Schedule start must be in the future."]);
+      if ($("#schedule-on").checked && $("#schedule-end").value === "after-executions" && !(num($("#schedule-count").value) >= 1 && num($("#schedule-count").value) <= 1000)) out.push(["s-2", "Scheduled buy count must be between 1 and 1,000."]);
+      if ($("#schedule-on").checked && $("#schedule-end").value === "on-date") {
+        const endAt = Date.parse($("#schedule-end-date").value);
+        if (!Number.isFinite(endAt) || endAt <= startAt) out.push(["s-2", "Schedule end must be after the start."]);
+      }
+      if ($("#dip-on").checked && !(num($("#dip").value) >= 1 && num($("#dip").value) <= 30)) out.push(["s-2", "Drawdown trigger must be between 1% and 30%."]);
+      if (!(num($("#tranche").value) >= 1 && num($("#tranche").value) <= 25)) out.push(["s-2", "Tranche size must be between 1% and 25%."]);
+    }
+    if ($("#rebalance-on").checked) {
+      if (!(num($("#rebalance-drift").value) >= 1 && num($("#rebalance-drift").value) <= 20)) out.push(["s-2", "Rebalance drift must be between 1% and 20%."]);
+      if ($("#rebalance-trigger").value === "scheduled" && !validCadence($("#rebalance-interval").value, $("#rebalance-unit").value)) out.push(["s-2", "Choose a valid rebalance schedule."]);
+      if ($("#rebalance-trigger").value === "scheduled" && (!Number.isFinite(Date.parse($("#rebalance-start").value)) || Date.parse($("#rebalance-start").value) <= Date.now())) out.push(["s-2", "Rebalance schedule start must be in the future."]);
+      if ($("#rebalance-method").value === "full" && !(num($("#rebalance-turnover").value) >= 1 && num($("#rebalance-turnover").value) <= 25)) out.push(["s-2", "Maximum rebalance turnover must be between 1% and 25% of current vault value."]);
+      if ($("#rebalance-method").value === "full" && [...S.selected.values()].some((row) => row.marketId)) out.push(["s-2", "Full rebalancing requires assets to stay in the portfolio. Use cashflow-only or remove yield destinations."]);
+    }
+    if ($("#drawdown-pause-on").checked && !(num($("#drawdown-pause").value) >= 5 && num($("#drawdown-pause").value) <= 50)) out.push(["s-2", "Portfolio drawdown pause must be between 5% and 50%."]);
+    if (!$("#name").value.trim()) out.push(["s-3", "Name the vault."]);
+    if (!(num($("#pf").value) >= 0 && num($("#pf").value) <= 30)) out.push(["s-3", "Performance fee must be 0–30%."]);
+    if (num($("#mf").value) !== 0) out.push(["s-3", "Management fees are not supported by this vault."]);
+    if (num($("#seed").value) !== 100) out.push(["s-3", "The creator seed is exactly 100 USDT."]);
+    return out;
+  }
+
+  function refresh() {
+    const total = [...S.selected.values()].reduce((sum, row) => sum + row.weightBps, 0);
+    const marketCount = [...S.selected.values()].filter((row) => row.marketId).length;
+    const errors = problems();
+    const name = $("#name").value.trim();
+    $("#symbol").textContent = name ? `av${name.split(/\s+/).map((word) => word.replace(/[^a-z0-9]/gi, "")[0] || "").join("").toUpperCase().slice(0, 5)}` : "—";
+    $("#weight-total").textContent = `${(total / 100).toFixed(total % 100 ? 2 : 0)}%`;
+    const capTotal = [...S.selected.values()].reduce((sum, row) => sum + row.capBps, 0);
+    const capLabel = Number.isFinite(capTotal) ? `${(capTotal / 100).toFixed(capTotal % 100 ? 2 : 0)}%` : "—";
+    const cashLabel = Number.isFinite(capTotal) ? `${Math.max(0, 100 - capTotal / 100).toFixed(capTotal % 100 ? 2 : 0)}%` : "—";
+    $("#selected-count").textContent = String(S.selected.size);
+    $("#selected-limit-total").textContent = capLabel;
+    $("#selected-cash").textContent = cashLabel;
+    $("#summary-limit-total").textContent = `${capLabel} / 95%`;
+    $("#summary-limit-total").classList.toggle("planning-note", capTotal > 9500);
+    $("#summary-limit-bar").style.width = `${Number.isFinite(capTotal) ? Math.min(100, Math.max(0, capTotal / 95)) : 0}%`;
+    $("#summary-cash").textContent = cashLabel;
+    $("#summary-fee").textContent = `${$("#pf").value || "—"}% total`;
+    [1, 2].forEach((step) => {
+      const stepErrors = errors.filter(([section]) => section === `s-${step}`);
+      $(step === 1 ? "#step-one-issues" : "#step-two-issues").innerHTML = stepErrors.map(([, message]) => `<li class="bad"><i></i><span>${esc(message)}</span></li>`).join("");
+      $(`[data-create-next="${step + 1}"]`).disabled = errors.some(([section]) => section === "s-1" || (step === 2 && section === "s-2"));
+    });
+    $$('[data-cap]').forEach((input) => input.setAttribute("aria-invalid", String(!Number.isInteger(S.selected.get(input.dataset.cap).capBps) || capTotal > 9500)));
+    $$('[data-weight]').forEach((input) => input.setAttribute("aria-invalid", String(total !== 10000 || !(S.selected.get(input.dataset.weight).weightBps > 0))));
+    $("#create-summary-positions").innerHTML = S.registry ? [...S.selected.entries()].map(([id, row]) => {
+      const target = S.registry.targets.find((candidate) => candidate.id === id);
+      const market = compatibleMarkets(id).find((candidate) => candidate.id === row.marketId);
+      return `<div class="create-summary-position"><span><b>${esc(displayName(target))}</b><small>${market ? venueLogo(market.protocol) : ""}${esc(market?.label || "Hold in vault")}</small></span><span><small>Limit / Weight</small><b>${Number.isFinite(row.capBps) ? row.capBps / 100 : "—"}% / ${Number.isFinite(row.weightBps) ? row.weightBps / 100 : "—"}%</b></span></div>`;
+    }).join("") || `<p class="fine">Choose assets to build your vault summary.</p>` : "";
+    const planLabel = S.mode === "agent-managed" ? "Agent-managed" : S.mode === "lump-sum" ? "Buy once · plan" : "Accumulate · plan";
+    $("#summary-mode").textContent = planLabel;
+    $("#s-plan").textContent = $("#rebalance-on").checked ? `${planLabel} + rebalance` : planLabel;
+    $("#s-targets").textContent = String(S.selected.size);
+    $("#s-markets").textContent = String(marketCount);
+    const yieldRows = [...S.selected.entries()].map(([targetId, row]) => ({ targetId, ...row }));
+    let estimatedApy = S.yieldTools && S.registry && yieldRows.length && !errors.some(([section]) => section === "s-1") && total === 10000 && Number.isFinite(capTotal) && capTotal <= 9500 ? 0 : null;
+    if (estimatedApy !== null) {
+      for (const row of yieldRows) {
+        if (!row.marketId) continue;
+        const market = S.registry.yieldMarkets.find((candidate) => candidate.id === row.marketId && candidate.targetId === row.targetId);
+        const rate = market ? S.yieldTools.currentRate(S.yieldSnapshot, market) : null;
+        if (rate === null || !Number.isFinite(row.capBps)) { estimatedApy = null; break; }
+        estimatedApy += Math.min(row.weightBps * .95, row.capBps) / 10000 * rate;
+      }
+    }
+    $("#portfolio-yield").textContent = estimatedApy === null ? "—" : formatApy(estimatedApy);
+    if (S.yieldSnapshot) {
+      const age = Date.now() - Date.parse(S.yieldSnapshot.fetchedAt);
+      const timestamp = new Date(S.yieldSnapshot.fetchedAt).toLocaleString();
+      const rates = Object.values(S.yieldSnapshot.markets);
+      const available = rates.filter((rate) => rate.status === "available").length;
+      const open = rates.filter((rate) => rate.deposit?.supplyEnabled === true).length;
+      $("#yield-update").textContent = `${age > 86400000 ? "Snapshot expired · refresh rates" : `Updated ${timestamp} · ${available}/${rates.length} rates · ${open} open destinations`} · before vault fees`;
+    }
+    $("#issues").innerHTML = errors.length
+      ? errors.map(([, message]) => `<li class="bad"><i></i><span>${esc(message)}</span></li>`).join("")
+      : `<li class="ok"><i></i><span>Asset and destination design is structurally complete. Live approval and simulation are checked separately; this design check is not a fork audit.</span></li>`;
+    $("#sign").disabled = errors.length > 0 || S.launched;
+    $("#sign").textContent = S.launched ? "Reference exported" : "Recheck routes & export reference";
+    $("#mc-state").textContent = "Prototype · deployment required";
+    $$("#toc .ck").forEach((check, index) => check.classList.toggle("ok", !errors.some(([section]) => section === `s-${index + 1}`)));
+    const targetNames = S.registry ? [...S.selected.keys()].map((id) => {
+      const target = S.registry.targets.find((candidate) => candidate.id === id);
+      return target ? displayName(target) : null;
+    }).filter(Boolean) : [];
+    $("#sentence").textContent = targetNames.length
+      ? `${name || "This vault"} may buy ${targetNames.join(", ")} within the selected investment limits. Each asset is held or supplied to its named destination. A failed swap or supply reverts the whole action.`
+      : "Select crypto or bStocks, then choose how to buy and where each asset goes.";
+    $("#meta").innerHTML = `<span class="tag">${esc(planLabel)}</span><span class="tag">${S.selected.size} targets</span><span class="tag">${$("#rebalance-on").checked ? "Rebalance on" : "No rebalance"}</span><span class="tag">5% idle</span>`;
+    $("#rules").innerHTML = [
+      ["Buy", "Strategy weights guide the agent’s plan; the contract enforces each investment limit as a share of current vault value."],
+      ["Automation", S.mode === "agent-managed" && !$("#rebalance-on").checked ? "Agent-managed execution. No contract schedule or automatic rebalance." : "Requested automation is design-only; live launch is unavailable."],
+      ["Destination", marketCount ? "Use only the selected exact-asset market. Failed supply reverts; there is no automatic fallback destination." : "Hold purchased assets in the portfolio."],
+      ["Guard", "Recheck the asset, listing/pause state and deposit capacity before every deposit."],
+    ].map(([label, value]) => `<li><b>${label}</b><span>${esc(value)}</span></li>`).join("");
+    $("#json").textContent = JSON.stringify(buildManifest(), null, 2);
+    window.dispatchEvent(new CustomEvent("bav:asset-design", { detail: assetDesign() }));
+  }
+
+  function assetDesign() {
+    const manifest = buildManifest();
+    const positions = S.registry ? [...S.selected.entries()].map(([id, row]) => {
+      const target = S.registry.targets.find((candidate) => candidate.id === id);
+      const market = row.marketId ? compatibleMarkets(id).find((candidate) => candidate.id === row.marketId) : null;
+      const destination = market ? { mode: market.kind, protocol: market.protocol, marketAddress: market.marketAddress } : { mode: "hold" };
+      const swap = target.swap ? { protocol: target.swap.protocol, poolAddress: target.swap.poolAddress, fee: target.swap.fee,
+        path: target.swap.path.map((hop) => ({ tokenIn: hop.tokenIn, tokenOut: hop.tokenOut, protocol: hop.protocol, poolAddress: hop.poolAddress, fee: hop.fee })) } : null;
+      return { token: target.address, symbol: displayName(target), strategyWeightBps: row.weightBps, swap, destination,
+        capBps: row.capBps ?? 7000, marketLabel: market?.label || "Hold in vault" };
+    }) : [];
+    return { manifest, issues: problems().map(([, message]) => message), positions,
+      selection: { chainId: S.registry?.chainId || 56, accountingAsset: S.registry?.quoteAsset?.address || null, positions: positions.map(({ token, swap, destination, capBps }) => ({ token, swap, destination, capBps })),
+        automation: { mode: S.mode, rebalancingEnabled: $("#rebalance-on").checked || $("#drawdown-pause-on").checked },
+        managementFeeBps: Math.round(num($("#mf").value) * 100), seedAmount: $("#seed").value.trim() } };
+  }
+  BAV.assetDesign = assetDesign;
+
+  function draw() {
+    drawTargets();
+    drawSelected();
+    drawPostPurchase();
+    refresh();
+  }
+
+  function showCaStatus(message, isError) {
+    const node = $("#ca-status");
+    node.className = `state-note ${isError ? "error-note" : ""}`;
+    node.innerHTML = `<span class="dot"></span><span>${esc(message)}</span>`;
+  }
+
+  const normalizeTokenQuery = (value) => String(value || "").normalize("NFKC").trim().toLowerCase();
+  const positiveNumber = (value) => {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+  };
+
+  function parseTokenSearchPages(pages, rawQuery) {
+    const query = normalizeTokenQuery(rawQuery);
+    const rows = [];
+    pages.forEach((page) => {
+      const included = new Map((Array.isArray(page?.included) ? page.included : []).map((item) => [item.id, item]));
+      (Array.isArray(page?.data) ? page.data : []).forEach((pool) => {
+        const dexId = pool?.relationships?.dex?.data?.id || "";
+        if (!["pancakeswap-v2-bsc", "pancakeswap-v3-bsc"].includes(dexId)) return;
+        const attributes = pool?.attributes || {};
+        const poolName = String(attributes.name || "");
+        const feeMatch = poolName.match(/(\d+(?:\.\d+)?)%\s*$/);
+        const version = dexId === "pancakeswap-v2-bsc" ? "V2" : "V3";
+        const feePct = version === "V2" ? 0.25 : positiveNumber(feeMatch?.[1]);
+        const baseTokenId = pool?.relationships?.base_token?.data?.id;
+        [baseTokenId, pool?.relationships?.quote_token?.data?.id].forEach((tokenId) => {
+          const token = included.get(tokenId);
+          const address = String(token?.attributes?.address || "").toLowerCase();
+          const name = String(token?.attributes?.name || "").trim().slice(0, 80);
+          const symbol = String(token?.attributes?.symbol || "").trim().slice(0, 24);
+          if (!ADDRESS_RE.test(address) || ![name, symbol].some((value) => normalizeTokenQuery(value).includes(query))) return;
+          const isBaseToken = tokenId === baseTokenId;
+          rows.push({
+            address,
+            name: name || symbol,
+            symbol: symbol || "TOKEN",
+            poolAddress: String(attributes.address || "").toLowerCase(),
+            version,
+            feePct,
+            marketCapUsd: isBaseToken ? positiveNumber(attributes.market_cap_usd) : null,
+            fdvUsd: isBaseToken ? positiveNumber(attributes.fdv_usd) : null,
+            liquidityUsd: positiveNumber(attributes.reserve_in_usd) || 0,
+          });
+        });
+      });
+    });
+    const deepestByAddress = new Map();
+    rows.forEach((row) => {
+      const current = deepestByAddress.get(row.address);
+      const hasValuation = row.marketCapUsd !== null || row.fdvUsd !== null;
+      const currentHasValuation = current && (current.marketCapUsd !== null || current.fdvUsd !== null);
+      if (!current || (hasValuation && !currentHasValuation) || (hasValuation === currentHasValuation && row.liquidityUsd > current.liquidityUsd)) {
+        deepestByAddress.set(row.address, row);
+      }
+    });
+    rows.forEach((row) => {
+      const reference = deepestByAddress.get(row.address);
+      row.marketCapUsd = reference.marketCapUsd;
+      row.fdvUsd = reference.fdvUsd;
+    });
+    return rows.sort((left, right) => {
+      const rightCap = right.marketCapUsd ?? right.fdvUsd ?? -1;
+      const leftCap = left.marketCapUsd ?? left.fdvUsd ?? -1;
+      return rightCap - leftCap || right.liquidityUsd - left.liquidityUsd || left.symbol.localeCompare(right.symbol);
+    });
+  }
+
+  function drawTokenSearchResults() {
+    const node = $("#token-search-results");
+    if (!S.tokenSearchResults.length) {
+      node.classList.add("hide");
+      $("#target-list").classList.remove("hide");
+      node.innerHTML = "";
+      return;
+    }
+    node.classList.remove("hide");
+    $("#target-list").classList.add("hide");
+    $("#target-count").textContent = `${S.tokenSearchResults.length} pools${S.tokenSearchResults.length > 5 ? " · Scroll to browse" : ""}`;
+    node.innerHTML = S.tokenSearchResults.map((result) => {
+      const cap = result.marketCapUsd ?? result.fdvUsd;
+      const capLabel = result.marketCapUsd ? "MC" : "FDV";
+      const pool = ADDRESS_RE.test(result.poolAddress) ? `${result.poolAddress.slice(0, 6)}…${result.poolAddress.slice(-4)}` : "pool";
+      const fee = result.feePct ? `${result.feePct}% fee` : "fee unavailable";
+      const token = `${result.address.slice(0, 6)}…${result.address.slice(-4)}`;
+      const pinned = [...S.selected.keys()].some((id) => {
+        const target = S.registry?.targets.find((candidate) => candidate.id === id);
+        return target?.address?.toLowerCase() === result.address.toLowerCase() && target?.routeSelection?.mode === "pinned-pool" && target.routeSelection.poolAddress.toLowerCase() === result.poolAddress.toLowerCase();
+      });
+      return `<button type="button" class="token-pool-result ${pinned ? "pinned" : ""}" data-search-address="${esc(result.address)}" data-search-pool="${esc(result.poolAddress)}" aria-label="Pin ${esc(result.symbol)} ${esc(result.version)} pool"><b>${esc(result.symbol)} · ${esc(result.name)}</b><small title="${esc(result.address)}">CA ${esc(token)}</small><span class="token-pool-meta"><span>${esc(result.version)}</span><span>${esc(fee)}</span><span>Liquidity ${formatUsd(result.liquidityUsd)}</span><span>${cap ? `${capLabel} ${formatUsd(cap)}` : "MC / FDV unavailable"}</span></span><small title="${esc(result.poolAddress)}">Pool ${esc(pool)} · verify exact route on-chain</small><span class="asset-toggle">${pinned ? "Pinned ✓" : "Pin pool"}</span></button>`;
+    }).join("");
+    $$('[data-search-address]').forEach((button) => button.addEventListener("click", () => findContractPool(button.dataset.searchAddress, button.dataset.searchPool)));
+  }
+
+  let tokenSearchController = null;
+  async function searchTokenName() {
+    const rawQuery = $("#search").value;
+    const query = normalizeTokenQuery(rawQuery);
+    if (query.length < 2 || query.length > 64) return showCaStatus("Enter 2–64 characters or an exact BSC contract address.", true);
+    const button = $("#find-ca");
+    button.disabled = true;
+    button.textContent = "Searching…";
+    tokenSearchController?.abort();
+    const controller = new AbortController();
+    tokenSearchController = controller;
+    const timer = setTimeout(() => controller.abort(), 12000);
+    showCaStatus("Searching BNB Chain PancakeSwap tokens by name and ticker.", false);
+    try {
+      const params = new URLSearchParams({ query: rawQuery.trim(), network: "bsc", include: "base_token,quote_token,dex", page: "1" });
+      const response = await fetch(`${TOKEN_SEARCH_URL}?${params}`, { headers: { accept: "application/json" }, signal: controller.signal });
+      if (!response.ok) throw new Error(`Search provider returned ${response.status}`);
+      S.tokenSearchResults = parseTokenSearchPages([await response.json()], query);
+      drawTokenSearchResults();
+      if (!S.tokenSearchResults.length) {
+        showCaStatus(`No PancakeSwap token name or ticker contains “${rawQuery.trim()}”.`, true);
+      } else {
+        showCaStatus(`${S.tokenSearchResults.length} pools · sorted by market cap (FDV only when unavailable). Select one to verify the Pancake route on-chain.`, false);
+      }
+    } catch (error) {
+      if (controller.signal.aborted) showCaStatus("Token search timed out. Try again.", true);
+      else showCaStatus(error?.message || "Token search is unavailable.", true);
+    } finally {
+      clearTimeout(timer);
+      if (tokenSearchController === controller) tokenSearchController = null;
+      button.disabled = false;
+      button.textContent = "Search";
+    }
+  }
+
+  async function findContractPool(addressOverride, requestedPoolAddress) {
+    const address = typeof addressOverride === "string" ? addressOverride.trim() : $("#search").value.trim();
+    if (!S.registry) return showCaStatus("Market registry is still loading.", true);
+    if (!ADDRESS_RE.test(address)) return showCaStatus("Enter a valid BSC contract address.", true);
+    const button = $("#find-ca");
+    button.disabled = true;
+    button.textContent = "Checking…";
+    showCaStatus("Checking the token and Pancake routes on BNB Chain.", false);
+    try {
+      const target = await discoverContractTarget(address, false, requestedPoolAddress);
+      const targetIndex = S.registry.targets.findIndex((candidate) => candidate.id === target.id);
+      if (targetIndex === -1) S.registry.targets.unshift(target);
+      else if (target.dynamic) S.registry.targets.splice(targetIndex, 1, target);
+      if (!S.selected.has(target.id)) {
+        if (S.selected.size >= S.registry.policy.maxTargets) throw new Error(`Maximum ${S.registry.policy.maxTargets} targets.`);
+        S.selected.set(target.id, { weightBps: 0, marketId: target.accountingAsset ? compatibleMarkets(target.id)[0]?.id || "" : "", capBps: 7000 });
+        equalize();
+      }
+      S.filter = "crypto";
+      const cryptoFilter = $('input[name=filter][value="crypto"]');
+      if (cryptoFilter) cryptoFilter.checked = true;
+      S.forkPassed = false;
+      draw();
+      drawTokenSearchResults();
+      const warning = target.dynamic ? " Custom contracts are not security-audited." : "";
+      const routing = target.routeSelection?.mode === "pinned-pool" ? "Pinned pool" : "Automatic route";
+      showCaStatus(target.accountingAsset ? `${displayName(target)} · direct accounting-asset supply; no swap or pool is required. Exact lending-market checks apply.` : `${displayName(target)} · ${routing} · ${routeName(target)} · ${formatUsd(target.liquidity.usd)} TVL.${warning}`, false);
+    } catch (error) {
+      showCaStatus(error?.message || "Unable to verify this contract.", true);
+    } finally {
+      button.disabled = false;
+      button.textContent = "Search";
+    }
+  }
+
+  function runTargetSearch() {
+    const value = $("#search").value.trim();
+    return ADDRESS_RE.test(value) ? findContractPool(value) : searchTokenName();
+  }
+
+  $$('[data-mode]').forEach((button) => button.addEventListener("click", () => {
+    S.mode = button.dataset.mode;
+    S.forkPassed = false;
+    $$('[data-mode]').forEach((candidate) => candidate.classList.toggle("on", candidate === button));
+    $("#accumulate").classList.toggle("hide", S.mode !== "accumulate");
+    refresh();
+  }));
+  $("#search").addEventListener("input", (event) => {
+    S.search = event.target.value;
+    S.tokenSearchResults = [];
+    drawTokenSearchResults();
+    drawTargets();
+  });
+  $("#search").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      runTargetSearch();
+    }
+  });
+  $("#find-ca").addEventListener("click", runTargetSearch);
+  $$('input[name=filter]').forEach((input) => input.addEventListener("change", () => { S.filter = input.value; drawTargets(); }));
+  const pad = (value) => String(value).padStart(2, "0");
+  const toLocalDateInput = (date) => `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+  const localDateToIso = (value) => {
+    const parsed = new Date(value);
+    return Number.isFinite(parsed.getTime()) ? parsed.toISOString() : "";
+  };
+  const cadenceMax = { days: 365, weeks: 52, months: 12 };
+  const validCadence = (value, unit) => Number.isInteger(num(value)) && num(value) >= 1 && num(value) <= cadenceMax[unit];
+  const nextHour = new Date(Date.now() + 60 * 60 * 1000);
+  nextHour.setMinutes(0, 0, 0);
+  $("#schedule-start").value = toLocalDateInput(nextHour);
+  $("#rebalance-start").value = toLocalDateInput(nextHour);
+  const defaultEnd = new Date(nextHour.getTime());
+  defaultEnd.setFullYear(defaultEnd.getFullYear() + 1);
+  $("#schedule-end-date").value = toLocalDateInput(defaultEnd);
+  $("#schedule-timezone").textContent = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+
+  ["interval", "schedule-start", "schedule-count", "schedule-end-date", "dip", "tranche", "rebalance-drift", "rebalance-interval", "rebalance-start", "rebalance-turnover", "drawdown-pause", "name", "note", "pf", "mf", "seed"].forEach((id) => $("#" + id).addEventListener("input", () => { S.forkPassed = false; refresh(); }));
+  ["interval-unit", "schedule-end", "rebalance-method", "rebalance-trigger", "rebalance-unit"].forEach((id) => $("#" + id).addEventListener("change", () => {
+    $("#schedule-count-field").classList.toggle("hide", $("#schedule-end").value !== "after-executions");
+    $("#schedule-end-date-field").classList.toggle("hide", $("#schedule-end").value !== "on-date");
+    $("#rebalance-schedule-fields").classList.toggle("hide", $("#rebalance-trigger").value !== "scheduled");
+    $("#rebalance-turnover-field").classList.toggle("hide", $("#rebalance-method").value !== "full");
+    S.forkPassed = false;
+    refresh();
+  }));
+  ["schedule-on", "dip-on"].forEach((id) => $("#" + id).addEventListener("change", () => {
+    $("#schedule-settings").classList.toggle("hide", !$("#schedule-on").checked);
+    $("#dip").disabled = !$("#dip-on").checked;
+    S.forkPassed = false;
+    refresh();
+  }));
+  $("#rebalance-on").addEventListener("change", () => {
+    $("#rebalance-settings").classList.toggle("hide", !$("#rebalance-on").checked);
+    S.forkPassed = false;
+    refresh();
+  });
+  $("#drawdown-pause-on").addEventListener("change", () => {
+    $("#drawdown-pause").disabled = !$("#drawdown-pause-on").checked;
+    S.forkPassed = false;
+    refresh();
+  });
+  $("#toggle-json").addEventListener("click", () => $("#json").classList.toggle("hide"));
+  $("#sign").addEventListener("click", async () => {
+    if (problems().length) return;
+    $("#sign").disabled = true;
+    const steps = ["Recheck custom token and pool addresses", "Export reference plan (execution unavailable)"];
+    $("#steps").innerHTML = steps.map((step) => `<li><i></i><span>${esc(step)}</span></li>`).join("");
+    const rows = $$("#steps li");
+    try {
+      const customTargets = [...S.selected.keys()].map((id) => S.registry.targets.find((target) => target.id === id)).filter((target) => target?.dynamic);
+      const fresh = await Promise.all(customTargets.map((target) => discoverContractTarget(
+        target.address,
+        true,
+        target.routeSelection?.mode === "pinned-pool" ? target.routeSelection.poolAddress : "",
+      )));
+      fresh.forEach((target, index) => {
+        const pinned = customTargets[index];
+        const routeChanged = target.swap.protocol !== pinned.swap.protocol
+          || target.swap.path.length !== pinned.swap.path.length
+          || target.swap.path.some((hop, hopIndex) => {
+            const oldHop = pinned.swap.path[hopIndex];
+            return hop.protocol !== oldHop.protocol || hop.fee !== oldHop.fee || hop.poolAddress.toLowerCase() !== oldHop.poolAddress.toLowerCase();
+          });
+        if (routeChanged) {
+          throw new Error(`${displayName(pinned)} verified route changed. Select the pool again.`);
+        }
+        const selected = S.selected.get(pinned.id);
+        const deploymentBps = S.mode === "lump-sum" ? 9500 : Math.round(num($("#tranche").value) * 100);
+        const initialOrderUsd = num($("#seed").value) * deploymentBps / 10000 * selected.weightBps / 10000;
+        if (initialOrderUsd > target.liquidity.usd * 0.001) {
+          throw new Error(`${displayName(pinned)} selected pool no longer supports the initial order within the 0.1% TVL limit.`);
+        }
+      });
+    } catch (error) {
+      $("#launch-result").innerHTML = `<div class="state-note error-note"><span class="dot"></span><span>${esc(error?.message || "Custom token recheck failed.")}</span></div>`;
+      $("#sign").disabled = false;
+      return;
+    }
+    rows.forEach((row) => row.classList.add("ok"));
+    S.forkPassed = false;
+    S.launched = true;
+    const blob = new Blob([JSON.stringify(buildManifest(), null, 2)], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob); link.download = "basket-design-reference.json"; link.click();
+    setTimeout(() => URL.revokeObjectURL(link.href), 0);
+    $("#launch-result").innerHTML = `<div class="state-note"><span><b>Reference exported.</b> No vault was opened, no contract simulation was performed, and no transaction was sent.</span></div>`;
+    refresh();
+    toast("Basket design reference exported");
+  });
+
+  let activeStep = 1;
+  const requestedStep = Number(new URLSearchParams(window.location.search).get("step") || window.location.hash.match(/^#s-([123])$/)?.[1]);
+  function setStep(step, scroll = false) {
+    activeStep = Math.min(3, Math.max(1, step));
+    $$('[data-create-panel]').forEach((panel) => {
+      panel.hidden = Number(panel.dataset.createPanel) !== activeStep;
+      panel.querySelectorAll('input[placeholder], input[data-create-placeholder]').forEach((input) => {
+        if (input.hasAttribute("placeholder")) input.dataset.createPlaceholder = input.getAttribute("placeholder");
+        if (panel.hidden) input.removeAttribute("placeholder"); else input.setAttribute("placeholder", input.dataset.createPlaceholder || "");
+      });
+    });
+    $$('[data-create-step]').forEach((link) => {
+      const number = Number(link.dataset.createStep);
+      link.classList.toggle("active", number === activeStep);
+      if (number === activeStep) link.setAttribute("aria-current", "step"); else link.removeAttribute("aria-current");
+      link.querySelector(".step-number").textContent = number < activeStep ? "✓" : number;
+      link.classList.toggle("completed", number < activeStep);
+    });
+    if (scroll) $("#toc").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
+  }
+  $$('[data-create-step]').forEach((link) => link.addEventListener("click", (event) => { event.preventDefault(); setStep(Number(link.dataset.createStep)); }));
+  $$('[data-create-next]').forEach((button) => button.addEventListener("click", () => { if (!button.disabled) setStep(Number(button.dataset.createNext), true); }));
+  $$('[data-create-back]').forEach((button) => button.addEventListener("click", () => setStep(Number(button.dataset.createBack), true)));
+  const compactSearch = window.matchMedia("(max-width: 1199px)");
+  const updateSearchPlaceholder = () => {
+    const input = $("#search");
+    input.dataset.createPlaceholder = compactSearch.matches ? "Name, symbol or 0x address" : "Name, symbol or BSC token address (0x…)";
+    if (!$("#s-1").hidden) input.placeholder = input.dataset.createPlaceholder;
+  };
+  compactSearch.addEventListener("change", updateSearchPlaceholder); updateSearchPlaceholder();
+  $("#fee-slider").addEventListener("input", () => { $("#pf").value = $("#fee-slider").value; $("#pf").dispatchEvent(new Event("input", { bubbles: true })); });
+  $("#pf").addEventListener("input", () => { if (Number.isFinite(num($("#pf").value))) $("#fee-slider").value = $("#pf").value; });
+  setStep([1, 2, 3].includes(requestedStep) ? requestedStep : 1);
+  validate();
+  function validate() { refresh(); }
+})();
+
+
+(function () {
+  const { $, $$, esc } = BAV;
+  const F = $("#mandate-form");
+  let client = null, config = null, account = null, busy = false, binding = null, walletEpoch = 0, activeLaunchContext = null;
+  const previewQuery = new URLSearchParams(window.location.search);
+  let previewWalletConnected = !previewQuery.has("vault") && previewQuery.get("wallet") === "connected";
+  const PENDING_KEY = "bav:create-pending@1";
+  const HASH_RE = /^0x[\da-fA-F]{64}$/;
+  const readableStatus = (message) => String(message).replace(/0x[\da-fA-F]{64}\b|0x[\da-fA-F]{40}\b/g, (address) => `${address.slice(0, 8)}…${address.slice(-6)}`);
+  let pendingLaunch = null, checkingReceipt = false;
+  try {
+    const stored = JSON.parse(sessionStorage.getItem(PENDING_KEY) || "null");
+    if (stored && HASH_RE.test(stored.hash) && Number.isInteger(stored.chainId) && /^0x[\da-fA-F]{40}$/.test(stored.factory) && /^0x[\da-fA-F]{40}$/.test(stored.account)) pendingLaunch = stored;
+  } catch (_) { /* Disabled or malformed storage never enables signing. */ }
+  const launchUnresolved = () => pendingLaunch && pendingLaunch.state !== "reverted";
+  function savePending() {
+    try { if (pendingLaunch) sessionStorage.setItem(PENDING_KEY, JSON.stringify(pendingLaunch)); else sessionStorage.removeItem(PENDING_KEY); } catch (_) { /* In-memory guard still applies. */ }
+  }
+  function submittedLaunch(hash) {
+    const context = activeLaunchContext;
+    if (!HASH_RE.test(hash) || !context) return;
+    let operationStorageKey = null;
+    // Read the SDK's reference for this exact submitted hash; do not mistake a
+    // deposit or another stored wallet operation for a new launch.
+    try {
+      for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        if (!key?.startsWith("bav-operation:")) continue;
+        const record = JSON.parse(sessionStorage.getItem(key));
+        if (record?.hash?.toLowerCase() === hash.toLowerCase() && record.chainId === context.chainId) { operationStorageKey = key; break; }
+      }
+    } catch (_) { /* Storage may be disabled. */ }
+    pendingLaunch = { hash, ...context, operationStorageKey, state: "submitted", message: "Submitted. Waiting for the SDK to verify the receipt; do not submit again." };
+    savePending(); drawPending();
+  }
+  const status = (message) => {
+    $("#mandate-status").textContent = readableStatus(message);
+    $("#mandate-status").title = message;
+    const submitted = String(message).match(/^Submitted (0x[\da-fA-F]{64})\./);
+    if (submitted) submittedLaunch(submitted[1]);
+  };
+  function drawPending() {
+    const panel = $("#mandate-pending"); panel.hidden = !pendingLaunch;
+    if (!pendingLaunch) return;
+    $("#mandate-pending-message").textContent = readableStatus(pendingLaunch.message || "A previous launch is awaiting verification. Do not submit it again.");
+    $("#mandate-pending-message").title = pendingLaunch.message || "";
+    const explorer = pendingLaunch.chainId === 56 ? "https://bscscan.com" : pendingLaunch.chainId === 97 ? "https://testnet.bscscan.com" : null;
+    const link = $("#mandate-transaction-link");
+    link.hidden = !explorer;
+    if (explorer) link.href = `${explorer}/tx/${pendingLaunch.hash}`;
+    link.textContent = `Transaction ${pendingLaunch.hash.slice(0, 8)}…${pendingLaunch.hash.slice(-6)} ↗`; link.title = pendingLaunch.hash;
+    $("#mandate-copy-transaction").title = pendingLaunch.hash;
+    $("#mandate-check-transaction").disabled = checkingReceipt || busy || config?.status !== "deployed";
+    $("#mandate-check-transaction").textContent = checkingReceipt ? "Checking receipt…" : "Check transaction receipt";
+  }
+  async function receiptRpc(method, params = []) {
+    const response = await fetch(config.rpcUrl, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: Date.now(), method, params }), signal: AbortSignal.timeout(12000) });
+    if (!response.ok) throw new Error("Receipt RPC unavailable");
+    const body = await response.json(); if (body.error) throw new Error(body.error.message || "Receipt RPC failed"); return body.result;
+  }
+  $("#mandate-copy-transaction").addEventListener("click", async () => {
+    if (!pendingLaunch) return;
+    try { await navigator.clipboard.writeText(pendingLaunch.hash); BAV.toast("Transaction hash copied"); }
+    catch (_) { status("Copy unavailable. The full transaction hash is in the explorer link tooltip."); }
+  });
+  $("#mandate-check-transaction").addEventListener("click", async () => {
+    if (!pendingLaunch || checkingReceipt || busy || config?.status !== "deployed") return;
+    checkingReceipt = true; drawPending();
+    try {
+      if (config.chainId !== pendingLaunch.chainId || config.factory?.toLowerCase() !== pendingLaunch.factory.toLowerCase()) throw new Error("The current deployment differs from this submitted launch. Use its explorer and wallet history to reconcile it.");
+      if (Number(BigInt(await receiptRpc("eth_chainId"))) !== pendingLaunch.chainId) throw new Error("Receipt RPC is on a different chain");
+      const [transaction, receipt] = await Promise.all([receiptRpc("eth_getTransactionByHash", [pendingLaunch.hash]), receiptRpc("eth_getTransactionReceipt", [pendingLaunch.hash])]);
+      if (!transaction) throw new Error("RPC cannot locate this transaction. Check its explorer and wallet nonce/history; do not resubmit.");
+      if (transaction.hash?.toLowerCase() !== pendingLaunch.hash.toLowerCase() || transaction.to?.toLowerCase() !== pendingLaunch.factory.toLowerCase() || transaction.from?.toLowerCase() !== pendingLaunch.account.toLowerCase()) throw new Error("Transaction identity differs from the submitted launch");
+      if (!receipt) { pendingLaunch.state = "submitted"; pendingLaunch.message = "Transaction is pending. No receipt is available; launch remains blocked."; }
+      else {
+        if (receipt.transactionHash?.toLowerCase() !== pendingLaunch.hash.toLowerCase() || receipt.to?.toLowerCase() !== pendingLaunch.factory.toLowerCase() || receipt.from?.toLowerCase() !== pendingLaunch.account.toLowerCase()) throw new Error("Receipt identity differs from the submitted launch");
+        const block = await receiptRpc("eth_getBlockByNumber", [receipt.blockNumber, false]);
+        const head = await receiptRpc("eth_getBlockByNumber", ["latest", false]);
+        const reread = await receiptRpc("eth_getTransactionReceipt", [pendingLaunch.hash]);
+        const blockAgain = await receiptRpc("eth_getBlockByNumber", [receipt.blockNumber, false]);
+        const headAgain = head?.number ? await receiptRpc("eth_getBlockByNumber", [head.number, false]) : null;
+        const chainAgain = Number(BigInt(await receiptRpc("eth_chainId")));
+        if (!block?.hash || block.hash.toLowerCase() !== receipt.blockHash?.toLowerCase() || reread?.blockHash?.toLowerCase() !== receipt.blockHash.toLowerCase() || blockAgain?.hash?.toLowerCase() !== block.hash.toLowerCase() || !head?.hash || headAgain?.hash?.toLowerCase() !== head.hash.toLowerCase() || transaction.blockHash?.toLowerCase() !== receipt.blockHash.toLowerCase() || BigInt(transaction.blockNumber || "0x0") !== BigInt(receipt.blockNumber) || reread?.transactionHash?.toLowerCase() !== pendingLaunch.hash.toLowerCase() || reread?.status !== receipt.status || reread?.to?.toLowerCase() !== pendingLaunch.factory.toLowerCase() || reread?.from?.toLowerCase() !== pendingLaunch.account.toLowerCase() || chainAgain !== pendingLaunch.chainId) throw new Error("Receipt identity or canonical block changed. Confirmation is unknown; do not resubmit.");
+        if (receipt.status === "0x0" && (!head?.number || BigInt(head.number) <= BigInt(receipt.blockNumber))) throw new Error("The reverted receipt needs a following canonical block before another launch can be prepared. Do not resubmit yet.");
+        if (receipt.status === "0x0") { pendingLaunch.state = "reverted"; pendingLaunch.message = "A canonical reverted receipt was found. This launch failed; you may review the design and prepare a new launch."; }
+        else if (receipt.status === "0x1") { pendingLaunch.state = "mined-unverified"; pendingLaunch.message = "Transaction mined. The SDK opening outcome and finality have not been verified here. Check the explorer; do not submit another launch."; }
+        else throw new Error("Receipt status is unknown; do not resubmit");
+      }
+    } catch (error) { pendingLaunch.state = "unknown"; pendingLaunch.message = error.message || "Confirmation is unknown. Do not resubmit."; }
+    finally { checkingReceipt = false; savePending(); drawPending(); refresh(); }
+  });
+  const disabledBeforeSigning = new Map();
+  function freezeSigningControls() {
+    if (busy) {
+      $$("#f input, #f select, #f textarea, #f button").forEach((control) => {
+        if (!disabledBeforeSigning.has(control)) disabledBeforeSigning.set(control, control.disabled);
+        control.disabled = true;
+      });
+    } else if (disabledBeforeSigning.size) {
+      disabledBeforeSigning.forEach((disabled, control) => { if (control.isConnected) control.disabled = disabled; });
+      disabledBeforeSigning.clear();
+    }
+  }
+  const draft = () => BAV.assetDesign?.() || { manifest: null, issues: ["Select assets first."], positions: [], selection: null };
+  const decimalBps = (value) => /^\d+(?:\.\d{1,2})?$/.test(value.trim()) ? Math.round(Number(value) * 100) : NaN;
+  function design() {
+    const source = draft();
+    return { schema: "bnb-agent-vaults/asset-first-design@1.0", designOnly: true,
+      name: $("#name").value.trim(), symbol: $("#symbol").textContent.trim(), agent: $("#mandate-agent").value.trim(),
+      performanceFeeBps: decimalBps($("#pf").value), managementFeeBps: 0, seed: { amount: $("#seed").value, asset: "USDT", lockDays: 90 },
+      selection: source.selection, strategyWeights: { enforcedByContract: false, instructionForAgent: true },
+      strategyPlan: { enforcedByContract: false, execution: source.manifest?.execution || null, rebalancing: source.manifest?.rebalancing || null,
+        portfolioDrawdownPause: source.manifest?.riskControls?.portfolioDrawdownPause || null, note: $("#note").value.trim(),
+        targetWeights: source.positions.map(({ token, strategyWeightBps }) => ({ token, weightBps: strategyWeightBps })) },
+      executionPolicy: { atomicSwapAndSupply: true, supplyFailure: "revert-entire-action", launchSeedsIdleCashOnly: true },
+      contractRules: { minIdleBps: 500, dailyLossBps: 200, ruleChangeDelaySeconds: 86400, arbitraryCalls: false },
+      reviewedBinding: binding?.matched ? { configurationHash: binding.configurationHash, templateId: binding.templateId } : null,
+      deploymentStatus: config?.status || "unavailable" };
+  }
+  function errors() {
+    const value = design(), out = [], caps = draft().positions.map((position) => position.capBps);
+    if (!value.name || value.name.length > 64) out.push("Use a vault name of 1–64 characters.");
+    if (!/^[A-Za-z0-9]{1,12}$/.test(value.symbol)) out.push("The name must produce a share symbol with 1–12 letters or numbers.");
+    if (!/^0x[\da-fA-F]{40}$/.test(value.agent) || /^0x0{40}$/i.test(value.agent)) out.push("Enter a valid nonzero agent operator address before opening.");
+    if (account && account.toLowerCase() === value.agent.toLowerCase()) out.push("Use an operator address separate from the creator wallet.");
+    if (!Number.isInteger(value.performanceFeeBps) || value.performanceFeeBps < 0 || value.performanceFeeBps > 3000) out.push("Total performance fee must be 0–30%, with at most two decimal places.");
+    if (caps.some((cap) => !Number.isInteger(cap) || cap < 0 || cap > 9500)) out.push("Each investment limit must be 0–95% of vault value, with at most two decimal places.");
+    if (caps.reduce((sum, cap) => sum + cap, 0) > 9500) out.push("Investment limits must total at most 95% of vault value; keep at least 5% idle.");
+    if ($( "#seed").value !== "100") out.push("The creator seed is exactly 100 USDT.");
+    return out;
+  }
+  function refresh() {
+    freezeSigningControls();
+    const source = draft(), value = design(), total = source.positions.reduce((sum, position) => sum + position.capBps, 0), fee = value.performanceFeeBps / 100;
+    binding = null;
+    if (config && client?.resolveAssetSelection && source.selection) {
+      try { binding = client.resolveAssetSelection(config, source.selection); }
+      catch (error) { binding = { matched: false, reason: error.message || "Selection could not be verified." }; }
+    }
+    const names = source.positions.map((position) => `${position.symbol} → ${position.marketLabel}`);
+    $("#mandate-sentence").textContent = names.length ? `${value.name || "This vault"} may buy ${names.join("; ")}. New investments must respect these limits; retain unused USDT as idle cash.` : "Choose assets in step 1, then select each destination in step 2.";
+    $("#mandate-caps").innerHTML = source.positions.map((position) => `<div><span>${esc(position.symbol)} → ${esc(position.marketLabel)} (≤ ${Number.isFinite(position.capBps) ? position.capBps / 100 : "—"}%)</span></div>`).join("") || "Choose assets and destinations.";
+    $("#mandate-idle").textContent = Number.isFinite(total) ? `At least ${Math.max(0, 100 - total / 100)}%` : "Check investment limits";
+    $("#mandate-fee-summary").textContent = Number.isFinite(fee) ? `${fee}% total · ${(fee * .9).toFixed(2)}% creator + ${(fee * .1).toFixed(2)}% protocol` : "Check total fee";
+    const reason = !source.positions.length ? "Choose crypto or bStocks to start your design."
+      : binding?.matched ? "Your complete asset and destination selection has a reviewed execution configuration. Wallet and live checks are still required."
+      : config?.status !== "deployed" ? "Deployment pending. Your asset and destination design can be exported; this preview cannot open a vault or receive funds."
+      : binding?.reason || "This complete selection has no reviewed execution configuration. Keep your design; it cannot be launched yet.";
+    $("#mandate-binding").textContent = reason;
+    const issues = errors();
+    $("#mandate-issues").innerHTML = issues.map((issue) => `<li class="bad"><i></i><span>${esc(issue)}</span></li>`).join("");
+    $("#pf").setAttribute("aria-invalid", String(!Number.isInteger(value.performanceFeeBps) || value.performanceFeeBps < 0 || value.performanceFeeBps > 3000));
+    const operatorValid = /^0x[\da-fA-F]{40}$/.test(value.agent) && !/^0x0{40}$/i.test(value.agent) && (!account || value.agent.toLowerCase() !== account.toLowerCase());
+    const walletPreview = previewWalletConnected;
+    const checks = [
+      ["Matches a reviewed configuration", !!binding?.matched, binding?.matched ? "Your complete selection matches the reviewed record. Live factory approval and simulation are still pending." : binding?.reason || "No reviewed whole configuration can currently be resolved."],
+      ["Deployment record", config?.status === "deployed", config?.status === "deployed" ? `Configured chain ${config.chainId}; live code verification is still required before signing.` : "Missing. No factory or vault address in deployment records."],
+      ["Operator address", operatorValid, operatorValid ? account ? "Valid format and different from the connected creator wallet." : "Valid format. Separation will be checked after the creator wallet connects." : "Enter a valid separate, nonzero address."],
+      [walletPreview && !account ? "Creator wallet · preview only" : "Creator wallet", !!account || walletPreview, account ? BAV.short(account) : walletPreview ? "Preview wallet connected · no signing account. Transactions remain blocked." : "Not connected. Needed only to sign."]
+    ];
+    $("#preopen-checks").innerHTML = checks.map(([label, ok, message], index) => `<div class="create-check ${ok ? "ok" : index < 2 ? "bad" : "pending"}"><span class="create-check-mark" aria-hidden="true">${ok ? "✓" : "!"}</span><span><b>${esc(label)}</b> — <span>${esc(message)}</span></span></div>`).join("");
+    const template = binding?.matched ? config?.templates?.find((candidate) => candidate.id === binding.templateId) : null;
+    $("#seed-share-preview").textContent = `At least 100 whole shares${template ? ` · ${template.assetDecimals + 3} decimals` : " · precision after approval"}`;
+    $("#fee-split-note").textContent = Number.isInteger(value.performanceFeeBps) && value.performanceFeeBps >= 0 && value.performanceFeeBps <= 3000 ? `Of new profit above the high-water mark: Creator ${(fee * .9).toFixed(1)}% · Protocol ${(fee * .1).toFixed(1)}% (90/10 of the total, not added on top). Fixed after open. Management fee: None.` : "Total performance fee must be 0–30%.";
+    const ready = config?.status === "deployed" && binding?.matched;
+    $("#mandate-connect").disabled = busy || checkingReceipt || !ready || source.issues.length > 0 || issues.length > 0;
+    $("#mandate-launch").disabled = busy || checkingReceipt || !!launchUnresolved() || !ready || !account || source.issues.length > 0 || issues.length > 0;
+    $("#mandate-launch").textContent = busy ? "Check your wallet…" : launchUnresolved() ? "Submitted launch needs verification" : config?.status !== "deployed" ? "Deployment required to open" : !binding?.matched ? "Selection awaiting approval" : !account ? "Connect wallet to open" : "Approve seed & open vault";
+    drawPending();
+  }
+  window.addEventListener("bav:wallet-preview", (event) => {
+    if (previewQuery.has("vault")) return;
+    previewWalletConnected = event.detail?.connected === true;
+    refresh();
+  });
+  F.addEventListener("input", refresh);
+  window.addEventListener("bav:asset-design", refresh);
+  $("#mandate-export").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(design(), null, 2)], { type: "application/json" });
+    const link = document.createElement("a"); link.href = URL.createObjectURL(blob); link.download = "asset-first-vault-design.json"; link.click();
+    setTimeout(() => URL.revokeObjectURL(link.href), 0);
+    status("Vault design exported with your exact asset and destination choices. No vault was opened or transaction sent.");
+  });
+  $("#mandate-connect").addEventListener("click", async () => {
+    if (!client || config?.status !== "deployed" || !binding?.matched || busy || checkingReceipt) return;
+    const connectionEpoch = walletEpoch;
+    busy = true; refresh();
+    try {
+      const connectedAccount = await client.connectWallet(config);
+      if (connectionEpoch !== walletEpoch) throw new Error("Wallet changed during connection. Reconnect and review before signing.");
+      account = connectedAccount; $("#mandate-connect").textContent = BAV.short(account); status(`Creator wallet ${account}. Review your selected assets, destinations, operator, investment limits and total fee.`);
+    }
+    catch (error) { account = null; status(error.message || "Wallet connection failed."); }
+    finally { busy = false; refresh(); }
+  });
+  $("#mandate-launch").addEventListener("click", async () => {
+    refresh();
+    if (busy || checkingReceipt || launchUnresolved() || !client || config?.status !== "deployed" || !account || !binding?.matched) return;
+    const issues = [...draft().issues, ...errors()]; if (issues.length) { status(issues.join(" ")); return; }
+    const matched = binding, value = design();
+    activeLaunchContext = { account, chainId: config.chainId, factory: config.factory };
+    if (pendingLaunch?.state === "reverted") { pendingLaunch = null; savePending(); drawPending(); }
+    busy = true; refresh();
+    status("Verifying your complete selection and live deployment. Your wallet may request an exact 100-USDT approval, then a launch signature. Opening seeds idle cash; the agent buys afterward.");
+    try {
+      const result = await client.createVault(config, { account, templateId: matched.templateId, name: value.name, symbol: value.symbol, agent: value.agent, performanceFeeBps: value.performanceFeeBps, capBps: matched.capBps, onStatus: status });
+      pendingLaunch = null; savePending(); drawPending();
+      status(`Vault launch confirmed. Transaction: ${result.hash}${result.vault ? `. Vault: ${result.vault}` : "."}`);
+      if (result.vault) {
+        const link = document.createElement("a"); link.className = "btn ghost";
+        link.href = `${BAV.route("vault/sherwood-usdt")}${BAV.route("vault/sherwood-usdt").includes("?") ? "&" : "?"}vault=${encodeURIComponent(result.vault)}`;
+        link.textContent = "View your vault & share its link"; $("#mandate-status").appendChild(link);
+      }
+    } catch (error) {
+      const sentHash = String(error.message || "").match(/Receipt wait failed for (0x[\da-fA-F]{64})/);
+      if (!pendingLaunch && sentHash) submittedLaunch(sentHash[1]);
+      if (pendingLaunch) { pendingLaunch.state = "unknown"; pendingLaunch.message = `Confirmation is unknown. ${error.message || "Receipt verification failed."} Do not resubmit this launch.`; savePending(); }
+      status(error.message || "Launch failed. Check your wallet for any confirmed approval; no successful launch is assumed.");
+    }
+    finally { activeLaunchContext = null; busy = false; refresh(); }
+  });
+  async function init() {
+    try {
+      client = await import(BAV.assetUrl("assets/mandate-client.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
+      config = await client.loadDeployment();
+      status(config?.status === "deployed" ? `Configured chain ${config.chainId}. Your asset selections are matched to reviewed addresses before launch.` : "Deployment pending. Choose assets and destinations, then export your design. This preview cannot accept deposits or open a vault.");
+      refresh();
+    } catch (error) { status("Signing unavailable: deployment configuration could not be verified. Asset selection and design export remain available."); refresh(); }
+  }
+  if (window.ethereum?.on) {
+    const resetWallet = () => { walletEpoch++; account = null; $("#mandate-connect").textContent = "Reconnect creator wallet"; status("Wallet or chain changed. Reconnect before signing."); refresh(); };
+    window.ethereum.on("accountsChanged", resetWallet); window.ethereum.on("chainChanged", resetWallet);
+  }
+  refresh(); init();
+})();
+d:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+10:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+12:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+14:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+9:X
+0:{"P":null,"c":["","create",""],"q":"","i":false,"f":[[["",{"children":["create",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/13u1gglp0teg6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"create-page","html":"$5","runtimeVersion":"951cedb030bb","script":"$6","pageKey":"create"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"lFrHfxOfq_GxQoSIIk9Wy"}
+7:["$","script","script-0",{"src":"/_next/static/chunks/1snr1y__-1i0h.js","async":true,"nonce":"$undefined"}]
+8:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],null]}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/13u1gglp0teg6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+9:C
+11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+f:null
+13:[["$","title","0",{"children":"Cre8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/favicon.svg"}],["$","link","4",{"rel":"icon","href":"/favicon.svg"}],["$","$L14","5",{}]]

@@ -1,0 +1,1853 @@
+{
+  "schema": "bnb-agent-vaults/phase1-market-registry@1",
+  "chainId": 56,
+  "verifiedAt": "2026-10-01",
+  "verifiedAtBlock": 125127123,
+  "quoteAsset": {
+    "symbol": "USDT",
+    "address": "0x55d398326f99059ff775485246999027b3197955",
+    "decimals": 18,
+    "source": "https://github.com/VenusProtocol/venus-protocol-documentation/blob/main/deployed-contracts/markets.md"
+  },
+  "cryptoCatalog": {
+    "verifiedAt": "2026-10-01",
+    "source": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false",
+    "methodology": "First 10 non-stable global market-cap assets with an official PancakeSwap BSC token and a direct USDT V3 pool; wrapped assets are labeled explicitly."
+  },
+  "discovery": {
+    "rpcUrl": "https://bsc-dataseed.bnbchain.org",
+    "pancakeV3Factory": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+    "pancakeV2Factory": "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+    "v3FeeTiers": [
+      100,
+      500,
+      2500,
+      10000
+    ],
+    "quoteAddress": "0x55d398326f99059ff775485246999027b3197955",
+    "quoteDecimals": 18,
+    "wrappedNativeAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+    "scope": "direct-USDT-or-via-BNB-v2-v3"
+  },
+  "policy": {
+    "strategyModes": [
+      "lump-sum",
+      "accumulate"
+    ],
+    "maxTargets": 10,
+    "maxSlippageBps": 100,
+    "maxTradePoolTvlBps": 10,
+    "maxDeploymentBps": 9500,
+    "minExecutionCooldownHours": 24,
+    "unsupportedYieldFallback": "hold",
+    "liveMarketRevalidationRequired": true
+  },
+  "targets": [
+    {
+      "id": "crypto:BTCB",
+      "category": "crypto",
+      "symbol": "BTCB",
+      "displaySymbol": "BTC",
+      "ticker": "BTC",
+      "marketCapRank": 1,
+      "coingeckoId": "bitcoin",
+      "nativeWrap": false,
+      "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x46cf1cf8c69595804ba91dfdd8d6b960c9b0a7c4",
+        "fee": 500,
+        "path": [
+          {
+            "tokenIn": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x46cf1cf8c69595804ba91dfdd8d6b960c9b0a7c4",
+            "fee": 500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 23734113.61,
+        "spotPriceUsd": 83639.38785,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "crypto:ETH",
+      "category": "crypto",
+      "symbol": "ETH",
+      "displaySymbol": "ETH",
+      "ticker": "ETH",
+      "marketCapRank": 2,
+      "coingeckoId": "ethereum",
+      "nativeWrap": false,
+      "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xbe141893e4c6ad9272e8c04bab7e6a10604501a5",
+        "fee": 500,
+        "path": [
+          {
+            "tokenIn": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xbe141893e4c6ad9272e8c04bab7e6a10604501a5",
+            "fee": 500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 5406084.81,
+        "spotPriceUsd": 2687.080695,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "crypto:WBNB",
+      "category": "crypto",
+      "symbol": "WBNB",
+      "displaySymbol": "WBNB (Wrapped BNB)",
+      "ticker": "WBNB (Wrapped BNB)",
+      "marketCapRank": 4,
+      "coingeckoId": "binancecoin",
+      "nativeWrap": true,
+      "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+        "fee": 100,
+        "path": [
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 12733676.98,
+        "spotPriceUsd": 768.1410865,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "crypto:XRP",
+      "category": "crypto",
+      "symbol": "XRP",
+      "displaySymbol": "XRP",
+      "ticker": "XRP",
+      "marketCapRank": 5,
+      "coingeckoId": "ripple",
+      "nativeWrap": false,
+      "address": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x71f5a8f7d448e59b1ede00a19fe59e05d125e742",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x71f5a8f7d448e59b1ede00a19fe59e05d125e742",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 1422497.15,
+        "spotPriceUsd": 1.4806671,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "crypto:SOL",
+      "category": "crypto",
+      "symbol": "SOL",
+      "displaySymbol": "SOL",
+      "ticker": "SOL",
+      "marketCapRank": 7,
+      "coingeckoId": "solana",
+      "nativeWrap": false,
+      "address": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x9f5a0ad81fe7fd5dfb84ee7a0cfb83967359bd90",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x9f5a0ad81fe7fd5dfb84ee7a0cfb83967359bd90",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 701316.32,
+        "spotPriceUsd": 117.3400979,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "crypto:TRX",
+      "category": "crypto",
+      "symbol": "TRX",
+      "displaySymbol": "TRX",
+      "ticker": "TRX",
+      "marketCapRank": 8,
+      "coingeckoId": "tron",
+      "nativeWrap": false,
+      "address": "0x85eac5ac2f758618dfa09bdbe0cf174e7d574d5b",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x0b2f173e5ff232dd3e04e62d0902119a5fe0c753",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x85eac5ac2f758618dfa09bdbe0cf174e7d574d5b",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x0b2f173e5ff232dd3e04e62d0902119a5fe0c753",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 741.02,
+        "spotPriceUsd": 0.338412844,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "crypto:ZEC",
+      "category": "crypto",
+      "symbol": "ZEC",
+      "displaySymbol": "ZEC",
+      "ticker": "ZEC",
+      "marketCapRank": 10,
+      "coingeckoId": "zcash",
+      "nativeWrap": false,
+      "address": "0x1ba42e5193dfa8b03d15dd1b86a3113bbbef8eeb",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x6fae7301f1b7c0ab83d69a855447491f2b585876",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x1ba42e5193dfa8b03d15dd1b86a3113bbbef8eeb",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x6fae7301f1b7c0ab83d69a855447491f2b585876",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 488569.83,
+        "spotPriceUsd": 1388.062488,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "crypto:DOGE",
+      "category": "crypto",
+      "symbol": "DOGE",
+      "displaySymbol": "DOGE",
+      "ticker": "DOGE",
+      "marketCapRank": 12,
+      "coingeckoId": "dogecoin",
+      "nativeWrap": false,
+      "address": "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+      "decimals": 8,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x89da4102853c6cf3f4e9979cbb1dc4a166f38e84",
+        "fee": 10000,
+        "path": [
+          {
+            "tokenIn": "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x89da4102853c6cf3f4e9979cbb1dc4a166f38e84",
+            "fee": 10000
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 262048.74,
+        "spotPriceUsd": 0.09445217666,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "crypto:LINK",
+      "category": "crypto",
+      "symbol": "LINK",
+      "displaySymbol": "LINK",
+      "ticker": "LINK",
+      "marketCapRank": 13,
+      "coingeckoId": "chainlink",
+      "nativeWrap": false,
+      "address": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xc6faf89f23cbe4bd39e9d16e2685d74545ba7659",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xc6faf89f23cbe4bd39e9d16e2685d74545ba7659",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 40965.18,
+        "spotPriceUsd": 14.22771779,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "crypto:ADA",
+      "category": "crypto",
+      "symbol": "ADA",
+      "displaySymbol": "ADA",
+      "ticker": "ADA",
+      "marketCapRank": 17,
+      "coingeckoId": "cardano",
+      "nativeWrap": false,
+      "address": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x29c5ba7dbb67a4af999a28cc380ad234fe7c1b86",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x29c5ba7dbb67a4af999a28cc380ad234fe7c1b86",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 257860.4,
+        "spotPriceUsd": 0.2449347468,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:AAPLB",
+      "category": "bstock",
+      "symbol": "AAPLB",
+      "ticker": "AAPL",
+      "underlyingName": "Apple Inc.",
+      "address": "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xe9b9998b2ec5430d2246c7f1f8d9f298c97d7365",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xe9b9998b2ec5430d2246c7f1f8d9f298c97d7365",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 516640.16,
+        "spotPriceUsd": 332.87395,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:AMCB",
+      "category": "bstock",
+      "symbol": "AMCB",
+      "ticker": "AMC",
+      "underlyingName": "AMC Entertainment Holdings",
+      "address": "0x96e7d606e229448ef817a7f35fd7394c3e15d00c",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x52fe6c3cff0dcd50b75ec2b785ef4f95b4ee2094",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x96e7d606e229448ef817a7f35fd7394c3e15d00c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x52fe6c3cff0dcd50b75ec2b785ef4f95b4ee2094",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 52496.41,
+        "spotPriceUsd": 3.000934713,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:AMZNB",
+      "category": "bstock",
+      "symbol": "AMZNB",
+      "ticker": "AMZN",
+      "underlyingName": "Amazon.com, Inc.",
+      "address": "0x1a4b499833a79a09ad7cf1d42d7dacf71e92eb00",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x7530beb7bde5843f668cf31b996fa1f748c9b6b1",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x1a4b499833a79a09ad7cf1d42d7dacf71e92eb00",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x7530beb7bde5843f668cf31b996fa1f748c9b6b1",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 213280.43,
+        "spotPriceUsd": 250.6394134,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:BABAB",
+      "category": "bstock",
+      "symbol": "BABAB",
+      "ticker": "BABA",
+      "underlyingName": "Alibaba Group Holding",
+      "address": "0x4ef9d3062c7f6eba4aae4990c5036598c6eff4ec",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xfd95cb1391999006eb91797a7c62acfe88b20292",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x4ef9d3062c7f6eba4aae4990c5036598c6eff4ec",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xfd95cb1391999006eb91797a7c62acfe88b20292",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 2511279.06,
+        "spotPriceUsd": 108.0045499,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:BMNRB",
+      "category": "bstock",
+      "symbol": "BMNRB",
+      "ticker": "BMNR",
+      "underlyingName": "Bitmine Immersion Technologies",
+      "address": "0x3548da95a9effe481e8604664d75e95821e557f5",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x52a427db0b2d9154a5f4ad09d22f3792f754b6fc",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x3548da95a9effe481e8604664d75e95821e557f5",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x52a427db0b2d9154a5f4ad09d22f3792f754b6fc",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 78904.09,
+        "spotPriceUsd": 26.54060544,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:BNCB",
+      "category": "bstock",
+      "symbol": "BNCB",
+      "ticker": "BNC",
+      "underlyingName": "CEA Industries",
+      "address": "0x4902c5ebc598265ed2212b559b042de8a5eeec3f",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x32c51041f3d7a66ac14aba7485444efb6e15efe1",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x4902c5ebc598265ed2212b559b042de8a5eeec3f",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x32c51041f3d7a66ac14aba7485444efb6e15efe1",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 868321.66,
+        "spotPriceUsd": 5.946571165,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:CRCLB",
+      "category": "bstock",
+      "symbol": "CRCLB",
+      "ticker": "CRCL",
+      "underlyingName": "Circle Internet Group",
+      "address": "0x80f3d493ebce97e343c53d29a137942416b4ffc0",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x29967c54c5bf12e8158c8894376064b30ebab297",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x80f3d493ebce97e343c53d29a137942416b4ffc0",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x29967c54c5bf12e8158c8894376064b30ebab297",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 913731.56,
+        "spotPriceUsd": 81.96299652,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:DJTB",
+      "category": "bstock",
+      "symbol": "DJTB",
+      "ticker": "DJT",
+      "underlyingName": "Trump Media & Technology Group",
+      "address": "0xf2ec508422174ee564de98187db9359d318afb6b",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x9aadbd51515432dbb77c0a7f69c2b2c211f0c837",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xf2ec508422174ee564de98187db9359d318afb6b",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x9aadbd51515432dbb77c0a7f69c2b2c211f0c837",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 62275.36,
+        "spotPriceUsd": 9.104995447,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:FLNCB",
+      "category": "bstock",
+      "symbol": "FLNCB",
+      "ticker": "FLNC",
+      "underlyingName": "Fluence Energy",
+      "address": "0x4af1d41cd9dd950dca43984b43aaa2a8702714ac",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x1f7083a138f980b60eb1582f01ca3b1d6c46ad10",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x4af1d41cd9dd950dca43984b43aaa2a8702714ac",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x1f7083a138f980b60eb1582f01ca3b1d6c46ad10",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 63965.24,
+        "spotPriceUsd": 7.724130945,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:GMEB",
+      "category": "bstock",
+      "symbol": "GMEB",
+      "ticker": "GME",
+      "underlyingName": "GameStop Corp.",
+      "address": "0x46ceefda28dd7207059ed19b0acdc026955bb15c",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x908d49048eb3a7bedfd238972403842805eaf2be",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x46ceefda28dd7207059ed19b0acdc026955bb15c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x908d49048eb3a7bedfd238972403842805eaf2be",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 150754.78,
+        "spotPriceUsd": 24.74205518,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:GOOGLB",
+      "category": "bstock",
+      "symbol": "GOOGLB",
+      "ticker": "GOOGL",
+      "underlyingName": "Alphabet Inc. (Google)",
+      "address": "0x3f53de71c126bdabae20f9cd64848d317f6c3238",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x89001d846f7ca36ee089f73eefc25657e1798144",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x3f53de71c126bdabae20f9cd64848d317f6c3238",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x89001d846f7ca36ee089f73eefc25657e1798144",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 1714501.82,
+        "spotPriceUsd": 351.906359,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:HOODB",
+      "category": "bstock",
+      "symbol": "HOODB",
+      "ticker": "HOOD",
+      "underlyingName": "Robinhood Markets",
+      "address": "0xa394dcea3fd3847fd793afbfd163e2e3858b7c65",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xfeef70ff6f58f0a900e28a77e5a8945afb343923",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xa394dcea3fd3847fd793afbfd163e2e3858b7c65",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xfeef70ff6f58f0a900e28a77e5a8945afb343923",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 293399.57,
+        "spotPriceUsd": 112.9554519,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:INTCB",
+      "category": "bstock",
+      "symbol": "INTCB",
+      "ticker": "INTC",
+      "underlyingName": "Intel Corporation",
+      "address": "0xe614e2fc6c787035ff51f452e8e826bfd32d5283",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x4dd8e7c67033ef4a745bb9f82a7c57c676eb2481",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xe614e2fc6c787035ff51f452e8e826bfd32d5283",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x4dd8e7c67033ef4a745bb9f82a7c57c676eb2481",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 534857.3,
+        "spotPriceUsd": 120.3652329,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:METAB",
+      "category": "bstock",
+      "symbol": "METAB",
+      "ticker": "META",
+      "underlyingName": "Meta Platforms",
+      "address": "0x7425889fe94f9d693e8daefe88bcced6acfef4c0",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xc2151a561e928d16576d75ea88544543ac63d80b",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x7425889fe94f9d693e8daefe88bcced6acfef4c0",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xc2151a561e928d16576d75ea88544543ac63d80b",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 192385.97,
+        "spotPriceUsd": 725.1136697,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:MRNAB",
+      "category": "bstock",
+      "symbol": "MRNAB",
+      "ticker": "MRNA",
+      "underlyingName": "Moderna, Inc.",
+      "address": "0x5fd86da9b05abe396fe9d02a4a213a7c00556503",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xcc992887e9cee37a698541e2f6d1675453fbcfcc",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x5fd86da9b05abe396fe9d02a4a213a7c00556503",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xcc992887e9cee37a698541e2f6d1675453fbcfcc",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 59329.84,
+        "spotPriceUsd": 187.6528789,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:MSFTB",
+      "category": "bstock",
+      "symbol": "MSFTB",
+      "ticker": "MSFT",
+      "underlyingName": "Microsoft Corporation",
+      "address": "0x80106cb3ead06659a5ad19df39d9b4733863b9b0",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x5018b018ceb7645c927c5cf246786f89ebcbe7ea",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x80106cb3ead06659a5ad19df39d9b4733863b9b0",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x5018b018ceb7645c927c5cf246786f89ebcbe7ea",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 211414.32,
+        "spotPriceUsd": 513.0527873,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:MSTRB",
+      "category": "bstock",
+      "symbol": "MSTRB",
+      "ticker": "MSTR",
+      "underlyingName": "Strategy Inc. (MicroStrategy)",
+      "address": "0xe87afb3076aeb0f9b14e368de8145ae6a2826a14",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x692081209619735f25700557078ab084d3e5d007",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xe87afb3076aeb0f9b14e368de8145ae6a2826a14",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x692081209619735f25700557078ab084d3e5d007",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 365268.62,
+        "spotPriceUsd": 153.6615587,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:MUB",
+      "category": "bstock",
+      "symbol": "MUB",
+      "ticker": "MU",
+      "underlyingName": "Micron Technology",
+      "address": "0xcdf2f3e0fa43c47a6662a91c9e4a7c5f69762699",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x9e75ced0a01590890917c5180c3e3ed6a86a071e",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xcdf2f3e0fa43c47a6662a91c9e4a7c5f69762699",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x9e75ced0a01590890917c5180c3e3ed6a86a071e",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 17903.54,
+        "spotPriceUsd": 1060.634458,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:NFLXB",
+      "category": "bstock",
+      "symbol": "NFLXB",
+      "ticker": "NFLX",
+      "underlyingName": "Netflix, Inc.",
+      "address": "0xd6829ea836b6fa224d099d40e54b31262f874631",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xafab4441d8b354bba790229c0e235e7e6187b3d0",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xd6829ea836b6fa224d099d40e54b31262f874631",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xafab4441d8b354bba790229c0e235e7e6187b3d0",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 152597.3,
+        "spotPriceUsd": 69.55243725,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:NOKB",
+      "category": "bstock",
+      "symbol": "NOKB",
+      "ticker": "NOK",
+      "underlyingName": "Nokia Corporation",
+      "address": "0x7c4d7a180d737dd5a70d8065a90e6746a69c37ea",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xd76cb6e9f642cdc7c33c9d4fc6bdd858116dcc84",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x7c4d7a180d737dd5a70d8065a90e6746a69c37ea",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xd76cb6e9f642cdc7c33c9d4fc6bdd858116dcc84",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 47711.87,
+        "spotPriceUsd": 10.25710199,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:NVDAB",
+      "category": "bstock",
+      "symbol": "NVDAB",
+      "ticker": "NVDA",
+      "underlyingName": "NVIDIA Corporation",
+      "address": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x8fb4243b553ac29ba088acf00b9b7da24bd6690c",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x8fb4243b553ac29ba088acf00b9b7da24bd6690c",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 4804008.77,
+        "spotPriceUsd": 230.5295351,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:QQQB",
+      "category": "bstock",
+      "symbol": "QQQB",
+      "ticker": "QQQ",
+      "underlyingName": "Invesco QQQ ETF",
+      "address": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x7615a051a7d6ed1d1b5f922825991acab4e4e574",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x7615a051a7d6ed1d1b5f922825991acab4e4e574",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 3.11,
+        "spotPriceUsd": 718.5189005,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:SKHYB",
+      "category": "bstock",
+      "symbol": "SKHYB",
+      "ticker": "SKHY",
+      "underlyingName": "SK hynix",
+      "address": "0xca750ef65f295bbecd685abf54e82caf297bdb61",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xd7d30f434b12f7ed9b0ae11ff1c754745a10ad52",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xca750ef65f295bbecd685abf54e82caf297bdb61",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xd7d30f434b12f7ed9b0ae11ff1c754745a10ad52",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 566369.7,
+        "spotPriceUsd": 186.827379,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:SNDKB",
+      "category": "bstock",
+      "symbol": "SNDKB",
+      "ticker": "SNDK",
+      "underlyingName": "Sandisk Corporation",
+      "address": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xe4b5403f5103b02d1e8193b0d7d76d49f3f8ad77",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xe4b5403f5103b02d1e8193b0d7d76d49f3f8ad77",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 208389.41,
+        "spotPriceUsd": 1759.70918,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:SNXXB",
+      "category": "bstock",
+      "symbol": "SNXXB",
+      "ticker": "SNXX",
+      "underlyingName": "Tradr 2X Long SNDK Daily ETF",
+      "address": "0x9e82e3da8f1115b73d24bb24113ab836ffdab6b6",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x54800dc47a2d16c91eff4f5326962a417c9d2553",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x9e82e3da8f1115b73d24bb24113ab836ffdab6b6",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x54800dc47a2d16c91eff4f5326962a417c9d2553",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 25823.4,
+        "spotPriceUsd": 17.16140487,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:SOXLB",
+      "category": "bstock",
+      "symbol": "SOXLB",
+      "ticker": "SOXL",
+      "underlyingName": "Direxion Daily Semiconductor Bull 3X ETF",
+      "address": "0xd97d097a89113fa59b76c572e5b2eb647e8eefaf",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x3d7d950377eca7b4af7233716ff17def00ab2045",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xd97d097a89113fa59b76c572e5b2eb647e8eefaf",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x3d7d950377eca7b4af7233716ff17def00ab2045",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 75677.7,
+        "spotPriceUsd": 152.9476763,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:SOXSB",
+      "category": "bstock",
+      "symbol": "SOXSB",
+      "ticker": "SOXS",
+      "underlyingName": "Direxion Daily Semiconductor Bear 3X ETF",
+      "address": "0xe28cd11c99af2df76bb8ada4cd0ef3904378280f",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xd5c0572126a707196aaba2b6952d67fc2a140651",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xe28cd11c99af2df76bb8ada4cd0ef3904378280f",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xd5c0572126a707196aaba2b6952d67fc2a140651",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 62371.24,
+        "spotPriceUsd": 32.23556269,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:SPCXB",
+      "category": "bstock",
+      "symbol": "SPCXB",
+      "ticker": "SPCX",
+      "underlyingName": "SpaceX",
+      "address": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x977daffc095b33872e2741c19568925015c35b4d",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x977daffc095b33872e2741c19568925015c35b4d",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 2419265.84,
+        "spotPriceUsd": 151.3832666,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:SPYB",
+      "category": "bstock",
+      "symbol": "SPYB",
+      "ticker": "SPY",
+      "underlyingName": "State Street SPDR S&P 500 ETF Trust",
+      "address": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x066b9c1e47303ea27c1e965fc7e3d65546675351",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x066b9c1e47303ea27c1e965fc7e3d65546675351",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 589.7,
+        "spotPriceUsd": 766.5382338,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:SQQQB",
+      "category": "bstock",
+      "symbol": "SQQQB",
+      "ticker": "SQQQ",
+      "underlyingName": "ProShares UltraPro Short QQQ",
+      "address": "0x25e572b466d152604d9e6c3e53b432b978825342",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x0fb2f4765a9c718e30a1b419279bac4bd4e27cc0",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x25e572b466d152604d9e6c3e53b432b978825342",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x0fb2f4765a9c718e30a1b419279bac4bd4e27cc0",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 59788.68,
+        "spotPriceUsd": 34.26595784,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:TQQQB",
+      "category": "bstock",
+      "symbol": "TQQQB",
+      "ticker": "TQQQ",
+      "underlyingName": "ProShares UltraPro QQQ",
+      "address": "0x462b5f13b7c7748279358962925c5de83bb9e598",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xf6a5f768f583a695b6cdd772fb138921c5bae4e9",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x462b5f13b7c7748279358962925c5de83bb9e598",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xf6a5f768f583a695b6cdd772fb138921c5bae4e9",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 49910.12,
+        "spotPriceUsd": 79.46737657,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:TSLAB",
+      "category": "bstock",
+      "symbol": "TSLAB",
+      "ticker": "TSLA",
+      "underlyingName": "Tesla, Inc.",
+      "address": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xb0f5e5400e8f0f7c242f2b7740c004f020579c41",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xb0f5e5400e8f0f7c242f2b7740c004f020579c41",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 1972303.72,
+        "spotPriceUsd": 356.3385035,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    },
+    {
+      "id": "bstock:TSMB",
+      "category": "bstock",
+      "symbol": "TSMB",
+      "ticker": "TSM",
+      "underlyingName": "Taiwan Semiconductor Manufacturing Company",
+      "address": "0xab78b89b5bb00236be0b4b20704cbfa04efc711c",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x03f59988f5c366046321cccd2bf0e3878e2ed69c",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xab78b89b5bb00236be0b4b20704cbfa04efc711c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x03f59988f5c366046321cccd2bf0e3878e2ed69c",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 108365.49,
+        "spotPriceUsd": 458.8648147,
+        "verifiedAt": "2026-10-01T10:28:57.000Z",
+        "verifiedAtBlock": 125084586,
+        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      }
+    }
+  ],
+  "yieldMarkets": [
+    {
+      "id": "venus:BTCB:vBTC",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:BTCB",
+      "assetSymbol": "BTCB",
+      "assetAddress": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+      "marketAddress": "0x882c173bc7ff3b7786ca16dfed3dfffb9ee7847b",
+      "label": "Venus vBTC",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:ETH:vETH",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:ETH",
+      "assetSymbol": "ETH",
+      "assetAddress": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+      "marketAddress": "0xf508fcd89b8bd15579dc79a6827cb4686a3592c8",
+      "label": "Venus vETH",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:WBNB:vWBNB",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:WBNB",
+      "assetSymbol": "WBNB",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "marketAddress": "0x6bca74586218db34cdb402295796b79663d816e9",
+      "label": "Venus vWBNB",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:NVDAB:vNVDAB",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "bstock:NVDAB",
+      "assetSymbol": "NVDAB",
+      "assetAddress": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+      "marketAddress": "0xeb8ca841cbe1bc4832a10b15c7dab1081edad371",
+      "label": "Venus vNVDAB",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:SKHYB:vSKHYB",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "bstock:SKHYB",
+      "assetSymbol": "SKHYB",
+      "assetAddress": "0xca750ef65f295bbecd685abf54e82caf297bdb61",
+      "marketAddress": "0x3e281461efb3d53ec20db207674373ed8ef3bba9",
+      "label": "Venus vSKHYB",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:SPCXB:vSPCXB",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "bstock:SPCXB",
+      "assetSymbol": "SPCXB",
+      "assetAddress": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+      "marketAddress": "0xc36dfacc7a125859c106f29b9f2d874ccf29a55a",
+      "label": "Venus vSPCXB",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:TSLAB:vTSLAB",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "bstock:TSLAB",
+      "assetSymbol": "TSLAB",
+      "assetAddress": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+      "marketAddress": "0x97421799419eb782628e73e7220d8e0a207469a3",
+      "label": "Venus vTSLAB",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:ADA:vADA",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:ADA",
+      "assetSymbol": "ADA",
+      "assetAddress": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+      "marketAddress": "0x9a0af7fdb2065ce470d72664de73cae409da28ec",
+      "label": "Venus vADA",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:DOGE:vDOGE",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:DOGE",
+      "assetSymbol": "DOGE",
+      "assetAddress": "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+      "marketAddress": "0xec3422ef92b2fb59e84c8b02ba73f1fe84ed8d71",
+      "label": "Venus vDOGE",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:LINK:vLINK",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:LINK",
+      "assetSymbol": "LINK",
+      "assetAddress": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+      "marketAddress": "0x650b940a1033b8a1b1873f78730fcfc73ec11f1f",
+      "label": "Venus vLINK",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:SOL:vSOL",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:SOL",
+      "assetSymbol": "SOL",
+      "assetAddress": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+      "marketAddress": "0xbf515ba4d1b52ffdceabf20d31d705ce789f2cec",
+      "label": "Venus vSOL",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:XRP:vXRP",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:XRP",
+      "assetSymbol": "XRP",
+      "assetAddress": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+      "marketAddress": "0xb248a295732e0225acd3337607cc01068e3b9c10",
+      "label": "Venus vXRP",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "lista:lista-wbnb-gauntlet",
+      "protocol": "Lista",
+      "kind": "vault",
+      "targetId": "crypto:WBNB",
+      "assetSymbol": "WBNB",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "marketAddress": "0x57134a64b7cd9f9eb72f8255a671f5bf2fe3e2d0",
+      "label": "Gauntlet x Lista DAO BNB Vault",
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact ERC-4626 asset",
+        "maxDeposit",
+        "previewDeposit/minimum shares"
+      ]
+    },
+    {
+      "id": "lista:lista-btcb",
+      "protocol": "Lista",
+      "kind": "vault",
+      "targetId": "crypto:BTCB",
+      "assetSymbol": "BTCB",
+      "assetAddress": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+      "marketAddress": "0xe46b8e65006e6450bdd8cb7d3274ab4f76f4c705",
+      "label": "Lista BTCB Vault",
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact ERC-4626 asset",
+        "maxDeposit",
+        "previewDeposit/minimum shares"
+      ]
+    },
+    {
+      "id": "lista:lista-nvdab-flap",
+      "protocol": "Lista",
+      "kind": "vault",
+      "targetId": "bstock:NVDAB",
+      "assetSymbol": "NVDAB",
+      "assetAddress": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+      "marketAddress": "0x23db0a080f3a59b09a5dd6570a373ee09f4dcf37",
+      "label": "Flap NVDAB Vault",
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact ERC-4626 asset",
+        "maxDeposit",
+        "previewDeposit/minimum shares"
+      ]
+    },
+    {
+      "id": "aave-wbnb",
+      "protocol": "Aave",
+      "kind": "supply-market",
+      "targetId": "crypto:WBNB",
+      "assetSymbol": "WBNB",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "marketAddress": "0x9b00a09492a626678e5a3009982191586c444df9",
+      "label": "Aave V3 WBNB Reserve",
+      "rateSource": {
+        "poolAddress": "0x6807dc923806fe8fd134338eabca509979a7e0cb",
+        "dataProviderAddress": "0xc90df74a7c16245c5f5c5870327ceb38fe5d5328",
+        "addressesProviderAddress": "0xff75b6da14ffbbfd355daf7a2731456b3562ba6d"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact aToken",
+        "reserve active",
+        "reserve not frozen",
+        "reserve not paused",
+        "supply-cap headroom"
+      ]
+    },
+    {
+      "id": "aave-btcb",
+      "protocol": "Aave",
+      "kind": "supply-market",
+      "targetId": "crypto:BTCB",
+      "assetSymbol": "BTCB",
+      "assetAddress": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+      "marketAddress": "0x56a7ddc4e848ebf43845854205ad71d5d5f72d3d",
+      "label": "Aave V3 BTCB Reserve",
+      "rateSource": {
+        "poolAddress": "0x6807dc923806fe8fd134338eabca509979a7e0cb",
+        "dataProviderAddress": "0xc90df74a7c16245c5f5c5870327ceb38fe5d5328",
+        "addressesProviderAddress": "0xff75b6da14ffbbfd355daf7a2731456b3562ba6d"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact aToken",
+        "reserve active",
+        "reserve not frozen",
+        "reserve not paused",
+        "supply-cap headroom"
+      ]
+    },
+    {
+      "id": "aave-eth",
+      "protocol": "Aave",
+      "kind": "supply-market",
+      "targetId": "crypto:ETH",
+      "assetSymbol": "ETH",
+      "assetAddress": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+      "marketAddress": "0x2e94171493fabe316b6205f1585779c887771e2f",
+      "label": "Aave V3 ETH Reserve",
+      "rateSource": {
+        "poolAddress": "0x6807dc923806fe8fd134338eabca509979a7e0cb",
+        "dataProviderAddress": "0xc90df74a7c16245c5f5c5870327ceb38fe5d5328",
+        "addressesProviderAddress": "0xff75b6da14ffbbfd355daf7a2731456b3562ba6d"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact aToken",
+        "reserve active",
+        "reserve not frozen",
+        "reserve not paused",
+        "supply-cap headroom"
+      ]
+    }
+  ],
+  "collateralMarkets": [
+    {
+      "id": "0xe52b068bb5b6225de1800b434bdd465246faea79352000acad88bdff312eab95",
+      "protocol": "Lista",
+      "kind": "collateral-market",
+      "targetId": "bstock:SPCXB",
+      "collateralSymbol": "SPCXB",
+      "collateralAddress": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+      "loanSymbol": "USDC",
+      "loanAddress": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "marketAddress": "0x8f73b65b4caaf64fba2af91cc5d4a2a1318e5d8c",
+      "sourceUrl": "https://lista.org/lending/market/bsc/0xe52b068bb5b6225de1800b434bdd465246faea79352000acad88bdff312eab95?tab=market",
+      "rateSourceUrl": "https://api.lista.org/api/moolah/market/0xe52b068bb5b6225de1800b434bdd465246faea79352000acad88bdff312eab95?chain=bsc",
+      "selectable": false
+    }
+  ],
+  "unavailableMarkets": [
+    {
+      "id": "venus:TRX:vTRXOLD",
+      "protocol": "Venus",
+      "targetId": "crypto:TRX",
+      "label": "Venus vTRXOLD",
+      "reason": "Unavailable: supply paused, supply cap reached",
+      "selectable": false,
+      "sourceUrl": "https://bscscan.com/address/0x61edcfe8dd6ba3c891cb9bec2dc7657b3b422e93#readProxyContract",
+      "verifiedAt": "2026-10-01T15:48:12.520Z",
+      "blockNumber": 125127123
+    }
+  ]
+}

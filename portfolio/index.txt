@@ -1,0 +1,74 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/1snr1y__-1i0h.js"],"PrototypePage"]
+a:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
+:HL["/_next/static/chunks/13u1gglp0teg6.css","style"]
+5:T1817,
+(function () {
+  const { $, esc, fmt } = BAV;
+  BAV.shell("portfolio.html");
+  const query = new URLSearchParams(location.search);
+  const preview = query.get("preview") || query.get("walletState");
+  // This remains the repository's original read-only example, not a wallet ledger.
+  const sample = { vault: BAV.vault("sherwood-usdt"), shares: 1000 };
+  let state = ["loading", "empty", "connected", "partial", "example", "disconnected"].includes(preview) ? preview : "disconnected";
+  function render() {
+    const data = ["example", "connected", "partial"].includes(state), partial = state === "partial";
+    const tag = $("#portfolio-tag"); tag.hidden = !data && !preview;
+    tag.textContent = data ? state === "example" ? "Example portfolio · Simulated" : "Design preview · Simulated balances" : "Design preview";
+    const content = $("#portfolio-content");
+    if (state === "disconnected") {
+      content.innerHTML = `<section class="portfolio-connect"><div><h2>Connect a wallet to see your shares</h2><p>Live portfolio aggregation is not connected yet. View an example, or read actual wallet shares on a configured vault’s detail page.</p></div><div class="portfolio-connect-actions"><button class="btn" id="portfolio-connect">Connect wallet</button><button class="btn ghost" id="portfolio-example">View example portfolio</button></div></section>`;
+      $("#portfolio-connect").addEventListener("click", () => BAV.toast("Portfolio aggregation is unavailable. Open a configured vault’s detail page to connect and read actual shares."));
+      $("#portfolio-example").addEventListener("click", () => { state = "example"; render(); });
+    } else if (state === "loading") {
+      content.innerHTML = `<section class="portfolio-loading" aria-busy="true" aria-label="Loading portfolio design preview">${Array.from({length:4}, () => `<div><span></span><span></span></div>`).join("")}</section>`;
+    } else if (state === "empty") {
+      content.innerHTML = `<section class="portfolio-empty"><h2>No vault shares in this wallet</h2><p>Design preview of an empty portfolio. When live aggregation is connected, your shares and estimated value will appear here.</p><a class="btn" href="${BAV.route("vaults")}">Browse vaults</a></section>`;
+    } else {
+      const v = sample.vault, value = sample.shares * v.sharePrice;
+      const shareValue = partial ? "Unavailable" : v.sharePrice.toFixed(4), estimated = partial ? "Unavailable" : fmt.n(value, 2) + " USDT";
+      const href = BAV.route("vault/" + v.slug), redeemHref = href + (href.includes("?") ? "&" : "?") + "tab=redeem";
+      content.innerHTML = `<section class="portfolio-kpis">
+        <div><span>Estimated value</span><strong>${estimated}</strong><small class="${partial ? "caution" : ""}">${partial ? "Partial data · 1 vault excluded" : "Shares × simulated share value"}</small></div>
+        <div><span>Vaults held</span><strong>1</strong><small>Read-only depositor example</small></div>
+        <div><span>Unlocked shares</span><strong>${fmt.n(sample.shares, 2)}</strong><small>Illustrative shares · no wallet balance</small></div>
+        <div><span>Creator locked seed</span><strong>Unavailable</strong><small>Not part of this example</small></div>
+      </section>
+      <section class="portfolio-attention"><h2>Needs attention</h2>
+        <a class="portfolio-alert" href="${href}"><span class="attention-chip">Not deployed</span><strong>${esc(v.name)}</strong><span>Transactions need a verified deployment. This example cannot be redeemed.</span><b>View →</b></a>
+        ${partial ? `<a class="portfolio-alert" href="${href}"><span class="attention-chip">Data unavailable</span><strong>${esc(v.name)}</strong><span>Design preview: share value could not be read. Excluded from totals until it loads.</span><b>View →</b></a>` : ""}
+      </section>
+      <section class="portfolio-holdings" id="hold" aria-label="Read-only example holdings">
+        <div class="portfolio-table-head"><span>Vault</span><span>Shares</span><span>Share value</span><span>Est. value</span><span>Status</span><span></span></div>
+        <div class="portfolio-holding-row">
+          <div class="portfolio-vault-name"><strong>${esc(v.name)}</strong><span>Depositor · ${esc(v.asset)}</span></div>
+          <div class="portfolio-holding-metric"><span>Shares</span><span>${fmt.n(sample.shares, 2)}</span></div>
+          <div class="portfolio-holding-metric"><span>Share value</span><span class="${partial ? "caution" : ""}">${shareValue}</span></div>
+          <div class="portfolio-holding-metric"><span>Est. value</span><strong class="${partial ? "caution" : ""}">${estimated}</strong></div>
+          <div class="portfolio-holding-status"><span class="unlocked-chip">Unlocked</span><small>${partial ? "Price read failure · Design preview" : "Read-only · Simulated"}</small></div>
+          <div class="portfolio-holding-actions"><a href="${href}" class="portfolio-view">View</a><a href="${redeemHref}" class="portfolio-redeem">Redeem</a></div>
+        </div>
+      </section>
+      <p class="portfolio-explanation">Estimated value = shares × share value. It is not a guaranteed exit amount. Unknown values are shown as unavailable and excluded from totals rather than counted as zero. This is the repository’s read-only example, not your wallet balance. Cost basis and transaction history aren’t shown yet.</p>
+      <section class="portfolio-exit-rules"><div><h2>When you leave</h2><p><b>Cash redeem:</b> Receive your proportional slice converted to USDT, subject to your minimum received and deadline. If the route or minimum cannot be met, the transaction reverts.</p><p><b>In kind:</b> Receive your slice of tokens and lending receipts. You manage their subsequent redemption and market risk.</p></div><div><h2>Before a wider mandate</h2><p>A higher investment limit must be announced on chain and wait at least 24 hours. Only creator seed shares have a 90-day lock; ordinary deposits do not.</p><p class="fine">No pending change, payout date or seed unlock date is invented here. Live changes and balances come from a configured contract.</p></div></section>`;
+    }
+  }
+  render();
+})();
+8:X
+0:{"P":null,"c":["","portfolio",""],"q":"","i":false,"f":[[["",{"children":["portfolio",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/13u1gglp0teg6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"portfolio-page","html":"\n<section class=\"portfolio-hero\"><div class=\"wrap\"><div class=\"portfolio-title\"><h1>Portfolio</h1><span class=\"hero-chip\" id=\"portfolio-tag\" hidden></span></div><p>Your vault shares, their estimated value, and what you can redeem.</p></div></section>\n<main class=\"portfolio-main\" id=\"portfolio-content\" aria-live=\"polite\"></main>\n\n\n","runtimeVersion":"951cedb030bb","script":"$5","pageKey":"portfolio"}],["$L6"],"$L7"]}],{},null,false,null]},null,false,"$8"]},null,false,null],"$L9",false]],"m":"$undefined","G":["$a",["$Lb"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"lFrHfxOfq_GxQoSIIk9Wy"}
+c:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+d:"$Sreact.suspense"
+f:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+11:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+6:["$","script","script-0",{"src":"/_next/static/chunks/1snr1y__-1i0h.js","async":true,"nonce":"$undefined"}]
+7:["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]
+9:["$","$1","h",{"children":[null,["$","$Lf",null,{"children":"$L10"}],["$","div",null,{"hidden":true,"children":["$","$L11",null,{"children":["$","$d",null,{"name":"Next.Metadata","children":"$L12"}]}]}],null]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/13u1gglp0teg6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+8:C
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+13:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+e:null
+12:[["$","title","0",{"children":"Cre8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/favicon.svg"}],["$","link","4",{"rel":"icon","href":"/favicon.svg"}],["$","$L13","5",{}]]

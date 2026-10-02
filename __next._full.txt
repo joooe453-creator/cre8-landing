@@ -1,0 +1,91 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/1snr1y__-1i0h.js"],"PrototypePage"]
+b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
+:HL["/_next/static/chunks/13u1gglp0teg6.css","style"]
+:HL["/_next/static/chunks/3tc97jgi5r-mx.css","style"]
+5:T227a,
+<header class="masthead landing-masthead" id="mh"><div class="wrap">
+<a class="brand" href="https://cre8.finance/" id="brand"></a>
+<nav class="nav" aria-label="Main navigation"><a href="#how">How it works</a><a href="https://app.cre8.finance/vault/">Vaults</a><a href="#creators">For creators</a><a href="https://docs.cre8.finance/">Docs</a></nav>
+<div class="head-right"><a class="btn sm ghost landing-browse" href="https://app.cre8.finance/vault/">Browse vaults</a><a class="btn sm" href="https://app.cre8.finance/create/">Open a vault</a></div>
+</div></header>
+<main>
+<section class="landing-hero wrap">
+<span class="tag prototype-pill"><span class="dot"></span>Prototype · Simulated data · Unaudited</span>
+<h1>One agent. One vault. Clear limits.</h1>
+<p>Explore agent-managed vaults on <span class="landing-chain"><img src="/logos/bnbchain.jpg" alt="" class="logo">BNB Chain</span>, or open one with the assets, markets and investment limits you choose.</p>
+<div class="landing-actions"><a class="btn" href="https://app.cre8.finance/vault/">Browse vaults</a><a class="btn ghost" href="https://app.cre8.finance/create/">Open a vault</a></div>
+</section>
+<section class="wrap landing-stage-wrap" aria-label="Example mandate"><div class="landing-stage">
+<div class="landing-stage-copy"><h2>Every vault reads like one sentence.</h2><p>Assets, exact markets, a max share of vault value, and how you can leave. The contract enforces it.</p></div>
+<article class="landing-example">
+<div class="landing-example-head"><h3 id="example-name">Sherwood USDT</h3><span class="tag sim">Simulated</span></div>
+<p id="example-mandate">Supply USDT to Venus, up to 70% of vault value. Keep the rest idle. No borrowing.</p>
+<div class="landing-allocation"><span></span><i></i></div>
+<div class="landing-allocation-legend"><span><img src="/logos/venus.jpg" class="logo" alt="">Venus USDT · 70% (limit 70%)</span><span>Idle · 30%</span></div>
+<div class="landing-example-terms"><div><span>Perf. fee</span><strong id="example-fee">20% total</strong></div><div><span>Mgmt fee</span><strong>None</strong></div><div><span>Exit</span><strong>Cash / In kind</strong></div></div>
+<a class="btn block" href="https://app.cre8.finance/vault/sherwood-usdt/" id="example-link">Read the full mandate</a>
+</article></div></section>
+<section class="wrap landing-rules" id="product"><div class="landing-section-heading"><h2>Rules every vault follows.</h2><p>Fixed in the contract for every vault, whoever runs it.</p></div>
+<div class="landing-rule-grid"><div><strong>95%</strong><p>Most a vault can invest across all its limits combined.</p></div><div><strong>5%</strong><p>Minimum cash kept after every buy.</p></div><div><strong>24h</strong><p>Minimum wait before any limit can be raised.</p></div><div><strong>0%</strong><p>Management fee. Only a fixed performance fee.</p></div></div></section>
+<section class="wrap landing-principles"><article><h3>Assets stay in the vault</h3><p>Deposits sit in an ERC-4626 vault. You hold shares. Value includes cash, tokens and supplied positions.</p></article><article><h3>The agent has hard limits</h3><p>Only chosen assets, exact markets and a max % of vault value per leg. No transfers out, borrowing or arbitrary calls.</p></article><article><h3>You choose how to leave</h3><p>Redeem to USDT with a minimum and deadline, or take your share of the underlying tokens and receipts directly.</p></article></section>
+<section class="wrap landing-flows" id="how">
+<article id="audiences"><h2>Read the rules, then deposit.</h2><ol>
+<li><span>01</span><div><strong>Browse</strong><p>Compare mandates, venues and simulated track records.</p></div></li><li><span>02</span><div><strong>Read the rules</strong><p>Assets, exact markets, limits, fee and exit paths.</p></div></li><li><span>03</span><div><strong>Preview deposit</strong><p>Set amount, minimum shares and deadline.</p></div></li><li><span>04</span><div><strong>Hold shares</strong><p>Shares track vault value, net of fees.</p></div></li><li><span>05</span><div><strong>Redeem</strong><p>In cash with a minimum, or in kind.</p></div></li>
+</ol><a class="btn" href="https://app.cre8.finance/vault/">Browse vaults</a></article>
+<article id="creators"><h2>Pick assets first. Then set limits.</h2><ol>
+<li><span>01</span><div><strong>Choose assets</strong><p>Crypto or bStocks, up to 10 underlyings.</p></div></li><li><span>02</span><div><strong>Destinations &amp; limits</strong><p>Hold, or supply to an exact market. Max % NAV per leg.</p></div></li><li><span>03</span><div><strong>Seed 100 USDT</strong><p>Seed shares lock for 90 days. The seed starts as cash.</p></div></li><li><span>04</span><div><strong>Agent operates</strong><p>A separate operator address acts within the mandate.</p></div></li><li><span>05</span><div><strong>Earn performance fees</strong><p>90% of the total fee on new profit goes to you.</p></div></li>
+</ol><a class="btn ghost" href="https://app.cre8.finance/create/">Design a vault</a></article></section>
+<section class="wrap landing-venues"><div class="landing-venue-heading"><h2>Supported execution venues</h2><p>Not an endorsement. Each market still needs an approved configuration.</p></div>
+<div class="landing-venue-grid"><article><img src="/logos/pancakeswap.jpg" alt="PancakeSwap"><h3>PancakeSwap V3</h3><p>Exact-input swaps on approved direct pools</p></article><article><img src="/logos/venus.jpg" alt="Venus"><h3>Venus</h3><p>Supply and redeem on exact markets</p></article><article><img src="/logos/lista.jpg" alt="Lista"><h3>Lista</h3><p>Deposit and redeem on exact ERC-4626 vaults</p></article><article><img src="/logos/aave.png" alt="Aave"><h3>Aave V3</h3><p>Supply and withdraw on exact reserves</p></article></div>
+<p class="fine">Borrowing, loops, leverage, LP and Aster are not supported.</p></section>
+<section class="wrap landing-fees-faq" id="terms"><article class="landing-fee-card"><h2>One performance fee. No management fee.</h2><p>Set once at open (0–30%). Charged only on new profit above the fee-adjusted high-water mark. With a <span id="fee-rate">20%</span> fee, per 100 USDT of new profit:</p><div class="landing-fee-bar" id="landing-fee-bar"></div><p class="fine" id="landing-fee-copy"></p></article>
+<section class="landing-faq" id="faq"><h2>FAQs</h2>
+<details open><summary>Where is my money?</summary><p>Assets stay in the vault and its approved portfolio on BNB Chain, as cash, held tokens or supplied positions. Your ERC-4626 shares represent your portion of the vault.</p></details>
+<details><summary>What can the agent do?</summary><p>The operator can only act in named markets within the committed limits. It cannot transfer assets to itself, redeem other holders’ shares, borrow or call arbitrary contracts.</p></details>
+<details><summary>How do I exit?</summary><p>A cash exit redeems your proportional slice with a minimum received and deadline; failure reverts the transaction. In kind, you receive tokens and lending receipts to manage yourself. External protocols and token transfers can still limit exits.</p></details>
+<details><summary>What is an investment limit?</summary><p>A maximum percentage of the vault’s current value for an exact market. Caps total at most 95%. Tightening is immediate; raising waits at least 24 hours. A new market requires a new vault.</p></details>
+<details><summary>What happens after a 2% drop?</summary><p>The loss guard compares fee-adjusted share value with the first observation recorded each UTC day and needs risk checks by a keeper. A 2% observed loss blocks new activity. It is not a guaranteed stop-loss or a maximum loss. Exits and risk reduction remain available subject to external protocol conditions.</p></details>
+<details><summary>Is this live?</summary><p>The prototype has no verified live vault deployment and cannot accept deposits. Example figures are simulated and the contracts are unaudited. Public supply-rate snapshots have their own sources and timestamps.</p></details>
+</section></section>
+<section class="wrap landing-mcp" id="mcp"><div><div class="landing-mcp-copy"><h3>For agents: Skill + MCP</h3><span class="tag">Skill available · MCP requires a server</span><p>Read the mandate, prepare unsigned actions, simulate, then execute with your operator’s own signer. MCP never takes private keys, signs or broadcasts. This static website provides the skill; the MCP endpoint needs a separately hosted server.</p></div><a class="tag" href="skill.md">Read the skill</a></div></section>
+<section class="wrap landing-closing"><div><h2>Read the rules. Then decide.</h2><div class="landing-actions"><a class="btn light" href="https://app.cre8.finance/vault/">Browse vaults</a><a class="btn landing-deep" href="https://app.cre8.finance/create/">Open a vault</a></div></div></section>
+</main><div id="footer"></div>
+
+
+6:T5cc,
+(function () {
+  const { $ } = BAV;
+  $("#brand").innerHTML = BAV.SEAL + '<span class="brand-name">BNB Agent Vaults</span>';
+  $("#footer").outerHTML = BAV.footerHTML();
+  BAV.wireShell();
+  const example = BAV.vault("sherwood-usdt");
+  if (example) {
+    const f = BAV.feeBreakdown(example.fees.perf);
+    $("#example-name").textContent = example.name;
+    $("#example-mandate").textContent = example.strategy;
+    $("#example-fee").textContent = f.total + "% total";
+    $("#example-link").href = BAV.route("vault/" + example.slug);
+    $("#fee-rate").textContent = f.total + "%";
+    $("#landing-fee-bar").innerHTML = `<span style="flex:${100 - f.total}" class="fee-holders">Holders ≈ ${100 - f.total}</span>${f.creatorNet ? `<span style="flex:${f.creatorNet}" class="fee-creator" title="Creator">${f.creatorNet}</span>` : ""}${f.platformTotal ? `<span style="flex:${f.platformTotal}" class="fee-protocol" title="Protocol">${f.platformTotal}</span>` : ""}`;
+    $("#landing-fee-copy").textContent = `${f.total} USDT in fee shares: ≈ ${f.creatorNet} to Creator, ${f.platformTotal} to Protocol — not ${f.total}% plus ${f.platformTotal}%. No fee on losses or before the high-water mark is recovered. Marked gains may include assets still held.`;
+  }
+  const faqs = document.querySelectorAll(".landing-faq details");
+  faqs.forEach((item) => item.addEventListener("toggle", () => { if (item.open) faqs.forEach((other) => { if (other !== item) other.open = false; }); }));
+})();
+0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/13u1gglp0teg6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"landing-page","html":"$5","runtimeVersion":"951cedb030bb","script":"$6","pageKey":"landing"}],["$L7","$L8"],"$L9"]}],{},null,false,null]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"lFrHfxOfq_GxQoSIIk9Wy"}
+d:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+10:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+12:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3tc97jgi5r-mx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/1snr1y__-1i0h.js","async":true,"nonce":"$undefined"}]
+9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],null]}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/13u1gglp0teg6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+14:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+f:null
+13:[["$","title","0",{"children":"Cre8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/favicon.svg"}],["$","link","4",{"rel":"icon","href":"/favicon.svg"}],["$","$L14","5",{}]]

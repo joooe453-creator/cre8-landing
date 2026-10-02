@@ -1,0 +1,10 @@
+{
+  "schema": "bnb-agent-vaults/deployment@1.0",
+  "status": "undeployed",
+  "chainId": 97,
+  "rpcUrl": "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
+  "factory": null,
+  "codeHashes": {},
+  "templates": [],
+  "vaults": []
+}

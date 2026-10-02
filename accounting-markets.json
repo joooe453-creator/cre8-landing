@@ -1,0 +1,45 @@
+{
+  "schema": "bnb-agent-vaults/accounting-markets@1",
+  "chainId": 56,
+  "source": {
+    "path": "config/venus-usdt.bsc.json",
+    "sha256": "30fcacb7c5f0ec8349f4ab6205e2761bcbe131552f89f4e1c7667114231c3e84",
+    "configurationHash": "0xd8931bc391ae82f2ed9dbe30c4ce931bb37187e717807896af8648a89fd77bd8"
+  },
+  "target": {
+    "id": "accounting:USDT",
+    "symbol": "USDT",
+    "name": "USDT",
+    "ticker": "USDT",
+    "category": "crypto",
+    "accountingAsset": true,
+    "address": "0x55d398326f99059ff775485246999027b3197955",
+    "decimals": 18,
+    "swap": null
+  },
+  "markets": [
+    {
+      "id": "accounting:venus-usdt",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "accounting:USDT",
+      "assetSymbol": "USDT",
+      "assetAddress": "0x55d398326f99059ff775485246999027b3197955",
+      "marketAddress": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "receiptAddress": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "label": "Venus USDT supply",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ],
+      "configurationHash": "0xd8931bc391ae82f2ed9dbe30c4ce931bb37187e717807896af8648a89fd77bd8"
+    }
+  ]
+}
