@@ -2,8 +2,9 @@
 (function () {
   "use strict";
 
-  // The web prototype renderer consumes the body; load the brand fonts in every surface.
-  if (!document.querySelector('link[href*="family=Anton"]')) {
+  // The web prototype renderer consumes the body; load the brand fonts in every surface. The web build
+  // self-hosts them (html[data-fonts="self"]); the static design pages link Google Fonts themselves.
+  if (document.documentElement.dataset.fonts !== "self" && !document.querySelector('link[href*="family=Anton"]')) {
     ["https://fonts.googleapis.com", "https://fonts.gstatic.com"].forEach((href) => {
       const pre = document.createElement("link");
       pre.rel = "preconnect";
