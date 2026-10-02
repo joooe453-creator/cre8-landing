@@ -1,32 +1,30 @@
 1:"$Sreact.fragment"
-2:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/385-yp1j_rtq1.js"],"PrototypePage"]
-3:T1fd6,
-<section class="vhead">
-  <div class="wrap">
-    <a class="vault-back" href="https://app.cre8.finance/vaults/">← All vaults</a>
-    <div class="vault-heading">
-      <div class="tags" id="v-tags"></div>
-      <h1 id="v-name"></h1>
-      <p class="strat" id="v-strat"></p>
-      <p class="vault-manager" id="v-manager"></p>
-      <span id="c-name" hidden></span>
-      <div class="vault-head-actions"><button type="button" class="btn ghost" id="pros-open">Fund prospectus</button><button type="button" class="pros-alert" id="pros-alert" hidden>Rule change pending</button></div>
-    </div>
-  </div>
-</section>
+2:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/3s596fk-cvsyr.js"],"PrototypePage"]
+3:T1f2a,
 <main class="wrap vault-content">
-  <div class="keyfig" id="keyfig"></div>
-  <div class="vault-banner hide" id="vault-banner" role="status"></div>
   <div class="vgrid">
     <div class="main">
+      <div class="vault-top">
+        <header class="vhead">
+          <a class="vault-back" href="https://app.cre8.finance/vaults/">← All vaults</a>
+          <div class="vault-heading">
+            <div class="tags" id="v-tags"></div>
+            <h1 id="v-name"></h1>
+            <p class="vault-manager" id="v-manager"></p>
+            <p class="strat" id="v-strat"></p>
+            <span id="c-name" hidden></span>
+            <dl class="vault-strip" id="v-strip"></dl>
+            <div class="vault-head-actions"><button type="button" class="btn ghost" id="pros-open">Fund prospectus</button><button type="button" class="pros-alert" id="pros-alert" hidden>Rule change pending</button></div>
+          </div>
+        </header>
+        <dl class="keyfig dk-kpis" id="keyfig"></dl>
+        <p class="vault-data-note" id="vault-data-note"></p>
+        <div class="vault-banner hide" id="vault-banner" role="status"></div>
+      </div>
       <section class="panel vault-performance">
-        <div class="panel-h">
-          <div class="vault-section-title"><h3>Performance</h3><span class="tag sim">Simulated</span></div>
+        <div class="vault-chart-top">
+          <div class="vault-chart-drop"><span id="p-drop-label"></span> <b id="p-drop"></b><span class="tag sim">Simulated</span></div>
           <div class="seg" id="p-period"><button data-v="7D">7D</button><button class="on" data-v="30D">30D</button><button data-v="90D">90D</button><button data-v="ALL">All</button></div>
-        </div>
-        <div class="chart-meta">
-          <div><div class="sub" id="p-sub"></div><div class="big" id="p-big"></div></div>
-          <div><div class="sub" id="p-drop-label"></div><div class="big" id="p-drop"></div></div>
         </div>
         <div class="chart" id="chart"></div>
         <div class="chart-foot"><span id="p-range-start"></span><span id="p-range-end"></span></div>
@@ -36,17 +34,14 @@
           <p class="fine">Prototype return = simulated share value(t₁) ÷ simulated share value(t₀) − 1 after modeled fees. These figures are not live on-chain results or an advertised APR.</p>
         </details>
       </section>
-      <section class="panel vault-allocation">
-        <div class="panel-h"><h3>Current allocation vs limits</h3><span class="label" hidden>Manifest · simulated vault value</span></div>
-        <div class="panel-b">
-          <div class="vault-allocation-legend"><span><i class="allocation-current"></i>Current allocation (% NAV)</span><span><i class="allocation-limit"></i>Investment limit (contract max)</span><span><i class="allocation-plan"></i>Strategy weight (agent plan, not binding)</span></div>
-          <div id="allocation-rows"></div>
-          <div class="vault-info" id="allocation-note"></div>
-          <details class="vault-details"><summary>Exact market capital budgets</summary>
-            <div class="alloc-bar" id="alloc-bar" role="img"></div>
-            <div id="alloc-tbl"><div class="allocation-budget-rows" id="allocation-budget-rows"></div></div>
-          </details>
-        </div>
+      <section class="vault-allocation dk-sec">
+        <header><h2>Where the money is</h2><span class="label" hidden>Manifest · simulated vault value</span></header>
+        <div class="dk-wrap"><table class="dk-table vault-where"><thead><tr><th>Asset</th><th>Current weight</th><th class="num">Limit</th><th>Venue</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
+        <p class="fine vault-info" id="allocation-note"></p>
+        <details class="vault-details"><summary>Exact market capital budgets</summary>
+          <div class="alloc-bar" id="alloc-bar" role="img"></div>
+          <div id="alloc-tbl"><div class="allocation-budget-rows" id="allocation-budget-rows"></div></div>
+        </details>
       </section>
       <section class="panel vault-creator-controls hide" id="creator-controls">
         <div class="panel-h"><h3>Creator controls</h3><span class="tag">P1 extension · visible to manager only</span></div>
@@ -117,7 +112,7 @@
 
 
 
-4:T13197,
+4:T4b8,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><img class="brand-logo" src="/logos/cre8-on-light.svg?v=5ff1de84" alt="CRE8" width="224" height="112"></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="active" aria-current="page">Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="" >Open a vault</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><button class="btn sm header-wallet" data-demo>Connect wallet</button></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>5:T13a03,
 (function () {
   const { $, $$, esc, fmt, perf, riskMeter, statusTag, historyTag, navSeries, lineChart, hexAddr, short, ASSETS, SLOTS, toast, demo, logo, CATALOG: C, vaultMarkets, vaultRisk, managerLabel, rulesLabel, platformFeeForRisk, feeBreakdown } = BAV;
   BAV.shell("vaults.html");
@@ -155,9 +150,11 @@
 
   /* Header and explicitly labelled read-only design states. Live addresses never use these states. */
   $("#c-name").textContent = v.name;
-  $("#v-name").textContent = v.name;
+  // Demo title treatment: the last word sits in fog.
+  const nameWords = v.name.trim().split(/\s+/);
+  $("#v-name").innerHTML = nameWords.length > 1 ? `${esc(nameWords.slice(0, -1).join(" "))} <span class="fog">${esc(nameWords[nameWords.length - 1])}</span>` : esc(v.name);
   $("#v-strat").textContent = v.strategy;
-  $("#v-manager").innerHTML = `Managed by <strong>${esc(v.manager)}</strong> · ${human ? "Human-managed" : "Agent-managed"}`;
+  $("#v-manager").innerHTML = `Managed by <strong>${esc(v.manager)}</strong> · ${human ? "Human-managed" : `Agent-managed · ERC-8004 #${esc(v.agentId)}`} · ${esc(A)}`;
   function drawTags() {
     const state = unavailable() ? "Data unavailable" : previewState === "paused" ? "Paused · loss guard" : previewState === "stale" ? "NAV stale" : planning ? "Configuration required" : "Active (simulated)";
     $("#v-tags").innerHTML = `<span class="tag vault-identity-chip">${planning ? "Planning only" : "Simulated"} · Not deployed</span><span class="tag ${previewState === "paused" || previewState === "stale" || planning ? "warn" : unavailable() ? "neg" : "pos"}">${state}</span><span class="tag accounting-chip">Accounting asset · ${esc(A)}</span>${copy ? `<span class="tag warn">Follows ${esc(copy.name)}</span>` : ""}`;
@@ -174,11 +171,24 @@
   }
   function drawKeyfig() {
     const na = unavailable();
+    const compact = (n) => n >= 1e6 ? fixed(n / 1e6, 2) + "M" : n >= 1e4 ? fixed(n / 1e3, 1) + "K" : fixed(n, 0);
+    // Return cells are filled by drawPerf so they follow the selected period.
     $("#keyfig").innerHTML = `
-      <div><div class="label">Vault value (NAV)</div><div class="v">${na ? "Unavailable" : fixed(v.tvl, 0) + " " + A}</div><div class="s">Cash + tokens + supplied positions</div></div>
-      <div><div class="label">Share value</div><div class="v">${na ? "Unavailable" : fixed(v.sharePrice, 4) + " " + A}</div><div class="s">Not a guaranteed exit price</div></div>
-      <div><div class="label">Depositors</div><div class="v">${na ? "—" : fixed(v.followers, 0)}</div><div class="s">${v.runtimeDays} days of simulated history</div></div>
-      <div><div class="label">Updated</div><div class="v ${previewState === "stale" ? "warn" : ""}">${unavailable() ? "—" : "Unavailable"}</div><div class="s">Simulated data · no live timestamp</div></div>`;
+      <div><dt>Vault value (NAV)</dt><dd>${na ? "Unavailable" : `${compact(v.tvl)}<small>${esc(A)}</small>`}</dd></div>
+      <div><dt id="p-sub"></dt><dd id="p-big"></dd></div>
+      <div><dt>Share value, ${esc(A)}</dt><dd>${na ? "Unavailable" : fixed(v.sharePrice, 4)}</dd></div>
+      <div><dt>Depositors</dt><dd>${na ? "—" : fixed(v.followers, 0)}</dd></div>`;
+    $("#vault-data-note").className = `vault-data-note ${previewState === "stale" ? "warn" : ""}`;
+    $("#vault-data-note").textContent = na ? "Vault data couldn’t be read · values unavailable" : `${previewState === "stale" ? "NAV stale · " : ""}Simulated data · no live timestamp · ${v.runtimeDays} days of history · share value is not a guaranteed exit price`;
+  }
+  /* Demo strip: how it buys, what it holds, where it earns — all read from the vault's rules and positions. */
+  function drawStrip() {
+    const rows = marketRows();
+    const held = [...new Set(rows.flatMap(({ m }) => m.tokens || []))];
+    const venueKey = (name) => String(name).toLowerCase().split(/\s+/)[0];
+    const venues = [...new Set([...rows.filter(({ r }) => r.a === "lend").map(({ m }) => m.venue), ...v.positions.filter((x) => !["Idle", "PancakeSwap"].includes(x.p)).map((x) => venueKey(x.p))])].map((key) => C.VNAME[key] ? key : null).filter(Boolean);
+    const buying = human ? "Manager decides" : v.buyPlan || (v.continuous ? "Agent decides" : "Planning reference");
+    $("#v-strip").innerHTML = `<div><dt>Buying</dt><dd>${esc(buying)}</dd></div><div><dt>Holds</dt><dd>${esc(held.join(" · ") || A)}</dd></div><div><dt>Earns on</dt><dd>${venues.length ? venues.map((key) => `<span class="with-logo">${logo(key)}${esc(C.VNAME[key])}</span>`).join("") : "Price only"}</dd></div>`;
   }
   drawKeyfig();
 
@@ -192,7 +202,7 @@
     const points = sliceFor(period), r = v.returns[period], label = period === "ALL" ? "All" : period;
     const complete = r != null && !unavailable();
     $("#p-big").innerHTML = complete ? `<span class="${fmt.cls(r)}">${fmt.pct(r)}</span>` : "—";
-    $("#p-sub").textContent = `Net return · ${label}`;
+    $("#p-sub").textContent = `Net return, ${period === "ALL" ? "since inception" : label}`;
     $("#p-drop-label").textContent = `Max drop · ${label}`;
     $("#p-drop").textContent = complete ? fmt.pct(v.maxDrawdown[period]) : "—";
     $("#p-range-start").textContent = complete ? fmt.date(points[0].t) : "";
@@ -262,16 +272,20 @@
   function drawAllocationLimits() {
     const rows = marketRows(), idle = C.minIdleAllocation(v.rules), actualIdle = v.positions.find(position => position.p === "Idle")?.w;
     const all = [...rows.map(({ m, r, cap }) => ({ name: `${C.ACTIONS[r.a].name} · ${C.label(m)}`, cap })), { name: v.continuous ? "Unallocated cap budget" : "Planned idle budget", cap: idle, idle: true }];
-    $("#allocation-rows").innerHTML = rows.map(({ m, cap }) => {
+    const weightCell = (current, cap) => `<span class="dk-w vault-weight"><b>${current == null ? "—" : fixed(current, 1) + "%"}</b><i style="--w:${current || 0}%">${cap == null ? "" : `<em style="left:${cap}%" title="Investment limit ${cap}%"></em>`}</i></span>`;
+    $("#allocation-rows").innerHTML = rows.map(({ m, r, cap }) => {
       const current = unavailable() ? null : currentForMarket(m);
-      return `<div class="vault-allocation-row"><div><strong>${esc(C.label(m))}</strong><span>Current ${current == null ? "—" : fixed(current, 1) + "%"} · Limit ${cap}% · Weight unavailable</span></div><div class="vault-allocation-track"><i style="width:${current || 0}%"></i><b style="left:${cap}%" title="Investment limit ${cap}%"></b></div></div>`;
-    }).join("") + `<div class="vault-allocation-row"><div><strong>Idle ${esc(A)} (cash)</strong><span>${unavailable() || actualIdle == null ? "—" : fixed(actualIdle, 1) + "%"} · ${v.continuous ? "min 5% after buys" : "Planned idle budget"}</span></div><div class="vault-allocation-track idle"><i style="width:${unavailable() ? 0 : actualIdle || 0}%"></i></div></div>`;
+      const venue = r.a === "lend" ? `<span class="with-logo">${logo(m.venue)}${esc(C.VNAME[m.venue] || m.venue)} ${m.kind === "Vault" ? "vault" : "lending"}</span>` : `<span class="with-logo">${logo(m.venue)}Held · bought on ${esc(C.VNAME[m.venue] || m.venue)}</span>`;
+      const symbol = (m.tokens || []).join(" / ") || A, marketName = C.label(m);
+      return `<tr><td><strong class="mono">${esc(symbol)}</strong>${marketName !== symbol ? `<span class="mg">${esc(marketName)}</span>` : ""}</td><td>${weightCell(current, cap)}</td><td class="num mono">${cap}%</td><td>${venue}</td></tr>`;
+    }).join("") + `<tr class="idle"><td><strong class="mono">${esc(A)}</strong><span class="mg">Idle cash</span></td><td>${weightCell(unavailable() ? null : actualIdle ?? null, null)}</td><td class="num mono">${v.continuous ? "min 5%" : "plan"}</td><td>In the vault${v.continuous ? " · ≥ 5% after buys" : " · planned idle budget"}</td></tr>`;
     $("#allocation-note").textContent = v.continuous ? `Investment limits total ${C.capTxt(C.totalAllocation(v.rules))} of NAV (max 95%); the rest is unallocated cap budget. After any buy the vault must keep at least 5% cash. If prices push a position above its limit, nothing is force-sold — new buys are checked against all caps. Strategy weights are unavailable in this record.` : `Historical planning reference: operation limits total ${C.capTxt(C.totalAllocation(v.rules))}, with a ${C.capTxt(idle)} planned idle budget. These values do not enable deposits or execution. Strategy weights are unavailable in this record.`;
     $("#alloc-bar").innerHTML = all.map((x, i) => `<i style="width:${x.cap}%;background:${x.idle ? "var(--ice)" : "var(--mist)"}" title="${esc(x.name)} ${C.capTxt(x.cap)}"></i>`).join("");
     $("#alloc-bar").setAttribute("aria-label", all.map(x => `${x.name} ${C.capTxt(x.cap)}`).join(", "));
     $("#allocation-budget-rows").innerHTML = all.map(x => `<div><strong>${esc(x.name)}</strong><span>${x.idle ? "Budget remainder" : "Limit"} ${C.capTxt(x.cap)}</span><span>${x.idle ? v.continuous ? "Separate from the 5% minimum idle check after buys" : "Planned cash budget · historical reference" : `${unavailable() ? "Unavailable" : fixed(v.tvl * x.cap / 100) + " " + A} maximum at sample NAV`}</span></div>`).join("");
   }
   drawAllocationLimits();
+  drawStrip();
   function drawRc() {
     const existing = v.pendingChange;
     const first = marketRows()[0], available = 95 - C.totalAllocation(v.rules);
@@ -781,35 +795,36 @@
   }), { root: body, rootMargin: "0px 0px -70% 0px" });
   $$(".pros-sec", body).forEach((s) => spy.observe(s));
   const rcTag = $("#rc-tag"), alert = $("#pros-alert");
-  const syncAlert = () => { alert.hidden = !rcTag || rcTag.hidden || !rcTag.textContent.trim(); if (!alert.hidden) alert.textContent = rcTag.textContent.trim(); };
+  // #rc-tag is a hidden status hook ("None pending", "Pending · Simulated", "Pending on chain", "Unavailable").
+  const syncAlert = () => { const text = rcTag?.textContent.trim() || ""; alert.hidden = !/pending/i.test(text) || /none pending/i.test(text); alert.textContent = `Rule change ${text.toLowerCase()}`; };
   if (rcTag) { new MutationObserver(syncAlert).observe(rcTag, { attributes: true, childList: true, characterData: true, subtree: true }); syncAlert(); }
 })();
-8:X
-f:X
-f:C
-0:{"buildId":"5lVjwHepox-HQCt8SW38e","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"has-mcta vault-page","html":"$3","runtimeVersion":"bafc4d2a1858","script":"$4","pageKey":"vault"}],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$8","varyParams":"$f"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
-14:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
-15:"$Sreact.suspense"
-17:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
-18:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
-19:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
-1a:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
-1b:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
-:HL["/_next/static/chunks/3xmnei7e_wm6l.css","style"]
+9:X
+10:X
+10:C
+0:{"buildId":"L0YU6Dip7clv6r_F-jcVY","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"has-mcta vault-page","html":"$3","masthead":"$4","runtimeVersion":"3c3a98f9a13e","script":"$5","pageKey":"vault"}],["$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":null},{"rsc":"$Le","isPartial":"$@f","staleTime":"$9","varyParams":"$10"},{"rsc":"$L11","isPartial":"$@12","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@13","rootVaryParams":null,"needsRuntimeRequest":"$@14"}
+15:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+18:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+19:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+1a:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+1b:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+1c:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+:HL["/_next/static/chunks/1o7c7c9rfe0xd.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap","style"]
-5:["$","script","script-0",{"src":"/_next/static/chunks/385-yp1j_rtq1.js","async":true}]
-6:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
-9:["$","$1","h",{"children":[null,["$","$L17",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$15",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L19","5",{}]]}]}]}],null]}]
-b:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
-d:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
-10:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3xmnei7e_wm6l.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
-16:null
-13:true
-8:300
-8:C
-12:0
-a:"$undefined"
-c:"$undefined"
-e:"$undefined"
-11:"$undefined"
-7:"$undefined"
+6:["$","script","script-0",{"src":"/_next/static/chunks/3s596fk-cvsyr.js","async":true}]
+7:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+a:["$","$1","h",{"children":[null,["$","$L18",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L19",null,{"children":["$","$16",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L1a","5",{}]]}]}]}],null]}]
+c:["$","$1","c",{"children":[null,["$","$L1b",null,{"parallelRouterKey":"children","template":["$","$L1c",null,{}]}]]}]
+e:["$","$1","c",{"children":[null,["$","$L1b",null,{"parallelRouterKey":"children","template":["$","$L1c",null,{}]}]]}]
+11:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1o7c7c9rfe0xd.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}],["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L1b",null,{"parallelRouterKey":"children","template":["$","$L1c",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
+17:null
+14:true
+9:300
+9:C
+13:0
+b:"$undefined"
+d:"$undefined"
+f:"$undefined"
+12:"$undefined"
+8:"$undefined"

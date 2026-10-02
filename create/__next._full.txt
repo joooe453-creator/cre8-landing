@@ -1,25 +1,25 @@
 1:"$Sreact.fragment"
 2:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
 3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
-4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/385-yp1j_rtq1.js"],"PrototypePage"]
-b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
-:HL["/_next/static/chunks/3xmnei7e_wm6l.css","style"]
+4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/3s596fk-cvsyr.js"],"PrototypePage"]
+c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
+:HL["/_next/static/chunks/1o7c7c9rfe0xd.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap","style"]
-5:T4fa6,
+5:T5467,
 <section class="page-head create-hero">
-  <div class="wrap wide"><h1>Open a vault</h1><p class="lede">Choose the assets, where each is held, and how much of the vault it may use. Your agent then operates only inside those limits.</p></div>
+  <div class="wrap wide"><div class="dk-head"><div><h1 class="dk-h1">Open a vault</h1><p class="lede">Choose the assets, where each is held, and how much of the vault it may use. Your agent then operates only inside those limits.</p></div><span class="dk-label">[ Draft · Deployment pending ]</span></div></div>
 </section>
 <main class="wrap wide create-main">
   <nav class="create-stepper" id="toc" aria-label="Open a vault steps">
-    <a href="#s-1" data-create-step="1" aria-current="step"><span class="step-number">1</span><span class="step-copy"><small>Step 1</small><b>Choose assets</b></span><span class="ck" aria-hidden="true"></span></a>
-    <a href="#s-2" data-create-step="2"><span class="step-number">2</span><span class="step-copy"><small>Step 2</small><b>Buy &amp; store</b></span><span class="ck" aria-hidden="true"></span></a>
-    <a href="#s-3" data-create-step="3"><span class="step-number">3</span><span class="step-copy"><small>Step 3</small><b>Review &amp; open</b></span><span class="ck" aria-hidden="true"></span></a>
+    <a href="#s-1" data-create-step="1" aria-current="step"><span class="step-number">01</span><span class="step-copy"><small>Step 1</small><b>Assets</b></span><span class="ck" aria-hidden="true"></span></a>
+    <a href="#s-2" data-create-step="2"><span class="step-number">02</span><span class="step-copy"><small>Step 2</small><b>Buy &amp; store</b></span><span class="ck" aria-hidden="true"></span></a>
+    <a href="#s-3" data-create-step="3"><span class="step-number">03</span><span class="step-copy"><small>Step 3</small><b>Review &amp; open</b></span><span class="ck" aria-hidden="true"></span></a>
   </nav>
   <div class="create-grid asset-first-create">
     <form id="f" autocomplete="off" onsubmit="return false">
       <section id="s-1" class="create-step" data-create-panel="1">
         <section class="create-card create-catalog">
-          <header class="create-card-heading"><h2>Choose assets</h2><p id="catalog-note">Loading design catalog…</p></header>
+          <header class="create-card-heading"><h2>Choose assets</h2><span class="create-pick-count"><span id="selected-count">0</span> / 10</span><p id="catalog-note" aria-busy="true">Loading design catalog…</p></header>
           <div class="create-search-bar">
             <div class="target-search"><input id="search" placeholder="Name, symbol or BSC token address (0x…)" aria-label="Search assets by name, symbol or BSC token address"><button type="button" class="btn" id="find-ca">Search</button></div>
             <div class="radio-row create-filter" aria-label="Asset category"><label><input type="radio" name="filter" value="all" checked><span>All</span></label><label><input type="radio" name="filter" value="crypto"><span>Crypto</span></label><label><input type="radio" name="filter" value="bstock"><span>bStocks</span></label></div>
@@ -27,17 +27,20 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
           <div id="ca-status" class="hide" aria-live="polite"></div>
           <p class="create-results-count" id="target-count" aria-live="polite">Loading…</p>
           <div class="mkt-list hide" id="token-search-results" tabindex="0" role="region" aria-label="Token search results"></div>
-          <div class="mkt-list" id="target-list" tabindex="0" role="region" aria-label="Available basket assets"><div class="allocation-empty">Loading asset catalog…</div></div>
+          <div class="create-cat-head" aria-hidden="true"><span>Asset</span><span>Pool liquidity</span><span>Lending</span><span></span></div>
+          <div class="mkt-list" id="target-list" tabindex="0" role="region" aria-label="Available basket assets" aria-busy="true"><div class="allocation-empty">Loading asset catalog…</div></div>
         </section>
         <section class="create-card create-selection">
-          <header class="create-card-heading"><h2>Selected · <span id="selected-count">0</span>/10</h2><p>One destination per underlying</p></header>
+          <header class="create-card-heading"><h2>Your basket</h2><p>One destination per underlying</p></header>
           <div class="create-selection-explainer"><p><b>Strategy weight</b> — agent’s plan between assets. Must total 100%. Not enforced.</p><p><b>Investment limit</b> — contract max, % of whole vault NAV. Total ≤ 95%.</p></div>
+          <div class="create-basket-head" aria-hidden="true"><span>Asset</span><span>Where it sits</span><span>Weight</span><span>Max share</span><span></span></div>
           <div class="allocation-inputs" id="selected-list"><div class="allocation-empty">Add at least one asset to continue.</div></div>
+          <div class="create-caps-meter" id="caps-meter" role="img" aria-label="Investment limits against the 95% maximum"></div>
           <div class="create-selection-totals"><span>Weights total <b id="weight-total">0%</b> / 100%</span><span>Limits total <b id="selected-limit-total">0%</b> / max 95%</span><span>Cash kept ≥ <b id="selected-cash">100%</b></span></div>
           <ul class="checks create-step-errors" id="step-one-issues" aria-live="polite"></ul>
           <details class="create-explain"><summary>How investment limits work</summary><p>Vault value is the current estimated value of all its assets. In a $10,000 vault, a 70% limit allows up to $7,000 in that investment. It uses today’s value and does not guarantee a withdrawal amount. Prices above the limit block new investment; they do not force a sale.</p></details>
         </section>
-        <div class="create-step-actions"><button type="button" class="btn" data-create-next="2">Continue to Buy &amp; store →</button></div>
+        <div class="create-step-actions"><span></span><button type="button" class="btn" data-create-next="2">Continue</button></div>
       </section>
       <section id="s-2" class="create-step" data-create-panel="2" hidden>
         <section class="create-card">
@@ -121,7 +124,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
           <div class="yield-estimate-foot"><span id="yield-update">Loading rate snapshot…</span><button type="button" class="link" id="refresh-yields">Refresh rates</button></div>
         </div>
         <ul class="checks create-step-errors" id="step-two-issues" aria-live="polite"></ul>
-        <div class="create-step-actions"><button type="button" class="btn ghost" data-create-back="1">← Back</button><button type="button" class="btn" data-create-next="3">Continue to Review →</button></div>
+        <div class="create-step-actions"><button type="button" class="btn ghost" data-create-back="1">Back</button><button type="button" class="btn" data-create-next="3">Review</button></div>
       </section>
       <section id="s-3" class="create-step" data-create-panel="3" hidden>
         <div id="mandate-form">
@@ -154,11 +157,29 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
             <div id="mandate-pending" class="state-note create-pending-transaction" hidden><div><b>Submitted launch</b><p id="mandate-pending-message" aria-live="polite"></p><a id="mandate-transaction-link" target="_blank" rel="noopener noreferrer">View transaction on explorer</a> <button type="button" class="link" id="mandate-copy-transaction">Copy hash</button><p class="fine">Checking a receipt sends no transaction. A mined receipt alone does not verify that this vault was opened.</p><button type="button" class="btn ghost" id="mandate-check-transaction">Check transaction receipt</button></div></div>
           </section>
         </div>
-        <div class="create-step-actions"><button type="button" class="btn ghost" data-create-back="2">← Back</button></div>
+        <div class="create-step-actions"><button type="button" class="btn ghost" data-create-back="2">Back</button><span></span></div>
       </section>
     </form>
     <aside class="aside create-summary">
-      <section class="create-card"><h2>Vault summary</h2><div id="create-summary-positions"></div><div class="create-summary-totals"><div><span>Limits total</span><b id="summary-limit-total">0% / 95%</b></div><div class="create-limit-track"><span id="summary-limit-bar"></span></div><div><span>Cash kept ≥</span><span id="summary-cash">100%</span></div><div><span>Performance fee</span><span id="summary-fee">20% total</span></div><div><span>Seed</span><span>100 USDT · 90d lock</span></div><div><span>Mode</span><span id="summary-mode">Agent-managed</span></div></div><p class="create-summary-note">Buy + supply is atomic: if the swap or supply fails, the whole action reverts and USDT stays as cash. Raising a limit later waits 24h; new markets need a new vault.</p><details class="create-explain"><summary>Market gate &amp; mandate details</summary><p class="fine" id="registry-note">Verifying the phase-one registry…</p><p class="sentence" id="sentence">Loading registry…</p><div class="meta-row" id="meta"></div><ul class="rules" id="rules"></ul></details></section>
+      <section class="create-card create-sheet" aria-label="Term sheet">
+        <div class="create-sheet-top"><span class="dk-label muted">[ Term sheet ]</span><span class="dk-ntag">Draft</span></div>
+        <h2 id="sheet-name">Sherwood Core Basket</h2>
+        <p class="create-sheet-sub"><span id="sheet-symbol">avSCB</span> · USDT · BNB Chain</p>
+        <div id="create-summary-positions"><p class="fine">Choose assets to build your vault summary.</p></div>
+        <dl class="create-summary-totals">
+          <div><dt>Limits total</dt><dd id="summary-limit-total">0% / 95%</dd></div>
+          <div class="create-limit-track"><span id="summary-limit-bar"></span></div>
+          <div><dt>Cash kept ≥</dt><dd id="summary-cash">100%</dd></div>
+          <div><dt>Buying</dt><dd id="summary-mode">Agent-managed</dd></div>
+          <div><dt>Performance fee</dt><dd id="summary-fee">20% total</dd></div>
+          <div><dt>You receive</dt><dd id="summary-creator">18.0%</dd></div>
+          <div><dt>Management fee</dt><dd>None</dd></div>
+          <div><dt>Creator seed</dt><dd>100 USDT · 90 days</dd></div>
+          <div><dt>Raising a limit</dt><dd>24h notice</dd></div>
+        </dl>
+        <p class="create-summary-note">Buy + supply is atomic: if the swap or supply fails, the whole action reverts and USDT stays as cash. New markets need a new vault.</p>
+        <details class="create-explain"><summary>Market gate &amp; mandate details</summary><p class="fine" id="registry-note">Verifying the phase-one registry…</p><p class="sentence" id="sentence">Loading registry…</p><div class="meta-row" id="meta"></div><ul class="rules" id="rules"></ul></details>
+      </section>
     </aside>
   </div>
 </main>
@@ -166,7 +187,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
 
 
 
-6:T16fff,
+6:T4b8,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><img class="brand-logo" src="/logos/cre8-on-light.svg?v=5ff1de84" alt="CRE8" width="224" height="112"></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="" >Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="active" aria-current="page">Open a vault</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><button class="btn sm header-wallet" data-demo>Connect wallet</button></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>7:T17da0,
 (function () {
   "use strict";
   const { $, $$, esc, toast, DEMO_OWNER, hexAddr } = BAV;
@@ -415,12 +436,15 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
         accountingNote = "Plus USDT → Venus supply from the reviewed configuration; APY requires a live rate read.";
       } catch (error) { accountingNote = `${error.message}. The original catalog remains available.`; }
       S.registry = registry;
+      $("#catalog-note").removeAttribute("aria-busy");
       $("#catalog-note").textContent = `Design catalog: ${cryptoCount + stockCount} original assets (${cryptoCount} crypto / ${stockCount} bStocks). ${accountingNote} Listed ≠ approved.`;
       loadYieldSnapshot();
       $("#registry-note").textContent = `${registry.targets.length} targets · swap liquidity at block ${registry.targets.find((target) => target.liquidity)?.liquidity?.verifiedAtBlock ?? "—"} · exact destinations rechecked before execution.`;
       draw();
     })
     .catch((error) => {
+      $("#target-list").removeAttribute("aria-busy");
+      $("#catalog-note").removeAttribute("aria-busy");
       $("#target-list").innerHTML = `<div class="state-note error-note"><span class="dot"></span><span>${esc(error.message)}. Launch is disabled.</span></div>`;
       $("#target-count").textContent = "Unavailable";
       $("#registry-note").textContent = "Registry unavailable. No target or yield market can be selected.";
@@ -443,6 +467,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     } catch (error) {
       $("#yield-update").textContent = error.message;
     }
+    drawSelected();
     drawPostPurchase();
     refresh();
   }
@@ -455,6 +480,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       if (!S.registry) throw new Error("Market registry is still loading.");
       S.yieldTools ||= await import(assetUrl("assets/yield-rates.mjs"));
       S.yieldSnapshot = await S.yieldTools.fetchYieldRates(S.registry);
+      drawSelected();
       drawPostPurchase();
       refresh();
     } catch (error) {
@@ -508,10 +534,13 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       return typeMatch && textMatch;
     });
     $("#target-count").textContent = `${targets.length} assets${targets.length > 5 ? " · Scroll to browse" : ""}`;
+    $("#target-list").removeAttribute("aria-busy");
     $("#target-list").innerHTML = targets.map((target) => {
       const checked = S.selected.has(target.id);
       const full = S.selected.size >= S.registry.policy.maxTargets;
-      return `<label class="mkt ${checked ? "selected" : "off"}"><input type="checkbox" data-target="${esc(target.id)}" ${checked ? "checked" : ""} ${full && !checked ? "disabled" : ""} aria-label="${checked ? "Remove" : "Add"} ${esc(assetName(target))}"><span class="asset-monogram" aria-hidden="true">${esc(target.symbol.slice(0, 4))}</span><span class="t"><span class="create-asset-name"><b>${esc(assetName(target))}</b><span>${esc(target.symbol)} · ${target.category === "bstock" ? "bStock" : "Crypto"}</span></span><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(targetStatus(target))}</small></span><span class="asset-toggle">${checked ? "Added ✓" : full ? "Max 10" : "Add"}</span></label>`;
+      const planOnly = target.dynamic || target.category === "bstock";
+      const lenders = [...new Set(compatibleMarkets(target.id).map((market) => market.protocol))];
+      return `<label class="mkt create-cat-row ${checked ? "selected" : "off"}" title="${esc(targetStatus(target))}"><input type="checkbox" data-target="${esc(target.id)}" ${checked ? "checked" : ""} ${full && !checked ? "disabled" : ""} aria-label="${checked ? "Remove" : "Add"} ${esc(assetName(target))}"><span class="create-cat-asset"><b>${esc(target.symbol)}</b><small>${esc(assetName(target))} · ${target.category === "bstock" ? "bStock" : "Crypto"}${planOnly ? ` <em class="create-plan-tag">Plan only</em>` : ""}</small></span><span class="create-cat-liq">${target.accountingAsset ? "No swap" : esc(formatUsd(target.liquidity?.usd))}</span><span class="create-cat-lend">${lenders.length ? lenders.map((protocol) => `<span class="create-venue-chip">${venueLogo(protocol)}${esc(protocol)}</span>`).join("") : `<span class="create-cat-none">Hold only</span>`}</span><span class="asset-toggle">${checked ? "Added" : full ? "Max 10" : "Add"}</span></label>`;
     }).join("") || `<div class="allocation-empty">No target matches this filter.</div>`;
     $$('[data-target]').forEach((input) => input.addEventListener("change", () => {
       if (input.checked) {
@@ -540,7 +569,14 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       const poolFee = target.routeSelection?.fee ?? target.swap?.path?.[0]?.fee;
       const fee = Number.isFinite(poolFee) ? `${poolFee / 10000}% fee` : "fee unavailable";
       const pool = target.routeSelection?.poolAddress || target.swap?.poolAddress;
-      return `<div class="launch-leg create-selected-leg" data-selected="${esc(id)}"><div class="create-leg-identity"><b>${esc(assetName(target))}</b><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(target.symbol)} · ${esc(targetStatus(target))}</small></div><label class="field create-leg-weight"><span>Strategy weight</span><div class="suffix"><input data-weight="${esc(id)}" value="${selected.weightBps / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} strategy weight"><b>%</b></div></label><label class="field create-leg-cap"><span>Investment limit</span><div class="suffix"><input data-cap="${esc(id)}" value="${(selected.capBps ?? 7000) / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} investment limit"><b>% NAV</b></div></label><button type="button" class="rm" data-remove="${esc(id)}" aria-label="Remove ${esc(assetName(target))}">×</button><details class="create-leg-details"><summary>Route details</summary><span title="${esc(target.address)}">CA ${esc(shortAddress(target.address))}</span><span>${target.accountingAsset ? "No swap or pool-liquidity requirement; exact lending-market checks still apply." : `${routing} · ${esc(fee)} · ${formatUsd(target.liquidity?.usd)} TVL · ${esc(routeName(target))}`}</span>${pool ? `<span title="${esc(pool)}">Pool ${esc(shortAddress(pool))}</span>` : ""}</details></div>`;
+      const markets = compatibleMarkets(id);
+      const protocolCount = markets.reduce((counts, market) => ({ ...counts, [market.protocol]: (counts[market.protocol] || 0) + 1 }), {});
+      const sits = [...(target.accountingAsset ? [] : [{ id: "", name: "Hold", logo: '<span class="create-hold-ic" aria-hidden="true"></span>', aria: "Hold in vault" }]), ...markets.map((market) => {
+        const apy = S.yieldTools?.currentRate(S.yieldSnapshot, market);
+        return { id: market.id, name: protocolCount[market.protocol] > 1 ? market.label : market.protocol, logo: venueLogo(market.protocol), rate: apy == null ? "" : formatApy(apy), aria: `${market.protocol} · ${market.label}` };
+      })];
+      const where = `<div class="create-sits" role="radiogroup" aria-label="Where ${esc(displayName(target))} sits">${sits.map((option) => `<button type="button" role="radio" aria-checked="${selected.marketId === option.id}" data-sits-target="${esc(id)}" data-sits-market="${esc(option.id)}" aria-label="${esc(option.aria)}" title="${esc(option.aria)}">${option.logo}<span>${esc(option.name)}</span>${option.rate ? `<small>${esc(option.rate)}</small>` : ""}</button>`).join("")}</div>`;
+      return `<div class="launch-leg create-selected-leg" data-selected="${esc(id)}"><div class="create-leg-identity"><b>${esc(target.symbol)}</b><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(assetName(target))}${target.dynamic || target.category === "bstock" ? " · plan only" : ""}</small></div>${where}<label class="field create-leg-weight"><span>Strategy weight</span><div class="suffix"><input data-weight="${esc(id)}" value="${selected.weightBps / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} strategy weight"><b>%</b></div></label><label class="field create-leg-cap"><span>Investment limit</span><div class="suffix"><input data-cap="${esc(id)}" value="${(selected.capBps ?? 7000) / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} investment limit"><b>%</b></div></label><button type="button" class="rm" data-remove="${esc(id)}" aria-label="Remove ${esc(assetName(target))}">×</button><details class="create-leg-details"><summary>Route details</summary><span title="${esc(target.address)}">CA ${esc(shortAddress(target.address))}</span><span>${target.accountingAsset ? "No swap or pool-liquidity requirement; exact lending-market checks still apply." : `${routing} · ${esc(fee)} · ${formatUsd(target.liquidity?.usd)} TVL · ${esc(routeName(target))}`}</span>${pool ? `<span title="${esc(pool)}">Pool ${esc(shortAddress(pool))}</span>` : ""}</details></div>`;
     });
     $("#selected-list").innerHTML = rows.join("") || `<div class="allocation-empty">Select at least one crypto or bStock target.</div>`;
     $$('[data-cap]').forEach((input) => input.addEventListener("input", () => {
@@ -553,6 +589,14 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       S.selected.get(input.dataset.weight).weightBps = Math.round(num(input.value) * 100);
       S.forkPassed = false;
       refresh();
+    }));
+    $$('[data-sits-target]').forEach((button) => button.addEventListener("click", () => {
+      const row = S.selected.get(button.dataset.sitsTarget);
+      if (!row || row.marketId === button.dataset.sitsMarket) return;
+      row.marketId = button.dataset.sitsMarket;
+      S.forkPassed = false;
+      draw();
+      $(`[data-sits-target="${CSS.escape(button.dataset.sitsTarget)}"][aria-checked="true"]`)?.focus();
     }));
     $$('[data-remove]').forEach((button) => button.addEventListener("click", () => {
       S.selected.delete(button.dataset.remove);
@@ -615,6 +659,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     $$('[data-market]').forEach((select) => select.addEventListener("change", () => {
       S.selected.get(select.dataset.market).marketId = select.value;
       S.forkPassed = false;
+      drawSelected();
       drawPostPurchase();
       refresh();
     }));
@@ -825,11 +870,14 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     });
     $$('[data-cap]').forEach((input) => input.setAttribute("aria-invalid", String(!Number.isInteger(S.selected.get(input.dataset.cap).capBps) || capTotal > 9500)));
     $$('[data-weight]').forEach((input) => input.setAttribute("aria-invalid", String(total !== 10000 || !(S.selected.get(input.dataset.weight).weightBps > 0))));
-    $("#create-summary-positions").innerHTML = S.registry ? [...S.selected.entries()].map(([id, row]) => {
+    $("#create-summary-positions").innerHTML = (S.registry ? [...S.selected.entries()].map(([id, row]) => {
       const target = S.registry.targets.find((candidate) => candidate.id === id);
       const market = compatibleMarkets(id).find((candidate) => candidate.id === row.marketId);
-      return `<div class="create-summary-position"><span><b>${esc(displayName(target))}</b><small>${market ? venueLogo(market.protocol) : ""}${esc(market?.label || "Hold in vault")}</small></span><span><small>Limit / Weight</small><b>${Number.isFinite(row.capBps) ? row.capBps / 100 : "—"}% / ${Number.isFinite(row.weightBps) ? row.weightBps / 100 : "—"}%</b></span></div>`;
-    }).join("") || `<p class="fine">Choose assets to build your vault summary.</p>` : "";
+      return `<div class="create-summary-position"><b>${esc(target.symbol)}</b><span>${market ? venueLogo(market.protocol) : ""}${esc(market ? `${market.protocol} · ${market.kind === "supply-market" ? "lending" : "vault"}` : "Held in the vault")}</span><span title="Limit / strategy weight">${Number.isFinite(row.capBps) ? row.capBps / 100 : "—"}%</span></div>`;
+    }).join("") : "") || `<p class="fine">Choose assets to build your vault summary.</p>`;
+    const SHADES = ["#16222D", "#2B4254", "#4E6A7F", "#6F93AE", "#8297A8", "#B7CDDE"];
+    const legs = [...S.selected.entries()].map(([id, row], index) => ({ id, cap: Number.isFinite(row.capBps) ? row.capBps / 100 : 0, shade: SHADES[index % SHADES.length] }));
+    $("#caps-meter").innerHTML = `<div class="create-caps-bar">${legs.map((leg) => `<i style="width:${Math.min(100, leg.cap)}%;background:${leg.shade}" title="${esc(S.registry?.targets.find((t) => t.id === leg.id)?.symbol || "")} ${leg.cap}%"></i>`).join("")}<span class="create-caps-floor"></span></div><div class="create-caps-labels"><span class="${capTotal > 9500 ? "bad" : ""}">Caps ${capLabel} of 95%</span><span>At least 5% stays in cash</span></div>`;
     const planLabel = S.mode === "agent-managed" ? "Agent-managed" : S.mode === "lump-sum" ? "Buy once · plan" : "Accumulate · plan";
     $("#summary-mode").textContent = planLabel;
     $("#s-plan").textContent = $("#rebalance-on").checked ? `${planLabel} + rebalance` : planLabel;
@@ -1201,7 +1249,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       const number = Number(link.dataset.createStep);
       link.classList.toggle("active", number === activeStep);
       if (number === activeStep) link.setAttribute("aria-current", "step"); else link.removeAttribute("aria-current");
-      link.querySelector(".step-number").textContent = number < activeStep ? "✓" : number;
+      link.querySelector(".step-number").textContent = number < activeStep ? "✓" : String(number).padStart(2, "0");
       link.classList.toggle("completed", number < activeStep);
     });
     if (scroll) $("#toc").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
@@ -1367,7 +1415,12 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     const names = source.positions.map((position) => `${position.symbol} → ${position.marketLabel}`);
     $("#mandate-sentence").textContent = names.length ? `${value.name || "This vault"} may buy ${names.join("; ")}. New investments must respect these limits; retain unused USDT as idle cash.` : "Choose assets in step 1, then select each destination in step 2.";
     $("#mandate-caps").innerHTML = source.positions.map((position) => `<div><span>${esc(position.symbol)} → ${esc(position.marketLabel)} (≤ ${Number.isFinite(position.capBps) ? position.capBps / 100 : "—"}%)</span></div>`).join("") || "Choose assets and destinations.";
-    $("#mandate-idle").textContent = Number.isFinite(total) ? `At least ${Math.max(0, 100 - total / 100)}%` : "Check investment limits";
+    $("#mandate-idle").textContent = Number.isFinite(total) ? `At least ${+Math.max(0, 100 - total / 100).toFixed(2)}%` : "Check investment limits";
+    $("#sheet-name").textContent = value.name || "Untitled vault";
+    $("#sheet-symbol").textContent = value.symbol || "—";
+    const feeValid = Number.isInteger(value.performanceFeeBps) && value.performanceFeeBps >= 0 && value.performanceFeeBps <= 3000;
+    $("#summary-fee").textContent = feeValid ? `${fee}% total` : "Check fee";
+    $("#summary-creator").textContent = feeValid ? `${(fee * .9).toFixed(1)}%` : "—";
     $("#mandate-fee-summary").textContent = Number.isFinite(fee) ? `${fee}% total · ${(fee * .9).toFixed(2)}% creator + ${(fee * .1).toFixed(2)}% protocol` : "Check total fee";
     const reason = !source.positions.length ? "Choose crypto or bStocks to start your design."
       : binding?.matched ? "Your complete asset and destination selection has a reviewed execution configuration. Wallet and live checks are still required."
@@ -1460,18 +1513,18 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
   }
   refresh(); init();
 })();
-d:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
-e:"$Sreact.suspense"
-10:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
-12:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
-14:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
-9:X
-0:{"P":null,"c":["","create",""],"q":"","i":false,"f":[[["",{"children":["create",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3xmnei7e_wm6l.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"create-page","html":"$5","runtimeVersion":"bafc4d2a1858","script":"$6","pageKey":"create"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"5lVjwHepox-HQCt8SW38e"}
-7:["$","script","script-0",{"src":"/_next/static/chunks/385-yp1j_rtq1.js","async":true,"nonce":"$undefined"}]
-8:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
-a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],null]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3xmnei7e_wm6l.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
-9:C
-11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-f:null
-13:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L14","5",{}]]
+e:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+f:"$Sreact.suspense"
+11:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+15:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+a:X
+0:{"P":null,"c":["","create",""],"q":"","i":false,"f":[[["",{"children":["create",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1o7c7c9rfe0xd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}],["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"create-page","html":"$5","masthead":"$6","runtimeVersion":"3c3a98f9a13e","script":"$7","pageKey":"create"}],["$L8"],"$L9"]}],{},null,false,null]},null,false,"$a"]},null,false,null],"$Lb",false]],"m":"$undefined","G":["$c",["$Ld"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"L0YU6Dip7clv6r_F-jcVY"}
+8:["$","script","script-0",{"src":"/_next/static/chunks/3s596fk-cvsyr.js","async":true,"nonce":"$undefined"}]
+9:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
+b:["$","$1","h",{"children":[null,["$","$L11",null,{"children":"$L12"}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$f",null,{"name":"Next.Metadata","children":"$L14"}]}]}],null]}]
+d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1o7c7c9rfe0xd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+a:C
+12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+10:null
+14:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L15","5",{}]]

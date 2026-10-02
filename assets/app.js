@@ -700,6 +700,8 @@
           <span class="header-status header-status-mobile" title="Prototype · Deployment pending">${status.replace('<span class="header-status-more"> · Deployment pending</span>', "")}</span>
         </div>
       </header>`;
+    // The web build pre-renders a default masthead so the first paint has navigation; swap it in the same task.
+    $("header.masthead[data-bav-ssr]")?.remove();
     document.body.prepend(...top.children);
     const foot = document.createElement("div");
     foot.innerHTML = footerHTML();
