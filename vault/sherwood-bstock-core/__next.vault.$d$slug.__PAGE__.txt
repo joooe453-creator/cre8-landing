@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
 2:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/385-yp1j_rtq1.js"],"PrototypePage"]
-3:T1bc8,
+3:T1bc9,
 <section class="vhead">
   <div class="wrap">
-    <a class="vault-back" href="https://app.cre8.finance/vault/">← All vaults</a>
+    <a class="vault-back" href="https://app.cre8.finance/vaults/">← All vaults</a>
     <div class="vault-heading">
       <div class="tags" id="v-tags"></div>
       <h1 id="v-name"></h1>
@@ -741,7 +741,7 @@
 8:X
 f:X
 f:C
-0:{"buildId":"x3Ahm6BOtGM7tBM7LOlgD","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"has-mcta vault-page","html":"$3","runtimeVersion":"e1848c9fefb8","script":"$4","pageKey":"vault"}],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$8","varyParams":"$f"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
+0:{"buildId":"_JB-wfxOxlSnwTkx6HI0N","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"has-mcta vault-page","html":"$3","runtimeVersion":"0136498e32f3","script":"$4","pageKey":"vault"}],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$8","varyParams":"$f"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
 14:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
 15:"$Sreact.suspense"
 17:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
