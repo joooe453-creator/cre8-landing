@@ -1,4 +1,4 @@
-/* BNB Agent Vaults — shared data, shell and chart helpers (design prototype). */
+/* CRE8 — shared data, shell and chart helpers (design prototype). */
 (function () {
   "use strict";
 
@@ -438,7 +438,12 @@
   /* ------------------------------------------------------------------ */
   /* Graphics                                                            */
   /* ------------------------------------------------------------------ */
-  const SEAL = `<span class="brand-seal" aria-hidden="true"><i></i></span>`;
+  const brandLogo = (background = "dark") => {
+    const file = `cre8-on-${background === "light" ? "light" : "dark"}.svg`;
+    const src = STATIC_PREVIEW ? `assets/logos/${file}` : `${BASE_PATH}/logos/${file}`;
+    return `<img class="brand-logo" src="${src}" alt="CRE8" width="224" height="112">`;
+  };
+  const SEAL = brandLogo();
 
   function logo(key, cls = "") {
     const v = VENUES.find((x) => x.id === key || x.name === key);
@@ -678,7 +683,7 @@
     top.innerHTML = `
       <header class="masthead app-masthead" data-bav-shell>
         <div class="wrap">
-          <a class="brand" href="${route()}">${SEAL}<span class="brand-name">BNB Agent Vaults</span></a>
+          <a class="brand" href="${route()}" aria-label="CRE8 home">${SEAL}</a>
           <nav class="nav" aria-label="Main navigation">${nav.map(([h, l]) => `<a href="${route(h.replace(".html", ""))}" class="${active === h ? "active" : ""}" ${active === h ? 'aria-current="page"' : ""}>${l}</a>`).join("")}</nav>
           <div class="head-right">
             <span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled.">${status}</span>
@@ -702,15 +707,15 @@
   function footerHTML() {
     if (document.body.classList.contains("landing-page")) {
       return `<footer class="footer landing-footer" id="contracts" data-bav-shell><div class="wrap landing-footer-grid">
-        <div><strong>BNB Agent Vaults</strong><span>Prototype. Unaudited. No live vaults. All performance shown is simulated.</span></div>
+        <div><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a><span>Prototype. Unaudited. No live vaults. All performance shown is simulated.</span></div>
         <div><strong>Product</strong><a href="${route("vaults")}">Vaults</a><a href="${route("create")}">Open a vault</a><a href="${route("portfolio")}">Portfolio</a></div>
         <div><strong>Agents</strong><a href="#mcp">MCP / Skill</a><a href="${assetUrl("skill.md")}">Download skill</a></div>
         <div><strong>Contracts &amp; security</strong><span>Addresses published after verified deployment</span><span>Independent audit: not yet</span></div>
       </div></footer>`;
     }
     return `<footer class="footer app-footer" data-bav-shell><div class="wrap app-footer-row">
-      <strong>BNB Agent Vaults</strong><a href="${route("#how")}">Product</a><a href="${route("#mcp")}">MCP / Skill</a><a href="${route("#contracts")}">Contracts &amp; security</a><span class="ft-note">Prototype · Unaudited · Not deployed</span>
-    </div><details class="wrap footer-legal"><summary>Important information</summary><p>BNB Agent Vaults is a prototype. Smart contracts have not received an independent audit and are not deployed to BNB Smart Chain mainnet. Example vaults, managers, balances and performance figures are simulated and do not represent real assets or results. Public supply-rate snapshots show their own source and timestamp.</p><p>Mandate limits reduce, but do not eliminate, risk. Depositors remain exposed to market, oracle, smart-contract, counterparty and liquidity risk, and may lose some or all of their capital. Annualized figures restate past returns, not a forecast or APY. Nothing on this site is investment advice or an offer to sell any security.</p></details></footer>`;
+      <a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a><a href="${route("#how")}">Product</a><a href="${route("#mcp")}">MCP / Skill</a><a href="${route("#contracts")}">Contracts &amp; security</a><span class="ft-note">Prototype · Unaudited · Not deployed</span>
+    </div><details class="wrap footer-legal"><summary>Important information</summary><p>CRE8 is a prototype. Smart contracts have not received an independent audit and are not deployed to BNB Smart Chain mainnet. Example vaults, managers, balances and performance figures are simulated and do not represent real assets or results. Public supply-rate snapshots show their own source and timestamp.</p><p>Mandate limits reduce, but do not eliminate, risk. Depositors remain exposed to market, oracle, smart-contract, counterparty and liquidity risk, and may lose some or all of their capital. Annualized figures restate past returns, not a forecast or APY. Nothing on this site is investment advice or an offer to sell any security.</p></details></footer>`;
   }
 
   function wireShell() {
@@ -769,7 +774,7 @@
     platformFeeForRisk, feeBreakdown,
     $, $$, esc, fmt, perf, periodDays, historyTag, riskMeter, statusTag,
     rng, hexAddr, short, navSeries, sparkline, lineChart, logo, agentCanvas, stackTables,
-    shell, footerHTML, wireShell, toast, SEAL, route, assetUrl, DEMO_OWNER, demo,
+    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, DEMO_OWNER, demo,
     vault: (slug) => VAULTS.find((v) => v.slug === slug),
   };
 })();

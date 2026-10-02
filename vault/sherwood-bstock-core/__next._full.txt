@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
 2:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
 3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
-4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/1snr1y__-1i0h.js"],"PrototypePage"]
+4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/385-yp1j_rtq1.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
-:HL["/_next/static/chunks/13u1gglp0teg6.css","style"]
+:HL["/_next/static/chunks/24xxl5hxaf6pq.css","style"]
 5:T1bc8,
 <section class="vhead">
   <div class="wrap">
@@ -112,7 +112,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
 <div class="mobile-cta"><button class="btn" data-go="sub">Deposit</button><button class="btn ghost" data-go="red">Redeem</button></div>
 
 
-6:T127d6,
+6:T127be,
 (function () {
   const { $, $$, esc, fmt, perf, riskMeter, statusTag, historyTag, navSeries, lineChart, hexAddr, short, ASSETS, SLOTS, toast, demo, logo, CATALOG: C, vaultMarkets, vaultRisk, managerLabel, rulesLabel, platformFeeForRisk, feeBreakdown } = BAV;
   BAV.shell("vaults.html");
@@ -140,7 +140,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
   const addressView = address => /^0x[0-9a-f]{40}$/i.test(String(address)) ? `<button class="vault-address" type="button" data-copy-address="${esc(address)}" title="${esc(address)} · click to copy">${short(address)} <span aria-hidden="true">⧉</span></button>` : esc(address || "Unavailable");
   const marketRows = () => v.rules.flatMap((r) => C.ruleMarkets(r).map((m) => ({ r, m, cap: C.allocationCap(r, m.id) })));
   const BNB_USD = 758.28;
-  document.title = v.name + " — BNB Agent Vaults";
+  document.title = v.name + " — CRE8";
   const A = v.asset;
   const money = (n) => fmt.n(n, A === "BNB" ? 4 : 2) + " " + A;
   const toUsd = (x) => (A === "BNB" ? x * BNB_USD : x);
@@ -580,7 +580,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     if (!live) return;
     $("#chart").closest(".panel").hidden = true;
     drawActualPositions(live);
-    if (live.name) { $("#v-name").textContent = live.name; $("#c-name").textContent = live.name; document.title = live.name + " — BNB Agent Vaults"; }
+    if (live.name) { $("#v-name").textContent = live.name; $("#c-name").textContent = live.name; document.title = live.name + " — CRE8"; }
     if (live.symbol) v.symbol = live.symbol;
     $("#v-strat").textContent = "Current mandate and terms read from the verified deployment. Historical performance is unavailable; no example curve is substituted.";
     $("#v-manager").innerHTML = `Managed by ${addressView(live.owner)} · Agent-managed`;
@@ -748,12 +748,12 @@ e:"$Sreact.suspense"
 12:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
 14:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
 9:X
-0:{"P":null,"c":["","vault","sherwood-bstock-core",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","sherwood-bstock-core","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/13u1gglp0teg6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","runtimeVersion":"951cedb030bb","script":"$6","pageKey":"vault"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"lFrHfxOfq_GxQoSIIk9Wy"}
-7:["$","script","script-0",{"src":"/_next/static/chunks/1snr1y__-1i0h.js","async":true,"nonce":"$undefined"}]
+0:{"P":null,"c":["","vault","sherwood-bstock-core",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","sherwood-bstock-core","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/24xxl5hxaf6pq.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","runtimeVersion":"fbe628d1f9a3","script":"$6","pageKey":"vault"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"yV8yJD5SZl7RJeqLIGv6P"}
+7:["$","script","script-0",{"src":"/_next/static/chunks/385-yp1j_rtq1.js","async":true,"nonce":"$undefined"}]
 8:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],null]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/13u1gglp0teg6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/24xxl5hxaf6pq.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 9:C
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 f:null
-13:[["$","title","0",{"children":"Cre8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/favicon.svg"}],["$","link","4",{"rel":"icon","href":"/favicon.svg"}],["$","$L14","5",{}]]
+13:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L14","5",{}]]
