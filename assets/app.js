@@ -700,9 +700,15 @@
           <span class="header-status header-status-mobile" title="Prototype · Deployment pending">${status.replace('<span class="header-status-more"> · Deployment pending</span>', "")}</span>
         </div>
       </header>`;
-    // The web build pre-renders a default masthead so the first paint has navigation; swap it in the same task.
-    $("header.masthead[data-bav-ssr]")?.remove();
-    document.body.prepend(...top.children);
+    // The web build pre-renders a default masthead so the first paint has navigation. Keep that element and
+    // give it the live contents in the same task: a page-switch view transition tracks it, and replacing the
+    // element would cut that transition short.
+    const header = top.firstElementChild, prerendered = $("header.masthead[data-bav-ssr]");
+    if (prerendered) {
+      prerendered.removeAttribute("data-bav-ssr");
+      prerendered.className = header.className;
+      prerendered.replaceChildren(...header.childNodes);
+    } else document.body.prepend(header);
     const foot = document.createElement("div");
     foot.innerHTML = footerHTML();
     document.body.append(...foot.children);
@@ -787,7 +793,46 @@
     return `${v.buyPlan ? `${v.buyPlan} · ` : ""}${operations} target${operations === 1 ? "" : "s"} · ${CATALOG.capTxt(allocated)} max deployed`;
   };
 
+  /* Motion, as in the demo: chart lines draw in, panels slide, figures a visitor changes flip. All of it
+     respects reduced motion and only restyles; nothing waits on an animation. */
+  const reduceMotion = () => !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  function drawLine(root) {
+    const path = root?.querySelector(".cline"), area = root?.querySelector(".area"), dot = root?.querySelector(".dot");
+    if (!path || reduceMotion() || typeof path.getTotalLength !== "function") return;
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = length; path.style.strokeDashoffset = length;
+    [area, dot].forEach((part) => { if (part) part.style.opacity = 0; });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      path.style.transition = "stroke-dashoffset .9s cubic-bezier(.45,.05,.25,1)"; path.style.strokeDashoffset = 0;
+      if (area) { area.style.transition = "opacity .6s .4s"; area.style.opacity = 1; }
+      if (dot) { dot.style.transition = "opacity .3s .8s"; dot.style.opacity = 1; }
+    }));
+  }
+  // Replays a one-shot CSS animation class; a run already in progress is left to finish.
+  function replay(element, className) {
+    if (!element || reduceMotion() || element.classList.contains(className)) return;
+    element.classList.add(className);
+    const done = () => element.classList.remove(className);
+    element.addEventListener("animationend", done, { once: true });
+    setTimeout(done, 1200);
+  }
+  let lastAction = 0;
+  ["input", "change", "click", "keydown"].forEach((type) => document.addEventListener(type, () => { lastAction = performance.now(); }, true));
+  // Flips a figure when the visitor's own action changes it, never on load or a background refresh.
+  function flipOnChange(elements) {
+    const watched = elements.filter(Boolean), seen = new Map(watched.map((element) => [element, element.textContent]));
+    const observer = new MutationObserver(() => watched.forEach((element) => {
+      const text = element.textContent;
+      if (text === seen.get(element)) return;
+      seen.set(element, text);
+      if (performance.now() - lastAction < 1500) replay(element, "bav-flip");
+    }));
+    watched.forEach((element) => observer.observe(element, { childList: true, characterData: true, subtree: true }));
+    return () => observer.disconnect();
+  }
+
   window.BAV = {
+    drawLine, replay, flipOnChange,
     TODAY, DAY, SLOTS, ASSETS, VENUES, VAULTS, CATALOG, vaultMarkets, vaultVenues, vaultRisk, managerLabel, rulesLabel,
     platformFeeForRisk, feeBreakdown,
     $, $$, esc, fmt, perf, periodDays, historyTag, riskMeter, statusTag,

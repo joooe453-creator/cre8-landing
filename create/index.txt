@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
 2:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
 3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
-4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/3s596fk-cvsyr.js"],"PrototypePage"]
+4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/20jdmf5u-rp38.js"],"PrototypePage"]
 c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
-:HL["/_next/static/chunks/3m2oijzl-gjxt.css","style"]
+:HL["/_next/static/chunks/038qmyfidl9kk.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap","style"]
 5:T5ab8,
 <section class="page-head create-hero">
@@ -197,7 +197,7 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
 
 
 
-6:T4b8,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><img class="brand-logo" src="/logos/cre8-on-light.svg?v=5ff1de84" alt="CRE8" width="224" height="112"></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="" >Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="active" aria-current="page">Open a vault</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><button class="btn sm header-wallet" data-demo>Connect wallet</button></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>7:T184c9,
+6:T4b8,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><img class="brand-logo" src="/logos/cre8-on-light.svg?v=5ff1de84" alt="CRE8" width="224" height="112"></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="" >Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="active" aria-current="page">Open a vault</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><button class="btn sm header-wallet" data-demo>Connect wallet</button></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>7:T18775,
 (function () {
   "use strict";
   const { $, $$, esc, toast, DEMO_OWNER, hexAddr } = BAV;
@@ -571,8 +571,11 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     }));
   }
 
+  let drawnLegs = null;
   function drawSelected() {
     if (!S.registry) return;
+    const added = drawnLegs ? [...S.selected.keys()].filter((id) => !drawnLegs.has(id)) : [];
+    drawnLegs = new Set(S.selected.keys());
     const rows = [...S.selected.entries()].map(([id, selected]) => {
       const target = S.registry.targets.find((candidate) => candidate.id === id);
       const routing = target.routeSelection?.mode === "pinned-pool" ? "Pinned pool" : "Best route";
@@ -589,6 +592,7 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       return `<div class="launch-leg create-selected-leg" data-selected="${esc(id)}"><div class="create-leg-identity"><b>${esc(target.symbol)}</b><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(assetName(target))}${target.dynamic || target.category === "bstock" ? " · plan only" : ""}</small></div>${where}<label class="field create-leg-cap"><span>Investment limit</span><div class="suffix"><input data-cap="${esc(id)}" value="${(selected.capBps ?? 7000) / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} investment limit"><b>%</b></div></label><button type="button" class="rm" data-remove="${esc(id)}" aria-label="Remove ${esc(assetName(target))}">×</button><details class="create-leg-details"><summary>Weight <b data-weight-label="${esc(id)}">${selected.weightBps / 100}%</b> · route</summary><label class="field create-leg-weight"><span>Strategy weight</span><div class="suffix"><input data-weight="${esc(id)}" value="${selected.weightBps / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} strategy weight"><b>%</b></div></label><span title="${esc(target.address)}">CA ${esc(shortAddress(target.address))}</span><span>${target.accountingAsset ? "No swap or pool-liquidity requirement; exact lending-market checks still apply." : `${routing} · ${esc(fee)} · ${formatUsd(target.liquidity?.usd)} TVL · ${esc(routeName(target))}`}</span>${pool ? `<span title="${esc(pool)}">Pool ${esc(shortAddress(pool))}</span>` : ""}</details></div>`;
     });
     $("#selected-list").innerHTML = rows.join("") || `<div class="allocation-empty">Select at least one crypto or bStock target.</div>`;
+    added.forEach((id) => BAV.replay($$('[data-selected]').find((leg) => leg.dataset.selected === id), "bav-row-in"));
     $$('[data-cap]').forEach((input) => input.addEventListener("input", () => {
       const value = input.value.trim();
       S.selected.get(input.dataset.cap).capBps = /^\d+(?:\.\d{1,2})?$/.test(value) ? Math.round(Number(value) * 100) : NaN;
@@ -1255,7 +1259,9 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
 
   let activeStep = 1;
   const requestedStep = Number(new URLSearchParams(window.location.search).get("step") || window.location.hash.match(/^#s-([1-4])$/)?.[1]);
+  let stepsShown = false;
   function setStep(step, scroll = false) {
+    const previousStep = activeStep;
     activeStep = Math.min(4, Math.max(1, step));
     $$('[data-create-panel]').forEach((panel) => {
       panel.hidden = Number(panel.dataset.createPanel) !== activeStep;
@@ -1271,6 +1277,8 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       link.querySelector(".step-number").textContent = number < activeStep ? "✓" : String(number).padStart(2, "0");
       link.classList.toggle("completed", number < activeStep);
     });
+    if (stepsShown && previousStep !== activeStep) BAV.replay($(`#s-${activeStep}`), activeStep > previousStep ? "bav-in-r" : "bav-in-l");
+    stepsShown = true;
     if (scroll) $("#toc").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
   }
   $$('[data-create-step]').forEach((link) => link.addEventListener("click", (event) => { event.preventDefault(); setStep(Number(link.dataset.createStep)); }));
@@ -1286,6 +1294,7 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
   $("#fee-slider").addEventListener("input", () => { $("#pf").value = $("#fee-slider").value; $("#pf").dispatchEvent(new Event("input", { bubbles: true })); });
   $("#pf").addEventListener("input", () => { if (Number.isFinite(num($("#pf").value))) $("#fee-slider").value = $("#pf").value; });
   setStep([1, 2, 3, 4].includes(requestedStep) ? requestedStep : 1);
+  BAV.flipOnChange(["#selected-count", "#summary-limit-total", "#summary-cash", "#summary-fee", "#summary-creator", "#summary-mode", "#fee-you"].map((selector) => $(selector)));
   validate();
   function validate() { refresh(); }
 })();
@@ -1540,11 +1549,11 @@ f:"$Sreact.suspense"
 13:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
 15:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
 a:X
-0:{"P":null,"c":["","create",""],"q":"","i":false,"f":[[["",{"children":["create",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3m2oijzl-gjxt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}],["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"create-page","html":"$5","masthead":"$6","runtimeVersion":"3c3a98f9a13e","script":"$7","pageKey":"create"}],["$L8"],"$L9"]}],{},null,false,null]},null,false,"$a"]},null,false,null],"$Lb",false]],"m":"$undefined","G":["$c",["$Ld"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"S4O5WPRwRrU1d6sWstO1f"}
-8:["$","script","script-0",{"src":"/_next/static/chunks/3s596fk-cvsyr.js","async":true,"nonce":"$undefined"}]
+0:{"P":null,"c":["","create",""],"q":"","i":false,"f":[[["",{"children":["create",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/038qmyfidl9kk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}],["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-parsed\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"create-page","html":"$5","masthead":"$6","runtimeVersion":"6947d0e9fc85","script":"$7","pageKey":"create"}],["$L8"],"$L9"]}],{},null,false,null]},null,false,"$a"]},null,false,null],"$Lb",false]],"m":"$undefined","G":["$c",["$Ld"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"bzuaO1PAilbUsF6eBzYqL"}
+8:["$","script","script-0",{"src":"/_next/static/chunks/20jdmf5u-rp38.js","async":true,"nonce":"$undefined"}]
 9:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
 b:["$","$1","h",{"children":[null,["$","$L11",null,{"children":"$L12"}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$f",null,{"name":"Next.Metadata","children":"$L14"}]}]}],null]}]
-d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3m2oijzl-gjxt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/038qmyfidl9kk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 a:C
 12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 10:null
