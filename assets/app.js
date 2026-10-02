@@ -709,7 +709,7 @@
     if (document.body.classList.contains("landing-page")) {
       return `<footer class="footer landing-footer" id="contracts" data-bav-shell><div class="wrap landing-footer-grid">
         <div><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a><span>Prototype. Unaudited. No live vaults. All performance shown is simulated.</span></div>
-        <div><strong>Product</strong><a href="${route("vaults")}">Vaults</a><a href="${route("create")}">Open a vault</a><a href="${route("portfolio")}">Portfolio</a></div>
+        <div><strong>Product</strong><a href="${route("vault")}">Vaults</a><a href="${route("create")}">Open a vault</a><a href="${route("portfolio")}">Portfolio</a></div>
         <div><strong>Agents</strong><a href="#mcp">MCP / Skill</a><a href="${assetUrl("skill.md")}">Download skill</a></div>
         <div><strong>Contracts &amp; security</strong><span>Addresses published after verified deployment</span><span>Independent audit: not yet</span></div>
       </div></footer>`;
