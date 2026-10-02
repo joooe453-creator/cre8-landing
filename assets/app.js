@@ -438,7 +438,7 @@
   /* ------------------------------------------------------------------ */
   /* Graphics                                                            */
   /* ------------------------------------------------------------------ */
-  const brandLogo = (background = "dark") => {
+  const brandLogo = (background = "light") => {
     const file = `cre8-on-${background === "light" ? "light" : "dark"}.svg`;
     const src = STATIC_PREVIEW ? `assets/logos/${file}` : `${BASE_PATH}/logos/${file}`;
     return `<img class="brand-logo" src="${src}" alt="CRE8" width="224" height="112">`;
@@ -636,12 +636,12 @@
       el.innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.label || "Chart")}">
         <line x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="var(--line)" stroke-width="1"/>
         ${g}
-        <defs><linearGradient id="navfill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#AFC5DA" stop-opacity=".16"/><stop offset="1" stop-color="#AFC5DA" stop-opacity="0"/></linearGradient></defs>
+        <defs><linearGradient id="navfill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--ice)" stop-opacity=".16"/><stop offset="1" stop-color="var(--ice)" stop-opacity="0"/></linearGradient></defs>
         <path d="${area}" fill="url(#navfill)"/>
         <path d="${line}" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
         <circle cx="${x(pts.length - 1)}" cy="${ly}" r="4" fill="var(--gold)" stroke="var(--card)" stroke-width="2"/>
         <rect x="${W - m.r + 4}" y="${ly - 10}" width="${m.r - 4}" height="20" rx="4" fill="var(--gold)"/>
-        <text x="${W - m.r + 10}" y="${ly + 4}" style="fill:#FFFFFF;font-weight:600">${last.v.toFixed(dec)}</text>
+        <text x="${W - m.r + 10}" y="${ly + 4}" style="fill:var(--cre8-snow);font-weight:600">${last.v.toFixed(dec)}</text>
         <g class="hover" style="display:none"><line y1="${m.t}" y2="${H - m.b}" stroke="var(--ink-2)" stroke-width="1"/><circle r="5" fill="var(--gold)" stroke="var(--card)" stroke-width="2"/></g>
         <rect x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent" class="hit"/>
       </svg><div class="tip"></div>`;
@@ -655,7 +655,7 @@
         $("line", hov).setAttribute("x1", px); $("line", hov).setAttribute("x2", px);
         $("circle", hov).setAttribute("cx", px); $("circle", hov).setAttribute("cy", py);
         const chg = (pts[i].v / pts[0].v - 1) * 100;
-        tip.innerHTML = `<div class="d">${fmt.date(pts[i].t)}</div><b>${pts[i].v.toFixed(4)}</b> Share value &nbsp;<span style="color:#DCE6EE">${fmt.pct(chg)}</span>`;
+        tip.innerHTML = `<div class="d">${fmt.date(pts[i].t)}</div><b>${pts[i].v.toFixed(4)}</b> Share value &nbsp;<span style="color:var(--cre8-frost)">${fmt.pct(chg)}</span>`;
         tip.style.left = Math.min(Math.max(px, 90), W - 90) + "px";
         tip.style.top = py + "px";
         tip.style.opacity = 1;
