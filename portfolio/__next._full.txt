@@ -3,82 +3,108 @@
 3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
 4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/3s596fk-cvsyr.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
-:HL["/_next/static/chunks/1o7c7c9rfe0xd.css","style"]
+:HL["/_next/static/chunks/3m2oijzl-gjxt.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap","style"]
-5:T4b8,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><img class="brand-logo" src="/logos/cre8-on-light.svg?v=5ff1de84" alt="CRE8" width="224" height="112"></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="" >Vaults</a><a href="https://app.cre8.finance/portfolio/" class="active" aria-current="page">Portfolio</a><a href="https://app.cre8.finance/create/" class="" >Open a vault</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><button class="btn sm header-wallet" data-demo>Connect wallet</button></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>6:T1f38,
+5:T4b8,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><img class="brand-logo" src="/logos/cre8-on-light.svg?v=5ff1de84" alt="CRE8" width="224" height="112"></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="" >Vaults</a><a href="https://app.cre8.finance/portfolio/" class="active" aria-current="page">Portfolio</a><a href="https://app.cre8.finance/create/" class="" >Open a vault</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><button class="btn sm header-wallet" data-demo>Connect wallet</button></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>6:T2b0a,
 (function () {
   const { $, $$, esc, fmt } = BAV;
   BAV.shell("portfolio.html");
   const query = new URLSearchParams(location.search);
   const preview = query.get("preview") || query.get("walletState");
-  // This remains the repository's original read-only example, not a wallet ledger.
-  const sample = { vault: BAV.vault("sherwood-usdt"), shares: 1000 };
-  const SHADES = ["#16222D", "#2B4254", "#4E6A7F", "#6F93AE", "#8297A8", "#B7CDDE"];
-  let state = ["loading", "empty", "connected", "partial", "example", "disconnected"].includes(preview) ? preview : "disconnected";
-  const kpi = (label, value, note, cls = "") => `<div><dt>${label}</dt><dd class="${cls}">${value}</dd>${note ? `<span class="dk-note ${cls}">${note}</span>` : ""}</div>`;
+  // Read-only example account built from the simulated vault records; it is never a wallet ledger.
+  const HOLD = [{ slug: "sherwood-bstock-core", shares: 3000, cost: 3050 }, { slug: "sherwood-crypto-accumulator", shares: 1250.43, cost: 1300 }, { slug: "mag7-rotation", shares: 800, cost: 820 }];
+  const MANAGED = { slug: "nvda-dca", deposit: 100 };
+  const SHADES = ["#16222D", "#2B4254", "#4E6A7F", "#6F93AE", "#8297A8", "#B7CDDE", "#3C5A70"];
+  const DAY = 864e5;
+  let state = ["loading", "empty", "connected", "partial", "example", "disconnected"].includes(preview) ? preview : "example";
+  const n2 = (value) => fmt.n(value, 2);
+  const signed = (value) => (value >= 0 ? "+" : "−") + n2(Math.abs(value));
+  const tone = (value) => value > 0 ? "pos" : value < 0 ? "neg" : "";
+  const compact = (value) => value >= 1e6 ? `${(value / 1e6).toFixed(2)}M` : value >= 1e3 ? `${(value / 1e3).toFixed(1)}K` : n2(value);
+  const day = (time) => new Date(time).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
   function render() {
     const data = ["example", "connected", "partial"].includes(state), partial = state === "partial";
-    const tag = $("#portfolio-tag"); tag.hidden = !data && !preview;
-    tag.textContent = `[ ${data ? state === "example" ? "Example portfolio · Simulated" : "Design preview · Simulated balances" : "Design preview"} ]`;
-    $("#portfolio-meta").textContent = data ? (state === "example" ? "Read-only example account" : "Design preview wallet") : "Your vault shares, their estimated value, and what you can redeem.";
+    $("#portfolio-tag").textContent = `[ ${data ? state === "example" ? "Example portfolio" : "Design preview · Simulated balances" : "Design preview"} ]`;
+    $("#portfolio-tag").hidden = !data && !preview;
+    $("#portfolio-meta").innerHTML = data ? `${state === "example" ? "Example account" : "Design preview wallet"} · <button type="button" class="dk-inline-link" id="portfolio-own">Connect a wallet to see yours</button>` : "Your vault shares, their estimated value, and what you can redeem.";
+    $("#portfolio-own")?.addEventListener("click", () => BAV.toast("Portfolio aggregation is unavailable. Open a configured vault’s detail page to connect and read actual shares."));
     const content = $("#portfolio-content");
     if (state === "disconnected") {
       content.innerHTML = `<section class="dk-empty portfolio-connect"><div><h2>Connect a wallet to see your shares</h2><p>Live portfolio aggregation is not connected yet. View an example, or read actual wallet shares on a configured vault’s detail page.</p></div><div class="dk-actions portfolio-connect-actions"><button class="btn" id="portfolio-connect">Connect wallet</button><button class="btn ghost" id="portfolio-example">View example portfolio</button></div></section>`;
       $("#portfolio-connect").addEventListener("click", () => BAV.toast("Portfolio aggregation is unavailable. Open a configured vault’s detail page to connect and read actual shares."));
       $("#portfolio-example").addEventListener("click", () => { state = "example"; render(); });
-    } else if (state === "loading") {
+      return;
+    }
+    if (state === "loading") {
       content.innerHTML = `<section class="dk-loading" aria-busy="true" aria-label="Loading portfolio design preview"><dl class="dk-kpis">${Array.from({ length: 4 }, () => `<div><dt><span class="dk-skel" style="width:60%"></span></dt><dd><span class="dk-skel" style="height:30px;width:80%"></span></dd></div>`).join("")}</dl><div class="dk-sec"><h2>Holdings</h2>${Array.from({ length: 3 }, () => `<span class="dk-skel" style="height:44px"></span>`).join("")}</div></section>`;
-    } else if (state === "empty") {
+      return;
+    }
+    if (state === "empty") {
       content.innerHTML = `<section class="dk-empty portfolio-empty"><div><h2>No vault shares in this wallet</h2><p>Design preview of an empty portfolio. When live aggregation is connected, your shares and estimated value will appear here.</p></div><div class="dk-actions"><a class="btn" href="${BAV.route("vaults")}">Browse vaults</a></div></section>`;
-    } else {
-      const v = sample.vault, value = sample.shares * v.sharePrice;
-      const shareValue = partial ? "Unavailable" : v.sharePrice.toFixed(4), estimated = partial ? "Unavailable" : fmt.n(value, 2);
-      const href = BAV.route("vault/" + v.slug), redeemHref = href + (href.includes("?") ? "&" : "?") + "tab=redeem";
-      const under = (v.positions || []).map((pos, i) => ({ label: pos.loc, venue: pos.p === "Idle" ? "Cash in the vault" : pos.p, w: pos.w, shade: SHADES[i % SHADES.length] }));
-      content.innerHTML = `<dl class="dk-kpis portfolio-kpis">
-        ${kpi("Estimated value, USDT", estimated, partial ? "Partial data · 1 vault excluded" : "Shares × simulated share value", partial ? "caution" : "")}
-        ${kpi("Vaults held", "1", "Read-only depositor example")}
-        ${kpi("Unlocked shares", fmt.n(sample.shares, 2), "Illustrative · no wallet balance")}
-        ${kpi("Creator locked seed", "—", "Not part of this example")}
+      return;
+    }
+    // In the partial design state the last holding's share value could not be read; it is excluded from totals.
+    const rows = HOLD.map((h, index) => { const v = BAV.vault(h.slug); const known = !(partial && index === HOLD.length - 1); return { h, v, known, value: known ? h.shares * v.sharePrice : null }; }).filter((row) => row.v);
+    const counted = rows.filter((row) => row.known);
+    const total = counted.reduce((sum, row) => sum + row.value, 0), cost = counted.reduce((sum, row) => sum + row.h.cost, 0), pnl = total - cost;
+    const look = {};
+    counted.forEach((row) => (row.v.positions || []).forEach((pos) => { const key = pos.p === "Idle" ? "USDT" : pos.loc; look[key] = (look[key] || 0) + row.value * pos.w / 100; }));
+    const lookList = Object.entries(look).sort((a, b) => b[1] - a[1]);
+    const top = lookList.slice(0, 6), rest = lookList.slice(6).reduce((sum, item) => sum + item[1], 0);
+    if (rest > 0) top.push(["Other", rest]);
+    const managed = BAV.vault(MANAGED.slug);
+    const opened = Date.UTC(2026, 9, 2) - (managed?.runtimeDays || 0) * DAY;
+    const earned = managed && managed.returns.ALL != null ? managed.tvl * managed.returns.ALL / 100 * managed.fees.perf / 100 * .9 : null;
+    const activity = [
+      ...rows.map((row, index) => [Date.UTC(2026, 9, 2) - (8 + index * 13) * DAY, "Deposit", row.v.name, `${n2(row.h.cost)} USDT`]),
+      ...(managed ? [[opened, "Opened vault", managed.name, `${n2(MANAGED.deposit)} USDT`]] : []),
+    ].sort((a, b) => b[0] - a[0]);
+    content.innerHTML = `<dl class="dk-kpis portfolio-kpis">
+        <div><dt>Net value, USDT</dt><dd class="${partial ? "caution" : ""}">${n2(total)}</dd></div>
+        <div><dt>Unrealized P&amp;L, USDT</dt><dd class="${tone(pnl)}">${signed(pnl)}</dd></div>
+        <div><dt>Return on cost</dt><dd class="${tone(pnl)}">${fmt.pct(cost ? pnl / cost * 100 : 0)}</dd></div>
+        <div><dt>Vaults held</dt><dd>${rows.length}</dd></div>
       </dl>
-      <section class="dk-sec portfolio-holdings" id="hold" aria-label="Read-only example holdings"><h2>Holdings</h2>
-        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Vault</th><th class="num dk-hide-sm">Shares</th><th class="num dk-hide-sm">Share value</th><th class="num">Est. value, USDT</th><th class="dk-hide-sm">Status</th><th class="num"></th></tr></thead><tbody>
-          <tr data-href="${esc(href)}"><td><span class="nm">${esc(v.name)}</span><span class="mg">Depositor · ${esc(v.asset)}</span></td>
-            <td class="num big dk-hide-sm">${fmt.n(sample.shares, 2)}</td>
-            <td class="num big dk-hide-sm ${partial ? "caution" : ""}">${shareValue}</td>
-            <td class="num big ${partial ? "caution" : ""}">${estimated}</td>
-            <td class="dk-hide-sm"><span class="dk-ntag">Unlocked</span><span class="mg">${partial ? "Price read failure · Design preview" : "Read-only · Simulated"}</span></td>
-            <td class="num"><div class="dk-links"><a href="${href}">View</a><a href="${redeemHref}">Redeem</a></div></td></tr>
+      ${partial ? `<p class="dk-fine caution portfolio-partial">Partial data · ${esc(rows[rows.length - 1].v.name)} share value couldn’t be read and is excluded from totals.</p>` : ""}
+      <section class="dk-sec portfolio-holdings" id="hold" aria-label="Holdings"><h2>Holdings</h2>
+        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Vault</th><th class="num dk-hide-md">Shares</th><th class="num dk-hide-md">Share value</th><th class="num">Value, USDT</th><th class="num dk-hide-sm">Cost</th><th class="num">P&amp;L</th><th class="dk-hide-md">Weight</th></tr></thead><tbody>
+          ${rows.map((row) => { const href = BAV.route("vault/" + row.v.slug), gain = row.known ? row.value - row.h.cost : null, weight = row.known && total ? row.value / total * 100 : null; return `<tr data-href="${esc(href)}" tabindex="0" aria-label="Open ${esc(row.v.name)}"><td><span class="nm">${esc(row.v.name)}</span><span class="mg">${esc(row.v.manager)}</span></td>
+            <td class="num mono dk-hide-md">${n2(row.h.shares)}</td><td class="num mono dk-hide-md ${row.known ? "" : "caution"}">${row.known ? row.v.sharePrice.toFixed(4) : "Unavailable"}</td>
+            <td class="num big ${row.known ? "" : "caution"}">${row.known ? n2(row.value) : "Unavailable"}</td><td class="num mono dk-hide-sm">${n2(row.h.cost)}</td>
+            <td class="num big ${gain == null ? "" : tone(gain)}">${gain == null ? "—" : signed(gain)}</td>
+            <td class="dk-hide-md">${weight == null ? "—" : `<span class="dk-w"><b>${weight.toFixed(1)}%</b><i style="--w:${weight}%"></i></span>`}</td></tr>`; }).join("")}
         </tbody></table></div>
       </section>
       <div class="dk-split">
         <section class="dk-sec" aria-label="What you own underneath"><h2>What you own underneath</h2>
-          <div class="dk-stack" role="img" aria-label="Look-through exposure by position">${under.map((u) => `<i style="width:${u.w}%;background:${u.shade}" title="${esc(u.label)} ${u.w}%"></i>`).join("")}</div>
-          <table class="dk-legend"><tbody>${under.map((u) => `<tr><td><span class="sw" style="background:${u.shade}"></span>${esc(u.label)}<small>${esc(u.venue)}</small></td><td>${u.w}%</td><td class="${partial ? "caution" : ""}">${partial ? "Unavailable" : fmt.n(value * u.w / 100, 2)}</td></tr>`).join("")}</tbody></table>
+          <div class="dk-stack" role="img" aria-label="Look-through exposure by asset">${top.map(([label, value], index) => `<i style="width:${value / total * 100}%;background:${SHADES[index % SHADES.length]}" title="${esc(label)}"></i>`).join("")}</div>
+          <table class="dk-legend"><tbody>${top.map(([label, value], index) => `<tr><td><span class="sw" style="background:${SHADES[index % SHADES.length]}"></span><span class="mono">${esc(label)}</span></td><td>${(value / total * 100).toFixed(1)}%</td><td>${n2(value)}</td></tr>`).join("")}</tbody></table>
         </section>
-        <section class="dk-sec portfolio-attention" aria-label="Needs attention"><h2>Needs attention</h2>
+        <section class="dk-sec portfolio-attention" aria-label="Rule changes"><h2>Rule changes</h2>
           <ul class="dk-notices">
-            <li><div class="top"><span class="nf">${esc(v.name)}</span><span class="dk-ntag warn">Not deployed</span></div><span class="ch">Transactions need a verified deployment. This example cannot be redeemed.</span><a class="when" href="${href}">View vault →</a></li>
-            ${partial ? `<li><div class="top"><span class="nf">${esc(v.name)}</span><span class="dk-ntag caution">Data unavailable</span></div><span class="ch">Design preview: share value could not be read. Excluded from totals until it loads.</span><a class="when" href="${href}">View vault →</a></li>` : ""}
+            ${rows.filter((row) => row.v.pendingChange).map((row) => `<li><div class="top"><span class="nf">${esc(row.v.name)}</span><span class="dk-ntag warn">Pending · 24h notice</span></div><span class="ch">${esc(row.v.pendingChange.what || "Investment limit")} ${row.v.pendingChange.from ?? "—"}% → ${row.v.pendingChange.to ?? "—"}%</span></li>`).join("") || `<li><div class="top"><span class="nf">No pending changes</span><span class="dk-ntag">All vaults</span></div><span class="when">Tightening a limit is immediate · loosening waits 24h</span></li>`}
+            <li><div class="top"><span class="nf">Not deployed</span><span class="dk-ntag warn">Preview</span></div><span class="when">Shares can’t be redeemed until a verified deployment exists</span></li>
           </ul>
         </section>
       </div>
-      <section class="dk-sec portfolio-exit-rules" aria-label="When you leave"><h2>When you leave</h2>
-        <dl class="dk-rows">
-          <div><dt>Cash redeem</dt><dd>Receive your proportional slice converted to USDT, subject to your minimum received and deadline. If the route or minimum cannot be met, the transaction reverts.</dd></div>
-          <div><dt>In kind</dt><dd>Receive your slice of tokens and lending receipts. You manage their subsequent redemption and market risk.</dd></div>
-          <div><dt>Raising a limit</dt><dd>A higher investment limit must be announced on chain and wait at least 24 hours.</dd></div>
-          <div><dt>Locks</dt><dd>Only creator seed shares have a 90-day lock; ordinary deposits do not.</dd></div>
-        </dl>
-      </section>
-      <p class="dk-fine portfolio-explanation">Estimated value = shares × share value. It is not a guaranteed exit amount. Unknown values are shown as unavailable and excluded from totals rather than counted as zero. This is the repository’s read-only example, not your wallet balance. Cost basis, transaction history, pending changes and seed unlock dates aren’t shown — no figures are invented here.</p>`;
-      $$("tr[data-href]", content).forEach((tr) => tr.addEventListener("click", (event) => { if (!event.target.closest("a")) location.href = tr.dataset.href; }));
-    }
+      ${managed ? `<section class="dk-sec" aria-label="Vaults you manage"><h2>Vaults you manage</h2>
+        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Vault</th><th class="num">Vault size</th><th class="num dk-hide-sm">Your deposit</th><th class="num dk-hide-md">Unlocks</th><th class="num">Fees earned</th></tr></thead><tbody>
+          <tr data-href="${esc(BAV.route("vault/" + managed.slug))}" tabindex="0" aria-label="Open ${esc(managed.name)}"><td><span class="nm">${esc(managed.name)}</span><span class="mg">Performance fee ${managed.fees.perf}%</span></td><td class="num big">${compact(managed.tvl)}</td><td class="num mono dk-hide-sm">${n2(MANAGED.deposit)} USDT</td><td class="num mono dk-hide-md">${day(opened + 90 * DAY)}</td><td class="num big ${earned ? "pos" : ""}">${earned == null ? "—" : `${n2(earned)} USDT`}</td></tr>
+        </tbody></table></div></section>` : ""}
+      <section class="dk-sec" aria-label="Activity"><h2>Activity</h2>
+        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Date</th><th>Action</th><th class="dk-hide-sm">Vault</th><th class="num">Amount</th></tr></thead><tbody>
+          ${activity.map(([time, action, name, amount]) => `<tr><td class="mono">${day(time)}</td><td>${esc(action)}</td><td class="dk-hide-sm">${esc(name)}</td><td class="num mono">${amount}</td></tr>`).join("")}
+        </tbody></table></div></section>
+      <p class="dk-fine portfolio-explanation">Values at simulated share prices · Example account, not a wallet balance · Vaults are not deployed, so nothing here can be redeemed yet.</p>`;
+    $$("tr[data-href]", content).forEach((tr) => {
+      tr.addEventListener("click", () => { location.href = tr.dataset.href; });
+      tr.addEventListener("keydown", (event) => { if (event.key === "Enter") location.href = tr.dataset.href; });
+    });
   }
   render();
 })();
 9:X
-0:{"P":null,"c":["","portfolio",""],"q":"","i":false,"f":[[["",{"children":["portfolio",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1o7c7c9rfe0xd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}],["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"portfolio-page","html":"\n<section class=\"portfolio-hero\"><div class=\"wrap\"><div class=\"dk-head\"><div><h1 class=\"dk-h1\">Portfolio</h1><p class=\"dk-meta\" id=\"portfolio-meta\">Your vault shares, their estimated value, and what you can redeem.</p></div><span class=\"dk-label\" id=\"portfolio-tag\" hidden></span></div></div></section>\n<main class=\"portfolio-main\" id=\"portfolio-content\" aria-live=\"polite\"></main>\n\n\n","masthead":"$5","runtimeVersion":"3c3a98f9a13e","script":"$6","pageKey":"portfolio"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"L0YU6Dip7clv6r_F-jcVY"}
+0:{"P":null,"c":["","portfolio",""],"q":"","i":false,"f":[[["",{"children":["portfolio",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3m2oijzl-gjxt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}],["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"portfolio-page","html":"\n<section class=\"portfolio-hero\"><div class=\"wrap\"><div class=\"dk-head\"><div><h1 class=\"dk-h1\">Portfolio</h1><p class=\"dk-meta\" id=\"portfolio-meta\">Example account</p></div><span class=\"dk-label\" id=\"portfolio-tag\">[ Example portfolio ]</span></div></div></section>\n<main class=\"portfolio-main\" id=\"portfolio-content\" aria-live=\"polite\"></main>\n\n\n","masthead":"$5","runtimeVersion":"3c3a98f9a13e","script":"$6","pageKey":"portfolio"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"S4O5WPRwRrU1d6sWstO1f"}
 d:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
 e:"$Sreact.suspense"
 10:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
@@ -86,7 +112,7 @@ e:"$Sreact.suspense"
 7:["$","script","script-0",{"src":"/_next/static/chunks/3s596fk-cvsyr.js","async":true,"nonce":"$undefined"}]
 8:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],null]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1o7c7c9rfe0xd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3m2oijzl-gjxt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 9:C
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 14:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]

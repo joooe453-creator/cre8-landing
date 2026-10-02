@@ -3,9 +3,9 @@
 3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
 4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/3s596fk-cvsyr.js"],"PrototypePage"]
 c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
-:HL["/_next/static/chunks/1o7c7c9rfe0xd.css","style"]
+:HL["/_next/static/chunks/3m2oijzl-gjxt.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap","style"]
-5:T1f2a,
+5:T1f7b,
 <main class="wrap vault-content">
   <div class="vgrid">
     <div class="main">
@@ -13,40 +13,34 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
         <header class="vhead">
           <a class="vault-back" href="https://app.cre8.finance/vaults/">← All vaults</a>
           <div class="vault-heading">
-            <div class="tags" id="v-tags"></div>
             <h1 id="v-name"></h1>
             <p class="vault-manager" id="v-manager"></p>
-            <p class="strat" id="v-strat"></p>
+            <p class="strat dk-sr" id="v-strat"></p>
             <span id="c-name" hidden></span>
             <dl class="vault-strip" id="v-strip"></dl>
-            <div class="vault-head-actions"><button type="button" class="btn ghost" id="pros-open">Fund prospectus</button><button type="button" class="pros-alert" id="pros-alert" hidden>Rule change pending</button></div>
+            <div class="vault-head-actions"><button type="button" class="btn ghost" id="pros-open">Fund prospectus</button><button type="button" class="pros-alert" id="pros-alert" hidden>Rule change pending</button><div class="tags" id="v-tags"></div></div>
           </div>
         </header>
         <dl class="keyfig dk-kpis" id="keyfig"></dl>
-        <p class="vault-data-note" id="vault-data-note"></p>
         <div class="vault-banner hide" id="vault-banner" role="status"></div>
       </div>
       <section class="panel vault-performance">
         <div class="vault-chart-top">
-          <div class="vault-chart-drop"><span id="p-drop-label"></span> <b id="p-drop"></b><span class="tag sim">Simulated</span></div>
+          <p class="vault-chart-drop"><span id="p-drop-label"></span> <b id="p-drop"></b></p>
           <div class="seg" id="p-period"><button data-v="7D">7D</button><button class="on" data-v="30D">30D</button><button data-v="90D">90D</button><button data-v="ALL">All</button></div>
         </div>
         <div class="chart" id="chart"></div>
-        <div class="chart-foot"><span id="p-range-start"></span><span id="p-range-end"></span></div>
-        <p class="fine" id="p-src"></p><span id="p-range" hidden></span>
+        <div class="chart-foot" hidden><span id="p-range-start"></span><span id="p-range-end"></span></div>
+        <p class="dk-sr" id="p-src"></p><span id="p-range" hidden></span>
+        <p class="vault-data-note" id="vault-data-note"></p>
         <details class="vault-details"><summary>View all performance periods</summary>
           <div class="perf-comparison" id="perf-tbl"><div class="perf-periods" id="perf-periods"></div></div>
           <p class="fine">Prototype return = simulated share value(t₁) ÷ simulated share value(t₀) − 1 after modeled fees. These figures are not live on-chain results or an advertised APR.</p>
         </details>
       </section>
       <section class="vault-allocation dk-sec">
-        <header><h2>Where the money is</h2><span class="label" hidden>Manifest · simulated vault value</span></header>
-        <div class="dk-wrap"><table class="dk-table vault-where"><thead><tr><th>Asset</th><th>Current weight</th><th class="num">Limit</th><th>Venue</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
-        <p class="fine vault-info" id="allocation-note"></p>
-        <details class="vault-details"><summary>Exact market capital budgets</summary>
-          <div class="alloc-bar" id="alloc-bar" role="img"></div>
-          <div id="alloc-tbl"><div class="allocation-budget-rows" id="allocation-budget-rows"></div></div>
-        </details>
+        <header><h2>Where the money is</h2></header>
+        <div class="dk-wrap"><table class="dk-table vault-where"><thead><tr><th>Asset</th><th>Current weight</th><th>Venue</th><th class="dk-hide-sm">Earns</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
       </section>
       <section class="panel vault-creator-controls hide" id="creator-controls">
         <div class="panel-h"><h3>Creator controls</h3><span class="tag">P1 extension · visible to manager only</span></div>
@@ -59,7 +53,7 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     </div>
     <aside class="side">
       <section class="panel ticket" id="ticket">
-        <div class="tabs" role="tablist"><button class="on" data-t="sub" role="tab">Deposit</button><button data-t="red" role="tab">Redeem</button></div>
+        <div class="tabs" role="tablist"><button class="on" data-t="sub" role="tab">Deposit</button><button data-t="red" role="tab">Withdraw</button></div>
         <div class="panel-b" id="ticket-body"></div>
       </section>
     </aside>
@@ -68,7 +62,7 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
 <div class="pros-scrim" id="pros-scrim"></div>
 <aside class="pros-drawer" id="pros" role="dialog" aria-modal="true" aria-labelledby="pros-title" inert>
   <header class="pros-head"><div><p class="label">[ Fund prospectus ]</p><h2 id="pros-title">Fund prospectus</h2></div><button type="button" class="pros-x" id="pros-close" aria-label="Close the prospectus">×</button></header>
-  <nav class="pros-toc" id="pros-toc" aria-label="Prospectus sections"><a href="#ps-mandate">Mandate</a><a href="#ps-positions">Positions</a><a href="#ps-fees">Fees &amp; terms</a><a href="#ps-rules">Rule changes</a><a href="#ps-identity">Contracts</a></nav>
+  <nav class="pros-toc" id="pros-toc" aria-label="Prospectus sections"><a href="#ps-mandate">Mandate</a><a href="#ps-limits">Limits</a><a href="#ps-positions">Positions</a><a href="#ps-fees">Fees &amp; terms</a><a href="#ps-rules">Rule changes</a><a href="#ps-identity">Contracts</a></nav>
   <div class="pros-body" id="pros-body">
       <section id="ps-mandate" class="panel pros-sec vault-mandate">
         <div class="panel-h"><h3>Investment mandate</h3><span class="tag">Manifest · simulated</span></div>
@@ -81,6 +75,14 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
             <ul class="rules" id="rules"></ul>
             <div class="ai-sum"><span class="tag sim">AI summary · not binding</span><div id="ai"></div></div>
           </details>
+        </div>
+      </section>
+      <section id="ps-limits" class="panel pros-sec vault-allocation-limits">
+        <div class="panel-h"><h3>Limits</h3><span class="label">Manifest · simulated vault value</span></div>
+        <div class="panel-b">
+          <div class="alloc-bar" id="alloc-bar" role="img"></div>
+          <div id="alloc-tbl"><div class="allocation-budget-rows" id="allocation-budget-rows"></div></div>
+          <p class="fine vault-info" id="allocation-note"></p>
         </div>
       </section>
       <section id="ps-positions" class="panel pros-sec vault-positions">
@@ -113,11 +115,11 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       </section>
   </div>
 </aside>
-<div class="mobile-cta"><button class="btn" data-go="sub">Deposit</button><button class="btn ghost" data-go="red">Redeem</button></div>
+<div class="mobile-cta"><button class="btn" data-go="sub">Deposit</button><button class="btn ghost" data-go="red">Withdraw</button></div>
 
 
 
-6:T4b8,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><img class="brand-logo" src="/logos/cre8-on-light.svg?v=5ff1de84" alt="CRE8" width="224" height="112"></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="active" aria-current="page">Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="" >Open a vault</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><button class="btn sm header-wallet" data-demo>Connect wallet</button></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>7:T13a03,
+6:T4b8,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><img class="brand-logo" src="/logos/cre8-on-light.svg?v=5ff1de84" alt="CRE8" width="224" height="112"></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="active" aria-current="page">Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="" >Open a vault</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><button class="btn sm header-wallet" data-demo>Connect wallet</button></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>7:T13d5d,
 (function () {
   const { $, $$, esc, fmt, perf, riskMeter, statusTag, historyTag, navSeries, lineChart, hexAddr, short, ASSETS, SLOTS, toast, demo, logo, CATALOG: C, vaultMarkets, vaultRisk, managerLabel, rulesLabel, platformFeeForRisk, feeBreakdown } = BAV;
   BAV.shell("vaults.html");
@@ -159,7 +161,7 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
   const nameWords = v.name.trim().split(/\s+/);
   $("#v-name").innerHTML = nameWords.length > 1 ? `${esc(nameWords.slice(0, -1).join(" "))} <span class="fog">${esc(nameWords[nameWords.length - 1])}</span>` : esc(v.name);
   $("#v-strat").textContent = v.strategy;
-  $("#v-manager").innerHTML = `Managed by <strong>${esc(v.manager)}</strong> · ${human ? "Human-managed" : `Agent-managed · ERC-8004 #${esc(v.agentId)}`} · ${esc(A)}`;
+  $("#v-manager").innerHTML = `${esc(v.manager)} · ${human ? "Human-managed" : `ERC-8004 agent #${esc(v.agentId)}`} · ${esc(A)} · ${fixed(v.followers, 0)} depositors`;
   function drawTags() {
     const state = unavailable() ? "Data unavailable" : previewState === "paused" ? "Paused · loss guard" : previewState === "stale" ? "NAV stale" : planning ? "Configuration required" : "Active (simulated)";
     $("#v-tags").innerHTML = `<span class="tag vault-identity-chip">${planning ? "Planning only" : "Simulated"} · Not deployed</span><span class="tag ${previewState === "paused" || previewState === "stale" || planning ? "warn" : unavailable() ? "neg" : "pos"}">${state}</span><span class="tag accounting-chip">Accounting asset · ${esc(A)}</span>${copy ? `<span class="tag warn">Follows ${esc(copy.name)}</span>` : ""}`;
@@ -179,12 +181,11 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     const compact = (n) => n >= 1e6 ? fixed(n / 1e6, 2) + "M" : n >= 1e4 ? fixed(n / 1e3, 1) + "K" : fixed(n, 0);
     // Return cells are filled by drawPerf so they follow the selected period.
     $("#keyfig").innerHTML = `
-      <div><dt>Vault value (NAV)</dt><dd>${na ? "Unavailable" : `${compact(v.tvl)}<small>${esc(A)}</small>`}</dd></div>
+      <div><dt>Vault size</dt><dd>${na ? "Unavailable" : `${compact(v.tvl)}<small>${esc(A)}</small>`}</dd></div>
       <div><dt id="p-sub"></dt><dd id="p-big"></dd></div>
-      <div><dt>Share value, ${esc(A)}</dt><dd>${na ? "Unavailable" : fixed(v.sharePrice, 4)}</dd></div>
-      <div><dt>Depositors</dt><dd>${na ? "—" : fixed(v.followers, 0)}</dd></div>`;
+      <div><dt>Share price, ${esc(A)}</dt><dd>${na ? "Unavailable" : fixed(v.sharePrice, 4)}</dd></div>`;
     $("#vault-data-note").className = `vault-data-note ${previewState === "stale" ? "warn" : ""}`;
-    $("#vault-data-note").textContent = na ? "Vault data couldn’t be read · values unavailable" : `${previewState === "stale" ? "NAV stale · " : ""}Simulated data · no live timestamp · ${v.runtimeDays} days of history · share value is not a guaranteed exit price`;
+    $("#vault-data-note").textContent = na ? "Vault data couldn’t be read · values unavailable" : `${previewState === "stale" ? "NAV stale · " : ""}Simulated · ${v.runtimeDays} days of history · no live timestamp`;
   }
   /* Demo strip: how it buys, what it holds, where it earns — all read from the vault's rules and positions. */
   function drawStrip() {
@@ -207,8 +208,8 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     const points = sliceFor(period), r = v.returns[period], label = period === "ALL" ? "All" : period;
     const complete = r != null && !unavailable();
     $("#p-big").innerHTML = complete ? `<span class="${fmt.cls(r)}">${fmt.pct(r)}</span>` : "—";
-    $("#p-sub").textContent = `Net return, ${period === "ALL" ? "since inception" : label}`;
-    $("#p-drop-label").textContent = `Max drop · ${label}`;
+    $("#p-sub").textContent = period === "ALL" ? "Return, since inception" : `Return, ${{ "7D": 7, "30D": 30, "90D": 90 }[period]} days`;
+    $("#p-drop-label").textContent = `Max drop ${label}`;
     $("#p-drop").textContent = complete ? fmt.pct(v.maxDrawdown[period]) : "—";
     $("#p-range-start").textContent = complete ? fmt.date(points[0].t) : "";
     $("#p-range-end").textContent = complete ? fmt.date(points[points.length - 1].t) : "";
@@ -219,14 +220,19 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
   };
   function drawVaultChart(points) {
     const values = points.map(point => point.v), low = Math.min(...values), high = Math.max(...values), padding = (high - low) * 0.15 || 0.001;
-    const coordinates = points.map((point, index) => `${index / Math.max(points.length - 1, 1) * 600},${190 - (point.v - low + padding) / (high - low + padding * 2) * 180}`);
-    $("#chart").innerHTML = `<svg viewBox="0 0 600 200" preserveAspectRatio="none" role="img" aria-label="${esc(v.name)} simulated share value"><line x1="0" y1="50" x2="600" y2="50" stroke="var(--ice)"/><line x1="0" y1="100" x2="600" y2="100" stroke="var(--ice)"/><line x1="0" y1="150" x2="600" y2="150" stroke="var(--ice)"/><polygon points="0,200 ${coordinates.join(" ")} 600,200" fill="var(--ice)" fill-opacity="0.45"/><polyline points="${coordinates.join(" ")}" fill="none" stroke="var(--mist)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg><div class="vault-chart-crosshair" hidden></div><div class="vault-chart-tooltip" hidden></div>`;
+    const W = 720, H = 250, L = 4, R = 64, T = 14, B = 30;
+    const x = (index) => L + index / Math.max(points.length - 1, 1) * (W - L - R), y = (value) => T + (high + padding - value) / (high - low + padding * 2) * (H - T - B);
+    const line = points.map((point, index) => `${index ? "L" : "M"}${x(index).toFixed(1)} ${y(point.v).toFixed(1)}`).join(" ");
+    const grid = [low, (low + high) / 2, high].map((value) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(value).toFixed(1)}" y2="${y(value).toFixed(1)}"/><text class="ax" x="${W - R + 10}" y="${(y(value) + 4).toFixed(1)}">${value.toFixed(4)}</text>`).join("");
+    const last = points[points.length - 1];
+    $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(v.name)} simulated share value"><defs><linearGradient id="vault-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--fog)" stop-opacity=".28"/><stop offset="1" stop-color="var(--fog)" stop-opacity="0"/></linearGradient></defs>${grid}<path d="${line} L${x(points.length - 1).toFixed(1)} ${H - B} L${x(0).toFixed(1)} ${H - B} Z" fill="url(#vault-chart-fill)"/><path class="cline" d="${line}"/><circle class="dot" r="4.5" cx="${x(points.length - 1).toFixed(1)}" cy="${y(last.v).toFixed(1)}"/><text class="ax" x="${L}" y="${H - 8}">${esc(fmt.date(points[0].t))}</text><text class="ax" x="${W - R}" y="${H - 8}" text-anchor="end">Today</text></svg><div class="vault-chart-crosshair" hidden></div><div class="vault-chart-tooltip" hidden></div>`;
     const showTooltip = event => {
       const clientX = event.touches?.[0]?.clientX ?? event.clientX;
       if (!Number.isFinite(clientX)) return;
-      const rect = $("#chart").getBoundingClientRect(), proportion = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width)), point = points[Math.round(proportion * (points.length - 1))];
+      const rect = $("#chart").getBoundingClientRect(), plot = (W - L - R) / W, proportion = Math.max(0, Math.min(1, ((clientX - rect.left) / rect.width - L / W) / plot)), point = points[Math.round(proportion * (points.length - 1))];
       const crosshair = $(".vault-chart-crosshair"), tooltip = $(".vault-chart-tooltip");
-      crosshair.hidden = tooltip.hidden = false; crosshair.style.left = proportion * 100 + "%"; tooltip.style.left = proportion * 100 + "%"; tooltip.style.transform = `translateX(${proportion > 0.7 ? "-105%" : "6px"})`;
+      const left = (L / W + proportion * plot) * 100;
+      crosshair.hidden = tooltip.hidden = false; crosshair.style.left = left + "%"; tooltip.style.left = left + "%"; tooltip.style.transform = `translateX(${proportion > 0.7 ? "-105%" : "6px"})`;
       tooltip.innerHTML = `<span>${fmt.date(point.t)}</span><strong>${fixed(point.v, 4)} ${esc(A)}</strong>`;
     };
     const hideTooltip = () => { if ($(".vault-chart-crosshair")) $(".vault-chart-crosshair").hidden = $(".vault-chart-tooltip").hidden = true; };
@@ -277,13 +283,15 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
   function drawAllocationLimits() {
     const rows = marketRows(), idle = C.minIdleAllocation(v.rules), actualIdle = v.positions.find(position => position.p === "Idle")?.w;
     const all = [...rows.map(({ m, r, cap }) => ({ name: `${C.ACTIONS[r.a].name} · ${C.label(m)}`, cap })), { name: v.continuous ? "Unallocated cap budget" : "Planned idle budget", cap: idle, idle: true }];
-    const weightCell = (current, cap) => `<span class="dk-w vault-weight"><b>${current == null ? "—" : fixed(current, 1) + "%"}</b><i style="--w:${current || 0}%">${cap == null ? "" : `<em style="left:${cap}%" title="Investment limit ${cap}%"></em>`}</i></span>`;
-    $("#allocation-rows").innerHTML = rows.map(({ m, r, cap }) => {
+    const weightCell = (current) => `<span class="dk-w vault-weight"><b>${current == null ? "—" : fixed(current, 1) + "%"}</b><i style="--w:${current || 0}%"></i></span>`;
+    $("#allocation-rows").innerHTML = rows.map(({ m, r }) => {
       const current = unavailable() ? null : currentForMarket(m);
-      const venue = r.a === "lend" ? `<span class="with-logo">${logo(m.venue)}${esc(C.VNAME[m.venue] || m.venue)} ${m.kind === "Vault" ? "vault" : "lending"}</span>` : `<span class="with-logo">${logo(m.venue)}Held · bought on ${esc(C.VNAME[m.venue] || m.venue)}</span>`;
-      const symbol = (m.tokens || []).join(" / ") || A, marketName = C.label(m);
-      return `<tr><td><strong class="mono">${esc(symbol)}</strong>${marketName !== symbol ? `<span class="mg">${esc(marketName)}</span>` : ""}</td><td>${weightCell(current, cap)}</td><td class="num mono">${cap}%</td><td>${venue}</td></tr>`;
-    }).join("") + `<tr class="idle"><td><strong class="mono">${esc(A)}</strong><span class="mg">Idle cash</span></td><td>${weightCell(unavailable() ? null : actualIdle ?? null, null)}</td><td class="num mono">${v.continuous ? "min 5%" : "plan"}</td><td>In the vault${v.continuous ? " · ≥ 5% after buys" : " · planned idle budget"}</td></tr>`;
+      const symbol = (m.tokens || []).join(" / ") || A;
+      const lend = r.a === "lend";
+      const venue = lend ? `<span class="with-logo">${logo(m.venue)}${esc(C.VNAME[m.venue] || m.venue)} ${m.kind === "Vault" ? "vault" : "lending"}</span>` : "In the vault";
+      const earns = `${esc(symbol)} price${lend && m.apy != null ? ` + ~${C.pct(m.apy)}/yr` : ""}`;
+      return `<tr><td class="mono"><strong>${esc(symbol)}</strong></td><td>${weightCell(current)}</td><td>${venue}</td><td class="dk-hide-sm vault-earns">${earns}</td></tr>`;
+    }).join("") + `<tr class="idle"><td class="mono"><strong>${esc(A)}</strong></td><td>${weightCell(unavailable() ? null : actualIdle ?? null)}</td><td>Cash</td><td class="dk-hide-sm vault-earns">—</td></tr>`;
     $("#allocation-note").textContent = v.continuous ? `Investment limits total ${C.capTxt(C.totalAllocation(v.rules))} of NAV (max 95%); the rest is unallocated cap budget. After any buy the vault must keep at least 5% cash. If prices push a position above its limit, nothing is force-sold — new buys are checked against all caps. Strategy weights are unavailable in this record.` : `Historical planning reference: operation limits total ${C.capTxt(C.totalAllocation(v.rules))}, with a ${C.capTxt(idle)} planned idle budget. These values do not enable deposits or execution. Strategy weights are unavailable in this record.`;
     $("#alloc-bar").innerHTML = all.map((x, i) => `<i style="width:${x.cap}%;background:${x.idle ? "var(--ice)" : "var(--mist)"}" title="${esc(x.name)} ${C.capTxt(x.cap)}"></i>`).join("");
     $("#alloc-bar").setAttribute("aria-label", all.map(x => `${x.name} ${C.capTxt(x.cap)}`).join(", "));
@@ -423,18 +431,20 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
         <p class="fine warn" id="amount-validation" role="alert" hidden></p>
         ${cash ? "" : '<div class="shares-percent"><button type="button" data-shares-pct="0.25">25%</button><button type="button" data-shares-pct="0.5">50%</button><button type="button" data-shares-pct="0.75">75%</button><button type="button" data-shares-pct="1">Max</button></div>'}
         ${!cash && Number(lockedShares) > 0 ? `<p class="fine">Locked creator seed: <strong>${esc(lockedShares)} shares</strong>${live?.seedUnlockAt ? " · unlocks " + new Date(live.seedUnlockAt * 1000).toLocaleString() : " · 90-day creator seed lock (simulated)"}</p>` : ""}
-        <dl class="kv ticket-estimates"><dt>${cash ? "Estimated shares" : "Indicative cash value"}</dt><dd id="est">${(requestedLive || ready) && !readable ? "Unavailable until verified" : kind ? "Tokens + receipts · no cash quote" : !ready && !unavailable() && example != null ? fixed(example) + (cash ? " shares" : " " + A) + " · example" : "Enter an amount"}</dd></dl>
+        <dl class="drows ticket-estimates"><div><dt>${cash ? "Shares received" : "Indicative cash value"}</dt><dd id="est">${(requestedLive || ready) && !readable ? "Unavailable until verified" : kind ? "Tokens + receipts · no cash quote" : !ready && !unavailable() && example != null ? "≈ " + fixed(example) + (cash ? " shares" : " " + A) : "Enter an amount"}</dd></div><div><dt>Share price</dt><dd>${live ? `${esc(displayNumber(live.pricePerShare))} ${esc(assetSymbol())}` : requestedLive || ready ? "Unavailable until verified" : unavailable() ? "Unavailable" : `${fixed(v.sharePrice, 4)} ${esc(A)}`}</dd></div><div><dt>Performance fee</dt><dd>${(requestedLive || ready) && !live ? "Unavailable until verified" : `${split.total}%`}</dd></div><div><dt>Other fees</dt><dd>None</dd></div></dl>
+        ${cash ? "" : `<div id="kind-fields" class="${kind ? "" : "hide"}"><span class="fine">Your proportional underlying tokens and receipts</span><div class="kind-receipts">${receiptRows}</div><label class="check"><input type="checkbox" id="kind-ack" ${ticketValues.ack ? "checked" : ""}><span>I’ll handle later swaps myself. Receipt tokens carry the original protocol’s risk, and token transfers can fail.</span></label></div>`}
+        <details class="ticket-more"><summary>Slippage, deadline &amp; terms</summary>
         <div class="ticket-minimum ${kind ? "hide" : ""}" id="minimum-field"><label for="minimum-received">Minimum ${cash ? "shares" : esc(assetSymbol())} received</label><input id="minimum-received" inputmode="decimal" ${kind ? "" : 'placeholder="0.00"'} value="${esc(minimumValue)}" ${kind ? "" : "required"}></div>
         <div class="ticket-deadline"><label for="quote-deadline">Deadline</label><select id="quote-deadline"><option value="2">2 min</option><option value="5">5 min</option><option value="10">10 min</option><option value="20">20 min</option><option value="30">30 min</option></select></div>
         <p class="fine">${cash ? "If you’d get fewer than the minimum shares or the deadline passes, the transaction reverts and nothing is deposited." : "Indicative value is an estimate, not a quote. Your proportional positions are unwound and swapped; costs fall on your share. Below minimum or a failed route reverts the whole cash transaction."}</p>
-        ${cash ? "" : `<div id="kind-fields" class="${kind ? "" : "hide"}"><span class="fine">Your proportional underlying tokens and receipts</span><div class="kind-receipts">${receiptRows}</div><label class="check"><input type="checkbox" id="kind-ack" ${ticketValues.ack ? "checked" : ""}><span>I’ll handle later swaps myself. Receipt tokens carry the original protocol’s risk, and token transfers can fail.</span></label></div>`}
         <div class="ticket-summary"><dl><dt>You ${cash ? "deposit" : "redeem"}</dt><dd>${cash ? esc(assetSymbol()) + " (accounting asset)" : kind ? "Tokens + receipts" : esc(assetSymbol()) + " cash"}</dd><dt>Mandate</dt><dd>${esc(mandateText)}</dd><dt>Performance fee</dt><dd>${esc(feeText)}</dd><dt>Data</dt><dd class="${live?.staleNav || previewState === "stale" || unavailable() ? "warn" : ""}">${live ? live.staleNav ? "Unavailable / stale" : "Verified on-chain read" : unavailable() ? "Unavailable" : previewState === "stale" ? "Stale · design state" : requestedLive || ready ? "Unavailable until verified" : "Simulated · timestamp unavailable"}</dd></dl></div>
+        <p class="fine ticket-caption">${cash ? "Browsing doesn’t need a wallet. Approval and deposit use separate signatures; an allowance reset may also be needed." : "Only creator seed shares lock for 90 days. A pause blocks new deposits; exit routes remain subject to external protocol status."}</p>
+        </details>
         <div id="preview-flow"></div>
         <div id="transaction-state" aria-live="polite"></div>
         <button type="button" class="btn block" id="wallet-connect" ${busy || requestedLive && !ready ? "disabled" : ""}>${account ? `Reconnect ${short(account)}` : previewWallet === "wrongNetwork" ? "Switch to BNB Chain" : previewConnected ? "Preview wallet connected" : "Connect wallet"}</button>
         <button type="submit" class="btn block" id="go" disabled>Deployment required</button>
-        ${!requestedLive && !ready ? `<button type="button" class="btn ghost block" id="preview-transaction">${previewFlow ? "Continue design preview" : "Preview transaction steps (design only)"}</button>` : ""}
-        <p class="fine ticket-caption">${cash ? "Browsing doesn’t need a wallet. Approval and deposit use separate signatures; an allowance reset may also be needed." : "Only creator seed shares lock for 90 days. A pause blocks new deposits; exit routes remain subject to external protocol status."}</p>
+        ${!requestedLive && !ready ? `<button type="button" class="link ticket-preview-link" id="preview-transaction">${previewFlow ? "Continue design preview" : "Preview transaction steps (design only)"}</button>` : ""}
         <div id="ticket-status" class="live-status fine" role="status" aria-live="polite">${ready ? account ? "Enter an amount to preview." : "A verified deployment is configured. Connect to read balances and terms." : "No verified vault deployment exists. Transactions are disabled; design previews do not sign, send funds, or change balances."}</div>
       </form>`;
     $("#quote-deadline").value = ticketValues.deadline;
@@ -461,6 +471,8 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       button.disabled = locked || !ready || !account || !live || amountRaw == null || amountRaw <= 0n || availableRaw == null || excess || (!kind && (live.staleNav || !quoted || minimumRaw == null || minimumRaw <= 0n));
       if ((cash && live?.paused) || (kind && !$("#kind-ack")?.checked)) button.disabled = true;
       button.textContent = pendingOperation() ? "Check submitted transaction" : busy ? "Check your wallet…" : !ready ? unavailable() ? "Data unavailable" : planning && !requestedLive ? "Not available — planning only" : cash && previewState === "paused" ? "Deposits paused" : !cash && !kind && previewState === "stale" ? "Cash redeem unavailable" : "Deployment required" : !account ? "Connect wallet first" : cash && live?.paused ? "Deposits paused" : !cash && availableRaw === 0n ? "No unlocked shares" : cash ? "Review & deposit" : kind ? "Review in-kind exit" : "Review & redeem";
+      // Like the demo, a visitor without a wallet sees one action: Connect wallet.
+      button.hidden = !account && !previewConnected && !pendingOperation() && !busy;
     };
     const updateQuote = async () => {
       if (controlsLocked()) return;
@@ -471,7 +483,7 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       $$("[data-redeem-mode]").forEach(b => b.classList.toggle("on", (b.dataset.redeemMode === "kind") === kind));
       if (!ready && !requestedLive && !unavailable() && /^\d+(?:\.\d+)?$/.test(amount) && Number(amount) > 0) {
         const example = cash ? Number(amount) / v.sharePrice : Number(amount) * v.sharePrice;
-        $("#est").textContent = kind ? "Tokens + receipts · no cash quote" : fixed(example) + (cash ? " shares" : " " + A) + " · example";
+        $("#est").textContent = kind ? "Tokens + receipts · no cash quote" : "≈ " + fixed(example) + (cash ? " shares" : " " + A);
         if (!kind) minimum.value = (example * 0.995).toFixed(4);
       }
       remember();
@@ -617,7 +629,7 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     const feeBps = live.performanceFeeBps;
     const protocolShareBps = live.protocolFeeShareBps;
     if (!template || !Array.isArray(capBps) || !Number.isInteger(feeBps) || protocolShareBps !== 1000 || !live.protocolFeeRecipient) { throw new Error("Live mandate or fee terms could not be verified. Signing remains unavailable."); }
-    $("#keyfig").innerHTML = `<div><div class="label">Vault value (NAV)</div><div class="v" title="${esc(live.totalAssets ?? "Unavailable")}">${displayNumber(live.totalAssets)}</div><div class="s">${esc(assetSymbol())} accounting value</div></div><div><div class="label">Share value</div><div class="v" title="${esc(live.pricePerShare ?? "Unavailable")}">${displayNumber(live.pricePerShare)}</div><div class="s">Not a guaranteed exit price</div></div><div><div class="label">Your shares</div><div class="v" title="${esc(live.shareBalance)}">${displayNumber(live.shareBalance)}</div><div class="s" title="${esc(live.maxRedeem)} unlocked shares">${displayNumber(live.maxRedeem)} unlocked shares</div></div><div><div class="label">Updated (block)</div><div class="v" title="Block ${live.blockNumber}">${live.blockNumber}</div><div class="s">${live.staleNav ? "Unavailable / stale · cash blocked" : "Verified on-chain read"}</div></div>`;
+    $("#keyfig").innerHTML = `<div><dt>Vault size, ${esc(assetSymbol())}</dt><dd title="${esc(live.totalAssets ?? "Unavailable")}">${displayNumber(live.totalAssets)}</dd></div><div><dt>Share price, ${esc(assetSymbol())}</dt><dd title="${esc(live.pricePerShare ?? "Unavailable")}">${displayNumber(live.pricePerShare)}</dd></div><div><dt title="${esc(live.maxRedeem)} unlocked shares">Your shares · ${displayNumber(live.maxRedeem)} unlocked</dt><dd title="${esc(live.shareBalance)}">${displayNumber(live.shareBalance)}</dd></div><div><dt>${live.staleNav ? "Stale · cash blocked" : "Verified · block"}</dt><dd title="Block ${live.blockNumber}">${live.blockNumber}</dd></div>`;
     drawFeeSummary(feeBps / 100);
     const marketName = (leg, index) => `${["PancakeSwap hold", "Venus supply", "Lista vault", "Aave supply"][leg.kind]} · market ${index + 1}`;
     const actualRows = template.legs.map((leg, index) => ({ name: marketName(leg, index), address: leg.kind === 0 ? leg.token : leg.market, cap: Number(capBps[index]) / 100, bps: Number(capBps[index]) }));
@@ -631,7 +643,7 @@ c:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       const maximum = !row.budget && navRaw != null ? decimal(navRaw * BigInt(row.bps) / 10000n, live.decimals) : null;
       return `<div><strong>${esc(row.name)}</strong>${addressView(row.address)}<span>${row.budget ? "Budget remainder" : "Limit"} ${row.cap}%</span><span ${maximum != null ? `title="${esc(maximum)} ${esc(assetSymbol())} maximum at current NAV"` : ""}>${row.budget ? `Separate from the ${minimumIdle}% minimum idle check after buys` : `${displayNumber(maximum)} ${esc(assetSymbol())} maximum at current NAV`}</span></div>`;
     }).join("");
-    $("#allocation-rows").innerHTML = actualRows.map(row => `<div class="vault-allocation-row"><div><strong>${esc(row.name)}</strong><span>Current unavailable · Limit ${row.cap}% · Weight unavailable</span></div><div class="vault-allocation-track"><b style="left:${row.cap}%"></b></div></div>`).join("") + `<div class="vault-allocation-row"><div><strong>Idle ${esc(assetSymbol())}</strong><span>Current unavailable · Minimum ${minimumIdle}% after buys</span></div><div class="vault-allocation-track idle"></div></div>`;
+    $("#allocation-rows").innerHTML = actualRows.map(row => `<tr><td class="mono"><strong>${esc(row.name)}</strong></td><td><span class="dk-w vault-weight"><b>—</b><i style="--w:0%"></i></span></td><td>${addressView(row.address)}</td><td class="dk-hide-sm vault-earns">Limit ${row.cap}%</td></tr>`).join("") + `<tr class="idle"><td class="mono"><strong>${esc(assetSymbol())}</strong></td><td><span class="dk-w vault-weight"><b>—</b><i style="--w:0%"></i></span></td><td>Cash</td><td class="dk-hide-sm vault-earns">≥ ${minimumIdle}% after buys</td></tr>`;
     $("#allocation-note").textContent = `Verified investment limits total ${100 - actualIdle}% of NAV; the remaining ${actualIdle}% is unallocated cap budget. After buys the vault checks at least ${minimumIdle}% idle. Price moves can leave existing positions above a cap without a forced sale; new buys are checked against all caps. Current token units are read separately below; no simulated allocation or strategy weight substitutes for unavailable live valuation.`;
     $("#v-tags").innerHTML = `<span class="tag">Verified configuration · chain ${deployment.chainId}</span><span class="tag">${esc(live.symbol || v.symbol)}</span><span class="tag ${live.paused ? "warn" : ""}">${live.paused ? "Paused" : "Active"}</span>`;
     $("#creator").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Creator</span>${addressView(live.owner)}</div><div><span class="label">Agent operator</span>${addressView(live.agent)}</div><div><span class="label">Chain</span><span class="with-logo">${logo("bnb")}BNB Chain · ${deployment.chainId}</span></div><div><span class="label">Creator seed unlock</span><span>${new Date(live.seedUnlockAt * 1000).toLocaleString()}</span></div></div>`;
@@ -810,11 +822,11 @@ f:"$Sreact.suspense"
 13:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
 15:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
 a:X
-0:{"P":null,"c":["","vault","mag7-rotation",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","mag7-rotation","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1o7c7c9rfe0xd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}],["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","masthead":"$6","runtimeVersion":"3c3a98f9a13e","script":"$7","pageKey":"vault"}],["$L8"],"$L9"]}],{},null,false,null]},null,false,null]},null,false,"$a"]},null,false,null],"$Lb",false]],"m":"$undefined","G":["$c",["$Ld"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"L0YU6Dip7clv6r_F-jcVY"}
+0:{"P":null,"c":["","vault","mag7-rotation",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","mag7-rotation","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3m2oijzl-gjxt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}],["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","masthead":"$6","runtimeVersion":"3c3a98f9a13e","script":"$7","pageKey":"vault"}],["$L8"],"$L9"]}],{},null,false,null]},null,false,null]},null,false,"$a"]},null,false,null],"$Lb",false]],"m":"$undefined","G":["$c",["$Ld"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"S4O5WPRwRrU1d6sWstO1f"}
 8:["$","script","script-0",{"src":"/_next/static/chunks/3s596fk-cvsyr.js","async":true,"nonce":"$undefined"}]
 9:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
 b:["$","$1","h",{"children":[null,["$","$L11",null,{"children":"$L12"}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$f",null,{"name":"Next.Metadata","children":"$L14"}]}]}],null]}]
-d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1o7c7c9rfe0xd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3m2oijzl-gjxt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 a:C
 12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 10:null
