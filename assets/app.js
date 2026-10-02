@@ -2,11 +2,18 @@
 (function () {
   "use strict";
 
-  // The web prototype renderer consumes the body; load its shared font in both surfaces.
-  if (!document.querySelector('link[href*="family=Geist"]')) {
+  // The web prototype renderer consumes the body; load the brand fonts in every surface.
+  if (!document.querySelector('link[href*="family=Anton"]')) {
+    ["https://fonts.googleapis.com", "https://fonts.gstatic.com"].forEach((href) => {
+      const pre = document.createElement("link");
+      pre.rel = "preconnect";
+      pre.href = href;
+      if (href.includes("gstatic")) pre.crossOrigin = "";
+      document.head.appendChild(pre);
+    });
     const font = document.createElement("link");
     font.rel = "stylesheet";
-    font.href = "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap";
+    font.href = "https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap";
     document.head.appendChild(font);
   }
 
@@ -16,13 +23,12 @@
   const BASE_PATH = window.__BAV_BASE_PATH__ || "";
   const MARKETING_ORIGIN = window.__BAV_MARKETING_ORIGIN__ || BASE_PATH;
   const APP_ORIGIN = window.__BAV_APP_ORIGIN__ || BASE_PATH;
+  const DOCS_ORIGIN = window.__BAV_DOCS_ORIGIN__ || "https://docs.cre8.finance";
   const STATIC_PREVIEW = window.__BAV_STATIC_PREVIEW__ === true ||
     window.location.protocol === "file:" ||
     !document.querySelector("[data-prototype-page]");
   const assetUrl = (file) => STATIC_PREVIEW ? new URL(String(file), window.location.href).href : `${BASE_PATH}/${String(file).replace(/^\//, "")}`;
-  const logoUrl = (file) => STATIC_PREVIEW
-    ? `assets/logos/${file}${file === "aave" ? ".png" : ".jpg"}`
-    : `${BASE_PATH}/logos/${file}${file === "aave" ? ".png" : ".jpg"}`;
+  const logoUrl = (file) => STATIC_PREVIEW ? `assets/logos/${file}.webp` : `${BASE_PATH}/logos/${file}.webp`;
   const route = (target = "") => {
     const clean = String(target).replace(/^\/+|\/+$/g, "");
     if (STATIC_PREVIEW) {
@@ -440,7 +446,7 @@
   /* ------------------------------------------------------------------ */
   const brandLogo = (background = "light") => {
     const file = `cre8-on-${background === "light" ? "light" : "dark"}.svg`;
-    const version = background === "light" ? "d9345aa0" : "68eabe01";
+    const version = background === "light" ? "5ff1de84" : "68eabe01";
     const src = (STATIC_PREVIEW ? `assets/logos/${file}` : `${BASE_PATH}/logos/${file}`) + `?v=${version}`;
     return `<img class="brand-logo" src="${src}" alt="CRE8" width="224" height="112">`;
   };
@@ -706,25 +712,34 @@
   }
 
   function footerHTML() {
+    const docs = `${String(DOCS_ORIGIN).replace(/\/$/, "")}/`;
+    const legal = `<p class="cf-note">CRE8 is a preview of agent-run vaults on BNB Chain. The contracts are unaudited and not deployed, and every vault, balance and return shown is simulated. Nothing here is investment advice.</p>`;
     if (document.body.classList.contains("landing-page")) {
-      return `<footer class="footer landing-footer" id="contracts" data-bav-shell><div class="wrap landing-footer-grid">
-        <div><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a><span>Prototype. Unaudited. No live vaults. All performance shown is simulated.</span></div>
-        <div><strong>Product</strong><a href="${route("vaults")}">Vaults</a><a href="${route("create")}">Open a vault</a><a href="${route("portfolio")}">Portfolio</a></div>
-        <div><strong>Agents</strong><a href="#mcp">MCP / Skill</a><a href="${assetUrl("skill.md")}">Download skill</a></div>
-        <div><strong>Contracts &amp; security</strong><span>Addresses published after verified deployment</span><span>Independent audit: not yet</span></div>
+      return `<footer class="footer cf-footer" id="contracts" data-bav-shell><div class="wrap">
+        <div class="cf-cols">
+          <nav aria-label="Product"><h3>Product</h3><a href="${route("vaults")}">Vaults</a><a href="${route("create")}">Open a vault</a><a href="${route("portfolio")}">Portfolio</a></nav>
+          <nav aria-label="Developers" id="faq"><h3>Developers</h3><a href="${docs}">Documentation</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${assetUrl("references/execution.md")}">Execution reference</a></nav>
+          <nav aria-label="Security"><h3>Security</h3><span>Contracts: not deployed</span><span>Independent audit: not yet</span></nav>
+          <nav aria-label="Network"><h3>Network</h3><span class="cf-chain">${logo("bnb")}BNB Chain</span></nav>
+        </div>
+        <div class="cf-row"><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a><span class="cf-copy">© 2026 CRE8</span></div>
+        ${legal}
       </div></footer>`;
     }
-    return `<footer class="footer app-footer" data-bav-shell><div class="wrap app-footer-row">
-      <a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a><a href="${route("#how")}">Product</a><a href="${route("#mcp")}">MCP / Skill</a><a href="${route("#contracts")}">Contracts &amp; security</a><span class="ft-note">Prototype · Unaudited · Not deployed</span>
-    </div><details class="wrap footer-legal"><summary>Important information</summary><p>CRE8 is a prototype. Smart contracts have not received an independent audit and are not deployed to BNB Smart Chain mainnet. Example vaults, managers, balances and performance figures are simulated and do not represent real assets or results. Public supply-rate snapshots show their own source and timestamp.</p><p>Mandate limits reduce, but do not eliminate, risk. Depositors remain exposed to market, oracle, smart-contract, counterparty and liquidity risk, and may lose some or all of their capital. Annualized figures restate past returns, not a forecast or APY. Nothing on this site is investment advice or an offer to sell any security.</p></details></footer>`;
+    return `<footer class="footer app-footer cf-footer cf-compact" data-bav-shell><div class="wrap">
+      <div class="cf-row"><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a>
+        <nav class="cf-inline" aria-label="Footer"><a href="${docs}">Documentation</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${route("#how")}">How it works</a></nav>
+        <span class="cf-copy">Preview · Unaudited · Not deployed</span></div>
+      <details class="footer-legal"><summary>Important information</summary><p>CRE8 is a prototype. Smart contracts have not received an independent audit and are not deployed to BNB Smart Chain mainnet. Example vaults, managers, balances and performance figures are simulated and do not represent real assets or results. Public supply-rate snapshots show their own source and timestamp.</p><p>Mandate limits reduce, but do not eliminate, risk. Depositors remain exposed to market, oracle, smart-contract, counterparty and liquidity risk, and may lose some or all of their capital. Annualized figures restate past returns, not a forecast or APY. Nothing on this site is investment advice or an offer to sell any security.</p></details>
+    </div></footer>`;
   }
 
   function wireShell() {
     const mh = $(".masthead");
     const mb = $(".menu-btn");
-    const setMenu = (open) => { mh.classList.toggle("open", open); document.body.classList.toggle("menu-open", open); };
-    if (mb) mb.addEventListener("click", () => setMenu(!mh.classList.contains("open")));
-    $$(".nav a", mh).forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    const setMenu = (open) => { if (!mh) return; mh.classList.toggle("open", open); document.body.classList.toggle("menu-open", open); };
+    if (mb && mh) mb.addEventListener("click", () => setMenu(!mh.classList.contains("open")));
+    if (mh) $$(".nav a", mh).forEach((a) => a.addEventListener("click", () => setMenu(false)));
     window.addEventListener("resize", () => { if (window.innerWidth > 960) setMenu(false); });
     $$("[data-demo]").forEach((b) => b.addEventListener("click", () => toast("Prototype examples are simulated. Signing is disabled until a verified deployment is configured.")));
     stackTables();

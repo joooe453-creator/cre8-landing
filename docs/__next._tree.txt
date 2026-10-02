@@ -1,4 +1,5 @@
-:HL["/_next/static/chunks/1v5u6o2-q7e0t.css","style"]
+:HL["/_next/static/chunks/3xmnei7e_wm6l.css","style"]
 :HL["/_next/static/chunks/026va0v4bymjn.css","style"]
-:HL["/logos/cre8-on-light.svg?v=d9345aa0","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"docs","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"_JB-wfxOxlSnwTkx6HI0N"}
+:HL["https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap","style"]
+:HL["/logos/cre8-on-light.svg?v=5ff1de84","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"docs","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"5lVjwHepox-HQCt8SW38e"}

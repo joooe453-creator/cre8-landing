@@ -3,8 +3,9 @@
 3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
 4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/385-yp1j_rtq1.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
-:HL["/_next/static/chunks/1v5u6o2-q7e0t.css","style"]
-5:T1bc9,
+:HL["/_next/static/chunks/3xmnei7e_wm6l.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap","style"]
+5:T1fd6,
 <section class="vhead">
   <div class="wrap">
     <a class="vault-back" href="https://app.cre8.finance/vaults/">← All vaults</a>
@@ -14,6 +15,7 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       <p class="strat" id="v-strat"></p>
       <p class="vault-manager" id="v-manager"></p>
       <span id="c-name" hidden></span>
+      <div class="vault-head-actions"><button type="button" class="btn ghost" id="pros-open">Fund prospectus</button><button type="button" class="pros-alert" id="pros-alert" hidden>Rule change pending</button></div>
     </div>
   </div>
 </section>
@@ -39,19 +41,6 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
           <p class="fine">Prototype return = simulated share value(t₁) ÷ simulated share value(t₀) − 1 after modeled fees. These figures are not live on-chain results or an advertised APR.</p>
         </details>
       </section>
-      <section class="panel vault-mandate">
-        <div class="panel-h"><h3>Investment mandate</h3><span class="tag">Manifest · simulated</span></div>
-        <div class="panel-b">
-          <p class="sentence" id="v-sentence"></p>
-          <div class="vault-mandate-grid" id="v-legs"></div>
-          <p class="fine">Markets, accounting asset and operator are fixed at open. A new market requires a new vault.</p>
-          <details class="vault-details"><summary>Read the rules &amp; AI summary</summary>
-            <div class="vault-market-details" id="market-details"></div>
-            <ul class="rules" id="rules"></ul>
-            <div class="ai-sum"><span class="tag sim">AI summary · not binding</span><div id="ai"></div></div>
-          </details>
-        </div>
-      </section>
       <section class="panel vault-allocation">
         <div class="panel-h"><h3>Current allocation vs limits</h3><span class="label" hidden>Manifest · simulated vault value</span></div>
         <div class="panel-b">
@@ -64,40 +53,12 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
           </details>
         </div>
       </section>
-      <section class="panel vault-positions">
-        <div class="panel-h"><h3>Positions</h3><span class="label" id="positions-updated">Simulated · timestamp unavailable</span></div>
-        <div class="panel-b">
-          <table class="tbl" id="positions"><thead><tr><th>Asset / venue</th><th>Form</th><th class="r">Balance</th><th class="r">Value (USDT)</th></tr></thead><tbody></tbody></table>
-          <details class="vault-details"><summary>How positions are valued</summary><p class="fine">Vault value is cash plus the current value of held tokens and lending positions. Share value estimates the value represented by one share. Contract adjustments and rounding apply; this estimate excludes exit costs and can change before a transaction.</p><div class="fine" id="position-sources"></div></details>
-        </div>
-      </section>
-      <section class="panel vault-fees">
-        <div class="panel-h"><h3>Fees &amp; terms</h3></div>
-        <div class="panel-b">
-          <div class="vault-fee-kpis" id="fee-kpis"></div>
-          <div class="vault-fee-example"><strong>Example: 100 USDT of new profit</strong><div class="vault-fee-bar" id="fee-bar"></div><p class="fine" id="fee-note"></p></div>
-          <details class="vault-details"><summary>All fund terms</summary><dl class="kv" id="terms"></dl></details>
-        </div>
-      </section>
-      <section class="panel vault-rule-changes">
-        <div class="panel-h"><h3>Rule changes</h3><span id="rc-tag" hidden></span></div>
-        <div class="panel-b" id="rc"></div>
-      </section>
       <section class="panel vault-creator-controls hide" id="creator-controls">
         <div class="panel-h"><h3>Creator controls</h3><span class="tag">P1 extension · visible to manager only</span></div>
         <div class="panel-b vault-controls-grid">
           <div><strong>Tighten a limit</strong><p class="fine">Takes effect immediately.</p><button class="btn ghost block" disabled>Deployment required</button></div>
           <div><strong>Propose an increase</strong><p class="fine">Waits ≥ 24h. Total limits stay ≤ 95%.</p><button class="btn ghost block" disabled>Deployment required</button></div>
           <div><strong>Pause / resume</strong><p class="fine">After a risk-council pause, resume waits ≥ 24h and needs risk conditions met.</p><button class="btn ghost block" disabled>Deployment required</button></div>
-        </div>
-      </section>
-      <section class="panel vault-identity">
-        <div class="panel-h"><h3>Identity &amp; contracts</h3><span class="tag sim" id="contract-tag" hidden>Not deployed</span></div>
-        <div class="panel-b">
-          <div id="creator"></div>
-          <div class="vault-contracts" id="contracts"></div>
-          <p class="fine">Addresses appear here only from verified deployment records. The agent cannot transfer assets out or withdraw on behalf of holders. Risk council can pause in emergencies.</p>
-          <button class="btn ghost sm" id="factsheet">Export example factsheet</button>
         </div>
       </section>
     </div>
@@ -109,10 +70,59 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     </aside>
   </div>
 </main>
+<div class="pros-scrim" id="pros-scrim"></div>
+<aside class="pros-drawer" id="pros" role="dialog" aria-modal="true" aria-labelledby="pros-title" inert>
+  <header class="pros-head"><div><p class="label">[ Fund prospectus ]</p><h2 id="pros-title">Fund prospectus</h2></div><button type="button" class="pros-x" id="pros-close" aria-label="Close the prospectus">×</button></header>
+  <nav class="pros-toc" id="pros-toc" aria-label="Prospectus sections"><a href="#ps-mandate">Mandate</a><a href="#ps-positions">Positions</a><a href="#ps-fees">Fees &amp; terms</a><a href="#ps-rules">Rule changes</a><a href="#ps-identity">Contracts</a></nav>
+  <div class="pros-body" id="pros-body">
+      <section id="ps-mandate" class="panel pros-sec vault-mandate">
+        <div class="panel-h"><h3>Investment mandate</h3><span class="tag">Manifest · simulated</span></div>
+        <div class="panel-b">
+          <p class="sentence" id="v-sentence"></p>
+          <div class="vault-mandate-grid" id="v-legs"></div>
+          <p class="fine">Markets, accounting asset and operator are fixed at open. A new market requires a new vault.</p>
+          <details class="vault-details"><summary>Read the rules &amp; AI summary</summary>
+            <div class="vault-market-details" id="market-details"></div>
+            <ul class="rules" id="rules"></ul>
+            <div class="ai-sum"><span class="tag sim">AI summary · not binding</span><div id="ai"></div></div>
+          </details>
+        </div>
+      </section>
+      <section id="ps-positions" class="panel pros-sec vault-positions">
+        <div class="panel-h"><h3>Positions</h3><span class="label" id="positions-updated">Simulated · timestamp unavailable</span></div>
+        <div class="panel-b">
+          <table class="tbl" id="positions"><thead><tr><th>Asset / venue</th><th>Form</th><th class="r">Balance</th><th class="r">Value (USDT)</th></tr></thead><tbody></tbody></table>
+          <details class="vault-details"><summary>How positions are valued</summary><p class="fine">Vault value is cash plus the current value of held tokens and lending positions. Share value estimates the value represented by one share. Contract adjustments and rounding apply; this estimate excludes exit costs and can change before a transaction.</p><div class="fine" id="position-sources"></div></details>
+        </div>
+      </section>
+      <section id="ps-fees" class="panel pros-sec vault-fees">
+        <div class="panel-h"><h3>Fees &amp; terms</h3></div>
+        <div class="panel-b">
+          <div class="vault-fee-kpis" id="fee-kpis"></div>
+          <div class="vault-fee-example"><strong>Example: 100 USDT of new profit</strong><div class="vault-fee-bar" id="fee-bar"></div><p class="fine" id="fee-note"></p></div>
+          <details class="vault-details"><summary>All fund terms</summary><dl class="kv" id="terms"></dl></details>
+        </div>
+      </section>
+      <section id="ps-rules" class="panel pros-sec vault-rule-changes">
+        <div class="panel-h"><h3>Rule changes</h3><span id="rc-tag" hidden></span></div>
+        <div class="panel-b" id="rc"></div>
+      </section>
+      <section id="ps-identity" class="panel pros-sec vault-identity">
+        <div class="panel-h"><h3>Identity &amp; contracts</h3><span class="tag sim" id="contract-tag" hidden>Not deployed</span></div>
+        <div class="panel-b">
+          <div id="creator"></div>
+          <div class="vault-contracts" id="contracts"></div>
+          <p class="fine">Addresses appear here only from verified deployment records. The agent cannot transfer assets out or withdraw on behalf of holders. Risk council can pause in emergencies.</p>
+          <button class="btn ghost sm" id="factsheet">Export example factsheet</button>
+        </div>
+      </section>
+  </div>
+</aside>
 <div class="mobile-cta"><button class="btn" data-go="sub">Deposit</button><button class="btn ghost" data-go="red">Redeem</button></div>
 
 
-6:T127dc,
+
+6:T13197,
 (function () {
   const { $, $$, esc, fmt, perf, riskMeter, statusTag, historyTag, navSeries, lineChart, hexAddr, short, ASSETS, SLOTS, toast, demo, logo, CATALOG: C, vaultMarkets, vaultRisk, managerLabel, rulesLabel, platformFeeForRisk, feeBreakdown } = BAV;
   BAV.shell("vaults.html");
@@ -742,17 +752,54 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
   clearUnverifiedLive();
   initTransactions();
 })();
+
+
+(function () {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const drawer = $("#pros"), scrim = $("#pros-scrim"), body = $("#pros-body"), toc = $("#pros-toc");
+  if (!drawer) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let last = null;
+  const open = (target) => {
+    last = document.activeElement;
+    $("#pros-title").textContent = $("#v-name")?.textContent || "Fund prospectus";
+    drawer.inert = false; drawer.classList.add("open"); scrim.classList.add("open");
+    document.documentElement.classList.add("pros-lock");
+    body.scrollTop = 0;
+    if (target) { const t = $(target, body); if (t) setTimeout(() => body.scrollTo({ top: t.offsetTop - 8, behavior: reduce ? "auto" : "smooth" }), 320); }
+    setTimeout(() => $("#pros-close").focus({ preventScroll: true }), 60);
+  };
+  const close = () => {
+    drawer.classList.remove("open"); scrim.classList.remove("open"); drawer.inert = true;
+    document.documentElement.classList.remove("pros-lock");
+    if (last && last.isConnected) last.focus({ preventScroll: true });
+  };
+  $("#pros-open").addEventListener("click", () => open());
+  $("#pros-alert").addEventListener("click", () => open("#ps-rules"));
+  $("#pros-close").addEventListener("click", close);
+  scrim.addEventListener("click", close);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && drawer.classList.contains("open")) close(); });
+  $$("a", toc).forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); const t = $(a.getAttribute("href"), body); if (t) body.scrollTo({ top: t.offsetTop - 8, behavior: reduce ? "auto" : "smooth" }); }));
+  const spy = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    $$("a", toc).forEach((a) => { const on = a.getAttribute("href") === "#" + e.target.id; a.classList.toggle("on", on); if (on) a.scrollIntoView({ block: "nearest", inline: "nearest" }); });
+  }), { root: body, rootMargin: "0px 0px -70% 0px" });
+  $$(".pros-sec", body).forEach((s) => spy.observe(s));
+  const rcTag = $("#rc-tag"), alert = $("#pros-alert");
+  const syncAlert = () => { alert.hidden = !rcTag || rcTag.hidden || !rcTag.textContent.trim(); if (!alert.hidden) alert.textContent = rcTag.textContent.trim(); };
+  if (rcTag) { new MutationObserver(syncAlert).observe(rcTag, { attributes: true, childList: true, characterData: true, subtree: true }); syncAlert(); }
+})();
 d:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
 e:"$Sreact.suspense"
 10:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
 12:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
 14:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
 9:X
-0:{"P":null,"c":["","vault","sherwood-bstock-accumulator",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","sherwood-bstock-accumulator","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1v5u6o2-q7e0t.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","runtimeVersion":"0136498e32f3","script":"$6","pageKey":"vault"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"_JB-wfxOxlSnwTkx6HI0N"}
+0:{"P":null,"c":["","vault","sherwood-bstock-accumulator",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","sherwood-bstock-accumulator","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3xmnei7e_wm6l.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":""}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","runtimeVersion":"bafc4d2a1858","script":"$6","pageKey":"vault"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"5lVjwHepox-HQCt8SW38e"}
 7:["$","script","script-0",{"src":"/_next/static/chunks/385-yp1j_rtq1.js","async":true,"nonce":"$undefined"}]
 8:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],null]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1v5u6o2-q7e0t.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3xmnei7e_wm6l.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 9:C
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 f:null
