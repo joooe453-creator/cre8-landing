@@ -1,12 +1,12 @@
 1:"$Sreact.fragment"
 2:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
 3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
-4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/182d6fh3aezdi.js"],"PrototypePage"]
+4:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/3g2ddfs1wmryt.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
-:HL["/_next/static/chunks/278nb0mif7--t.css","style"]
+:HL["/_next/static/chunks/345faal4rbbdr.css","style"]
 :HC["/",""]
 :HL["/_next/static/chunks/026va0v4bymjn.css","style"]
-5:T4a2f,
+5:T49ec,
 <header class="cl-nav" id="mh"><div class="wrap cl-nav-in">
 <a class="brand" href="https://cre8.finance/" id="brand" aria-label="CRE8 home"></a>
 <nav class="cl-links" aria-label="Main navigation"><a href="#how">How it works</a><a href="#funds">Funds</a><a href="#earn">Earnings</a><a href="https://docs.cre8.finance/">Docs</a></nav>
@@ -99,10 +99,9 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
 
 <section class="cl-closing" aria-label="CRE8 St and Wall St"><figure class="cl-photo cl-band" style="--lq:url(data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAADwBACdASogAAsAPpE8mkglo6KhMAgAsBIJZwCw7ywYYL3lskCx36K5EMITIHK37oAA/u9mS9zVCcan8jl/iYKIqQctL9bVH9v96v/LG81pToQlSZ8RD/nwH/XzQ8Aa+KljfTskm+0IGWvMDpOKRFggogM30eQTUZTbRn21ljMTAXAO9tRpIWOq3b5+W10dz0S8wtNc6P937WI4ploiakQ7HCVgD+v2xDuYKHbxaeBOyZQWh95tJIVid5R2ygO/zo/7DbE1KzPGwsqJBm9GCAAA);--lq-m:url(data:image/webp;base64,UklGRlgBAABXRUJQVlA4IEwBAABQBgCdASogABUAPpE4l0eloyIhMAgAsBIJZwDDO3gd4D0Ks5tlGLPxDhkOj7QCpsdZJtfzZt8wJGcdAAD+0ocb26VCncbsP4T33+YBZWI4vm3RioM2s+BVODXLQz5ASLW76V9qz5NFj/gNzISY5XCbedK2nVRdfX9/0oZF+n/hOZBglD7HIjswhUdfn8argz/ez6/jlVStWPG2cQvrlnY9wV5SY0GAmYSqIdo1nqHJxVWhVEcK15aoNxP6vZBIMsrU2dpwJr78c4X37ciQNc3DE28DvHLs9wvmyFhZIDrdIQ/lhWEqvzk8t3SwEWTe9oCgjGvro1DD7ZhCh/ZbnbtKS30nT+mumX2PAoaZvJ/p7Xn5bbdneOTFsi8mxhprwU7QxF5zu7eVIRC7H2arRiuVxmKfkIhDN7J2M3E1xSo16EB3yD+cw/g4V+sAAA==)"><picture><source media="(max-width: 699px)" sizes="100vw" srcset="/img/sign-480.webp 480w, /img/sign-800.webp 800w"><img src="/img/sign-wide-1280.webp" srcset="/img/sign-wide-800.webp 800w, /img/sign-wide-1280.webp 1280w, /img/sign-wide-2000.webp 2000w" sizes="100vw" width="2000" height="667" alt="Street signs for CRE8 St and Wall St on the same corner" loading="lazy" decoding="async"></picture></figure></section>
 </main><div id="footer"></div>
-<div class="cl-wipe" id="cl-wipe" aria-hidden="true"><i></i></div>
 
 
-6:T1564,
+6:T1390,
 (function () {
   const { $, $$ } = BAV;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -149,17 +148,8 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
       '<td class="r cl-col-hide-sm"><span class="cl-big">' + BAV.fmt.n(v.followers) + "</span></td></tr>";
   }).join("");
 
-  /* fog wipe before leaving for the app */
-  const wipe = $("#cl-wipe"), band = $("i", wipe);
-  // The wipe plays while the next page loads; it never holds the navigation back.
-  function go(href) {
-    if (!reduce && band.animate) {
-      wipe.classList.add("on");
-      band.animate([{ transform: "translateX(-260vw)" }, { transform: "translateX(-80vw)" }], { duration: 560, easing: "cubic-bezier(.65,0,.35,1)", fill: "forwards" });
-    }
-    location.href = href;
-  }
-  window.addEventListener("pageshow", () => { wipe.classList.remove("on"); band.getAnimations().forEach((a) => a.cancel()); });
+  /* fog over the page, then on to the app (BAV.fogTo; the app sweeps the same fog away) */
+  const go = (href) => BAV.fogTo(href);
   $$("[data-wipe]").forEach((a) => a.addEventListener("click", (e) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault(); go(a.href);
@@ -189,16 +179,16 @@ b:I[68027,["/_next/static/chunks/3fntmmi971322.js"],"default",1]
     dots.forEach((d, i) => d.setAttribute("aria-current", i === k));
   }, { passive: true });
 })();
-0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/278nb0mif7--t.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"landing-page","html":"$5","masthead":"","runtimeVersion":"bde0b84b6b87","script":"$6","pageKey":"landing"}],["$L7","$L8"],"$L9"]}],{},null,false,null]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"XMSCUh3vQcqGSIBPT1HaY"}
+0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/345faal4rbbdr.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"landing-page","html":"$5","masthead":"","runtimeVersion":"f07d00218281","script":"$6","pageKey":"landing"}],["$L7","$L8"],"$L9"]}],{},null,false,null]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"9-Bv-4NIonoR2jLAgPngH"}
 d:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
 e:"$Sreact.suspense"
 10:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
 12:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
 7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/026va0v4bymjn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
-8:["$","script","script-0",{"src":"/_next/static/chunks/182d6fh3aezdi.js","async":true,"nonce":"$undefined"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/3g2ddfs1wmryt.js","async":true,"nonce":"$undefined"}]
 9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/278nb0mif7--t.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/345faal4rbbdr.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 14:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
 f:null

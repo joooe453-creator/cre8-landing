@@ -832,8 +832,50 @@
     return () => observer.disconnect();
   }
 
+  /* Fog between CRE8 sites, as in the demo. The browser cannot crossfade across origins, so leaving
+     for the landing page, the app or the docs sweeps fog over this page first (the navigation waits for
+     it, ~0.56 s), and the next page opens under the same fog and sweeps it away (.bav-fog in styles). */
+  const siteOrigins = [MARKETING_ORIGIN, APP_ORIGIN, DOCS_ORIGIN].filter((origin) => /^https?:\/\//.test(origin)).map((origin) => new URL(origin).origin);
+  let fogging = false;
+  function fogTo(href) {
+    let fog = $(".bav-fog");
+    if (reduceMotion() || fogging || !Element.prototype.animate) { location.href = href; return; }
+    if (!fog) { fog = document.createElement("div"); fog.className = "bav-fog"; fog.setAttribute("aria-hidden", "true"); fog.innerHTML = "<i></i>"; document.body.append(fog); }
+    document.documentElement.classList.remove("bav-arrive", "bav-arrive-go");
+    fogging = true;
+    fog.classList.add("on");
+    fog.querySelector("i").animate([{ transform: "translateX(-260vw)" }, { transform: "translateX(-80vw)" }], { duration: 560, easing: "cubic-bezier(.65,0,.35,1)", fill: "forwards" })
+      .finished.then(() => { location.href = href; }, () => { location.href = href; });
+  }
+  // Back from the next site restores this page from the back/forward cache with the fog still drawn.
+  window.addEventListener("pageshow", (event) => {
+    if (!event.persisted) return;
+    const fog = $(".bav-fog");
+    fogging = false;
+    fog?.classList.remove("on");
+    fog?.querySelector("i")?.getAnimations().forEach((animation) => animation.cancel());
+  });
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest?.("a[href]");
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || (link.target && link.target !== "_self") || link.hasAttribute("download")) return;
+    let url;
+    try { url = new URL(link.href, location.href); } catch { return; }
+    if (url.origin === location.origin || !siteOrigins.includes(url.origin)) return;
+    event.preventDefault();
+    fogTo(url.href);
+  });
+  // Arriving from another CRE8 site the page starts under the fog (html.bav-arrive, set before the first
+  // paint); sweep it away once the page script has drawn the content.
+  if (document.documentElement.classList.contains("bav-arrive")) {
+    const band = $(".bav-fog i");
+    const clear = () => document.documentElement.classList.remove("bav-arrive", "bav-arrive-go");
+    band?.addEventListener("animationend", clear, { once: true });
+    setTimeout(clear, 3000);
+    requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add("bav-arrive-go")));
+  }
+
   window.BAV = {
-    drawLine, replay, flipOnChange,
+    drawLine, replay, flipOnChange, fogTo,
     TODAY, DAY, SLOTS, ASSETS, VENUES, VAULTS, CATALOG, vaultMarkets, vaultVenues, vaultRisk, managerLabel, rulesLabel,
     platformFeeForRisk, feeBreakdown,
     $, $$, esc, fmt, perf, periodDays, historyTag, riskMeter, statusTag,
