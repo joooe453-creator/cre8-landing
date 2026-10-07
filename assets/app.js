@@ -235,7 +235,7 @@
   /* ------------------------------------------------------------------ */
   const VAULTS = [
     {
-      slug: "sherwood-usdt", name: "Sherwood USDT", manager: "Sherwood", agentId: 1611, agentVaults: 1, symbol: "avSUS", asset: "USDT", benchmark: "Idle USDT", managerType: "agent", official: true, continuous: true,
+      slug: "cre8-usdt", name: "CRE8 USDT", manager: "CRE8", agentId: 1611, agentVaults: 1, symbol: "avSUS", asset: "USDT", benchmark: "Idle USDT", managerType: "agent", official: true, continuous: true,
       rules: [{ g: "stable", a: "lend", m: ["venus-supply-usdt"], caps: { "venus-supply-usdt": 70 } }],
       strategy: "Supply USDT to Venus, up to 70% of the vault's current value. Keep the rest idle. No borrowing.",
       runtimeDays: 90, returns: { "7D": 0.06, "30D": 0.26, "90D": 0.8, ALL: 0.8 }, maxDrawdown: { "7D": 0, "30D": 0, "90D": -0.02, ALL: -0.02 },
@@ -246,7 +246,7 @@
       ],
     },
     {
-      slug: "sherwood-crypto-core", name: "Sherwood Crypto Core", manager: "Sherwood", agentId: 1611, agentVaults: 4, symbol: "avSCC", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Buy once",
+      slug: "cre8-crypto-core", name: "CRE8 Crypto Core", manager: "CRE8", agentId: 1611, agentVaults: 4, symbol: "avSCC", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Buy once",
       rules: [{ g: "bnb", a: "trade", m: ["pcs-hold-bnb"], caps: { "pcs-hold-bnb": 32 } }, { g: "majors", a: "trade", m: ["pcs-hold-btcb", "pcs-hold-eth"], caps: { "pcs-hold-btcb": 32, "pcs-hold-eth": 31 } }],
       strategy: "Buys a fixed WBNB, BTCB and ETH basket once. Supported assets may be supplied only to their exact approved Aave, Venus or Lista market.",
       runtimeDays: 96, returns: { "7D": 0.61, "30D": 2.44, "90D": 7.12, ALL: 7.9 }, maxDrawdown: { "7D": -0.42, "30D": -1.88, "90D": -3.9, ALL: -3.9 },
@@ -259,7 +259,7 @@
       ],
     },
     {
-      slug: "sherwood-bstock-core", name: "Sherwood bStock Core", manager: "Sherwood", agentId: 942, agentVaults: 4, symbol: "avSBC", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Buy once",
+      slug: "cre8-bstock-core", name: "CRE8 bStock Core", manager: "CRE8", agentId: 942, agentVaults: 4, symbol: "avSBC", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Buy once",
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab", "pcs-hold-tslab", "pcs-hold-spcxb", "pcs-hold-skhyb"], caps: { "pcs-hold-nvdab": 24, "pcs-hold-tslab": 24, "pcs-hold-spcxb": 24, "pcs-hold-skhyb": 23 } }],
       strategy: "Buys a fixed NVDAB, TSLAB, SPCXB and SKHYB basket once, with post-purchase yield disabled by default.",
       runtimeDays: 128, returns: { "7D": 0.24, "30D": 1.02, "90D": 3.31, ALL: 4.76 }, maxDrawdown: { "7D": -0.03, "30D": -0.12, "90D": -0.38, ALL: -0.62 },
@@ -271,7 +271,7 @@
       ],
     },
     {
-      slug: "sherwood-crypto-accumulator", name: "Sherwood Crypto Accumulator", manager: "Sherwood", agentId: 1306, agentVaults: 4, symbol: "avSCA", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Weekly or −5%",
+      slug: "cre8-crypto-accumulator", name: "CRE8 Crypto Accumulator", manager: "CRE8", agentId: 1306, agentVaults: 4, symbol: "avSCA", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Weekly or −5%",
       rules: [{ g: "bnb", a: "trade", m: ["pcs-hold-bnb"], caps: { "pcs-hold-bnb": 32 } }, { g: "majors", a: "trade", m: ["pcs-hold-btcb", "pcs-hold-eth"], caps: { "pcs-hold-btcb": 32, "pcs-hold-eth": 31 } }],
       strategy: "Buys a 10% cash tranche weekly or after a 5% basket decline, with one shared 24-hour cooldown.",
       runtimeDays: 73, returns: { "7D": 2.16, "30D": 6.42, "90D": null, ALL: 13.88 }, maxDrawdown: { "7D": -1.92, "30D": -4.74, "90D": null, ALL: -8.16 },
@@ -282,7 +282,7 @@
       ],
     },
     {
-      slug: "sherwood-bstock-accumulator", name: "Sherwood bStock Accumulator", manager: "Sherwood", agentId: 1422, agentVaults: 4, symbol: "avSBA", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Monthly or −8%",
+      slug: "cre8-bstock-accumulator", name: "CRE8 bStock Accumulator", manager: "CRE8", agentId: 1422, agentVaults: 4, symbol: "avSBA", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Monthly or −8%",
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab", "pcs-hold-spyb", "pcs-hold-aaplb", "pcs-hold-googlb"], caps: { "pcs-hold-nvdab": 24, "pcs-hold-spyb": 24, "pcs-hold-aaplb": 24, "pcs-hold-googlb": 23 } }],
       strategy: "Buys a 12% cash tranche monthly or after an 8% basket decline. Unsupported yield assets stay held.",
       runtimeDays: 41, returns: { "7D": 0.04, "30D": 0.18, "90D": null, ALL: 0.24 }, maxDrawdown: { "7D": -0.02, "30D": -0.05, "90D": null, ALL: -0.06 },
@@ -326,10 +326,10 @@
   const freshDemoState = () => ({
     balances: { USDT: 24850, BNB: 18.42 },
     holdings: {
-      "sherwood-usdt": { shares: 1000, cost: 1 },
-      "sherwood-crypto-core": { shares: 20000, cost: 1 },
-      "sherwood-crypto-accumulator": { shares: 3200, cost: 1.0625 },
-      "sherwood-bstock-core": { shares: 4600, cost: 1.0214 },
+      "cre8-usdt": { shares: 1000, cost: 1 },
+      "cre8-crypto-core": { shares: 20000, cost: 1 },
+      "cre8-crypto-accumulator": { shares: 3200, cost: 1.0625 },
+      "cre8-bstock-core": { shares: 4600, cost: 1.0214 },
     },
     activities: [],
     launchedVaults: [],
@@ -712,7 +712,8 @@
   /* Shell: notice strip, masthead, footer                               */
   /* ------------------------------------------------------------------ */
   function shell(active) {
-    const nav = [["agent.html", "My Agent"], ["vaults.html", "Vaults"], ["leaderboard.html", "Leaderboard"], ["portfolio.html", "Portfolio"], ["create.html", "Open directly"]];
+    const nav = [["agent.html", "My Agent"], ["vaults.html", "Vaults"], ["leaderboard.html", "Leaderboard"], ["create.html", "Open directly"]];
+    const onPortfolio = active === "portfolio.html";
     const q = new URLSearchParams(location.search);
     const previewWallet = !q.has("vault") ? q.get("wallet") : null;
     const wrong = previewWallet === "wrongNetwork";
@@ -723,7 +724,8 @@
           <a class="brand" href="${route()}" aria-label="CRE8 home">${SEAL}</a>
           <nav class="nav" aria-label="Main navigation">${nav.filter(([h]) => (!STATIC_PREVIEW && PERSONAL_AGENT) || h !== "agent.html").map(([h, l]) => `<a href="${route(h.replace(".html", ""))}" class="${active === h ? "active" : ""}" ${active === h ? 'aria-current="page"' : ""}>${l}</a>`).join("")}</nav>
           <div class="head-right">
-            <span class="chain ${wrong ? "wrong-network" : ""}" title="${wrong ? "Wrong network · design preview" : "BNB Chain"}">${wrong ? "Wrong network" : `<img class="logo" src="${logoUrl("bnbchain")}" alt=""><span class="chain-label">BNB Chain</span>`}</span>
+            ${wrong ? `<span class="chain wrong-network" title="Wrong network · design preview">Wrong network</span>` : ""}
+            <a class="head-link ${onPortfolio ? "active" : ""}" href="${route("portfolio")}" ${onPortfolio ? 'aria-current="page"' : ""}>Portfolio</a>
             ${STATIC_PREVIEW ? `<button class="btn sm header-wallet" data-demo>${previewWallet === "connected" ? "Preview wallet" : "Connect wallet"}</button>` : `<button type="button" class="btn sm header-wallet" data-connect>Connect wallet</button>`}
           </div>
         </div>

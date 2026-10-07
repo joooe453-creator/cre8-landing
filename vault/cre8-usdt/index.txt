@@ -1,0 +1,978 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+3:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/1o350r4p9aqln.js"],"PrototypePage"]
+b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
+:HL["/_next/static/chunks/3zyx27ugdyf71.css","style"]
+:HC["/",""]
+5:T203d,
+<main class="wrap vault-content">
+  <div class="vgrid">
+    <div class="main">
+      <div class="vault-top">
+        <header class="vhead">
+          <a class="vault-back" href="https://app.cre8.finance/vaults/">← All vaults</a>
+          <div class="vault-heading">
+            <h1 id="v-name"></h1>
+            <p class="vault-manager" id="v-manager"></p>
+            <p class="strat dk-sr" id="v-strat"></p>
+            <span id="c-name" hidden></span>
+            <dl class="vault-strip" id="v-strip"></dl>
+            <div class="vault-head-actions"><button type="button" class="btn ghost" id="pros-open">Fund prospectus</button><button type="button" class="pros-alert" id="pros-alert" hidden>Rule change pending</button><div class="tags" id="v-tags"></div></div>
+          </div>
+        </header>
+        <dl class="keyfig dk-kpis" id="keyfig"></dl>
+        <div class="vault-banner hide" id="vault-banner" role="status"></div>
+      </div>
+      <section class="panel vault-performance">
+        <div class="vault-chart-top">
+          <p class="vault-chart-drop"><span id="p-drop-label"></span> <b id="p-drop"></b></p>
+          <div class="seg" id="p-period"><button data-v="7D">7D</button><button class="on" data-v="30D">30D</button><button data-v="90D">90D</button><button data-v="ALL">All</button></div>
+        </div>
+        <div class="chart" id="chart"></div>
+        <div class="chart-foot" hidden><span id="p-range-start"></span><span id="p-range-end"></span></div>
+        <p class="dk-sr" id="p-src"></p><span id="p-range" hidden></span>
+        <p class="vault-data-note" id="vault-data-note"></p>
+        <details class="vault-details"><summary>View all performance periods</summary>
+          <div class="perf-comparison" id="perf-tbl"><div class="perf-periods" id="perf-periods"></div></div>
+          <p class="fine">Return = share value(t₁) ÷ share value(t₀) − 1 after fees. Not an advertised APR.</p>
+        </details>
+      </section>
+      <section class="vault-allocation dk-sec">
+        <header><h2>Where the money is</h2></header>
+        <div class="dk-wrap"><table class="dk-table vault-where"><thead><tr><th>Asset</th><th>Current weight</th><th>Venue</th><th class="dk-hide-sm">Earns</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
+      </section>
+      <section class="panel"><div class="panel-b" id="rules-controls"></div></section>
+      <section class="panel vault-creator-controls hide" id="creator-controls">
+        <div class="panel-h"><h3>Vault controls</h3><span class="tag">Verified authority required</span></div>
+        <div class="panel-b vault-controls-grid">
+          <div><strong>Tighten a limit</strong><p class="fine">Takes effect immediately.</p><button class="btn ghost block" disabled>Deployment required</button></div>
+          <div><strong>Propose an increase</strong><p class="fine">Waits ≥ 24h. Total limits stay ≤ 95%.</p><button class="btn ghost block" disabled>Deployment required</button></div>
+          <div><strong>Pause / resume</strong><p class="fine">After a risk-council pause, resume waits ≥ 24h and needs risk conditions met.</p><button class="btn ghost block" disabled>Deployment required</button></div>
+        </div>
+      </section>
+    </div>
+    <aside class="side">
+      <section class="panel ticket" id="ticket">
+        <div class="tabs" role="tablist"><button class="on" data-t="sub" role="tab">Deposit</button><button data-t="red" role="tab">Withdraw</button></div>
+        <div class="panel-b" id="ticket-body"></div>
+      </section>
+      <section class="panel vault-creator-card" id="creator-card">
+        <div class="panel-h"><h3>Creator</h3></div>
+        <div class="panel-b" id="creator-card-body"></div>
+      </section>
+      <section class="panel"><div class="panel-b" id="safe-vault-actions"></div></section>
+    </aside>
+  </div>
+</main>
+<div class="pros-scrim" id="pros-scrim"></div>
+<aside class="pros-drawer" id="pros" role="dialog" aria-modal="true" aria-labelledby="pros-title" inert>
+  <header class="pros-head"><div><p class="label">[ Fund prospectus ]</p><h2 id="pros-title">Fund prospectus</h2></div><button type="button" class="pros-x" id="pros-close" aria-label="Close the prospectus">×</button></header>
+  <nav class="pros-toc" id="pros-toc" aria-label="Prospectus sections"><a href="#ps-mandate">Mandate</a><a href="#ps-limits">Limits</a><a href="#ps-positions">Positions</a><a href="#ps-fees">Fees &amp; terms</a><a href="#ps-rules">Rule changes</a><a href="#ps-identity">Contracts</a></nav>
+  <div class="pros-body" id="pros-body">
+      <section id="ps-mandate" class="panel pros-sec vault-mandate">
+        <div class="panel-h"><h3>Investment mandate</h3><span class="tag">Manifest</span></div>
+        <div class="panel-b">
+          <p class="sentence" id="v-sentence"></p>
+          <div class="vault-mandate-grid" id="v-legs"></div>
+          <p class="fine">Markets, accounting asset and operator are fixed at open. A new market requires a new vault.</p>
+          <details class="vault-details"><summary>Read the rules &amp; AI summary</summary>
+            <div class="vault-market-details" id="market-details"></div>
+            <ul class="rules" id="rules"></ul>
+            <div class="ai-sum"><span class="tag sim">AI summary · not binding</span><div id="ai"></div></div>
+          </details>
+        </div>
+      </section>
+      <section id="ps-limits" class="panel pros-sec vault-allocation-limits">
+        <div class="panel-h"><h3>Limits</h3><span class="label">Manifest</span></div>
+        <div class="panel-b">
+          <div class="alloc-bar" id="alloc-bar" role="img"></div>
+          <div id="alloc-tbl"><div class="allocation-budget-rows" id="allocation-budget-rows"></div></div>
+          <p class="fine vault-info" id="allocation-note"></p>
+        </div>
+      </section>
+      <section id="ps-positions" class="panel pros-sec vault-positions">
+        <div class="panel-h"><h3>Positions</h3><span class="label" id="positions-updated"></span></div>
+        <div class="panel-b">
+          <table class="tbl" id="positions"><thead><tr><th>Asset / venue</th><th>Form</th><th class="r">Balance</th><th class="r">Value (USDT)</th></tr></thead><tbody></tbody></table>
+          <details class="vault-details"><summary>How positions are valued</summary><p class="fine">Vault value is cash plus the current value of held tokens and lending positions. Share value estimates the value represented by one share. Contract adjustments and rounding apply; this estimate excludes exit costs and can change before a transaction.</p><div class="fine" id="position-sources"></div></details>
+        </div>
+      </section>
+      <section id="ps-fees" class="panel pros-sec vault-fees">
+        <div class="panel-h"><h3>Fees &amp; terms</h3></div>
+        <div class="panel-b">
+          <div class="vault-fee-kpis" id="fee-kpis"></div>
+          <div class="vault-fee-example"><strong>Example: 100 USDT of new profit</strong><div class="vault-fee-bar" id="fee-bar"></div><p class="fine" id="fee-note"></p></div>
+          <details class="vault-details"><summary>All fund terms</summary><dl class="kv" id="terms"></dl></details>
+        </div>
+      </section>
+      <section id="ps-rules" class="panel pros-sec vault-rule-changes">
+        <div class="panel-h"><h3>Rule changes</h3><span id="rc-tag" hidden></span></div>
+        <div class="panel-b" id="rc"></div>
+      </section>
+      <section id="ps-identity" class="panel pros-sec vault-identity">
+        <div class="panel-h"><h3>Identity &amp; contracts</h3><span class="tag sim" id="contract-tag" hidden></span></div>
+        <div class="panel-b">
+          <div id="creator"></div>
+          <div class="vault-contracts" id="contracts"></div>
+          <p class="fine">Addresses appear here only from verified deployment records. The agent cannot transfer assets out or withdraw on behalf of holders. Risk council can pause in emergencies.</p>
+          <button class="btn ghost sm" id="factsheet">Export example factsheet</button>
+        </div>
+      </section>
+  </div>
+</aside>
+<div class="mobile-cta"><button class="btn" data-go="sub">Deposit</button><button class="btn ghost" data-go="red">Withdraw</button></div>
+
+
+
+6:T185cd,
+(function () {
+  const { $, $$, esc, fmt, perf, riskMeter, statusTag, historyTag, navSeries, lineChart, hexAddr, short, ASSETS, SLOTS, toast, demo, logo, CATALOG: C, vaultMarkets, vaultRisk, managerLabel, rulesLabel, platformFeeForRisk, feeBreakdown } = BAV;
+  BAV.shell("vaults.html");
+
+  const params = new URLSearchParams(location.search);
+  const requestedLive = params.has("vault");
+  let previewState = requestedLive ? "active" : (params.get("vaultState") || "active");
+  let previewWallet = requestedLive ? "disconnected" : (params.get("wallet") || "disconnected");
+  let previewConnected = previewWallet === "connected";
+  let previewFlow = null;
+  const slug = params.get("slug") || location.pathname.split("/").filter(Boolean).pop() || "cre8-usdt";
+  const v = BAV.vault(slug) || BAV.VAULTS[0];
+  const copy = v.copyOf ? BAV.vault(v.copyOf.slug) : null;
+  const human = v.managerType === "human";
+  const planning = !v.continuous;
+  const unavailable = () => previewState === "unavailable";
+  const fixed = (number, places = 2) => fmt.n(number, places);
+  const displayNumber = value => {
+    if (value == null || !Number.isFinite(Number(value))) return "Unavailable";
+    const shortValue = balanceLabel(value);
+    if (shortValue.startsWith("≈")) return shortValue;
+    const formatted = Number(value).toLocaleString("en-US", { maximumFractionDigits: 14 });
+    return formatted.length <= 14 ? formatted : `≈${Number(value).toPrecision(4)}`;
+  };
+  const addressView = address => /^0x[0-9a-f]{40}$/i.test(String(address)) ? `<button class="vault-address" type="button" data-copy-address="${esc(address)}" title="${esc(address)} · click to copy">${short(address)} <span aria-hidden="true">⧉</span></button>` : esc(address || "Unavailable");
+  const marketRows = () => v.rules.flatMap((r) => C.ruleMarkets(r).map((m) => ({ r, m, cap: C.allocationCap(r, m.id) })));
+  const BNB_USD = 758.28;
+  document.title = v.name + " — CRE8";
+  const A = v.asset;
+  const money = (n) => fmt.n(n, A === "BNB" ? 4 : 2) + " " + A;
+  const toUsd = (x) => (A === "BNB" ? x * BNB_USD : x);
+  // Rules become editable sets for the demo owner controls below.
+  v.rules = (v.rules || []).map((r) => ({ g: r.g, a: r.a, m: new Set(r.m), caps: { ...(r.caps || {}) }, lev: r.lev || 1 }));
+  v.pendingAdds = v.pendingAdds || [];
+
+  /* Header and explicitly labelled read-only design states. Live addresses never use these states. */
+  $("#c-name").textContent = v.name;
+  // Demo title treatment: the last word sits in fog.
+  const nameWords = v.name.trim().split(/\s+/);
+  $("#v-name").innerHTML = nameWords.length > 1 ? `${esc(nameWords.slice(0, -1).join(" "))} <span class="fog">${esc(nameWords[nameWords.length - 1])}</span>` : esc(v.name);
+  $("#v-strat").textContent = v.strategy;
+  // The creator's name and card open their page, which lists every vault they have opened.
+  const maker = BAV.creatorProfile(BAV.creatorId(v)), makerUrl = maker && BAV.route(`creator/${maker.id}`);
+  $("#v-manager").innerHTML = `${maker ? `<a class="vault-creator-link" href="${esc(makerUrl)}"><img src="${esc(BAV.creatorAvatar(v))}" alt="">${esc(v.manager)}</a>` : esc(v.manager)} · ${human ? "Human-managed" : `ERC-8004 agent #${esc(v.agentId)}`} · ${esc(A)} · ${fixed(v.followers, 0)} depositors`;
+  if (maker) $("#creator-card-body").innerHTML = `<a class="vcc-id" href="${esc(makerUrl)}"><img src="${esc(BAV.creatorAvatar(v))}" alt=""><span><b>${esc(maker.name)}</b><small>${maker.official ? '<span class="creator-tag">Official</span>' : ""}<span>${esc(BAV.creatorKind(maker))}</span></small></span></a>`
+    + `<dl class="vcc-stats"><div><dt>Vaults created</dt><dd>${maker.vaults.length}</dd></div><div><dt>Total vault value</dt><dd>${fmt.usd(maker.tvl)}</dd></div><div><dt>Earned for depositors</dt><dd>${fmt.usd(maker.earned)}</dd></div><div><dt>Depositors</dt><dd>${fixed(maker.depositors, 0)}</dd></div></dl>`
+    + `<a class="btn ghost block" href="${esc(makerUrl)}">${maker.vaults.length > 1 ? `View all ${maker.vaults.length} vaults` : "View creator"}</a>`;
+  else $("#creator-card").hidden = true;
+  function drawTags() {
+    const state = unavailable() ? "Data unavailable" : previewState === "paused" ? "Paused" : previewState === "stale" ? "NAV stale" : planning ? "Configuration required" : "Active";
+    $("#v-tags").innerHTML = `<span class="tag ${previewState === "paused" || previewState === "stale" || planning ? "warn" : unavailable() ? "neg" : "pos"}">${state}</span><span class="tag accounting-chip">Accounting asset · ${esc(A)}</span>${copy ? `<span class="tag warn">Follows ${esc(copy.name)}</span>` : ""}`;
+    $("#creator-controls").classList.toggle("hide", requestedLive || params.get("role") !== "creator" || !previewConnected);
+    const banners = {
+      paused: ["Vault paused — new activity paused", "The creator or risk council paused new deposits and buys in this design state. Redeem paths remain subject to protocol and token status.", "warn"],
+      stale: ["Valuation is stale", "Cash redeem needs a fresh valuation and is unavailable. In-kind redemption can remain available, subject to token and protocol checks.", "warn"],
+      unavailable: ["Couldn’t read vault data", "Values show as unavailable. No sample data substitutes for a failed live read.", "neg"],
+    };
+    const banner = banners[previewState] || null;
+    $("#vault-banner").classList.toggle("hide", !banner);
+    if (banner) $("#vault-banner").innerHTML = `<span class="vault-banner-icon ${banner[2]}">!</span><div><strong class="${banner[2]}">${banner[0]}</strong><p>${banner[1]}</p></div>${unavailable() ? '<button class="btn ghost sm" id="vault-retry">Retry</button>' : ""}`;
+    $("#vault-retry")?.addEventListener("click", () => { previewState = "active"; drawTags(); drawKeyfig(); drawPerf(); drawAllocationLimits(); drawPositions(); drawTicket(); });
+  }
+  function drawKeyfig() {
+    const na = unavailable();
+    const compact = (n) => n >= 1e6 ? fixed(n / 1e6, 2) + "M" : n >= 1e4 ? fixed(n / 1e3, 1) + "K" : fixed(n, 0);
+    // Return cells are filled by drawPerf so they follow the selected period.
+    $("#keyfig").innerHTML = `
+      <div><dt>Vault size</dt><dd>${na ? "Unavailable" : `${compact(v.tvl)}<small>${esc(A)}</small>`}</dd></div>
+      <div><dt id="p-sub"></dt><dd id="p-big"></dd></div>
+      <div><dt>Share price, ${esc(A)}</dt><dd>${na ? "Unavailable" : fixed(v.sharePrice, 4)}</dd></div>`;
+    $("#vault-data-note").className = `vault-data-note ${previewState === "stale" ? "warn" : ""}`;
+    $("#vault-data-note").textContent = na ? "Vault data couldn’t be read · values unavailable" : `${previewState === "stale" ? "NAV stale · " : ""}${v.runtimeDays} days of history`;
+  }
+  /* Demo strip: how it buys, what it holds, where it earns — all read from the vault's rules and positions. */
+  function drawStrip() {
+    const rows = marketRows();
+    const held = [...new Set(rows.flatMap(({ m }) => m.tokens || []))];
+    const venueKey = (name) => String(name).toLowerCase().split(/\s+/)[0];
+    const venues = [...new Set([...rows.filter(({ r }) => r.a === "lend").map(({ m }) => m.venue), ...v.positions.filter((x) => !["Idle", "PancakeSwap"].includes(x.p)).map((x) => venueKey(x.p))])].map((key) => C.VNAME[key] ? key : null).filter(Boolean);
+    const buying = human ? "Manager decides" : v.buyPlan || (v.continuous ? "Agent decides" : "Planning reference");
+    $("#v-strip").innerHTML = `<div><dt>Buying</dt><dd>${esc(buying)}</dd></div><div><dt>Holds</dt><dd>${esc(held.join(" · ") || A)}</dd></div><div><dt>Earns on</dt><dd>${venues.length ? venues.map((key) => `<span class="with-logo">${logo(key)}${esc(C.VNAME[key])}</span>`).join("") : "Price only"}</dd></div>`;
+  }
+  drawKeyfig();
+
+  /* Performance */
+  const S = navSeries(v);
+  const periods = ["7D", "30D", "90D", "ALL"];
+  const sliceFor = (p) => (p === "ALL" ? S : S.slice(-Math.min(S.length, (p === "7D" ? 7 : p === "30D" ? 30 : 90) + 1)));
+  let period = v.returns["30D"] == null ? "ALL" : "30D";
+  const drawPerf = () => {
+    $$("#p-period button").forEach((b) => b.classList.toggle("on", b.dataset.v === period));
+    const points = sliceFor(period), r = v.returns[period], label = period === "ALL" ? "All" : period;
+    const complete = r != null && !unavailable();
+    $("#p-big").innerHTML = complete ? `<span class="${fmt.cls(r)}">${fmt.pct(r)}</span>` : "—";
+    $("#p-sub").textContent = period === "ALL" ? "Return, since inception" : `Return, ${{ "7D": 7, "30D": 30, "90D": 90 }[period]} days`;
+    $("#p-drop-label").textContent = `Max drop ${label}`;
+    $("#p-drop").textContent = complete ? fmt.pct(v.maxDrawdown[period]) : "—";
+    $("#p-range-start").textContent = complete ? fmt.date(points[0].t) : "";
+    $("#p-range-end").textContent = complete ? fmt.date(points[points.length - 1].t) : "";
+    $("#p-range").textContent = complete ? `${fmt.date(points[0].t)} → ${fmt.date(points[points.length - 1].t)}` : "";
+    $("#p-src").textContent = complete ? `Chart summary: share value moved from ${points[0].v.toFixed(4)} to ${points[points.length - 1].v.toFixed(4)} ${A} over ${label}, net of performance fees. Not a forecast.` : "";
+    if (complete) { drawVaultChart(points); BAV.drawLine($("#chart")); }
+    else $("#chart").innerHTML = `<div class="vault-chart-empty"><strong>Insufficient history</strong><span>${unavailable() ? "Performance couldn’t be loaded." : `This vault has ${v.runtimeDays} days of history — not enough for ${label}. We don’t fill gaps with example curves.`}</span></div>`;
+  };
+  function drawVaultChart(points) {
+    const values = points.map(point => point.v), low = Math.min(...values), high = Math.max(...values), padding = (high - low) * 0.15 || 0.001;
+    const W = 720, H = 250, L = 4, R = 64, T = 14, B = 30;
+    const x = (index) => L + index / Math.max(points.length - 1, 1) * (W - L - R), y = (value) => T + (high + padding - value) / (high - low + padding * 2) * (H - T - B);
+    const line = points.map((point, index) => `${index ? "L" : "M"}${x(index).toFixed(1)} ${y(point.v).toFixed(1)}`).join(" ");
+    const grid = [low, (low + high) / 2, high].map((value) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(value).toFixed(1)}" y2="${y(value).toFixed(1)}"/><text class="ax" x="${W - R + 10}" y="${(y(value) + 4).toFixed(1)}">${value.toFixed(4)}</text>`).join("");
+    const last = points[points.length - 1];
+    $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(v.name)} share value"><defs><linearGradient id="vault-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--fog)" stop-opacity=".28"/><stop offset="1" stop-color="var(--fog)" stop-opacity="0"/></linearGradient></defs>${grid}<path d="${line} L${x(points.length - 1).toFixed(1)} ${H - B} L${x(0).toFixed(1)} ${H - B} Z" class="area" fill="url(#vault-chart-fill)"/><path class="cline" d="${line}"/><circle class="dot" r="4.5" cx="${x(points.length - 1).toFixed(1)}" cy="${y(last.v).toFixed(1)}"/><text class="ax" x="${L}" y="${H - 8}">${esc(fmt.date(points[0].t))}</text><text class="ax" x="${W - R}" y="${H - 8}" text-anchor="end">Today</text></svg><div class="vault-chart-crosshair" hidden></div><div class="vault-chart-tooltip" hidden></div>`;
+    const showTooltip = event => {
+      const clientX = event.touches?.[0]?.clientX ?? event.clientX;
+      if (!Number.isFinite(clientX)) return;
+      const rect = $("#chart").getBoundingClientRect(), plot = (W - L - R) / W, proportion = Math.max(0, Math.min(1, ((clientX - rect.left) / rect.width - L / W) / plot)), point = points[Math.round(proportion * (points.length - 1))];
+      const crosshair = $(".vault-chart-crosshair"), tooltip = $(".vault-chart-tooltip");
+      const left = (L / W + proportion * plot) * 100;
+      crosshair.hidden = tooltip.hidden = false; crosshair.style.left = left + "%"; tooltip.style.left = left + "%"; tooltip.style.transform = `translateX(${proportion > 0.7 ? "-105%" : "6px"})`;
+      tooltip.innerHTML = `<span>${fmt.date(point.t)}</span><strong>${fixed(point.v, 4)} ${esc(A)}</strong>`;
+    };
+    const hideTooltip = () => { if ($(".vault-chart-crosshair")) $(".vault-chart-crosshair").hidden = $(".vault-chart-tooltip").hidden = true; };
+    $("#chart").onmousemove = showTooltip;
+    $("#chart").onpointermove = showTooltip;
+    $("#chart").ontouchstart = showTooltip;
+    $("#chart").ontouchmove = showTooltip;
+    $("#chart").onmouseleave = hideTooltip;
+    $("#chart").ontouchend = () => setTimeout(hideTooltip, 1800);
+  }
+  $$("#p-period button").forEach((b) => b.addEventListener("click", () => { period = b.dataset.v; drawPerf(); }));
+  drawPerf();
+  BAV.flipOnChange([$("#p-big"), $("#p-drop")]);
+  $("#perf-periods").innerHTML = periods.map((p) => {
+    const r = v.returns[p], annualized = perf(v, p, "annualized"), points = sliceFor(p), complete = r != null;
+    return `<div><strong>${p === "ALL" ? "Since inception" : p}</strong><dl><dt>Net return</dt><dd>${complete ? fmt.pct(r) : "Insufficient history"}</dd><dt>Annualized illustration</dt><dd>${complete && annualized != null ? fmt.pct(annualized) : "—"}</dd><dt>Max drop</dt><dd>${complete ? fmt.pct(v.maxDrawdown[p]) : "—"}</dd><dt>Share value</dt><dd>${complete ? points[0].v.toFixed(4) + " → " + v.sharePrice.toFixed(4) : "—"}</dd></dl></div>`;
+  }).join("");
+
+  /* Rules — the same sentence and rules the manager signed at launch */
+  const marketChip = (m, r) => `<span class="chip ro">${logo(m.venue)}${esc(C.label(m))} · max ${C.capTxt(C.allocationCap(r, m.id))} of vault value${m.a === "lend" && m.apy != null ? ` · APY snapshot ${C.pct(m.apy)}` : m.a === "borrow" ? ` · ${C.levTxt(C.effLev(m, r.lev))} leverage` : ""}</span>`;
+  function aiSummary() {
+    const r = vaultRisk(v), lev = C.maxLeverage(v.rules), hasLoop = v.rules.some((x) => x.a === "borrow");
+    const base = r === "Low"
+      ? `A low-volatility ${A} vault. Returns should sit close to lending rates; the main risks are a stablecoin depeg and a lending pool running short of withdrawable cash.`
+      : r === "Medium"
+        ? `A ${A}-counted vault that loops assets of the same family at up to ${C.levTxt(lev)}. It earns the gap between collateral yield and borrow cost, times leverage, and loses if borrowing costs more than the collateral pays. Leaving costs more because positions are unwound on DEXs.`
+        : `It holds assets that move against ${A}${hasLoop ? `, with loops up to ${C.levTxt(lev)} that can be liquidated` : ""}, so expect real swings.${v.rules.some((x) => x.g === "stocks") ? " Tokenized stock prices move on weekends, so Monday opens can gap." : ""}`;
+    return `${base} Its selected operation limits total ${C.capTxt(C.totalAllocation(v.rules))} of vault value; ${C.capTxt(C.minIdleAllocation(v.rules))} is ${v.continuous ? "unallocated cap budget. The contract checks at least 5% idle after buys; price moves can change existing weights" : "a planned idle budget in this historical reference, not an executable contract minimum"}. ${human ? "A person makes the trades, from the owner's wallet." : `${v.manager}, an AI agent, makes the trades with its own key.`} Manager's note: “${v.strategy}”`;
+  }
+  function drawRules() {
+    $("#v-sentence").textContent = v.strategy;
+    $("#v-legs").innerHTML = `<div><span class="label">Assets &amp; markets</span>${marketRows().map(({ m }) => `<span>${esc(m.tokens?.join(" / ") || m.label || C.GROUPS[m.g]?.name || A)} → <span class="with-logo">${logo(m.venue)}${esc(C.label(m))}</span></span>`).join("")}</div><div><span class="label">Allowed operations</span>${v.rules.map((r) => `<span>${esc(C.ACTIONS[r.a].name)} on the named exact markets</span>`).join("")}</div><div><span class="label">Not allowed</span><span>Borrowing, leverage, LP, arbitrary transfers, withdrawing for holders, new markets</span></div>`;
+    const f = v.fees, split = feeBreakdown(f.perf, f.platform), hasLoop = v.rules.some((r) => r.a === "borrow");
+    $("#rules").innerHTML = [
+      ["Cannot", `Use any market not named above or send funds to the agent. Borrowing and LP positions are unavailable in phase one. ${v.continuous ? "New buys are checked against investment caps and a 5% idle minimum; price moves do not force existing positions to be sold." : `This planning reference leaves a ${C.capTxt(C.minIdleAllocation(v.rules))} planned idle budget; no contract transaction is enabled.`}`],
+      ["You pay", `${split.total}% of your realized profit at exit: ${split.creatorNet}% to the creator and a fixed ${split.platformTotal}% to the protocol, calculated from your own cost basis. ${f.mgmt ? `${f.mgmt}% annualized management fee during active strategy time.` : "No management fee."} Deposits also pay 0.5%; each fund operation pays 0.1% subject to a 1% annual NAV cap.`],
+      ["Leave", v.continuous ? "Redeem a proportional slice with minimum USDT proceeds, or receive the tokens and lending receipts in kind. Liquidity and oracles can prevent a cash exit. External protocol pauses can also block receipt transfers. Shares cannot be transferred. The creator has no time lock but must retain at least 2% while other holders remain." : "Historical basket design reference. This sample cannot accept deposits or execute a redemption."],
+    ].map(([k, t]) => `<li><b>${k}</b><span>${t}</span></li>`).join("");
+    $("#market-details").innerHTML = v.rules.flatMap(rule => C.ruleMarkets(rule).map(market => marketChip(market, rule))).join("");
+    $("#ai").textContent = aiSummary();
+  }
+
+  /* Simulated positions and contract caps stay separate. Unknown position mappings never become zero. */
+  function currentForMarket(m) {
+    const name = (m.label || C.label(m)).toLowerCase();
+    const candidates = v.positions.filter(position => position.p !== "Idle" && (name.includes(position.loc.toLowerCase()) || position.loc.toLowerCase().includes((m.tokens || [])[0]?.toLowerCase() || "__unknown__") || (v.positions.filter(p => p.p !== "Idle").length === 1 && marketRows().length === 1)));
+    return candidates.length === 1 && !/[·/]/.test(candidates[0].loc) ? candidates[0].w : null;
+  }
+  function drawAllocationLimits() {
+    const rows = marketRows(), idle = C.minIdleAllocation(v.rules), actualIdle = v.positions.find(position => position.p === "Idle")?.w;
+    const all = [...rows.map(({ m, r, cap }) => ({ name: `${C.ACTIONS[r.a].name} · ${C.label(m)}`, cap })), { name: v.continuous ? "Unallocated cap budget" : "Planned idle budget", cap: idle, idle: true }];
+    const weightCell = (current) => `<span class="dk-w vault-weight"><b>${current == null ? "—" : fixed(current, 1) + "%"}</b><i style="--w:${current || 0}%"></i></span>`;
+    $("#allocation-rows").innerHTML = rows.map(({ m, r }) => {
+      const current = unavailable() ? null : currentForMarket(m);
+      const symbol = (m.tokens || []).join(" / ") || A;
+      const lend = r.a === "lend";
+      const venue = lend ? `<span class="with-logo">${logo(m.venue)}${esc(C.VNAME[m.venue] || m.venue)} ${m.kind === "Vault" ? "vault" : "lending"}</span>` : "In the vault";
+      const earns = `${esc(symbol)} price${lend && m.apy != null ? ` + ~${C.pct(m.apy)}/yr` : ""}`;
+      return `<tr><td class="mono"><strong>${esc(symbol)}</strong></td><td>${weightCell(current)}</td><td>${venue}</td><td class="dk-hide-sm vault-earns">${earns}</td></tr>`;
+    }).join("") + `<tr class="idle"><td class="mono"><strong>${esc(A)}</strong></td><td>${weightCell(unavailable() ? null : actualIdle ?? null)}</td><td>Cash</td><td class="dk-hide-sm vault-earns">—</td></tr>`;
+    $("#allocation-note").textContent = v.continuous ? `Investment limits total ${C.capTxt(C.totalAllocation(v.rules))} of NAV (max 95%); the rest is unallocated cap budget. After any buy the vault must keep at least 5% cash. If prices push a position above its limit, nothing is force-sold — new buys are checked against all caps. Strategy weights are unavailable in this record.` : `Historical planning reference: operation limits total ${C.capTxt(C.totalAllocation(v.rules))}, with a ${C.capTxt(idle)} planned idle budget. These values do not enable deposits or execution. Strategy weights are unavailable in this record.`;
+    $("#alloc-bar").innerHTML = all.map((x, i) => `<i style="width:${x.cap}%;background:${x.idle ? "var(--ice)" : "var(--mist)"}" title="${esc(x.name)} ${C.capTxt(x.cap)}"></i>`).join("");
+    $("#alloc-bar").setAttribute("aria-label", all.map(x => `${x.name} ${C.capTxt(x.cap)}`).join(", "));
+    $("#allocation-budget-rows").innerHTML = all.map(x => `<div><strong>${esc(x.name)}</strong><span>${x.idle ? "Budget remainder" : "Limit"} ${C.capTxt(x.cap)}</span><span>${x.idle ? v.continuous ? "Separate from the 5% minimum idle check after buys" : "Planned cash budget · historical reference" : `${unavailable() ? "Unavailable" : fixed(v.tvl * x.cap / 100) + " " + A} maximum at sample NAV`}</span></div>`).join("");
+  }
+  drawAllocationLimits();
+  drawStrip();
+  function drawRc() {
+    const existing = v.pendingChange;
+    const first = marketRows()[0], available = 95 - C.totalAllocation(v.rules);
+    const pc = existing || (!requestedLive && params.get("pendingCap") === "1" && first && available > 0 ? { what: C.label(first.m), from: first.cap, to: first.cap + Math.min(10, available), preview: true } : null);
+    $("#rc-tag").innerHTML = pc ? '<span class="tag warn">Pending</span>' : "None pending";
+    $("#rc").innerHTML = pc ? `<div class="vault-pending"><div><span class="warn">Pending cap increase</span><strong>${esc(pc.what)}</strong></div><span>${pc.from != null && pc.to != null ? `${pc.from}% → ${pc.to}%` : "Review announced limits"}</span><div>Effective time unavailable — no countdown</div><button class="btn ghost sm" id="rc-red">Review redeem</button></div>` : '<p class="muted">No pending changes.</p>';
+    $("#rc").innerHTML += '<p class="fine">Lowering a limit takes effect immediately. Raising one waits at least 24 hours. If the effective time can’t be read, no countdown is shown. Named markets are fixed at launch.</p>';
+    $("#rc-red")?.addEventListener("click", () => openTab("red"));
+  }
+  function drawPositions() {
+    $("#positions tbody").innerHTML = v.positions.map(x => {
+      const asset = x.p === "Idle" ? A : x.loc.match(/(?:USDT|USDC|BTCB|WBNB|ETH|NVDAB|TSLAB|SPCXB|SKHYB|SPYB|AAPLB|GOOGLB)/g)?.join(" / ") || x.loc.replace(/^v/, "");
+      const venue = x.p === "Idle" ? "Vault" : x.p;
+      const value = unavailable() ? "Unavailable" : fixed(v.tvl * x.w / 100);
+      const balance = unavailable() ? "Read failed" : x.p === "Idle" || /USDT/i.test(x.loc) ? fixed(v.tvl * x.w / 100) + " " + A : "Unavailable";
+      return `<tr><td><strong>${esc(asset)}</strong><span class="position-venue">${x.p === "Idle" ? "" : logo(x.p)}${esc(venue)}</span></td><td class="position-form">${esc(x.loc)}<span class="position-mobile-balance">${balance}</span></td><td class="r position-balance">${balance}</td><td class="r position-value"><strong>${value}</strong><span class="position-mobile-unit">${unavailable() ? "" : A}</span></td></tr>`;
+    }).join("");
+    $("#position-sources").innerHTML = v.positions.map(x => `<p>${esc(x.loc)} · ${esc(x.by)} · ${esc(x.st)}</p>`).join("");
+  }
+  drawPositions();
+  $("#creator").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Manager</span><span>${esc(v.manager)}</span></div><div><span class="label">Agent operator</span><span>${human ? "Manager’s own wallet" : "Separate address · set at open"}</span></div><div><span class="label">Chain</span><span class="with-logo">${logo("bnb")}BNB Chain</span></div></div>`;
+
+  /* Real transaction controls: examples never mutate a demo balance. */
+  let tab = params.get("tab") === "redeem" ? "red" : "sub", client = null, deployment = null, deployedVault = null, account = null, live = null, busy = false, busyOwner = null, quoteEpoch = 0, readEpoch = 0, operation = null, receiptBusy = false;
+  const activeConfig = () => deployment?.status === "deployed" && !!deployedVault;
+  const pendingOperation = () => !!operation && ["awaiting-wallet", "submitted", "unknown", "mined"].includes(operation.phase);
+  const controlsLocked = () => busy || receiptBusy || pendingOperation();
+  const assetSymbol = () => live?.assetSymbol || (requestedLive || activeConfig() ? "asset" : A);
+  const vaultAddress = () => deployedVault?.address || deployedVault?.vault;
+  const operationStorageKey = () => `bav-vault-pending:${deployment?.chainId}:${vaultAddress()?.toLowerCase()}`;
+  const saveOperation = () => { try { if (pendingOperation()) localStorage.setItem(operationStorageKey(), JSON.stringify(operation)); else localStorage.removeItem(operationStorageKey()); } catch (_) { /* The client also retains its submitted hash when storage is available. */ } };
+  function restoreOperation() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(operationStorageKey()) || "null");
+      if (!saved || (saved.hash && !/^0x[0-9a-f]{64}$/i.test(saved.hash)) || !/^0x[0-9a-f]{40}$/i.test(saved.account) || typeof saved.message !== "string" || saved.chainId !== deployment.chainId || saved.vault?.toLowerCase() !== vaultAddress().toLowerCase() || !["awaiting-wallet", "submitted", "unknown", "mined"].includes(saved.phase)) return;
+      operation = { ...saved, phase: saved.phase === "mined" ? "mined" : "unknown", message: saved.phase === "mined" ? saved.message : `Saved submitted transaction ${saved.hash}. Confirmation is unknown. Check its receipt before any retry; nothing is resent automatically.` };
+    } catch (_) { /* Malformed local records never enable signing. */ }
+  }
+  function syncCachedOperation(records, connectedAccount) {
+    if (!operation?.intentId || connectedAccount && operation.account?.toLowerCase() !== connectedAccount.toLowerCase()) return;
+    const saved = records.find(item => item.id === operation.intentId && item.chainId === operation.chainId && item.from.toLowerCase() === operation.account.toLowerCase());
+    if (!saved || !["confirmed", "finalized", "reverted", "rejected", "cancelled", "released-unknown"].includes(saved.state)) return;
+    operation.phase = ["confirmed", "finalized"].includes(saved.state) ? "confirmed" : saved.state === "reverted" ? "failed" : saved.state;
+    operation.hash = saved.hash || operation.hash;
+    operation.message = saved.state === "released-unknown"
+      ? "This local signing guard was released in another tab. Outcome remains unknown; a delayed transaction may still execute. Reconnect, read fresh balances and review a new quote."
+      : `Saved ${saved.stage} request is ${saved.state}. ${saved.message || "Check the recorded wallet history before preparing a new transaction."}`;
+    if (saved.state === "released-unknown") { quoteEpoch++; ticketValues.minimum.sub = ""; ticketValues.minimum.red = ""; ticketValues.ack = false; }
+    saveOperation();
+  }
+  const status = (message) => {
+    const target = $("#ticket-status"); if (!target) return;
+    const text = String(pendingOperation() ? operation.message : message), hash = text.match(/0x[0-9a-f]{64}/i)?.[0];
+    target.textContent = text.replace(/0x[0-9a-f]{40,}/gi, address => short(address)); target.title = text;
+    if (hash && [56, 97].includes(Number(deployment?.chainId))) {
+      const link = document.createElement("a"); link.href = `https://${Number(deployment.chainId) === 97 ? "testnet." : ""}bscscan.com/tx/${hash}`; link.textContent = " View transaction ↗"; link.target = "_blank"; link.rel = "noopener noreferrer"; target.appendChild(link);
+    }
+    renderOperation();
+  };
+  const transactionStatus = message => {
+    if (!operation) return;
+    try {
+      const saved = client?.walletOperations?.(deployment.chainId, operation.account).find(item => item.vault.toLowerCase() === operation.vault.toLowerCase() && ["awaiting-wallet", "submitted", "unknown", "mined"].includes(item.state));
+      if (saved) { operation.intentId = saved.id; operation.hash = saved.hash || null; operation.phase = saved.state; }
+    } catch (_) { /* SDK fails closed if durable history cannot be read. */ }
+    operation.message = String(message);
+    const hash = operation.message.match(/0x[0-9a-f]{64}/i)?.[0];
+    if (hash) { operation.hash = hash; operation.phase = "submitted"; }
+    saveOperation(); status(message);
+  };
+  const decimal = (raw, places) => {
+    const value = BigInt(raw).toString().padStart(places + 1, "0");
+    return places ? `${value.slice(0, -places)}.${value.slice(-places)}`.replace(/\.?0+$/, "") : value;
+  };
+  const decimalRaw = (value, places) => {
+    const text = String(value ?? "").trim();
+    if (!/^\d+(?:\.\d+)?$/.test(text) || !Number.isInteger(places) || places < 0 || places > 36) return null;
+    const [whole, fraction = ""] = text.split(".");
+    if (fraction.length > places) return null;
+    const raw = BigInt(whole + fraction.padEnd(places, "0"));
+    return raw < 2n ** 256n ? raw : null;
+  };
+  function balanceLabel(value) {
+    const text = String(value);
+    if (text.length <= 14) return text;
+    const number = Number(text);
+    return /^\d+(?:\.\d+)?$/.test(text) && Number.isFinite(number) ? `≈${number.toPrecision(4)}` : "Unavailable";
+  }
+  function renderOperation() {
+    const element = $("#transaction-state"); if (!element) return;
+    if (!operation) { element.innerHTML = ""; return; }
+    const explorer = operation.hash && [56, 97].includes(Number(operation.chainId)) ? `https://${operation.chainId === 97 ? "testnet." : ""}bscscan.com/tx/${operation.hash}` : null;
+    const saved = operation.intentId ? client?.walletOperations?.(operation.chainId, operation.account).find(item => item.id === operation.intentId) : null;
+    const canRelease = saved && ["unknown", "awaiting-wallet"].includes(saved.state) && !saved.hash && !saved.broadcastHash && saved.broadcastNonce === undefined && saved.verifiedNonce === undefined && !saved.replacementHashes?.length;
+    element.innerHTML = `<div class="vault-operation"><strong>${operation.phase === "released-unknown" ? "Guard released · outcome unknown" : operation.phase === "confirmed" ? "Confirmed receipt" : operation.phase === "rejected" ? "Wallet request rejected" : operation.phase === "cancelled" ? "Transaction cancelled" : operation.phase === "failed" ? "Transaction reverted" : operation.phase === "mined" ? "Mined · settlement not reverified" : "Submitted · do not resend"}</strong><p class="fine">${esc(operation.message.replace(/0x[0-9a-f]{64}/gi, short))}</p><span class="mono" title="${esc(operation.hash)}">${operation.hash ? short(operation.hash) : "Hash unknown · check wallet history"}</span>${explorer ? `<a href="${explorer}" target="_blank" rel="noopener noreferrer">View transaction ↗</a>` : ""}${pendingOperation() ? `<button type="button" class="btn ghost block sm" id="transaction-reconcile" ${busy || receiptBusy ? "disabled" : ""}>${receiptBusy ? "Checking canonical receipt…" : "Check transaction receipt"}</button>` : ""}${canRelease ? `<button type="button" class="btn ghost block sm" id="transaction-release-unknown" ${busy || receiptBusy ? "disabled" : ""}>Release unresolved request…</button>` : ""}</div>`;
+    $("#transaction-reconcile")?.addEventListener("click", reconcileOperation);
+    $("#transaction-release-unknown")?.addEventListener("click", releaseUnknownOperation);
+  }
+  async function releaseUnknownOperation() {
+    if (!pendingOperation() || !operation.intentId || busy || receiptBusy || !activeConfig()) return;
+    if (!window.confirm(client.UNKNOWN_RELEASE_ACKNOWLEDGEMENT + "\n\nRelease only this local signing guard? No transaction will be sent and no previous transaction is proved cancelled.")) return;
+    const pending = operation; receiptBusy = true; renderOperation();
+    try {
+      const result = await client.releaseUnknownWalletOperation(deployment, pending.intentId, { acknowledgement: client.UNKNOWN_RELEASE_ACKNOWLEDGEMENT });
+      if (operation !== pending) return;
+      pending.phase = result.state; pending.message = result.instruction;
+      quoteEpoch++; readEpoch++; account = null; live = null;
+      ticketValues.minimum.sub = ""; ticketValues.minimum.red = ""; ticketValues.ack = false;
+      clearUnverifiedLive("Outcome remains unknown. Reconnect and read fresh balances before preparing a new quote."); saveOperation();
+    } catch (error) { if (operation === pending) pending.message = error.message || "Recovery unavailable. The signing guard remains active."; }
+    finally { receiptBusy = false; drawTicket(); if (operation === pending) status(pending.message); }
+  }
+  async function canonicalRpc(method, params) {
+    const response = await fetch(deployment.rpcUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }), signal: AbortSignal.timeout(12000) });
+    if (!response.ok) throw new Error("Configured chain RPC is unavailable");
+    const result = await response.json();
+    if (result.error || !("result" in result)) throw new Error(result.error?.message || "Invalid chain RPC response");
+    return result.result;
+  }
+  async function reconcileOperation() {
+    if (!pendingOperation() || busy || receiptBusy || !activeConfig()) return;
+    const pending = operation;
+    receiptBusy = true; renderOperation();
+    try {
+      if (pending.intentId && client.reconcileWalletOperation) {
+        const candidate = window.prompt("Paste the original, speed-up or cancellation transaction hash from wallet history. A replacement must use the original transaction's actual nonce. Nothing will be sent.", pending.hash || "")?.trim();
+        if (!candidate) return;
+        const saved = client.walletOperations?.(pending.chainId, pending.account).find(item => item.id === pending.intentId);
+        let recovery;
+        if (!saved?.hash && !saved?.broadcastHash && !saved?.replacementHashes?.length) {
+          if (!window.confirm("Confirm this hash belongs to the original saved wallet request, not another transaction.\n\n" + client.UNKNOWN_RELEASE_ACKNOWLEDGEMENT)) return;
+          recovery = { acknowledgement: client.UNKNOWN_RELEASE_ACKNOWLEDGEMENT };
+        }
+        const result = await client.reconcileWalletOperation(deployment, pending.intentId, candidate, recovery);
+        pending.hash = result.hash || result.intent?.hash || pending.hash;
+        pending.phase = result.finalized ? result.state === "cancelled" ? "cancelled" : result.state === "reverted" ? "failed" : "confirmed" : result.state === "mined" ? "mined" : "unknown";
+        pending.message = result.finalized ? `Transaction ${pending.hash} finalized (${result.state}).` : `Saved wallet intent remains ${result.state}. Check wallet history and do not resend.`;
+        saveOperation(); status(pending.message); return;
+      }
+      if (!pending.hash) throw new Error("No transaction hash returned. Find the saved nonce in wallet history; do not resend");
+      if (Number(BigInt(await canonicalRpc("eth_chainId", []))) !== pending.chainId) throw new Error("Configured RPC returned a different chain");
+      const [receipt, transaction] = await Promise.all([canonicalRpc("eth_getTransactionReceipt", [pending.hash]), canonicalRpc("eth_getTransactionByHash", [pending.hash])]);
+      if (!receipt || !transaction) throw new Error("No mined receipt found. Confirmation remains unknown; do not resend");
+      const same = (left, right) => typeof left === "string" && typeof right === "string" && left.toLowerCase() === right.toLowerCase();
+      if (!same(receipt.transactionHash, pending.hash) || !same(transaction.hash, pending.hash) || !same(transaction.from, pending.account) || !same(transaction.to, pending.vault) || !same(receipt.from, pending.account) || !same(receipt.to, pending.vault) || !same(transaction.blockHash, receipt.blockHash) || BigInt(transaction.blockNumber) !== BigInt(receipt.blockNumber)) throw new Error("Receipt does not match the submitted transaction context");
+      const header = await canonicalRpc("eth_getBlockByNumber", [receipt.blockNumber, false]);
+      const head = BigInt(await canonicalRpc("eth_blockNumber", []));
+      if (!same(header?.hash, receipt.blockHash) || BigInt(header?.number) !== BigInt(receipt.blockNumber) || head <= BigInt(receipt.blockNumber)) throw new Error("Receipt needs a canonical block and one following block; keep checking before any retry");
+      const [again, receiptAgain, chainAgain] = await Promise.all([canonicalRpc("eth_getBlockByNumber", [receipt.blockNumber, false]), canonicalRpc("eth_getTransactionReceipt", [pending.hash]), canonicalRpc("eth_chainId", [])]);
+      if (!same(again?.hash, header.hash) || !same(receiptAgain?.blockHash, header.hash) || !same(receiptAgain?.transactionHash, pending.hash) || BigInt(receiptAgain.status) !== BigInt(receipt.status) || Number(BigInt(chainAgain)) !== pending.chainId) throw new Error("Receipt block changed; confirmation remains unknown");
+      if (operation !== pending) return;
+      if (BigInt(receipt.status) === 0n) { const final = await canonicalRpc("eth_getBlockByNumber", ["finalized", false]); if (!final?.hash || BigInt(final.number) < BigInt(receipt.blockNumber)) throw new Error("Reverted receipt is not finalized; retry remains blocked"); pending.phase = "failed"; pending.message = `Transaction ${pending.hash} reverted in canonical block ${BigInt(receipt.blockNumber)}. Review fresh data before preparing a new transaction.`; }
+      else if (BigInt(receipt.status) === 1n) { pending.phase = "mined"; pending.message = `Transaction ${pending.hash} is mined successfully in canonical block ${BigInt(receipt.blockNumber)}. Settlement has not been reverified here. Resubmission stays blocked; check the transaction and balances before further action.`; }
+      else throw new Error("Unknown receipt status; do not resend");
+      saveOperation();
+    } catch (error) { if (operation === pending) { pending.message = `Transaction ${pending.hash}: ${error.message || "Receipt check unavailable"}. Nothing is resent automatically.`; saveOperation(); } }
+    finally { receiptBusy = false; drawTicket(); if (operation === pending) status(pending.message); }
+  }
+  const ticketValues = { sub: "1000", red: "", minimum: { sub: "", red: "" }, deadline: "20", kind: params.get("mode") === "kind", ack: false };
+  function drawTicket() {
+    quoteEpoch++;
+    $$(".ticket .tabs button").forEach(button => { button.classList.toggle("on", button.dataset.t === tab); button.setAttribute("aria-selected", String(button.dataset.t === tab)); });
+    const cash = tab === "sub", ready = activeConfig(), readable = account && live, kind = !cash && ticketValues.kind;
+    const connected = readable || previewConnected, amount = ticketValues[tab];
+    const example = !requestedLive && !ready && Number(amount) > 0 ? cash ? Number(amount) / v.sharePrice : Number(amount) * v.sharePrice : null;
+    const minimumValue = (requestedLive || ready) && !readable ? "" : ticketValues.minimum[tab] || (!requestedLive && !ready && example != null ? (example * 0.995).toFixed(4) : "");
+    const split = feeBreakdown(live ? Number(live.performanceFeeBps) / 100 : v.fees.perf, v.fees.platform);
+    const mandateText = live?.template?.label || (requestedLive || ready ? "Unavailable until verified" : v.strategy);
+    const feeText = (requestedLive || ready) && !live ? "Unavailable until verified" : `${split.total}% total · no mgmt fee`;
+    const receiptRows = live?.template?.legs ? live.template.legs.map(leg => `<div><strong>${addressView(leg.kind === 0 ? leg.token : leg.receipt)}</strong><span>${["Held token", "Venus receipt", "Lista vault shares", "Aave receipt"][leg.kind]} · proportional share</span></div>`).join("") + `<div><strong>${esc(assetSymbol())}</strong><span>Proportional accounting cash</span></div>` : requestedLive || ready ? '<p class="fine">Token and receipt list unavailable until verified.</p>' : v.positions.map(position => `<div><strong>${esc(position.loc)}</strong><span>${position.w}% of your proportional slice · ${esc(position.p === "Idle" ? "cash" : position.p)}</span></div>`).join("");
+    const reservedRaw = readable ? decimalRaw(live.shareBalance, live.shareDecimals) - decimalRaw(live.unlockedShares, live.shareDecimals) : 0n;
+    const reservedShares = readable ? decimal(reservedRaw > 0n ? reservedRaw : 0n, live.shareDecimals) : "0";
+    const balance = cash ? readable ? live.assetBalance || "Read before signing" : !ready && !requestedLive && previewConnected ? fixed(demo.balance(A)) + " " + A : "—" : readable ? kind ? live.unlockedShares : live.maxRedeem : !ready && !requestedLive && previewConnected ? fixed(demo.shares(v.slug)) : "—";
+    $("#ticket-body").innerHTML = `
+      <form id="vault-transaction-form">
+        ${cash ? "" : `<div class="redeem-modes"><button type="button" class="${kind ? "" : "on"}" data-redeem-mode="cash"><strong>Cash</strong><span>Swap your share back to ${esc(assetSymbol())}</span></button><button type="button" class="${kind ? "on" : ""}" data-redeem-mode="kind"><strong>In kind</strong><span>Receive underlying tokens and receipts</span></button></div><input type="checkbox" id="in-kind" ${kind ? "checked" : ""} hidden>${live?.staleNav || previewState === "stale" || unavailable() ? '<div class="vault-info"><strong class="warn">Cash redeem unavailable.</strong> A fresh valuation is required. In-kind exits are checked separately and can still fail.</div>' : ""}`}
+        <div class="vault-amount-label"><label for="amt">${cash ? "Amount" : "Shares"}</label><span class="vault-balance-label" title="${esc(String(balance))}" aria-label="${cash ? "Wallet balance" : "Unlocked shares"}: ${esc(String(balance))}"><span>${cash ? "Wallet" : "Unlocked"}:</span><span class="vault-balance-value">${esc(balanceLabel(balance))}</span></span></div>
+        <div class="amount"><input id="amt" inputmode="decimal" placeholder="0.00" value="${esc(amount)}" required><button type="button" id="amount-max">Max</button><span class="unit">${cash ? esc(assetSymbol()) : "shares"}</span></div>
+        <p class="fine warn" id="amount-validation" role="alert" hidden></p>
+        ${cash ? "" : '<div class="shares-percent"><button type="button" data-shares-pct="0.25">25%</button><button type="button" data-shares-pct="0.5">50%</button><button type="button" data-shares-pct="0.75">75%</button><button type="button" data-shares-pct="1">Max</button></div>'}
+        ${!cash && Number(reservedShares) > 0 ? `<p class="fine">Creator ownership reserve: <strong>${esc(reservedShares)} shares</strong> must remain so the creator keeps at least 2% while other holders remain.</p>` : ""}
+        <dl class="drows ticket-estimates"><div><dt>${cash ? "Shares received" : "Estimated net cash"}</dt><dd id="est">${(requestedLive || ready) && !readable ? "Unavailable until verified" : kind ? "Tokens + receipts · no cash quote" : !ready && !unavailable() && example != null ? "≈ " + fixed(example) + (cash ? " shares" : " " + A) : "Enter an amount"}</dd></div><div><dt>Share price</dt><dd>${live ? `${esc(displayNumber(live.pricePerShare))} ${esc(assetSymbol())}` : requestedLive || ready ? "Unavailable until verified" : unavailable() ? "Unavailable" : `${fixed(v.sharePrice, 4)} ${esc(A)}`}</dd></div><div><dt>${cash ? "Performance fee" : "Estimated performance fee"}</dt><dd id="exit-fee">${(requestedLive || ready) && !live ? "Unavailable until verified" : cash ? `${split.total}%` : kind ? "Settled from assets in kind when pricing is available" : "Preview required"}</dd></div>${cash ? '<div><dt>Conservative prequote difference</dt><dd id="entry-impact">Enter an amount</dd></div>' : ""}<div><dt>Execution costs</dt><dd>${cash ? "Your inventory acquisition, approval and gas add costs" : "Swaps and gas may add costs"}</dd></div></dl>
+        ${cash ? '<p class="fine">This is the conservative prequote difference, not a final entry cost. The contract acquires your proportional inventory using your budget, refunds unused assets and limits shares to the verified net contribution. Swaps and gas can reduce your result.</p>' : ""}
+        ${cash ? "" : `<div id="kind-fields" class="${kind ? "" : "hide"}"><span class="fine">Your proportional underlying tokens and receipts</span><div class="kind-receipts">${receiptRows}</div><label class="check"><input type="checkbox" id="kind-ack" ${ticketValues.ack ? "checked" : ""}><span>I’ll handle later swaps myself. Receipt tokens carry the original protocol’s risk, and token transfers can fail.</span></label></div>`}
+        <details class="ticket-more"><summary>Slippage, deadline &amp; terms</summary>
+        <div class="ticket-minimum ${kind ? "hide" : ""}" id="minimum-field"><label for="minimum-received">Minimum ${cash ? "shares" : esc(assetSymbol())} received</label><input id="minimum-received" inputmode="decimal" ${kind ? "" : 'placeholder="0.00"'} value="${esc(minimumValue)}" ${kind ? "" : "required"}></div>
+        <div class="ticket-deadline"><label for="quote-deadline">Deadline</label><select id="quote-deadline"><option value="2">2 min</option><option value="5">5 min</option><option value="10">10 min</option><option value="20">20 min</option><option value="30">30 min</option></select></div>
+        <p class="fine">${cash ? "If you’d get fewer than the minimum shares or the deadline passes, the transaction reverts and nothing is deposited." : "Indicative value is an estimate, not a quote. Your proportional positions are unwound and swapped; costs fall on your share. Below minimum or a failed route reverts the whole cash transaction."}</p>
+        <div class="ticket-summary"><dl><dt>You ${cash ? "deposit" : "redeem"}</dt><dd>${cash ? esc(assetSymbol()) + " (accounting asset)" : kind ? "Tokens + receipts" : esc(assetSymbol()) + " cash"}</dd><dt>Mandate</dt><dd>${esc(mandateText)}</dd><dt>Performance fee</dt><dd>${esc(feeText)}</dd><dt>Data</dt><dd class="${live?.staleNav || previewState === "stale" || unavailable() ? "warn" : ""}">${live ? live.staleNav ? "Unavailable / stale" : "Verified on-chain read" : unavailable() ? "Unavailable" : previewState === "stale" ? "Stale" : requestedLive || ready ? "Unavailable until verified" : "—"}</dd></dl></div>
+        <p class="fine ticket-caption">${cash ? "Browsing doesn’t need a wallet. Approval and deposit use separate signatures; an allowance reset may also be needed. The fixed 0.5% entry fee is excluded before shares are minted." : "Shares are nontransferable. The creator may redeem without a time lock while preserving at least 2% of live supply when other holders remain. Each holder’s realized gain is measured from their own cost basis. Manual and lifecycle pauses can block deposits; routes remain subject to external protocol status."}</p>
+        </details>
+        <div id="preview-flow"></div>
+        <div id="transaction-state" aria-live="polite"></div>
+        <button type="button" class="btn block" id="wallet-connect" ${busy || requestedLive && !ready ? "disabled" : ""}>${account ? `Reconnect ${short(account)}` : previewWallet === "wrongNetwork" ? "Switch to BNB Chain" : previewConnected ? "Preview wallet connected" : "Connect wallet"}</button>
+        <button type="submit" class="btn block" id="go" disabled>Deployment required</button>
+        ${!requestedLive && !ready ? `<button type="button" class="link ticket-preview-link" id="preview-transaction">${previewFlow ? "Continue preview" : "Preview transaction steps"}</button>` : ""}
+        <div id="ticket-status" class="live-status fine" role="status" aria-live="polite">${ready ? account ? "Enter an amount to preview." : "A verified deployment is configured. Connect to read balances and terms." : ""}</div>
+      </form>`;
+    $("#quote-deadline").value = ticketValues.deadline;
+    BAV.flipOnChange([$("#est")]);
+    const form = $("#vault-transaction-form"), amountInput = $("#amt"), minimum = $("#minimum-received"), button = $("#go"), inKind = $("#in-kind");
+    let quoted = false;
+    const remember = () => {
+      ticketValues[tab] = amountInput.value;
+      ticketValues.minimum[tab] = minimum.value;
+      ticketValues.deadline = $("#quote-deadline").value;
+      ticketValues.kind = !!inKind?.checked;
+      ticketValues.ack = !!$("#kind-ack")?.checked;
+    };
+    const updateButton = () => {
+      const kind = !!inKind?.checked, locked = controlsLocked();
+      form.querySelectorAll("input, select, button").forEach(control => { control.disabled = ["transaction-reconcile", "transaction-release-unknown", "wallet-connect"].includes(control.id) ? busy || receiptBusy : locked; });
+      $$(".ticket .tabs button, .mobile-cta [data-go]").forEach(control => { control.disabled = locked; });
+      $("#wallet-connect").disabled = busy || receiptBusy || requestedLive && !ready;
+      const amountRaw = live ? decimalRaw(amountInput.value, cash ? live.decimals : live.shareDecimals) : null;
+      const availableRaw = live ? decimalRaw(cash ? live.assetBalance : kind ? live.unlockedShares : live.maxRedeem, cash ? live.decimals : live.shareDecimals) : null;
+      const minimumRaw = live ? decimalRaw(minimum.value, cash ? live.shareDecimals : live.decimals) : null;
+      const excess = amountRaw != null && availableRaw != null && amountRaw > availableRaw;
+      const amountError = !live || !account ? "" : excess ? cash ? "Amount exceeds your wallet balance." : "Amount exceeds your redeemable shares. A creator must preserve the 2% live ownership floor while other holders remain." : !cash && availableRaw === 0n ? "No shares are currently redeemable." : amountInput.value && amountRaw == null ? "Enter a decimal amount within the token’s supported precision." : "";
+      $("#amount-validation").hidden = !amountError; $("#amount-validation").textContent = amountError;
+      button.disabled = locked || !ready || !account || !live || amountRaw == null || amountRaw <= 0n || availableRaw == null || excess || (!kind && (live.staleNav || !quoted || minimumRaw == null || minimumRaw <= 0n));
+      if ((cash && !live?.depositsAllowed) || (kind && !$("#kind-ack")?.checked)) button.disabled = true;
+      button.textContent = pendingOperation() ? "Check submitted transaction" : busy ? "Check your wallet…" : !ready ? unavailable() ? "Data unavailable" : planning && !requestedLive ? "Not available" : cash && previewState === "paused" ? "Deposits paused" : !cash && !kind && previewState === "stale" ? "Cash redeem unavailable" : "Not available" : !account ? "Connect wallet first" : cash && !live?.depositsAllowed ? "Deposits paused" : !cash && availableRaw === 0n ? "No redeemable shares" : cash ? "Review & deposit" : kind ? "Review in-kind exit" : "Review & redeem";
+      // Like the demo, a visitor without a wallet sees one action: Connect wallet.
+      button.hidden = !account && !previewConnected && !pendingOperation() && !busy;
+    };
+    const updateQuote = async () => {
+      if (controlsLocked()) return;
+      const epoch = ++quoteEpoch, amount = amountInput.value.trim(), kind = !!inKind?.checked;
+      previewFlow = null; drawPreviewFlow();
+      quoted = false; minimum.value = ""; $("#est").textContent = kind ? "Tokens + receipts · no cash quote" : "Preview unavailable";
+      if ($("#entry-impact")) { $("#entry-impact").textContent = "Quote unavailable"; $("#entry-impact").removeAttribute("title"); }
+      $("#kind-fields")?.classList.toggle("hide", !kind);
+      $$("[data-redeem-mode]").forEach(b => b.classList.toggle("on", (b.dataset.redeemMode === "kind") === kind));
+      if (!ready && !requestedLive && !unavailable() && /^\d+(?:\.\d+)?$/.test(amount) && Number(amount) > 0) {
+        const example = cash ? Number(amount) / v.sharePrice : Number(amount) * v.sharePrice;
+        $("#est").textContent = kind ? "Tokens + receipts · no cash quote" : "≈ " + fixed(example) + (cash ? " shares" : " " + A);
+        if (!kind) minimum.value = (example * 0.995).toFixed(4);
+      }
+      remember();
+      $("#minimum-field").classList.toggle("hide", kind); minimum.required = !kind; if (kind) minimum.removeAttribute("placeholder"); else minimum.setAttribute("placeholder", "0.00");
+      updateButton();
+      const quoteSnapshot = live, epochRead = readEpoch, amountRaw = live ? decimalRaw(amount, cash ? live.decimals : live.shareDecimals) : null;
+      const availableRaw = live ? decimalRaw(cash ? live.assetBalance : kind ? live.unlockedShares : live.maxRedeem, cash ? live.decimals : live.shareDecimals) : null;
+      if (!ready || !account || !live || live.staleNav || kind || amountRaw == null || amountRaw <= 0n || availableRaw == null || amountRaw > availableRaw) return;
+      try {
+        const quote = cash ? await client.previewDeposit(deployment, vaultAddress(), amount) : await client.previewRedeem(deployment, vaultAddress(), account, amount);
+        if (epoch !== quoteEpoch || epochRead !== readEpoch || quoteSnapshot !== live || controlsLocked() || !form.isConnected) return;
+        if (cash && !quote.entryImpact) throw new Error("Entry pricing impact unavailable; refresh before signing");
+        if (cash) {
+          $("#entry-impact").textContent = `≈ ${balanceLabel(quote.entryImpact.assets)} ${assetSymbol()} (${quote.entryImpact.bps} bps, rounded up)`;
+          $("#entry-impact").title = `${quote.entryImpact.assets} ${assetSymbol()} · block ${quote.entryImpact.blockNumber} · ${new Date(quote.entryImpact.blockTimestamp * 1000).toLocaleString()} · ${quote.note}`;
+        } else {
+          $("#exit-fee").textContent = `≈ ${balanceLabel(quote.feeAssets)} ${assetSymbol()} · net of holder cost basis`;
+          $("#exit-fee").title = `Gross ${quote.grossAssets}; basis ${quote.basisAssets}; profit ${quote.profitAssets}; protocol fee ${quote.protocolFeeAssets}; creator fee ${quote.creatorFeeAssets} ${assetSymbol()} · block ${quote.blockNumber}. ${quote.note}`;
+        }
+        const raw = cash ? quote.rawShares : quote.rawAssets;
+        const places = cash ? live.shareDecimals : live.decimals;
+        const exactEstimate = cash ? quote.shares : quote.assets, estimateUnit = cash ? v.symbol : assetSymbol();
+        $("#est").textContent = `${balanceLabel(exactEstimate)} ${estimateUnit}${cash ? "" : " · indicative"}`;
+        $("#est").title = `${exactEstimate} ${estimateUnit}${cash ? " · estimated shares" : " · indicative cash value, not a guaranteed payout"}`;
+        minimum.value = decimal(BigInt(raw) * 9950n / 10000n, places);
+        quoted = true;
+        status("Minimum received starts at 99.5% of this preview. Review or edit that limit. The contract is simulated again immediately before the wallet signature.");
+      } catch (error) { if (epoch === quoteEpoch && epochRead === readEpoch && quoteSnapshot === live && !controlsLocked() && form.isConnected) status(error.message || "Quote unavailable."); }
+      updateButton();
+    };
+    amountInput.addEventListener("input", updateQuote); minimum.addEventListener("input", () => { if (!controlsLocked()) { remember(); updateButton(); } }); inKind?.addEventListener("change", updateQuote);
+    $("#quote-deadline").addEventListener("change", () => { if (!controlsLocked()) remember(); });
+    $("#kind-ack")?.addEventListener("change", () => { if (!controlsLocked()) { remember(); updateButton(); } });
+    $$("[data-redeem-mode]").forEach(control => control.addEventListener("click", () => { if (controlsLocked()) return; inKind.checked = control.dataset.redeemMode === "kind"; updateQuote(); }));
+    $$("[data-shares-pct]").forEach(control => control.addEventListener("click", () => {
+      if (controlsLocked()) return;
+      if (account && live) {
+        const shares = decimalRaw(inKind?.checked ? live.unlockedShares : live.maxRedeem, live.shareDecimals), bps = { "0.25": 2500n, "0.5": 5000n, "0.75": 7500n, "1": 10000n }[control.dataset.sharesPct];
+        if (shares == null || bps == null) return;
+        amountInput.value = decimal(shares * bps / 10000n, live.shareDecimals);
+      } else amountInput.value = ((previewConnected ? demo.shares(v.slug) : 0) * Number(control.dataset.sharesPct)).toFixed(4);
+      updateQuote();
+    }));
+    $("#amount-max").addEventListener("click", () => {
+      if (controlsLocked()) return;
+      if (account && live) {
+        const places = cash ? live.decimals : live.shareDecimals, maximum = decimalRaw(cash ? live.assetBalance : inKind?.checked ? live.unlockedShares : live.maxRedeem, places);
+        if (maximum == null) return;
+        amountInput.value = decimal(maximum, places);
+      } else amountInput.value = String(cash ? previewConnected ? demo.balance(A) : 0 : previewConnected ? demo.shares(v.slug) : 0);
+      updateQuote();
+    });
+    $("#preview-transaction")?.addEventListener("click", startPreviewFlow);
+    async function connectTicketWallet() {
+      // An unresolved request blocks signing for its account, while another account can still connect.
+      if (busy || receiptBusy) return;
+      if (!ready) {
+        if (requestedLive) return;
+        previewConnected = true; previewWallet = "connected";
+        window.dispatchEvent(new CustomEvent("bav:wallet-preview", { detail: { connected: true } }));
+        remember(); drawTags(); drawTicket(); return;
+      }
+      const kind = await client.pickWallet();
+      if (!kind || busy || receiptBusy) return;
+      const epochRead = ++readEpoch, busyToken = {}; let readError = null;
+      account = null; live = null; clearUnverifiedLive();
+      busyOwner = busyToken; busy = true; updateButton();
+      try {
+        const connectedAccount = await client.connectWallet(deployment, kind);
+        if (epochRead !== readEpoch) return;
+        const snapshot = await client.readVault(deployment, vaultAddress(), connectedAccount);
+        if (epochRead !== readEpoch) return;
+        account = connectedAccount; live = snapshot;
+        const records = client.walletOperations(deployment.chainId, connectedAccount);
+        syncCachedOperation(records, connectedAccount);
+        const saved = records.find(item => ["awaiting-wallet", "submitted", "unknown", "mined"].includes(item.state));
+        if (saved) operation = { intentId: saved.id, hash: saved.hash || null, chainId: saved.chainId, account: saved.from, vault: saved.vault, phase: saved.state, message: `Account request (${saved.action}, ${saved.stage}) for requested nonce ${saved.nonce} is unresolved. Check its receipt or review no-hash recovery before signing.` };
+        else if (operation?.account?.toLowerCase() !== connectedAccount.toLowerCase()) operation = null;
+        saveOperation();
+        drawLiveTerms();
+      } catch (error) {
+        if (epochRead !== readEpoch) return;
+        account = null; live = null; readError = error.message || "Wallet or vault verification failed."; clearUnverifiedLive(readError);
+      } finally { if (epochRead === readEpoch && busyOwner === busyToken) { busy = false; busyOwner = null; drawTicket(); if (readError) status(readError); } }
+    }
+    $("#wallet-connect").addEventListener("click", connectTicketWallet);
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault(); updateButton(); if (button.disabled) return;
+      remember();
+      const deadline = Math.floor(Date.now() / 1000) + Number($("#quote-deadline").value) * 60;
+      const kind = !!inKind?.checked, epochRead = readEpoch, submittedAccount = account, submittedAmount = amountInput.value.trim(), submittedMinimum = minimum.value.trim();
+      operation = { phase: "preparing", hash: null, chainId: deployment.chainId, vault: vaultAddress(), account: submittedAccount, message: "Preparing transaction" };
+      const submittedOperation = operation, busyToken = {}, reportStatus = message => { if (operation === submittedOperation) transactionStatus(message); };
+      busyOwner = busyToken; busy = true; quoteEpoch++; updateButton();
+      transactionStatus(cash ? "Checking contracts and allowance. Your wallet may request approval, then a separate deposit signature. Waiting for the confirmed receipt." : kind ? "Checking your unlocked shares. Review the in-kind exit in your wallet; you will receive tokens and receipts." : "Simulating the proportional exit with your minimum received, then requesting your signature. Waiting for the confirmed receipt.");
+      try {
+        const result = cash
+          ? await client.deposit(deployment, { vault: vaultAddress(), account: submittedAccount, amount: submittedAmount, minShares: submittedMinimum, deadline, onStatus: reportStatus })
+          : await client.redeem(deployment, { vault: vaultAddress(), account: submittedAccount, shares: submittedAmount, minAssets: kind ? "0" : submittedMinimum, deadline, inKind: kind, onStatus: reportStatus });
+        submittedOperation.phase = result.settlement?.finalized ? "confirmed" : "mined"; submittedOperation.intentId = result.intentId; submittedOperation.hash = result.hash; submittedOperation.message = `${cash ? "Deposit" : kind ? "In-kind redemption" : "Redemption"} ${result.settlement?.finalized ? "finalized" : "mined; waiting for finality"}. Transaction: ${result.hash}`;
+        if (operation === submittedOperation) { saveOperation(); status(submittedOperation.message); }
+        if (epochRead === readEpoch && account === submittedAccount) {
+          try {
+            const snapshot = await client.readVault(deployment, vaultAddress(), submittedAccount);
+            if (epochRead === readEpoch && account === submittedAccount && operation === submittedOperation) { live = snapshot; drawLiveTerms(); }
+          } catch (refreshError) {
+            if (epochRead === readEpoch && operation === submittedOperation) { live = null; clearUnverifiedLive(refreshError.message); submittedOperation.message = `Transaction ${result.hash} was confirmed. Balance refresh unavailable: ${refreshError.message}`; status(submittedOperation.message); }
+          }
+        }
+      } catch (error) {
+        const reportedHash = String(error.message || "").match(/0x[0-9a-f]{64}/i)?.[0];
+        if (reportedHash && !submittedOperation.hash) submittedOperation.hash = reportedHash;
+        if (error.unresolved || submittedOperation.hash) { submittedOperation.intentId = error.intentId || submittedOperation.intentId; submittedOperation.phase = "unknown"; submittedOperation.message = `Transaction ${submittedOperation.hash}: ${error.message || "Confirmation unavailable"}. Reconcile its receipt before retrying; nothing is resent automatically.`; }
+        else { submittedOperation.phase = "failed"; submittedOperation.message = error.message || "Transaction failed or was rejected. No success is assumed."; }
+        if (operation === submittedOperation) { saveOperation(); status(submittedOperation.message); }
+      } finally { if (operation === submittedOperation && busyOwner === busyToken) { busy = false; busyOwner = null; quoted = false; drawTicket(); status(submittedOperation.message); } }
+    });
+    renderOperation(); updateButton(); drawPreviewFlow();
+    if (pendingOperation()) status(operation.message);
+    if (ready && readable && !controlsLocked() && (!operation || operation.phase === "confirmed") && Number(amountInput.value) > 0) updateQuote();
+  }
+  const previewErrors = {
+    rejected: ["Request rejected in wallet", "Nothing was sent. Your inputs are kept — review again when ready."],
+    reverted: ["Transaction reverted", "The venue state changed before inclusion. No funds moved. Prepare a new preview."],
+    minimum: ["Minimum not met", "The result would be below your minimum, so the whole transaction reverts. Re-preview with fresh prices."],
+    deadline: ["Deadline expired", "The transaction wasn’t included before the deadline. Prepare a new preview."],
+    timeout: ["Confirmation unknown", "RPC timed out. In production the transaction hash is retained for explorer checks. No automatic resend."],
+  };
+  function startPreviewFlow() {
+    if (requestedLive || activeConfig()) return;
+    if (!previewConnected) { previewConnected = true; previewWallet = "connected"; window.dispatchEvent(new CustomEvent("bav:wallet-preview", { detail: { connected: true } })); drawTags(); }
+    if (!previewFlow || previewFlow.done) previewFlow = { step: 0, done: false };
+    else if (previewFlow.step < 4) previewFlow.step++;
+    else previewFlow.done = true;
+    drawPreviewFlow();
+  }
+  function drawPreviewFlow() {
+    const element = $("#preview-flow"); if (!element) return;
+    if (!previewFlow || requestedLive || activeConfig()) { element.innerHTML = ""; return; }
+    const steps = tab === "sub" ? [["Approve " + assetSymbol(), "Exact amount · separate signature. Some tokens need allowance reset to 0 first."], ["Simulate", "Checks minimum shares and deadline against current state"], ["Confirm in wallet", "Sign the deposit"], ["Pending", "Waiting for receipt · hash kept if RPC times out"], ["Confirmed", "Receipt read · shares minted"]] : [["Prepare", "Fresh valuation and route for your share"], ["Simulate", "Checks minimum received or token transfers and deadline"], ["Confirm in wallet", "Sign the redeem"], ["Pending", "Waiting for receipt"], ["Confirmed", "Receipt read · shares burned"]];
+    const outcome = params.get("txOutcome") || "success", error = previewErrors[outcome], errorAt = outcome === "rejected" ? 2 : 3;
+    const failed = !!error && previewFlow.step >= errorAt;
+    element.innerHTML = `<div class="vault-tx-preview"><div class="vault-tx-title"><strong>Transaction steps</strong><span class="tag warn">Preview only · nothing is sent</span></div><ol>${steps.map(([label, description], index) => `<li><i class="${index < previewFlow.step ? "done" : index === previewFlow.step ? failed ? "failed" : "current" : ""}">${index < previewFlow.step ? "✓" : failed && index === previewFlow.step ? "!" : index + 1}</i><div><strong>${esc(label)}</strong><span>${esc(description)}</span></div></li>`).join("")}</ol>${failed ? `<div class="vault-tx-result"><strong class="neg">Preview only — ${error[0]}</strong><p>${error[1]}</p><button type="button" class="btn ghost sm" id="preview-reset">Review again</button></div>` : previewFlow.done ? '<div class="vault-tx-result"><strong class="pos">Preview only — design success state</strong><p>In production, success appears only after a confirmed receipt. This preview did not sign or send a transaction.</p><button type="button" class="btn ghost sm" id="preview-reset">Done</button></div>' : `<button type="button" class="btn block" id="preview-continue">Continue: ${esc(steps[previewFlow.step][0])}</button>`}</div>`;
+    $("#preview-continue")?.addEventListener("click", startPreviewFlow);
+    $("#preview-reset")?.addEventListener("click", () => { previewFlow = null; drawPreviewFlow(); });
+  }
+  function drawLiveTerms() {
+    const refreshed = async () => { live = await client.readVault(deployment, vaultAddress(), account); drawLiveTerms(); drawTicket(); };
+    client.mountManagementPanel($("#creator-controls"), deployment, live, account, input => client.manageVault(deployment, { ...input, onStatus: status }), refreshed);
+    client.mountRulesReview($("#rules-controls"), deployment, live, account, (request,expiresAt) => client.submitVaultRules(deployment,{vault:vaultAddress(),account,request,expiresAt,onStatus:status}), refreshed, identity => client.readVaultFromRpc(deployment, vaultAddress(), identity));
+    drawLiveHistory();
+    if (!live) return;
+    $("#chart").closest(".panel").hidden = true;
+    drawActualPositions(live);
+    if (live.name) { $("#v-name").textContent = live.name; $("#c-name").textContent = live.name; document.title = live.name + " — CRE8"; }
+    if (live.symbol) v.symbol = live.symbol;
+    $("#v-strat").textContent = "Current mandate and terms read from the verified deployment. Historical performance is unavailable; no example curve is substituted.";
+    $("#v-manager").innerHTML = `Managed by ${addressView(live.owner)} · onchain policy epoch ${esc(live.policyEpoch)}`;
+    $("#creator-card").hidden = true;
+    $("#vault-banner").classList.toggle("hide", !live.staleNav && !live.paused);
+    if (live.staleNav || live.paused) $("#vault-banner").innerHTML = `<span class="vault-banner-icon">!</span><div><strong class="warn">${live.staleNav ? "Valuation unavailable / stale" : "New activity paused"}</strong><p>${live.staleNav ? "Cash transactions require fresh valuation. In-kind exits are checked separately and can fail." : "The live pause reasons and lifecycle govern deposits and execution. Manual and lifecycle pauses can block deposits, scheduled chunks and discretionary buys. Exit routes still require current protocol and token checks."}</p></div>`;
+    $("#contracts").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Vault address</span>${addressView(vaultAddress())}</div><div><span class="label">Portfolio contract</span>${addressView(live.portfolio)}</div></div>`;
+    $("#contract-tag").textContent = `Configured · chain ${deployment.chainId}`;
+    const template = live.template || deployment.templates.find((item) => item.id === deployedVault.templateId);
+    const capBps = live.caps || template?.caps;
+    const feeBps = live.performanceFeeBps;
+    const protocolPerformanceFeeBps = live.protocolPerformanceFeeBps;
+    if (!template || !Array.isArray(capBps) || !Number.isInteger(feeBps) || protocolPerformanceFeeBps !== 1000 || live.depositFeeBps !== 50 || live.operationFeeBps !== 10 || live.operationFeeCapBps !== 100 || live.creatorMinOwnershipBps !== 200 || !live.protocolFeeRecipient) { throw new Error("Live mandate or fee terms could not be verified. Signing remains unavailable."); }
+    $("#keyfig").innerHTML = `<div><dt>Vault size, ${esc(assetSymbol())}</dt><dd title="${esc(live.totalAssets ?? "Unavailable")}">${displayNumber(live.totalAssets)}</dd></div><div><dt>Share price, ${esc(assetSymbol())}</dt><dd title="${esc(live.pricePerShare ?? "Unavailable")}">${displayNumber(live.pricePerShare)}</dd></div><div><dt title="${esc(live.unlockedShares)} redeemable shares">Your shares · ${displayNumber(live.unlockedShares)} redeemable</dt><dd title="${esc(live.shareBalance)}">${displayNumber(live.shareBalance)}</dd></div><div><dt>${live.staleNav ? "Stale · cash blocked" : "Verified · block"}</dt><dd title="Block ${live.blockNumber}">${live.blockNumber}</dd></div>`;
+    drawFeeSummary(feeBps / 100);
+    const marketName = (leg, index) => `${["PancakeSwap hold", "Venus supply", "Lista vault", "Aave supply"][leg.kind]} · market ${index + 1}`;
+    const actualRows = template.legs.map((leg, index) => ({ name: marketName(leg, index), address: leg.kind === 0 ? leg.token : leg.market, cap: Number(capBps[index]) / 100, bps: Number(capBps[index]) }));
+    const actualIdle = 100 - actualRows.reduce((sum, row) => sum + row.cap, 0), minimumIdle = Number(live.minIdleBps) / 100;
+    if (!Number.isInteger(live.minIdleBps) || minimumIdle < 0 || minimumIdle > 100) throw new Error("Live idle reserve could not be verified");
+    const allRows = [...actualRows, { name: "Unallocated cap budget", address: live.asset, cap: actualIdle, budget: true }];
+    $("#alloc-bar").innerHTML = allRows.map((row, index) => `<i style="width:${row.cap}%;background:${index === allRows.length - 1 ? "var(--ice)" : "var(--mist)"}" title="${esc(row.name)} ${row.cap}%"></i>`).join("");
+    $("#alloc-bar").setAttribute("aria-label", allRows.map((row) => `${row.name} ${row.cap}%`).join(", "));
+    const navRaw = decimalRaw(live.totalAssets, live.decimals);
+    $("#allocation-budget-rows").innerHTML = allRows.map(row => {
+      const maximum = !row.budget && navRaw != null ? decimal(navRaw * BigInt(row.bps) / 10000n, live.decimals) : null;
+      return `<div><strong>${esc(row.name)}</strong>${addressView(row.address)}<span>${row.budget ? "Budget remainder" : "Limit"} ${row.cap}%</span><span ${maximum != null ? `title="${esc(maximum)} ${esc(assetSymbol())} maximum at current NAV"` : ""}>${row.budget ? `Separate from the ${minimumIdle}% minimum idle check after buys` : `${displayNumber(maximum)} ${esc(assetSymbol())} maximum at current NAV`}</span></div>`;
+    }).join("");
+    $("#allocation-rows").innerHTML = actualRows.map(row => `<tr><td class="mono"><strong>${esc(row.name)}</strong></td><td><span class="dk-w vault-weight"><b>—</b><i style="--w:0%"></i></span></td><td>${addressView(row.address)}</td><td class="dk-hide-sm vault-earns">Limit ${row.cap}%</td></tr>`).join("") + `<tr class="idle"><td class="mono"><strong>${esc(assetSymbol())}</strong></td><td><span class="dk-w vault-weight"><b>—</b><i style="--w:0%"></i></span></td><td>Cash</td><td class="dk-hide-sm vault-earns">≥ ${minimumIdle}% after buys</td></tr>`;
+    $("#allocation-note").textContent = `Verified investment limits total ${100 - actualIdle}% of NAV; the remaining ${actualIdle}% is unallocated cap budget. After buys the vault checks at least ${minimumIdle}% idle. Price moves can leave existing positions above a cap without a forced sale; new buys are checked against all caps. Current token units are read separately below; no simulated allocation or strategy weight substitutes for unavailable live valuation.`;
+    $("#v-tags").innerHTML = `<span class="tag">Verified configuration · chain ${deployment.chainId}</span><span class="tag">${esc(live.symbol || v.symbol)}</span><span class="tag ${live.paused ? "warn" : ""}">${live.paused ? "Paused" : "Active"}</span>`;
+    $("#creator").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Creator</span>${addressView(live.owner)}</div><div><span class="label">Agent operator</span>${addressView(live.agent)}<span>${live.agentEnabled ? "Enabled" : "Disabled"}${live.pendingAgentExecutableAt ? " · replacement scheduled after " + new Date(live.pendingAgentExecutableAt * 1000).toLocaleString() : ""}</span></div><div><span class="label">Chain</span><span class="with-logo">${logo("bnb")}BNB Chain · ${deployment.chainId}</span></div><div><span class="label">Creator ownership floor</span><span>${live.creatorMinOwnershipBps / 100}% of live supply while other holders remain</span></div></div>`;
+    $("#v-sentence").textContent = `${template.label}. Per-market investment limits (% of vault value): ${capBps.map((cap) => `${Number(cap) / 100}%`).join(", ")}.`;
+    $("#v-sentence").closest(".panel").querySelector(".panel-h .tag").textContent = `Verified mandate · block ${live.blockNumber}`;
+    $("#alloc-bar").closest(".panel").querySelector(".panel-h .label").textContent = `Actual caps · block ${live.blockNumber}`;
+    $("#v-legs").innerHTML = `<div><span class="label">Assets &amp; markets</span>${actualRows.map(row => `<span>${esc(row.name)} ${addressView(row.address)}</span>`).join("")}</div><div><span class="label">Allowed operations</span><span>Exact operations from the verified immutable template</span></div><div><span class="label">Not allowed</span><span>Borrowing, leverage, LP, arbitrary transfers, withdrawing for holders, new markets</span></div>`;
+    $("#rules").innerHTML = `<li><b>Fee</b><span>${feeBps / 100}% creator + ${protocolPerformanceFeeBps / 100}% protocol on each holder’s realized profit above their own cost basis. Deposits pay ${live.depositFeeBps / 100}%; operations pay ${live.operationFeeBps / 100}% subject to a ${live.operationFeeCapBps / 100}% annual NAV cap. No management fee.</span></li><li><b>Leave</b><span>Proportional cash exit with a minimum received, or assets and receipts in kind. Shares cannot be transferred. The creator has no time lock and must keep at least ${live.creatorMinOwnershipBps / 100}% of live supply while other holders remain.</span></li>`;
+    if (live.pendingCapsHash && !/^0x0+$/.test(live.pendingCapsHash)) {
+      $("#rc-tag").innerHTML = '<span class="tag warn">Pending on chain</span>';
+      $("#rc").textContent = `A wider cap change is announced. Earliest execution: ${new Date(Number(live.pendingCapsExecutableAt) * 1000).toLocaleString()}. Review the new limits before it applies.`;
+    } else { $("#rc-tag").textContent = "None pending"; $("#rc").textContent = "No pending wider cap change was found in the current block."; }
+    $("#market-details").textContent = "Live market rates require a current protocol snapshot; no example APY is substituted.";
+    $("#ai").textContent = "Live transactions use MANDATE_FUND_V2. Deposits acquire proportional inventory using the entrant’s budget and verified net contribution; unused assets are refunded. Each holder has a separate realized-profit cost basis. Shares are nontransferable. The creator has no time lock but must retain at least 2% while other holders remain. Estimates are not guaranteed payouts. Historical performance is unavailable.";
+    $("#terms").innerHTML = `<dt>Vault currency</dt><dd>${addressView(live.asset)}</dd><dt>Creator performance fee</dt><dd>${feeBps / 100}%</dd><dt>Protocol performance fee</dt><dd>${protocolPerformanceFeeBps / 100}%</dd><dt>Deposit / operation fee</dt><dd>${live.depositFeeBps / 100}% / ${live.operationFeeBps / 100}% (annual cap ${live.operationFeeCapBps / 100}% NAV)</dd><dt>Market caps</dt><dd>${capBps.map((cap) => `${Number(cap) / 100}%`).join(" / ")}</dd><dt>Creator fee recipient</dt><dd class="mono">${addressView(live.feeRecipient || live.owner)}</dd><dt>Protocol fee recipient</dt><dd class="mono">${addressView(live.protocolFeeRecipient)}</dd><dt>Agent operator</dt><dd class="mono">${addressView(live.agent)}</dd><dt>Pause state</dt><dd>${live.paused ? "Paused" : "Active"}</dd>`;
+  }
+  async function drawLiveHistory() {
+    const snapshot = live; if (!snapshot) return;
+    let activity = $("#history-activity");
+    if (!activity) { activity = document.createElement("div"); activity.id = "history-activity"; $("#rules-controls").after(activity); }
+    activity.textContent = "Confirmed trading activity unavailable until finalized history is verified.";
+    try {
+      const artifact = await client.readHistoryArtifact(deployment, vaultAddress(), BAV.assetUrl("mandate-history.json"));
+      if (snapshot !== live) return;
+      const history = artifact.vaults[vaultAddress().toLowerCase()];
+      if (!artifact.available || !history) throw new Error(artifact.reason || "No published finalized history for this vault");
+      if (history.indexing.status !== "complete") throw new Error("History is " + history.indexing.status + "; indexed through block " + (history.indexing.cursor?.number ?? "unavailable") + ", finalized target " + history.indexing.targetBlock);
+      const totals = client.historyActivity(history, artifact.intervalSeconds);
+      if (!totals.available) throw new Error("Creation-to-finalized event coverage is unavailable");
+      const units = raw => decimal(BigInt(raw), snapshot.decimals) + " " + assetSymbol();
+      activity.textContent = `Confirmed cumulative program investment: ${units(totals.programInvestedRaw)}. Gross purchases: ${units(totals.purchasesRaw)}; gross sales: ${units(totals.salesRaw)}. Shareholder deposits and exits are excluded. ` + (totals.turnoverBps == null ? "Turnover unavailable: a continuous positive NAV series is required." : `Turnover: ${(totals.turnoverBps / 100).toFixed(2)}%, blocks ${totals.turnoverPeriod.fromBlock}–${totals.turnoverPeriod.toBlock}. Turnover = half of gross purchases plus sales divided by the time-weighted sampled NAV estimate for that period (trapezoidal interpolation between observations).`) + ` Finalized through block ${artifact.asOf.number}; publisher history requires independent receipt verification.`;
+      const points = history.snapshots.filter(item => item.status === "complete" && item.ppsRaw !== null);
+      if (history.coverage.missing > 0) throw new Error("Missing observations prevent a continuous performance chart");
+      if (points.length < 2 || BigInt(points[0].ppsRaw) === 0n) throw new Error("At least two complete snapshots are needed for a performance chart");
+      const base = BigInt(points[0].ppsRaw), ratios = points.map(item => Number(BigInt(item.ppsRaw) * 100000000n / base) / 1000000);
+      $("#chart").closest(".panel").hidden = false;
+      const width = 600, height = 180, minimum = Math.min(...ratios), maximum = Math.max(...ratios), span = Math.max(maximum - minimum, 0.01);
+      const line = ratios.map((value, i) => `${i * width / (ratios.length - 1)},${height - (value - minimum) / span * (height - 20) - 10}`).join(" ");
+      $("#chart").innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Finalized onchain marked share value, indexed to100"><polyline fill="none" stroke="currentColor" stroke-width="2" points="${line}" /></svg>`;
+      $("#perf-periods").textContent = Object.entries(history.returns).map(([period, bps]) => `${period}: ${bps == null ? "Unavailable" : (bps / 100).toFixed(2) + "%"}`).join(" · ");
+      $("#vault-data-note").textContent = `Published finalized onchain marked share value, net of accrued asset-denominated fee escrow. ${history.coverage.complete} complete and ${history.coverage.missing} missing snapshots. As of block ${artifact.asOf.number}. Publisher data is checked structurally; verify receipt links and canonical chain state independently. Cash exit prices can differ.`;
+      $("#perf-periods").closest("details").querySelector("p").textContent = "Return = marked share value at the end divided by its beginning, minus one. Missing periods remain unavailable; cash flows are tracked separately from performance.";
+      const events = document.createElement("details"), heading = document.createElement("summary"); heading.textContent = "Real transaction history"; events.append(heading);
+      history.events.slice(-30).reverse().forEach(item => { const row = document.createElement("p"), link = document.createElement("a"); link.textContent = `${item.name} · block ${item.blockNumber}`; link.href = `https://${deployment.chainId === 97 ? "testnet." : ""}bscscan.com/tx/${item.txHash}`; link.target = "_blank"; link.rel = "noopener noreferrer"; row.append(link); events.append(row); });
+      $("#vault-data-note").append(events);
+    } catch (error) { if (snapshot === live) { $("#chart").closest(".panel").hidden = true; $("#vault-data-note").textContent = `Live history unavailable: ${error.message}. No sample returns substitute for missing chain data.`; } }
+  }
+  async function drawActualPositions(snapshot) {
+    const panel = $("#positions").closest(".panel");
+    panel.querySelector(".panel-h h3").textContent = "Actual token and receipt balances";
+    $("#positions thead").innerHTML = '<tr><th>Custody / token</th><th>Read from</th><th class="r">Block</th><th class="r">Token units</th></tr>';
+    $("#positions-updated").textContent = `Verified · block ${snapshot.blockNumber}`;
+    $("#positions tbody").innerHTML = '<tr><td colspan="4">Reading actual balances…</td></tr>';
+    const blockTag = `0x${snapshot.blockNumber.toString(16)}`;
+    const inventoryProvider = client.activeWalletProvider(), inventoryAccount = account;
+    const verifyInventoryContext = async () => {
+      if (client.activeWalletProvider() !== inventoryProvider || account !== inventoryAccount) throw new Error("Wallet context changed during inventory read");
+      const [chain, accounts, header] = await Promise.all([
+        inventoryProvider.request({ method: "eth_chainId", params: [] }),
+        inventoryProvider.request({ method: "eth_accounts", params: [] }),
+        inventoryProvider.request({ method: "eth_getBlockByNumber", params: [blockTag, false] }),
+      ]);
+      if (Number(BigInt(chain)) !== deployment.chainId || accounts[0]?.toLowerCase() !== inventoryAccount?.toLowerCase() || header?.hash?.toLowerCase() !== snapshot.blockHash?.toLowerCase()) throw new Error("Inventory chain, account or canonical block changed");
+    };
+    const balance = async (token, holder) => {
+      const [raw, precision] = await Promise.all([
+        inventoryProvider.request({ method: "eth_call", params: [{ to: token, data: "0x70a08231" + holder.slice(2).padStart(64, "0") }, blockTag] }),
+        inventoryProvider.request({ method: "eth_call", params: [{ to: token, data: "0x313ce567" }, blockTag] }),
+      ]);
+      const places = Number(BigInt(precision));
+      if (!Number.isInteger(places) || places < 0 || places > 36) throw new Error("Unsupported token precision");
+      return decimal(BigInt(raw), places);
+    };
+    const entries = [{ custody: "Vault idle", token: snapshot.asset, holder: vaultAddress() }, { custody: "Portfolio cash", token: snapshot.asset, holder: snapshot.portfolio }];
+    snapshot.template.legs.forEach((leg) => {
+      if (leg.token.toLowerCase() !== snapshot.asset.toLowerCase()) entries.push({ custody: "Portfolio underlying", token: leg.token, holder: snapshot.portfolio });
+      if (leg.kind !== 0) entries.push({ custody: ["", "Venus receipt", "Lista vault shares", "Aave receipt"][leg.kind], token: leg.receipt, holder: snapshot.portfolio });
+    });
+    try {
+      await verifyInventoryContext();
+      const amounts = await Promise.all(entries.map((entry) => balance(entry.token, entry.holder)));
+      await verifyInventoryContext();
+      if (snapshot !== live || !panel.isConnected) return;
+      $("#positions tbody").innerHTML = entries.map((entry, index) => `<tr><td><strong>${esc(entry.custody)}</strong><span class="position-venue">${addressView(entry.token)}</span></td><td class="position-form">ERC-20 balanceOf<span class="position-mobile-balance">Block ${snapshot.blockNumber}</span></td><td class="r position-balance">${snapshot.blockNumber}</td><td class="r position-value"><strong title="${esc(amounts[index])}">${esc(displayNumber(amounts[index]))}</strong><span class="position-mobile-unit">token units</span></td></tr>`).join("");
+      $("#position-sources").textContent = "Actual ERC-20 balances read at the verified state block. Token units are not accounting-asset values.";
+    } catch (error) { if (snapshot === live && panel.isConnected) $("#positions tbody").innerHTML = `<tr><td colspan="4">Balance read unavailable: ${esc(error.message)}. No simulated positions are shown for this vault.</td></tr>`; }
+  }
+  function clearUnverifiedLive(message) {
+    if (!requestedLive && !activeConfig()) return;
+    $("#v-name").textContent = "Vault data unavailable";
+    $("#c-name").textContent = "Vault data unavailable";
+    $("#v-strat").textContent = "Connect to verify this address against the configured factory and immutable template before reading its live terms.";
+    $("#v-manager").textContent = "Manager and operator unavailable until verified";
+    $("#creator-card").hidden = true;
+    $("#v-tags").innerHTML = '<span class="tag vault-identity-chip">Live vault address</span><span class="tag warn">Fresh read required</span>';
+    $("#creator-controls").classList.add("hide"); $("#rules-controls").textContent = "Fresh verified rules unavailable; no signing is enabled.";
+    $("#vault-banner").classList.toggle("hide", !message);
+    if (message) $("#vault-banner").innerHTML = `<span class="vault-banner-icon">!</span><div><strong class="warn">Live read unavailable</strong><p>${esc(message)}. Reconnect to read current data.</p></div>`;
+    $("#keyfig").innerHTML = ["Vault value (NAV)", "Share value", "Your shares", "Updated"].map(label => `<div><div class="label">${label}</div><div class="v">Unavailable</div><div class="s">Verified on-chain read required</div></div>`).join("");
+    $("#chart").closest(".panel").hidden = true;
+    $("#positions tbody").innerHTML = '<tr><td colspan="4">No verified live balances have been read. No simulated positions are shown.</td></tr>';
+    $("#positions-updated").textContent = "Unavailable";
+    $("#position-sources").textContent = "Verified live read required.";
+    $("#v-sentence").textContent = "A verified factory and template binding are required to read this vault’s investment mandate.";
+    $("#v-legs").innerHTML = ""; $("#market-details").innerHTML = ""; $("#rules").innerHTML = ""; $("#ai").textContent = "No example rules substitute for a live mandate.";
+    $("#allocation-rows").innerHTML = '<p class="fine">Current allocation and investment limits unavailable.</p>';
+    $("#allocation-note").textContent = "No live values are available until the vault address is verified.";
+    $("#alloc-bar").innerHTML = ""; $("#allocation-budget-rows").innerHTML = "";
+    $("#fee-kpis").innerHTML = '<div><span class="label">Live fee terms</span><strong>Unavailable</strong></div>'; $("#fee-bar").innerHTML = ""; $("#fee-note").textContent = "Verified live terms required."; $("#terms").innerHTML = "";
+    $("#creator").textContent = "Creator and operator unavailable."; $("#contracts").innerHTML = `<div><span class="label">Vault address · fresh read required</span>${addressView(vaultAddress() || params.get("vault"))}</div>`;
+    $("#contract-tag").textContent = "Fresh read required";
+    $("#rc-tag").textContent = "Unavailable";
+    $("#rc").textContent = "Pending cap changes unavailable until verified.";
+    $("#factsheet").hidden = true;
+  }
+  async function initTransactions() {
+    try {
+      client = await BAV.loadClient();
+      deployment = await client.loadDeployment();
+      const walletTools = document.createElement("div"); walletTools.className = "panel-b";
+      walletTools.innerHTML = '<button type="button" class="btn ghost" id="wallet-disconnect">Disconnect session</button>';
+      $("#ticket").prepend(walletTools); $("#wallet-disconnect").onclick = () => client.disconnectWallet().catch(error => status(error.message));
+      const requested = new URLSearchParams(location.search).get("vault");
+      deployedVault = requested ? deployment?.vaults?.find((item) => (item.address || item.vault).toLowerCase() === requested.toLowerCase()) : deployment?.vaults?.find((item) => item.slug === v.slug);
+      if (requested && !deployedVault) throw new Error("Requested vault could not be verified against this deployment.");
+      if (deployedVault) { const chain = $(".chain"); if (chain) { chain.innerHTML = `${logo("bnb")}<span class="chain-label">BNB Chain · ${deployment.chainId}</span>`; chain.title = `Verified configuration · BNB Chain ${deployment.chainId}`; } }
+      if (activeConfig()) { previewConnected = false; previewWallet = "disconnected"; previewState = "active"; previewFlow = null; restoreOperation();
+        const records = client.walletOperations(deployment.chainId);
+        syncCachedOperation(records);
+        const savedIntent = records.find(item => ["awaiting-wallet", "submitted", "unknown", "mined"].includes(item.state));
+        if (savedIntent) operation = { intentId: savedIntent.id, hash: savedIntent.hash || null, chainId: savedIntent.chainId, account: savedIntent.from, vault: savedIntent.vault, phase: savedIntent.state === "mined" ? "mined" : "unknown", message: `A saved account request (${savedIntent.action}, ${savedIntent.stage}) for requested nonce ${savedIntent.nonce} is unresolved. Check its receipt or review no-hash recovery before signing.` };
+        clearUnverifiedLive(); }
+      if (activeConfig()) {
+        const controls = await client.readVaultFromRpc(deployment, vaultAddress(), deployment.factory);
+        client.mountSafeVaultActions($("#safe-vault-actions"), deployment, controls);
+        client.mountManagementPanel($("#creator-controls"), deployment, controls, null, input => client.manageVault(deployment, { ...input, onStatus: status }), async () => location.reload());
+      }
+      drawTicket();
+    } catch (error) { status(`Signing unavailable: ${error.message || "deployment could not be verified"}.`); }
+  }
+  const openTab = (value) => { if (controlsLocked()) return; previewFlow = null; tab = value; drawTicket(); BAV.replay($("#ticket-body"), "bav-fade"); $("#ticket").scrollIntoView({ behavior: "smooth", block: "start" }); };
+  $$(".ticket .tabs button").forEach((button) => button.addEventListener("click", () => { if (!controlsLocked() && tab !== button.dataset.t) { previewFlow = null; tab = button.dataset.t; drawTicket(); BAV.replay($("#ticket-body"), "bav-fade"); } }));
+  $$(".mobile-cta [data-go]").forEach((button) => button.addEventListener("click", () => { if (!controlsLocked()) openTab(button.dataset.go); }));
+  {
+    const resetWallet = () => { if (!$("#ticket-body")?.isConnected) return; readEpoch++; quoteEpoch++; account = null; live = null; if (!operation || operation.phase !== "preparing" && !pendingOperation()) { busy = false; busyOwner = null; } clearUnverifiedLive("Wallet or chain changed"); drawTicket(); status("Wallet or chain changed. Reconnect before signing."); };
+    window.addEventListener("bav:wallet-change", resetWallet);
+  }
+
+  function drawFeeSummary(rate) {
+    const creator = Number(rate), protocol = 10, total = +(creator + protocol).toFixed(2), holders = +(100 - total).toFixed(2);
+    $("#fee-kpis").innerHTML = `<div><span class="label">Total performance fee</span><strong>${total}%</strong><span class="fine">${creator}% creator + ${protocol}% protocol · on each holder’s realized profit</span></div><div><span class="label">Management fee</span><strong>${v.fees.mgmt ? v.fees.mgmt + "%" : "None"}</strong></div><div><span class="label">Creator deposit</span><strong>100 ${esc(assetSymbol())}</strong><span class="fine">No time lock · retain at least 2% while other holders remain.</span></div>`;
+    $("#fee-bar").innerHTML = `<div class="holders" style="flex:${holders}"><span class="fee-wide">Holders keep ≈ ${holders}</span><span class="fee-narrow">Holders ≈ ${holders}</span></div><div class="creator" style="flex:${creator}">Creator ${creator}</div><div class="protocol" title="Protocol ${protocol}" style="flex:${protocol}">${protocol}</div>`;
+    $("#fee-note").textContent = `At exit, the holder pays ${creator}% to the creator and ${protocol}% to the protocol only on realized gains above that holder’s cost basis. Deposits pay 0.5%; fund operations pay 0.1% subject to a 1% annual NAV cap. External protocol and swap costs are separate.`;
+  }
+  /* Terms + contracts */
+  function drawTerms() {
+    const f = v.fees, split = feeBreakdown(f.perf, f.platform);
+    $("#terms").innerHTML = `
+      <dt>Vault currency</dt><dd>${A} <span class="mono muted">${short(ASSETS[A].address)}</span></dd>
+      <dt>Share token</dt><dd>${v.symbol}</dd>
+      <dt>Managed by</dt><dd>${human ? "A person" : "An AI agent"}</dd>
+      <dt>Rules</dt><dd>${rulesLabel(v)}</dd>
+      <dt>Maximum deployed</dt><dd>${C.capTxt(C.totalAllocation(v.rules))} of vault value</dd>
+      ${v.continuous ? '<dt>Minimum idle reserve</dt><dd>5% of NAV after buys</dd>' : ""}<dt>${v.continuous ? "Unallocated cap budget" : "Planned idle budget"}</dt><dd>${C.capTxt(C.minIdleAllocation(v.rules))} of vault value${v.continuous ? " · separate from the idle minimum" : " · historical reference"}</dd>
+      <dt>Benchmark</dt><dd>${v.benchmark}</dd>
+      <dt>Total performance fee</dt><dd>${split.total.toFixed(2)}%</dd>
+      <dt>Creator receives</dt><dd>${split.creatorNet.toFixed(2)}% of profit</dd>
+      <dt>Protocol receives</dt><dd>${split.platformTotal.toFixed(2)}% of each holder’s realized profit</dd>
+      <dt>Creator management fee</dt><dd>${f.mgmt.toFixed(2)}%</dd>
+      <dt>Performance-fee basis</dt><dd>Each holder’s own realized profit above cost basis</dd>
+      <dt>Widening caps</dt><dd>24-hour public delay</dd>
+      <dt>Redemption</dt><dd>Proportional cash or in-kind exit</dd>
+      <dt>Entry / operation costs</dt><dd>0.5% deposit fee; 0.1% operation fee capped at 1% of annual NAV; swaps and gas vary</dd>`;
+  }
+  $("#contracts").innerHTML = '<div><span class="label">Vault address</span><strong>—</strong></div>';
+  $("#factsheet").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify({ simulated: true, name: v.name, strategy: v.strategy, terms: v.fees, marketCaps: v.rules.map((rule) => ({ markets: [...rule.m], caps: rule.caps })) }, null, 2)], { type: "application/json" });
+    const link = document.createElement("a"); link.href = URL.createObjectURL(blob); link.download = `${v.slug}-example.json`; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 0);
+  });
+
+  drawTags(); drawRules(); drawRc(); drawTicket(); drawTerms(); drawFeeSummary(v.fees.perf);
+  if (!requestedLive && params.get("previewSteps") === "1") { previewFlow = { step: 2, done: false }; drawPreviewFlow(); }
+  if (typeof IntersectionObserver !== "undefined") {
+    const observer = new IntersectionObserver(([entry]) => $(".mobile-cta").classList.toggle("panel-visible", entry.isIntersecting), { threshold: 0.05 });
+    observer.observe($("#ticket"));
+  }
+  document.addEventListener("click", async event => { const button = event.target.closest("[data-copy-address]"); if (!button) return; try { await navigator.clipboard.writeText(button.dataset.copyAddress); toast("Address copied"); } catch (_) { toast("Copy unavailable. The full address is in the button tooltip."); } });
+  window.addEventListener("bav:wallet-preview", event => { if (requestedLive || activeConfig()) return; previewConnected = !!event.detail?.connected; previewWallet = previewConnected ? "connected" : "disconnected"; drawTags(); drawTicket(); });
+  clearUnverifiedLive();
+  initTransactions();
+})();
+
+
+(function () {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const drawer = $("#pros"), scrim = $("#pros-scrim"), body = $("#pros-body"), toc = $("#pros-toc");
+  if (!drawer) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let last = null;
+  const open = (target) => {
+    last = document.activeElement;
+    $("#pros-title").textContent = $("#v-name")?.textContent || "Fund prospectus";
+    drawer.inert = false; drawer.classList.add("open"); scrim.classList.add("open");
+    document.documentElement.classList.add("pros-lock");
+    body.scrollTop = 0;
+    if (target) { const t = $(target, body); if (t) setTimeout(() => body.scrollTo({ top: t.offsetTop - 8, behavior: reduce ? "auto" : "smooth" }), 320); }
+    setTimeout(() => $("#pros-close").focus({ preventScroll: true }), 60);
+  };
+  const close = () => {
+    drawer.classList.remove("open"); scrim.classList.remove("open"); drawer.inert = true;
+    document.documentElement.classList.remove("pros-lock");
+    if (last && last.isConnected) last.focus({ preventScroll: true });
+  };
+  $("#pros-open").addEventListener("click", () => open());
+  $("#pros-alert").addEventListener("click", () => open("#ps-rules"));
+  $("#pros-close").addEventListener("click", close);
+  scrim.addEventListener("click", close);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && drawer.classList.contains("open")) close(); });
+  $$("a", toc).forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); const t = $(a.getAttribute("href"), body); if (t) body.scrollTo({ top: t.offsetTop - 8, behavior: reduce ? "auto" : "smooth" }); }));
+  const spy = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    $$("a", toc).forEach((a) => { const on = a.getAttribute("href") === "#" + e.target.id; a.classList.toggle("on", on); if (on) a.scrollIntoView({ block: "nearest", inline: "nearest" }); });
+  }), { root: body, rootMargin: "0px 0px -70% 0px" });
+  $$(".pros-sec", body).forEach((s) => spy.observe(s));
+  const rcTag = $("#rc-tag"), alert = $("#pros-alert");
+  // #rc-tag is a hidden status hook ("None pending", "Pending · Simulated", "Pending on chain", "Unavailable").
+  const syncAlert = () => { const text = rcTag?.textContent.trim() || ""; alert.hidden = !/pending/i.test(text) || /none pending/i.test(text); alert.textContent = `Rule change ${text.toLowerCase()}`; };
+  if (rcTag) { new MutationObserver(syncAlert).observe(rcTag, { attributes: true, childList: true, characterData: true, subtree: true }); syncAlert(); }
+})();
+d:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+10:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
+12:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
+14:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
+9:X
+0:{"P":null,"c":["","vault","cre8-usdt",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","cre8-usdt","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zyx27ugdyf71.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >My Agent</a><a href=\"https://app.cre8.finance/vaults/\" class=\"active\" aria-current=\"page\">Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Open directly</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"d9d714a53523","script":"$6","pageKey":"vault"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"yNcn5FxG94BBHBGVTOdJk"}
+7:["$","script","script-0",{"src":"/_next/static/chunks/1o350r4p9aqln.js","async":true,"nonce":"$undefined"}]
+8:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zyx27ugdyf71.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+9:C
+11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+f:null
+13:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L14","5",{}]]
