@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
-2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/38t9mx3zrsncv.js"],"PrototypePage"]
-3:Tba9,
+2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/1o350r4p9aqln.js"],"PrototypePage"]
+3:Ta95,
 <section class="directory-hero">
   <div class="wrap">
-    <div class="directory-title"><h1 id="directory-title">Vaults</h1><span class="hero-chip">Simulated data</span><span class="hero-chip" id="directory-preview" hidden>Design preview</span></div>
+    <div class="directory-title"><h1 id="directory-title">Vaults</h1></div>
     <div class="summary" id="summary" aria-busy="true"><div><span class="summary-label">Total vault value</span><span class="summary-value">—</span></div><div><span class="summary-label">Vaults</span><span class="summary-value">—</span></div><div><span class="summary-label">Managers</span><span class="summary-value">—</span></div><div><span class="summary-label">Depositors</span><span class="summary-value">—</span></div></div>
   </div>
 </section>
@@ -12,30 +12,31 @@
     <div class="directory-panel-head"><h2>All vaults</h2><label class="directory-search"><span class="search-ring" aria-hidden="true"></span><input id="f-q" placeholder="Search vault or manager" aria-label="Search vault or manager"></label></div>
     <div class="directory-filters">
       <div class="filter-group"><span>Accounting</span><div class="seg" id="f-asset"><button class="on" data-v="USDT">USDT</button><button data-v="BNB">BNB</button></div></div>
-      <div class="filter-group"><span>Show</span><div class="seg" id="f-filter"><button class="on" data-v="all">All</button><button data-v="new">New &lt;30D</button></div></div>
+      <div class="filter-group"><span>Show</span><div class="seg" id="f-filter"><button class="on" data-v="all">All</button><button data-v="new">New &lt;30D</button><button data-v="old">&gt;30D</button></div></div>
       <div class="filter-group"><span>Period</span><div class="seg" id="f-period"><button data-v="7D">7D</button><button class="on" data-v="30D">30D</button><button data-v="90D">90D</button><button data-v="ALL">All</button></div></div>
       <label class="filter-group directory-sort"><span>Sort</span><select id="f-sort" aria-label="Sort vaults"><option value="tvl">Vault value</option><option value="perf">Return</option><option value="dd">Smallest max drop</option><option value="age">Track record</option></select></label>
     </div>
     <div id="dir">
-      <div class="directory-table-head"><span>Vault</span><span>Venues</span><button data-sort="tvl">Vault value <span class="sort-arrow">▼</span></button><button data-sort="perf" id="h-perf">Return 30D <span class="sort-arrow">▼</span></button><button data-sort="dd" id="h-dd">Max drop <span class="sort-arrow">▼</span></button><span class="directory-depositors">Depositors</span><span class="directory-details"></span></div>
+      <div class="directory-table-head"><span>Vault</span><button data-sort="tvl">Vault value <span class="sort-arrow">▼</span></button><button data-sort="perf" id="h-perf">Return 30D <span class="sort-arrow">▼</span></button><button data-sort="dd" id="h-dd">Max drop <span class="sort-arrow">▼</span></button><span class="directory-depositors">Depositors</span><span class="directory-venues">Venues</span><span class="directory-details"></span></div>
       <div class="directory-rows" id="directory-rows" aria-live="polite"></div>
     </div>
   </section>
-  <p class="directory-disclosure">Simulated design data — no vaults are deployed. Legacy strategy examples are for planning only. Returns are net of modeled performance fees and not annualised. “Insufficient history” is shown instead of a number for short track records. Vault value and any stated deposit cap are illustrative only; a sample cap does not establish a contract limit.</p>
+  <p class="directory-disclosure">Returns are net of performance fees and not annualised. “Insufficient history” is shown instead of a number for short track records.</p>
   <p class="directory-count" id="count"></p>
 </main>
 
 
-4:T590,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><span class="c8-logo c8-still" role="img" aria-label="CRE8"><span class="c8-cre" aria-hidden="true">CRE</span><span class="c8-tile" aria-hidden="true"><span class="c8-win"><span class="c8-reel"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="active" aria-current="page">Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="" >Open directly</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><a class="btn sm header-wallet" href="https://app.cre8.finance/portfolio/">Connect wallet</a></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>5:T1fa6,
+4:T42b,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><span class="c8-logo c8-still" role="img" aria-label="CRE8"><span class="c8-cre" aria-hidden="true">CRE</span><span class="c8-tile" aria-hidden="true"><span class="c8-win"><span class="c8-reel"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/agent/" class="" >My Agent</a><a href="https://app.cre8.finance/vaults/" class="active" aria-current="page">Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="" >Open directly</a></nav><div class="head-right"><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><a class="btn sm header-wallet" href="https://app.cre8.finance/agent/">Connect wallet</a></div></div></header>5:T1e47,
 (function () {
-  const { $, $$, VAULTS, esc, fmt, perf, managerLabel, vaultVenues } = BAV;
+  const { $, $$, VAULTS, esc, fmt, perf, managerLabel, vaultMarkets } = BAV;
   BAV.shell("vaults.html");
   const query = new URLSearchParams(location.search);
   const preview = query.get("preview") || query.get("dataState");
   const st = { asset: "USDT", filter: "all", q: "", period: "30D", sort: "tvl", direction: -1, preview: ["loading", "error", "empty"].includes(preview) ? preview : "ready" };
   const compact = (n) => n == null ? "—" : n >= 1e6 ? (n / 1e6).toFixed(2) + "M" : n >= 1e3 ? (n / 1e3).toFixed(1) + "K" : fmt.n(n, 2);
-  const venueInfo = (v) => vaultVenues(v).map((id) => ({ id, name: BAV.VENUES.find((x) => x.id === id)?.name || id }));
-  const venues = (v) => { const list = venueInfo(v); return `<span class="directory-venue-logos">${list.map((x) => BAV.logo(x.id, "md")).join("")}</span><span class="directory-venue-name" title="${esc(list.map((x) => x.name).join(", "))}">${esc(list.length > 2 ? list.length + " venues" : list.map((x) => x.name).join(", "))}</span><span class="directory-venue-mobile">${esc(list.map((x) => x.name).join(", "))}</span>`; };
+  // Plain swaps are how every vault trades, so a venue is listed only for what the vault keeps there: lending, LP or a strategy.
+  const venueInfo = (v) => [...new Set(vaultMarkets(v).filter((m) => m.a !== "trade").map((m) => m.venue))].map((id) => ({ id, name: BAV.VENUES.find((x) => x.id === id)?.name || id }));
+  const venues = (v) => { const list = venueInfo(v); return list.length ? `<span class="directory-venue-logos" title="${esc(list.map((x) => x.name).join(", "))}">${list.map((x) => BAV.logo(x.id, "md")).join("")}</span>` : `<span class="metric-unavailable" title="Swaps only">—</span>`; };
   function seg(id, key) {
     $$(`#${id} button`).forEach((b) => b.addEventListener("click", () => {
       $$(`#${id} button`).forEach((x) => { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", String(x === b)); });
@@ -54,13 +55,12 @@
   }
   function render() {
     const p = st.period, lbl = p === "ALL" ? "All" : p;
-    $("#directory-preview").hidden = st.preview === "ready";
     const all = VAULTS.filter((v) => v.asset === st.asset);
     $("#summary").innerHTML = `<div><span class="summary-label">Total vault value</span><span class="summary-value">${compact(all.reduce((a, v) => a + (v.tvl || 0), 0))} <small>${esc(st.asset)}</small></span></div><div><span class="summary-label">Vaults</span><span class="summary-value">${all.length}</span></div><div><span class="summary-label">Managers</span><span class="summary-value">${new Set(all.map((v) => v.manager)).size}</span></div><div><span class="summary-label">Depositors</span><span class="summary-value">${fmt.n(all.reduce((a, v) => a + (v.followers || 0), 0))}</span></div>`;
     $("#summary").removeAttribute("aria-busy");
     $("#h-perf").innerHTML = `Return ${lbl} <span class="sort-arrow">▼</span>`; $("#h-dd").innerHTML = `Max drop <span class="sort-arrow">▼</span>`;
     $$("[data-sort]").forEach((b) => { b.classList.toggle("selected", b.dataset.sort === st.sort); b.querySelector(".sort-arrow").textContent = st.sort === b.dataset.sort && st.direction === 1 ? "▲" : "▼"; });
-    let rows = all.filter((v) => !(st.filter === "new" && v.runtimeDays >= 30) && (!st.q || (v.name + " " + managerLabel(v)).toLowerCase().includes(st.q)));
+    let rows = all.filter((v) => !(st.filter === "new" && v.runtimeDays >= 30) && !(st.filter === "old" && v.runtimeDays < 30) && (!st.q || (v.name + " " + managerLabel(v)).toLowerCase().includes(st.q)));
     const key = { tvl: (v) => v.tvl, perf: (v) => perf(v, p, "return"), dd: (v) => v.maxDrawdown[p], age: (v) => v.runtimeDays }[st.sort];
     rows.sort((a, b) => { const av = key(a), bv = key(b); if (av == null) return bv == null ? 0 : 1; if (bv == null) return -1; return (av - bv) * st.direction; });
     const target = $("#directory-rows");
@@ -68,11 +68,11 @@
     if (st.preview === "loading") {
       target.innerHTML = `<div class="directory-skeleton" aria-busy="true" aria-label="Loading vaults">${Array.from({length:5}, () => `<div class="skeleton-row"><span class="skeleton-avatar"></span><span class="skeleton-name"><i></i><i></i></span><span class="skeleton-number"></span><span class="skeleton-number"></span></div>`).join("")}</div>`;
     } else if (st.preview === "error") {
-      target.innerHTML = `<div class="directory-empty"><strong>Couldn’t load vaults</strong><p>Design preview of a data read failure. Example data is never shown in place of live data.</p><button class="btn" id="directory-retry">Retry</button></div>`;
+      target.innerHTML = `<div class="directory-empty"><strong>Couldn’t load vaults</strong><p>Check your connection and try again.</p><button class="btn" id="directory-retry">Retry</button></div>`;
       $("#directory-retry").addEventListener("click", () => { st.preview = "loading"; render(); setTimeout(() => { st.preview = "ready"; render(); }, 700); });
     } else if (st.preview === "empty" || !rows.length) {
       const forced = st.preview === "empty";
-      target.innerHTML = `<div class="directory-empty"><strong>${forced ? "No vaults yet" : "No vaults match these filters"}</strong><p>${forced ? "Nothing has been deployed. You can still design a vault and export it." : st.asset === "BNB" ? "These examples use USDT as their accounting asset. Switch to USDT to browse them." : "Try a different vault or manager name, or remove the New <30D filter."}</p><div class="directory-empty-actions"><button class="btn ghost" id="directory-clear">Clear filters</button><a class="btn" href="${BAV.route("create")}">Open a vault</a></div></div>`;
+      target.innerHTML = `<div class="directory-empty"><strong>${forced ? "No vaults yet" : "No vaults match these filters"}</strong><p>${forced ? "Open the first one." : st.asset === "BNB" ? "These vaults use USDT as their accounting asset. Switch to USDT to browse them." : "Try a different vault or manager name, or show all vaults."}</p><div class="directory-empty-actions"><button class="btn ghost" id="directory-clear">Clear filters</button><a class="btn" href="${BAV.route("create")}">Open a vault</a></div></div>`;
       $("#directory-clear").addEventListener("click", clearFilters);
     } else {
       target.innerHTML = rows.map((v) => {
@@ -80,17 +80,17 @@
         const returnValue = r == null ? `<span class="metric-unavailable">Insufficient history</span>` : fmt.pct(r);
         const dropValue = dd == null ? `<span class="metric-unavailable">Insufficient history</span>` : fmt.pct(dd);
         return `<a class="directory-vault-row" href="${BAV.route("vault/" + v.slug)}" title="${esc(v.strategy)}" data-slug="${esc(v.slug)}">
-          <div class="directory-vault-identity"><span class="vault-avatar">${esc(initials)}</span><span class="directory-vault-text"><strong>${esc(v.name)}</strong><span>${esc(managerLabel(v))} · ${esc(v.status)}${v.continuous ? "" : " · Planning only"}${v.runtimeDays < 30 ? " · New" : ""}</span></span></div>
-          <div class="directory-venues"><span class="mobile-cell-label">Venues</span><span class="directory-venue-content">${venues(v)}</span></div>
-          <div class="directory-metric directory-value"><span class="mobile-cell-label">Vault value</span><span><strong>${compact(v.tvl)}</strong><small>${esc(v.asset)}</small>${v.cap == null ? "" : `<span class="directory-cap" title="Illustrative sample term; not a verified contract limit">Sample cap: ${compact(v.cap)} ${esc(v.asset)}</span>`}</span></div>
+          <div class="directory-vault-identity"><span class="vault-avatar">${esc(initials)}</span><span class="directory-vault-text"><strong>${esc(v.name)}</strong></span></div>
+          <div class="directory-metric directory-value"><span class="mobile-cell-label">Vault value</span><span><strong>${compact(v.tvl)}</strong><small>${esc(v.asset)}</small>${v.cap == null ? "" : `<span class="directory-cap">Cap: ${compact(v.cap)} ${esc(v.asset)}</span>`}</span></div>
           <div class="directory-metric directory-return ${fmt.cls(r)}"><span class="mobile-cell-label">Return ${lbl}</span><span>${returnValue}</span></div>
           <div class="directory-metric directory-drop"><span class="mobile-cell-label">Max drop ${lbl}</span><span>${dropValue}</span></div>
           <div class="directory-metric directory-depositors"><span class="mobile-cell-label">Depositors</span><span>${fmt.n(v.followers)}</span></div>
+          <div class="directory-venues"><span class="mobile-cell-label">Venues</span><span class="directory-venue-content">${venues(v)}</span></div>
           <span class="directory-details">Details</span><span class="directory-card-button">View details</span>
         </a>`;
       }).join("");
     }
-    $("#count").textContent = st.preview === "ready" ? `Showing ${rows.length} of ${all.length} ${st.asset}-currency vaults. Simulated examples.` : "Design preview only · no live vault records are replaced.";
+    $("#count").textContent = st.preview === "ready" ? `Showing ${rows.length} of ${all.length} ${st.asset}-currency vaults.` : "";
     if (rendered) BAV.replay($("#directory-rows"), "bav-fade");
     rendered = true;
   }
@@ -100,7 +100,7 @@
 9:X
 e:X
 e:C
-0:{"buildId":"eKCHSPZjzJmQGdYsucVkS","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"vault-directory","html":"$3","masthead":"$4","runtimeVersion":"03bafee6248b","script":"$5","pageKey":"vaults"}],["$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+0:{"buildId":"dYoG_eVvWx7kvZbSGHUFF","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"vault-directory","html":"$3","masthead":"$4","runtimeVersion":"578aa8200cc4","script":"$5","pageKey":"vaults"}],["$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
 13:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 14:"$Sreact.suspense"
 16:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
@@ -108,12 +108,12 @@ e:C
 18:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 19:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 1a:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
-:HL["/_next/static/chunks/40y95fxq6ou5m.css","style"]
-6:["$","script","script-0",{"src":"/_next/static/chunks/38t9mx3zrsncv.js","async":true}]
+:HL["/_next/static/chunks/3zjfddwe57-hk.css","style"]
+6:["$","script","script-0",{"src":"/_next/static/chunks/1o350r4p9aqln.js","async":true}]
 7:["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]
 a:["$","$1","h",{"children":[null,["$","$L16",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L17",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L18","5",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
 c:["$","$1","c",{"children":[null,["$","$L19",null,{"parallelRouterKey":"children","template":["$","$L1a",null,{}]}]]}]
-f:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/40y95fxq6ou5m.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L19",null,{"parallelRouterKey":"children","template":["$","$L1a",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
+f:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zjfddwe57-hk.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L19",null,{"parallelRouterKey":"children","template":["$","$L1a",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
 15:null
 12:true
 9:300

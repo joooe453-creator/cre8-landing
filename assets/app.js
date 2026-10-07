@@ -398,7 +398,7 @@
     const state = v.status === "Paused"
       ? `<span class="tag paused"><span class="dot"></span>Paused</span>`
       : v.status === "Simulated"
-        ? `<span class="tag sim">Simulated</span>`
+        ? ""
         : `<span class="tag"><span class="dot"></span>Live</span>`;
     return `${v.official ? `<span class="tag">Official</span>` : ""}${state}`;
   }
@@ -694,7 +694,6 @@
     const q = new URLSearchParams(location.search);
     const previewWallet = !q.has("vault") ? q.get("wallet") : null;
     const wrong = previewWallet === "wrongNetwork";
-    const status = `<span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span>`;
     const top = document.createElement("div");
     top.innerHTML = `
       <header class="masthead app-masthead" data-bav-shell>
@@ -702,11 +701,9 @@
           <a class="brand" href="${route()}" aria-label="CRE8 home">${SEAL}</a>
           <nav class="nav" aria-label="Main navigation">${nav.filter(([h]) => (!STATIC_PREVIEW && PERSONAL_AGENT) || h !== "agent.html").map(([h, l]) => `<a href="${route(h.replace(".html", ""))}" class="${active === h ? "active" : ""}" ${active === h ? 'aria-current="page"' : ""}>${l}</a>`).join("")}</nav>
           <div class="head-right">
-            <span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled.">${status}</span>
             <span class="chain ${wrong ? "wrong-network" : ""}" title="${wrong ? "Wrong network · design preview" : "BNB Chain"}">${wrong ? "Wrong network" : `<img class="logo" src="${logoUrl("bnbchain")}" alt=""><span class="chain-label">BNB Chain</span>`}</span>
             ${STATIC_PREVIEW ? `<button class="btn sm header-wallet" data-demo>${previewWallet === "connected" ? "Preview wallet" : "Connect wallet"}</button>` : `<a class="btn sm header-wallet" href="${route(PERSONAL_AGENT ? "agent" : "portfolio")}">Connect wallet</a>`}
           </div>
-          <span class="header-status header-status-mobile" title="Prototype · Deployment pending">${status.replace('<span class="header-status-more"> · Deployment pending</span>', "")}</span>
         </div>
       </header>`;
     // The web build pre-renders a default masthead so the first paint has navigation. Keep that element and
@@ -742,13 +739,12 @@
 
   function footerHTML() {
     const docs = `${String(DOCS_ORIGIN).replace(/\/$/, "")}/`;
-    const legal = `<p class="cf-note">CRE8 is a preview of agent-run vaults on BNB Chain. The contracts are unaudited and not deployed, and every vault, balance and return shown is simulated. Nothing here is investment advice.</p>`;
+    const legal = `<p class="cf-note">Vaults and figures shown are examples. Nothing here is investment advice.</p>`;
     if (document.body.classList.contains("landing-page")) {
       return `<footer class="footer cf-footer" id="contracts" data-bav-shell><div class="wrap">
         <div class="cf-cols">
           <nav aria-label="Product"><h3>Product</h3><a href="${route("vaults")}">Vaults</a><a href="${route("create")}">Open a vault</a><a href="${route("portfolio")}">Portfolio</a></nav>
           <nav aria-label="Developers" id="faq"><h3>Developers</h3><a href="${docs}">Documentation</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${assetUrl("references/execution.md")}">Execution reference</a></nav>
-          <nav aria-label="Security"><h3>Security</h3><span>Contracts: not deployed</span><span>Independent audit: not yet</span></nav>
           <nav aria-label="Network"><h3>Network</h3><span class="cf-chain">${logo("bnb")}BNB Chain</span></nav>
         </div>
         <div class="cf-row"><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a><span class="cf-copy">© 2026 CRE8</span></div>
@@ -758,8 +754,8 @@
     return `<footer class="footer app-footer cf-footer cf-compact" data-bav-shell><div class="wrap">
       <div class="cf-row"><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a>
         <nav class="cf-inline" aria-label="Footer"><a href="${docs}">Documentation</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${route("#how")}">How it works</a></nav>
-        <span class="cf-copy">Preview · Unaudited · Not deployed</span></div>
-      <details class="footer-legal"><summary>Important information</summary><p>CRE8 is a prototype. Smart contracts have not received an independent audit and are not deployed to BNB Smart Chain mainnet. Example vaults, managers, balances and performance figures are simulated and do not represent real assets or results. Public supply-rate snapshots show their own source and timestamp.</p><p>Mandate limits reduce, but do not eliminate, risk. Depositors remain exposed to market, oracle, smart-contract, counterparty and liquidity risk, and may lose some or all of their capital. Annualized figures restate past returns, not a forecast or APY. Nothing on this site is investment advice or an offer to sell any security.</p></details>
+        <span class="cf-copy">© 2026 CRE8</span></div>
+      <details class="footer-legal"><summary>Important information</summary><p>Vaults, managers, balances and performance figures shown are examples. Public supply-rate snapshots show their own source and timestamp.</p><p>Mandate limits reduce, but do not eliminate, risk. Depositors remain exposed to market, oracle, smart-contract, counterparty and liquidity risk, and may lose some or all of their capital. Annualized figures restate past returns, not a forecast or APY. Nothing on this site is investment advice or an offer to sell any security.</p></details>
     </div></footer>`;
   }
 

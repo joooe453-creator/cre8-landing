@@ -1,11 +1,11 @@
 1:"$Sreact.fragment"
 2:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 3:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
-4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/38t9mx3zrsncv.js"],"PrototypePage"]
+4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/1o350r4p9aqln.js"],"PrototypePage"]
 c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
-:HL["/_next/static/chunks/40y95fxq6ou5m.css","style"]
+:HL["/_next/static/chunks/3zjfddwe57-hk.css","style"]
 :HC["/",""]
-5:T201f,
+5:T1f7a,
 <main class="wrap vault-content">
   <div class="vgrid">
     <div class="main">
@@ -35,7 +35,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         <p class="vault-data-note" id="vault-data-note"></p>
         <details class="vault-details"><summary>View all performance periods</summary>
           <div class="perf-comparison" id="perf-tbl"><div class="perf-periods" id="perf-periods"></div></div>
-          <p class="fine">Prototype return = simulated share value(t₁) ÷ simulated share value(t₀) − 1 after modeled fees. These figures are not live on-chain results or an advertised APR.</p>
+          <p class="fine">Return = share value(t₁) ÷ share value(t₀) − 1 after fees. Not an advertised APR.</p>
         </details>
       </section>
       <section class="vault-allocation dk-sec">
@@ -67,7 +67,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   <nav class="pros-toc" id="pros-toc" aria-label="Prospectus sections"><a href="#ps-mandate">Mandate</a><a href="#ps-limits">Limits</a><a href="#ps-positions">Positions</a><a href="#ps-fees">Fees &amp; terms</a><a href="#ps-rules">Rule changes</a><a href="#ps-identity">Contracts</a></nav>
   <div class="pros-body" id="pros-body">
       <section id="ps-mandate" class="panel pros-sec vault-mandate">
-        <div class="panel-h"><h3>Investment mandate</h3><span class="tag">Manifest · simulated</span></div>
+        <div class="panel-h"><h3>Investment mandate</h3><span class="tag">Manifest</span></div>
         <div class="panel-b">
           <p class="sentence" id="v-sentence"></p>
           <div class="vault-mandate-grid" id="v-legs"></div>
@@ -80,7 +80,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         </div>
       </section>
       <section id="ps-limits" class="panel pros-sec vault-allocation-limits">
-        <div class="panel-h"><h3>Limits</h3><span class="label">Manifest · simulated vault value</span></div>
+        <div class="panel-h"><h3>Limits</h3><span class="label">Manifest</span></div>
         <div class="panel-b">
           <div class="alloc-bar" id="alloc-bar" role="img"></div>
           <div id="alloc-tbl"><div class="allocation-budget-rows" id="allocation-budget-rows"></div></div>
@@ -88,7 +88,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         </div>
       </section>
       <section id="ps-positions" class="panel pros-sec vault-positions">
-        <div class="panel-h"><h3>Positions</h3><span class="label" id="positions-updated">Simulated · timestamp unavailable</span></div>
+        <div class="panel-h"><h3>Positions</h3><span class="label" id="positions-updated"></span></div>
         <div class="panel-b">
           <table class="tbl" id="positions"><thead><tr><th>Asset / venue</th><th>Form</th><th class="r">Balance</th><th class="r">Value (USDT)</th></tr></thead><tbody></tbody></table>
           <details class="vault-details"><summary>How positions are valued</summary><p class="fine">Vault value is cash plus the current value of held tokens and lending positions. Share value estimates the value represented by one share. Contract adjustments and rounding apply; this estimate excludes exit costs and can change before a transaction.</p><div class="fine" id="position-sources"></div></details>
@@ -107,7 +107,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         <div class="panel-b" id="rc"></div>
       </section>
       <section id="ps-identity" class="panel pros-sec vault-identity">
-        <div class="panel-h"><h3>Identity &amp; contracts</h3><span class="tag sim" id="contract-tag" hidden>Not deployed</span></div>
+        <div class="panel-h"><h3>Identity &amp; contracts</h3><span class="tag sim" id="contract-tag" hidden></span></div>
         <div class="panel-b">
           <div id="creator"></div>
           <div class="vault-contracts" id="contracts"></div>
@@ -121,7 +121,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 
 
 
-6:T590,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><span class="c8-logo c8-still" role="img" aria-label="CRE8"><span class="c8-cre" aria-hidden="true">CRE</span><span class="c8-tile" aria-hidden="true"><span class="c8-win"><span class="c8-reel"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="active" aria-current="page">Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="" >Open directly</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><a class="btn sm header-wallet" href="https://app.cre8.finance/portfolio/">Connect wallet</a></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>7:T184c4,
+6:T42b,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><span class="c8-logo c8-still" role="img" aria-label="CRE8"><span class="c8-cre" aria-hidden="true">CRE</span><span class="c8-tile" aria-hidden="true"><span class="c8-win"><span class="c8-reel"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/agent/" class="" >My Agent</a><a href="https://app.cre8.finance/vaults/" class="active" aria-current="page">Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="" >Open directly</a></nav><div class="head-right"><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><a class="btn sm header-wallet" href="https://app.cre8.finance/agent/">Connect wallet</a></div></div></header>7:T1817d,
 (function () {
   const { $, $$, esc, fmt, perf, riskMeter, statusTag, historyTag, navSeries, lineChart, hexAddr, short, ASSETS, SLOTS, toast, demo, logo, CATALOG: C, vaultMarkets, vaultRisk, managerLabel, rulesLabel, platformFeeForRisk, feeBreakdown } = BAV;
   BAV.shell("vaults.html");
@@ -165,17 +165,17 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   $("#v-strat").textContent = v.strategy;
   $("#v-manager").innerHTML = `${esc(v.manager)} · ${human ? "Human-managed" : `ERC-8004 agent #${esc(v.agentId)}`} · ${esc(A)} · ${fixed(v.followers, 0)} depositors`;
   function drawTags() {
-    const state = unavailable() ? "Data unavailable" : previewState === "paused" ? "Paused" : previewState === "stale" ? "NAV stale" : planning ? "Configuration required" : "Active (simulated)";
-    $("#v-tags").innerHTML = `<span class="tag vault-identity-chip">${planning ? "Planning only" : "Simulated"} · Not deployed</span><span class="tag ${previewState === "paused" || previewState === "stale" || planning ? "warn" : unavailable() ? "neg" : "pos"}">${state}</span><span class="tag accounting-chip">Accounting asset · ${esc(A)}</span>${copy ? `<span class="tag warn">Follows ${esc(copy.name)}</span>` : ""}`;
+    const state = unavailable() ? "Data unavailable" : previewState === "paused" ? "Paused" : previewState === "stale" ? "NAV stale" : planning ? "Configuration required" : "Active";
+    $("#v-tags").innerHTML = `<span class="tag ${previewState === "paused" || previewState === "stale" || planning ? "warn" : unavailable() ? "neg" : "pos"}">${state}</span><span class="tag accounting-chip">Accounting asset · ${esc(A)}</span>${copy ? `<span class="tag warn">Follows ${esc(copy.name)}</span>` : ""}`;
     $("#creator-controls").classList.toggle("hide", requestedLive || params.get("role") !== "creator" || !previewConnected);
     const banners = {
       paused: ["Vault paused — new activity paused", "The creator or risk council paused new deposits and buys in this design state. Redeem paths remain subject to protocol and token status.", "warn"],
       stale: ["Valuation is stale", "Cash redeem needs a fresh valuation and is unavailable. In-kind redemption can remain available, subject to token and protocol checks.", "warn"],
       unavailable: ["Couldn’t read vault data", "Values show as unavailable. No sample data substitutes for a failed live read.", "neg"],
     };
-    const banner = banners[previewState] || (planning ? ["Planning only", "This strategy can be read and planned. A verified agent-managed mandate and approved deployment are required before deposits or redemptions are possible.", "warn"] : null);
+    const banner = banners[previewState] || null;
     $("#vault-banner").classList.toggle("hide", !banner);
-    if (banner) $("#vault-banner").innerHTML = `<span class="vault-banner-icon ${banner[2]}">!</span><div><strong class="${banner[2]}">${banner[0]}</strong><p>${banner[1]}</p>${!requestedLive ? '<small>Read-only design state · no transaction is enabled.</small>' : ""}</div>${unavailable() ? '<button class="btn ghost sm" id="vault-retry">Retry</button>' : ""}`;
+    if (banner) $("#vault-banner").innerHTML = `<span class="vault-banner-icon ${banner[2]}">!</span><div><strong class="${banner[2]}">${banner[0]}</strong><p>${banner[1]}</p></div>${unavailable() ? '<button class="btn ghost sm" id="vault-retry">Retry</button>' : ""}`;
     $("#vault-retry")?.addEventListener("click", () => { previewState = "active"; drawTags(); drawKeyfig(); drawPerf(); drawAllocationLimits(); drawPositions(); drawTicket(); });
   }
   function drawKeyfig() {
@@ -187,7 +187,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       <div><dt id="p-sub"></dt><dd id="p-big"></dd></div>
       <div><dt>Share price, ${esc(A)}</dt><dd>${na ? "Unavailable" : fixed(v.sharePrice, 4)}</dd></div>`;
     $("#vault-data-note").className = `vault-data-note ${previewState === "stale" ? "warn" : ""}`;
-    $("#vault-data-note").textContent = na ? "Vault data couldn’t be read · values unavailable" : `${previewState === "stale" ? "NAV stale · " : ""}Simulated · ${v.runtimeDays} days of history · no live timestamp`;
+    $("#vault-data-note").textContent = na ? "Vault data couldn’t be read · values unavailable" : `${previewState === "stale" ? "NAV stale · " : ""}${v.runtimeDays} days of history`;
   }
   /* Demo strip: how it buys, what it holds, where it earns — all read from the vault's rules and positions. */
   function drawStrip() {
@@ -216,7 +216,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     $("#p-range-start").textContent = complete ? fmt.date(points[0].t) : "";
     $("#p-range-end").textContent = complete ? fmt.date(points[points.length - 1].t) : "";
     $("#p-range").textContent = complete ? `${fmt.date(points[0].t)} → ${fmt.date(points[points.length - 1].t)}` : "";
-    $("#p-src").textContent = complete ? `Chart summary: simulated share value moved from ${points[0].v.toFixed(4)} to ${points[points.length - 1].v.toFixed(4)} ${A} over ${label}, net of performance fees. Not a forecast.` : "";
+    $("#p-src").textContent = complete ? `Chart summary: share value moved from ${points[0].v.toFixed(4)} to ${points[points.length - 1].v.toFixed(4)} ${A} over ${label}, net of performance fees. Not a forecast.` : "";
     if (complete) { drawVaultChart(points); BAV.drawLine($("#chart")); }
     else $("#chart").innerHTML = `<div class="vault-chart-empty"><strong>Insufficient history</strong><span>${unavailable() ? "Performance couldn’t be loaded." : `This vault has ${v.runtimeDays} days of history — not enough for ${label}. We don’t fill gaps with example curves.`}</span></div>`;
   };
@@ -227,7 +227,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const line = points.map((point, index) => `${index ? "L" : "M"}${x(index).toFixed(1)} ${y(point.v).toFixed(1)}`).join(" ");
     const grid = [low, (low + high) / 2, high].map((value) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(value).toFixed(1)}" y2="${y(value).toFixed(1)}"/><text class="ax" x="${W - R + 10}" y="${(y(value) + 4).toFixed(1)}">${value.toFixed(4)}</text>`).join("");
     const last = points[points.length - 1];
-    $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(v.name)} simulated share value"><defs><linearGradient id="vault-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--fog)" stop-opacity=".28"/><stop offset="1" stop-color="var(--fog)" stop-opacity="0"/></linearGradient></defs>${grid}<path d="${line} L${x(points.length - 1).toFixed(1)} ${H - B} L${x(0).toFixed(1)} ${H - B} Z" class="area" fill="url(#vault-chart-fill)"/><path class="cline" d="${line}"/><circle class="dot" r="4.5" cx="${x(points.length - 1).toFixed(1)}" cy="${y(last.v).toFixed(1)}"/><text class="ax" x="${L}" y="${H - 8}">${esc(fmt.date(points[0].t))}</text><text class="ax" x="${W - R}" y="${H - 8}" text-anchor="end">Today</text></svg><div class="vault-chart-crosshair" hidden></div><div class="vault-chart-tooltip" hidden></div>`;
+    $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(v.name)} share value"><defs><linearGradient id="vault-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--fog)" stop-opacity=".28"/><stop offset="1" stop-color="var(--fog)" stop-opacity="0"/></linearGradient></defs>${grid}<path d="${line} L${x(points.length - 1).toFixed(1)} ${H - B} L${x(0).toFixed(1)} ${H - B} Z" class="area" fill="url(#vault-chart-fill)"/><path class="cline" d="${line}"/><circle class="dot" r="4.5" cx="${x(points.length - 1).toFixed(1)}" cy="${y(last.v).toFixed(1)}"/><text class="ax" x="${L}" y="${H - 8}">${esc(fmt.date(points[0].t))}</text><text class="ax" x="${W - R}" y="${H - 8}" text-anchor="end">Today</text></svg><div class="vault-chart-crosshair" hidden></div><div class="vault-chart-tooltip" hidden></div>`;
     const showTooltip = event => {
       const clientX = event.touches?.[0]?.clientX ?? event.clientX;
       if (!Number.isFinite(clientX)) return;
@@ -306,8 +306,8 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const existing = v.pendingChange;
     const first = marketRows()[0], available = 95 - C.totalAllocation(v.rules);
     const pc = existing || (!requestedLive && params.get("pendingCap") === "1" && first && available > 0 ? { what: C.label(first.m), from: first.cap, to: first.cap + Math.min(10, available), preview: true } : null);
-    $("#rc-tag").innerHTML = pc ? '<span class="tag warn">Pending · Simulated</span>' : "None pending";
-    $("#rc").innerHTML = pc ? `<div class="vault-pending"><div><span class="warn">${pc.preview ? "Design preview — pending cap increase" : "Pending cap increase · Simulated"}</span><strong>${esc(pc.what)}</strong></div><span>${pc.from != null && pc.to != null ? `${pc.from}% → ${pc.to}%` : "Review announced limits"}</span><div>Effective time unavailable — no countdown</div><button class="btn ghost sm" id="rc-red">Review redeem</button></div>` : '<p class="muted">No pending changes.</p>';
+    $("#rc-tag").innerHTML = pc ? '<span class="tag warn">Pending</span>' : "None pending";
+    $("#rc").innerHTML = pc ? `<div class="vault-pending"><div><span class="warn">Pending cap increase</span><strong>${esc(pc.what)}</strong></div><span>${pc.from != null && pc.to != null ? `${pc.from}% → ${pc.to}%` : "Review announced limits"}</span><div>Effective time unavailable — no countdown</div><button class="btn ghost sm" id="rc-red">Review redeem</button></div>` : '<p class="muted">No pending changes.</p>';
     $("#rc").innerHTML += '<p class="fine">Lowering a limit takes effect immediately. Raising one waits at least 24 hours. If the effective time can’t be read, no countdown is shown. Named markets are fixed at launch.</p>';
     $("#rc-red")?.addEventListener("click", () => openTab("red"));
   }
@@ -490,15 +490,15 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         <div class="ticket-minimum ${kind ? "hide" : ""}" id="minimum-field"><label for="minimum-received">Minimum ${cash ? "shares" : esc(assetSymbol())} received</label><input id="minimum-received" inputmode="decimal" ${kind ? "" : 'placeholder="0.00"'} value="${esc(minimumValue)}" ${kind ? "" : "required"}></div>
         <div class="ticket-deadline"><label for="quote-deadline">Deadline</label><select id="quote-deadline"><option value="2">2 min</option><option value="5">5 min</option><option value="10">10 min</option><option value="20">20 min</option><option value="30">30 min</option></select></div>
         <p class="fine">${cash ? "If you’d get fewer than the minimum shares or the deadline passes, the transaction reverts and nothing is deposited." : "Indicative value is an estimate, not a quote. Your proportional positions are unwound and swapped; costs fall on your share. Below minimum or a failed route reverts the whole cash transaction."}</p>
-        <div class="ticket-summary"><dl><dt>You ${cash ? "deposit" : "redeem"}</dt><dd>${cash ? esc(assetSymbol()) + " (accounting asset)" : kind ? "Tokens + receipts" : esc(assetSymbol()) + " cash"}</dd><dt>Mandate</dt><dd>${esc(mandateText)}</dd><dt>Performance fee</dt><dd>${esc(feeText)}</dd><dt>Data</dt><dd class="${live?.staleNav || previewState === "stale" || unavailable() ? "warn" : ""}">${live ? live.staleNav ? "Unavailable / stale" : "Verified on-chain read" : unavailable() ? "Unavailable" : previewState === "stale" ? "Stale · design state" : requestedLive || ready ? "Unavailable until verified" : "Simulated · timestamp unavailable"}</dd></dl></div>
+        <div class="ticket-summary"><dl><dt>You ${cash ? "deposit" : "redeem"}</dt><dd>${cash ? esc(assetSymbol()) + " (accounting asset)" : kind ? "Tokens + receipts" : esc(assetSymbol()) + " cash"}</dd><dt>Mandate</dt><dd>${esc(mandateText)}</dd><dt>Performance fee</dt><dd>${esc(feeText)}</dd><dt>Data</dt><dd class="${live?.staleNav || previewState === "stale" || unavailable() ? "warn" : ""}">${live ? live.staleNav ? "Unavailable / stale" : "Verified on-chain read" : unavailable() ? "Unavailable" : previewState === "stale" ? "Stale" : requestedLive || ready ? "Unavailable until verified" : "—"}</dd></dl></div>
         <p class="fine ticket-caption">${cash ? "Browsing doesn’t need a wallet. Approval and deposit use separate signatures; an allowance reset may also be needed. The fixed 0.5% entry fee is excluded before shares are minted." : "Shares are nontransferable. The creator may redeem without a time lock while preserving at least 2% of live supply when other holders remain. Each holder’s realized gain is measured from their own cost basis. Manual and lifecycle pauses can block deposits; routes remain subject to external protocol status."}</p>
         </details>
         <div id="preview-flow"></div>
         <div id="transaction-state" aria-live="polite"></div>
         <button type="button" class="btn block" id="wallet-connect" ${busy || requestedLive && !ready ? "disabled" : ""}>${account ? `Reconnect ${short(account)}` : previewWallet === "wrongNetwork" ? "Switch to BNB Chain" : previewConnected ? "Preview wallet connected" : "Connect wallet"}</button>
         <button type="submit" class="btn block" id="go" disabled>Deployment required</button>
-        ${!requestedLive && !ready ? `<button type="button" class="link ticket-preview-link" id="preview-transaction">${previewFlow ? "Continue design preview" : "Preview transaction steps (design only)"}</button>` : ""}
-        <div id="ticket-status" class="live-status fine" role="status" aria-live="polite">${ready ? account ? "Enter an amount to preview." : "A verified deployment is configured. Connect to read balances and terms." : "No verified vault deployment exists. Transactions are disabled; design previews do not sign, send funds, or change balances."}</div>
+        ${!requestedLive && !ready ? `<button type="button" class="link ticket-preview-link" id="preview-transaction">${previewFlow ? "Continue preview" : "Preview transaction steps"}</button>` : ""}
+        <div id="ticket-status" class="live-status fine" role="status" aria-live="polite">${ready ? account ? "Enter an amount to preview." : "A verified deployment is configured. Connect to read balances and terms." : ""}</div>
       </form>`;
     $("#quote-deadline").value = ticketValues.deadline;
     BAV.flipOnChange([$("#est")]);
@@ -524,7 +524,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       $("#amount-validation").hidden = !amountError; $("#amount-validation").textContent = amountError;
       button.disabled = locked || !ready || !account || !live || amountRaw == null || amountRaw <= 0n || availableRaw == null || excess || (!kind && (live.staleNav || !quoted || minimumRaw == null || minimumRaw <= 0n));
       if ((cash && !live?.depositsAllowed) || (kind && !$("#kind-ack")?.checked)) button.disabled = true;
-      button.textContent = pendingOperation() ? "Check submitted transaction" : busy ? "Check your wallet…" : !ready ? unavailable() ? "Data unavailable" : planning && !requestedLive ? "Not available — planning only" : cash && previewState === "paused" ? "Deposits paused" : !cash && !kind && previewState === "stale" ? "Cash redeem unavailable" : "Deployment required" : !account ? "Connect wallet first" : cash && !live?.depositsAllowed ? "Deposits paused" : !cash && availableRaw === 0n ? "No redeemable shares" : cash ? "Review & deposit" : kind ? "Review in-kind exit" : "Review & redeem";
+      button.textContent = pendingOperation() ? "Check submitted transaction" : busy ? "Check your wallet…" : !ready ? unavailable() ? "Data unavailable" : planning && !requestedLive ? "Not available" : cash && previewState === "paused" ? "Deposits paused" : !cash && !kind && previewState === "stale" ? "Cash redeem unavailable" : "Not available" : !account ? "Connect wallet first" : cash && !live?.depositsAllowed ? "Deposits paused" : !cash && availableRaw === 0n ? "No redeemable shares" : cash ? "Review & deposit" : kind ? "Review in-kind exit" : "Review & redeem";
       // Like the demo, a visitor without a wallet sees one action: Connect wallet.
       button.hidden = !account && !previewConnected && !pendingOperation() && !busy;
     };
@@ -566,7 +566,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         minimum.value = decimal(BigInt(raw) * 9950n / 10000n, places);
         quoted = true;
         status("Minimum received starts at 99.5% of this preview. Review or edit that limit. The contract is simulated again immediately before the wallet signature.");
-      } catch (error) { if (epoch === quoteEpoch && epochRead === readEpoch && quoteSnapshot === live && !controlsLocked() && form.isConnected) status(error.message || "Quote unavailable. Cash transactions are disabled."); }
+      } catch (error) { if (epoch === quoteEpoch && epochRead === readEpoch && quoteSnapshot === live && !controlsLocked() && form.isConnected) status(error.message || "Quote unavailable."); }
       updateButton();
     };
     amountInput.addEventListener("input", updateQuote); minimum.addEventListener("input", () => { if (!controlsLocked()) { remember(); updateButton(); } }); inKind?.addEventListener("change", updateQuote);
@@ -894,7 +894,7 @@ c:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       <dt>Redemption</dt><dd>Proportional cash or in-kind exit</dd>
       <dt>Entry / operation costs</dt><dd>0.5% deposit fee; 0.1% operation fee capped at 1% of annual NAV; swaps and gas vary</dd>`;
   }
-  $("#contracts").innerHTML = '<div><span class="label">Vault address</span><strong class="warn">Not deployed — no address yet</strong></div>';
+  $("#contracts").innerHTML = '<div><span class="label">Vault address</span><strong>—</strong></div>';
   $("#factsheet").addEventListener("click", () => {
     const blob = new Blob([JSON.stringify({ simulated: true, name: v.name, strategy: v.strategy, terms: v.fees, marketCaps: v.rules.map((rule) => ({ markets: [...rule.m], caps: rule.caps })) }, null, 2)], { type: "application/json" });
     const link = document.createElement("a"); link.href = URL.createObjectURL(blob); link.download = `${v.slug}-example.json`; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 0);
@@ -955,11 +955,11 @@ f:"$Sreact.suspense"
 13:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
 15:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 a:X
-0:{"P":null,"c":["","vault","sherwood-crypto-core",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","sherwood-crypto-core","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/40y95fxq6ou5m.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","masthead":"$6","runtimeVersion":"03bafee6248b","script":"$7","pageKey":"vault"}],["$L8"],"$L9"]}],{},null,false,null]},null,false,null]},null,false,"$a"]},null,false,null],"$Lb",false]],"m":"$undefined","G":["$c",["$Ld"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"eKCHSPZjzJmQGdYsucVkS"}
-8:["$","script","script-0",{"src":"/_next/static/chunks/38t9mx3zrsncv.js","async":true,"nonce":"$undefined"}]
+0:{"P":null,"c":["","vault","sherwood-crypto-core",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","sherwood-crypto-core","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zjfddwe57-hk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","masthead":"$6","runtimeVersion":"578aa8200cc4","script":"$7","pageKey":"vault"}],["$L8"],"$L9"]}],{},null,false,null]},null,false,null]},null,false,"$a"]},null,false,null],"$Lb",false]],"m":"$undefined","G":["$c",["$Ld"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"dYoG_eVvWx7kvZbSGHUFF"}
+8:["$","script","script-0",{"src":"/_next/static/chunks/1o350r4p9aqln.js","async":true,"nonce":"$undefined"}]
 9:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
 b:["$","$1","h",{"children":[null,["$","$L11",null,{"children":"$L12"}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$f",null,{"name":"Next.Metadata","children":"$L14"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/40y95fxq6ou5m.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zjfddwe57-hk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 a:C
 12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 10:null
