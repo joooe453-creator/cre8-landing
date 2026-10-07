@@ -24,7 +24,7 @@
 </main>
 
 
-4:T1d45,
+4:T1d72,
 (function () {
   const { $, $$, VAULTS, esc, fmt, perf, managerLabel, vaultMarkets } = BAV;
   BAV.shell("vaults.html");
@@ -94,11 +94,12 @@
   }
   let rendered = false;
   render();
+  void BAV.legalNotice.reviewPage("vaults");
 })();
 8:X
 d:X
 d:C
-0:{"buildId":"EhJC994dguXDhVM8byHXn","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"vault-directory","html":"$3","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"active\" aria-current=\"page\">Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"8c65d7089389","script":"$4","pageKey":"vaults"}],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":"$d"},{"rsc":"$Le","isPartial":"$@f","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@10","rootVaryParams":null,"needsRuntimeRequest":"$@11"}
+0:{"buildId":"yh3O9FRVZreyvDW_Z10zC","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"vault-directory","html":"$3","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"active\" aria-current=\"page\">Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"39408d6e7978","script":"$4","pageKey":"vaults"}],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":"$d"},{"rsc":"$Le","isPartial":"$@f","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@10","rootVaryParams":null,"needsRuntimeRequest":"$@11"}
 12:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 13:"$Sreact.suspense"
 15:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]

@@ -84,7 +84,7 @@
   window.addEventListener("pagehide", () => { void legalNotice.cancel(); });
   window.addEventListener("pageshow", (event) => {
     if (!event.persisted) return;
-    const page = document.querySelector("#mandate-form") ? "create" : document.querySelector("#v-name") ? "vault" : null;
+    const page = document.querySelector("#mandate-form") ? "create" : document.querySelector("#directory-title") ? "vaults" : null;
     if (page) void legalNotice.reviewPage(page);
   });
 

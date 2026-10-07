@@ -8,15 +8,36 @@ export function validateDraftManifest(value) {
   return value;
 }
 
-export const RISK_NOTICE_VERSION = "2026-10-07-risk.3";
+export const RISK_NOTICE_VERSION = "2026-10-07-risk.4";
 
 export function createPageRiskRecord(options, reviewedAt = new Date().toISOString()) {
-  if (!["vault", "create"].includes(options.page)) throw new Error("Unsupported risk notice page.");
+  if (!["vaults", "create"].includes(options.page)) throw new Error("Unsupported risk notice page.");
   return {
     status: "risk-acknowledged", liveAllowed: false, riskVersion: RISK_NOTICE_VERSION,
     language: "en", reviewedAt, page: options.page,
   };
 }
+
+const PAGE_NOTICES = {
+  vaults: {
+    audience: "For depositors",
+    title: "Before you explore vaults",
+    points: [
+      "<strong>You could lose all your capital.</strong> Markets, smart contracts and third-party protocols carry risks. Capital and returns are not guaranteed.",
+      "<strong>Review each vault before depositing.</strong> Read its Fund prospectus and check the strategy, fees, Agent permissions and withdrawal conditions.",
+      "<strong>Agents can act within vault rules.</strong> An Agent can operate without your approval for each transaction. Risk controls cannot guarantee a limit on losses.",
+    ],
+  },
+  create: {
+    audience: "For vault creators",
+    title: "Before you create a vault",
+    points: [
+      "<strong>Review the vault setup before launch.</strong> Check the assets, destinations, investment limits, fees and rules you are configuring.",
+      "<strong>Your seed is at risk.</strong> The seed deposit is exposed to strategy losses. Maintain the minimum creator shareholding while other holders remain.",
+      "<strong>Choose the Agent operator carefully.</strong> It can act within vault rules without your approval for each transaction. Replacing the operator requires a governance delay.",
+    ],
+  },
+};
 
 let active = null;
 const shownPages = new Set();
@@ -49,19 +70,16 @@ export async function reviewPageRisk(options, { url }) {
   if (shownPages.has(options.page)) return { shown: false, reviewed: false, liveAllowed: false, riskVersion: RISK_NOTICE_VERSION };
   cancelReview();
   shownPages.add(options.page);
+  const notice = PAGE_NOTICES[options.page];
   const dialog = document.createElement("dialog");
   dialog.className = "legal-notice-dialog";
   dialog.lang = "en";
   dialog.dataset.bavLegal = "";
   dialog.setAttribute("aria-labelledby", "cre8-risk-title");
   dialog.innerHTML = `<form method="dialog" class="legal-notice-form">
-    <header><span class="legal-notice-status">General risk notice</span><button type="button" class="legal-notice-close" aria-label="Close risk reminder">×</button></header>
-    <h2 id="cre8-risk-title">Risk reminder</h2>
-    <ol class="legal-notice-points">
-      <li><strong>You could lose all your capital.</strong> Markets, smart contracts and third-party protocols carry risks. Capital and returns are not guaranteed.</li>
-      <li><strong>Agents can act within vault rules.</strong> An Agent can operate without your approval for each transaction. Risk controls cannot guarantee a limit on losses.</li>
-      <li><strong>Review fees and exit conditions.</strong> Withdrawals may be affected by liquidity and slippage, or deliver protocol receipt tokens. Vault shares are nontransferable.</li>
-    </ol>
+    <header><span class="legal-notice-status">${notice.audience}</span><button type="button" class="legal-notice-close" aria-label="Close risk reminder">×</button></header>
+    <h2 id="cre8-risk-title">${notice.title}</h2>
+    <ol class="legal-notice-points">${notice.points.map((point) => `<li>${point}</li>`).join("")}</ol>
     <a class="legal-notice-risk-link" target="_blank" rel="noopener noreferrer">Read full risk disclosure (Chinese draft)</a>
     <p class="legal-notice-privacy">Shown once when you enter this page. This notice does not sign a transaction or approve token spending.</p>
     <footer><button type="button" class="btn ghost" data-legal-cancel>Close</button><button type="submit" class="btn" data-legal-continue>I understand the risks</button></footer>
