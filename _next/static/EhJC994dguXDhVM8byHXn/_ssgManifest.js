@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fcreator\u002F[id]","\u002Flegal\u002F[document]","\u002Fvault\u002F[slug]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

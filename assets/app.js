@@ -43,6 +43,51 @@
     return `${String(origin).replace(/\/$/, "")}/${clean}${clean && !clean.includes("#") ? "/" : ""}`;
   };
 
+  const legalUrl = (documentId = "") => STATIC_PREVIEW
+    ? `legal.html${documentId ? `#${encodeURIComponent(documentId)}` : ""}`
+    : `${String(DOCS_ORIGIN).replace(/\/$/, "")}/legal/${documentId ? `${encodeURIComponent(documentId)}/` : ""}`;
+  let legalModule, noticeEpoch = 0;
+  const legalNotice = {
+    liveAllowed: false,
+    url: legalUrl,
+    async reviewPage(page) {
+      const epoch = noticeEpoch;
+      try {
+        legalModule ||= import(assetUrl("assets/legal-notice.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
+        const module = await legalModule;
+        if (epoch !== noticeEpoch) return { shown: false, reviewed: false, liveAllowed: false };
+        return await module.reviewPageRisk({ page }, { url: legalUrl });
+      } catch (error) {
+        legalModule = null;
+        if (epoch === noticeEpoch) toast(error?.message || "Risk notice could not be loaded. The full disclosure is available in Docs.");
+        return { shown: false, reviewed: false, liveAllowed: false };
+      }
+    },
+    async confirmProspectus(onRead) {
+      const epoch = noticeEpoch;
+      try {
+        legalModule ||= import(assetUrl("assets/legal-notice.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
+        const module = await legalModule;
+        if (epoch !== noticeEpoch) return false;
+        return await module.confirmFundProspectus({ onRead });
+      } catch (error) {
+        legalModule = null;
+        if (epoch === noticeEpoch) toast(error?.message || "The prospectus reminder could not be loaded. Refresh before depositing.");
+        return false;
+      }
+    },
+    async cancel() {
+      noticeEpoch++;
+      try { if (legalModule) (await legalModule).resetPageVisit(); } catch { /* A notice never permits execution. */ }
+    },
+  };
+  window.addEventListener("pagehide", () => { void legalNotice.cancel(); });
+  window.addEventListener("pageshow", (event) => {
+    if (!event.persisted) return;
+    const page = document.querySelector("#mandate-form") ? "create" : document.querySelector("#v-name") ? "vault" : null;
+    if (page) void legalNotice.reviewPage(page);
+  });
+
   /* ------------------------------------------------------------------ */
   /* Registry                                                            */
   /* ------------------------------------------------------------------ */
@@ -795,6 +840,7 @@
         <div class="cf-cols">
           <nav aria-label="Product"><h3>Product</h3><a href="${route("vaults")}">Vaults</a><a href="${route("create")}">Create a vault</a><a href="${route("portfolio")}">Portfolio</a></nav>
           <nav aria-label="Developers" id="faq"><h3>Developers</h3><a href="${docs}">Documentation</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${assetUrl("references/execution.md")}">Execution reference</a></nav>
+          <nav aria-label="Legal"><h3>Legal</h3><a href="${legalUrl()}">Legal documents · Draft</a><a href="${legalUrl("privacy")}">Privacy notice</a></nav>
         </div>
         <div class="cf-row"><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a><span class="cf-copy">© 2026 CRE8</span></div>
         ${legal}
@@ -802,7 +848,7 @@
     }
     return `<footer class="footer app-footer cf-footer cf-compact" data-bav-shell><div class="wrap">
       <div class="cf-row"><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a>
-        <nav class="cf-inline" aria-label="Footer"><a href="${docs}">Documentation</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${route("#how")}">How it works</a></nav>
+        <nav class="cf-inline" aria-label="Footer"><a href="${docs}">Documentation</a><a href="${legalUrl()}">Legal · Draft</a><a href="${legalUrl("privacy")}">Privacy</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${route("#how")}">How it works</a></nav>
         <span class="cf-copy">© 2026 CRE8</span></div>
       <details class="footer-legal"><summary>Important information</summary><p>Vaults, managers, balances and performance figures shown are examples. Public supply-rate snapshots show their own source and timestamp.</p><p>Mandate limits reduce, but do not eliminate, risk. Depositors remain exposed to market, oracle, smart-contract, counterparty and liquidity risk, and may lose some or all of their capital. Annualized figures restate past returns, not a forecast or APY. Nothing on this site is investment advice or an offer to sell any security.</p></details>
     </div></footer>`;
@@ -945,7 +991,7 @@
     platformFeeForRisk, feeBreakdown,
     $, $$, esc, fmt, perf, periodDays, historyTag, riskMeter, statusTag,
     rng, hexAddr, short, navSeries, sparkline, lineChart, logo, agentCanvas, stackTables,
-    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, avatarFor, creatorAvatar, creatorId, creatorProfile, creatorName, creatorEarnings, officialBadge, loadClient, DEMO_OWNER, demo,
+    shell, footerHTML, wireShell, legalNotice, toast, SEAL, brandLogo, route, assetUrl, avatarFor, creatorAvatar, creatorId, creatorProfile, creatorName, creatorEarnings, officialBadge, loadClient, DEMO_OWNER, demo,
     vault: (slug) => VAULTS.find((v) => v.slug === slug),
   };
 })();

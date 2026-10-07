@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
 2:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 3:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
-4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/1o350r4p9aqln.js"],"PrototypePage"]
+4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2jue03yvau1yp.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
-:HL["/_next/static/chunks/3ak0s-ic1j5qh.css","style"]
+:HL["/_next/static/chunks/3zu2olbmuhbqq.css","style"]
 :HC["/",""]
 5:T1d27,
 <main class="wrap vault-content">
@@ -122,7 +122,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 
 
 
-6:T17a3c,
+6:T184f9,
 (function () {
   const { $, $$, esc, fmt, perf, riskMeter, statusTag, historyTag, navSeries, lineChart, hexAddr, short, ASSETS, SLOTS, toast, demo, logo, CATALOG: C, vaultMarkets, vaultRisk, managerLabel, rulesLabel, platformFeeForRisk, feeBreakdown } = BAV;
   BAV.shell("vaults.html");
@@ -333,6 +333,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 
   /* Real transaction controls: examples never mutate a demo balance. */
   let tab = params.get("tab") === "redeem" ? "red" : "sub", client = null, deployment = null, deployedVault = null, account = null, live = null, busy = false, busyOwner = null, quoteEpoch = 0, readEpoch = 0, operation = null, receiptBusy = false;
+  let depositQuoteSnapshot = null;
   const activeConfig = () => deployment?.status === "deployed" && !!deployedVault;
   const pendingOperation = () => !!operation && ["awaiting-wallet", "submitted", "unknown", "mined"].includes(operation.phase);
   const controlsLocked = () => busy || receiptBusy || pendingOperation();
@@ -468,6 +469,19 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     finally { receiptBusy = false; drawTicket(); if (operation === pending) status(pending.message); }
   }
   const ticketValues = { sub: "1000", red: "", minimum: { sub: "", red: "" }, deadline: "20", kind: params.get("mode") === "kind", ack: false };
+  const legalUrl = (documentId) => BAV.legalNotice?.url(documentId) || `${String(window.__BAV_DOCS_ORIGIN__ || "").replace(/\/$/, "")}/legal/${documentId}/`;
+  async function reviewFundProspectus() {
+    if (!BAV.legalNotice?.confirmProspectus) { status("The prospectus reminder is unavailable. Refresh before depositing."); return false; }
+    return BAV.legalNotice.confirmProspectus(() => $("#pros-open")?.click());
+  }
+  const depositRequestSnapshot = () => JSON.stringify({ readEpoch, account, chainId: deployment?.chainId, vault: vaultAddress(), amount: $("#amt")?.value.trim(), minimum: $("#minimum-received")?.value.trim(), deadline: $("#quote-deadline")?.value });
+  function allowLiveDeposit() {
+    if (BAV.legalNotice?.liveAllowed !== true) {
+      status("Live deposits are unavailable in this preview. No token approval, deposit or new Safe proposal was requested.");
+      return false;
+    }
+    return true;
+  }
   function drawTicket() {
     quoteEpoch++;
     $$(".ticket .tabs button").forEach(button => { button.classList.toggle("on", button.dataset.t === tab); button.setAttribute("aria-selected", String(button.dataset.t === tab)); });
@@ -497,6 +511,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         <div class="ticket-deadline"><label for="quote-deadline">Deadline</label><select id="quote-deadline"><option value="2">2 min</option><option value="5">5 min</option><option value="10">10 min</option><option value="20">20 min</option><option value="30">30 min</option></select></div>
         <div class="ticket-summary"><dl><dt>You ${cash ? "deposit" : "redeem"}</dt><dd>${cash ? esc(assetSymbol()) + " (accounting asset)" : kind ? "Tokens + receipts" : esc(assetSymbol()) + " cash"}</dd><dt>Mandate</dt><dd>${esc(mandateText)}</dd><dt>Performance fee</dt><dd>${esc(feeText)}</dd><dt>Data</dt><dd class="${live?.staleNav || previewState === "stale" || unavailable() ? "warn" : ""}">${live ? live.staleNav ? "Unavailable / stale" : "Verified on-chain read" : unavailable() ? "Unavailable" : previewState === "stale" ? "Stale" : requestedLive || ready ? "Unavailable until verified" : "—"}</dd></dl></div>
         </details>
+        ${cash ? `<div class="legal-review-entry"><p class="fine"><a href="${esc(legalUrl("terms"))}" target="_blank" rel="noopener noreferrer">Terms</a> · <a href="${esc(legalUrl("risk"))}" target="_blank" rel="noopener noreferrer">Full risk disclosure</a></p></div>` : ""}
         <div id="preview-flow"></div>
         <div id="transaction-state" aria-live="polite"></div>
         <button type="button" class="btn block" id="wallet-connect" ${busy || requestedLive && !ready ? "disabled" : ""}>${account ? `Reconnect ${short(account)}` : previewWallet === "wrongNetwork" ? "Switch to BNB Chain" : previewConnected ? "Preview wallet connected" : "Connect wallet"}</button>
@@ -536,7 +551,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       if (controlsLocked()) return;
       const epoch = ++quoteEpoch, amount = amountInput.value.trim(), kind = !!inKind?.checked;
       previewFlow = null; drawPreviewFlow();
-      quoted = false; minimum.value = ""; $("#est").textContent = kind ? "Tokens + receipts · no cash quote" : "Preview unavailable";
+      quoted = false; $("#est").textContent = kind ? "Tokens + receipts · no cash quote" : "Preview unavailable";
       if ($("#entry-impact")) { $("#entry-impact").textContent = "Quote unavailable"; $("#entry-impact").removeAttribute("title"); }
       $("#kind-fields")?.classList.toggle("hide", !kind);
       $$("[data-redeem-mode]").forEach(b => b.classList.toggle("on", (b.dataset.redeemMode === "kind") === kind));
@@ -550,7 +565,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       updateButton();
       const quoteSnapshot = live, epochRead = readEpoch, amountRaw = live ? decimalRaw(amount, cash ? live.decimals : live.shareDecimals) : null;
       const availableRaw = live ? decimalRaw(cash ? live.assetBalance : kind ? live.unlockedShares : live.maxRedeem, cash ? live.decimals : live.shareDecimals) : null;
-      if (!ready || !account || !live || live.staleNav || kind || amountRaw == null || amountRaw <= 0n || availableRaw == null || amountRaw > availableRaw) return;
+      if (!ready || !account || !live || live.staleNav || kind || amountRaw == null || amountRaw <= 0n || availableRaw == null || amountRaw > availableRaw) { if (cash) { depositQuoteSnapshot = null; } return; }
       try {
         const quote = cash ? await client.previewDeposit(deployment, vaultAddress(), amount) : await client.previewRedeem(deployment, vaultAddress(), account, amount);
         if (epoch !== quoteEpoch || epochRead !== readEpoch || quoteSnapshot !== live || controlsLocked() || !form.isConnected) return;
@@ -567,10 +582,13 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         const exactEstimate = cash ? quote.shares : quote.assets, estimateUnit = cash ? v.symbol : assetSymbol();
         $("#est").textContent = `${balanceLabel(exactEstimate)} ${estimateUnit}${cash ? "" : " · indicative"}`;
         $("#est").title = `${exactEstimate} ${estimateUnit}${cash ? " · estimated shares" : " · indicative cash value, not a guaranteed payout"}`;
-        minimum.value = decimal(BigInt(raw) * 9950n / 10000n, places);
+        const nextDepositQuote = cash ? { amount, rawShares: String(quote.rawShares), impactAssets: String(quote.entryImpact.rawAssets), impactPricingAssets: String(quote.entryImpact.rawPricingAssets), impactBps: String(quote.entryImpact.bps) } : null;
+        const unchangedQuote = cash && JSON.stringify(depositQuoteSnapshot) === JSON.stringify(nextDepositQuote);
+        if (!unchangedQuote || !minimum.value.trim()) minimum.value = decimal(BigInt(raw) * 9950n / 10000n, places);
+        if (cash) { depositQuoteSnapshot = nextDepositQuote; remember(); }
         quoted = true;
         status("Minimum received starts at 99.5% of this preview. Review or edit that limit. The contract is simulated again immediately before the wallet signature.");
-      } catch (error) { if (epoch === quoteEpoch && epochRead === readEpoch && quoteSnapshot === live && !controlsLocked() && form.isConnected) status(error.message || "Quote unavailable."); }
+      } catch (error) { if (epoch === quoteEpoch && epochRead === readEpoch && quoteSnapshot === live && !controlsLocked() && form.isConnected) { if (cash) { depositQuoteSnapshot = null; } status(error.message || "Quote unavailable."); } }
       updateButton();
     };
     amountInput.addEventListener("input", updateQuote); minimum.addEventListener("input", () => { if (!controlsLocked()) { remember(); updateButton(); } }); inKind?.addEventListener("change", updateQuote);
@@ -595,7 +613,11 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       } else amountInput.value = String(cash ? previewConnected ? demo.balance(A) : 0 : previewConnected ? demo.shares(v.slug) : 0);
       updateQuote();
     });
-    $("#preview-transaction")?.addEventListener("click", startPreviewFlow);
+    $("#preview-transaction")?.addEventListener("click", async () => {
+      const previewTab = tab;
+      if (cash && !await reviewFundProspectus()) return;
+      if (form.isConnected && tab === previewTab && !controlsLocked()) startPreviewFlow();
+    });
     async function connectTicketWallet() {
       // An unresolved request blocks signing for its account, while another account can still connect.
       if (busy || receiptBusy) return;
@@ -632,9 +654,18 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     form.addEventListener("submit", async (event) => {
       event.preventDefault(); updateButton(); if (button.disabled) return;
       remember();
+      if (cash) {
+        const request = depositRequestSnapshot();
+        if (!await reviewFundProspectus()) return;
+        if (!form.isConnected || tab !== "sub" || request !== depositRequestSnapshot()) { status("Deposit details changed. Review the current parameters before signing."); return; }
+        if (!allowLiveDeposit()) { if (form.isConnected) updateButton(); return; }
+        if (!form.isConnected) return;
+        updateButton();
+        if (button.disabled || tab !== "sub") { status("Deposit details changed. Review the current parameters before signing."); return; }
+      }
       const deadline = Math.floor(Date.now() / 1000) + Number($("#quote-deadline").value) * 60;
       const kind = !!inKind?.checked, epochRead = readEpoch, submittedAccount = account, submittedAmount = amountInput.value.trim(), submittedMinimum = minimum.value.trim();
-      operation = { phase: "preparing", hash: null, chainId: deployment.chainId, vault: vaultAddress(), account: submittedAccount, message: "Preparing transaction" };
+      operation = { action: cash ? "deposit" : kind ? "redeem-in-kind" : "redeem", phase: "preparing", hash: null, chainId: deployment.chainId, vault: vaultAddress(), account: submittedAccount, message: "Preparing transaction" };
       const submittedOperation = operation, busyToken = {}, reportStatus = message => { if (operation === submittedOperation) transactionStatus(message); };
       busyOwner = busyToken; busy = true; quoteEpoch++; updateButton();
       transactionStatus(cash ? "Checking contracts and allowance. Your wallet may request approval, then a separate deposit signature. Waiting for the confirmed receipt." : kind ? "Checking your unlocked shares. Review the in-kind exit in your wallet; you will receive tokens and receipts." : "Simulating the proportional exit with your minimum received, then requesting your signature. Waiting for the confirmed receipt.");
@@ -864,7 +895,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         clearUnverifiedLive(); }
       if (activeConfig()) {
         const controls = await client.readVaultFromRpc(deployment, vaultAddress(), deployment.factory);
-        client.mountSafeVaultActions($("#safe-vault-actions"), deployment, controls);
+        client.mountSafeVaultActions($("#safe-vault-actions"), deployment, controls, async () => await reviewFundProspectus() && allowLiveDeposit());
         client.mountManagementPanel($("#creator-controls"), deployment, controls, null, input => client.manageVault(deployment, { ...input, onStatus: status }), async () => location.reload());
       }
       drawTicket();
@@ -908,6 +939,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   });
 
   drawTags(); drawRules(); drawRc(); drawTicket(); drawTerms(); drawFeeSummary(v.fees.perf);
+  void BAV.legalNotice.reviewPage("vault");
   if (!requestedLive && params.get("previewSteps") === "1") { previewFlow = { step: 2, done: false }; drawPreviewFlow(); }
   if (typeof IntersectionObserver !== "undefined") {
     const observer = new IntersectionObserver(([entry]) => $(".mobile-cta").classList.toggle("panel-visible", entry.isIntersecting), { threshold: 0.05 });
@@ -962,11 +994,11 @@ e:"$Sreact.suspense"
 12:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
 14:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 9:X
-0:{"P":null,"c":["","vault","cre8-bstock-core",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","cre8-bstock-core","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3ak0s-ic1j5qh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"active\" aria-current=\"page\">Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"d92c0289f351","script":"$6","pageKey":"vault"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"JVl0V8EI1O13x_UuuuVIv"}
-7:["$","script","script-0",{"src":"/_next/static/chunks/1o350r4p9aqln.js","async":true,"nonce":"$undefined"}]
+0:{"P":null,"c":["","vault","cre8-bstock-core",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","cre8-bstock-core","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zu2olbmuhbqq.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"active\" aria-current=\"page\">Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"8c65d7089389","script":"$6","pageKey":"vault"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"EhJC994dguXDhVM8byHXn"}
+7:["$","script","script-0",{"src":"/_next/static/chunks/2jue03yvau1yp.js","async":true,"nonce":"$undefined"}]
 8:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3ak0s-ic1j5qh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zu2olbmuhbqq.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 9:C
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 f:null

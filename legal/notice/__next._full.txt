@@ -1,0 +1,71 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+3:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+5:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+9:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
+b:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
+d:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
+:HL["/_next/static/chunks/3zu2olbmuhbqq.css","style"]
+:HC["/",""]
+:HL["/_next/static/chunks/1pkzb7n7340tb.css","style"]
+8:X
+0:{"P":null,"c":["","legal","notice",""],"q":"","i":false,"f":[[["",{"children":["legal",{"children":[["document","notice","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zu2olbmuhbqq.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1pkzb7n7340tb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$8"]},null,false,"$8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zu2olbmuhbqq.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"EhJC994dguXDhVM8byHXn"}
+:HL["/logos/cre8-on-light.svg","image"]
+8:C
+e:T3741,<p>版本：2026-10-07-draft.5｜狀態：未生效草稿</p>
+<p><strong>請在建立金庫、存入資產或授權新增風險前，閱讀《使用條款》《金庫風險揭露》《使用資格與地區限制》，並查看該金庫的資產、費用、Operator 及退出條件。</strong></p>
+<p>營運法人、註冊地與首批服務市場尚未確定。目前為未部署原型，沒有經核實、可接受正式入金的金庫；示例持倉與績效為模擬。本文件供閱讀、審閱及流程演練，不代表正式服務、收款或監管許可已開放。</p>
+<h2>1. 什麼時候會顯示風險提醒</h2>
+<p>完整法律文件放在 Docs 及頁腳，可自行另開、閱讀及保存。每次進入 Vault detail 或 Create 頁面時，自動顯示一次英文一般風險提醒，涵蓋本金可能全損、Agent 自主操作及退出／費用風險；提供風險全文連結、「Close」及「I understand the risks」按鈕。不要求勾選三項條款／資格欄位，也不要求先閱讀全部文件才可關閉提醒。</p>
+<ul><li><strong>進入 Vault detail／Create 頁面：</strong> 兩種頁面每次載入或訪問各提示一次一般風險；不須先連錢包，也不顯示本次操作摘要。</li><li><strong>存款閱讀提醒：</strong> 每次發起存款／Safe 新入金流程，另問「Have you read the Fund prospectus?」，提供「Read prospectus」及「Yes, continue」。Read 只打開 Fund prospectus 供閱讀，停止該次流程、不簽名；讀完再按存款會重新詢問。X／Escape 取消，Yes 只繼續本次流程，不是正式條款同意、資格證明或交易完成。Create 操作不新增此問句。</li><li><strong>本機存款預覽：</strong> 「Preview transaction steps」也顯示閱讀問句，但僅為模擬，不開放正式入金。</li><li><strong>本頁後續操作或變更：</strong> Deposit、Create、Safe 操作、重試及金額／策略／錢包／網路變更不再觸發同一一般提醒。每次簽名仍須核對當次金額、地址、費用、授權及其他參數，不能以進頁提醒代替交易確認。</li><li><strong>關閉或重新進頁：</strong> Close、X、取消及 Escape 只關閉提醒，不記為已了解風險或接受條款，本頁內不重跳；重新載入或離開後重新進頁會再顯示一次。</li><li><strong>其他瀏覽與連接錢包：</strong> 首頁、金庫列表、Docs／條款及單純錢包連接不因此自動跳此提醒；上述行為不授予 Agent 或資產移轉權限。</li><li><strong>贖回或原資產退出：</strong> 保留本次資產、費用、收款人、估計與流動性風險；不要求先接受新的商業條款或可選 AI 資料用途。依法限制的交易仍須另行處理。</li><li><strong>個人 Agent 與 AI 點數：</strong> 其資料分享、交付、價格與付款條件另按功能確認；金庫風險按鈕不接受這些獨立事項，也不表示相關正式流程已完成。</li></ul>
+<p>一般風險提醒的顯示狀態與按鈕確認結果分開，只暫存在目前頁面的記憶體，不寫入 localStorage／sessionStorage，也不上傳；關閉不是接受。這不是一般條款接受、地區聲明、KYC、制裁篩查、投資者資格或正式法律舉證。目前 <code>liveAllowed: false</code> 的獨立草稿限制仍拒絕正式建立／入金，按下「I understand the risks」或回答「Yes, continue」均不解除限制。</p>
+<p>正式服務如依法需要明示同意、特定契約、資格資料、說明或審閱期間，必須另行完成；簡化提醒不表示一概不需條款同意。</p>
+<h2>2. 金庫、份額與 Agent</h2>
+<p>創作者選定金庫的資產、市場、NAV 上限及創作者績效費，並指定 Agent Operator。存入後，參與者取得自訂 MANDATE_FUND_V2 份額；它不宣稱完整 ERC-4626 相容，<strong>份額不可轉讓</strong>，不能依賴二級市場出售來退出。</p>
+<p>份額反映合約定義的參與及比例退出機制；其法律分類仍按池化資產、管理、權利與適用法律判斷，不能只因名稱是 share、receipt、治理幣或 utility 就排除金融監管。</p>
+<p>平台不要求您的私鑰或助記詞；MCP 提供未簽交易。資產存入金庫後，Operator 使用自己的簽名器在已核准範圍內自主操作，<strong>持有人不會逐筆簽核後續交易</strong>。您保管私鑰不代表金庫資產沒有受他人管理，也不消除服務提供者或 Operator 的法定責任。</p>
+<p>Operator 身分本身沒有替持有人提款的特別權限。份額 allowance 可授權代理退出，代幣 allowance 用於轉入資產，須分別核對；撤銷 allowance 不會撤銷金庫對已存入資產的自主操作權。個別持有人無權更換整座金庫的 Operator；創作者可立即停用 Agent，輪替須等待至少 24 小時並符合啟用條件。</p>
+<h2>3. 使用資格與地區</h2>
+<p>目前尚未選定任何正式開放市場。草案擬將美國、加拿大與中國大陸列為暫不開放市場，人士定義及功能範圍仍待批准；這不是宣稱該等市場所有 DeFi 活動都全面違法，也不代表其他市場已核准。香港、澳門及台灣各自評估。</p>
+<p>資格依本次功能、所在地／通常居住地、法人設立及營運地，以及依法必要的其他條件判斷。代表他人或法人時須有有效授權，實際資產所有人與受益對象亦須符合條件。受適用制裁、交易禁令及持有／控制規則限制的對象，不得接受被禁止的服務。</p>
+<p>不得用虛假資料、VPN、代理、他人帳號或代持規避適用限制。能連接錢包、讀網站或直接呼叫公開合約，不代表取得服務資格。原型沒有完成身分核驗、IP 地區封鎖或制裁篩查；使用者風險確認不能取代平台及其他角色的許可、核驗與揭露義務。</p>
+<h2>4. 本金、估值與風控</h2>
+<p><strong>您可能損失全部投入資產。</strong> 金庫沒有保本、固定收益、存款保險或隨時退出保證。價格、脫鉤、發行人／協議違約、合約、預言機、治理、流動性、MEV、網路與多協議依賴都可能導致損失。</p>
+<p>NAV、份額價值、報價與年化數字不是保證成交或退出價格；歷史、模擬及第三方利率不保證扣費後報酬。公開程式碼、內部／fork 驗證、模擬及第三方審計不能保證安全；內部驗證不等於獨立審計。</p>
+<p>至少 5% 閒置及投資上限在適用操作完成時檢查，市場變化可能改變其後比例，亦不保證流動性。Agent 虧損防護預設及平台上限為 5%，以 Agent 資本動作前後的正 NAV 損失記帳，25 個一小時桶涵蓋過去 24 小時並可能多保留最舊桶近一小時；<strong>跨線動作先成交再停用 Agent，所以 5% 不是最大損失保證</strong>。舊每日 2% 模型已不適用。</p>
+<p>個人／逐資產止損、止盈及 trailing exit 有獨立規則；keeper、預言機、網路與市場故障可能使其不能及時或按目標價執行。借貸、槓桿或 NFT LP Position 另有負債、清算及無常損失等風險；尚未完成的 composite 多策略功能不視為可執行。</p>
+<h2>5. 費用與成本基礎</h2>
+<p>現行模型沒有管理費，另有：</p>
+<div class="legal-table-wrap"><table><thead><tr><th>費用</th><th>計算與限制</th></tr></thead><tbody><tr><td>入場</td><td>固定 0.5%，依實際使用的總計價資產計算；原始單位向上取整，未用預算退回。創作者 seed 同樣適用。</td></tr><tr><td>基金操作</td><td>固定 0.1%，適用合約計費的資本部署、減倉及 Position 操作；不是普通持有人贖回再加收 0.1%。每個固定 365 日 epoch，以最近有效記錄的計費前 NAV 的 1% 剩餘額限制；NAV 下降不追回已收費。</td></tr><tr><td>退出績效</td><td>平台固定 10% 加創作者 0–20%，合計 10–30%，按本次退出相對該地址成本基礎的正收益計算。</td></tr></tbody></table></div>
+<p>每個持有地址按淨實際投入建立成本基礎；部分退出按份額比例分攤。計價資產退出按實際清算所得，可靠估值的原資產退出按本批實物估值分出費用；估值不可取得時豁免該筆無法計價的績效費。沒有整座金庫的未實現高水位、fee shares 或舊 90／10 分帳，也不通算跨錢包、跨金庫及所有歷次退出盈虧。</p>
+<p>例如本次成本基礎 100、實際清算所得 120、創作者費率 10%：正收益 20，平台與創作者各收 2，淨交付 116；此例忽略捨入，100 不含最初已扣的入場費。網路、滑價、交易及底層協議成本另計。報價可能預留的 1% 可退執行緩衝不是額外固定費用。</p>
+<p>入場與操作費歸平台，平台與創作者亦有績效費利益，可能產生操作及推廣利益衝突。請核對具體金庫費率與收費地址。</p>
+<h2>6. 創作者投入、規則及退出</h2>
+<p>建立分為 prepare、deploy、finalize；finalize 才投入 100 計價資產單位並扣 0.5% 入場費。份額沒有固定時間鎖，但其他持有人仍在時，創作者必須保留至少流通份額的 2%；它限制創作者最大退出額，也可能限制後續存入。最後一位實際持有人可全數退出。</p>
+<p>固定市場不能任意更換；提高 cap 須等待至少 24 小時，收緊可立即生效。創作者及 Risk Council 可依合約暫停部分活動，恢復亦可能有等待和條件；底層協議還有自己的治理與暫停權。</p>
+<ul><li><strong>計價資產退出：</strong> 處理退出者的比例持倉並交付計價代幣，例如 USDT，不是法定貨幣出金。實際所得須扣適用費用；最低收到額與期限應在簽名前核對。任何一腿失敗可能回滾整筆退出。</li><li><strong>原資產退出：</strong> 交付比例代幣、協議收據及閒置資產，可靠估值時另分出費用比例。後續兌換由持有人處理，不保證收據可轉移、有市場、即時贖回或兌回本金。</li></ul>
+<p>預言機、流動性、外部凍結、黑名單、資不抵債及 gas 條件可能妨礙退出；份額不可轉讓，亦沒有一般時間鎖，不代表可隨時取回本金。最後實際份額退出後，現行金庫永久關閉；最後持有人選計價資產退出時，可能另收到殘餘原資產／收據。</p>
+<h2>7. 簽名、授權與交易結果</h2>
+<p>一般風險確認、Fund prospectus 閱讀提醒、依法必要的條款接受、登入訊息、代幣 approval／Permit、份額 allowance、付款與送交易是不同事項。按下風險按鈕不移轉資產，也不表示鏈上交易已完成。</p>
+<p>簽名前核對網路、合約、操作、金額、接收者、spender／額度、最低份額／收到額、nonce 及期限。既有大額 allowance 不會因這次輸入小額而自動減少。鏈上交易通常不可撤回，失敗仍可能支出 gas；結果不明先查原 hash，不要重複提交。</p>
+<h2>8. 個人 Agent、AI 點數及資料</h2>
+<p>個人 Agent 的鏈下聊天／方案與金庫 Operator 不同，模型不持有提款權，鏈上建立仍需另行錢包確認。示意手機預覽不呼叫 AI、不收款或送交易；正式功能以實際開放配置為準。</p>
+<p>對話、任務、登入、模型用量、點數及付款紀錄可保存於伺服器資料庫。現行正式模型路徑是 Anthropic Claude，任務必要內容與近期對話可傳送給模型；不能把原型所有資料說成只存在本機。可選持倉分享預設關閉，啟用後查詢已審核資產，提供約略持倉摘要；RPC 仍需地址，使用者自行輸入也可能含身分。</p>
+<p>AI 輸出可能錯誤、過期或不適合您；不得只依其輸出交易。支付任務或點數不保證策略、安全、獲利或持續執行，也不增加金庫權限。價格、點數扣除、交付、修改及退款須在功能確認中另揭露，與金庫費用分開。</p>
+<p>頁面一般風險提醒的顯示狀態及按鈕確認結果僅在本頁記憶體暫存，不上傳；個人 Agent 歷史另按伺服器機制保存。清除歷史不等於立即刪除所有付款、任務與備份資料。公開鏈紀錄通常不能由平台刪除；請閱讀《隱私告知》的實際資料流及保存差異。</p>
+<h2>9. 第三方與未來平台代幣</h2>
+<p>第三方協議、錢包、RPC、行情、AI 及支付商有自己的條件；名稱、logo、整合或審計不等於對 CRE8、策略或本金背書。股票／RWA 資產須逐項核對發行人、權利、託管、轉讓、贖回與資格，不因出現在設計目錄就正式開放。</p>
+<p>尚未決定發行平台代幣。本文件不構成銷售、空投、募集或上市承諾；未來須另行公布權利、風險及分發資格。AI 點數、金庫 shares、協議收據與未來治理幣不是同一資產。</p>
+<h2>10. 責任、更新與權利</h2>
+<p>創作者須如實揭露策略、Operator、費用、權限與利益，不得偽造績效或保證保本／退出；平台、創作者及 Operator 各自仍須履行適用義務。使用者須具有效授權並了解稅務／申報，不能以按下「I understand the risks」移轉全部法定責任。</p>
+<p>重大文件、風險、費用、權限、資料用途或市場資格變更，依適用法律告知並按相關操作重新確認；緊急法定限制另行依法執行。既有部位資訊與依法可用退出，不會只因拒絕新商業條款而隱藏。</p>
+<p>本稿保留適用法律不得排除的責任、消費者權利、申訴及救濟；技術不可逆不等於放棄法律權利。正式法人、聯絡、申訴、準據法與爭議安排仍待確認。</p>
+<h2>完整文件</h2>
+<ul><li><a href="https://docs.cre8.finance/legal/terms/">使用條款</a></li><li><a href="https://docs.cre8.finance/legal/risk/">金庫風險揭露</a></li><li><a href="https://docs.cre8.finance/legal/eligibility/">使用資格與地區限制</a></li><li><a href="https://docs.cre8.finance/legal/privacy/">隱私告知</a></li></ul>4:["$","main",null,{"className":"legal-document-module__7mCj2G__page","lang":"zh-Hant","children":[["$","header",null,{"className":"legal-document-module__7mCj2G__header","children":[["$","a",null,{"href":"https://cre8.finance","aria-label":"CRE8 home","children":["$","img",null,{"src":"/logos/cre8-on-light.svg","alt":"CRE8","width":"88","height":"44"}]}],["$","nav",null,{"aria-label":"Legal navigation","children":[["$","a",null,{"href":"https://docs.cre8.finance/legal/","children":"法律文件"}],["$","a",null,{"href":"https://app.cre8.finance","children":"返回 App"}]]}]]}],["$","div",null,{"className":"legal-document-module__7mCj2G__status","children":"草稿 · 未生效 · 目前不接受正式入金"}],["$","h1",null,{"children":"使用前須知"}],["$","p",null,{"className":"legal-document-module__7mCj2G__lede","children":"營運法人、註冊地與首批服務市場尚未確定。以下文件供查閱、保存與定稿。操作前的簡短風險提醒與完整法律文件分開提供。"}],["$","nav",null,{"className":"legal-document-module__7mCj2G__tabs","aria-label":"法律文件目錄","children":[["$","a","notice",{"href":"https://docs.cre8.finance/legal/notice/","aria-current":"page","children":"使用前須知"}],["$","a","terms",{"href":"https://docs.cre8.finance/legal/terms/","aria-current":"$undefined","children":"使用條款"}],["$","a","risk",{"href":"https://docs.cre8.finance/legal/risk/","aria-current":"$undefined","children":"金庫風險揭露"}],["$","a","eligibility",{"href":"https://docs.cre8.finance/legal/eligibility/","aria-current":"$undefined","children":"使用資格與地區限制"}],["$","a","privacy",{"href":"https://docs.cre8.finance/legal/privacy/","aria-current":"$undefined","children":"隱私告知"}]]}],[["$","div",null,{"className":"legal-document-module__7mCj2G__meta","children":[["$","span",null,{"children":["版本 ","2026-10-07-draft.5"," · 繁體中文"]}],["$","a",null,{"href":"/legal/notice.md","download":true,"children":"保存全文（Markdown）"}]]}],["$","article",null,{"className":"legal-document-module__7mCj2G__article","dangerouslySetInnerHTML":{"__html":"$e"}}],"$Lf"],"$L10"]}]
+f:["$","details",null,{"className":"legal-document-module__7mCj2G__fingerprint","children":[["$","summary",null,{"children":"文件版本識別"}],["$","p",null,{"children":["SHA-256：","4dd5e2b381dd927ebbd062037de526b45d27dfcd655fdec8398135ae7f0194ac"]}]]}]
+10:["$","footer",null,{"className":"legal-document-module__7mCj2G__footer","children":"文件採用 CRE8 的實際金庫、Agent 及費用模型。頁面可讀取或錢包可連接，不表示正式服務已開放。"}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+11:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
+7:null
+c:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L11","5",{}]]
