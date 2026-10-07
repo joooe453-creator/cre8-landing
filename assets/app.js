@@ -422,6 +422,23 @@
   /** The creator's robot: by wallet when the vault records one, otherwise by manager, so one creator keeps one robot. */
   const creatorAvatar = (v) => v.creator ? avatarFor(v.creator)
     : assetUrl(`assets/agents/agent-${String([...String(v.manager)].reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) >>> 0, 7) % 24 + 1).padStart(2, "0")}.webp`);
+  /** A creator's page id, from their name, so every vault they open points to the same page. */
+  const creatorId = (v) => String(v.manager).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  /** Everything a creator has opened, ended vaults included, with totals across them. */
+  const creatorProfile = (id) => {
+    const vaults = VAULTS.filter((v) => creatorId(v) === id);
+    if (!vaults.length) return null;
+    const first = vaults[0], agentIds = [...new Set(vaults.map((v) => v.agentId).filter((x) => x != null))];
+    return {
+      id, name: first.manager, sample: first, vaults, agentIds,
+      human: first.managerType === "human", official: vaults.some((v) => v.official),
+      tvl: vaults.reduce((sum, v) => sum + (v.tvl || 0), 0),
+      depositors: vaults.reduce((sum, v) => sum + (v.followers || 0), 0),
+      earned: vaults.reduce((sum, v) => sum + (v.tvl || 0) * (v.returns.ALL || 0) / 100, 0),
+      since: Math.max(...vaults.map((v) => v.runtimeDays || 0)),
+    };
+  };
+  const creatorKind = (p) => p.human ? "Human" : p.agentIds.length === 1 ? `ERC-8004 agent #${p.agentIds[0]}` : "ERC-8004 agent";
   /** One wallet client per page, so a wallet connected from the header is the one the page reads. */
   const loadClient = () => import(assetUrl("assets/mandate-client.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
   const avatarFor = (address) => assetUrl(`assets/agents/agent-${String(parseInt(String(address).slice(-8), 16) % 24 + 1).padStart(2, "0")}.webp`);
@@ -916,7 +933,7 @@
     platformFeeForRisk, feeBreakdown,
     $, $$, esc, fmt, perf, periodDays, historyTag, riskMeter, statusTag,
     rng, hexAddr, short, navSeries, sparkline, lineChart, logo, agentCanvas, stackTables,
-    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, avatarFor, creatorAvatar, loadClient, DEMO_OWNER, demo,
+    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, avatarFor, creatorAvatar, creatorId, creatorProfile, creatorKind, loadClient, DEMO_OWNER, demo,
     vault: (slug) => VAULTS.find((v) => v.slug === slug),
   };
 })();
