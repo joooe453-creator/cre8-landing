@@ -695,7 +695,7 @@
   /* Shell: notice strip, masthead, footer                               */
   /* ------------------------------------------------------------------ */
   function shell(active) {
-    const nav = [["agent.html", "My Agent"], ["vaults.html", "Vaults"], ["portfolio.html", "Portfolio"], ["create.html", "Open directly"]];
+    const nav = [["agent.html", "My Agent"], ["vaults.html", "Vaults"], ["leaderboard.html", "Leaderboard"], ["portfolio.html", "Portfolio"], ["create.html", "Open directly"]];
     const q = new URLSearchParams(location.search);
     const previewWallet = !q.has("vault") ? q.get("wallet") : null;
     const wrong = previewWallet === "wrongNetwork";
