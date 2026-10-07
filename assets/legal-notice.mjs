@@ -44,7 +44,7 @@ const PAGE_NOTICES = {
   },
 };
 
-// "Don't show again" is kept only in this browser: per notice version, for the last wallet connected here
+// "Don't show this again" is kept only in this browser: per notice version, for the last wallet connected here
 // (or for the browser when none has been). It never records a transaction and is never uploaded.
 const MEMORY_KEY = "cre8.notices", WALLET_KEY = "cre8.wallet";
 const viewer = () => { try { return globalThis.localStorage?.getItem(WALLET_KEY) || "browser"; } catch { return "browser"; } };
@@ -91,7 +91,7 @@ export async function verifyDraftDocuments(assetUrl) {
   return manifest;
 }
 
-export async function reviewPageRisk(options, { url }) {
+export async function reviewPageRisk(options, { url, leave }) {
   createPageRiskRecord(options); // Validate the page; this notice never binds a transaction.
   if (noticeHidden(options.page)) return { shown: false, reviewed: false, hidden: true, liveAllowed: false, riskVersion: RISK_NOTICE_VERSION };
   if (shownPages.has(options.page)) return { shown: false, reviewed: false, liveAllowed: false, riskVersion: RISK_NOTICE_VERSION };
@@ -103,13 +103,14 @@ export async function reviewPageRisk(options, { url }) {
   dialog.lang = "en";
   dialog.dataset.bavLegal = "";
   dialog.setAttribute("aria-labelledby", "cre8-risk-title");
+  dialog.tabIndex = -1;
   dialog.innerHTML = `<form method="dialog" class="legal-notice-form">
-    <header><span class="legal-notice-status">${notice.audience}</span><button type="button" class="legal-notice-close" aria-label="Close risk reminder">×</button></header>
+    <header><span class="legal-notice-status">${notice.audience}</span></header>
     <h2 id="cre8-risk-title">${notice.title}</h2>
     <ol class="legal-notice-points">${notice.points.map((point) => `<li>${point}</li>`).join("")}</ol>
     <a class="legal-notice-risk-link" target="_blank" rel="noopener noreferrer">Read full risk disclosure (Chinese draft)</a>
     <p class="legal-notice-privacy">This notice does not sign a transaction or approve token spending.</p>
-    <footer><button type="button" class="legal-notice-hide" data-legal-hide>Don't show again</button><button type="button" class="btn ghost" data-legal-cancel>Close</button><button type="submit" class="btn" data-legal-continue>I understand the risks</button></footer>
+    <footer><label class="legal-notice-remember"><input type="checkbox" data-legal-remember> Don't show this again</label><button type="submit" class="btn" data-legal-continue>I understand the risks</button></footer>
   </form>`;
   dialog.querySelector(".legal-notice-risk-link").href = url("risk");
   document.body.append(dialog);
@@ -126,13 +127,18 @@ export async function reviewPageRisk(options, { url }) {
       resolve({ shown: true, reviewed, liveAllowed: false, riskVersion: RISK_NOTICE_VERSION, record: reviewed ? createPageRiskRecord(options) : null });
     };
     active = { dialog, finish };
-    form.addEventListener("submit", (event) => { event.preventDefault(); finish(true); });
-    dialog.addEventListener("cancel", (event) => { event.preventDefault(); finish(false); });
+    // The only way on is "I understand the risks"; with the box ticked it also stops showing for this wallet.
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (finished) return;
+      if (dialog.querySelector("[data-legal-remember]").checked) hideNotice(options.page);
+      finish(true);
+    });
+    // Escape means the visitor does not accept, so they leave the page.
+    dialog.addEventListener("cancel", (event) => { event.preventDefault(); if (finished) return; finish(false); leave?.(); });
     dialog.addEventListener("close", () => finish(false));
-    dialog.querySelector("[data-legal-cancel]").addEventListener("click", () => finish(false));
-    dialog.querySelector("[data-legal-hide]").addEventListener("click", () => { hideNotice(options.page); finish(true); });
-    dialog.querySelector(".legal-notice-close").addEventListener("click", () => finish(false));
-    try { dialog.showModal(); } catch { finish(false); }
+    // Open on the notice itself rather than on the disclosure link.
+    try { dialog.showModal(); dialog.focus?.(); } catch { finish(false); }
   });
 }
 

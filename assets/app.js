@@ -46,6 +46,14 @@
   const legalUrl = (documentId = "") => STATIC_PREVIEW
     ? `legal.html${documentId ? `#${encodeURIComponent(documentId)}` : ""}`
     : `${String(DOCS_ORIGIN).replace(/\/$/, "")}/legal/${documentId ? `${encodeURIComponent(documentId)}/` : ""}`;
+  // Not accepting a page notice leaves the page: back to the previous one, or home when there is none.
+  function leavePage() {
+    const home = document.querySelector(".brand")?.href || "/";
+    if (history.length < 2) { location.assign(home); return; }
+    const fallback = setTimeout(() => location.assign(home), 1500);
+    window.addEventListener("pagehide", () => clearTimeout(fallback), { once: true });
+    history.back();
+  }
   let legalModule, noticeEpoch = 0;
   const legalNotice = {
     liveAllowed: false,
@@ -56,7 +64,7 @@
         legalModule ||= import(assetUrl("assets/legal-notice.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
         const module = await legalModule;
         if (epoch !== noticeEpoch) return { shown: false, reviewed: false, liveAllowed: false };
-        return await module.reviewPageRisk({ page }, { url: legalUrl });
+        return await module.reviewPageRisk({ page }, { url: legalUrl, leave: leavePage });
       } catch (error) {
         legalModule = null;
         if (epoch === noticeEpoch) toast(error?.message || "Risk notice could not be loaded. The full disclosure is available in Docs.");
