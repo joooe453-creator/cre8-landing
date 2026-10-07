@@ -712,7 +712,7 @@
   /* Shell: notice strip, masthead, footer                               */
   /* ------------------------------------------------------------------ */
   function shell(active) {
-    const nav = [["agent.html", "My Agent"], ["vaults.html", "Vaults"], ["leaderboard.html", "Leaderboard"], ["create.html", "Open directly"]];
+    const nav = [["agent.html", "CRE8 AI"], ["vaults.html", "Vaults"], ["leaderboard.html", "Leaderboard"], ["create.html", "Create Vault"]];
     const onPortfolio = active === "portfolio.html";
     const q = new URLSearchParams(location.search);
     const previewWallet = !q.has("vault") ? q.get("wallet") : null;
@@ -782,9 +782,8 @@
     if (document.body.classList.contains("landing-page")) {
       return `<footer class="footer cf-footer" id="contracts" data-bav-shell><div class="wrap">
         <div class="cf-cols">
-          <nav aria-label="Product"><h3>Product</h3><a href="${route("vaults")}">Vaults</a><a href="${route("create")}">Open a vault</a><a href="${route("portfolio")}">Portfolio</a></nav>
+          <nav aria-label="Product"><h3>Product</h3><a href="${route("vaults")}">Vaults</a><a href="${route("create")}">Create a vault</a><a href="${route("portfolio")}">Portfolio</a></nav>
           <nav aria-label="Developers" id="faq"><h3>Developers</h3><a href="${docs}">Documentation</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${assetUrl("references/execution.md")}">Execution reference</a></nav>
-          <nav aria-label="Network"><h3>Network</h3><span class="cf-chain">${logo("bnb")}BNB Chain</span></nav>
         </div>
         <div class="cf-row"><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a><span class="cf-copy">© 2026 CRE8</span></div>
         ${legal}

@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
 2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/1o350r4p9aqln.js"],"PrototypePage"]
-3:T4111,
+3:T41ce,
 (function () {
   const { $, $$, esc, fmt } = BAV;
   BAV.shell("portfolio.html");
@@ -107,14 +107,14 @@
   const { $, esc } = BAV;
   const content = $("#portfolio-content") || document.querySelector("main");
   content.innerHTML = '<div class="pf-wrap"><div id="portfolio-live"></div><p class="pf-status" id="portfolio-live-status" aria-live="polite"></p>'
-    + '<details class="pf-more"><summary>Debt and LP positions</summary><section class="panel-b" id="portfolio-positions"></section><section class="panel-b" id="portfolio-position-creation"></section></details></div>';
+    + '<details class="pf-more" hidden><summary>Debt and LP positions</summary><section class="panel-b" id="portfolio-positions"></section><section class="panel-b" id="portfolio-position-creation"></section></details></div>';
   $("#portfolio-meta").textContent = ""; $("#portfolio-tag").textContent = "";
   let client, config, epoch = 0, reading = false;
   const status = message => { $("#portfolio-live-status").textContent = message; };
   const amount = value => Number(value).toLocaleString("en-US", { maximumFractionDigits: 2 });
   function showEmpty() {
     $("#portfolio-meta").textContent = "";
-    $("#portfolio-live").innerHTML = '<section class="pf-empty"><h2>See your vaults in one place</h2><p>Connect your wallet to see what you hold.</p><button type="button" class="btn" id="portfolio-live-connect">Connect wallet</button></section>';
+    $("#portfolio-live").innerHTML = '<section class="pf-empty"><button type="button" class="btn" id="portfolio-live-connect">Connect wallet</button></section>';
     $("#portfolio-live-connect").disabled = !config;
     $("#portfolio-live-connect").onclick = connect;
   }
@@ -153,7 +153,7 @@
         } catch (error) { if (runEpoch !== epoch) throw error; failed.push(`${entry.address} (${error.message})`); }
       }
       showHoldings(account, held);
-      status(failed.length ? `Could not read: ${failed.join("; ")}` : "Values are estimates from the onchain share price, not cash exit quotes.");
+      status(failed.length ? `Could not read: ${failed.join("; ")}` : "");
     } catch (error) { if (runEpoch === epoch) { showEmpty(); status(error.message); } }
     finally { reading = false; }
   }
@@ -161,15 +161,20 @@
   try {
     client = await BAV.loadClient(); config = await client.loadDeployment();
     showEmpty();
-    await client.mountPositionReview($("#portfolio-positions"), BAV.assetUrl("mandate-positions.json"));
-    await client.mountPositionCreationReview($("#portfolio-position-creation"), BAV.assetUrl("mandate-position-creation.json"));
+    // Debt and LP positions show only once their modules are deployed.
+    const deployed = async (file) => (await fetch(BAV.assetUrl(file), { cache: "no-store" }).then((r) => r.ok ? r.json() : null).catch(() => null))?.status === "deployed";
+    if (await deployed("mandate-positions.json") || await deployed("mandate-position-creation.json")) {
+      $(".pf-more").hidden = false;
+      await client.mountPositionReview($("#portfolio-positions"), BAV.assetUrl("mandate-positions.json"));
+      await client.mountPositionCreationReview($("#portfolio-position-creation"), BAV.assetUrl("mandate-position-creation.json"));
+    }
   } catch (error) { status(error.message); }
-  window.addEventListener("bav:wallet-change", () => { epoch++; if (!reading) { showEmpty(); status("Wallet session changed. Connect again for a fresh read."); } });
+  window.addEventListener("bav:wallet-change", () => { epoch++; if (!reading) { showEmpty(); status(""); } });
 })();
 7:X
 c:X
 c:C
-0:{"buildId":"yNcn5FxG94BBHBGVTOdJk","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"portfolio-page","html":"\n<section class=\"portfolio-hero\"><div class=\"wrap\"><div class=\"dk-head\"><div><h1 class=\"dk-h1\">Portfolio</h1><p class=\"dk-meta\" id=\"portfolio-meta\"></p></div><span class=\"dk-label\" id=\"portfolio-tag\"></span></div></div></section>\n<main class=\"portfolio-main\" id=\"portfolio-content\" aria-live=\"polite\"></main>\n\n\n\n\n","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >My Agent</a><a href=\"https://app.cre8.finance/vaults/\" class=\"\" >Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Open directly</a></nav><div class=\"head-right\"><a class=\"head-link active\" href=\"https://app.cre8.finance/portfolio/\" aria-current=\"page\">Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"d9d714a53523","script":"$3","pageKey":"portfolio"}],["$L4"],"$L5"]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$7","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$7","varyParams":"$c"},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$7","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@f","rootVaryParams":null,"needsRuntimeRequest":"$@10"}
+0:{"buildId":"UzzGdlWfBishOY4y60t3g","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"portfolio-page","html":"\n<section class=\"portfolio-hero\"><div class=\"wrap\"><div class=\"dk-head\"><div><h1 class=\"dk-h1\">Portfolio</h1><p class=\"dk-meta\" id=\"portfolio-meta\"></p></div><span class=\"dk-label\" id=\"portfolio-tag\"></span></div></div></section>\n<main class=\"portfolio-main\" id=\"portfolio-content\" aria-live=\"polite\"></main>\n\n\n\n\n","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"\" >Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link active\" href=\"https://app.cre8.finance/portfolio/\" aria-current=\"page\">Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"b09c64cc5e34","script":"$3","pageKey":"portfolio"}],["$L4"],"$L5"]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$7","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$7","varyParams":"$c"},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$7","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@f","rootVaryParams":null,"needsRuntimeRequest":"$@10"}
 11:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 12:"$Sreact.suspense"
 14:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
@@ -177,12 +182,12 @@ c:C
 16:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 17:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 18:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
-:HL["/_next/static/chunks/3zyx27ugdyf71.css","style"]
+:HL["/_next/static/chunks/3k21iecgns2i-.css","style"]
 4:["$","script","script-0",{"src":"/_next/static/chunks/1o350r4p9aqln.js","async":true}]
 5:["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]
 8:["$","$1","h",{"children":[null,["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L15",null,{"children":["$","$12",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L16","5",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
 a:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
-d:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zyx27ugdyf71.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
+d:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3k21iecgns2i-.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
 13:null
 10:true
 7:300
