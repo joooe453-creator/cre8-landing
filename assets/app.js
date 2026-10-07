@@ -419,6 +419,11 @@
   function hexAddr(seed) { const r = rng(seed); let s = "0x"; for (let i = 0; i < 40; i++) s += "0123456789abcdef"[Math.floor(r() * 16)]; return s; }
   const short = (a) => a.slice(0, 6) + "…" + a.slice(-4);
   // Each wallet gets one of 24 robot avatars, fixed by its address.
+  /** The creator's robot: by wallet when the vault records one, otherwise by manager, so one creator keeps one robot. */
+  const creatorAvatar = (v) => v.creator ? avatarFor(v.creator)
+    : assetUrl(`assets/agents/agent-${String([...String(v.manager)].reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) >>> 0, 7) % 24 + 1).padStart(2, "0")}.webp`);
+  /** One wallet client per page, so a wallet connected from the header is the one the page reads. */
+  const loadClient = () => import(assetUrl("assets/mandate-client.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
   const avatarFor = (address) => assetUrl(`assets/agents/agent-${String(parseInt(String(address).slice(-8), 16) % 24 + 1).padStart(2, "0")}.webp`);
 
   // NAV/share series, anchored so period returns match the published figures.
@@ -702,7 +707,7 @@
           <nav class="nav" aria-label="Main navigation">${nav.filter(([h]) => (!STATIC_PREVIEW && PERSONAL_AGENT) || h !== "agent.html").map(([h, l]) => `<a href="${route(h.replace(".html", ""))}" class="${active === h ? "active" : ""}" ${active === h ? 'aria-current="page"' : ""}>${l}</a>`).join("")}</nav>
           <div class="head-right">
             <span class="chain ${wrong ? "wrong-network" : ""}" title="${wrong ? "Wrong network · design preview" : "BNB Chain"}">${wrong ? "Wrong network" : `<img class="logo" src="${logoUrl("bnbchain")}" alt=""><span class="chain-label">BNB Chain</span>`}</span>
-            ${STATIC_PREVIEW ? `<button class="btn sm header-wallet" data-demo>${previewWallet === "connected" ? "Preview wallet" : "Connect wallet"}</button>` : `<a class="btn sm header-wallet" href="${route(PERSONAL_AGENT ? "agent" : "portfolio")}">Connect wallet</a>`}
+            ${STATIC_PREVIEW ? `<button class="btn sm header-wallet" data-demo>${previewWallet === "connected" ? "Preview wallet" : "Connect wallet"}</button>` : `<button type="button" class="btn sm header-wallet" data-connect>Connect wallet</button>`}
           </div>
         </div>
       </header>`;
@@ -734,6 +739,21 @@
     };
     window.addEventListener("bav:wallet-account", (event) => { const address = event.detail?.address; paintWallet(typeof address === "string" && /^0x[0-9a-fA-F]{40}$/.test(address) ? address : null); });
     window.addEventListener("bav:wallet-change", () => paintWallet(null));
+    // Connect wallet works on every page: it opens the wallet list here. Once connected, it leads to Portfolio.
+    const walletButton = $(".header-wallet[data-connect]");
+    walletButton?.addEventListener("click", async () => {
+      if (walletButton.classList.contains("has-face")) { location.href = route("portfolio"); return; }
+      if (walletButton.disabled) return;
+      walletButton.disabled = true;
+      try {
+        const client = await loadClient(), config = await client.loadDeployment(), kind = await client.pickWallet();
+        if (kind) await client.connectWallet(config, kind);
+      } catch (error) {
+        toast(error?.message || "The wallet didn't connect. Try again.");
+      } finally {
+        walletButton.disabled = false;
+      }
+    });
     wireShell();
   }
 
@@ -896,7 +916,7 @@
     platformFeeForRisk, feeBreakdown,
     $, $$, esc, fmt, perf, periodDays, historyTag, riskMeter, statusTag,
     rng, hexAddr, short, navSeries, sparkline, lineChart, logo, agentCanvas, stackTables,
-    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, avatarFor, DEMO_OWNER, demo,
+    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, avatarFor, creatorAvatar, loadClient, DEMO_OWNER, demo,
     vault: (slug) => VAULTS.find((v) => v.slug === slug),
   };
 })();
