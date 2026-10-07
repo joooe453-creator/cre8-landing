@@ -3,10 +3,10 @@
 3:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/1o350r4p9aqln.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
-:HL["/_next/static/chunks/3k21iecgns2i-.css","style"]
+:HL["/_next/static/chunks/35iso75ukufo7.css","style"]
 :HC["/",""]
 :HL["/_next/static/chunks/026va0v4bymjn.css","style"]
-5:T4f10,
+5:T4fd3,
 <header class="cl-nav" id="mh"><div class="wrap cl-nav-in">
 <a class="brand" href="https://cre8.finance/" id="brand" aria-label="CRE8 home"></a>
 <nav class="cl-links" aria-label="Main navigation"><a href="#how">How it works</a><a href="#funds">Funds</a><a href="#agent">CRE8 AI</a><a href="#earn">Earnings</a><a href="https://docs.cre8.finance/">Docs</a></nav>
@@ -72,9 +72,12 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 </div>
 <figure class="cl-agent-chat" aria-label="An example conversation with CRE8 AI">
 <div class="cl-chat-head"><img src="/assets/agents/agent-07.webp" alt="" width="40" height="40" loading="lazy"><span><b>CRE8 AI</b></span></div>
+<div class="cl-chat-log" id="cl-chat-log">
 <p class="cl-msg me">I hold USDT and want something safe.</p>
 <p class="cl-msg ai">CRE8 USDT fits. It lends USDT on Venus and never borrows. Deposit directly?</p>
 <a class="cl-chat-fund" href="https://app.cre8.finance/vault/cre8-usdt/" data-wipe><b>CRE8 USDT</b><span class="cl-chat-go">View fund →</span></a>
+</div>
+<div class="cl-chat-input" aria-hidden="true"><span class="cl-chat-typed" id="cl-chat-typed"></span><i class="cl-caret"></i><span class="cl-chat-send">↑</span></div>
 </figure>
 </div></section>
 
@@ -86,7 +89,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 <div class="cl-side-body"><h3>Fund creators</h3>
 <table class="cl-spec"><tbody>
 <tr><td class="k">Manager</td><td>Your AI agent / You</td></tr>
-<tr><td class="k">Performance fee</td><td>Creator 0–20% + protocol 10%, set at launch</td></tr>
+<tr><td class="k">Performance fee</td><td>0–20%, set at launch</td></tr>
 <tr><td class="k">Paid</td><td>On each holder’s realized profit at exit</td></tr>
 <tr><td class="k">Creator deposit</td><td>Exactly 100 USDT; retain ≥ 2% while other holders remain</td></tr>
 </tbody></table>
@@ -112,7 +115,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 <div class="cl-calc" data-flap-once>
 <div><label for="cl-size">Fund size</label><input id="cl-size" inputmode="numeric" autocomplete="off" value="$1,000,000"></div>
 <div><label for="cl-ret">Return, one year</label><input id="cl-ret" inputmode="decimal" autocomplete="off" value="20%"></div>
-<div><span class="cl-calc-l" id="cl-out-l">Your take-home</span><output id="cl-out" for="cl-size cl-ret" class="cl-flap cl-tiles" aria-labelledby="cl-out-l" aria-live="polite">$36,000</output><span class="cl-per">per year</span></div>
+<div><span class="cl-calc-l" id="cl-out-l">Your take-home</span><output id="cl-out" for="cl-size cl-ret" class="cl-flap cl-tiles" aria-labelledby="cl-out-l" aria-live="polite">$40,000</output><span class="cl-per">per year</span></div>
 </div>
 <div class="cl-ctas cl-earn-ctas"><a class="btn cl-btn-light" href="https://app.cre8.finance/create/" data-wipe>Open a fund</a><a class="btn cl-btn-ghost-light" href="https://app.cre8.finance/vaults/" data-wipe>Explore funds</a></div>
 </div></section>
@@ -121,7 +124,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 </main><div id="footer"></div>
 
 
-6:T154b,
+6:T206d,
 (function () {
   const { $, $$ } = BAV;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -195,6 +198,46 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   size.addEventListener("blur", () => { size.value = "$" + BAV.fmt.n(Math.max(0, num(size.value))); });
   ret.addEventListener("blur", () => { ret.value = (+num(ret.value).toFixed(2)) + "%"; });
 
+  /* CRE8 AI example chat: a question is typed and sent, then the answer comes in. Plays while in view. */
+  (function () {
+    const chat = $(".cl-agent-chat"), log = $("#cl-chat-log"), typed = $("#cl-chat-typed");
+    if (!chat || !log || !typed || reduce) return;
+    const core = BAV.vault("cre8-crypto-core"), mag = BAV.vault("mag7-rotation"), pct = BAV.fmt.pct;
+    const talks = [
+      { ask: "I hold USDT and want something safe.", reply: "CRE8 USDT fits. It lends USDT on Venus and never borrows. Deposit directly?", slug: "cre8-usdt" },
+      { ask: "I want BNB and BTC, a bit every week.", reply: "CRE8 Crypto Accumulator buys BNB, BTC and ETH every week, and more after a dip.", slug: "cre8-crypto-accumulator" },
+      { ask: "Compare Crypto Core and Mag 7 Accumulator.", reply: `Over 30 days, Crypto Core made ${pct(core.returns["30D"])} with a ${pct(core.maxDrawdown["30D"])} max drop. Mag 7 made ${pct(mag.returns["30D"])} but dropped up to ${pct(mag.maxDrawdown["30D"])}.`, slug: "mag7-rotation" },
+    ];
+    const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
+    let visible = false, started = false;
+    const ready = async () => { while (!visible || document.hidden) await sleep(400); };
+    async function type(el, text, speed) {
+      el.textContent = "";
+      for (const ch of text) { await ready(); el.textContent += ch; await sleep(speed); }
+    }
+    const add = (el) => { el.classList.add("cl-in"); log.append(el); return el; };
+    const message = (who, text) => { const p = document.createElement("p"); p.className = `cl-msg ${who}`; p.textContent = text; return add(p); };
+    async function play(talk) {
+      log.classList.add("cl-out"); await sleep(320);
+      log.replaceChildren(); log.classList.remove("cl-out");
+      chat.classList.add("is-typing"); await type(typed, talk.ask, 42); await sleep(420);
+      chat.classList.remove("is-typing"); typed.textContent = ""; message("me", talk.ask);
+      await sleep(380);
+      const dots = document.createElement("p"); dots.className = "cl-msg ai cl-typing"; dots.innerHTML = "<i></i><i></i><i></i>"; add(dots);
+      await sleep(1100); dots.remove();
+      await type(message("ai", ""), talk.reply, 16);
+      await sleep(260);
+      const fund = document.createElement("a"); fund.className = "cl-chat-fund"; fund.href = BAV.route("vault/" + talk.slug);
+      fund.innerHTML = `<b>${BAV.esc(BAV.vault(talk.slug).name)}</b><span class="cl-chat-go">View fund →</span>`; add(fund);
+      await sleep(4200);
+    }
+    async function loop() { for (let i = 0; ; i = (i + 1) % talks.length) { await ready(); await play(talks[i]); } }
+    new IntersectionObserver((entries) => {
+      visible = entries.some((entry) => entry.isIntersecting);
+      if (visible && !started) { started = true; loop(); }
+    }, { threshold: 0.35 }).observe(chat);
+  })();
+
   /* two-sides cards swipe on phones */
   const track = $("#cl-cards"), dots = $$("#cl-dots button"), cards = $$(".cl-side", track);
   dots.forEach((d, i) => d.addEventListener("click", () => track.scrollTo({ left: cards[i].offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft), behavior: reduce ? "auto" : "smooth" })));
@@ -204,7 +247,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     dots.forEach((d, i) => d.setAttribute("aria-current", i === k));
   }, { passive: true });
 })();
-0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3k21iecgns2i-.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"landing-page","html":"$5","masthead":"","runtimeVersion":"b09c64cc5e34","script":"$6","pageKey":"landing"}],["$L7","$L8"],"$L9"]}],{},null,false,null]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"UzzGdlWfBishOY4y60t3g"}
+0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/35iso75ukufo7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"landing-page","html":"$5","masthead":"","runtimeVersion":"b09c64cc5e34","script":"$6","pageKey":"landing"}],["$L7","$L8"],"$L9"]}],{},null,false,null]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"P61wZpoJT3XAM9kLoFmzt"}
 d:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 e:"$Sreact.suspense"
 10:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
@@ -213,7 +256,7 @@ e:"$Sreact.suspense"
 8:["$","script","script-0",{"src":"/_next/static/chunks/1o350r4p9aqln.js","async":true,"nonce":"$undefined"}]
 9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3k21iecgns2i-.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/35iso75ukufo7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 14:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 f:null
