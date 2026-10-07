@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
 2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/1o350r4p9aqln.js"],"PrototypePage"]
-3:T4fd3,
+3:T4fcf,
 <header class="cl-nav" id="mh"><div class="wrap cl-nav-in">
 <a class="brand" href="https://cre8.finance/" id="brand" aria-label="CRE8 home"></a>
 <nav class="cl-links" aria-label="Main navigation"><a href="#how">How it works</a><a href="#funds">Funds</a><a href="#agent">CRE8 AI</a><a href="#earn">Earnings</a><a href="https://docs.cre8.finance/">Docs</a></nav>
@@ -85,7 +85,7 @@
 <tr><td class="k">Manager</td><td>Your AI agent / You</td></tr>
 <tr><td class="k">Performance fee</td><td>0–20%, set at launch</td></tr>
 <tr><td class="k">Paid</td><td>On each holder’s realized profit at exit</td></tr>
-<tr><td class="k">Creator deposit</td><td>Exactly 100 USDT; retain ≥ 2% while other holders remain</td></tr>
+<tr><td class="k">Creator deposit</td><td>At least 100 USDT; keep ≥ 2% while others hold</td></tr>
 </tbody></table>
 <a class="btn" href="https://app.cre8.finance/create/" data-wipe>Open a fund</a></div>
 </article>
@@ -95,7 +95,7 @@
 <table class="cl-spec"><tbody>
 <tr><td class="k">Custody</td><td>The fund contract</td></tr>
 <tr><td class="k">Agent withdrawals</td><td>Not possible</td></tr>
-<tr><td class="k">Raising a limit</td><td>Waits at least 24 hours</td></tr>
+<tr><td class="k">Raising a limit</td><td>Takes effect 24h after notice</td></tr>
 <tr><td class="k">Withdrawals</td><td>In cash or in kind</td></tr>
 </tbody></table>
 <a class="btn ghost" href="https://app.cre8.finance/vaults/" data-wipe>Explore funds</a></div>
@@ -118,7 +118,7 @@
 </main><div id="footer"></div>
 
 
-4:T206d,
+4:T2221,
 (function () {
   const { $, $$ } = BAV;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -199,6 +199,7 @@
     const core = BAV.vault("cre8-crypto-core"), mag = BAV.vault("mag7-rotation"), pct = BAV.fmt.pct;
     const talks = [
       { ask: "I hold USDT and want something safe.", reply: "CRE8 USDT fits. It lends USDT on Venus and never borrows. Deposit directly?", slug: "cre8-usdt" },
+      { ask: "Help me create a vault: NVDA and Tesla, bought monthly.", reply: "Here's a draft: NVDAB 50% · TSLAB 50%, bought monthly and after an 8% dip. You set your fee, up to 20%. Create it?", draft: "NVDAB + TSLAB · monthly" },
       { ask: "I want BNB and BTC, a bit every week.", reply: "CRE8 Crypto Accumulator buys BNB, BTC and ETH every week, and more after a dip.", slug: "cre8-crypto-accumulator" },
       { ask: "Compare Crypto Core and Mag 7 Accumulator.", reply: `Over 30 days, Crypto Core made ${pct(core.returns["30D"])} with a ${pct(core.maxDrawdown["30D"])} max drop. Mag 7 made ${pct(mag.returns["30D"])} but dropped up to ${pct(mag.maxDrawdown["30D"])}.`, slug: "mag7-rotation" },
     ];
@@ -221,8 +222,9 @@
       await sleep(1100); dots.remove();
       await type(message("ai", ""), talk.reply, 16);
       await sleep(260);
-      const fund = document.createElement("a"); fund.className = "cl-chat-fund"; fund.href = BAV.route("vault/" + talk.slug);
-      fund.innerHTML = `<b>${BAV.esc(BAV.vault(talk.slug).name)}</b><span class="cl-chat-go">View fund →</span>`; add(fund);
+      // A suggested vault links to it; a draft leads to Create a vault.
+      const fund = document.createElement("a"); fund.className = "cl-chat-fund"; fund.href = BAV.route(talk.draft ? "create" : "vault/" + talk.slug);
+      fund.innerHTML = talk.draft ? `<b>Draft · ${BAV.esc(talk.draft)}</b><span class="cl-chat-go">Create vault →</span>` : `<b>${BAV.esc(BAV.vault(talk.slug).name)}</b><span class="cl-chat-go">View fund →</span>`; add(fund);
       await sleep(4200);
     }
     async function loop() { for (let i = 0; ; i = (i + 1) % talks.length) { await ready(); await play(talks[i]); } }
@@ -242,7 +244,7 @@
   }, { passive: true });
 })();
 9:X
-0:{"buildId":"P61wZpoJT3XAM9kLoFmzt","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"landing-page","html":"$3","masthead":"","runtimeVersion":"b09c64cc5e34","script":"$4","pageKey":"landing"}],["$L5","$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@e","rootVaryParams":null,"needsRuntimeRequest":"$@f"}
+0:{"buildId":"JVl0V8EI1O13x_UuuuVIv","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"landing-page","html":"$3","masthead":"","runtimeVersion":"d92c0289f351","script":"$4","pageKey":"landing"}],["$L5","$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@e","rootVaryParams":null,"needsRuntimeRequest":"$@f"}
 10:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 11:"$Sreact.suspense"
 13:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
@@ -251,12 +253,12 @@
 16:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 17:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 :HL["/_next/static/chunks/026va0v4bymjn.css","style"]
-:HL["/_next/static/chunks/35iso75ukufo7.css","style"]
+:HL["/_next/static/chunks/3ak0s-ic1j5qh.css","style"]
 5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/026va0v4bymjn.css","precedence":"next"}]
 6:["$","script","script-0",{"src":"/_next/static/chunks/1o350r4p9aqln.js","async":true}]
 7:["$","$L10",null,{"children":["$","$11",null,{"name":"Next.MetadataOutlet","children":"$@12"}]}]
 a:["$","$1","h",{"children":[null,["$","$L13",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L14",null,{"children":["$","$11",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L15","5",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-c:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/35iso75ukufo7.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L16",null,{"parallelRouterKey":"children","template":["$","$L17",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
+c:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3ak0s-ic1j5qh.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L16",null,{"parallelRouterKey":"children","template":["$","$L17",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
 12:null
 f:true
 9:300

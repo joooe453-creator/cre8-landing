@@ -235,7 +235,7 @@
   /* ------------------------------------------------------------------ */
   const VAULTS = [
     {
-      slug: "cre8-usdt", name: "CRE8 USDT", manager: "CRE8", agentId: 1611, agentVaults: 1, symbol: "avSUS", asset: "USDT", benchmark: "Idle USDT", managerType: "agent", official: true, continuous: true,
+      slug: "cre8-usdt", name: "CRE8 USDT", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 1611, agentVaults: 1, symbol: "avSUS", asset: "USDT", benchmark: "Idle USDT", managerType: "agent", official: true, continuous: true,
       rules: [{ g: "stable", a: "lend", m: ["venus-supply-usdt"], caps: { "venus-supply-usdt": 70 } }],
       strategy: "Supply USDT to Venus, up to 70% of the vault's current value. Keep the rest idle. No borrowing.",
       runtimeDays: 90, returns: { "7D": 0.06, "30D": 0.26, "90D": 0.8, ALL: 0.8 }, maxDrawdown: { "7D": 0, "30D": 0, "90D": -0.02, ALL: -0.02 },
@@ -246,7 +246,7 @@
       ],
     },
     {
-      slug: "cre8-crypto-core", name: "CRE8 Crypto Core", manager: "CRE8", agentId: 1611, agentVaults: 4, symbol: "avSCC", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Buy once",
+      slug: "cre8-crypto-core", name: "CRE8 Crypto Core", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 1611, agentVaults: 4, symbol: "avSCC", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Buy once",
       rules: [{ g: "bnb", a: "trade", m: ["pcs-hold-bnb"], caps: { "pcs-hold-bnb": 32 } }, { g: "majors", a: "trade", m: ["pcs-hold-btcb", "pcs-hold-eth"], caps: { "pcs-hold-btcb": 32, "pcs-hold-eth": 31 } }],
       strategy: "Buys a fixed WBNB, BTCB and ETH basket once. Supported assets may be supplied only to their exact approved Aave, Venus or Lista market.",
       runtimeDays: 96, returns: { "7D": 0.61, "30D": 2.44, "90D": 7.12, ALL: 7.9 }, maxDrawdown: { "7D": -0.42, "30D": -1.88, "90D": -3.9, ALL: -3.9 },
@@ -259,7 +259,7 @@
       ],
     },
     {
-      slug: "cre8-bstock-core", name: "CRE8 bStock Core", manager: "CRE8", agentId: 942, agentVaults: 4, symbol: "avSBC", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Buy once",
+      slug: "cre8-bstock-core", name: "CRE8 bStock Core", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 942, agentVaults: 4, symbol: "avSBC", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Buy once",
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab", "pcs-hold-tslab", "pcs-hold-spcxb", "pcs-hold-skhyb"], caps: { "pcs-hold-nvdab": 24, "pcs-hold-tslab": 24, "pcs-hold-spcxb": 24, "pcs-hold-skhyb": 23 } }],
       strategy: "Buys a fixed NVDAB, TSLAB, SPCXB and SKHYB basket once, with post-purchase yield disabled by default.",
       runtimeDays: 128, returns: { "7D": 0.24, "30D": 1.02, "90D": 3.31, ALL: 4.76 }, maxDrawdown: { "7D": -0.03, "30D": -0.12, "90D": -0.38, ALL: -0.62 },
@@ -271,7 +271,7 @@
       ],
     },
     {
-      slug: "cre8-crypto-accumulator", name: "CRE8 Crypto Accumulator", manager: "CRE8", agentId: 1306, agentVaults: 4, symbol: "avSCA", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Weekly or −5%",
+      slug: "cre8-crypto-accumulator", name: "CRE8 Crypto Accumulator", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 1306, agentVaults: 4, symbol: "avSCA", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Weekly or −5%",
       rules: [{ g: "bnb", a: "trade", m: ["pcs-hold-bnb"], caps: { "pcs-hold-bnb": 32 } }, { g: "majors", a: "trade", m: ["pcs-hold-btcb", "pcs-hold-eth"], caps: { "pcs-hold-btcb": 32, "pcs-hold-eth": 31 } }],
       strategy: "Buys a 10% cash tranche weekly or after a 5% basket decline, with one shared 24-hour cooldown.",
       runtimeDays: 73, returns: { "7D": 2.16, "30D": 6.42, "90D": null, ALL: 13.88 }, maxDrawdown: { "7D": -1.92, "30D": -4.74, "90D": null, ALL: -8.16 },
@@ -282,7 +282,7 @@
       ],
     },
     {
-      slug: "cre8-bstock-accumulator", name: "CRE8 bStock Accumulator", manager: "CRE8", agentId: 1422, agentVaults: 4, symbol: "avSBA", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Monthly or −8%",
+      slug: "cre8-bstock-accumulator", name: "CRE8 bStock Accumulator", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 1422, agentVaults: 4, symbol: "avSBA", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Monthly or −8%",
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab", "pcs-hold-spyb", "pcs-hold-aaplb", "pcs-hold-googlb"], caps: { "pcs-hold-nvdab": 24, "pcs-hold-spyb": 24, "pcs-hold-aaplb": 24, "pcs-hold-googlb": 23 } }],
       strategy: "Buys a 12% cash tranche monthly or after an 8% basket decline. Unsupported yield assets stay held.",
       runtimeDays: 41, returns: { "7D": 0.04, "30D": 0.18, "90D": null, ALL: 0.24 }, maxDrawdown: { "7D": -0.02, "30D": -0.05, "90D": null, ALL: -0.06 },
@@ -293,7 +293,7 @@
       ],
     },
     {
-      slug: "mag7-rotation", name: "Mag 7 Accumulator", manager: "Tickerline", agentId: 1807, agentVaults: 2, symbol: "avM7A", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", buyPlan: "Weekly or −6%",
+      slug: "mag7-rotation", name: "Mag 7 Accumulator", manager: "Tickerline", creator: "0xe6cc47c42b1e8be1dbb7ef69cd2d104a2f1368b0", agentId: 1807, agentVaults: 2, symbol: "avM7A", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", buyPlan: "Weekly or −6%",
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab", "pcs-hold-googlb", "pcs-hold-aaplb"], caps: { "pcs-hold-nvdab": 30, "pcs-hold-googlb": 25, "pcs-hold-aaplb": 20 } }],
       strategy: "Buys a fixed NVDAB, GOOGLB and AAPLB basket in 10% cash tranches weekly or after a 6% basket decline.",
       runtimeDays: 52, returns: { "7D": 1.42, "30D": 4.91, "90D": null, ALL: 7.84 }, maxDrawdown: { "7D": -1.18, "30D": -3.96, "90D": null, ALL: -5.72 },
@@ -306,7 +306,7 @@
       ],
     },
     {
-      slug: "nvda-dca", name: "NVDA Weekly DCA", manager: "Drip Agent", agentId: 1755, agentVaults: 1, symbol: "avNDC", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent",
+      slug: "nvda-dca", name: "NVDA Weekly DCA", manager: "Drip Agent", creator: "0x89143145adcb095d0158723c49ec5611b38ce549", agentId: 1755, agentVaults: 1, symbol: "avNDC", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent",
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab"], caps: { "pcs-hold-nvdab": 70 } }],
       strategy: "Buys NVDAB every Monday with a fixed share of idle USDT. Nothing else.",
       runtimeDays: 9, returns: { "7D": 2.08, "30D": null, "90D": null, ALL: 3.41 }, maxDrawdown: { "7D": -2.64, "30D": null, "90D": null, ALL: -2.64 },
@@ -400,7 +400,7 @@
       : v.status === "Simulated"
         ? ""
         : `<span class="tag"><span class="dot"></span>Live</span>`;
-    return `${v.official ? `<span class="tag">Official</span>` : ""}${state}`;
+    return state;
   }
 
   // Deterministic PRNG so every render of a vault looks identical
@@ -422,23 +422,32 @@
   /** The creator's robot: by wallet when the vault records one, otherwise by manager, so one creator keeps one robot. */
   const creatorAvatar = (v) => v.creator ? avatarFor(v.creator)
     : assetUrl(`assets/agents/agent-${String([...String(v.manager)].reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) >>> 0, 7) % 24 + 1).padStart(2, "0")}.webp`);
-  /** A creator's page id, from their name, so every vault they open points to the same page. */
-  const creatorId = (v) => String(v.manager).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  /** A creator is their wallet: the page id is the lowercase address, so every vault they open points to one page. */
+  const creatorId = (v) => String(v.creator || "").toLowerCase();
   /** Everything a creator has opened, ended vaults included, with totals across them. */
   const creatorProfile = (id) => {
     const vaults = VAULTS.filter((v) => creatorId(v) === id);
     if (!vaults.length) return null;
-    const first = vaults[0], agentIds = [...new Set(vaults.map((v) => v.agentId).filter((x) => x != null))];
+    const first = vaults[0], since = Math.max(...vaults.map((v) => v.runtimeDays || 0));
     return {
-      id, name: first.manager, sample: first, vaults, agentIds,
-      human: first.managerType === "human", official: vaults.some((v) => v.official),
+      id, address: first.creator, x: first.creatorX || null, official: vaults.some((v) => v.official), sample: first, vaults, since, joined: TODAY - since * DAY,
       tvl: vaults.reduce((sum, v) => sum + (v.tvl || 0), 0),
       depositors: vaults.reduce((sum, v) => sum + (v.followers || 0), 0),
       earned: vaults.reduce((sum, v) => sum + (v.tvl || 0) * (v.returns.ALL || 0) / 100, 0),
-      since: Math.max(...vaults.map((v) => v.runtimeDays || 0)),
     };
   };
-  const creatorKind = (p) => p.human ? "Human" : p.agentIds.length === 1 ? `ERC-8004 agent #${p.agentIds[0]}` : "ERC-8004 agent";
+  /** Official CRE8 creators and vaults carry the CRE8 mark. */
+  const officialBadge = () => `<img class="official-badge" src="${STATIC_PREVIEW ? "assets/logos/cre8-icon.svg" : `${BASE_PATH}/logos/cre8-icon.svg`}" alt="Official" title="Official">`;
+  /** How a creator is shown: their X handle once connected, otherwise their short address. */
+  const creatorName = (p) => p.x ? `@${p.x}` : short(p.address);
+  /** Profit made for depositors across a creator's vaults, day by day, from each vault's share value. */
+  const creatorEarnings = (p) => Array.from({ length: p.since + 1 }, (_, d) => ({
+    t: TODAY - (p.since - d) * DAY,
+    v: p.vaults.reduce((sum, v) => {
+      const i = d - (p.since - v.runtimeDays), series = navSeries(v);
+      return i < 0 ? sum : sum + (v.tvl || 0) * (series[Math.min(i, series.length - 1)].v - 1);
+    }, 0),
+  }));
   /** One wallet client per page, so a wallet connected from the header is the one the page reads. */
   const loadClient = () => import(assetUrl("assets/mandate-client.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
   const avatarFor = (address) => assetUrl(`assets/agents/agent-${String(parseInt(String(address).slice(-8), 16) % 24 + 1).padStart(2, "0")}.webp`);
@@ -653,6 +662,7 @@
       lo -= pad; hi += pad;
       const { ticks, step } = niceTicks(lo, hi, 5);
       const dec = Math.max(2, Math.min(4, -Math.floor(Math.log10(step)) + 1));
+      const show = opts.format || ((n) => n.toFixed(dec));
       const x = (i) => m.l + ((W - m.l - m.r) * i) / (pts.length - 1);
       const y = (v) => m.t + (H - m.t - m.b) * (1 - (v - lo) / (hi - lo));
       let g = "";
@@ -660,7 +670,7 @@
       ticks.filter((t) => t >= lo && t <= hi).forEach((t) => {
         g += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line-2)" stroke-width="1"/>`;
         // Skip axis labels the current-value pill would cover, and ones clipped by the top edge.
-        if (Math.abs(y(t) - ly0) > 18 && y(t) > 10) g += `<text x="${W - m.r + 10}" y="${y(t) + 4}">${t.toFixed(dec)}</text>`;
+        if (Math.abs(y(t) - ly0) > 18 && y(t) > 10) g += `<text x="${W - m.r + 10}" y="${y(t) + 4}">${show(t)}</text>`;
       });
       const nx = Math.min(5, pts.length);
       for (let k = 0; k < nx; k++) {
@@ -679,7 +689,7 @@
         <path d="${line}" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
         <circle cx="${x(pts.length - 1)}" cy="${ly}" r="4" fill="var(--gold)" stroke="var(--card)" stroke-width="2"/>
         <rect x="${W - m.r + 4}" y="${ly - 10}" width="${m.r - 4}" height="20" rx="4" fill="var(--gold)"/>
-        <text x="${W - m.r + 10}" y="${ly + 4}" style="fill:var(--cre8-snow);font-weight:600">${last.v.toFixed(dec)}</text>
+        <text x="${W - m.r + 10}" y="${ly + 4}" style="fill:var(--cre8-snow);font-weight:600">${show(last.v)}</text>
         <g class="hover" style="display:none"><line y1="${m.t}" y2="${H - m.b}" stroke="var(--ink-2)" stroke-width="1"/><circle r="5" fill="var(--gold)" stroke="var(--card)" stroke-width="2"/></g>
         <rect x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent" class="hit"/>
       </svg><div class="tip"></div>`;
@@ -693,7 +703,8 @@
         $("line", hov).setAttribute("x1", px); $("line", hov).setAttribute("x2", px);
         $("circle", hov).setAttribute("cx", px); $("circle", hov).setAttribute("cy", py);
         const chg = (pts[i].v / pts[0].v - 1) * 100;
-        tip.innerHTML = `<div class="d">${fmt.date(pts[i].t)}</div><b>${pts[i].v.toFixed(4)}</b> Share value &nbsp;<span style="color:var(--cre8-frost)">${fmt.pct(chg)}</span>`;
+        tip.innerHTML = opts.format ? `<div class="d">${fmt.date(pts[i].t)}</div><b>${opts.format(pts[i].v)}</b> ${esc(opts.tip || "")}`
+          : `<div class="d">${fmt.date(pts[i].t)}</div><b>${pts[i].v.toFixed(4)}</b> Share value &nbsp;<span style="color:var(--cre8-frost)">${fmt.pct(chg)}</span>`;
         tip.style.left = Math.min(Math.max(px, 90), W - 90) + "px";
         tip.style.top = py + "px";
         tip.style.opacity = 1;
@@ -841,7 +852,7 @@
   const vaultMarkets = (v) => (v.rules || []).flatMap(CATALOG.ruleMarkets);
   const vaultVenues = (v) => [...new Set(vaultMarkets(v).map((m) => m.venue))];
   const vaultRisk = (v) => CATALOG.riskOf(vaultMarkets(v), v.asset) || "Low";
-  const managerLabel = (v) => (v.managerType === "human" ? `${v.manager} · Human-managed` : `${v.manager} · ERC-8004 #${v.agentId}`);
+  const managerLabel = (v) => v.creator || "";
   const rulesLabel = (v) => {
     const operations = vaultMarkets(v).length;
     const allocated = CATALOG.totalAllocation(v.rules || []);
@@ -934,7 +945,7 @@
     platformFeeForRisk, feeBreakdown,
     $, $$, esc, fmt, perf, periodDays, historyTag, riskMeter, statusTag,
     rng, hexAddr, short, navSeries, sparkline, lineChart, logo, agentCanvas, stackTables,
-    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, avatarFor, creatorAvatar, creatorId, creatorProfile, creatorKind, loadClient, DEMO_OWNER, demo,
+    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, avatarFor, creatorAvatar, creatorId, creatorProfile, creatorName, creatorEarnings, officialBadge, loadClient, DEMO_OWNER, demo,
     vault: (slug) => VAULTS.find((v) => v.slug === slug),
   };
 })();

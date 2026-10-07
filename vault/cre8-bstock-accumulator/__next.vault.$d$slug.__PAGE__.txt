@@ -117,7 +117,7 @@
 
 
 
-4:T17a75,
+4:T17a3c,
 (function () {
   const { $, $$, esc, fmt, perf, riskMeter, statusTag, historyTag, navSeries, lineChart, hexAddr, short, ASSETS, SLOTS, toast, demo, logo, CATALOG: C, vaultMarkets, vaultRisk, managerLabel, rulesLabel, platformFeeForRisk, feeBreakdown } = BAV;
   BAV.shell("vaults.html");
@@ -161,8 +161,9 @@
   $("#v-strat").textContent = v.strategy;
   // The creator's name and card open their page, which lists every vault they have opened.
   const maker = BAV.creatorProfile(BAV.creatorId(v)), makerUrl = maker && BAV.route(`creator/${maker.id}`);
-  $("#v-manager").innerHTML = `${maker ? `<a class="vault-creator-link" href="${esc(makerUrl)}"><img src="${esc(BAV.creatorAvatar(v))}" alt="">${esc(v.manager)}</a>` : esc(v.manager)} · ${human ? "Human-managed" : `ERC-8004 agent #${esc(v.agentId)}`} · ${esc(A)} · ${fixed(v.followers, 0)} depositors`;
-  if (maker) $("#creator-card-body").innerHTML = `<a class="vcc-id" href="${esc(makerUrl)}"><img src="${esc(BAV.creatorAvatar(v))}" alt=""><span><b>${esc(maker.name)}</b><small>${maker.official ? '<span class="creator-tag">Official</span>' : ""}<span>${esc(BAV.creatorKind(maker))}</span></small></span></a>`
+  const joined = maker && new Date(maker.joined).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
+  $("#v-manager").innerHTML = `${maker ? `<a class="vault-creator-link" href="${esc(makerUrl)}" title="${esc(maker.address)}"><img src="${esc(BAV.creatorAvatar(v))}" alt="">${esc(BAV.creatorName(maker))}${maker.official ? BAV.officialBadge() : ""}</a> · ` : ""}${esc(A)} · ${fixed(v.followers, 0)} depositors`;
+  if (maker) $("#creator-card-body").innerHTML = `<a class="vcc-id" href="${esc(makerUrl)}"><img src="${esc(BAV.creatorAvatar(v))}" alt=""><span><b>${esc(BAV.creatorName(maker))}${maker.official ? BAV.officialBadge() : ""}</b><small>Joined ${esc(joined)}</small></span></a>`
     + `<dl class="vcc-stats"><div><dt>Vaults created</dt><dd>${maker.vaults.length}</dd></div><div><dt>Total vault value</dt><dd>${fmt.usd(maker.tvl)}</dd></div><div><dt>Earned for depositors</dt><dd>${fmt.usd(maker.earned)}</dd></div><div><dt>Depositors</dt><dd>${fixed(maker.depositors, 0)}</dd></div></dl>`
     + `<a class="btn ghost block" href="${esc(makerUrl)}">${maker.vaults.length > 1 ? `View all ${maker.vaults.length} vaults` : "View creator"}</a>`;
   else $("#creator-card").hidden = true;
@@ -264,7 +265,7 @@
       : r === "Medium"
         ? `A ${A}-counted vault that loops assets of the same family at up to ${C.levTxt(lev)}. It earns the gap between collateral yield and borrow cost, times leverage, and loses if borrowing costs more than the collateral pays. Leaving costs more because positions are unwound on DEXs.`
         : `It holds assets that move against ${A}${hasLoop ? `, with loops up to ${C.levTxt(lev)} that can be liquidated` : ""}, so expect real swings.${v.rules.some((x) => x.g === "stocks") ? " Tokenized stock prices move on weekends, so Monday opens can gap." : ""}`;
-    return `${base} Its selected operation limits total ${C.capTxt(C.totalAllocation(v.rules))} of vault value; ${C.capTxt(C.minIdleAllocation(v.rules))} is ${v.continuous ? "unallocated cap budget. The contract checks at least 5% idle after buys; price moves can change existing weights" : "a planned idle budget in this historical reference, not an executable contract minimum"}. ${human ? "A person makes the trades, from the owner's wallet." : `${v.manager}, an AI agent, makes the trades with its own key.`} Manager's note: “${v.strategy}”`;
+    return `${base} Its selected operation limits total ${C.capTxt(C.totalAllocation(v.rules))} of vault value; ${C.capTxt(C.minIdleAllocation(v.rules))} is ${v.continuous ? "unallocated cap budget. The contract checks at least 5% idle after buys; price moves can change existing weights" : "a planned idle budget in this historical reference, not an executable contract minimum"}. Trades come from the creator\'s operator key. Manager's note: “${v.strategy}”`;
   }
   function drawRules() {
     $("#v-sentence").textContent = v.strategy;
@@ -323,7 +324,7 @@
     $("#position-sources").innerHTML = v.positions.map(x => `<p>${esc(x.loc)} · ${esc(x.by)} · ${esc(x.st)}</p>`).join("");
   }
   drawPositions();
-  $("#creator").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Manager</span><span>${esc(v.manager)}</span></div><div><span class="label">Agent operator</span><span>${human ? "Manager’s own wallet" : "Separate address · set at open"}</span></div><div><span class="label">Chain</span><span class="with-logo">${logo("bnb")}BNB Chain</span></div></div>`;
+  $("#creator").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Creator</span><span class="mono" title="${esc(v.creator)}">${esc(short(v.creator))}</span></div><div><span class="label">Operator</span><span>Set at open</span></div><div><span class="label">Chain</span><span class="with-logo">${logo("bnb")}BNB Chain</span></div></div>`;
 
   /* Real transaction controls: examples never mutate a demo balance. */
   let tab = params.get("tab") === "redeem" ? "red" : "sub", client = null, deployment = null, deployedVault = null, account = null, live = null, busy = false, busyOwner = null, quoteEpoch = 0, readEpoch = 0, operation = null, receiptBusy = false;
@@ -874,7 +875,7 @@
 
   function drawFeeSummary(rate) {
     const creator = Number(rate), protocol = 10, total = +(creator + protocol).toFixed(2), holders = +(100 - total).toFixed(2);
-    $("#fee-kpis").innerHTML = `<div><span class="label">Total performance fee</span><strong>${total}%</strong><span class="fine">On each holder’s realized profit</span></div><div><span class="label">Management fee</span><strong>${v.fees.mgmt ? v.fees.mgmt + "%" : "None"}</strong></div><div><span class="label">Creator deposit</span><strong>100 ${esc(assetSymbol())}</strong><span class="fine">No time lock · retain at least 2% while other holders remain.</span></div>`;
+    $("#fee-kpis").innerHTML = `<div><span class="label">Total performance fee</span><strong>${total}%</strong><span class="fine">On each holder’s realized profit</span></div><div><span class="label">Management fee</span><strong>${v.fees.mgmt ? v.fees.mgmt + "%" : "None"}</strong></div><div><span class="label">Creator deposit</span><strong>≥ 100 ${esc(assetSymbol())}</strong><span class="fine">No time lock · retain at least 2% while other holders remain.</span></div>`;
     $("#fee-bar").innerHTML = `<div class="holders" style="flex:${holders}"><span class="fee-wide">Holders keep ≈ ${holders}</span><span class="fee-narrow">Holders ≈ ${holders}</span></div><div class="creator" style="flex:${total}">Fee ${total}</div>`;
     $("#fee-note").textContent = "Deposits 0.5% · operations 0.1%, capped at 1% of NAV a year";
   }
@@ -884,7 +885,6 @@
     $("#terms").innerHTML = `
       <dt>Vault currency</dt><dd>${A} <span class="mono muted">${short(ASSETS[A].address)}</span></dd>
       <dt>Share token</dt><dd>${v.symbol}</dd>
-      <dt>Managed by</dt><dd>${human ? "A person" : "An AI agent"}</dd>
       <dt>Rules</dt><dd>${rulesLabel(v)}</dd>
       <dt>Maximum deployed</dt><dd>${C.capTxt(C.totalAllocation(v.rules))} of vault value</dd>
       ${v.continuous ? '<dt>Minimum idle reserve</dt><dd>5% of NAV after buys</dd>' : ""}<dt>${v.continuous ? "Unallocated cap budget" : "Planned idle budget"}</dt><dd>${C.capTxt(C.minIdleAllocation(v.rules))} of vault value${v.continuous ? " · separate from the idle minimum" : " · historical reference"}</dd>
@@ -892,7 +892,7 @@
       <dt>Total performance fee</dt><dd>${split.total.toFixed(2)}%</dd>
       <dt>Creator management fee</dt><dd>${f.mgmt.toFixed(2)}%</dd>
       <dt>Performance-fee basis</dt><dd>Each holder’s own realized profit above cost basis</dd>
-      <dt>Widening caps</dt><dd>24-hour public delay</dd>
+      <dt>Raising a limit</dt><dd>Takes effect 24h after notice</dd>
       <dt>Redemption</dt><dd>Proportional cash or in-kind exit</dd>
       <dt>Entry / operation costs</dt><dd>0.5% deposit fee; 0.1% operation fee capped at 1% of annual NAV; swaps and gas vary</dd>`;
   }
@@ -954,7 +954,7 @@
 8:X
 f:X
 f:C
-0:{"buildId":"P61wZpoJT3XAM9kLoFmzt","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"has-mcta vault-page","html":"$3","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"active\" aria-current=\"page\">Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"b09c64cc5e34","script":"$4","pageKey":"vault"}],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$8","varyParams":"$f"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
+0:{"buildId":"JVl0V8EI1O13x_UuuuVIv","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"has-mcta vault-page","html":"$3","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"active\" aria-current=\"page\">Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"d92c0289f351","script":"$4","pageKey":"vault"}],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$8","varyParams":"$f"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
 14:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 15:"$Sreact.suspense"
 17:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
@@ -962,13 +962,13 @@ f:C
 19:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 1a:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 1b:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
-:HL["/_next/static/chunks/35iso75ukufo7.css","style"]
+:HL["/_next/static/chunks/3ak0s-ic1j5qh.css","style"]
 5:["$","script","script-0",{"src":"/_next/static/chunks/1o350r4p9aqln.js","async":true}]
 6:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
 9:["$","$1","h",{"children":[null,["$","$L17",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$15",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L19","5",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
 b:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
 d:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
-10:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/35iso75ukufo7.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
+10:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3ak0s-ic1j5qh.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
 16:null
 13:true
 8:300

@@ -1,0 +1,140 @@
+1:"$Sreact.fragment"
+2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/1o350r4p9aqln.js"],"PrototypePage"]
+3:T7ac,
+<section class="directory-hero">
+  <div class="wrap">
+    <a class="creator-back" href="https://app.cre8.finance/leaderboard/">← Leaderboard</a>
+    <div class="creator-top">
+      <section class="creator-card" aria-label="Creator">
+        <div class="creator-id"><img id="c-avatar" src="" alt=""><div><h1 id="c-name">Creator</h1><p class="creator-meta"><button type="button" class="creator-addr" id="c-addr" title="Copy address"></button><span id="c-joined"></span></p></div></div>
+        <dl class="creator-stats" id="c-stats"></dl>
+      </section>
+      <section class="creator-card creator-earned" aria-label="Earned for depositors">
+        <div class="creator-earned-head"><div><span class="creator-label">Earned for depositors</span><strong id="c-earned">—</strong><span class="creator-period" id="c-period-label">All time</span></div><div class="seg" id="c-period"><button data-v="7">1W</button><button data-v="30">1M</button><button class="on" data-v="all">All</button></div></div>
+        <div class="chart creator-chart" id="c-chart"></div>
+      </section>
+    </div>
+  </div>
+</section>
+<main class="directory-main">
+  <section class="directory-panel" aria-label="Vaults by this creator">
+    <div class="directory-panel-head"><h2>Vaults</h2></div>
+    <div class="directory-filters">
+      <div class="filter-group"><span>Period</span><div class="seg" id="f-period"><button data-v="7D">7D</button><button data-v="30D">30D</button><button data-v="90D">90D</button><button class="on" data-v="ALL">All</button></div></div>
+    </div>
+    <div id="dir">
+      <div class="directory-table-head"><span>Vault</span><span>Vault value</span><span id="h-perf">Return</span><span id="h-dd">Max drop</span><span class="directory-depositors">Depositors</span><span class="directory-venues">Venues</span><span class="directory-details"></span></div>
+      <div class="directory-rows" id="c-rows" aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+
+
+4:T16d6,
+(function () {
+  const { $, $$, esc, fmt, perf } = BAV;
+  BAV.shell("leaderboard.html");
+  const params = new URLSearchParams(location.search);
+  const id = (params.get("slug") || location.pathname.split("/").filter(Boolean).pop() || "").toLowerCase();
+  const c = BAV.creatorProfile(id);
+  const money = (n) => (n < 0 ? "−$" : "$") + Math.round(Math.abs(n)).toLocaleString("en-US");
+  const compact = (n) => n == null ? "—" : n >= 1e6 ? (n / 1e6).toFixed(2) + "M" : n >= 1e3 ? (n / 1e3).toFixed(1) + "K" : fmt.n(n, 2);
+  const short$ = (n) => { const a = Math.abs(n); return (n < 0 ? "−$" : "$") + (a >= 1e6 ? (a / 1e6).toFixed(1) + "M" : a >= 1e3 ? Math.round(a / 1e3) + "K" : Math.round(a)); };
+  if (!c) {
+    $("#c-name").textContent = "Creator not found";
+    $("#c-avatar").hidden = true;
+    $$(".creator-meta, .creator-stats, .creator-earned, .directory-panel").forEach((el) => { el.hidden = true; });
+    return;
+  }
+  const name = BAV.creatorName(c);
+  document.title = `${name} — CRE8`;
+  $("#c-avatar").src = BAV.creatorAvatar(c.sample);
+  $("#c-name").innerHTML = esc(name) + (c.official ? BAV.officialBadge() : "");
+  // The address copies in full; with an X handle connected it sits under the handle.
+  const addr = $("#c-addr");
+  addr.textContent = c.x ? BAV.short(c.address) : "Copy address";
+  addr.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(c.address); addr.textContent = "Copied"; } catch { addr.textContent = c.address; }
+    setTimeout(() => { addr.textContent = c.x ? BAV.short(c.address) : "Copy address"; }, 1500);
+  });
+  $("#c-joined").textContent = `Joined ${new Date(c.joined).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" })}`;
+  $("#c-stats").innerHTML = `<div><dt>Vault value</dt><dd>$${compact(c.tvl)}</dd></div><div><dt>Vaults</dt><dd>${c.vaults.length}</dd></div><div><dt>Depositors</dt><dd>${fmt.n(c.depositors)}</dd></div>`;
+
+  // Earned for depositors: the period's change, with the running total charted.
+  const earnings = BAV.creatorEarnings(c);
+  let span = "all";
+  function drawEarned() {
+    const pts = span === "all" ? earnings : earnings.slice(-Number(span) - 1);
+    const change = pts[pts.length - 1].v - (span === "all" ? 0 : pts[0].v);
+    $("#c-earned").textContent = money(change);
+    $("#c-earned").className = fmt.cls(change);
+    $("#c-period-label").textContent = { 7: "Past week", 30: "Past month", all: "All time" }[span];
+    BAV.lineChart($("#c-chart"), pts, { height: 180, left: 0, format: short$, tip: "earned", label: "Earned for depositors over time" });
+  }
+  $$("#c-period button").forEach((b) => b.addEventListener("click", () => {
+    $$("#c-period button").forEach((x) => { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", String(x === b)); });
+    span = b.dataset.v; drawEarned();
+  }));
+  drawEarned();
+
+  // Plain swaps are how every vault trades, so a venue is listed only for what the vault keeps there: lending, LP or a strategy.
+  const venues = (v) => {
+    const list = [...new Set(BAV.vaultMarkets(v).filter((m) => m.a !== "trade").map((m) => m.venue))].map((venue) => ({ id: venue, name: BAV.VENUES.find((x) => x.id === venue)?.name || venue }));
+    return list.length ? `<span class="directory-venue-logos" title="${esc(list.map((x) => x.name).join(", "))}">${list.map((x) => BAV.logo(x.id, "md")).join("")}</span>` : `<span class="metric-unavailable" title="Swaps only">—</span>`;
+  };
+  let period = "ALL";
+  $$("#f-period button").forEach((b) => {
+    b.setAttribute("aria-pressed", String(b.classList.contains("on")));
+    b.addEventListener("click", () => {
+      $$("#f-period button").forEach((x) => { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", String(x === b)); });
+      period = b.dataset.v; render();
+    });
+  });
+  function render() {
+    const lbl = period === "ALL" ? "since launch" : period;
+    $("#h-perf").textContent = `Return ${lbl}`; $("#h-dd").textContent = `Max drop ${lbl}`;
+    // Newest first, so the list reads as the creator's history; ended vaults stay listed.
+    const rows = [...c.vaults].sort((a, b) => a.runtimeDays - b.runtimeDays);
+    $("#c-rows").innerHTML = rows.map((v) => {
+      const r = perf(v, period, "return"), dd = v.maxDrawdown[period];
+      return `<a class="directory-vault-row" href="${BAV.route("vault/" + v.slug)}" title="${esc(v.strategy)}" data-slug="${esc(v.slug)}">
+        <div class="directory-vault-identity"><span class="vault-avatar"><img src="${esc(BAV.creatorAvatar(v))}" alt="" loading="lazy"></span><span class="directory-vault-text"><strong>${esc(v.name)}</strong><span>${v.status === "Ended" ? "Ended" : "Open"} · ${fmt.n(v.runtimeDays)} days</span></span></div>
+        <div class="directory-metric directory-value"><span class="mobile-cell-label">Vault value</span><span><strong>${compact(v.tvl)}</strong><small>${esc(v.asset)}</small></span></div>
+        <div class="directory-metric directory-return ${fmt.cls(r)}"><span class="mobile-cell-label">Return ${lbl}</span><span>${r == null ? '<span class="metric-unavailable">Insufficient history</span>' : fmt.pct(r)}</span></div>
+        <div class="directory-metric directory-drop"><span class="mobile-cell-label">Max drop ${lbl}</span><span>${dd == null ? '<span class="metric-unavailable">Insufficient history</span>' : fmt.pct(dd)}</span></div>
+        <div class="directory-metric directory-depositors"><span class="mobile-cell-label">Depositors</span><span>${fmt.n(v.followers)}</span></div>
+        <div class="directory-venues"><span class="mobile-cell-label">Venues</span><span class="directory-venue-content">${venues(v)}</span></div>
+        <span class="directory-details">Details</span><span class="directory-card-button">View details</span>
+      </a>`;
+    }).join("");
+  }
+  render();
+})();
+8:X
+f:X
+f:C
+0:{"buildId":"JVl0V8EI1O13x_UuuuVIv","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"vault-directory creator-page","html":"$3","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"\" >Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"active\" aria-current=\"page\">Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"d92c0289f351","script":"$4","pageKey":"creator"}],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$8","varyParams":"$f"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
+14:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
+18:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
+19:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
+1a:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+1b:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+:HL["/_next/static/chunks/3ak0s-ic1j5qh.css","style"]
+5:["$","script","script-0",{"src":"/_next/static/chunks/1o350r4p9aqln.js","async":true}]
+6:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+9:["$","$1","h",{"children":[null,["$","$L17",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$15",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L19","5",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+b:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
+d:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
+10:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3ak0s-ic1j5qh.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
+16:null
+13:true
+8:300
+8:C
+12:0
+a:"$undefined"
+c:"$undefined"
+e:"$undefined"
+11:"$undefined"
+7:"$undefined"
