@@ -84,7 +84,7 @@
   window.addEventListener("pagehide", () => { void legalNotice.cancel(); });
   window.addEventListener("pageshow", (event) => {
     if (!event.persisted) return;
-    const page = document.querySelector("#mandate-form") ? "create" : document.querySelector("#directory-title") ? "vaults" : null;
+    const page = document.querySelector("#mandate-form") ? "create" : document.querySelector("#directory-title") ? "vaults" : document.querySelector("#v-name") ? "vault" : null;
     if (page) void legalNotice.reviewPage(page);
   });
 
@@ -812,7 +812,12 @@
       const label = document.createElement("span"); label.textContent = short(address);
       button.replaceChildren(face, label);
     };
-    window.addEventListener("bav:wallet-account", (event) => { const address = event.detail?.address; paintWallet(typeof address === "string" && /^0x[0-9a-fA-F]{40}$/.test(address) ? address : null); });
+    window.addEventListener("bav:wallet-account", (event) => {
+      const address = event.detail?.address, valid = typeof address === "string" && /^0x[0-9a-fA-F]{40}$/.test(address);
+      paintWallet(valid ? address : null);
+      // Page notices hidden with "Don't show again" are remembered for the last wallet connected in this browser.
+      if (valid) try { localStorage.setItem("cre8.wallet", address.toLowerCase()); } catch { /* Notices then show again next visit. */ }
+    });
     window.addEventListener("bav:wallet-change", () => paintWallet(null));
     // Connect wallet works on every page: it opens the wallet list here. Once connected, it leads to Portfolio.
     const walletButton = $(".header-wallet[data-connect]");

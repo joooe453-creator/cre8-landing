@@ -8,27 +8,32 @@ export function validateDraftManifest(value) {
   return value;
 }
 
-export const RISK_NOTICE_VERSION = "2026-10-07-risk.4";
+export const RISK_NOTICE_VERSION = "2026-10-07-risk.5";
 
 export function createPageRiskRecord(options, reviewedAt = new Date().toISOString()) {
-  if (!["vaults", "create"].includes(options.page)) throw new Error("Unsupported risk notice page.");
+  if (!Object.hasOwn(PAGE_NOTICES, options.page)) throw new Error("Unsupported risk notice page.");
   return {
     status: "risk-acknowledged", liveAllowed: false, riskVersion: RISK_NOTICE_VERSION,
     language: "en", reviewedAt, page: options.page,
   };
 }
 
+const DEPOSITOR_NOTICE = {
+  id: "depositor",
+  audience: "For depositors",
+  title: "Before you explore vaults",
+  points: [
+    "<strong>You could lose all your capital.</strong> Markets, smart contracts and third-party protocols carry risks. Capital and returns are not guaranteed.",
+    "<strong>Review each vault before depositing.</strong> Read its Fund prospectus and check the strategy, fees, Agent permissions and withdrawal conditions.",
+    "<strong>Agents can act within vault rules.</strong> An Agent can operate without your approval for each transaction. Risk controls cannot guarantee a limit on losses.",
+  ],
+};
+// The vault list and each vault page share the depositor notice, so hiding it once covers both.
 const PAGE_NOTICES = {
-  vaults: {
-    audience: "For depositors",
-    title: "Before you explore vaults",
-    points: [
-      "<strong>You could lose all your capital.</strong> Markets, smart contracts and third-party protocols carry risks. Capital and returns are not guaranteed.",
-      "<strong>Review each vault before depositing.</strong> Read its Fund prospectus and check the strategy, fees, Agent permissions and withdrawal conditions.",
-      "<strong>Agents can act within vault rules.</strong> An Agent can operate without your approval for each transaction. Risk controls cannot guarantee a limit on losses.",
-    ],
-  },
+  vaults: DEPOSITOR_NOTICE,
+  vault: { ...DEPOSITOR_NOTICE, title: "Before you deposit" },
   create: {
+    id: "creator",
     audience: "For vault creators",
     title: "Before you create a vault",
     points: [
@@ -38,6 +43,27 @@ const PAGE_NOTICES = {
     ],
   },
 };
+
+// "Don't show again" is kept only in this browser: per notice version, for the last wallet connected here
+// (or for the browser when none has been). It never records a transaction and is never uploaded.
+const MEMORY_KEY = "cre8.notices", WALLET_KEY = "cre8.wallet";
+const viewer = () => { try { return globalThis.localStorage?.getItem(WALLET_KEY) || "browser"; } catch { return "browser"; } };
+const memoryId = (notice) => `${notice.id}@${RISK_NOTICE_VERSION}`;
+function readMemory() { try { const value = JSON.parse(globalThis.localStorage?.getItem(MEMORY_KEY) || "{}"); return value && typeof value === "object" ? value : {}; } catch { return {}; } }
+export function noticeHidden(page) {
+  const notice = PAGE_NOTICES[page], list = notice && readMemory()[memoryId(notice)];
+  return Array.isArray(list) && list.includes(viewer());
+}
+export function hideNotice(page) {
+  const notice = PAGE_NOTICES[page];
+  if (!notice) return;
+  try {
+    const memory = readMemory(), id = memoryId(notice);
+    memory[id] = [...new Set([...(Array.isArray(memory[id]) ? memory[id] : []), viewer()])];
+    globalThis.localStorage?.setItem(MEMORY_KEY, JSON.stringify(memory));
+  } catch { /* Without storage the notice simply shows again next visit. */ }
+}
+
 
 let active = null;
 const shownPages = new Set();
@@ -67,6 +93,7 @@ export async function verifyDraftDocuments(assetUrl) {
 
 export async function reviewPageRisk(options, { url }) {
   createPageRiskRecord(options); // Validate the page; this notice never binds a transaction.
+  if (noticeHidden(options.page)) return { shown: false, reviewed: false, hidden: true, liveAllowed: false, riskVersion: RISK_NOTICE_VERSION };
   if (shownPages.has(options.page)) return { shown: false, reviewed: false, liveAllowed: false, riskVersion: RISK_NOTICE_VERSION };
   cancelReview();
   shownPages.add(options.page);
@@ -81,8 +108,8 @@ export async function reviewPageRisk(options, { url }) {
     <h2 id="cre8-risk-title">${notice.title}</h2>
     <ol class="legal-notice-points">${notice.points.map((point) => `<li>${point}</li>`).join("")}</ol>
     <a class="legal-notice-risk-link" target="_blank" rel="noopener noreferrer">Read full risk disclosure (Chinese draft)</a>
-    <p class="legal-notice-privacy">Shown once when you enter this page. This notice does not sign a transaction or approve token spending.</p>
-    <footer><button type="button" class="btn ghost" data-legal-cancel>Close</button><button type="submit" class="btn" data-legal-continue>I understand the risks</button></footer>
+    <p class="legal-notice-privacy">This notice does not sign a transaction or approve token spending.</p>
+    <footer><button type="button" class="legal-notice-hide" data-legal-hide>Don't show again</button><button type="button" class="btn ghost" data-legal-cancel>Close</button><button type="submit" class="btn" data-legal-continue>I understand the risks</button></footer>
   </form>`;
   dialog.querySelector(".legal-notice-risk-link").href = url("risk");
   document.body.append(dialog);
@@ -103,6 +130,7 @@ export async function reviewPageRisk(options, { url }) {
     dialog.addEventListener("cancel", (event) => { event.preventDefault(); finish(false); });
     dialog.addEventListener("close", () => finish(false));
     dialog.querySelector("[data-legal-cancel]").addEventListener("click", () => finish(false));
+    dialog.querySelector("[data-legal-hide]").addEventListener("click", () => { hideNotice(options.page); finish(true); });
     dialog.querySelector(".legal-notice-close").addEventListener("click", () => finish(false));
     try { dialog.showModal(); } catch { finish(false); }
   });

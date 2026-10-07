@@ -3,7 +3,7 @@
   "status": "draft",
   "liveAllowed": false,
   "language": "zh-Hant",
-  "consentVersion": "a6b7b571c68a29860c017ac7e3b39495dfae155f058690f33fbdb352a93ab270",
+  "consentVersion": "be3ba29451e2224a645cdcb5b95ae1551aa3ef701dac5c904613a3b69dd3b901",
   "effectiveDate": null,
   "operator": null,
   "openMarkets": [],
@@ -17,36 +17,36 @@
       "id": "notice",
       "title": "使用前須知",
       "source": "USER_GUIDE_LEGAL_NOTICE_DRAFT.zh-TW.md",
-      "version": "2026-10-07-draft.6",
-      "sha256": "1d18a08810342de1f214634d0812870065423c96de33b9d9979c076d39dcae6f"
+      "version": "2026-10-07-draft.7",
+      "sha256": "996848c8faab56bec761d5605fcc80ac3ca0de01bf3c468934ce9518b826e19a"
     },
     {
       "id": "terms",
       "title": "使用條款",
       "source": "TERMS_OF_USE_DRAFT.zh-TW.md",
-      "version": "2026-10-07-draft.6",
-      "sha256": "7fcec596017cb376fd4d90f76c598d4aa9700b8f27bbc51a910421e7fa315775"
+      "version": "2026-10-07-draft.7",
+      "sha256": "f0b285c17decf21ca923c6638be3d4d450d868669f1590ac17381aab690dc8f9"
     },
     {
       "id": "risk",
       "title": "金庫風險揭露",
       "source": "RISK_DISCLOSURE_DRAFT.zh-TW.md",
-      "version": "2026-10-07-draft.6",
-      "sha256": "9e056d65c451d1a7155f1b95b211b4667af96d19206053a459d8e0a74ae7ae7c"
+      "version": "2026-10-07-draft.7",
+      "sha256": "4dcc44aac46cd02339741bc954640e7bfdc855fee96866d61c60a35a51d42304"
     },
     {
       "id": "eligibility",
       "title": "使用資格與地區限制",
       "source": "RESTRICTED_JURISDICTIONS_DRAFT.zh-TW.md",
-      "version": "2026-10-07-draft.6",
-      "sha256": "23feb161785b72cce65a6a0f91d63524bd58a955453aa7d16af795014d801742"
+      "version": "2026-10-07-draft.7",
+      "sha256": "47a81191ba0895c5c47b7624bb5cfdd0702c1bd32da767642cba89b7a079ae14"
     },
     {
       "id": "privacy",
       "title": "隱私告知",
       "source": "PRIVACY_POLICY_DRAFT.zh-TW.md",
-      "version": "2026-10-07-draft.6",
-      "sha256": "8d99c3b7937f6335e228bb08b4af0d877f2485aa5a0b3cbd30be4293c67a9d46"
+      "version": "2026-10-07-draft.7",
+      "sha256": "83e8ac002229c98d2e9d4359dfc9c5f4277961e68661030c2cbf4b05c5bfdcbe"
     }
   ]
 }
