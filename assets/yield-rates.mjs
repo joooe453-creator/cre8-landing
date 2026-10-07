@@ -3,6 +3,8 @@ export { currentDepositStatus } from "./market-checks.mjs";
 
 const YEAR_SECONDS = 365 * 24 * 60 * 60;
 export const MAX_RATE_AGE_MS = 24 * 60 * 60 * 1000;
+// A node this far from the wall clock is not serving the current chain, so its rates must not be stamped as fresh.
+export const MAX_HEAD_LAG_MS = 5 * 60 * 1000;
 
 export function annualizeApr(apr, periodsPerYear = 365) {
   if (!Number.isFinite(apr) || apr < 0 || !Number.isFinite(periodsPerYear) || periodsPerYear <= 0) {
@@ -50,6 +52,21 @@ export function portfolioYield(rows, markets, snapshot, now = Date.now()) {
   return weighted * 0.95; // Fully invested scenario, keeping the mandated 5% cash reserve.
 }
 
+// The shared rates service reads once for the whole site; a visitor reads the sources itself only if it is unavailable.
+export async function fetchSharedRates(url, { fetchFn = fetch } = {}) {
+  const endpoint = new URL(url);
+  const local = endpoint.protocol === "http:" && ["localhost", "127.0.0.1", "[::1]"].includes(endpoint.hostname);
+  if ((endpoint.protocol !== "https:" && !local) || endpoint.username || endpoint.password) throw new Error("Shared rates URL must use HTTPS");
+  const response = await fetchFn(endpoint.href, { headers: { accept: "application/json" }, signal: AbortSignal.timeout(10_000) });
+  if (!response.ok) throw new Error(`Shared rates unavailable (${response.status})`);
+  const snapshot = await response.json();
+  if (snapshot?.schema !== "bnb-agent-vaults/yield-rates@1" || snapshot.chainId !== 56 || !snapshot.markets
+    || typeof snapshot.markets !== "object" || Array.isArray(snapshot.markets) || !Number.isFinite(Date.parse(snapshot.fetchedAt))) {
+    throw new Error("Invalid shared rate snapshot");
+  }
+  return snapshot;
+}
+
 export async function fetchYieldRates(registry, { rpcUrl = "https://bsc-dataseed.bnbchain.org", fetchFn = fetch } = {}) {
   let rpcId = 1;
   const raw = [];
@@ -71,7 +88,11 @@ export async function fetchYieldRates(registry, { rpcUrl = "https://bsc-dataseed
   if (Number(BigInt(await rpc("eth_chainId", []))) !== 56) throw new Error("Rate RPC is not BNB Chain");
   const blockTag = await rpc("eth_blockNumber", []);
   const block = await rpc("eth_getBlockByNumber", [blockTag, false]);
-  const blockTime = new Date(Number(BigInt(block.timestamp)) * 1000).toISOString();
+  const blockMs = /^0x[\da-f]+$/i.test(block?.timestamp ?? "") ? Number(BigInt(block.timestamp)) * 1000 : NaN;
+  if (!/^0x[\da-f]{64}$/i.test(block?.hash ?? "") || !Number.isFinite(blockMs) || Math.abs(Date.now() - blockMs) > MAX_HEAD_LAG_MS) {
+    throw new Error("Rate RPC head is stale or invalid");
+  }
+  const blockTime = new Date(blockMs).toISOString();
   const blockNumber = Number(BigInt(blockTag));
   const call = (address, data) => rpc("eth_call", [{ to: address, data }, blockTag]);
   const decodeAddress = (hex) => `0x${hex.slice(-40)}`.toLowerCase();
@@ -166,6 +187,10 @@ export async function fetchYieldRates(registry, { rpcUrl = "https://bsc-dataseed
       collateralMarkets[market.id] = { ...entry, status: "unavailable", nativeApy: null, error: error.message };
     }
   }));
+  // Callers replace their snapshot with this result, so a read where every source failed must not reach them.
+  if (registry.yieldMarkets.length && !Object.values(markets).some((rate) => rate.status === "available")) {
+    throw new Error("Every rate source failed; the previous snapshot is kept");
+  }
   return {
     schema: "bnb-agent-vaults/yield-rates@1", chainId: 56, fetchedAt: new Date().toISOString(), blockNumber, blockTime,
     scope: "Base lending interest only; variable rates, price returns, reward emissions and vault fees excluded.",

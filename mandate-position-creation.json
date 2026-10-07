@@ -1,0 +1,9 @@
+{
+  "schema": "bnb-agent-vaults/position-creation-catalog@2.0",
+  "status": "undeployed",
+  "chainId": 97,
+  "rpcUrl": "",
+  "factory": null,
+  "entries": [],
+  "codeHashes": {}
+}

@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[81384,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/3g2ddfs1wmryt.js"],"PrototypePage"]
-3:T5ab8,
+2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/38t9mx3zrsncv.js"],"PrototypePage"]
+3:T5e6a,
 <section class="page-head create-hero">
   <div class="wrap wide"><div class="dk-head"><div><h1 class="dk-h1">Open a vault</h1></div><span class="dk-label">[ Draft · Deployment pending ]</span></div></div>
 </section>
@@ -15,7 +15,7 @@
     <form id="f" autocomplete="off" onsubmit="return false">
       <section id="s-1" class="create-step" data-create-panel="1">
         <section class="create-card create-catalog">
-          <header class="create-card-heading"><h2>Choose assets</h2><span class="create-pick-count"><span id="selected-count">0</span> / 10</span></header>
+          <header class="create-card-heading"><h2>Choose assets</h2><span class="create-pick-count"><span id="selected-count">0</span> / 7</span></header>
           <div class="create-search-bar">
             <div class="target-search"><input id="search" placeholder="Name, symbol or BSC token address (0x…)" aria-label="Search assets by name, symbol or BSC token address"><button type="button" class="btn" id="find-ca">Search</button></div>
             <div class="radio-row create-filter" aria-label="Asset category"><label><input type="radio" name="filter" value="all" checked><span>All</span></label><label><input type="radio" name="filter" value="crypto"><span>Crypto</span></label><label><input type="radio" name="filter" value="bstock"><span>bStocks</span></label></div>
@@ -24,7 +24,7 @@
           <div class="mkt-list hide" id="token-search-results" tabindex="0" role="region" aria-label="Token search results"></div>
           <div class="create-cat-head" aria-hidden="true"><span>Asset</span><span>Pool liquidity</span><span>Lending</span><span></span></div>
           <div class="mkt-list" id="target-list" tabindex="0" role="region" aria-label="Available basket assets" aria-busy="true"><div class="allocation-empty">Loading asset catalog…</div></div>
-          <p class="create-cat-foot"><span class="create-results-count" id="target-count" aria-live="polite">Loading…</span><span id="catalog-note" aria-busy="true">Loading design catalog…</span></p>
+          <p class="create-cat-foot"><span class="create-results-count" id="target-count" aria-live="polite">Loading…</span><span id="catalog-note" aria-busy="true">Loading design catalog…</span><span id="live-note" aria-live="polite"></span></p>
         </section>
         <section class="create-card create-selection">
           <h3 class="create-basket-title">Your basket</h3>
@@ -34,7 +34,7 @@
         <div class="create-caps-meter" id="caps-meter" role="img" aria-label="Investment limits against the 95% maximum"></div>
         <ul class="checks create-step-errors" id="step-one-issues" aria-live="polite"></ul>
         <details class="create-explain create-basket-more"><summary>Weights, limits &amp; totals</summary>
-          <div class="create-selection-explainer"><p><b>Strategy weight</b> — agent’s plan between assets. Must total 100%. Not enforced.</p><p><b>Investment limit</b> — contract max, % of whole vault NAV. Total ≤ 95%.</p></div>
+          <div class="create-selection-explainer"><p><b>Relative token weight</b> — total 100%; converted into an onchain target inside every investment limit and the 5% cash reserve.</p><p><b>Investment limit</b> — contract max, % of whole vault NAV. Total ≤ 95%.</p></div>
           <div class="create-selection-totals"><span>Weights total <b id="weight-total">0%</b> / 100%</span><span>Limits total <b id="selected-limit-total">0%</b> / max 95%</span><span>Cash kept ≥ <b id="selected-cash">100%</b></span></div>
           <p>Vault value is the current estimated value of all its assets. In a $10,000 vault, a 70% limit allows up to $7,000 in that investment. It uses today’s value and does not guarantee a withdrawal amount. Prices above the limit block new investment; they do not force a sale.</p>
           <p>Each asset’s strategy weight sits under “Weight &amp; route” in its basket row.</p>
@@ -46,9 +46,9 @@
           <h2>Buy &amp; store</h2>
           <div class="create-seg" id="mode-choices" role="group" aria-label="Buying plan"><button type="button" class="on" aria-pressed="true" data-mode="agent-managed">Agent decides</button><button type="button" aria-pressed="false" data-mode="lump-sum">Buy once</button><button type="button" aria-pressed="false" data-mode="accumulate">Accumulate</button></div>
           <dl class="create-frows" data-plan-for="agent-managed"><div><dt>Timing</dt><dd>Your agent decides</dd></div><div><dt>Orders</dt><dd>Checked against every investment limit</dd></div><div><dt>Cash floor</dt><dd>5% of the vault after any buy</dd></div><div><dt>At open</dt><dd>The 100 USDT seed stays in cash until the agent acts</dd></div></dl>
-          <dl class="create-frows hide" data-plan-for="lump-sum"><div><dt>Timing</dt><dd>One purchase, described for your agent</dd></div><div><dt>Split</dt><dd>At your strategy weights, inside each limit</dd></div><div><dt>Contract</dt><dd>Plan only · not executed or enforced</dd></div></dl>
-          <p class="create-plan-only hide" id="plan-only-note"><span class="tag">Plan only</span> These describe intent and can be exported. They are not contract automation; selecting them makes live launch unavailable.</p>
-          <div id="accumulate" class="hide"><div class="state-note"><span>Schedule and drawdown settings are a design reference. They are not executed or enforced by the continuous vault contract.</span></div>
+          <dl class="create-frows hide" data-plan-for="lump-sum"><div><dt>Timing</dt><dd>One initial program with bounded recovery slots</dd></div><div><dt>Split</dt><dd>At your strategy weights, inside each limit</dd></div><div><dt>Contract</dt><dd>Onchain program; a keeper submits each eligible chunk</dd></div></dl>
+          <p class="create-plan-only hide" id="plan-only-note"><span class="tag">Onchain rules</span> The exact tuple is reviewed before launch. Eligible purchases require keeper transactions; contracts do not wake themselves up.</p>
+          <div id="accumulate" class="hide"><div class="state-note"><span>The contract enforces schedule windows, missed slots and optional dip purchases. Cadences use fixed UTC elapsed seconds; a month means 30 days.</span></div>
             <div class="operation-block">
               <div class="toggle-row">
                 <div class="t">Scheduled buy<small>Set the exact cadence, start and end.</small></div>
@@ -61,28 +61,30 @@
                   <label class="field"><span>Start date &amp; time</span><input id="schedule-start" type="datetime-local"></label>
                 </div>
                 <div class="fields" style="margin-top:16px">
-                  <div class="field"><span>Time zone</span><div class="locked"><span id="schedule-timezone">Local time</span><span class="label">Calendar based</span></div></div>
+                  <div class="field"><span>Time zone</span><div class="locked"><span id="schedule-timezone">Local time</span><span class="label">Start converted to UTC</span></div></div>
                   <label class="field"><span>End</span><select id="schedule-end"><option value="until-stopped">Until stopped</option><option value="after-executions">After a number of buys</option><option value="on-date">On a date</option></select></label>
                   <label class="field hide" id="schedule-count-field"><span>Number of buys</span><input id="schedule-count" value="12" inputmode="numeric"></label>
                   <label class="field hide" id="schedule-end-date-field"><span>End date &amp; time</span><input id="schedule-end-date" type="datetime-local"></label>
                 </div>
-                <div class="execution-policy">First buy runs at the start time. Missed or failed runs are skipped—never queued or caught up later.</div>
+                <div class="execution-policy">The first buy becomes eligible at the start time. A keeper must include it inside its window. Missed windows are skipped; failed transactions do not consume a successful chunk. Finite programs divide remaining cash across remaining slots.</div>
               </div>
             </div>
             <div class="operation-block">
               <div class="toggle-row">
-                <div class="t">Buy the dip<small>Reference resets only after a successful buy.</small></div>
+                <div class="t">Buy the dip<small>Reference is set at seed and reset when a planned strategy resumes.</small></div>
                 <div class="ctl"><div class="suffix"><input id="dip" value="5" inputmode="decimal" disabled><b>%</b></div><input type="checkbox" class="sw" id="dip-on"></div>
               </div>
             </div>
             <div class="fields" style="margin-top:20px">
-              <label class="field"><span>Tranche size <em>1–25% of available cash</em></span><div class="suffix"><input id="tranche" value="10" inputmode="decimal"><b>%</b></div></label>
-              <div class="field"><span>Shared cooldown</span><div class="locked"><span>24 hours</span><span class="label">Both triggers</span></div></div>
+              <label class="field" id="tranche-field"><span id="tranche-label">Tranche size <em>1–25% of available cash</em></span><div class="suffix"><input id="tranche" value="10" inputmode="decimal"><b>%</b></div></label>
+              <div class="field"><span>Dip cooldown</span><div class="locked"><span>24 hours</span><span class="label">Dip purchases</span></div></div>
             </div>
-            <div class="execution-policy" style="margin-top:14px">If schedule and dip trigger together, execute one tranche. A failed order does not reset the reference or consume cooldown.</div>
+            <p id="finite-tranche-note" class="fine hide">Finite DCA divides remaining available cash by remaining slots. The percentage field, when shown, controls dip purchases only.</p>
+            <div class="execution-policy" style="margin-top:14px">If schedule and dip trigger together, execute one tranche. Scheduled windows keep their fixed cadence; the 24-hour cooldown applies to dip purchases. A failed transaction consumes neither a purchased slot nor dip cooldown.</div>
           </div>
-          <details class="advanced-options automation-reference"><summary>Additional automation · design only</summary>
-          <p class="fine">Rebalancing and custom drawdown rules can be exported for an agent plan. They are not contract automation and cannot be included in a live launch.</p>
+          <div class="fields" style="margin-top:16px"><label class="field"><span>Execution window · minutes</span><input id="rules-window-minutes" value="60" inputmode="numeric"></label><label class="field"><span>Emergency selling</span><input type="checkbox" id="emergency-sell-on" checked></label></div>
+          <details class="advanced-options automation-reference"><summary>Additional onchain risk rules</summary>
+          <p class="fine">Select new-money rebalancing or guarded buy-and-sell rebalancing. Emergency selling defaults on. These settings are included in the onchain launch tuple.</p>
           <div class="sub-h" style="margin-top:28px"><span>Optional rebalancing</span><em>Off by default</em></div>
           <div class="operation-block">
             <div class="toggle-row">
@@ -92,7 +94,7 @@
             <div class="operation-settings hide" id="rebalance-settings">
               <div class="fields three">
                 <label class="field"><span>Method</span><select id="rebalance-method"><option value="cashflow-only">Cashflow only · no selling</option><option value="full">Full · buy and sell</option></select></label>
-                <label class="field"><span>Trigger</span><select id="rebalance-trigger"><option value="threshold">Weight drift</option><option value="scheduled">Schedule</option></select></label>
+                <label class="field"><span>Trigger</span><select id="rebalance-trigger"><option value="threshold">Weight drift</option></select></label>
                 <label class="field"><span>Minimum drift <em>absolute weight</em></span><div class="suffix"><input id="rebalance-drift" value="5" inputmode="decimal"><b>%</b></div></label>
               </div>
               <div class="fields three hide" id="rebalance-schedule-fields" style="margin-top:16px">
@@ -101,18 +103,11 @@
                 <label class="field"><span>Start date &amp; time</span><input id="rebalance-start" type="datetime-local"></label>
               </div>
               <div class="fields hide" id="rebalance-turnover-field" style="margin-top:16px">
-                <label class="field"><span>Max turnover per rebalance</span><div class="suffix vault-value-suffix"><input id="rebalance-turnover" value="10" inputmode="decimal"><b>% of vault value</b></div></label>
+                <input id="rebalance-turnover" value="25" type="hidden"><p>Each interval fixes buy and sell quotas from deployed token exposure. Buyback spends only the cash actually received from that interval’s sales.</p>
               </div>
-              <div class="execution-policy">Rebalance only above the drift threshold, with a 24-hour cooldown and the same route, liquidity and slippage checks.</div>
+              <div class="execution-policy">New-money rebalancing adjusts new contributions. Buy-and-sell rebalancing uses bounded quotas per strategy interval (one UTC day for agent-managed vaults); it does not promise a fixed 25% turnover limit. Each trade retains its route, oracle, liquidity and slippage checks.</div>
             </div>
           </div>
-          <details class="advanced-options" style="margin-top:18px">
-            <summary>Advanced risk control</summary>
-            <div class="toggle-row">
-              <div class="t">Portfolio drawdown pause<small>Pause new automated orders; never auto-liquidate.</small></div>
-              <div class="ctl"><div class="suffix"><input id="drawdown-pause" value="20" inputmode="decimal" disabled><b>%</b></div><input type="checkbox" class="sw" id="drawdown-pause-on"></div>
-            </div>
-          </details>
           </details>
         </section>
         <details class="create-explain create-destinations"><summary>Destinations, routes &amp; yield</summary>
@@ -133,9 +128,9 @@
             <div class="create-frow"><label class="create-fl" for="name">Vault name</label><div class="create-fctl"><input id="name" value="Sherwood Core Basket" maxlength="64" required></div></div>
             <div class="create-frow"><span class="create-fl">Share symbol</span><div class="create-fctl"><span class="create-fval mono" id="symbol">avSCB</span><span class="create-fhint">Set from the name</span></div></div>
             <div class="create-frow"><label class="create-fl" for="mandate-agent">Agent address</label><div class="create-fctl"><input id="mandate-agent" class="mono" placeholder="0x…" pattern="0x[a-fA-F0-9]{40}" required spellcheck="false"><span class="create-fhint">Must differ from the wallet that opens the vault. Never enter a private key.</span></div></div>
-            <div class="create-frow"><label class="create-fl" for="fee-slider">Performance fee</label><div class="create-fctl create-fee-control"><input type="range" id="fee-slider" min="0" max="30" step="0.01" value="20" aria-label="Adjust total performance fee"><div class="suffix"><input id="pf" value="20" inputmode="decimal" required aria-label="Total performance fee, percent"><b>%</b></div><span class="create-fhint" id="fee-you">You receive 18.0%</span><p id="fee-split-note">Of new profit above the high-water mark: Creator 18.0% · Protocol 2.0% (90/10 of the total, not added on top). Fixed after open. Management fee: None.</p><input id="mf" type="hidden" value="0"></div></div>
+            <div class="create-frow"><label class="create-fl" for="fee-slider">Creator performance fee</label><div class="create-fctl create-fee-control"><input type="range" id="fee-slider" min="0" max="20" step="0.01" value="20" aria-label="Adjust creator performance fee"><div class="suffix"><input id="pf" value="20" inputmode="decimal" required aria-label="Creator performance fee, percent"><b>%</b></div><span class="create-fhint" id="fee-you">You receive 20.0%</span><p id="fee-split-note">On each holder’s realized profit at exit: Creator 20.0% · Protocol 10.0% fixed · 30.0% total. Each holder has a separate cost basis. Management fee: None.</p><input id="mf" type="hidden" value="0"></div></div>
             <div class="create-frow"><span class="create-fl">Management fee</span><div class="create-fctl"><span class="create-fval">None</span></div></div>
-            <div class="create-frow"><span class="create-fl">Creator deposit</span><div class="create-fctl"><div class="suffix create-seed"><input id="seed" value="100" readonly aria-label="Fixed creator seed"><b>USDT</b></div><span class="create-fhint">Locked 90 days · creator only</span></div></div>
+            <div class="create-frow"><span class="create-fl">Creator deposit</span><div class="create-fctl"><div class="suffix create-seed"><input id="seed" value="100" readonly aria-label="Fixed creator seed"><b>USDT</b></div><span class="create-fhint">No time lock · creator must retain at least 2% while other holders remain</span></div></div>
             <div class="create-frow"><span class="create-fl">Accounting asset</span><div class="create-fctl"><span class="create-fval" id="mandate-asset-label">USDT · BNB Chain</span></div></div>
             <div class="create-frow"><label class="create-fl" for="note">Strategy note</label><div class="create-fctl"><textarea id="note" placeholder="Describe your strategy."></textarea><span class="create-fhint">Optional · description only, not binding</span></div></div>
           </section>
@@ -146,20 +141,22 @@
       <section id="s-4" class="create-step" data-create-panel="4" hidden>
         <section class="create-card create-preopen">
           <h2>Review &amp; open</h2>
+          <button type="button" class="btn ghost" id="wallet-disconnect">Disconnect wallet session</button>
+          <div id="safe-launch-handoff"></div>
           <div id="review-design-checks" class="create-checks"></div>
           <div id="preopen-checks" class="create-checks" aria-live="polite"></div>
           <ul class="checks" id="issues" aria-live="polite"></ul><ul class="checks" id="mandate-issues" aria-live="polite"></ul>
             <div class="mandate-cta"><button type="button" class="btn ghost" id="mandate-connect" disabled>Connect creator wallet</button><button type="button" class="btn" id="mandate-launch" disabled>Deployment required to open</button><button type="button" class="btn ghost" id="mandate-export">Export vault design</button></div>
             <div id="mandate-status" class="state-note live-status" role="status" aria-live="polite"><span>Loading deployment configuration. Design examples cannot receive funds.</span></div>
-            <div id="mandate-pending" class="state-note create-pending-transaction" hidden><div><b>Submitted launch</b><p id="mandate-pending-message" aria-live="polite"></p><a id="mandate-transaction-link" target="_blank" rel="noopener noreferrer">View transaction on explorer</a> <button type="button" class="link" id="mandate-copy-transaction">Copy hash</button><p class="fine">Checking a receipt sends no transaction. A mined receipt alone does not verify that this vault was opened.</p><button type="button" class="btn ghost" id="mandate-check-transaction">Check transaction receipt</button></div></div>
+            <div id="mandate-pending" class="state-note create-pending-transaction" hidden><div><b>Submitted launch</b><p id="mandate-pending-message" aria-live="polite"></p><a id="mandate-transaction-link" target="_blank" rel="noopener noreferrer">View transaction on explorer</a> <button type="button" class="link" id="mandate-copy-transaction">Copy hash</button><p class="fine">Checking a receipt sends no transaction. A mined receipt alone does not verify that this vault was opened.</p><button type="button" class="btn ghost" id="mandate-check-transaction">Check transaction receipt</button> <button type="button" class="btn ghost" id="mandate-release-unknown" hidden>Release unresolved request…</button></div></div>
           <details class="create-explain create-review-more"><summary>What depositors will read</summary>
           <p class="fine create-binding" id="mandate-binding" role="status">Opening requires your complete selection to have a verified deployment.</p>
           <section class="mandate-preview launch-review create-readout">
-            <dl class="kv"><dt>Assets &amp; destinations</dt><dd><div id="mandate-caps" class="review-positions"></div></dd><dt>Cash reserve</dt><dd><span id="mandate-idle">At least 5%</span> required after new investment. Market movements may change this proportion later.</dd><dt>Performance fee</dt><dd><span id="mandate-fee-summary">20% total · 18% creator + 2% protocol</span> on new profit above the fee-adjusted high-water mark · no management fee</dd><dt>Creator seed</dt><dd>100 USDT, seed shares locked 90 days. Depositors have no lock.</dd><dt>Rule changes</dt><dd>Lowering limits is immediate; raising waits ≥ 24h. Markets and operator are fixed.</dd><dt>Daily loss guard</dt><dd>2% observed fee-adjusted share-value loss blocks new activity; it does not guarantee a stop-loss fill.</dd><dt>Exit</dt><dd>Cash redeem with minimum received + deadline, or in-kind redeem of underlying tokens and receipts.</dd></dl>
+            <dl class="kv"><dt>Assets &amp; destinations</dt><dd><div id="mandate-caps" class="review-positions"></div></dd><dt>Cash reserve</dt><dd><span id="mandate-idle">At least 5%</span> required after new investment. Market movements may change this proportion later.</dd><dt>Performance fee</dt><dd><span id="mandate-fee-summary">30% total · 20% creator + 10% protocol</span> on each holder’s realized profit above their own cost basis · no management fee</dd><dt>Creator seed</dt><dd>100 USDT with no time lock. The creator must retain at least 2% of live shares while other holders remain.</dd><dt>Rule changes</dt><dd>Lowering limits is immediate; raising waits ≥ 24h. Approved markets are fixed; operator rotation follows the onchain delay.</dd><dt>Exit</dt><dd>Cash redeem with minimum received + deadline, or in-kind redeem of underlying tokens and receipts.</dd></dl>
             <details class="create-explain"><summary>Mandate and execution details</summary><p class="sentence" id="mandate-sentence">Choose assets and destinations to build your mandate.</p><p>The operator has no withdrawal rights. If a selected swap or supply fails, the whole action reverts without changing the vault’s assets. The fee basis may include gains on assets still held. External protocols keep their own governance and may charge additional fees. Borrowing, leverage, LP and Aster are not executable by this vault.</p></details>
           </section>
-            <div class="create-preopen-facts"><div><span>Minimum seed shares</span><span id="seed-share-preview">At least 100 whole shares · precision after approval</span></div><div><span>Deadline</span><span>20 min after preparing · re-prepare when expired</span></div><div><span>Signatures</span><span>Allowance reset/approve (if needed) + Launch</span></div></div>
-            <p class="fine">Opens only when the full selection resolves to an approved configuration, a verified deployment exists, and wallet pre-checks pass. Launch deploys the vault and deposits the seed; the agent trades later. An insufficient allowance needs a separate exact-100-USDT approval and may first need a reset.</p>
+            <div class="create-preopen-facts"><div><span>Expected seed shares</span><span id="seed-share-preview">99.5 whole shares after the 0.5% entry fee</span></div><div><span>Deadline</span><span>1h funding window · cancel and reprepare when expired</span></div><div><span>Signatures</span><span>Prepare → Deploy → exact seed approval → Finalize</span></div></div>
+            <p class="fine">Opens only when the full selection resolves to an approved configuration, a verified deployment exists, and wallet pre-checks pass. Separate transactions prepare the scheduler, deploy an unfunded vault, then finalize the seed. The agent or onchain program trades after registration. Before finalization, the allowance must equal exactly 100 USDT; any different nonzero allowance is reset first.</p>
           </details>
             <details class="advanced-options create-technical"><summary>Show technical configuration</summary><p class="fine">The reference records planning instructions. It does not certify a contract simulation or a launch.</p><button type="button" class="btn ghost" id="sign">Recheck routes &amp; export reference</button><ul class="dry" id="steps"></ul><div id="launch-result"></div><button type="button" class="link" id="toggle-json">View reference JSON</button><pre class="json hide" id="json"></pre></details>
         </section>
@@ -177,10 +174,10 @@
           <div class="create-limit-track"><span id="summary-limit-bar"></span></div>
           <div><dt>Cash kept ≥</dt><dd id="summary-cash">100%</dd></div>
           <div><dt>Buying</dt><dd id="summary-mode">Agent-managed</dd></div>
-          <div><dt>Performance fee</dt><dd id="summary-fee">20% total</dd></div>
-          <div><dt>You receive</dt><dd id="summary-creator">18.0%</dd></div>
+          <div><dt>Performance fee</dt><dd id="summary-fee">30% total</dd></div>
+          <div><dt>You receive</dt><dd id="summary-creator">20.0%</dd></div>
           <div><dt>Management fee</dt><dd>None</dd></div>
-          <div><dt>Creator seed</dt><dd>100 USDT · 90 days</dd></div>
+          <div><dt>Creator seed</dt><dd>100 USDT · retain ≥ 2%</dd></div>
           <div><dt>Raising a limit</dt><dd>24h notice</dd></div>
         </dl>
         <details class="create-explain"><summary>Market gate &amp; mandate details</summary><p class="create-summary-note">Buy + supply is atomic: if the swap or supply fails, the whole action reverts and USDT stays as cash. New markets need a new vault.</p><p class="fine" id="registry-note">Verifying the phase-one registry…</p><p class="sentence" id="sentence">Loading registry…</p><div class="meta-row" id="meta"></div><ul class="rules" id="rules"></ul></details>
@@ -192,7 +189,7 @@
 
 
 
-4:T4b8,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><img class="brand-logo" src="/logos/cre8-on-light.svg?v=5ff1de84" alt="CRE8" width="224" height="112"></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="" >Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="active" aria-current="page">Open a vault</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><button class="btn sm header-wallet" data-demo>Connect wallet</button></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>5:T18775,
+4:T590,<header class="masthead app-masthead" data-bav-shell data-bav-ssr><div class="wrap"><a class="brand" href="https://cre8.finance/" aria-label="CRE8 home"><span class="c8-logo c8-still" role="img" aria-label="CRE8"><span class="c8-cre" aria-hidden="true">CRE</span><span class="c8-tile" aria-hidden="true"><span class="c8-win"><span class="c8-reel"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class="nav" aria-label="Main navigation"><a href="https://app.cre8.finance/vaults/" class="" >Vaults</a><a href="https://app.cre8.finance/portfolio/" class="" >Portfolio</a><a href="https://app.cre8.finance/create/" class="active" aria-current="page">Open directly</a></nav><div class="head-right"><span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled."><span class="dot"></span><span class="status-label">Prototype<span class="header-status-more"> · Deployment pending</span></span></span><span class="chain" title="BNB Chain"><img class="logo" src="/logos/bnbchain.webp" alt=""><span class="chain-label">BNB Chain</span></span><a class="btn sm header-wallet" href="https://app.cre8.finance/portfolio/">Connect wallet</a></div><span class="header-status header-status-mobile" title="Prototype · Deployment pending"><span class="dot"></span><span class="status-label">Prototype</span></span></div></header>5:T1db8a,
 (function () {
   "use strict";
   const { $, $$, esc, toast, DEMO_OWNER, hexAddr } = BAV;
@@ -207,6 +204,10 @@
     selected: new Map(),
     yieldTools: null,
     yieldSnapshot: null,
+    liveTools: null,
+    live: null,
+    liveError: null,
+    liveLoading: null,
     forkPassed: false,
     launched: false,
   };
@@ -407,6 +408,34 @@
     };
   }
 
+  // Top 30 tradability is read from the chain, never from the snapshot: on load, every two minutes while the page
+  // is visible, and again right before export. Amount changes are checked against the latest read without a new one.
+  const LIVE_STATUS_EVERY_MS = 2 * 60 * 1000;
+  function refreshLiveStatus() {
+    if (!S.registry?.top30) return Promise.resolve();
+    S.liveLoading ||= (async () => {
+      try {
+        S.liveTools ||= await import(assetUrl("assets/top30-status.mjs"));
+        S.live = await S.liveTools.fetchTop30Status(S.registry);
+        S.liveError = null;
+      } catch (error) {
+        S.liveError = error?.message || "Live status read failed";
+      } finally {
+        S.liveLoading = null;
+      }
+      const at = S.live ? `block ${S.live.blockNumber.toLocaleString("en-US")} · ${new Date(S.live.fetchedAt).toLocaleTimeString()}` : "";
+      $("#live-note").textContent = S.liveError
+        ? `Live pool status unavailable (${S.liveError})${at ? `; showing the read at ${at}` : ""}. Export rechecks it.`
+        : `Live pool and price-feed status at ${at} · refreshes every 2 min.`;
+      draw();
+    })();
+    return S.liveLoading;
+  }
+  setInterval(() => { if (document.visibilityState === "visible") refreshLiveStatus(); }, LIVE_STATUS_EVERY_MS);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && !(Date.now() - Date.parse(S.live?.fetchedAt) < LIVE_STATUS_EVERY_MS)) refreshLiveStatus();
+  });
+
   fetch(registryUrl)
     .then((response) => {
       if (!response.ok) throw new Error(`Registry request failed (${response.status})`);
@@ -426,7 +455,8 @@
       if (registry.schema !== "bnb-agent-vaults/phase1-market-registry@1" || registry.chainId !== 56 || !liquidityValid || !destinationKindsValid || !discoveryValid) {
         throw new Error("Unexpected market registry");
       }
-      const cryptoCount = registry.targets.filter((target) => target.category === "crypto").length;
+      const top30Count = registry.top30?.assets?.length || 0;
+      const onChainCount = registry.top30?.assets?.filter((asset) => asset.targetId).length || 0;
       const stockCount = registry.targets.filter((target) => target.category === "bstock").length;
       // The accounting-token supply example comes from the reviewed repo configuration;
       // the original registry and rate snapshots remain untouched.
@@ -442,10 +472,11 @@
       } catch (error) { accountingNote = `${error.message}. The original catalog remains available.`; }
       S.registry = registry;
       $("#catalog-note").removeAttribute("aria-busy");
-      $("#catalog-note").textContent = `Design catalog: ${cryptoCount + stockCount} original assets (${cryptoCount} crypto / ${stockCount} bStocks). ${accountingNote} Listed ≠ approved.`;
+      $("#catalog-note").textContent = `Design catalog: top ${top30Count} crypto by market cap (${onChainCount} on BNB Chain) and ${stockCount} bStocks. ${accountingNote} Listed ≠ approved.`;
       loadYieldSnapshot();
       $("#registry-note").textContent = `${registry.targets.length} targets · swap liquidity at block ${registry.targets.find((target) => target.liquidity)?.liquidity?.verifiedAtBlock ?? "—"} · exact destinations rechecked before execution.`;
       draw();
+      refreshLiveStatus();
     })
     .catch((error) => {
       $("#target-list").removeAttribute("aria-busy");
@@ -458,6 +489,49 @@
 
   const formatApy = (apy) => apy > 0 && apy < 0.0001 ? "<0.01%" : `${(apy * 100).toFixed(2)}%`;
   const assetUrl = (name) => BAV.assetUrl(name);
+
+  // The bundled snapshot only changes when the site is rebuilt; past this age the page re-reads the same sources.
+  const LIVE_RATE_AFTER_MS = 60 * 60 * 1000;
+
+  let sharedRatesSource;
+  // rates-source.json names the shared rates service once it is deployed; without it every visitor reads directly.
+  function sharedRatesUrl() {
+    sharedRatesSource ||= fetch(assetUrl("rates-source.json"), { cache: "no-store" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((source) => (source?.schema === "bnb-agent-vaults/rates-source@1" && typeof source.sharedRatesUrl === "string" && source.sharedRatesUrl ? source.sharedRatesUrl : null))
+      .catch(() => null);
+    return sharedRatesSource;
+  }
+
+  function showRates(snapshot) {
+    S.yieldSnapshot = snapshot;
+    drawSelected();
+    drawPostPurchase();
+    refresh();
+  }
+
+  async function refreshRates(failure) {
+    const button = $("#refresh-yields");
+    button.disabled = true;
+    button.textContent = "Refreshing…";
+    try {
+      if (!S.registry) throw new Error("Market registry is still loading.");
+      S.yieldTools ||= await import(assetUrl("assets/yield-rates.mjs"));
+      const sharedUrl = await sharedRatesUrl();
+      if (sharedUrl) {
+        // The whole site shares one read; this visitor only reads the chain itself if the shared copy is missing or old.
+        const shared = await S.yieldTools.fetchSharedRates(sharedUrl).catch(() => null);
+        if (shared && !(Date.parse(S.yieldSnapshot?.fetchedAt) >= Date.parse(shared.fetchedAt))) showRates(shared);
+        if (shared && Date.now() - Date.parse(shared.fetchedAt) < LIVE_RATE_AFTER_MS) return;
+      }
+      showRates(await S.yieldTools.fetchYieldRates(S.registry));
+    } catch (error) {
+      $("#yield-update").textContent = failure(error.message);
+    } finally {
+      button.disabled = false;
+      button.textContent = "Refresh rates";
+    }
+  }
 
   async function loadYieldSnapshot() {
     try {
@@ -475,26 +549,14 @@
     drawSelected();
     drawPostPurchase();
     refresh();
+    // Missing, future-dated or hour-old snapshots trigger one live read; a failed read keeps the bundled snapshot.
+    const age = Date.now() - Date.parse(S.yieldSnapshot?.fetchedAt);
+    if (age >= 0 && age < LIVE_RATE_AFTER_MS) return;
+    $("#yield-update").textContent = "Rate snapshot is missing or over an hour old · reading live rates…";
+    await refreshRates((message) => `Live rate read failed: ${message}. Use Refresh rates to retry.`);
   }
 
-  $("#refresh-yields").addEventListener("click", async () => {
-    const button = $("#refresh-yields");
-    button.disabled = true;
-    button.textContent = "Refreshing…";
-    try {
-      if (!S.registry) throw new Error("Market registry is still loading.");
-      S.yieldTools ||= await import(assetUrl("assets/yield-rates.mjs"));
-      S.yieldSnapshot = await S.yieldTools.fetchYieldRates(S.registry);
-      drawSelected();
-      drawPostPurchase();
-      refresh();
-    } catch (error) {
-      $("#yield-update").textContent = `Refresh failed: ${error.message}`;
-    } finally {
-      button.disabled = false;
-      button.textContent = "Refresh rates";
-    }
-  });
+  $("#refresh-yields").addEventListener("click", () => refreshRates((message) => `Refresh failed: ${message}`));
 
   function compatibleMarkets(targetId) {
     return S.registry ? S.registry.yieldMarkets.filter((market) => market.targetId === targetId) : [];
@@ -508,15 +570,29 @@
     return key ? BAV.logo(key, "create-venue-logo") : "";
   };
   const shortAddress = (address) => `${address.slice(0, 6)}…${address.slice(-4)}`;
+  const holdRouteOf = (target) => target.holdSwap || target.swap;
+  // Lending needs the direct USDT pool; a hold uses the Top 30 route, which may pass through BNB.
+  const legRoute = (target, marketId) => (marketId ? target.swap : holdRouteOf(target));
+  const legLiquidity = (target, marketId) => (!marketId && target.holdSwap ? target.holdLiquidity : target.liquidity);
+  const liveStatus = (target, marketId) => S.live?.targets?.[target.id]?.[marketId ? "lend" : "hold"] || null;
+  // Why a Top 30 asset cannot be added right now, from the latest live read; null when it can or before the first read.
+  const catalogBlock = (target) => {
+    if (!target?.top30) return null;
+    if (!target.top30.feed) return "No reviewed Chainlink USD feed on BNB Chain";
+    const status = liveStatus(target, "");
+    return status && !status.ok ? status.reason : null;
+  };
+  const UNAVAILABLE_REASONS = { "not-on-bsc": "Not on BNB Chain", "no-usable-pool": "No usable PancakeSwap pool", "accounting-asset": "Accounting asset · supply source unavailable" };
   const targetStatus = (target) => {
     const count = compatibleMarkets(target.id).length;
     const destinationCount = `${count} ${count === 1 ? "destination" : "destinations"}`;
     if (target.accountingAsset) return `Accounting asset · direct supply, no swap · ${destinationCount}`;
     if (target.dynamic) return `Custom CA ${shortAddress(target.address)} · ${target.routeSelection?.mode === "pinned-pool" ? "Pinned pool" : "Verified discovery route"} · planning only`;
+    if (target.top30) return `Top 30 #${target.top30.rank} · hold ${routeName(target, holdRouteOf(target))} · ${destinationCount}`;
     const routing = target.swap?.protocol === "v3" && target.swap?.path?.length === 1 ? "Verified V3 direct pool" : `${routeName(target)} route`;
     return `${routing} · ${destinationCount}${target.category === "bstock" ? " · planning only" : ""}`;
   };
-  const routeName = (target) => !target.swap ? "Direct accounting-asset supply" : target.swap.protocol === "multi-hop" ? "Pancake via BNB" : (target.swap.protocol === "v2" ? "Pancake V2" : "Pancake V3");
+  const routeName = (target, swap = target.swap) => !swap ? "Direct accounting-asset supply" : swap.protocol === "multi-hop" ? "Pancake via BNB" : (swap.protocol === "v2" ? "Pancake V2" : "Pancake V3");
 
   function equalize() {
     const ids = [...S.selected.keys()];
@@ -533,28 +609,50 @@
   function drawTargets() {
     if (!S.registry) return;
     const query = S.search.toLowerCase();
-    const targets = S.registry.targets.filter((target) => {
-      const typeMatch = S.filter === "all" || target.category === S.filter;
-      const textMatch = !query || `${displayName(target)} ${target.symbol} ${target.ticker} ${target.underlyingName || ""} ${target.address}`.toLowerCase().includes(query);
-      return typeMatch && textMatch;
-    });
-    $("#target-count").textContent = `${targets.length} assets${targets.length > 5 ? " · Scroll to browse" : ""}`;
+    const matches = (text) => !query || text.toLowerCase().includes(query);
+    const top30 = S.registry.top30?.assets || [];
+    const listed = new Set(top30.map((asset) => asset.targetId).filter(Boolean));
+    const others = S.registry.targets.filter((target) => !listed.has(target.id) && (S.filter === "all" || target.category === S.filter));
+    // Every Top 30 rank in order, including the ones that cannot trade here, so a missing asset always shows why.
+    const rows = [
+      ...others.filter((target) => target.dynamic).map((target) => ({ asset: null, target })),
+      ...(S.filter === "bstock" ? [] : top30.map((asset) => ({ asset, target: asset.targetId ? S.registry.targets.find((candidate) => candidate.id === asset.targetId) || null : null }))),
+      ...others.filter((target) => !target.dynamic).map((target) => ({ asset: null, target })),
+    ].filter(({ asset, target }) => matches(target ? `${displayName(target)} ${target.symbol} ${target.ticker} ${target.underlyingName || ""} ${target.name || ""} ${target.address}` : `${asset.name} ${asset.symbol}`));
+    $("#target-count").textContent = `${rows.length} assets${rows.length > 5 ? " · Scroll to browse" : ""}`;
     $("#target-list").removeAttribute("aria-busy");
-    $("#target-list").innerHTML = targets.map((target) => {
+    $("#target-list").innerHTML = rows.map(({ asset, target }) => {
+      const rank = asset ? `#${asset.rank} · ` : "";
+      if (!target) {
+        const reason = UNAVAILABLE_REASONS[asset.reason] || "Unavailable";
+        return `<label class="mkt create-cat-row off" title="${esc(reason)}"><input type="checkbox" disabled aria-label="${esc(`${asset.name} unavailable: ${reason}`)}"><span class="create-cat-asset"><b>${esc(asset.symbol)}</b><small>${esc(asset.name)} · ${rank}Crypto</small></span><span class="create-cat-liq">—</span><span class="create-cat-lend"><span class="create-cat-reason">${esc(reason)}</span></span><span class="asset-toggle">N/A</span></label>`;
+      }
       const checked = S.selected.has(target.id);
-      const full = S.selected.size >= S.registry.policy.maxTargets;
+      const full = S.selected.size >= Math.min(7, S.registry.policy.maxTargets);
+      const blocked = catalogBlock(target);
+      const status = liveStatus(target, "");
       const planOnly = target.dynamic || target.category === "bstock";
       const lenders = [...new Set(compatibleMarkets(target.id).map((market) => market.protocol))];
-      return `<label class="mkt create-cat-row ${checked ? "selected" : "off"}" title="${esc(targetStatus(target))}"><input type="checkbox" data-target="${esc(target.id)}" ${checked ? "checked" : ""} ${full && !checked ? "disabled" : ""} aria-label="${checked ? "Remove" : "Add"} ${esc(assetName(target))}"><span class="create-cat-asset"><b>${esc(target.symbol)}</b><small>${esc(assetName(target))} · ${target.category === "bstock" ? "bStock" : "Crypto"}${planOnly ? ` <em class="create-plan-tag">Plan only</em>` : ""}</small></span><span class="create-cat-liq">${target.accountingAsset ? "No swap" : esc(formatUsd(target.liquidity?.usd))}</span><span class="create-cat-lend">${lenders.length ? lenders.map((protocol) => `<span class="create-venue-chip">${venueLogo(protocol)}${esc(protocol)}</span>`).join("") : `<span class="create-cat-none">Hold only</span>`}</span><span class="asset-toggle">${checked ? "Added" : full ? "Max 10" : "Add"}</span></label>`;
+      const liquidity = target.accountingAsset ? "No swap" : esc(formatUsd(status?.liquidityUsd ?? legLiquidity(target, "")?.usd));
+      const live = !target.top30 || target.accountingAsset ? "" : status?.ok
+        ? `<small class="create-cat-max${status.thin ? " thin" : ""}">${status.thin ? "Thin · " : ""}max ${esc(formatUsd(status.maxOrderUsd))}/order</small>`
+        : !S.live && !blocked ? `<small class="create-cat-max">${S.liveError ? "Live status unavailable" : "Checking live status…"}</small>` : "";
+      // Lending legs use the direct USDT pool, which can be refused while the hold route trades.
+      const lendStatus = target.top30 && lenders.length ? liveStatus(target, compatibleMarkets(target.id)[0].id) : null;
+      const lendNote = lendStatus && !lendStatus.ok ? ` <span class="create-cat-none" title="${esc(`Lending route: ${lendStatus.reason}`)}">${lendStatus.state === "needs-history" ? "Lending pool history pending" : lendStatus.state === "fee-too-high" ? "Lending pool fee too high" : "Lending route unavailable"}</span>` : "";
+      const lend = blocked ? `<span class="create-cat-reason">${esc(blocked)}</span>` : lenders.length ? lenders.map((protocol) => `<span class="create-venue-chip">${venueLogo(protocol)}${esc(protocol)}</span>`).join("") + lendNote : `<span class="create-cat-none">Hold only</span>`;
+      const title = `${targetStatus(target)}${blocked ? ` · ${blocked}` : status?.ok ? ` · ${status.reason}` : ""}`;
+      return `<label class="mkt create-cat-row ${checked ? "selected" : "off"}" title="${esc(title)}"><input type="checkbox" data-target="${esc(target.id)}" ${checked ? "checked" : ""} ${(full || blocked) && !checked ? "disabled" : ""} aria-label="${checked ? "Remove" : blocked ? `${esc(assetName(target))} unavailable: ${esc(blocked)}. Add` : "Add"} ${esc(assetName(target))}"><span class="create-cat-asset"><b>${esc(target.symbol)}</b><small>${esc(assetName(target))} · ${rank}${target.category === "bstock" ? "bStock" : "Crypto"}${planOnly ? ` <em class="create-plan-tag">Plan only</em>` : ""}</small></span><span class="create-cat-liq">${liquidity}${live}</span><span class="create-cat-lend">${lend}</span><span class="asset-toggle">${checked ? "Added" : blocked ? "N/A" : full ? "Max 7" : "Add"}</span></label>`;
     }).join("") || `<div class="allocation-empty">No target matches this filter.</div>`;
     $$('[data-target]').forEach((input) => input.addEventListener("change", () => {
       if (input.checked) {
-        if (S.selected.size >= S.registry.policy.maxTargets) {
+        const target = S.registry.targets.find((candidate) => candidate.id === input.dataset.target);
+        const blocked = catalogBlock(target);
+        if (blocked || S.selected.size >= Math.min(7, S.registry.policy.maxTargets)) {
           input.checked = false;
-          toast(`Maximum ${S.registry.policy.maxTargets} targets`);
+          toast(blocked ? `${displayName(target)}: ${blocked}` : `Maximum ${Math.min(7, S.registry.policy.maxTargets)} targets`);
           return;
         }
-        const target = S.registry.targets.find((candidate) => candidate.id === input.dataset.target);
         S.selected.set(input.dataset.target, { weightBps: 0, marketId: target.accountingAsset ? compatibleMarkets(target.id)[0]?.id || "" : "", capBps: 7000 });
         equalize();
       } else {
@@ -573,18 +671,22 @@
     drawnLegs = new Set(S.selected.keys());
     const rows = [...S.selected.entries()].map(([id, selected]) => {
       const target = S.registry.targets.find((candidate) => candidate.id === id);
-      const routing = target.routeSelection?.mode === "pinned-pool" ? "Pinned pool" : "Best route";
-      const poolFee = target.routeSelection?.fee ?? target.swap?.path?.[0]?.fee;
+      const route = legRoute(target, selected.marketId);
+      const routing = target.routeSelection?.mode === "pinned-pool" ? "Pinned pool" : target.top30 ? (route === target.swap ? "Direct USDT pool" : "Top 30 hold route") : "Best route";
+      const poolFee = target.routeSelection?.fee ?? route?.path?.reduce((sum, hop) => sum + hop.fee, 0);
       const fee = Number.isFinite(poolFee) ? `${poolFee / 10000}% fee` : "fee unavailable";
-      const pool = target.routeSelection?.poolAddress || target.swap?.poolAddress;
+      const pool = target.routeSelection?.poolAddress || route?.poolAddress;
+      const status = target.top30 ? liveStatus(target, selected.marketId) : null;
+      const tvl = target.top30 ? `${formatUsd(status?.liquidityUsd ?? legLiquidity(target, selected.marketId)?.usd)} TVL` : `${formatUsd(target.liquidity?.usd)} TVL`;
       const markets = compatibleMarkets(id);
       const protocolCount = markets.reduce((counts, market) => ({ ...counts, [market.protocol]: (counts[market.protocol] || 0) + 1 }), {});
       const sits = [...(target.accountingAsset ? [] : [{ id: "", name: "Hold", logo: '<span class="create-hold-ic" aria-hidden="true"></span>', aria: "Hold in vault" }]), ...markets.map((market) => {
         const apy = S.yieldTools?.currentRate(S.yieldSnapshot, market);
-        return { id: market.id, name: protocolCount[market.protocol] > 1 ? market.label : market.protocol, logo: venueLogo(market.protocol), rate: apy == null ? "" : formatApy(apy), aria: `${market.protocol} · ${market.label}` };
+        const lending = target.top30 ? liveStatus(target, market.id) : null;
+        return { id: market.id, name: protocolCount[market.protocol] > 1 ? market.label : market.protocol, logo: venueLogo(market.protocol), rate: lending && !lending.ok ? "Route unavailable" : apy == null ? "" : formatApy(apy), aria: `${market.protocol} · ${market.label}${lending && !lending.ok ? ` · lending route: ${lending.reason}` : ""}` };
       })];
       const where = `<div class="create-sits" role="radiogroup" aria-label="Where ${esc(displayName(target))} sits">${sits.map((option) => `<button type="button" role="radio" aria-checked="${selected.marketId === option.id}" data-sits-target="${esc(id)}" data-sits-market="${esc(option.id)}" aria-label="${esc(option.aria)}" title="${esc(option.aria)}">${option.logo}<span>${esc(option.name)}</span>${option.rate ? `<small>${esc(option.rate)}</small>` : ""}</button>`).join("")}</div>`;
-      return `<div class="launch-leg create-selected-leg" data-selected="${esc(id)}"><div class="create-leg-identity"><b>${esc(target.symbol)}</b><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(assetName(target))}${target.dynamic || target.category === "bstock" ? " · plan only" : ""}</small></div>${where}<label class="field create-leg-cap"><span>Investment limit</span><div class="suffix"><input data-cap="${esc(id)}" value="${(selected.capBps ?? 7000) / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} investment limit"><b>%</b></div></label><button type="button" class="rm" data-remove="${esc(id)}" aria-label="Remove ${esc(assetName(target))}">×</button><details class="create-leg-details"><summary>Weight <b data-weight-label="${esc(id)}">${selected.weightBps / 100}%</b> · route</summary><label class="field create-leg-weight"><span>Strategy weight</span><div class="suffix"><input data-weight="${esc(id)}" value="${selected.weightBps / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} strategy weight"><b>%</b></div></label><span title="${esc(target.address)}">CA ${esc(shortAddress(target.address))}</span><span>${target.accountingAsset ? "No swap or pool-liquidity requirement; exact lending-market checks still apply." : `${routing} · ${esc(fee)} · ${formatUsd(target.liquidity?.usd)} TVL · ${esc(routeName(target))}`}</span>${pool ? `<span title="${esc(pool)}">Pool ${esc(shortAddress(pool))}</span>` : ""}</details></div>`;
+      return `<div class="launch-leg create-selected-leg" data-selected="${esc(id)}"><div class="create-leg-identity"><b>${esc(target.symbol)}</b><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(assetName(target))}${target.dynamic || target.category === "bstock" ? " · plan only" : ""}</small></div>${where}<label class="field create-leg-cap"><span>Investment limit</span><div class="suffix"><input data-cap="${esc(id)}" value="${(selected.capBps ?? 7000) / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} investment limit"><b>%</b></div></label><button type="button" class="rm" data-remove="${esc(id)}" aria-label="Remove ${esc(assetName(target))}">×</button><details class="create-leg-details"><summary>Weight <b data-weight-label="${esc(id)}">${selected.weightBps / 100}%</b> · route</summary><label class="field create-leg-weight"><span>Strategy weight</span><div class="suffix"><input data-weight="${esc(id)}" value="${selected.weightBps / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} strategy weight"><b>%</b></div></label><span title="${esc(target.address)}">CA ${esc(shortAddress(target.address))}</span><span>${target.accountingAsset ? "No swap or pool-liquidity requirement; exact lending-market checks still apply." : `${routing} · ${esc(fee)} · ${esc(tvl)} · ${esc(routeName(target, route))}`}</span>${pool ? `<span title="${esc(pool)}">Pool ${esc(shortAddress(pool))}</span>` : ""}${status ? `<span class="${status.ok ? "" : "planning-note"}">Live: ${esc(status.reason)}</span>` : ""}</details></div>`;
     });
     $("#selected-list").innerHTML = rows.join("") || `<div class="allocation-empty">Select at least one crypto or bStock target.</div>`;
     added.forEach((id) => BAV.replay($$('[data-selected]').find((leg) => leg.dataset.selected === id), "bav-row-in"));
@@ -690,7 +792,7 @@
         category: target.category,
         tokenAddress: target.address,
         weightBps: selected.weightBps,
-        swap: target.swap,
+        swap: legRoute(target, selected.marketId),
         routing: target.routeSelection || { mode: "registry-pinned" },
         discovery: target.discovery || null,
         postPurchase: market ? {
@@ -724,16 +826,16 @@
         end: scheduleEnd,
         missedExecutionPolicy: "skip",
         editPolicy: "next-cycle",
-        executionCountPolicy: "successful-buys-only",
-        calendarPolicy: { daylightSaving: "preserve-local-time", invalidMonthDay: "last-valid-day" },
+        executionCountPolicy: "slots-close-on-completion-or-expiry",
+        calendarPolicy: { basis: "UTC-fixed-elapsed-seconds", monthDays: 30, daylightSaving: "UTC-unchanged" },
       },
       drawdown: {
         enabled: $("#dip-on").checked,
         thresholdBps: Math.round(num($("#dip").value) * 100),
-        reference: "last-executed-basket-index",
+        reference: "per-leg-running-high-since-seed-or-resume",
         resetAfterSuccessfulBuy: true,
       },
-      sharedCooldownHours: 24,
+      perLegCooldownHours: 24,
       maxDeploymentBps: 9500,
       insufficientCashPolicy: "skip-no-catch-up",
     };
@@ -743,26 +845,20 @@
       trigger: {
         type: $("#rebalance-trigger").value,
         driftBps: Math.round(num($("#rebalance-drift").value) * 100),
-        ...($("#rebalance-trigger").value === "scheduled" ? {
-          cadence: { every: Math.round(num($("#rebalance-interval").value)), unit: $("#rebalance-unit").value },
-          startAt: localDateToIso($("#rebalance-start").value),
-          timeZone: $("#schedule-timezone").textContent,
-          missedCheckPolicy: "skip",
-        } : {}),
         driftReference: "absolute-target-weight",
         activation: "any-target-exceeds",
       },
       cashflowFirst: true,
-      maxTurnoverBps: Math.round(num($("#rebalance-turnover").value) * 100),
-      cooldownHours: 24,
+      quotaBasis: "deployed-token-exposure-per-strategy-interval",
+      buybackFunding: "actual-sales-proceeds-only",
       minTradeUsd: 10,
       preflightAllLegs: true,
       turnoverDefinition: "gross-traded-notional",
     } : { enabled: false };
     return {
-      schema: "bnb-agent-vaults/manifest@0.8",
+      schema: "bnb-agent-vaults/manifest@1.0",
       referenceOnly: true, deploymentEligible: false,
-      historicalFieldNotes: { postPurchaseFallback: "Historical planning field only. Continuous vault swap/supply failure reverts the entire action.", creatorPerformancePct: "Gross total performance fee before the fixed 10% protocol share; not an additional creator-only fee." },
+      historicalFieldNotes: { postPurchaseFallback: "Historical planning field only. Continuous vault swap/supply failure reverts the entire action.", creatorPerformancePct: "Creator fee on each holder’s realized profit; the protocol charges a separate fixed 10%." },
       chainId: 56,
       identity: { name: $("#name").value.trim(), symbol: $("#symbol").textContent, note: $("#note").value.trim(), noteBinding: false },
       denomination: S.registry.quoteAsset,
@@ -771,25 +867,25 @@
       execution,
       rebalancing,
       portfolio: { targets },
-      fees: { creatorPerformancePct: num($("#pf").value), creatorManagementPct: num($("#mf").value), highWaterMark: "vault-level", entryFeePct: 0, exitFeePct: 0 },
-      seed: { amount: num($("#seed").value), asset: "USDT", lockDays: 90, creatorSeedSharesOnly: true },
+      fees: { creatorPerformancePct: num($("#pf").value), protocolPerformancePct: 10, creatorManagementPct: num($("#mf").value), performanceFeeBasis: "per-holder-realized-profit", costBasis: "per-holder", entryFeePct: 0.5, operationFeePct: 0.1, operationAnnualCapPct: 1, exitFeePct: 0 },
+      seed: { amount: num($("#seed").value), asset: "USDT", timeLocked: false, minimumLiveOwnershipPct: 2 },
       riskControls: {
         minIdleBps: 500,
         maxSlippageBps: 100,
         maxTradePoolTvlBps: 10,
         bstockOracleMaxAgeSeconds: 3900,
-        maxOracleDeviationBps: 200,
+        maxOracleDeviationBps: 100,
         marketRevalidation: "before-every-deposit",
         portfolioDrawdownPause: {
-          enabled: $("#drawdown-pause-on").checked,
-          thresholdBps: Math.round(num($("#drawdown-pause").value) * 100),
+          enabled: false,
+          thresholdBps: 2000,
           reference: "settled-nav-high-water-mark",
           action: "pause-new-automated-orders",
           resume: "manual",
         },
         arbitraryCalls: false,
       },
-      forkDryRun: "not run — reference planner only",
+      forkDryRun: "not run",
     };
   }
 
@@ -802,6 +898,13 @@
       const target = S.registry.targets.find((candidate) => candidate.id === id);
       return target?.dynamic && !(target.discovery?.exactPair && target.swap?.path?.length && target.liquidity?.usd > 0);
     })) out.push(["s-1", "A custom token route has not passed the on-chain pool checks."]);
+    // The live read mirrors what the vault refuses on chain; a refused route cannot be part of the design.
+    for (const [id, row] of S.selected.entries()) {
+      const target = S.registry?.targets.find((candidate) => candidate.id === id);
+      if (!target?.top30) continue;
+      if (!target.top30.feed) out.push(["s-1", `${displayName(target)} has no reviewed Chainlink USD feed, so the vault cannot price it.`]);
+      else if (liveStatus(target, row.marketId)?.ok === false) out.push(["s-1", `${displayName(target)}${row.marketId ? " lending route" : ""}: ${liveStatus(target, row.marketId).reason}.`]);
+    }
     const total = [...S.selected.values()].reduce((sum, row) => sum + row.weightBps, 0);
     const caps = [...S.selected.values()].map((row) => row.capBps);
     if (caps.some((cap) => !Number.isInteger(cap) || cap < 0 || cap > 9500)) out.push(["s-1", "Each investment limit must be 0–95% of vault value, with at most two decimal places."]);
@@ -822,7 +925,13 @@
       for (const [id, row] of S.selected.entries()) {
         const target = S.registry.targets.find((candidate) => candidate.id === id);
         const initialOrderUsd = num($("#seed").value) * deploymentBps / 10000 * row.weightBps / 10000;
-        const capacityUsd = target?.liquidity?.usd * 0.001;
+        const status = target?.top30 ? liveStatus(target, row.marketId) : null;
+        if (status) {
+          if (status.ok && initialOrderUsd > status.maxOrderUsd) out.push(["s-1", `${displayName(target)} initial order ${formatUsd(initialOrderUsd)} is above the live max ${formatUsd(status.maxOrderUsd)} per order (0.1% of pool depth).`]);
+          continue;
+        }
+        // Before the first live read (or if it failed), the snapshot TVL bounds the order.
+        const capacityUsd = (target && legLiquidity(target, row.marketId))?.usd * 0.001;
         if (Number.isFinite(capacityUsd) && initialOrderUsd > capacityUsd) {
           out.push(["s-1", `${displayName(target)} initial order exceeds the 0.1% pool-TVL limit.`]);
         }
@@ -838,25 +947,34 @@
         const endAt = Date.parse($("#schedule-end-date").value);
         if (!Number.isFinite(endAt) || endAt <= startAt) out.push(["s-2", "Schedule end must be after the start."]);
       }
-      if ($("#dip-on").checked && !(num($("#dip").value) >= 1 && num($("#dip").value) <= 30)) out.push(["s-2", "Drawdown trigger must be between 1% and 30%."]);
-      if (!(num($("#tranche").value) >= 1 && num($("#tranche").value) <= 25)) out.push(["s-2", "Tranche size must be between 1% and 25%."]);
+      if ($("#dip-on").checked && !(num($("#dip").value) >= 3 && num($("#dip").value) <= 30)) out.push(["s-2", "Dip trigger must be between 3% and 30%."]);
+      if (tranchePercentageNeeded() && !(num($("#tranche").value) >= 1 && num($("#tranche").value) <= 25)) out.push(["s-2", "Tranche size must be between 1% and 25%."]);
     }
     if ($("#rebalance-on").checked) {
-      if (!(num($("#rebalance-drift").value) >= 1 && num($("#rebalance-drift").value) <= 20)) out.push(["s-2", "Rebalance drift must be between 1% and 20%."]);
-      if ($("#rebalance-trigger").value === "scheduled" && !validCadence($("#rebalance-interval").value, $("#rebalance-unit").value)) out.push(["s-2", "Choose a valid rebalance schedule."]);
-      if ($("#rebalance-trigger").value === "scheduled" && (!Number.isFinite(Date.parse($("#rebalance-start").value)) || Date.parse($("#rebalance-start").value) <= Date.now())) out.push(["s-2", "Rebalance schedule start must be in the future."]);
-      if ($("#rebalance-method").value === "full" && !(num($("#rebalance-turnover").value) >= 1 && num($("#rebalance-turnover").value) <= 25)) out.push(["s-2", "Maximum rebalance turnover must be between 1% and 25% of current vault value."]);
-      if ($("#rebalance-method").value === "full" && [...S.selected.values()].some((row) => row.marketId)) out.push(["s-2", "Full rebalancing requires assets to stay in the portfolio. Use cashflow-only or remove yield destinations."]);
+      if (!(num($("#rebalance-drift").value) >= 5 && num($("#rebalance-drift").value) <= 20)) out.push(["s-2", "Rebalance drift must be between 5% and 20%."]);
     }
-    if ($("#drawdown-pause-on").checked && !(num($("#drawdown-pause").value) >= 5 && num($("#drawdown-pause").value) <= 50)) out.push(["s-2", "Portfolio drawdown pause must be between 5% and 50%."]);
     if (!$("#name").value.trim()) out.push(["s-3", "Name the vault."]);
-    if (!(num($("#pf").value) >= 0 && num($("#pf").value) <= 30)) out.push(["s-3", "Performance fee must be 0–30%."]);
+    if (!(num($("#pf").value) >= 0 && num($("#pf").value) <= 20)) out.push(["s-3", "Performance fee must be 0–20%."]);
     if (num($("#mf").value) !== 0) out.push(["s-3", "Management fees are not supported by this vault."]);
     if (num($("#seed").value) !== 100) out.push(["s-3", "The creator seed is exactly 100 USDT."]);
     return out;
   }
 
+  function finiteSchedule() {
+    return S.mode === "accumulate" && $("#schedule-on").checked && $("#schedule-end").value !== "until-stopped";
+  }
+  function tranchePercentageNeeded() {
+    return S.mode === "accumulate" && (!finiteSchedule() || $("#dip-on").checked);
+  }
+  function updateTrancheControls() {
+    const finite = finiteSchedule();
+    $("#tranche-field").classList.toggle("hide", !tranchePercentageNeeded());
+    $("#finite-tranche-note").classList.toggle("hide", !finite);
+    $("#tranche").disabled = !tranchePercentageNeeded();
+    $("#tranche-label").textContent = finite ? "Dip tranche · 1–25% of available cash" : "Tranche size · 1–25% of available cash";
+  }
   function refresh() {
+    updateTrancheControls();
     const total = [...S.selected.values()].reduce((sum, row) => sum + row.weightBps, 0);
     const marketCount = [...S.selected.values()].filter((row) => row.marketId).length;
     const errors = problems();
@@ -920,7 +1038,7 @@
     $("#review-design-checks").innerHTML = [
       [`Basket · ${assetCount}`, stepOk(1), stepOk(1) ? `Caps ${capLabel} of 95%` : "Fix in step 1", "Design is structurally complete. Live approval and simulation are checked separately; this is not a fork audit."],
       [`Buying · ${planLabel}`, stepOk(2), !stepOk(2) ? "Fix in step 2" : S.mode === "agent-managed" && !$("#rebalance-on").checked ? "Within every limit" : "Plan only", ""],
-      [`Performance fee ${$("#pf").value || "—"}%`, stepOk(3), stepOk(3) ? "Within 0–30%" : "Fix in step 3", ""],
+      [`Performance fee ${$("#pf").value || "—"}%`, stepOk(3), stepOk(3) ? "Within 0–20%" : "Fix in step 3", ""],
     ].map(([label, ok, state, note]) => `<div class="create-check ${ok ? "ok" : "bad"}"><span class="create-check-mark" aria-hidden="true">${ok ? "✓" : "!"}</span><span class="create-check-copy"><b>${esc(label)}</b>${note ? `<small>${esc(note)}</small>` : ""}</span><span class="create-check-state">${esc(state)}</span></div>`).join("");
     $("#sign").disabled = errors.length > 0 || S.launched;
     $("#sign").textContent = S.launched ? "Reference exported" : "Recheck routes & export reference";
@@ -935,8 +1053,8 @@
       : "Select crypto or bStocks, then choose how to buy and where each asset goes.";
     $("#meta").innerHTML = `<span class="tag">${esc(planLabel)}</span><span class="tag">${S.selected.size} targets</span><span class="tag">${$("#rebalance-on").checked ? "Rebalance on" : "No rebalance"}</span><span class="tag">5% idle</span>`;
     $("#rules").innerHTML = [
-      ["Buy", "Strategy weights guide the agent’s plan; the contract enforces each investment limit as a share of current vault value."],
-      ["Automation", S.mode === "agent-managed" && !$("#rebalance-on").checked ? "Agent-managed execution. No contract schedule or automatic rebalance." : "Requested automation is design-only; live launch is unavailable."],
+      ["Buy", "Agent orders obey each investment limit. Onchain programs use the exact committed strategy weights, time windows and per-leg quotas."],
+      ["Automation", S.mode === "agent-managed" && !$("#rebalance-on").checked ? "Agent-managed execution with onchain risk gates." : "Exact onchain Rules tuple; eligible chunks require a keeper transaction."],
       ["Destination", marketCount ? "Use only the selected exact-asset market. Failed supply reverts; there is no automatic fallback destination." : "Hold purchased assets in the portfolio."],
       ["Guard", "Recheck the asset, listing/pause state and deposit capacity before every deposit."],
     ].map(([label, value]) => `<li><b>${label}</b><span>${esc(value)}</span></li>`).join("");
@@ -950,14 +1068,15 @@
       const target = S.registry.targets.find((candidate) => candidate.id === id);
       const market = row.marketId ? compatibleMarkets(id).find((candidate) => candidate.id === row.marketId) : null;
       const destination = market ? { mode: market.kind, protocol: market.protocol, marketAddress: market.marketAddress } : { mode: "hold" };
-      const swap = target.swap ? { protocol: target.swap.protocol, poolAddress: target.swap.poolAddress, fee: target.swap.fee,
-        path: target.swap.path.map((hop) => ({ tokenIn: hop.tokenIn, tokenOut: hop.tokenOut, protocol: hop.protocol, poolAddress: hop.poolAddress, fee: hop.fee })) } : null;
+      const route = legRoute(target, row.marketId);
+      const swap = route ? { protocol: route.protocol, poolAddress: route.poolAddress, fee: route.fee,
+        path: route.path.map((hop) => ({ tokenIn: hop.tokenIn, tokenOut: hop.tokenOut, protocol: hop.protocol, poolAddress: hop.poolAddress, fee: hop.fee })) } : null;
       return { token: target.address, symbol: displayName(target), strategyWeightBps: row.weightBps, swap, destination,
         capBps: row.capBps ?? 7000, marketLabel: market?.label || "Hold in vault" };
     }) : [];
     return { manifest, issues: problems().map(([, message]) => message), positions,
       selection: { chainId: S.registry?.chainId || 56, accountingAsset: S.registry?.quoteAsset?.address || null, positions: positions.map(({ token, swap, destination, capBps }) => ({ token, swap, destination, capBps })),
-        automation: { mode: S.mode, rebalancingEnabled: $("#rebalance-on").checked || $("#drawdown-pause-on").checked },
+        automation: { mode: S.mode, rebalancingEnabled: $("#rebalance-on").checked },
         managementFeeBps: Math.round(num($("#mf").value) * 100), seedAmount: $("#seed").value.trim() } };
   }
   BAV.assetDesign = assetDesign;
@@ -1108,11 +1227,13 @@
     showCaStatus("Checking the token and Pancake routes on BNB Chain.", false);
     try {
       const target = await discoverContractTarget(address, false, requestedPoolAddress);
+      const blocked = !target.dynamic && !S.selected.has(target.id) && catalogBlock(target);
+      if (blocked) throw new Error(`${displayName(target)} cannot be added right now: ${blocked}.`);
       const targetIndex = S.registry.targets.findIndex((candidate) => candidate.id === target.id);
       if (targetIndex === -1) S.registry.targets.unshift(target);
       else if (target.dynamic) S.registry.targets.splice(targetIndex, 1, target);
       if (!S.selected.has(target.id)) {
-        if (S.selected.size >= S.registry.policy.maxTargets) throw new Error(`Maximum ${S.registry.policy.maxTargets} targets.`);
+        if (S.selected.size >= Math.min(7, S.registry.policy.maxTargets)) throw new Error(`Maximum ${Math.min(7, S.registry.policy.maxTargets)} targets.`);
         S.selected.set(target.id, { weightBps: 0, marketId: target.accountingAsset ? compatibleMarkets(target.id)[0]?.id || "" : "", capBps: 7000 });
         equalize();
       }
@@ -1169,7 +1290,7 @@
   };
   const cadenceMax = { days: 365, weeks: 52, months: 12 };
   const validCadence = (value, unit) => Number.isInteger(num(value)) && num(value) >= 1 && num(value) <= cadenceMax[unit];
-  const nextHour = new Date(Date.now() + 60 * 60 * 1000);
+  const nextHour = new Date(Math.ceil((Date.now() + 60 * 60 * 1000) / 3600000) * 3600000);
   nextHour.setMinutes(0, 0, 0);
   $("#schedule-start").value = toLocalDateInput(nextHour);
   $("#rebalance-start").value = toLocalDateInput(nextHour);
@@ -1178,7 +1299,7 @@
   $("#schedule-end-date").value = toLocalDateInput(defaultEnd);
   $("#schedule-timezone").textContent = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
 
-  ["interval", "schedule-start", "schedule-count", "schedule-end-date", "dip", "tranche", "rebalance-drift", "rebalance-interval", "rebalance-start", "rebalance-turnover", "drawdown-pause", "name", "note", "pf", "mf", "seed"].forEach((id) => $("#" + id).addEventListener("input", () => { S.forkPassed = false; refresh(); }));
+  ["interval", "schedule-start", "schedule-count", "schedule-end-date", "dip", "tranche", "rebalance-drift", "rebalance-interval", "rebalance-start", "rebalance-turnover", "name", "note", "pf", "mf", "seed"].forEach((id) => $("#" + id).addEventListener("input", () => { S.forkPassed = false; refresh(); }));
   ["interval-unit", "schedule-end", "rebalance-method", "rebalance-trigger", "rebalance-unit"].forEach((id) => $("#" + id).addEventListener("change", () => {
     $("#schedule-count-field").classList.toggle("hide", $("#schedule-end").value !== "after-executions");
     $("#schedule-end-date-field").classList.toggle("hide", $("#schedule-end").value !== "on-date");
@@ -1198,19 +1319,20 @@
     S.forkPassed = false;
     refresh();
   });
-  $("#drawdown-pause-on").addEventListener("change", () => {
-    $("#drawdown-pause").disabled = !$("#drawdown-pause-on").checked;
-    S.forkPassed = false;
-    refresh();
-  });
   $("#toggle-json").addEventListener("click", () => $("#json").classList.toggle("hide"));
   $("#sign").addEventListener("click", async () => {
     if (problems().length) return;
     $("#sign").disabled = true;
-    const steps = ["Recheck custom token and pool addresses", "Export reference plan (execution unavailable)"];
+    const steps = ["Recheck live pool and price-feed status", "Recheck custom token and pool addresses", "Export reference plan (execution unavailable)"];
     $("#steps").innerHTML = steps.map((step) => `<li><i></i><span>${esc(step)}</span></li>`).join("");
     const rows = $$("#steps li");
     try {
+      if ([...S.selected.keys()].some((id) => S.registry.targets.find((target) => target.id === id)?.top30)) {
+        await refreshLiveStatus();
+        if (S.liveError) throw new Error(`Live pool status could not be read (${S.liveError}). Try again shortly.`);
+        const issue = problems()[0];
+        if (issue) throw new Error(issue[1]);
+      }
       const customTargets = [...S.selected.keys()].map((id) => S.registry.targets.find((target) => target.id === id)).filter((target) => target?.dynamic);
       const fresh = await Promise.all(customTargets.map((target) => discoverContractTarget(
         target.address,
@@ -1306,12 +1428,22 @@
   const readableStatus = (message) => String(message).replace(/0x[\da-fA-F]{64}\b|0x[\da-fA-F]{40}\b/g, (address) => `${address.slice(0, 8)}…${address.slice(-6)}`);
   let pendingLaunch = null, checkingReceipt = false;
   try {
-    const stored = JSON.parse(sessionStorage.getItem(PENDING_KEY) || "null");
-    if (stored && HASH_RE.test(stored.hash) && Number.isInteger(stored.chainId) && /^0x[\da-fA-F]{40}$/.test(stored.factory) && /^0x[\da-fA-F]{40}$/.test(stored.account)) pendingLaunch = stored;
+    const stored = JSON.parse(localStorage.getItem(PENDING_KEY) || "null");
+    if (stored && (!stored.hash || HASH_RE.test(stored.hash)) && Number.isInteger(stored.chainId) && /^0x[\da-fA-F]{40}$/.test(stored.factory) && /^0x[\da-fA-F]{40}$/.test(stored.account)) pendingLaunch = stored;
   } catch (_) { /* Disabled or malformed storage never enables signing. */ }
-  const launchUnresolved = () => pendingLaunch && pendingLaunch.state !== "reverted";
+  const launchUnresolved = () => pendingLaunch && !["confirmed", "rejected", "reverted", "finalized", "cancelled", "released-unknown"].includes(pendingLaunch.state);
   function savePending() {
-    try { if (pendingLaunch) sessionStorage.setItem(PENDING_KEY, JSON.stringify(pendingLaunch)); else sessionStorage.removeItem(PENDING_KEY); } catch (_) { /* In-memory guard still applies. */ }
+    try { if (pendingLaunch) localStorage.setItem(PENDING_KEY, JSON.stringify(pendingLaunch)); else localStorage.removeItem(PENDING_KEY); } catch (_) { /* In-memory guard still applies. */ }
+  }
+  function syncCachedLaunch(records, connectedAccount) {
+    if (!pendingLaunch?.intentId || connectedAccount && pendingLaunch.account?.toLowerCase() !== connectedAccount.toLowerCase()) return;
+    const saved = records.find(item => item.id === pendingLaunch.intentId && item.chainId === pendingLaunch.chainId && item.from.toLowerCase() === pendingLaunch.account.toLowerCase());
+    if (!saved || !["confirmed", "finalized", "reverted", "rejected", "cancelled", "released-unknown"].includes(saved.state)) return;
+    pendingLaunch.state = saved.state; pendingLaunch.hash = saved.hash || pendingLaunch.hash;
+    pendingLaunch.message = saved.state === "released-unknown"
+      ? "This local signing guard was released in another tab. Outcome remains unknown; a delayed transaction may still execute. Reconnect, refresh the quote and review a new transaction."
+      : `Saved ${saved.stage} request is ${saved.state}. ${saved.message || "Check the recorded wallet history before preparing a new transaction."}`;
+    savePending();
   }
   function submittedLaunch(hash) {
     const context = activeLaunchContext;
@@ -1327,12 +1459,16 @@
         if (record?.hash?.toLowerCase() === hash.toLowerCase() && record.chainId === context.chainId) { operationStorageKey = key; break; }
       }
     } catch (_) { /* Storage may be disabled. */ }
-    pendingLaunch = { hash, ...context, operationStorageKey, state: "submitted", message: "Submitted. Waiting for the SDK to verify the receipt; do not submit again." };
+    pendingLaunch = { hash, ...context, intentId: pendingLaunch?.intentId, operationStorageKey, state: "submitted", message: "Submitted. Waiting for the SDK to verify the receipt; do not submit again." };
     savePending(); drawPending();
   }
   const status = (message) => {
     $("#mandate-status").textContent = readableStatus(message);
     $("#mandate-status").title = message;
+    if (activeLaunchContext && client?.walletOperations) {
+      const saved = client.walletOperations(activeLaunchContext.chainId, activeLaunchContext.account).find(item => item.vault.toLowerCase() === activeLaunchContext.factory.toLowerCase() && ["awaiting-wallet", "submitted", "unknown", "mined"].includes(item.state));
+      if (saved) { pendingLaunch = { ...activeLaunchContext, intentId: saved.id, hash: saved.hash || null, state: saved.state, message: String(message) }; savePending(); drawPending(); }
+    }
     const submitted = String(message).match(/^Submitted (0x[\da-fA-F]{64})\./);
     if (submitted) submittedLaunch(submitted[1]);
   };
@@ -1343,27 +1479,60 @@
     $("#mandate-pending-message").title = pendingLaunch.message || "";
     const explorer = pendingLaunch.chainId === 56 ? "https://bscscan.com" : pendingLaunch.chainId === 97 ? "https://testnet.bscscan.com" : null;
     const link = $("#mandate-transaction-link");
-    link.hidden = !explorer;
-    if (explorer) link.href = `${explorer}/tx/${pendingLaunch.hash}`;
-    link.textContent = `Transaction ${pendingLaunch.hash.slice(0, 8)}…${pendingLaunch.hash.slice(-6)} ↗`; link.title = pendingLaunch.hash;
+    link.hidden = !explorer || !pendingLaunch.hash;
+    if (explorer && pendingLaunch.hash) link.href = `${explorer}/tx/${pendingLaunch.hash}`;
+    link.textContent = pendingLaunch.hash ? `Transaction ${pendingLaunch.hash.slice(0, 8)}…${pendingLaunch.hash.slice(-6)} ↗` : "Hash unknown · check wallet history"; link.title = pendingLaunch.hash || "";
     $("#mandate-copy-transaction").title = pendingLaunch.hash;
     $("#mandate-check-transaction").disabled = checkingReceipt || busy || config?.status !== "deployed";
     $("#mandate-check-transaction").textContent = checkingReceipt ? "Checking receipt…" : "Check transaction receipt";
+    const saved = pendingLaunch.intentId ? client?.walletOperations?.(pendingLaunch.chainId, pendingLaunch.account).find(item => item.id === pendingLaunch.intentId) : null;
+    const release = $("#mandate-release-unknown");
+    release.hidden = !saved || !["unknown", "awaiting-wallet"].includes(saved.state) || !!saved.hash || !!saved.broadcastHash || saved.broadcastNonce !== undefined || saved.verifiedNonce !== undefined || !!saved.replacementHashes?.length;
+    release.disabled = checkingReceipt || busy || config?.status !== "deployed";
   }
+  async function releaseUnknownLaunch() {
+    if (!pendingLaunch?.intentId || checkingReceipt || busy || config?.status !== "deployed") return;
+    if (!window.confirm(client.UNKNOWN_RELEASE_ACKNOWLEDGEMENT + "\n\nRelease only this local signing guard? No transaction will be sent and no previous transaction is proved cancelled.")) return;
+    checkingReceipt = true; drawPending();
+    try {
+      const result = await client.releaseUnknownWalletOperation(config, pendingLaunch.intentId, { acknowledgement: client.UNKNOWN_RELEASE_ACKNOWLEDGEMENT });
+      pendingLaunch.state = result.state; pendingLaunch.message = result.instruction;
+      account = null; walletEpoch++; $("#mandate-connect").textContent = "Reconnect & review a fresh launch";
+      savePending(); status(result.instruction);
+    } catch (error) { pendingLaunch.message = error.message || "Recovery unavailable. The signing guard remains active."; savePending(); }
+    finally { checkingReceipt = false; drawPending(); refresh(); }
+  }
+  $("#mandate-release-unknown").addEventListener("click", releaseUnknownLaunch);
   async function receiptRpc(method, params = []) {
     const response = await fetch(config.rpcUrl, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: Date.now(), method, params }), signal: AbortSignal.timeout(12000) });
     if (!response.ok) throw new Error("Receipt RPC unavailable");
     const body = await response.json(); if (body.error) throw new Error(body.error.message || "Receipt RPC failed"); return body.result;
   }
   $("#mandate-copy-transaction").addEventListener("click", async () => {
-    if (!pendingLaunch) return;
+    if (!pendingLaunch?.hash) return;
     try { await navigator.clipboard.writeText(pendingLaunch.hash); BAV.toast("Transaction hash copied"); }
     catch (_) { status("Copy unavailable. The full transaction hash is in the explorer link tooltip."); }
   });
-  $("#mandate-check-transaction").addEventListener("click", async () => {
+  async function reconcileLaunch() {
     if (!pendingLaunch || checkingReceipt || busy || config?.status !== "deployed") return;
     checkingReceipt = true; drawPending();
     try {
+      if (pendingLaunch.intentId && client.reconcileWalletOperation) {
+        const candidate = window.prompt("Paste the original, speed-up or cancellation transaction hash from wallet history. A replacement must use the original transaction's actual nonce. Nothing will be sent.", pendingLaunch.hash || "")?.trim();
+        if (!candidate) return;
+        const saved = client.walletOperations?.(pendingLaunch.chainId, pendingLaunch.account).find(item => item.id === pendingLaunch.intentId);
+        let recovery;
+        if (!saved?.hash && !saved?.broadcastHash && !saved?.replacementHashes?.length) {
+          if (!window.confirm("Confirm this hash belongs to the original saved wallet request, not another transaction.\n\n" + client.UNKNOWN_RELEASE_ACKNOWLEDGEMENT)) return;
+          recovery = { acknowledgement: client.UNKNOWN_RELEASE_ACKNOWLEDGEMENT };
+        }
+        const result = await client.reconcileWalletOperation(config, pendingLaunch.intentId, candidate, recovery);
+        pendingLaunch.hash = result.hash || result.intent?.hash || pendingLaunch.hash;
+        pendingLaunch.state = result.state;
+        pendingLaunch.message = result.finalized ? `Transaction finalized (${result.state}).` : `Saved request remains ${result.state}. Check wallet history; do not resend.`;
+        savePending(); drawPending(); refresh(); return;
+      }
+      if (!pendingLaunch.hash) throw new Error("Locate the saved nonce in wallet history; do not resend");
       if (config.chainId !== pendingLaunch.chainId || config.factory?.toLowerCase() !== pendingLaunch.factory.toLowerCase()) throw new Error("The current deployment differs from this submitted launch. Use its explorer and wallet history to reconcile it.");
       if (Number(BigInt(await receiptRpc("eth_chainId"))) !== pendingLaunch.chainId) throw new Error("Receipt RPC is on a different chain");
       const [transaction, receipt] = await Promise.all([receiptRpc("eth_getTransactionByHash", [pendingLaunch.hash]), receiptRpc("eth_getTransactionReceipt", [pendingLaunch.hash])]);
@@ -1380,13 +1549,14 @@
         const chainAgain = Number(BigInt(await receiptRpc("eth_chainId")));
         if (!block?.hash || block.hash.toLowerCase() !== receipt.blockHash?.toLowerCase() || reread?.blockHash?.toLowerCase() !== receipt.blockHash.toLowerCase() || blockAgain?.hash?.toLowerCase() !== block.hash.toLowerCase() || !head?.hash || headAgain?.hash?.toLowerCase() !== head.hash.toLowerCase() || transaction.blockHash?.toLowerCase() !== receipt.blockHash.toLowerCase() || BigInt(transaction.blockNumber || "0x0") !== BigInt(receipt.blockNumber) || reread?.transactionHash?.toLowerCase() !== pendingLaunch.hash.toLowerCase() || reread?.status !== receipt.status || reread?.to?.toLowerCase() !== pendingLaunch.factory.toLowerCase() || reread?.from?.toLowerCase() !== pendingLaunch.account.toLowerCase() || chainAgain !== pendingLaunch.chainId) throw new Error("Receipt identity or canonical block changed. Confirmation is unknown; do not resubmit.");
         if (receipt.status === "0x0" && (!head?.number || BigInt(head.number) <= BigInt(receipt.blockNumber))) throw new Error("The reverted receipt needs a following canonical block before another launch can be prepared. Do not resubmit yet.");
-        if (receipt.status === "0x0") { pendingLaunch.state = "reverted"; pendingLaunch.message = "A canonical reverted receipt was found. This launch failed; you may review the design and prepare a new launch."; }
+        if (receipt.status === "0x0") { const final = await receiptRpc("eth_getBlockByNumber", ["finalized", false]); if (!final?.hash || BigInt(final.number) < BigInt(receipt.blockNumber)) throw new Error("Reverted receipt is not finalized; retry remains blocked"); pendingLaunch.state = "reverted"; pendingLaunch.message = "A canonical reverted receipt was found. This launch failed; you may review the design and prepare a new launch."; }
         else if (receipt.status === "0x1") { pendingLaunch.state = "mined-unverified"; pendingLaunch.message = "Transaction mined. The SDK opening outcome and finality have not been verified here. Check the explorer; do not submit another launch."; }
         else throw new Error("Receipt status is unknown; do not resubmit");
       }
     } catch (error) { pendingLaunch.state = "unknown"; pendingLaunch.message = error.message || "Confirmation is unknown. Do not resubmit."; }
     finally { checkingReceipt = false; savePending(); drawPending(); refresh(); }
-  });
+  }
+  $("#mandate-check-transaction").addEventListener("click", reconcileLaunch);
   const disabledBeforeSigning = new Map();
   function freezeSigningControls() {
     if (busy) {
@@ -1401,18 +1571,34 @@
   }
   const draft = () => BAV.assetDesign?.() || { manifest: null, issues: ["Select assets first."], positions: [], selection: null };
   const decimalBps = (value) => /^\d+(?:\.\d{1,2})?$/.test(value.trim()) ? Math.round(Number(value) * 100) : NaN;
+  function canonicalRules(match = binding, now = Math.floor(Date.now() / 1000)) {
+    if (!client?.creationRules || !match?.matched) return null;
+    const source = draft(), template = config.templates.find(item => item.id === match.templateId);
+    if (!template) throw new Error("Exact approved template unavailable");
+    const exactInstant = value => { const time = Date.parse(value); return Number.isFinite(time) ? new Date(time).toISOString() : ""; };
+    return client.creationRules(template, match.capBps, {
+      mode: source.selection.automation.mode, targets: source.positions.map(p => ({ token: p.token, weightBps: p.strategyWeightBps })),
+      scheduleEnabled: $("#schedule-on").checked, startAt: exactInstant($("#schedule-start").value), every: Number($("#interval").value), unit: $("#interval-unit").value,
+      end: $("#schedule-end").value, count: Number($("#schedule-count").value), endAt: exactInstant($("#schedule-end-date").value),
+      windowSeconds: Number($("#rules-window-minutes").value) * 60, trancheBps: decimalBps($("#tranche").value),
+      dipEnabled: $("#dip-on").checked, dipDropBps: decimalBps($("#dip").value),
+      rebalance: $("#rebalance-on").checked ? $("#rebalance-method").value === "full" ? 2 : 1 : 0,
+      rebalanceThresholdBps: decimalBps($("#rebalance-drift").value), emergencySellEnabled: $("#emergency-sell-on").checked,
+    }, now);
+  }
   function design() {
     const source = draft();
     return { schema: "bnb-agent-vaults/asset-first-design@1.0", designOnly: true,
       name: $("#name").value.trim(), symbol: $("#symbol").textContent.trim(), agent: $("#mandate-agent").value.trim(),
-      performanceFeeBps: decimalBps($("#pf").value), managementFeeBps: 0, seed: { amount: $("#seed").value, asset: "USDT", lockDays: 90 },
-      selection: source.selection, strategyWeights: { enforcedByContract: false, instructionForAgent: true },
-      strategyPlan: { enforcedByContract: false, execution: source.manifest?.execution || null, rebalancing: source.manifest?.rebalancing || null,
+      performanceFeeBps: decimalBps($("#pf").value), managementFeeBps: 0, seed: { amount: $("#seed").value, asset: "USDT", timeLocked: false, minimumLiveOwnershipBps: 200 },
+      selection: source.selection, strategyWeights: { enforcedByContract: true, basis: "exact Rules config with per-token caps and cash reserve" },
+      strategyPlan: { enforcedByContract: true, execution: source.manifest?.execution || null, rebalancing: source.manifest?.rebalancing || null,
         portfolioDrawdownPause: source.manifest?.riskControls?.portfolioDrawdownPause || null, note: $("#note").value.trim(),
         targetWeights: source.positions.map(({ token, strategyWeightBps }) => ({ token, weightBps: strategyWeightBps })) },
       executionPolicy: { atomicSwapAndSupply: true, supplyFailure: "revert-entire-action", launchSeedsIdleCashOnly: true },
-      contractRules: { minIdleBps: 500, dailyLossBps: 200, ruleChangeDelaySeconds: 86400, arbitraryCalls: false },
+      contractRules: { minIdleBps: 500, ruleChangeDelaySeconds: 86400, arbitraryCalls: false },
       reviewedBinding: binding?.matched ? { configurationHash: binding.configurationHash, templateId: binding.templateId } : null,
+      onchainRules: (() => { try { return canonicalRules(); } catch (error) { return { invalid: error.message }; } })(),
       deploymentStatus: config?.status || "unavailable" };
   }
   function errors() {
@@ -1421,12 +1607,23 @@
     if (!/^[A-Za-z0-9]{1,12}$/.test(value.symbol)) out.push("The name must produce a share symbol with 1–12 letters or numbers.");
     if (!/^0x[\da-fA-F]{40}$/.test(value.agent) || /^0x0{40}$/i.test(value.agent)) out.push("Enter a valid nonzero agent operator address before opening.");
     if (account && account.toLowerCase() === value.agent.toLowerCase()) out.push("Use an operator address separate from the creator wallet.");
-    if (!Number.isInteger(value.performanceFeeBps) || value.performanceFeeBps < 0 || value.performanceFeeBps > 3000) out.push("Total performance fee must be 0–30%, with at most two decimal places.");
+    if (!Number.isInteger(value.performanceFeeBps) || value.performanceFeeBps < 0 || value.performanceFeeBps > 2000) out.push("Creator performance fee must be 0–20%, with at most two decimal places.");
     if (caps.some((cap) => !Number.isInteger(cap) || cap < 0 || cap > 9500)) out.push("Each investment limit must be 0–95% of vault value, with at most two decimal places.");
     if (caps.reduce((sum, cap) => sum + cap, 0) > 9500) out.push("Investment limits must total at most 95% of vault value; keep at least 5% idle.");
     if ($( "#seed").value !== "100") out.push("The creator seed is exactly 100 USDT.");
+    if (binding?.matched) { try { canonicalRules(); } catch (error) { out.push(error.message); } }
     return out;
   }
+  const sessionSummary = document.createElement("pre"); sessionSummary.id = "creation-session-summary"; sessionSummary.hidden = true; sessionSummary.style.whiteSpace = "pre-wrap"; sessionSummary.setAttribute("aria-label", "Original committed creation settings");
+  const cancelSession = document.createElement("button"); cancelSession.id = "creation-session-cancel"; cancelSession.type = "button"; cancelSession.className = "btn ghost"; cancelSession.textContent = "Cancel unseeded committed creation"; cancelSession.hidden = true;
+  $("#mandate-launch").parentNode.append(sessionSummary, cancelSession);
+  cancelSession.onclick = async () => {
+    if (busy || checkingReceipt || launchUnresolved() || !account) return;
+    busy = true; activeLaunchContext = { account, chainId: config.chainId, factory: config.factory }; refresh();
+    try { const result = await client.cancelCreation(config, account, status); pendingLaunch = result.settlement.finalized ? null : { ...activeLaunchContext, intentId: result.intentId, hash: result.hash, state: "mined", message: "Creation cancellation mined; verify canonical finality." }; savePending(); status(`Cancellation ${result.hash}; ${result.settlement.finalized ? "finalized" : "awaiting finality"}. No seed was moved by cancellation.`); }
+    catch (error) { status(error.message || "Cancellation outcome unknown; reconcile wallet history before retrying."); }
+    finally { busy = false; activeLaunchContext = null; refresh(); }
+  };
   function refresh() {
     freezeSigningControls();
     const source = draft(), value = design(), total = source.positions.reduce((sum, position) => sum + position.capBps, 0), fee = value.performanceFeeBps / 100;
@@ -1441,11 +1638,11 @@
     $("#mandate-idle").textContent = Number.isFinite(total) ? `At least ${+Math.max(0, 100 - total / 100).toFixed(2)}%` : "Check investment limits";
     $("#sheet-name").textContent = value.name || "Untitled vault";
     $("#sheet-symbol").textContent = value.symbol || "—";
-    const feeValid = Number.isInteger(value.performanceFeeBps) && value.performanceFeeBps >= 0 && value.performanceFeeBps <= 3000;
-    $("#summary-fee").textContent = feeValid ? `${fee}% total` : "Check fee";
-    $("#summary-creator").textContent = feeValid ? `${(fee * .9).toFixed(1)}%` : "—";
-    $("#fee-you").textContent = feeValid ? `You receive ${(fee * .9).toFixed(1)}%` : "Fee must be 0–30%";
-    $("#mandate-fee-summary").textContent = Number.isFinite(fee) ? `${fee}% total · ${(fee * .9).toFixed(2)}% creator + ${(fee * .1).toFixed(2)}% protocol` : "Check total fee";
+    const feeValid = Number.isInteger(value.performanceFeeBps) && value.performanceFeeBps >= 0 && value.performanceFeeBps <= 2000;
+    $("#summary-fee").textContent = feeValid ? `${+(fee + 10).toFixed(2)}% total` : "Check fee";
+    $("#summary-creator").textContent = feeValid ? `${fee.toFixed(1)}%` : "—";
+    $("#fee-you").textContent = feeValid ? `You receive ${fee.toFixed(1)}%` : "Fee must be 0–20%";
+    $("#mandate-fee-summary").textContent = Number.isFinite(fee) ? `${+(fee + 10).toFixed(2)}% total · ${fee.toFixed(2)}% creator + 10.00% protocol` : "Check total fee";
     const reason = !source.positions.length ? "Choose crypto or bStocks to start your design."
       : binding?.matched ? "Your complete asset and destination selection has a reviewed execution configuration. Wallet and live checks are still required."
       : config?.status !== "deployed" ? "Deployment pending. Your asset and destination design can be exported; this preview cannot open a vault or receive funds."
@@ -1453,7 +1650,7 @@
     $("#mandate-binding").textContent = reason;
     const issues = errors();
     $("#mandate-issues").innerHTML = issues.map((issue) => `<li class="bad"><i></i><span>${esc(issue)}</span></li>`).join("");
-    $("#pf").setAttribute("aria-invalid", String(!Number.isInteger(value.performanceFeeBps) || value.performanceFeeBps < 0 || value.performanceFeeBps > 3000));
+    $("#pf").setAttribute("aria-invalid", String(!Number.isInteger(value.performanceFeeBps) || value.performanceFeeBps < 0 || value.performanceFeeBps > 2000));
     const operatorValid = /^0x[\da-fA-F]{40}$/.test(value.agent) && !/^0x0{40}$/i.test(value.agent) && (!account || value.agent.toLowerCase() !== account.toLowerCase());
     const walletPreview = previewWalletConnected;
     const checks = [
@@ -1465,12 +1662,17 @@
     const states = [binding?.matched ? "Matched" : "Not matched", config?.status === "deployed" ? "Deployed" : "Preview only", operatorValid ? "OK" : "Missing", account ? BAV.short(account) : walletPreview ? "Preview" : "Not connected"];
     $("#preopen-checks").innerHTML = checks.map(([label, ok, message], index) => `<div class="create-check ${ok ? "ok" : index < 2 ? "bad" : "pending"}"><span class="create-check-mark" aria-hidden="true">${ok ? "✓" : "!"}</span><span class="create-check-copy"><b>${esc(label)}</b><small>${esc(message)}</small></span><span class="create-check-state">${esc(states[index])}</span></div>`).join("");
     const template = binding?.matched ? config?.templates?.find((candidate) => candidate.id === binding.templateId) : null;
-    $("#seed-share-preview").textContent = `At least 100 whole shares${template ? ` · ${template.assetDecimals + 3} decimals` : " · precision after approval"}`;
-    $("#fee-split-note").textContent = Number.isInteger(value.performanceFeeBps) && value.performanceFeeBps >= 0 && value.performanceFeeBps <= 3000 ? `Of new profit above the high-water mark: Creator ${(fee * .9).toFixed(1)}% · Protocol ${(fee * .1).toFixed(1)}% (90/10 of the total, not added on top). Fixed after open. Management fee: None.` : "Total performance fee must be 0–30%.";
+    $("#seed-share-preview").textContent = `99.5 whole shares after the 0.5% entry fee${template ? ` · ${template.assetDecimals + 3} decimals` : ""}`;
+    $("#fee-split-note").textContent = Number.isInteger(value.performanceFeeBps) && value.performanceFeeBps >= 0 && value.performanceFeeBps <= 2000 ? `On each holder’s realized profit at exit: Creator ${fee.toFixed(1)}% · Protocol 10.0% fixed · ${+(fee + 10).toFixed(2)}% total. Each holder has a separate cost basis. Management fee: None.` : "Creator performance fee must be 0–20%.";
     const ready = config?.status === "deployed" && binding?.matched;
     $("#mandate-connect").disabled = busy || checkingReceipt || !ready || source.issues.length > 0 || issues.length > 0;
     $("#mandate-launch").disabled = busy || checkingReceipt || !!launchUnresolved() || !ready || !account || source.issues.length > 0 || issues.length > 0;
-    $("#mandate-launch").textContent = busy ? "Check your wallet…" : launchUnresolved() ? "Submitted launch needs verification" : config?.status !== "deployed" ? "Deployment required to open" : !binding?.matched ? "Selection awaiting approval" : !account ? "Connect wallet to open" : "Approve seed & open vault";
+    $("#mandate-launch").textContent = busy ? "Check your wallet…" : launchUnresolved() ? "Submitted launch needs verification" : config?.status !== "deployed" ? "Deployment required to open" : !binding?.matched ? "Selection awaiting approval" : !account ? "Connect wallet to open" : client?.creationSession && account && client.creationSession(config, account) ? "Continue committed creation" : "Prepare creation · phase 1 of 3";
+    const savedCreation = account && config?.status === "deployed" && client?.creationSession ? client.creationSession(config, account) : null;
+    $("#creation-session-summary").hidden = !savedCreation;
+    $("#creation-session-summary").textContent = savedCreation ? "Original committed creation (continuing uses these settings):\n" + JSON.stringify(savedCreation.prepared, null, 2) : "";
+    $("#creation-session-cancel").hidden = !savedCreation;
+    $("#creation-session-cancel").disabled = busy || checkingReceipt || !!launchUnresolved();
     drawPending();
   }
   window.addEventListener("bav:wallet-preview", (event) => {
@@ -1486,31 +1688,41 @@
     setTimeout(() => URL.revokeObjectURL(link.href), 0);
     status("Vault design exported with your exact asset and destination choices. No vault was opened or transaction sent.");
   });
-  $("#mandate-connect").addEventListener("click", async () => {
+  async function connectCreatorWallet() {
     if (!client || config?.status !== "deployed" || !binding?.matched || busy || checkingReceipt) return;
     const connectionEpoch = walletEpoch;
     busy = true; refresh();
     try {
-      const connectedAccount = await client.connectWallet(config);
+      const kind = await client.pickWallet();
+      if (!kind) return;
+      const connectedAccount = await client.connectWallet(config, kind);
       if (connectionEpoch !== walletEpoch) throw new Error("Wallet changed during connection. Reconnect and review before signing.");
-      account = connectedAccount; $("#mandate-connect").textContent = BAV.short(account); status(`Creator wallet ${account}. Review your selected assets, destinations, operator, investment limits and total fee.`);
+      account = connectedAccount;
+      const records = client.walletOperations(config.chainId, account);
+      syncCachedLaunch(records, account);
+      const saved = records.find(item => ["awaiting-wallet", "submitted", "unknown", "mined"].includes(item.state));
+      if (saved) { pendingLaunch = { chainId: saved.chainId, factory: saved.vault, account: saved.from, intentId: saved.id, hash: saved.hash || null, state: saved.state, message: `Account request (${saved.action}, ${saved.stage}) for requested nonce ${saved.nonce} remains unresolved. Reconcile or review no-hash recovery before signing.` }; savePending(); }
+      else if (pendingLaunch?.account?.toLowerCase() !== account.toLowerCase()) { pendingLaunch = null; savePending(); }
+      $("#mandate-connect").textContent = BAV.short(account); status(`Creator wallet ${account}. Review your selected assets, destinations, operator, investment limits and total fee.`);
     }
     catch (error) { account = null; status(error.message || "Wallet connection failed."); }
     finally { busy = false; refresh(); }
-  });
+  }
+  $("#mandate-connect").addEventListener("click", connectCreatorWallet);
   $("#mandate-launch").addEventListener("click", async () => {
     refresh();
     if (busy || checkingReceipt || launchUnresolved() || !client || config?.status !== "deployed" || !account || !binding?.matched) return;
     const issues = [...draft().issues, ...errors()]; if (issues.length) { status(issues.join(" ")); return; }
     const matched = binding, value = design();
     activeLaunchContext = { account, chainId: config.chainId, factory: config.factory };
-    if (pendingLaunch?.state === "reverted") { pendingLaunch = null; savePending(); drawPending(); }
+    if (pendingLaunch && !launchUnresolved()) { pendingLaunch = null; savePending(); drawPending(); }
     busy = true; refresh();
-    status("Verifying your complete selection and live deployment. Your wallet may request an exact 100-USDT approval, then a launch signature. Opening seeds idle cash; the agent buys afterward.");
+    status("Verifying your complete selection and live deployment. Your wallet requests three separate creation phases. Scheduler preparation and vault deployment move no seed. Only finalization requests an exact 100-USDT approval and seed transfer; wait for canonical finality between phases. Program starts must remain in the future.");
     try {
-      const result = await client.createVault(config, { account, templateId: matched.templateId, name: value.name, symbol: value.symbol, agent: value.agent, performanceFeeBps: value.performanceFeeBps, capBps: matched.capBps, onStatus: status });
-      pendingLaunch = null; savePending(); drawPending();
-      status(`Vault launch confirmed. Transaction: ${result.hash}${result.vault ? `. Vault: ${result.vault}` : "."}`);
+      const chainTime=client.creationSession(config,account)?null:await client.creationClock(config);
+      const result = client.creationSession(config, account) ? await client.resumeCreation(config, account, status) : await client.createVault(config, { account, templateId: matched.templateId, name: value.name, symbol: value.symbol, agent: value.agent, performanceFeeBps: value.performanceFeeBps, capBps: matched.capBps, rules: canonicalRules(matched,chainTime.timestamp).rules, onStatus: status });
+      pendingLaunch = result.settlement?.finalized ? null : { ...activeLaunchContext, intentId: result.intentId, hash: result.hash, state: "mined", message: "Creation mined. Wait for canonical finality; do not submit another launch." }; savePending(); drawPending();
+      status(result.completed ? `Vault creation finalized. Transaction: ${result.hash}. Vault: ${result.vault}` : `${result.stage} mined. Check canonical finality, then continue the exact saved commitment. Transaction: ${result.hash || "see wallet history"}. No completed launch is assumed.`);
       if (result.vault) {
         const link = document.createElement("a"); link.className = "btn ghost";
         link.href = `${BAV.route("vault/sherwood-usdt")}${BAV.route("vault/sherwood-usdt").includes("?") ? "&" : "?"}vault=${encodeURIComponent(result.vault)}`;
@@ -1519,6 +1731,7 @@
     } catch (error) {
       const sentHash = String(error.message || "").match(/Receipt wait failed for (0x[\da-fA-F]{64})/);
       if (!pendingLaunch && sentHash) submittedLaunch(sentHash[1]);
+      if (error.unresolved && !pendingLaunch) pendingLaunch = { ...activeLaunchContext, intentId: error.intentId, hash: error.hash || null, state: "unknown", message: error.message };
       if (pendingLaunch) { pendingLaunch.state = "unknown"; pendingLaunch.message = `Confirmation is unknown. ${error.message || "Receipt verification failed."} Do not resubmit this launch.`; savePending(); }
       status(error.message || "Launch failed. Check your wallet for any confirmed approval; no successful launch is assumed.");
     }
@@ -1528,33 +1741,46 @@
     try {
       client = await import(BAV.assetUrl("assets/mandate-client.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
       config = await client.loadDeployment();
+      client.mountSafeCreationHandoff($("#safe-launch-handoff"), config, async safe => {
+        const match = client.resolveAssetSelection(config, draft().selection);
+        if (!match.matched || !match.templateId) throw new Error(match.reason || "Exact selection is not approved");
+        const value = design(), template = config.templates.find(item => item.id === match.templateId);
+        if (!template) throw new Error("Reviewed template unavailable");
+        const chainTime=await client.creationClock(config);
+        return client.prepareCreation(config, { account: safe, templateId: match.templateId, name: value.name, symbol: value.symbol, agent: value.agent, performanceFeeBps: value.performanceFeeBps, capBps: match.capBps, minSeedShares: client.expectedSeedSharesRaw(template.assetDecimals).toString(), rules: canonicalRules(match,chainTime.timestamp).rules, deadline: chainTime.timestamp + 3600 });
+      });
+      const records = client.walletOperations(config.chainId);
+      syncCachedLaunch(records);
+      const saved = records.find(item => ["awaiting-wallet", "submitted", "unknown", "mined"].includes(item.state));
+      if (saved) { pendingLaunch = { chainId: saved.chainId, factory: saved.vault, account: saved.from, intentId: saved.id, hash: saved.hash || null, state: saved.state, message: `Saved account request (${saved.action}, ${saved.stage}) for requested nonce ${saved.nonce} is unresolved. Check wallet history or review no-hash recovery; do not resend.` }; savePending(); drawPending(); }
       status(config?.status === "deployed" ? `Configured chain ${config.chainId}. Your asset selections are matched to reviewed addresses before launch.` : "Deployment pending. Choose assets and destinations, then export your design. This preview cannot accept deposits or open a vault.");
       refresh();
     } catch (error) { status("Signing unavailable: deployment configuration could not be verified. Asset selection and design export remain available."); refresh(); }
   }
-  if (window.ethereum?.on) {
+  {
     const resetWallet = () => { walletEpoch++; account = null; $("#mandate-connect").textContent = "Reconnect creator wallet"; status("Wallet or chain changed. Reconnect before signing."); refresh(); };
-    window.ethereum.on("accountsChanged", resetWallet); window.ethereum.on("chainChanged", resetWallet);
+    window.addEventListener("bav:wallet-change", resetWallet);
+    $("#wallet-disconnect").addEventListener("click", () => client?.disconnectWallet().catch(error => status(error.message)));
   }
   refresh(); init();
 })();
 9:X
 e:X
 e:C
-0:{"buildId":"9-Bv-4NIonoR2jLAgPngH","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"create-page","html":"$3","masthead":"$4","runtimeVersion":"f07d00218281","script":"$5","pageKey":"create"}],["$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
-13:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+0:{"buildId":"eKCHSPZjzJmQGdYsucVkS","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"create-page","html":"$3","masthead":"$4","runtimeVersion":"03bafee6248b","script":"$5","pageKey":"create"}],["$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+13:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 14:"$Sreact.suspense"
-16:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
-17:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
-18:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
-19:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
-1a:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
-:HL["/_next/static/chunks/345faal4rbbdr.css","style"]
-6:["$","script","script-0",{"src":"/_next/static/chunks/3g2ddfs1wmryt.js","async":true}]
+16:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
+17:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
+18:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
+19:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+1a:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+:HL["/_next/static/chunks/40y95fxq6ou5m.css","style"]
+6:["$","script","script-0",{"src":"/_next/static/chunks/38t9mx3zrsncv.js","async":true}]
 7:["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]
 a:["$","$1","h",{"children":[null,["$","$L16",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L17",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L18","5",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
 c:["$","$1","c",{"children":[null,["$","$L19",null,{"parallelRouterKey":"children","template":["$","$L1a",null,{}]}]]}]
-f:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/345faal4rbbdr.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L19",null,{"parallelRouterKey":"children","template":["$","$L1a",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
+f:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/40y95fxq6ou5m.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L19",null,{"parallelRouterKey":"children","template":["$","$L1a",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
 15:null
 12:true
 9:300

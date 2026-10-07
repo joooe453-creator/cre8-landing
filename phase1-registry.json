@@ -10,9 +10,9 @@
     "source": "https://github.com/VenusProtocol/venus-protocol-documentation/blob/main/deployed-contracts/markets.md"
   },
   "cryptoCatalog": {
-    "verifiedAt": "2026-10-01",
-    "source": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false",
-    "methodology": "First 10 non-stable global market-cap assets with an official PancakeSwap BSC token and a direct USDT V3 pool; wrapped assets are labeled explicitly."
+    "verifiedAt": "2026-10-06T11:55:11.731Z",
+    "source": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=30&page=1&sparkline=false",
+    "methodology": "CoinGecko top 30 by market cap. Each BNB Chain representation is reviewed in config/top30/identity-map.json; routes come from the Top30 admission snapshot at block 126055531. Whether a route can execute is re-read live on the create page."
   },
   "discovery": {
     "rpcUrl": "https://bsc-dataseed.bnbchain.org",
@@ -34,7 +34,7 @@
       "lump-sum",
       "accumulate"
     ],
-    "maxTargets": 10,
+    "maxTargets": 7,
     "maxSlippageBps": 100,
     "maxTradePoolTvlBps": 10,
     "maxDeploymentBps": 9500,
@@ -49,6 +49,7 @@
       "symbol": "BTCB",
       "displaySymbol": "BTC",
       "ticker": "BTC",
+      "name": "Bitcoin",
       "marketCapRank": 1,
       "coingeckoId": "bitcoin",
       "nativeWrap": false,
@@ -76,6 +77,46 @@
         "verifiedAt": "2026-10-01T10:28:57.000Z",
         "verifiedAtBlock": 125084586,
         "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x6bbc40579ad1bbd243895ca0acb086bb6300d636",
+        "fee": 500,
+        "path": [
+          {
+            "tokenIn": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0x6bbc40579ad1bbd243895ca0acb086bb6300d636",
+            "fee": 500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 13504519.8,
+        "spotPriceUsd": 86329.126661,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 1,
+        "coinId": "bitcoin",
+        "feed": {
+          "address": "0x264990fbd0a4796a3e3d8e37c4d5f87a3aca5ebf",
+          "decimals": 8,
+          "heartbeat": 60,
+          "maxAge": 120
+        }
       }
     },
     {
@@ -84,6 +125,7 @@
       "symbol": "ETH",
       "displaySymbol": "ETH",
       "ticker": "ETH",
+      "name": "Ethereum",
       "marketCapRank": 2,
       "coingeckoId": "ethereum",
       "nativeWrap": false,
@@ -111,6 +153,16 @@
         "verifiedAt": "2026-10-01T10:28:57.000Z",
         "verifiedAtBlock": 125084586,
         "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 2,
+        "coinId": "ethereum",
+        "feed": {
+          "address": "0x9ef1b8c0e4f7dc8bf5719ea496883dc6401d5b2e",
+          "decimals": 8,
+          "heartbeat": 60,
+          "maxAge": 120
+        }
       }
     },
     {
@@ -119,6 +171,7 @@
       "symbol": "WBNB",
       "displaySymbol": "WBNB (Wrapped BNB)",
       "ticker": "WBNB (Wrapped BNB)",
+      "name": "BNB",
       "marketCapRank": 4,
       "coingeckoId": "binancecoin",
       "nativeWrap": true,
@@ -146,6 +199,16 @@
         "verifiedAt": "2026-10-01T10:28:57.000Z",
         "verifiedAtBlock": 125084586,
         "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 4,
+        "coinId": "binancecoin",
+        "feed": {
+          "address": "0x0567f2323251f0aab15c8dfb1967e4e8a7d42aee",
+          "decimals": 8,
+          "heartbeat": 27,
+          "maxAge": 120
+        }
       }
     },
     {
@@ -154,6 +217,7 @@
       "symbol": "XRP",
       "displaySymbol": "XRP",
       "ticker": "XRP",
+      "name": "XRP",
       "marketCapRank": 5,
       "coingeckoId": "ripple",
       "nativeWrap": false,
@@ -181,6 +245,62 @@
         "verifiedAt": "2026-10-01T10:28:57.000Z",
         "verifiedAtBlock": 125084586,
         "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 5,
+        "coinId": "ripple",
+        "feed": {
+          "address": "0x93a67d414896a280bf8ffb3b389fe3686e014fda",
+          "decimals": 8,
+          "heartbeat": 600,
+          "maxAge": 1200
+        }
+      }
+    },
+    {
+      "id": "crypto:USDC",
+      "category": "crypto",
+      "symbol": "USDC",
+      "displaySymbol": "USDC",
+      "ticker": "USDC",
+      "name": "USDC",
+      "marketCapRank": 6,
+      "coingeckoId": "usd-coin",
+      "nativeWrap": false,
+      "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x92b7807bf19b7dddf89b706143896d05228f3121",
+        "fee": 100,
+        "path": [
+          {
+            "tokenIn": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x92b7807bf19b7dddf89b706143896d05228f3121",
+            "fee": 100
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 30221452.96,
+        "spotPriceUsd": 1.000177,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 6,
+        "coinId": "usd-coin",
+        "feed": {
+          "address": "0x51597f405303c4377e36123cbc172b13269ea163",
+          "decimals": 8,
+          "heartbeat": 900,
+          "maxAge": 1800
+        }
       }
     },
     {
@@ -189,6 +309,7 @@
       "symbol": "SOL",
       "displaySymbol": "SOL",
       "ticker": "SOL",
+      "name": "Solana",
       "marketCapRank": 7,
       "coingeckoId": "solana",
       "nativeWrap": false,
@@ -216,6 +337,46 @@
         "verifiedAt": "2026-10-01T10:28:57.000Z",
         "verifiedAtBlock": 125084586,
         "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xbffec96e8f3b5058b1817c14e4380758fada01ef",
+        "fee": 500,
+        "path": [
+          {
+            "tokenIn": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0xbffec96e8f3b5058b1817c14e4380758fada01ef",
+            "fee": 500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 1414590.31,
+        "spotPriceUsd": 120.368386,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 7,
+        "coinId": "solana",
+        "feed": {
+          "address": "0x0e8a53dd9c13589df6382f13da6b3ec8f919b323",
+          "decimals": 8,
+          "heartbeat": 600,
+          "maxAge": 1200
+        }
       }
     },
     {
@@ -224,33 +385,74 @@
       "symbol": "TRX",
       "displaySymbol": "TRX",
       "ticker": "TRX",
+      "name": "TRON",
       "marketCapRank": 8,
       "coingeckoId": "tron",
       "nativeWrap": false,
-      "address": "0x85eac5ac2f758618dfa09bdbe0cf174e7d574d5b",
-      "decimals": 18,
+      "address": "0xce7de646e7208a4ef112cb6ed5038fa6cc6b12e3",
+      "decimals": 6,
       "swap": {
         "venue": "PancakeSwap V3",
         "protocol": "v3",
         "quoteSymbol": "USDT",
-        "poolAddress": "0x0b2f173e5ff232dd3e04e62d0902119a5fe0c753",
+        "poolAddress": "0xa98d8a5867d664b7a758652146fd93a7de40ee82",
         "fee": 2500,
         "path": [
           {
-            "tokenIn": "0x85eac5ac2f758618dfa09bdbe0cf174e7d574d5b",
+            "tokenIn": "0xce7de646e7208a4ef112cb6ed5038fa6cc6b12e3",
             "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
             "protocol": "v3",
-            "poolAddress": "0x0b2f173e5ff232dd3e04e62d0902119a5fe0c753",
+            "poolAddress": "0xa98d8a5867d664b7a758652146fd93a7de40ee82",
             "fee": 2500
           }
         ]
       },
       "liquidity": {
-        "usd": 741.02,
-        "spotPriceUsd": 0.338412844,
-        "verifiedAt": "2026-10-01T10:28:57.000Z",
-        "verifiedAtBlock": 125084586,
-        "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+        "usd": 50480.16,
+        "spotPriceUsd": 0.338293,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xf683113764e4499c473acd38fc4b37e71554e4ad",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xce7de646e7208a4ef112cb6ed5038fa6cc6b12e3",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0xf683113764e4499c473acd38fc4b37e71554e4ad",
+            "fee": 2500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 261449.24,
+        "spotPriceUsd": 0.338211,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 8,
+        "coinId": "tron",
+        "feed": {
+          "address": "0xf4c5e535756d11994fcbb12ba8add0192d9b88be",
+          "decimals": 8,
+          "heartbeat": 600,
+          "maxAge": 1200
+        }
       }
     },
     {
@@ -259,6 +461,7 @@
       "symbol": "ZEC",
       "displaySymbol": "ZEC",
       "ticker": "ZEC",
+      "name": "Zcash",
       "marketCapRank": 10,
       "coingeckoId": "zcash",
       "nativeWrap": false,
@@ -286,6 +489,34 @@
         "verifiedAt": "2026-10-01T10:28:57.000Z",
         "verifiedAtBlock": 125084586,
         "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x6701b287c8170d6c290c6f4ef426782bd61ae310",
+        "fee": 500,
+        "path": [
+          {
+            "tokenIn": "0x1ba42e5193dfa8b03d15dd1b86a3113bbbef8eeb",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x6701b287c8170d6c290c6f4ef426782bd61ae310",
+            "fee": 500
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 148189.21,
+        "spotPriceUsd": 1371.313126,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 10,
+        "coinId": "zcash",
+        "feed": null
       }
     },
     {
@@ -294,6 +525,7 @@
       "symbol": "DOGE",
       "displaySymbol": "DOGE",
       "ticker": "DOGE",
+      "name": "Dogecoin",
       "marketCapRank": 12,
       "coingeckoId": "dogecoin",
       "nativeWrap": false,
@@ -321,6 +553,46 @@
         "verifiedAt": "2026-10-01T10:28:57.000Z",
         "verifiedAtBlock": 125084586,
         "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xce6160bb594fc055c943f59de92cee30b8c6b32c",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0xce6160bb594fc055c943f59de92cee30b8c6b32c",
+            "fee": 2500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 657684.88,
+        "spotPriceUsd": 0.095675,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 12,
+        "coinId": "dogecoin",
+        "feed": {
+          "address": "0x3ab0a0d137d4f946fbb19eecc6e92e64660231c8",
+          "decimals": 8,
+          "heartbeat": 47,
+          "maxAge": 120
+        }
       }
     },
     {
@@ -329,6 +601,7 @@
       "symbol": "LINK",
       "displaySymbol": "LINK",
       "ticker": "LINK",
+      "name": "Chainlink",
       "marketCapRank": 13,
       "coingeckoId": "chainlink",
       "nativeWrap": false,
@@ -356,6 +629,46 @@
         "verifiedAt": "2026-10-01T10:28:57.000Z",
         "verifiedAtBlock": 125084586,
         "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x0e1893beeb4d0913d26b9614b18aea29c56d94b9",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0x0e1893beeb4d0913d26b9614b18aea29c56d94b9",
+            "fee": 2500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 1234754.81,
+        "spotPriceUsd": 14.059241,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 13,
+        "coinId": "chainlink",
+        "feed": {
+          "address": "0xca236e327f629f9fc2c30a4e95775ebf0b89fac8",
+          "decimals": 8,
+          "heartbeat": 600,
+          "maxAge": 1200
+        }
       }
     },
     {
@@ -364,7 +677,8 @@
       "symbol": "ADA",
       "displaySymbol": "ADA",
       "ticker": "ADA",
-      "marketCapRank": 17,
+      "name": "Cardano",
+      "marketCapRank": 14,
       "coingeckoId": "cardano",
       "nativeWrap": false,
       "address": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
@@ -391,6 +705,465 @@
         "verifiedAt": "2026-10-01T10:28:57.000Z",
         "verifiedAtBlock": 125084586,
         "methodology": "Pool token balances valued at the PancakeSwap V3 pool spot price; TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 14,
+        "coinId": "cardano",
+        "feed": {
+          "address": "0xa767f745331d267c7751297d982b050c93985627",
+          "decimals": 8,
+          "heartbeat": 600,
+          "maxAge": 1200
+        }
+      }
+    },
+    {
+      "id": "crypto:NEAR",
+      "category": "crypto",
+      "symbol": "NEAR",
+      "displaySymbol": "NEAR",
+      "ticker": "NEAR",
+      "name": "NEAR Protocol",
+      "marketCapRank": 21,
+      "coingeckoId": "near",
+      "nativeWrap": false,
+      "address": "0x1fa4a73a3f0133f0025378af00236f3abdee5d63",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xce6326fc06c2f3967884e5578bb33d0f30b63a33",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x1fa4a73a3f0133f0025378af00236f3abdee5d63",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xce6326fc06c2f3967884e5578bb33d0f30b63a33",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 9667.61,
+        "spotPriceUsd": 5.246952,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x0246913ec96765bca457b0a3608872bba37d1d15",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x1fa4a73a3f0133f0025378af00236f3abdee5d63",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0x0246913ec96765bca457b0a3608872bba37d1d15",
+            "fee": 2500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 232401,
+        "spotPriceUsd": 5.251795,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 21,
+        "coinId": "near",
+        "feed": {
+          "address": "0x0fe4d87883005fcafaf56b81d09473d9a29dcdc3",
+          "decimals": 8,
+          "heartbeat": 86400,
+          "maxAge": 86400
+        }
+      }
+    },
+    {
+      "id": "crypto:BCH",
+      "category": "crypto",
+      "symbol": "BCH",
+      "displaySymbol": "BCH",
+      "ticker": "BCH",
+      "name": "Bitcoin Cash",
+      "marketCapRank": 22,
+      "coingeckoId": "bitcoin-cash",
+      "nativeWrap": false,
+      "address": "0x8ff795a6f4d97e7887c79bea79aba5cc76444adf",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x14cfad9a4fcb5fb4f702f5d0e90dcc633e1ded9a",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x8ff795a6f4d97e7887c79bea79aba5cc76444adf",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0x14cfad9a4fcb5fb4f702f5d0e90dcc633e1ded9a",
+            "fee": 2500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 47019.56,
+        "spotPriceUsd": 317.095557,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 22,
+        "coinId": "bitcoin-cash",
+        "feed": {
+          "address": "0x43d80f616daf0b0b42a928eed32147dc59027d41",
+          "decimals": 8,
+          "heartbeat": 900,
+          "maxAge": 1800
+        }
+      }
+    },
+    {
+      "id": "crypto:UNI",
+      "category": "crypto",
+      "symbol": "UNI",
+      "displaySymbol": "UNI",
+      "ticker": "UNI",
+      "name": "Uniswap",
+      "marketCapRank": 23,
+      "coingeckoId": "uniswap",
+      "nativeWrap": false,
+      "address": "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x1bb709a0e9dca8b54c924ca05638a94b61dcc937",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x1bb709a0e9dca8b54c924ca05638a94b61dcc937",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 434.54,
+        "spotPriceUsd": 8.867823,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x647d99772863e09f47435782cbb6c96ec4a75f12",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0x647d99772863e09f47435782cbb6c96ec4a75f12",
+            "fee": 2500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 182469.92,
+        "spotPriceUsd": 8.890307,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 23,
+        "coinId": "uniswap",
+        "feed": {
+          "address": "0xb57f259e7c24e56a1da00f66b55a5640d9f9e7e4",
+          "decimals": 8,
+          "heartbeat": 600,
+          "maxAge": 1200
+        }
+      }
+    },
+    {
+      "id": "crypto:LTC",
+      "category": "crypto",
+      "symbol": "LTC",
+      "displaySymbol": "LTC",
+      "ticker": "LTC",
+      "name": "Litecoin",
+      "marketCapRank": 24,
+      "coingeckoId": "litecoin",
+      "nativeWrap": false,
+      "address": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x6b9e3825e39203277f8fd33371e36b5188b26410",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x6b9e3825e39203277f8fd33371e36b5188b26410",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 78914.86,
+        "spotPriceUsd": 70.475289,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xe3cbe4dd1bd2f7101f17d586f44bab944091d383",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0xe3cbe4dd1bd2f7101f17d586f44bab944091d383",
+            "fee": 2500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 221494.44,
+        "spotPriceUsd": 70.598614,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 24,
+        "coinId": "litecoin",
+        "feed": {
+          "address": "0x74e72f37a8c415c8f1a98ed42e78ff997435791d",
+          "decimals": 8,
+          "heartbeat": 900,
+          "maxAge": 1800
+        }
+      }
+    },
+    {
+      "id": "crypto:AVAX",
+      "category": "crypto",
+      "symbol": "AVAX",
+      "displaySymbol": "AVAX",
+      "ticker": "AVAX",
+      "name": "Avalanche",
+      "marketCapRank": 26,
+      "coingeckoId": "avalanche-2",
+      "nativeWrap": false,
+      "address": "0x1ce0c2827e2ef14d5c4f29a091d735a204794041",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x9f11264d6d0d9671dab2cc485eb6ec1b502c4025",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x1ce0c2827e2ef14d5c4f29a091d735a204794041",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x9f11264d6d0d9671dab2cc485eb6ec1b502c4025",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 39375.78,
+        "spotPriceUsd": 11.465169,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "holdSwap": {
+        "venue": "PancakeSwap via BNB",
+        "protocol": "multi-hop",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x1d8b1ed9b3da5d510fd3723e0dd02476e0d7e781",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x1ce0c2827e2ef14d5c4f29a091d735a204794041",
+            "tokenOut": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "protocol": "v3",
+            "poolAddress": "0x1d8b1ed9b3da5d510fd3723e0dd02476e0d7e781",
+            "fee": 2500
+          },
+          {
+            "tokenIn": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x172fcd41e0913e95784454622d1c3724f546f849",
+            "fee": 100
+          }
+        ]
+      },
+      "holdLiquidity": {
+        "usd": 139653.09,
+        "spotPriceUsd": 11.468332,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 26,
+        "coinId": "avalanche-2",
+        "feed": {
+          "address": "0x5974855ce31ee8e1fff2e76591cbf83d7110f151",
+          "decimals": 8,
+          "heartbeat": 86400,
+          "maxAge": 86400
+        }
+      }
+    },
+    {
+      "id": "crypto:USDe",
+      "category": "crypto",
+      "symbol": "USDe",
+      "displaySymbol": "USDe",
+      "ticker": "USDe",
+      "name": "Ethena USDe",
+      "marketCapRank": 28,
+      "coingeckoId": "ethena-usde",
+      "nativeWrap": false,
+      "address": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0x9dfb6ce3f6a3a103f4d44a5fdddab0815c111406",
+        "fee": 2500,
+        "path": [
+          {
+            "tokenIn": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0x9dfb6ce3f6a3a103f4d44a5fdddab0815c111406",
+            "fee": 2500
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 12336.48,
+        "spotPriceUsd": 1.001882,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 28,
+        "coinId": "ethena-usde",
+        "feed": {
+          "address": "0x10402b01cd2e6a9ed6dbe683cbc68f78ff02f8fc",
+          "decimals": 8,
+          "heartbeat": 86400,
+          "maxAge": 86400
+        }
+      }
+    },
+    {
+      "id": "crypto:DAI",
+      "category": "crypto",
+      "symbol": "DAI",
+      "displaySymbol": "DAI",
+      "ticker": "DAI",
+      "name": "Dai",
+      "marketCapRank": 29,
+      "coingeckoId": "dai",
+      "nativeWrap": false,
+      "address": "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3",
+      "decimals": 18,
+      "swap": {
+        "venue": "PancakeSwap V3",
+        "protocol": "v3",
+        "quoteSymbol": "USDT",
+        "poolAddress": "0xe043558b77e2b4c262d7d6e579b005ceb7f4591c",
+        "fee": 100,
+        "path": [
+          {
+            "tokenIn": "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3",
+            "tokenOut": "0x55d398326f99059ff775485246999027b3197955",
+            "protocol": "v3",
+            "poolAddress": "0xe043558b77e2b4c262d7d6e579b005ceb7f4591c",
+            "fee": 100
+          }
+        ]
+      },
+      "liquidity": {
+        "usd": 81826.29,
+        "spotPriceUsd": 1.000119,
+        "verifiedAt": "2026-10-06T11:54:15.000Z",
+        "verifiedAtBlock": 126055531,
+        "methodology": "Top30 admission snapshot: pool balances valued at the PancakeSwap V3 spot price; a route via BNB uses the smaller of its two pools. TVL is not guaranteed executable depth."
+      },
+      "top30": {
+        "rank": 29,
+        "coinId": "dai",
+        "feed": {
+          "address": "0x132d3c0b1d2cea0bc552588063bdbb210fdeecfa",
+          "decimals": 8,
+          "heartbeat": 900,
+          "maxAge": 1800
+        }
       }
     },
     {
@@ -1450,6 +2223,273 @@
       }
     }
   ],
+  "top30": {
+    "source": "deployments/top30/two-pool-2026-10-06/snapshot.json",
+    "snapshotBlock": 126055531,
+    "rankingFetchedAt": "2026-10-06T11:55:11.731Z",
+    "policy": {
+      "minObservationCardinality": 2400,
+      "twapWindowSeconds": 1800,
+      "maxDeviationBps": 100,
+      "maxRouteFee": 5000,
+      "maxOrderReserveBps": 10,
+      "minQuoteReserveUsd": 50000
+    },
+    "multicall": "0xca11bde05977b3631167028862be2a173976ca11",
+    "quoteFeed": {
+      "address": "0xb97ad0e74fa7d920791e90258a6e2085088b4320",
+      "decimals": 8,
+      "heartbeat": 900,
+      "maxAge": 1800
+    },
+    "hop": {
+      "token": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "pool": "0x172fcd41e0913e95784454622d1c3724f546f849",
+      "fee": 100
+    },
+    "assets": [
+      {
+        "rank": 1,
+        "coinId": "bitcoin",
+        "name": "Bitcoin",
+        "symbol": "BTCB",
+        "targetId": "crypto:BTCB",
+        "reason": null
+      },
+      {
+        "rank": 2,
+        "coinId": "ethereum",
+        "name": "Ethereum",
+        "symbol": "ETH",
+        "targetId": "crypto:ETH",
+        "reason": null
+      },
+      {
+        "rank": 3,
+        "coinId": "tether",
+        "name": "Tether",
+        "symbol": "USDT",
+        "targetId": "accounting:USDT",
+        "reason": "accounting-asset"
+      },
+      {
+        "rank": 4,
+        "coinId": "binancecoin",
+        "name": "BNB",
+        "symbol": "WBNB",
+        "targetId": "crypto:WBNB",
+        "reason": null
+      },
+      {
+        "rank": 5,
+        "coinId": "ripple",
+        "name": "XRP",
+        "symbol": "XRP",
+        "targetId": "crypto:XRP",
+        "reason": null
+      },
+      {
+        "rank": 6,
+        "coinId": "usd-coin",
+        "name": "USDC",
+        "symbol": "USDC",
+        "targetId": "crypto:USDC",
+        "reason": null
+      },
+      {
+        "rank": 7,
+        "coinId": "solana",
+        "name": "Solana",
+        "symbol": "SOL",
+        "targetId": "crypto:SOL",
+        "reason": null
+      },
+      {
+        "rank": 8,
+        "coinId": "tron",
+        "name": "TRON",
+        "symbol": "TRX",
+        "targetId": "crypto:TRX",
+        "reason": null
+      },
+      {
+        "rank": 9,
+        "coinId": "figure-heloc",
+        "name": "Figure Heloc",
+        "symbol": "FIGR_HELOC",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 10,
+        "coinId": "zcash",
+        "name": "Zcash",
+        "symbol": "ZEC",
+        "targetId": "crypto:ZEC",
+        "reason": "no-feed"
+      },
+      {
+        "rank": 11,
+        "coinId": "hyperliquid",
+        "name": "Hyperliquid",
+        "symbol": "HYPE",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 12,
+        "coinId": "dogecoin",
+        "name": "Dogecoin",
+        "symbol": "DOGE",
+        "targetId": "crypto:DOGE",
+        "reason": null
+      },
+      {
+        "rank": 13,
+        "coinId": "chainlink",
+        "name": "Chainlink",
+        "symbol": "LINK",
+        "targetId": "crypto:LINK",
+        "reason": null
+      },
+      {
+        "rank": 14,
+        "coinId": "cardano",
+        "name": "Cardano",
+        "symbol": "ADA",
+        "targetId": "crypto:ADA",
+        "reason": null
+      },
+      {
+        "rank": 15,
+        "coinId": "monero",
+        "name": "Monero",
+        "symbol": "XMR",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 16,
+        "coinId": "whitebit",
+        "name": "WhiteBIT Coin",
+        "symbol": "WBT",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 17,
+        "coinId": "usds",
+        "name": "USDS",
+        "symbol": "USDS",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 18,
+        "coinId": "leo-token",
+        "name": "LEO Token",
+        "symbol": "LEO",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 19,
+        "coinId": "rain",
+        "name": "Rain",
+        "symbol": "RAIN",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 20,
+        "coinId": "stellar",
+        "name": "Stellar",
+        "symbol": "XLM",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 21,
+        "coinId": "near",
+        "name": "NEAR Protocol",
+        "symbol": "NEAR",
+        "targetId": "crypto:NEAR",
+        "reason": null
+      },
+      {
+        "rank": 22,
+        "coinId": "bitcoin-cash",
+        "name": "Bitcoin Cash",
+        "symbol": "BCH",
+        "targetId": "crypto:BCH",
+        "reason": null
+      },
+      {
+        "rank": 23,
+        "coinId": "uniswap",
+        "name": "Uniswap",
+        "symbol": "UNI",
+        "targetId": "crypto:UNI",
+        "reason": null
+      },
+      {
+        "rank": 24,
+        "coinId": "litecoin",
+        "name": "Litecoin",
+        "symbol": "LTC",
+        "targetId": "crypto:LTC",
+        "reason": null
+      },
+      {
+        "rank": 25,
+        "coinId": "canton-network",
+        "name": "Canton",
+        "symbol": "CC",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 26,
+        "coinId": "avalanche-2",
+        "name": "Avalanche",
+        "symbol": "AVAX",
+        "targetId": "crypto:AVAX",
+        "reason": null
+      },
+      {
+        "rank": 27,
+        "coinId": "sui",
+        "name": "Sui",
+        "symbol": "SUI",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      },
+      {
+        "rank": 28,
+        "coinId": "ethena-usde",
+        "name": "Ethena USDe",
+        "symbol": "USDe",
+        "targetId": "crypto:USDe",
+        "reason": null
+      },
+      {
+        "rank": 29,
+        "coinId": "dai",
+        "name": "Dai",
+        "symbol": "DAI",
+        "targetId": "crypto:DAI",
+        "reason": null
+      },
+      {
+        "rank": 30,
+        "coinId": "hedera-hashgraph",
+        "name": "Hedera",
+        "symbol": "HBAR",
+        "targetId": null,
+        "reason": "not-on-bsc"
+      }
+    ]
+  },
   "yieldMarkets": [
     {
       "id": "venus:BTCB:vBTC",
@@ -1837,17 +2877,5 @@
       "selectable": false
     }
   ],
-  "unavailableMarkets": [
-    {
-      "id": "venus:TRX:vTRXOLD",
-      "protocol": "Venus",
-      "targetId": "crypto:TRX",
-      "label": "Venus vTRXOLD",
-      "reason": "Unavailable: supply paused, supply cap reached",
-      "selectable": false,
-      "sourceUrl": "https://bscscan.com/address/0x61edcfe8dd6ba3c891cb9bec2dc7657b3b422e93#readProxyContract",
-      "verifiedAt": "2026-10-01T15:48:12.520Z",
-      "blockNumber": 125127123
-    }
-  ]
+  "unavailableMarkets": []
 }

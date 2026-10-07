@@ -25,6 +25,8 @@
   const MARKETING_ORIGIN = window.__BAV_MARKETING_ORIGIN__ || BASE_PATH;
   const APP_ORIGIN = window.__BAV_APP_ORIGIN__ || BASE_PATH;
   const DOCS_ORIGIN = window.__BAV_DOCS_ORIGIN__ || "https://docs.cre8.finance";
+  // My Agent needs its API; a static site without one hides it and connects wallets on Portfolio instead.
+  const PERSONAL_AGENT = window.__BAV_PERSONAL_AGENT__ !== false;
   const STATIC_PREVIEW = window.__BAV_STATIC_PREVIEW__ === true ||
     window.location.protocol === "file:" ||
     !document.querySelector("[data-prototype-page]");
@@ -62,17 +64,17 @@
     { id: "aave", name: "Aave", logo: null },
   ];
 
-  // The current contracts give the protocol 10% of manager fees. There is no
-  // separate risk-tier platform performance fee in the deployed economics.
-  const platformFeeForRisk = () => 0;
+  // V2 charges the protocol a fixed 10% of each holder's realized profit in
+  // addition to the creator's configurable 0–20% performance fee.
+  const platformFeeForRisk = () => 10;
   const feeBreakdown = (creatorPerformancePct) => {
     const creatorGross = Number(creatorPerformancePct) || 0;
-    const platformBase = 0;
-    const platformShareOfCreator = creatorGross * 0.1;
+    const platformBase = 10;
+    const platformShareOfCreator = 0;
     return {
       total: creatorGross + platformBase,
       creatorGross,
-      creatorNet: creatorGross - platformShareOfCreator,
+      creatorNet: creatorGross,
       platformBase,
       platformShareOfCreator,
       platformTotal: platformBase + platformShareOfCreator,
@@ -416,6 +418,8 @@
   function gauss(r) { let u = 0, v = 0; while (!u) u = r(); while (!v) v = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
   function hexAddr(seed) { const r = rng(seed); let s = "0x"; for (let i = 0; i < 40; i++) s += "0123456789abcdef"[Math.floor(r() * 16)]; return s; }
   const short = (a) => a.slice(0, 6) + "…" + a.slice(-4);
+  // Each wallet gets one of 24 robot avatars, fixed by its address.
+  const avatarFor = (address) => assetUrl(`assets/agents/agent-${String(parseInt(String(address).slice(-8), 16) % 24 + 1).padStart(2, "0")}.webp`);
 
   // NAV/share series, anchored so period returns match the published figures.
   const seriesCache = {};
@@ -445,12 +449,16 @@
   /* ------------------------------------------------------------------ */
   /* Graphics                                                            */
   /* ------------------------------------------------------------------ */
-  const brandLogo = (background = "light") => {
-    const file = `cre8-on-${background === "light" ? "light" : "dark"}.svg`;
-    const version = background === "light" ? "5ff1de84" : "68eabe01";
-    const src = (STATIC_PREVIEW ? `assets/logos/${file}` : `${BASE_PATH}/logos/${file}`) + `?v=${version}`;
-    return `<img class="brand-logo" src="${src}" alt="CRE8" width="224" height="112">`;
-  };
+  // CRE + 8 tile wordmark. The 8 sits in a flip tile and rolls 0 → 8 (static 8 with reduced motion).
+  // It rolls only when a visit starts or crosses the landing page; moving between app pages keeps it still.
+  const LOGO_ROLLS = (() => {
+    const here = document.body && document.body.classList.contains("landing-page") ? "landing" : "app";
+    let before = null;
+    try { before = sessionStorage.getItem("cre8-surface"); sessionStorage.setItem("cre8-surface", here); } catch (e) { /* storage unavailable: roll */ }
+    return !before || here === "landing" || before === "landing";
+  })();
+  const brandLogo = (background = "light") =>
+    `<span class="c8-logo${background === "light" ? "" : " on-dark"}${LOGO_ROLLS ? "" : " c8-still"}" role="img" aria-label="CRE8"><span class="c8-cre" aria-hidden="true">CRE</span><span class="c8-tile" aria-hidden="true"><span class="c8-win"><span class="c8-reel">${[0, 1, 2, 3, 4, 5, 6, 7, 8].map((d) => `<i>${d}</i>`).join("")}</span></span></span></span>`;
   const SEAL = brandLogo();
 
   function logo(key, cls = "") {
@@ -682,7 +690,7 @@
   /* Shell: notice strip, masthead, footer                               */
   /* ------------------------------------------------------------------ */
   function shell(active) {
-    const nav = [["vaults.html", "Vaults"], ["portfolio.html", "Portfolio"], ["create.html", "Open a vault"]];
+    const nav = [["agent.html", "My Agent"], ["vaults.html", "Vaults"], ["portfolio.html", "Portfolio"], ["create.html", "Open directly"]];
     const q = new URLSearchParams(location.search);
     const previewWallet = !q.has("vault") ? q.get("wallet") : null;
     const wrong = previewWallet === "wrongNetwork";
@@ -692,11 +700,11 @@
       <header class="masthead app-masthead" data-bav-shell>
         <div class="wrap">
           <a class="brand" href="${route()}" aria-label="CRE8 home">${SEAL}</a>
-          <nav class="nav" aria-label="Main navigation">${nav.map(([h, l]) => `<a href="${route(h.replace(".html", ""))}" class="${active === h ? "active" : ""}" ${active === h ? 'aria-current="page"' : ""}>${l}</a>`).join("")}</nav>
+          <nav class="nav" aria-label="Main navigation">${nav.filter(([h]) => (!STATIC_PREVIEW && PERSONAL_AGENT) || h !== "agent.html").map(([h, l]) => `<a href="${route(h.replace(".html", ""))}" class="${active === h ? "active" : ""}" ${active === h ? 'aria-current="page"' : ""}>${l}</a>`).join("")}</nav>
           <div class="head-right">
             <span class="header-status header-status-desktop" title="No verified deployment exists. Transactions are disabled.">${status}</span>
             <span class="chain ${wrong ? "wrong-network" : ""}" title="${wrong ? "Wrong network · design preview" : "BNB Chain"}">${wrong ? "Wrong network" : `<img class="logo" src="${logoUrl("bnbchain")}" alt=""><span class="chain-label">BNB Chain</span>`}</span>
-            <button class="btn sm header-wallet" data-demo>${previewWallet === "connected" ? "Preview wallet" : "Connect wallet"}</button>
+            ${STATIC_PREVIEW ? `<button class="btn sm header-wallet" data-demo>${previewWallet === "connected" ? "Preview wallet" : "Connect wallet"}</button>` : `<a class="btn sm header-wallet" href="${route(PERSONAL_AGENT ? "agent" : "portfolio")}">Connect wallet</a>`}
           </div>
           <span class="header-status header-status-mobile" title="Prototype · Deployment pending">${status.replace('<span class="header-status-more"> · Deployment pending</span>', "")}</span>
         </div>
@@ -717,6 +725,18 @@
       const button = $(".header-wallet");
       if (button && !q.has("vault")) button.textContent = event.detail?.connected ? "Preview wallet" : "Connect wallet";
     });
+    // A connected wallet shows its avatar and short address; any wallet session change resets the button.
+    const paintWallet = (address) => {
+      const button = $(".header-wallet");
+      if (!button || STATIC_PREVIEW) return;
+      button.classList.toggle("has-face", Boolean(address));
+      if (!address) { button.textContent = "Connect wallet"; return; }
+      const face = document.createElement("img"); face.className = "wallet-face"; face.src = avatarFor(address); face.alt = "";
+      const label = document.createElement("span"); label.textContent = short(address);
+      button.replaceChildren(face, label);
+    };
+    window.addEventListener("bav:wallet-account", (event) => { const address = event.detail?.address; paintWallet(typeof address === "string" && /^0x[0-9a-fA-F]{40}$/.test(address) ? address : null); });
+    window.addEventListener("bav:wallet-change", () => paintWallet(null));
     wireShell();
   }
 
@@ -880,7 +900,7 @@
     platformFeeForRisk, feeBreakdown,
     $, $$, esc, fmt, perf, periodDays, historyTag, riskMeter, statusTag,
     rng, hexAddr, short, navSeries, sparkline, lineChart, logo, agentCanvas, stackTables,
-    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, DEMO_OWNER, demo,
+    shell, footerHTML, wireShell, toast, SEAL, brandLogo, route, assetUrl, avatarFor, DEMO_OWNER, demo,
     vault: (slug) => VAULTS.find((v) => v.slug === slug),
   };
 })();

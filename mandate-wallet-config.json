@@ -1,0 +1,5 @@
+{
+  "projectId": "93c5f18997b388472c92201d1f4b9b7c",
+  "configured": true,
+  "note": "Public Reown (WalletConnect) project ID; allowed application origins are managed in the Reown dashboard. No private key belongs in this file."
+}

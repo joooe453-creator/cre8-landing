@@ -1,0 +1,13 @@
+{
+  "schema": "cre8-mandate-history-v4",
+  "available": false,
+  "reason": "Contracts are not deployed; no canonical finalized vault history exists",
+  "chainId": 97,
+  "factory": null,
+  "generatedAt": 0,
+  "asOf": null,
+  "intervalSeconds": 3600,
+  "registryHash": "0x518674ab2b227e5f11e9084f615d57663cde47bce1ba168b4c19c7ee22a73d70",
+  "eventCoverage": "v5-fees-stops",
+  "vaults": {}
+}

@@ -1,45 +1,68 @@
-# Phase-one vault manifest
+# V2 structural mandate schema
 
-Legacy reference plan only: this schema does not deploy MandateVault or enforce schedule/rebalance fields.
+Use `schema: "bnb-agent-vaults/mandate@2.0"`. This is a strict structural input for
+`validate_mandate`; it is not a deployment record, factory approval, fork result, market
+admission, wallet authorization or transaction plan. Unknown and retired top-level fields are
+rejected. Execution still requires the server-held `deployment@1.0` record, current runtime
+hashes, factory membership, live protocol checks, simulation and an externally authorized
+wallet transaction.
 
-Use `schema: "bnb-agent-vaults/manifest@0.8"` and `chainId: 56`.
+The exact top-level fields are:
 
-Required top-level fields:
+- `schema`: exactly `bnb-agent-vaults/mandate@2.0`.
+- `chainId`: `56`, `97` or local `31337`.
+- `creator`: nonzero EVM address.
+- `agent`: nonzero EVM address distinct from the creator.
+- `performanceFeeBps`: creator performance fee, integer `0..2000`.
+- `template`: one complete canonical template whose route, legs, caps and `configHash` pass the
+  same validation as a deployment record.
+- `arbitraryCalls`: exactly `false`.
+- `shareTransferable`: exactly `false`.
+- `userCostBasis`: exactly `true`.
+- `minIdleBps`: exactly `500`.
+- `ruleChangeDelaySeconds`: exactly `86400`.
+- `creatorMinOwnershipBps`: exactly `200`.
+- `depositFeeBps`: exactly `50`.
+- `operationFeeBps`: exactly `10`.
+- `operationFeeAnnualCapBps`: exactly `100` per fixed 365-day accounting epoch.
+- `protocolPerformanceFeeBps`: exactly `1000`.
 
-- `identity`: name, symbol, non-binding note.
-- `denomination`: registry-pinned BSC USDT.
-- `owner` and a separate dedicated `manager.address`.
-- `execution`: `lump-sum` or `accumulate`.
-- `rebalancing`: disabled, cashflow-only, or bounded full buy/sell rebalancing.
-- `portfolio.targets`: 1–10 exact registry targets whose integer `weightBps` sum to `10000`.
-- `fees`: management fee 0–5%, performance fee 0–30%, vault-level high-water mark, no entry/exit fee.
-- `seed`: at least 100 USDT, locked until close.
-- `riskControls`: at least 5% idle, at most 1% slippage, bStock oracle age at most 3,900 seconds, oracle
-  deviation at most 200 bps, market revalidation before every deposit, and `arbitraryCalls: false`.
-- `forkDryRun`: must equal `passed-simulated` for the old reference validator; this is explicitly not an executed chain fork or deployment approval.
+The creator seeds exactly 100 accounting-asset units during the staged finalize transaction.
+The same 0.5% entry fee applies to the seed, so `minSeedShares` must use
+`expectedSeedSharesRaw(assetDecimals)` rather than a hard-coded gross 100-unit value. There is
+no time lock or separate stake. While another holder remains, creator exits must leave at least
+2% of live shares.
 
-Each target copies `targetId`, symbol, category, token address, PancakeSwap V3 pool and fee from
-`list_phase1_markets`. `postPurchase` is either:
+The fund share is the custom nontransferable `MANDATE_FUND_V2` interface. Cash exits settle
+against actual proceeds and each holder's own cost basis, so this schema does not claim full
+ERC-4626 preview conformance. Fixed fees are protocol rules, not caller choices.
 
-- `{ "mode": "hold" }`; or
-- an exact registry `yield-market` with its protocol and market address, `fallback: "hold"`, and
-  `revalidateBeforeEveryDeposit: true`.
+## Canonical template
 
-`lump-sum.deploymentBps` and `accumulate.maxDeploymentBps` cannot exceed `9500`.
+A template contains `id`, `label`, `asset`, `assetDecimals`, `route`, `legs`, `caps`,
+`maxCapBps`, `configHash`, and optionally a bounded `reviewedDependencies` list. It has one to
+seven unique underlying legs. Caps align one-for-one with legs and total no more than 9,500 bps,
+leaving the fixed 5% idle reserve. Every non-accounting leg binds the exact router, factory,
+pool, fee, token feed and oracle-age limit. Venus, Lista and Aave legs additionally bind their
+exact market, receipt and provider fields. `configHash` is recomputed from the accounting asset,
+route and ordered leg tuple; labels and symbols never authorize a market.
 
-Accumulation additionally requires `trancheBps` from 100–2500, at least one enabled schedule/drawdown trigger,
-`sharedCooldownHours >= 24`, `insufficientCashPolicy: "skip-no-catch-up"`, and drawdown reference
-`last-executed-basket-index`. An enabled schedule requires:
+## Onchain Rules are separate
 
-- `cadence.every` plus `cadence.unit` (`days`, `weeks`, or `months`), with at most one calendar year per interval;
-- ISO `startAt` and an IANA `timeZone`;
-- an end mode of `until-stopped`, `after-executions`, or `on-date`;
-- `missedExecutionPolicy: "skip"`, `editPolicy: "next-cycle"`, and successful-buy-only execution counts;
-- local clock preservation across daylight-saving changes and last-valid-day handling for short months.
+BuyOnce, finite/infinite DCA, DipOnly, NewMoney and BuySell behavior lives in the complete
+Rules configuration committed during staged creation. Initial allocation uses
+`initialCashBps`. Scheduled purchases use fixed UTC elapsed seconds, bounded execution windows
+and no catch-up for missed slots. Dip uses a per-token high-water reference and per-token
+cooldown between one hour and seven days; a failed transaction consumes neither a purchase nor
+the cooldown. BuySell is available only when the immutable ordinary portfolio reports the
+capability and emergency selling is enabled. Debt/LP Position portfolios reject basket
+NewMoney and BuySell.
 
-Enabled rebalancing triggers when any target exceeds an absolute weight-drift floor of 100–2000 bps, with a cooldown of at least 24 hours, a
-100–2500 bps turnover cap, `cashflowFirst: true`, and `preflightAllLegs: true`. Scheduled rebalancing checks on its
-cadence but trades only when the drift floor is exceeded. Full rebalancing is invalid when any target uses a yield
-destination; cashflow-only rebalancing remains valid because it does not need to withdraw or sell those positions.
-Scheduled rebalancing also declares its own start time and time zone. Portfolio drawdown protection references the
-settled-NAV high-water mark, pauses all new automated orders without liquidating, and requires manual resume.
+Token stop/target policies and holder-specific stop/take/trailing policies are nonce-bound
+StopController actions, not mandate top-level fields. Agent-loss policy, fee claims, lifecycle
+controls and the fixed 5% idle check are likewise enforced by their typed onchain modules.
+
+The separate `bnb-agent-vaults/manifest@1.0` basket export remains available only through the
+explicit reference-only `build_vault_manifest` and `validate_vault_manifest` tools. Earlier
+`manifest@0.9` exports are rejected. Never translate a claimed dry-run, local planning fields or
+user-selected routes from this reference format into V2 authority.
