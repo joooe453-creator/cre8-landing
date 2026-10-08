@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
 2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2jue03yvau1yp.js"],"PrototypePage"]
-3:T672b,
+3:T66b0,
 <header class="cl-nav" id="mh"><div class="wrap cl-nav-in">
 <a class="brand" href="https://cre8.finance/" id="brand" aria-label="CRE8 home"></a>
 <nav class="cl-links" aria-label="Main navigation"><a href="#how">How it works</a><a href="#funds">Funds</a><a href="#ai">CRE8 AI</a><a href="#earn">Earnings</a><a href="https://docs.cre8.finance/">Docs</a></nav>
@@ -59,12 +59,12 @@
 <svg class="cl-cursor" viewBox="0 0 28 28"><path d="M5 3l17 9.2-7.6 2.1L10.6 22z"/></svg>
 </div></div>
 <div class="cl-sc cl-sc-deposit" aria-hidden="true"><div class="cl-art">
-<svg class="cl-wire" viewBox="0 0 520 500"><path pathLength="1" d="M340 214 H392 Q406 214 406 228 V374"/></svg>
+<svg class="cl-wire" viewBox="0 0 520 500"><path pathLength="1" d="M340 214 H392 Q406 214 406 228 V300"/></svg>
 <div class="cl-card cl-s2-main">
 <div class="cl-card-top"><h4>Deposit</h4><span class="cl-btn">Confirm</span></div>
 <p class="cl-s2-fund"><span class="cl-tks-row cl-tks-sm"><span class="cl-tk" style="--c:#1D1D1F">A</span><span class="cl-tk" style="--c:#0A84D6">M</span><span class="cl-tk" style="--c:#E8453C">G</span><span class="cl-tk" style="--c:#F59B00">A</span><span class="cl-tk" style="--c:#0866FF">M</span><span class="cl-tk" style="--c:#6FAE00">N</span><span class="cl-tk" style="--c:#D82C2C">T</span></span>Mag 7 Weekly</p>
 <div class="cl-s2-amount"><small>Amount</small><p><b>1,000</b><span class="cl-venue"><svg class="cl-usdt" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#26A17B"/><path d="M5.5 6h9v2h-3.5v6.5h-2V8H5.5z" fill="#fff"/></svg>USDT</span></p></div>
-<dl class="cl-panel"><div><dt>Deposit fee 0.5%</dt><dd>5 USDT</dd></div><div><dt>You get</dt><dd>995 shares</dd></div></dl>
+
 </div>
 <div class="cl-pill-card cl-s2-people"><span class="cl-avas"><img src="/assets/agents/agent-03.webp" alt="" width="26" height="26"><img src="/assets/agents/agent-11.webp" alt="" width="26" height="26"><img src="/assets/agents/agent-19.webp" alt="" width="26" height="26"><img src="/assets/agents/agent-05.webp" alt="" width="26" height="26"></span><span><small>Investors</small><b data-count="1284" data-from="1283" data-delay="2900">1,284</b></span></div>
 <div class="cl-dark cl-s2-vault"><svg class="cl-donut" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.915" stroke="#1D1D1F" stroke-dasharray="10.4 89.6" stroke-dashoffset="25.0"/><circle cx="21" cy="21" r="15.915" stroke="#0A84D6" stroke-dasharray="10.4 89.6" stroke-dashoffset="14.0"/><circle cx="21" cy="21" r="15.915" stroke="#E8453C" stroke-dasharray="10.4 89.6" stroke-dashoffset="3.0"/><circle cx="21" cy="21" r="15.915" stroke="#F59B00" stroke-dasharray="10.4 89.6" stroke-dashoffset="-8.0"/><circle cx="21" cy="21" r="15.915" stroke="#0866FF" stroke-dasharray="10.4 89.6" stroke-dashoffset="-19.0"/><circle cx="21" cy="21" r="15.915" stroke="#6FAE00" stroke-dasharray="10.4 89.6" stroke-dashoffset="-30.0"/><circle cx="21" cy="21" r="15.915" stroke="#D82C2C" stroke-dasharray="10.4 89.6" stroke-dashoffset="-41.0"/><circle cx="21" cy="21" r="15.915" stroke="#26A17B" stroke-dasharray="22.4 77.6" stroke-dashoffset="-52.0"/></svg><div><p class="cl-dk-k">Fund contract</p><p class="cl-dk-big"><span data-count="129400" data-from="128400" data-delay="2700">129,400</span> <small>USDT</small></p><p class="cl-s2-sub">7 bStocks and USDT</p></div></div>
@@ -211,7 +211,7 @@
 </main><div id="footer"></div>
 
 
-4:T49c6,
+4:T4b5e,
 (function () {
   const { $, $$ } = BAV;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -409,11 +409,15 @@
     next.addEventListener("click", () => go(Math.min(steps.length - 1, on + 1)));
     addEventListener("scroll", sync, { passive: true });
     track.addEventListener("scroll", sync, { passive: true });
-    addEventListener("resize", () => { fit(); sync(); });
+    // The last step's text holds just past where it becomes current (its bottom 100px above the fold), so it stays
+    // current through the extra scroll and leaves with the stage.
+    const lastText = $(".cl-flow-text", steps[steps.length - 1]);
+    const hold = () => flow.style.setProperty("--hold", `${Math.max(113, innerHeight - 112 - lastText.offsetHeight)}px`);
+    addEventListener("resize", () => { fit(); hold(); sync(); });
     wide.addEventListener("change", () => { track.scrollLeft = 0; fit(); sync(); });
     new IntersectionObserver((entries, io) => { if (entries.some((e) => e.isIntersecting)) { seen = true; io.disconnect(); paint(); } }, { threshold: 0.3 }).observe(stage);
-    fit(); paint(); sync();
-    document.fonts?.ready.then(fit);
+    fit(); hold(); paint(); sync();
+    document.fonts?.ready.then(() => { fit(); hold(); });
   })();
 
   /* CRE8 AI block: a request is typed; CRE8 AI runs its steps, the user approves and confirms in the wallet,
@@ -509,7 +513,7 @@
   }, { passive: true });
 })();
 9:X
-0:{"buildId":"-yPJGysi0mVx6GlBbcn24","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"landing-page","html":"$3","masthead":"","runtimeVersion":"70987d7a1a75","script":"$4","pageKey":"landing"}],["$L5","$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@e","rootVaryParams":null,"needsRuntimeRequest":"$@f"}
+0:{"buildId":"TD3EQ5N6pLZhG9HJlTAVa","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"landing-page","html":"$3","masthead":"","runtimeVersion":"70987d7a1a75","script":"$4","pageKey":"landing"}],["$L5","$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@e","rootVaryParams":null,"needsRuntimeRequest":"$@f"}
 10:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 11:"$Sreact.suspense"
 13:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
@@ -518,12 +522,12 @@
 16:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 17:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 :HL["/_next/static/chunks/026va0v4bymjn.css","style"]
-:HL["/_next/static/chunks/3dvgbe_q1i10_.css","style"]
+:HL["/_next/static/chunks/3u1igua0azle0.css","style"]
 5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/026va0v4bymjn.css","precedence":"next"}]
 6:["$","script","script-0",{"src":"/_next/static/chunks/2jue03yvau1yp.js","async":true}]
 7:["$","$L10",null,{"children":["$","$11",null,{"name":"Next.MetadataOutlet","children":"$@12"}]}]
 a:["$","$1","h",{"children":[null,["$","$L13",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L14",null,{"children":["$","$11",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L15","7",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-c:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3dvgbe_q1i10_.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L16",null,{"parallelRouterKey":"children","template":["$","$L17",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
+c:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3u1igua0azle0.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L16",null,{"parallelRouterKey":"children","template":["$","$L17",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
 12:null
 f:true
 9:300
