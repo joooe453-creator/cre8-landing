@@ -3,13 +3,13 @@
 3:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2jue03yvau1yp.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
-:HL["/_next/static/chunks/3vvdlumh9qibh.css","style"]
+:HL["/_next/static/chunks/03rtx-ls0bnpf.css","style"]
 :HC["/",""]
 :HL["/_next/static/chunks/026va0v4bymjn.css","style"]
-5:T501d,
+5:T4ea4,
 <header class="cl-nav" id="mh"><div class="wrap cl-nav-in">
 <a class="brand" href="https://cre8.finance/" id="brand" aria-label="CRE8 home"></a>
-<nav class="cl-links" aria-label="Main navigation"><a href="#how">How it works</a><a href="#funds">Funds</a><a href="#agent">CRE8 AI</a><a href="#earn">Earnings</a><a href="https://docs.cre8.finance/">Docs</a></nav>
+<nav class="cl-links" aria-label="Main navigation"><a href="#how">How it works</a><a href="#funds">Funds</a><a href="#how">CRE8 AI</a><a href="#earn">Earnings</a><a href="https://docs.cre8.finance/">Docs</a></nav>
 <a class="btn sm" href="https://app.cre8.finance/vaults/" data-wipe>Launch app</a>
 </div></header>
 <main>
@@ -49,26 +49,34 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 <div class="wrap"><h2 class="cl-h2" id="cl-flow-title">How it works</h2></div>
 <div class="cl-flow-main">
 <div class="cl-flow-stage">
-<div class="cl-sc cl-sc-create is-on" aria-hidden="true"><div class="cl-art">
+<div class="cl-sc cl-sc-ai is-on" aria-hidden="true" data-loop="11000"><div class="cl-art">
+<div class="cl-card cl-a0-main">
+<div class="cl-card-top"><div class="cl-a0-who"><img src="/assets/agents/agent-07.webp" alt="" width="40" height="40"><h4>CRE8 AI</h4></div></div>
+<div class="cl-panel cl-a0-chat"><div class="cl-a0-log"><p class="cl-a0-msg me">Create a fund that buys the Mag 7 every week.</p><p class="cl-a0-msg ai">Here's a draft: Mag 7 Weekly buys AAPLB, MSFTB, GOOGLB, AMZNB, METAB, NVDAB and TSLAB with USDT every week on PancakeSwap. You set the fee.</p></div><div class="cl-a0-input"><span class="cl-a0-typed"></span><i class="cl-a0-caret"></i><span class="cl-a0-send">↑</span></div></div>
+</div>
+<div class="cl-dark cl-a0-result"><p class="cl-dk-k">Draft fund</p><p class="cl-dk-big">Mag 7 Weekly</p><p class="cl-dk-btn"><span class="cl-go">Create fund</span><span class="cl-done">✓ Sent to your wallet</span></p></div>
+<svg class="cl-cursor" viewBox="0 0 28 28"><path d="M5 3l17 9.2-7.6 2.1L10.6 22z"/></svg>
+</div></div>
+<div class="cl-sc cl-sc-create" aria-hidden="true"><div class="cl-art">
 <svg class="cl-wire" viewBox="0 0 520 500"><path pathLength="1" d="M362 214 H452 V330"/></svg>
 <div class="cl-card cl-a1-main">
 <div class="cl-card-top"><h4>New fund</h4><span class="cl-btn">Create</span></div>
 <dl class="cl-panel">
-<div><dt>Holds</dt><dd><span class="cl-tks"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#26A17B"/><path d="M5.5 6h9v2h-3.5v6.5h-2V8H5.5z" fill="#fff"/></svg><img src="/logos/bnbchain.webp" alt="" width="20" height="20"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#F7931A"/><path d="M7.5 5.5h4a2.2 2.2 0 0 1 .9 4.2 2.3 2.3 0 0 1-.9 4.8h-4zm1.8 1.6v2.2h1.9a1.1 1.1 0 0 0 0-2.2zm0 3.7v2.2h2.1a1.1 1.1 0 0 0 0-2.2z" fill="#fff"/></svg></span>USDT, BNB, BTCB</dd></div>
-<div><dt>Trades on</dt><dd><span class="cl-tks"><img src="/logos/pancakeswap.webp" alt="" width="20" height="20"><img src="/logos/venus.webp" alt="" width="20" height="20"><img src="/logos/lista.webp" alt="" width="20" height="20"><img src="/logos/aave.webp" alt="" width="20" height="20"></span></dd></div>
+<div><dt>Holds<small>Mag 7 bStocks</small></dt><dd class="cl-tickers">AAPLB MSFTB GOOGLB AMZNB METAB NVDAB TSLAB</dd></div>
+<div><dt>Trades on</dt><dd><span class="cl-tks"><img src="/logos/pancakeswap.webp" alt="" width="20" height="20"></span>PancakeSwap</dd></div>
 <div><dt>Performance fee</dt><dd>15%</dd></div>
 <div><dt>You put in</dt><dd>100 USDT</dd></div>
 </dl>
 </div>
-<div class="cl-dark cl-a1-live"><p class="cl-dk-k">Your fund is live</p><p class="cl-dk-big">Steady USDT</p><div class="cl-dk-cols"><p><small>Share price</small>1.000</p><p><small>Your fee</small>15%</p></div></div>
+<div class="cl-dark cl-a1-live"><p class="cl-dk-k">Your fund is live</p><p class="cl-dk-big">Mag 7 Weekly</p><div class="cl-dk-cols"><p><small>Share price</small>1.000</p><p><small>Your fee</small>15%</p></div></div>
 <svg class="cl-cursor" viewBox="0 0 28 28"><path d="M5 3l17 9.2-7.6 2.1L10.6 22z"/></svg>
 </div></div>
 <div class="cl-sc cl-sc-deposit" aria-hidden="true"><div class="cl-art">
 <svg class="cl-wire" viewBox="0 0 520 500"><path pathLength="1" d="M362 236 H452 V318"/></svg>
-<div class="cl-card cl-card-b cl-a2-main">
+<div class="cl-card cl-a2-main">
 <div class="cl-card-top"><h4>Deposit</h4><span class="cl-btn">Confirm</span></div>
 <dl class="cl-panel">
-<div><dt>Fund</dt><dd>Steady USDT</dd></div>
+<div><dt>Fund</dt><dd>Mag 7 Weekly</dd></div>
 <div class="cl-row-big"><dt>Amount</dt><dd><span class="cl-tks"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#26A17B"/><path d="M5.5 6h9v2h-3.5v6.5h-2V8H5.5z" fill="#fff"/></svg></span>1,000 USDT</dd></div>
 <div><dt>Deposit fee 0.5%</dt><dd>5 USDT</dd></div>
 <div><dt>You get</dt><dd>995 shares</dd></div>
@@ -78,11 +86,11 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 <svg class="cl-cursor" viewBox="0 0 28 28"><path d="M5 3l17 9.2-7.6 2.1L10.6 22z"/></svg>
 </div></div>
 <div class="cl-sc cl-sc-trade" aria-hidden="true"><div class="cl-art">
-<div class="cl-dark cl-a3-order"><img src="/assets/agents/agent-07.webp" alt="" width="44" height="44"><div><p class="cl-dk-k">Your agent</p><p class="cl-dk-mid">Swap 500 USDT for BNB</p><p class="cl-dk-via"><img src="/logos/pancakeswap.webp" alt="" width="16" height="16">on PancakeSwap</p></div></div>
+<div class="cl-dark cl-a3-order"><img src="/assets/agents/agent-07.webp" alt="" width="44" height="44"><div><p class="cl-dk-k">Your agent</p><p class="cl-dk-mid">Buy 500 USDT of NVDAB</p><p class="cl-dk-via"><img src="/logos/pancakeswap.webp" alt="" width="16" height="16">on PancakeSwap</p></div></div>
 <div class="cl-card cl-a3-main">
 <div class="cl-card-top"><h4>Fund contract</h4></div>
 <ul class="cl-panel cl-checks">
-<li style="--d:1.3s"><span>BNB is on the fund's list</span><i>✓</i></li>
+<li style="--d:1.3s"><span>NVDAB is on the fund's list</span><i>✓</i></li>
 <li style="--d:1.75s"><span>PancakeSwap is approved</span><i>✓</i></li>
 <li style="--d:2.2s"><span>Within the fund's limits</span><i>✓</i></li>
 <li class="cl-no" style="--d:2.65s"><span>Send money to the agent</span><i>Not allowed</i></li>
@@ -100,7 +108,8 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 <svg class="cl-cursor" viewBox="0 0 28 28"><path d="M5 3l17 9.2-7.6 2.1L10.6 22z"/></svg>
 </div></div>
 <div class="cl-flow-nav" role="group" aria-label="Steps">
-<button type="button" class="is-on" aria-current="step"><span>Create</span><i></i></button>
+<button type="button" class="is-on" aria-current="step"><span>Ask AI</span><i></i></button>
+<button type="button"><span>Create</span><i></i></button>
 <button type="button"><span>Deposit</span><i></i></button>
 <button type="button"><span>Trade</span><i></i></button>
 <button type="button"><span>Earn</span><i></i></button>
@@ -109,19 +118,23 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 <div class="cl-flow-body">
 <div class="cl-flow-arrows"><button type="button" data-flow-prev aria-label="Previous step" disabled>←</button><button type="button" data-flow-next aria-label="Next step">→</button></div>
 <ol class="cl-flow-steps">
-<li class="cl-flow-step is-on"><p class="cl-flow-count">01 / 04</p><div class="cl-flow-text"><h3>Open a fund</h3>
+<li class="cl-flow-step is-on"><p class="cl-flow-count">01 / 05</p><div class="cl-flow-text"><h3>Just ask CRE8 AI</h3>
+<p>Tell CRE8 AI what you want in plain words. It finds a fund that fits you, compares your options or drafts a new fund from your idea, then sets it up for you. Nothing moves until you confirm it in your wallet.</p>
+<p class="cl-flow-meta"><strong>It can</strong>Find a fund • Compare funds • Draft your own • Review a strategy</p>
+<div class="cl-flow-links"><a class="btn" href="https://app.cre8.finance/agent/" data-wipe>Ask CRE8 AI</a></div></div></li>
+<li class="cl-flow-step"><p class="cl-flow-count">02 / 05</p><div class="cl-flow-text"><h3>Open a fund</h3>
 <p>Pick what your fund can hold, where it can trade and the performance fee you charge. Put in at least 100 USDT of your own to start it. The rules live in the fund contract, and raising a limit or replacing the agent only takes effect after 24 hours' notice.</p>
 <p class="cl-flow-meta"><strong>Trades on</strong>PancakeSwap • Venus • Lista • Aave</p>
 <div class="cl-flow-links"><a class="btn" href="https://app.cre8.finance/create/" data-wipe>Open a fund</a><a class="cl-flow-more" href="https://app.cre8.finance/agent/" data-wipe>Draft one with CRE8 AI</a></div></div></li>
-<li class="cl-flow-step"><p class="cl-flow-count">02 / 04</p><div class="cl-flow-text"><h3>Investors deposit</h3>
+<li class="cl-flow-step"><p class="cl-flow-count">03 / 05</p><div class="cl-flow-text"><h3>Investors deposit</h3>
 <p>Anyone can find your fund on CRE8, read its rules and deposit USDT. The money goes into the fund contract, never to you or the agent, and investors get fund shares in return. The share price is worked out onchain from what the fund holds.</p>
 <p class="cl-flow-meta"><strong>Who holds the money</strong>The fund contract, not a person</p>
 <div class="cl-flow-links"><a class="btn ghost" href="https://app.cre8.finance/vaults/" data-wipe>Explore funds</a><a class="cl-flow-more" href="https://app.cre8.finance/vault/cre8-usdt/" data-wipe>Read an example fund</a></div></div></li>
-<li class="cl-flow-step"><p class="cl-flow-count">03 / 04</p><div class="cl-flow-text"><h3>Your agent runs it</h3>
+<li class="cl-flow-step"><p class="cl-flow-count">04 / 05</p><div class="cl-flow-text"><h3>Your agent runs it</h3>
 <p>Your AI agent sends trade orders whenever its strategy calls for one. Before anything executes, the fund contract checks the order against the fund's rules: only the assets and venues you chose, and only within its limits. Orders that break a rule are rejected.</p>
 <p class="cl-flow-meta"><strong>The agent can</strong>Swap and lend on the venues you approved</p>
 <p class="cl-flow-meta"><strong>The agent can't</strong>Withdraw money or step outside the fund's limits</p></div></li>
-<li class="cl-flow-step"><p class="cl-flow-count">04 / 04</p><div class="cl-flow-text"><h3>Everyone gets paid</h3>
+<li class="cl-flow-step"><p class="cl-flow-count">05 / 05</p><div class="cl-flow-text"><h3>Everyone gets paid</h3>
 <p>Investors can withdraw at the current share price, in cash or in the assets the fund holds. When the fund makes a profit, you earn a performance fee on it. Every trade and fee is onchain, so your track record builds itself.</p>
 <p class="cl-flow-meta"><strong>Performance fee</strong>You set it, up to 20% of profit</p>
 <div class="cl-flow-links"><a class="cl-textlink" href="#earn">See what you could earn</a></div></div></li>
@@ -135,30 +148,6 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 <div class="cl-table-wrap"><table class="cl-vt" id="cl-preview"><thead><tr><th>Fund</th><th class="cl-col-hide">Holds</th><th class="r">Fund size</th><th class="r">Return 30D</th><th class="r cl-col-hide-sm">Investors</th></tr></thead><tbody></tbody></table></div>
 <div class="cl-vp-foot"><a class="cl-textlink" href="https://app.cre8.finance/vaults/" data-wipe>See all funds</a><a class="cl-textlink" href="https://app.cre8.finance/vault/cre8-usdt/" data-wipe>Read an example fund</a></div>
 </div></section>
-
-<section class="cl-sec cl-agent" id="agent"><div class="wrap cl-agent-in">
-<div class="cl-agent-copy">
-<h2 class="cl-h2">Ask CRE8 AI before you invest</h2>
-<p class="cl-lede">Tell it what you hold and how much risk you can take. It finds the fund that fits.</p>
-<ol class="cl-agent-list">
-<li><b>Find a fund</b><span>Matched to your goal and risk.</span></li>
-<li><b>Compare funds</b><span>Holdings, fees, drops and returns.</span></li>
-<li><b>Design your own</b><span>From an idea to a fund you can open.</span></li>
-<li><b>Review a strategy</b><span>What it can and can’t do.</span></li>
-</ol>
-<div class="cl-ctas"><a class="btn" href="https://app.cre8.finance/agent/" data-wipe>Ask CRE8 AI</a></div>
-</div>
-<figure class="cl-agent-chat" aria-label="An example conversation with CRE8 AI">
-<div class="cl-chat-head"><img src="/assets/agents/agent-07.webp" alt="" width="40" height="40" loading="lazy"><span><b>CRE8 AI</b></span></div>
-<div class="cl-chat-log" id="cl-chat-log">
-<p class="cl-msg me">I hold USDT and want something safe.</p>
-<p class="cl-msg ai">CRE8 USDT fits. It lends USDT on Venus and never borrows. Deposit directly?</p>
-<a class="cl-chat-fund" href="https://app.cre8.finance/vault/cre8-usdt/" data-wipe><b>CRE8 USDT</b><span class="cl-chat-go">View fund →</span></a>
-</div>
-<div class="cl-chat-input" aria-hidden="true"><span class="cl-chat-typed" id="cl-chat-typed"></span><i class="cl-caret"></i><span class="cl-chat-send">↑</span></div>
-</figure>
-</div></section>
-
 <section class="cl-sec" id="sides"><div class="wrap">
 <div class="cl-head"><h2 class="cl-h2">Two sides of every fund</h2></div>
 <div class="cl-cards" id="cl-cards">
@@ -202,7 +191,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 </main><div id="footer"></div>
 
 
-6:T39ce,
+6:T370a,
 (function () {
   const { $, $$ } = BAV;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -276,48 +265,6 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   size.addEventListener("blur", () => { size.value = "$" + BAV.fmt.n(Math.max(0, num(size.value))); });
   ret.addEventListener("blur", () => { ret.value = (+num(ret.value).toFixed(2)) + "%"; });
 
-  /* CRE8 AI example chat: a question is typed and sent, then the answer comes in. Plays while in view. */
-  (function () {
-    const chat = $(".cl-agent-chat"), log = $("#cl-chat-log"), typed = $("#cl-chat-typed");
-    if (!chat || !log || !typed || reduce) return;
-    const core = BAV.vault("cre8-crypto-core"), mag = BAV.vault("mag7-rotation"), pct = BAV.fmt.pct;
-    const talks = [
-      { ask: "I hold USDT and want something safe.", reply: "CRE8 USDT fits. It lends USDT on Venus and never borrows. Deposit directly?", slug: "cre8-usdt" },
-      { ask: "Help me create a vault: NVDA and Tesla, bought monthly.", reply: "Here's a draft: NVDAB 50% · TSLAB 50%, bought monthly and after an 8% dip. You set your fee, up to 20%. Create it?", draft: "NVDAB + TSLAB · monthly" },
-      { ask: "I want BNB and BTC, a bit every week.", reply: "CRE8 Crypto Accumulator buys BNB, BTC and ETH every week, and more after a dip.", slug: "cre8-crypto-accumulator" },
-      { ask: "Compare Crypto Core and Mag 7 Accumulator.", reply: `Over 30 days, Crypto Core made ${pct(core.returns["30D"])} with a ${pct(core.maxDrawdown["30D"])} max drop. Mag 7 made ${pct(mag.returns["30D"])} but dropped up to ${pct(mag.maxDrawdown["30D"])}.`, slug: "mag7-rotation" },
-    ];
-    const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
-    let visible = false, started = false;
-    const ready = async () => { while (!visible || document.hidden) await sleep(400); };
-    async function type(el, text, speed) {
-      el.textContent = "";
-      for (const ch of text) { await ready(); el.textContent += ch; await sleep(speed); }
-    }
-    const add = (el) => { el.classList.add("cl-in"); log.append(el); return el; };
-    const message = (who, text) => { const p = document.createElement("p"); p.className = `cl-msg ${who}`; p.textContent = text; return add(p); };
-    async function play(talk) {
-      log.classList.add("cl-out"); await sleep(320);
-      log.replaceChildren(); log.classList.remove("cl-out");
-      chat.classList.add("is-typing"); await type(typed, talk.ask, 42); await sleep(420);
-      chat.classList.remove("is-typing"); typed.textContent = ""; message("me", talk.ask);
-      await sleep(380);
-      const dots = document.createElement("p"); dots.className = "cl-msg ai cl-typing"; dots.innerHTML = "<i></i><i></i><i></i>"; add(dots);
-      await sleep(1100); dots.remove();
-      await type(message("ai", ""), talk.reply, 16);
-      await sleep(260);
-      // A suggested vault links to it; a draft leads to Create a vault.
-      const fund = document.createElement("a"); fund.className = "cl-chat-fund"; fund.href = BAV.route(talk.draft ? "create" : "vault/" + talk.slug);
-      fund.innerHTML = talk.draft ? `<b>Draft · ${BAV.esc(talk.draft)}</b><span class="cl-chat-go">Create vault →</span>` : `<b>${BAV.esc(BAV.vault(talk.slug).name)}</b><span class="cl-chat-go">View fund →</span>`; add(fund);
-      await sleep(4200);
-    }
-    async function loop() { for (let i = 0; ; i = (i + 1) % talks.length) { await ready(); await play(talks[i]); } }
-    new IntersectionObserver((entries) => {
-      visible = entries.some((entry) => entry.isIntersecting);
-      if (visible && !started) { started = true; loop(); }
-    }, { threshold: 0.35 }).observe(chat);
-  })();
-
   /* hero: "run it." and "earn it." take turns, typed like spark.finance: hold 3s with a blinking caret, delete, type */
   (function () {
     const word = $("#cl-type"), caret = $("#cl-type-c"), box = word && word.parentElement;
@@ -379,12 +326,46 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     // Scenes play from the start each time they come on, and not before the stage is first seen.
     // Like an animation on loop, the step being read fades out and plays again every few seconds.
     let loop = 0, fade = 0;
+    // Ask AI: a question is typed and sent, CRE8 AI answers, then its suggestion is carried out. Each loop asks another one.
+    const fund = (slug) => BAV.vault(slug).name;
+    const talks = [
+      { ask: "Create a fund that buys the Mag 7 every week.", reply: "Here's a draft: Mag 7 Weekly buys AAPLB, MSFTB, GOOGLB, AMZNB, METAB, NVDAB and TSLAB with USDT every week on PancakeSwap. You set the fee.", k: "Draft fund", name: "Mag 7 Weekly", go: "Create fund" },
+      { ask: "I want US tech stocks without leaving crypto.", reply: `${fund("mag7-rotation")} buys NVDAB, GOOGLB and AAPLB every week, and more after a 6% dip.`, k: "Suggested fund", name: fund("mag7-rotation"), go: "Deposit" },
+      { ask: "I hold USDT and want something safe.", reply: `${fund("cre8-usdt")} fits. It lends USDT on Venus and never borrows.`, k: "Suggested fund", name: fund("cre8-usdt"), go: "Deposit" },
+    ];
+    let talkAt = 0, chatRun = 0;
+    const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
+    async function chat(scene) {
+      const run = ++chatRun, live = () => run === chatRun;
+      const talk = talks[talkAt++ % talks.length];
+      const log = $(".cl-a0-log", scene), typed = $(".cl-a0-typed", scene), card = $(".cl-a0-result", scene);
+      const say = (who, text) => { const p = document.createElement("p"); p.className = "cl-a0-msg " + who; p.textContent = text; log.append(p); return p; };
+      scene.classList.remove("ai-card", "ai-click", "is-typing");
+      $(".cl-dk-k", card).textContent = talk.k; $(".cl-dk-big", card).textContent = talk.name; $(".cl-go", card).textContent = talk.go;
+      log.replaceChildren(); typed.textContent = "";
+      await sleep(600); if (!live()) return;
+      scene.classList.add("is-typing");
+      for (const ch of talk.ask) { typed.textContent += ch; await sleep(34); if (!live()) return; }
+      await sleep(380); if (!live()) return;
+      scene.classList.remove("is-typing"); typed.textContent = ""; say("me", talk.ask);
+      await sleep(450); if (!live()) return;
+      const dots = say("ai dots", ""); dots.innerHTML = "<i></i><i></i><i></i>";
+      await sleep(900); if (!live()) return;
+      dots.remove();
+      const answer = say("ai", "");
+      for (const ch of talk.reply) { answer.textContent += ch; await sleep(12); if (!live()) return; }
+      await sleep(350); if (!live()) return;
+      scene.classList.add("ai-card");
+      await sleep(800); if (!live()) return;
+      scene.classList.add("ai-click");
+    }
     function play(scene) {
       scene.classList.remove("is-play", "is-out"); void scene.offsetWidth; scene.classList.add("is-play");
       $$("[data-count]", scene).forEach(count);
+      if (scene.matches(".cl-sc-ai")) chat(scene);
     }
     function paint() {
-      clearInterval(loop); clearTimeout(fade);
+      clearInterval(loop); clearTimeout(fade); chatRun++;
       scenes.forEach((s, i) => s.classList.toggle("is-on", seen && i === on));
       if (!seen || reduce) return;
       const scene = scenes[on];
@@ -393,7 +374,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         if (document.hidden) return;
         scene.classList.add("is-out");
         fade = setTimeout(() => play(scene), 400);
-      }, 8500);
+      }, +(scene.dataset.loop || 8500));
     }
     function show(k) {
       if (k === on) return;
@@ -436,7 +417,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     dots.forEach((d, i) => d.setAttribute("aria-current", i === k));
   }, { passive: true });
 })();
-0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3vvdlumh9qibh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"landing-page","html":"$5","masthead":"","runtimeVersion":"70987d7a1a75","script":"$6","pageKey":"landing"}],["$L7","$L8"],"$L9"]}],{},null,false,null]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"nzKP8KWpwsTdOT_cLGekh"}
+0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/03rtx-ls0bnpf.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"landing-page","html":"$5","masthead":"","runtimeVersion":"70987d7a1a75","script":"$6","pageKey":"landing"}],["$L7","$L8"],"$L9"]}],{},null,false,null]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"yis7BYIemmK0vtP_kx61y"}
 d:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 e:"$Sreact.suspense"
 10:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
@@ -445,8 +426,8 @@ e:"$Sreact.suspense"
 8:["$","script","script-0",{"src":"/_next/static/chunks/2jue03yvau1yp.js","async":true,"nonce":"$undefined"}]
 9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3vvdlumh9qibh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/03rtx-ls0bnpf.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 14:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 f:null
-13:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L14","5",{}]]
+13:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L14","7",{}]]
