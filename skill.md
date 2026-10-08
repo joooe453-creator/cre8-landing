@@ -1,6 +1,6 @@
 ---
 name: bnb-agent-vaults
-description: Resolve reviewed BNB Chain baskets and prepare bounded V2 fund/Position factory stages, fund/Rules operations, and registered Debt/LP actions through unsigned CRE8 MCP tools.
+description: Resolve reviewed BNB Chain baskets and prepare bounded V2 fund/Position and direct-spot composite lifecycle actions through unsigned CRE8 MCP tools.
 ---
 
 # BNB Agent Vaults V2
@@ -23,18 +23,27 @@ For the personal-agent onboarding and paid planning flow, first read
 signing tool. Keep its wallet session and task scope separate from the unsigned
 protocol MCP below. Payment never increases an agent's vault authority.
 
-Call `get_execution_deployment`, `get_position_deployment`, `get_position_creation_catalog`
-and `list_integrations`. The current source exposes 54 unsigned tools.
+Call `get_execution_deployment`, `get_position_deployment`, `get_position_creation_catalog`,
+`get_composite_spot_deployment` and `list_integrations`. Discover tools through `tools/list`.
 `undeployed` is a hard gate: design/export only; do not invent custody addresses, RPC success,
 prices, signed approvals or deployment results. Design catalogs and structural validation
 never prove reviewed admission or live market safety. Server-reviewed records determine RPC,
 chain, code pins, allowed templates and positions. Do not submit caller-selected manifests/RPCs.
 
 For PR20 multi-asset/multi-strategy designs, call `get_strategy_v3_status` first.
-Its separate scope/NAV/risk primitives do not authorize composite vault creation or T01–T19
-execution. All nineteen tools remain `spec-only` until the canonical parent, adapters,
+The separate `MANDATE_COMPOSITE_V3_SPOT` capability implements direct-spot creation, shares,
+physical joins, typed Buy/Sell intents and isolated withdrawals. Its manifest must be deployed
+and its factory graph verified before preparing calls; the public manifest is currently undeployed.
+All nineteen strategy tools remain `spec-only` until the complete parent, adapters,
 withdrawals and release acceptance are integrated; T15 is phase two. Do not reinterpret
 an existing V2 basket, separate LP/Debt vault or PR19 paid plan as a shared composite fund.
+
+For direct-spot composites use `prepare_composite_spot_action`,
+`simulate_composite_spot_action` and `verify_composite_spot_receipt`; read the staged workflow
+in [`references/execution.md`](references/execution.md#direct-spot-composite-lifecycle).
+Arguments use raw integer units, exact catalog IDs and typed actions. Caller-supplied routes,
+receivers, deployment manifests and raw calldata are rejected. The existing V2 keeper and
+paid planning output do not automatically gain this new capability or wallet authority.
 
 For an ordinary basket start with `list_phase1_markets`, select assets and each asset's hold,
 vault or supply-market destination, then `resolve_asset_selection`. Match the entire basket,

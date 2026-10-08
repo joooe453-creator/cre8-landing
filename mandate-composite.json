@@ -1,0 +1,11 @@
+{
+  "schema": "bnb-agent-vaults/composite-spot@1.0",
+  "capability": "MANDATE_COMPOSITE_V3_SPOT",
+  "status": "undeployed",
+  "chainId": 97,
+  "rpcUrl": "",
+  "factory": null,
+  "codeHashes": {},
+  "catalog": [],
+  "vaults": []
+}

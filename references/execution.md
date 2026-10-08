@@ -223,4 +223,56 @@ publisher/RPC/archive completeness is a trust boundary. Aster API equity is not 
 
 ## PR20 composite status
 
-Call `get_strategy_v3_status` for the separate strategy-v3 capability report. It is read-only, returns no signing or transaction preparation authority, and records unfinished release blockers. Local scope custody, exact-input spot and gross/debt valuation tests are not a deployed composite product. Preserve the V2 and Position schemas and limits; do not route T01–T19 requests through old selectors.
+Call `get_strategy_v3_status` for the full strategy-v3 release report. It remains unavailable.
+The implemented direct-spot lifecycle has a separate manifest and selectors described below.
+Preserve the V2 and Position schemas and limits; do not route T01–T19 through old selectors.
+
+## Direct spot composite lifecycle
+
+Discover `get_composite_spot_deployment` (`composite-spot@1.0`,
+`MANDATE_COMPOSITE_V3_SPOT`). Undeployed means design only. Public-chain releases require
+reviewed factory/deployer/registry runtimes, exact external route pins and complete proxy
+provenance. Reads use EIP-1898 `requireCanonical` with no numeric fallback. Pending factory
+creations are identified separately and never advertised as official vaults.
+
+`prepare_composite_spot_action {request:{action,account,vault?,parameters},expiresAt}` returns
+a `composite-plan@1.0` unsigned single CALL. Expiry is at most 900 seconds after the chain
+header. Preserve the plan unchanged; simulation rebuilds its parameters and graph. Where
+`deadlineEnforcement=local-only`, expiry cannot cancel delayed wallet broadcasts.
+
+Creation stages are `create-kernel` (reviewed `catalogId`, distinct `agent`, UTF-8 name/symbol,
+0–2000 `feeBps`; recipient fixed to creator), seven `create-infrastructure` calls (phase 0–6),
+`create-wire`, one `create-scope` per position (`catalogId,id,funding,capBps,compoundBps`),
+then `create-seal`. Keep verified `KernelPrepared`/`InfrastructurePrepared` receipts for
+recovery; the factory's pre-wire infrastructure mapping is private. Do not guess an address
+or infer a missing phase from local UI state. Simulation rejects already completed stages.
+
+The factory owner separately prepares `schedule-activation`. After at least one day and
+fresh graph/epoch/component checks the creator prepares `activate {minimumShares}`.
+Only activation approves exactly 100 accounting units to the verified factory. No seed is
+pulled during the earlier stages. There are at most 8 direct scopes, caps total at most 9500
+bps, nontransferable shares and a 2% live creator ownership requirement, not staking.
+
+`deposit {maximum,minimumShares,version}` and `mint {shares,maximum,version}` approve only
+the maximum budget to the verified parent. Call `preview_composite_spot_deposit {vault,maximumRaw}` for an indicative share prequote; it never changes the owner's reviewed minimum. Physical inventory replication, a 0.5% entry fee
+and refunds determine actual used assets. Previews/minima are not ERC-4626 guarantees.
+`allocate {scope,amount,version}`, `reserve` and `execute {id}` use manager/current enabled
+agent authority; reservation includes the scope nonce, lot, fixed Buy/Sell tokens and a
+deadline. `minimumUnits` is zero; Sell uses the principal bucket. Buy inputs can use principal
+or compound. Trade operation fees need extra cash in the same bucket.
+
+Withdraw using `request-withdrawal {shares,minimum}`, then `partition-withdrawal {id}`.
+Read `get_composite_withdrawal`; convert each noncash token with
+`convert-claim {id,token,minimum}`, then `complete-withdrawal {id}`. Permissionless progress
+never changes the recipient. The owner can amend a queued/partitioned minimum and deadline,
+cancel only while queued, or `claim-in-kind {id}` after partition. Stale prices keep NAV null
+and can waive in-kind fees; do not automatically weaken minimums or fall back to physical
+delivery without the owner's explicit review. Physical fees remain in escrow and are floored
+per token; quoted fee value is not guaranteed to equal delivered token granularity.
+
+Verify every receipt using `verify_composite_spot_receipt {plan,hash}`. Exact transaction,
+canonical block, pinned factory and fixed helper emitters are required. Return receipt-derived
+vault/withdrawal/intent IDs, never model guesses. Unknown/pending/orphaned/reverted are distinct
+and never authorize automatic retry. EOA browser submission reuses the shared wallet journal,
+cross-tab lock, account/provider change guard and exact approvals. Safe/4337 signing and a
+durable automated composite signer are not yet available; old keeper records cannot be reused.
