@@ -53,4 +53,4 @@ f:["$","details",null,{"className":"legal-document-module__7mCj2G__fingerprint",
 a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 11:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 7:null
-c:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L11","5",{}]]
+c:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","$L11","5",{}]]

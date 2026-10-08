@@ -24,4 +24,4 @@ a:C
 12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 15:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 10:null
-14:[["$","title","0",{"children":"CRE8 — 法律文件草稿"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon.svg"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon.svg"}],["$","$L15","5",{}]]
+14:[["$","title","0",{"children":"CRE8 — 法律文件草稿"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","$L15","5",{}]]
