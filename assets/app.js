@@ -80,7 +80,7 @@
         return await module.confirmFundProspectus({ onRead });
       } catch (error) {
         legalModule = null;
-        if (epoch === noticeEpoch) toast(error?.message || "The prospectus reminder could not be loaded. Refresh before depositing.");
+        if (epoch === noticeEpoch) toast(error?.message || "The fund facts reminder could not be loaded. Refresh before depositing.");
         return false;
       }
     },
@@ -149,13 +149,13 @@
     const familyOf = (t) => (STABLE_TOK.has(t) ? "stable" : BNB_TOK.has(t) ? "bnb" : "other");
 
     const GROUPS = {
-      stable: { name: "Stablecoins", tokens: "USDT, USDC, USD1, U — and yield-bearing stables in loops", noun: "stablecoins" },
+      stable: { name: "Stablecoins", tokens: "USDT, USDC, USD1, U — and interest-bearing stablecoins in loops", noun: "stablecoins" },
       bnb: { name: "BNB & staked BNB", tokens: "BNB, slisBNB, asBNB", noun: "BNB" },
       majors: { name: "BTC & ETH", tokens: "BTCB, ETH, wBETH, SolvBTC", noun: "BTC and ETH" },
-      stocks: { name: "Tokenized stocks", tokens: "bStocks with a DEX pool — NVDAB, TSLAB, SPYB…", noun: "tokenized stocks" },
+      stocks: { name: "US stocks", tokens: "Tokenized US stocks with a DEX pool — NVDAB, TSLAB, SPYB…", noun: "US stocks" },
     };
     const ACTIONS = {
-      lend: { name: "Lend & earn", desc: "Exact ERC-4626 vaults and Venus/Aave supply markets.", logos: ["lista", "venus", "aave"] },
+      lend: { name: "Lending", desc: "Exact ERC-4626 vaults and Venus/Aave supply markets.", logos: ["lista", "venus", "aave"] },
       trade: { name: "Hold & trade", desc: "Hold the token itself, bought and sold on PancakeSwap.", logos: ["pancakeswap"] },
       lp: { name: "Provide liquidity · upcoming", upcoming: true, desc: "PancakeSwap V3 pools, valued by the oracle, not the pool.", logos: ["pancakeswap"] },
       borrow: { name: "Borrow & loop · upcoming", upcoming: true, desc: "Post collateral, borrow and loop. You set the leverage cap.", logos: ["venus", "lista"] },
@@ -217,7 +217,7 @@
     M.forEach((m) => { if (["borrow", "lp"].includes(m.a) || m.kind === "Staking") m.upcoming = true; });
     const byId = Object.fromEntries(M.map((m) => [m.id, m]));
     const denomFam = (asset) => (asset === "BNB" ? "bnb" : "stable");
-    // Holding the vault's own asset is not a market.
+    // Holding the fund's own asset is not a market.
     const marketsFor = (g, a, asset) => M.filter((m) => !m.upcoming && m.g === g && m.a === a && !(a === "trade" && m.name === (asset === "BNB" ? "BNB" : "USDT")));
     const ruleMarkets = (r) => [...r.m].map((id) => byId[id]).filter(Boolean);
     const allocationCap = (r, marketId) => Math.max(0, Number(r.caps && r.caps[marketId]) || 0);
@@ -254,7 +254,7 @@
       return Object.entries(n).map(([k, c]) => (c > 1 ? `${k} (${c} markets)` : k));
     };
     function rulePhrase(r) {
-      const ms = ruleMarkets(r), names = ms.map((m) => `${m.name} (up to ${capTxt(allocationCap(r, m.id))} of vault value)`);
+      const ms = ruleMarkets(r), names = ms.map((m) => `${m.name} (up to ${capTxt(allocationCap(r, m.id))} of fund value)`);
       if (r.a === "lend") {
         // Name the coins actually lent when there are only one or two; otherwise the family.
         const toks = [...new Set(ms.map((m) => m.tokens[0]))];
@@ -263,17 +263,17 @@
       }
       if (r.a === "trade") return `hold ${few(names, "tokens")}`;
       if (r.a === "lp") return `provide liquidity to ${few(names, "pools")}`;
-      const pairs = ms.map((m) => `${label(m)} (up to ${capTxt(allocationCap(r, m.id))} of vault value)`);
+      const pairs = ms.map((m) => `${label(m)} (up to ${capTxt(allocationCap(r, m.id))} of fund value)`);
       return `loop ${few(pairs, "markets")} up to <em>${levTxt(Math.max(...ms.map((m) => effLev(m, r.lev))))}</em>`;
     }
-    // The one sentence depositors read. `name` must already be HTML-escaped.
+    // The one sentence holders read. `name` must already be HTML-escaped.
     function describe(rules, name) {
       // Holding and liquidity read as one list across assets; lending and loops stay per rule.
       const parts = [], merged = {};
       rules.forEach((r) => {
         if (r.a === "trade" || r.a === "lp") {
           if (!merged[r.a]) { merged[r.a] = []; parts.push(r.a); }
-          merged[r.a].push(...ruleMarkets(r).map((m) => `${m.name} (up to ${capTxt(allocationCap(r, m.id))} of vault value)`));
+          merged[r.a].push(...ruleMarkets(r).map((m) => `${m.name} (up to ${capTxt(allocationCap(r, m.id))} of fund value)`));
         } else parts.push(r);
       });
       const phrases = parts.map((p) => (p === "trade" ? `hold ${few(merged.trade, "tokens")}` : p === "lp" ? `provide liquidity to ${few(merged.lp, "pools")}` : rulePhrase(p)));
@@ -290,72 +290,72 @@
     {
       slug: "cre8-usdt", name: "CRE8 USDT", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 1611, agentVaults: 1, symbol: "avSUS", asset: "USDT", benchmark: "Idle USDT", managerType: "agent", official: true, continuous: true,
       rules: [{ g: "stable", a: "lend", m: ["venus-supply-usdt"], caps: { "venus-supply-usdt": 70 } }],
-      strategy: "Supply USDT to Venus, up to 70% of the vault's current value. Keep the rest idle. No borrowing.",
+      strategy: "Lends USDT on Venus, up to 70% of the fund's current value. Keeps the rest in cash. No borrowing.",
       runtimeDays: 90, returns: { "7D": 0.06, "30D": 0.26, "90D": 0.8, ALL: 0.8 }, maxDrawdown: { "7D": 0, "30D": 0, "90D": -0.02, ALL: -0.02 },
-      tvl: 10080, followers: 10, status: "Simulated", sharePrice: 1.008, fees: { perf: 20, mgmt: 0, platform: 0 }, cap: null, exitCost: "Quote required",
+      tvl: 10080, followers: 10, status: "Simulated", sharePrice: 1.008, fees: { perf: 20, mgmt: 0, platform: 10 }, cap: null, exitCost: "Quote required",
       positions: [
         { p: "Venus", loc: "vUSDT supply receipts", w: 70, by: "Underlying / receipt exchange rate", st: "Simulated" },
-        { p: "Idle", loc: "USDT in vault", w: 30, by: "Token balance", st: "Simulated reserve" },
+        { p: "Idle", loc: "USDT in fund", w: 30, by: "Token balance", st: "Simulated reserve" },
       ],
     },
     {
       slug: "cre8-crypto-core", name: "CRE8 Crypto Core", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 1611, agentVaults: 4, symbol: "avSCC", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Buy once",
       rules: [{ g: "bnb", a: "trade", m: ["pcs-hold-bnb"], caps: { "pcs-hold-bnb": 32 } }, { g: "majors", a: "trade", m: ["pcs-hold-btcb", "pcs-hold-eth"], caps: { "pcs-hold-btcb": 32, "pcs-hold-eth": 31 } }],
-      strategy: "Buys a fixed WBNB, BTCB and ETH basket once. Supported assets may be supplied only to their exact approved Aave, Venus or Lista market.",
+      strategy: "Buys WBNB, BTCB and ETH once, at fixed weights. Each may be lent only to its exact approved Aave, Venus or Lista market.",
       runtimeDays: 96, returns: { "7D": 0.61, "30D": 2.44, "90D": 7.12, ALL: 7.9 }, maxDrawdown: { "7D": -0.42, "30D": -1.88, "90D": -3.9, ALL: -3.9 },
-      tvl: 3050000, followers: 1102, status: "Simulated", sharePrice: 1.079, fees: { perf: 15, mgmt: 0, platform: 5 }, cap: null, exitCost: "0.1–0.9% by position",
+      tvl: 3050000, followers: 1102, status: "Simulated", sharePrice: 1.079, fees: { perf: 15, mgmt: 0, platform: 10 }, cap: null, exitCost: "0.1–0.9% by position",
       positions: [
         { p: "Lista DAO", loc: "WBNB vault", w: 32, by: "ERC-4626 shares", st: "Optional supply · live-gated" },
         { p: "Venus", loc: "vBTC", w: 32, by: "vToken × exchange rate", st: "Optional supply · live-gated" },
         { p: "PancakeSwap", loc: "ETH", w: 31, by: "Oracle + TWAP", st: "Held" },
-        { p: "Idle", loc: "USDT in vault", w: 5, by: "Balance", st: "Execution reserve" },
+        { p: "Idle", loc: "USDT in fund", w: 5, by: "Balance", st: "Execution reserve" },
       ],
     },
     {
       slug: "cre8-bstock-core", name: "CRE8 bStock Core", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 942, agentVaults: 4, symbol: "avSBC", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Buy once",
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab", "pcs-hold-tslab", "pcs-hold-spcxb", "pcs-hold-skhyb"], caps: { "pcs-hold-nvdab": 24, "pcs-hold-tslab": 24, "pcs-hold-spcxb": 24, "pcs-hold-skhyb": 23 } }],
-      strategy: "Buys a fixed NVDAB, TSLAB, SPCXB and SKHYB basket once, with post-purchase yield disabled by default.",
+      strategy: "Buys NVDAB, TSLAB, SPCXB and SKHYB once, at fixed weights. Lending after purchase is off by default.",
       runtimeDays: 128, returns: { "7D": 0.24, "30D": 1.02, "90D": 3.31, ALL: 4.76 }, maxDrawdown: { "7D": -0.03, "30D": -0.12, "90D": -0.38, ALL: -0.62 },
-      tvl: 2860000, followers: 984, status: "Simulated", sharePrice: 1.0476, fees: { perf: 10, mgmt: 0, platform: 3 }, cap: null, exitCost: "< 0.1%",
+      tvl: 2860000, followers: 984, status: "Simulated", sharePrice: 1.0476, fees: { perf: 10, mgmt: 0, platform: 10 }, cap: null, exitCost: "< 0.1%",
       positions: [
         { p: "PancakeSwap", loc: "NVDAB", w: 24, by: "Oracle + TWAP", st: "Held" },
         { p: "PancakeSwap", loc: "TSLAB · SPCXB · SKHYB", w: 71, by: "Oracle + TWAP", st: "Held" },
-        { p: "Idle", loc: "USDT in vault", w: 5, by: "Balance", st: "Execution reserve" },
+        { p: "Idle", loc: "USDT in fund", w: 5, by: "Balance", st: "Execution reserve" },
       ],
     },
     {
       slug: "cre8-crypto-accumulator", name: "CRE8 Crypto Accumulator", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 1306, agentVaults: 4, symbol: "avSCA", asset: "USDT", benchmark: "Equal-weight BNB / BTCB / ETH", managerType: "agent", official: true, buyPlan: "Weekly or −5%",
       rules: [{ g: "bnb", a: "trade", m: ["pcs-hold-bnb"], caps: { "pcs-hold-bnb": 32 } }, { g: "majors", a: "trade", m: ["pcs-hold-btcb", "pcs-hold-eth"], caps: { "pcs-hold-btcb": 32, "pcs-hold-eth": 31 } }],
-      strategy: "Buys a 10% cash tranche weekly or after a 5% basket decline, with one shared 24-hour cooldown.",
+      strategy: "Spends 10% of its cash every week, or after a 5% drop across its assets, with one shared 24-hour cooldown.",
       runtimeDays: 73, returns: { "7D": 2.16, "30D": 6.42, "90D": null, ALL: 13.88 }, maxDrawdown: { "7D": -1.92, "30D": -4.74, "90D": null, ALL: -8.16 },
-      tvl: 2170000, followers: 803, status: "Simulated", sharePrice: 1.1388, fees: { perf: 15, mgmt: 0, platform: 5 }, cap: 5000000, exitCost: "< 0.5% at $100K",
+      tvl: 2170000, followers: 803, status: "Simulated", sharePrice: 1.1388, fees: { perf: 15, mgmt: 0, platform: 10 }, cap: 5000000, exitCost: "< 0.5% at $100K",
       positions: [
         { p: "PancakeSwap", loc: "WBNB · BTCB · ETH", w: 64, by: "Oracle + TWAP", st: "Accumulating" },
-        { p: "Idle", loc: "USDT in vault", w: 36, by: "Balance", st: "Next trigger eligible" },
+        { p: "Idle", loc: "USDT in fund", w: 36, by: "Balance", st: "Next trigger eligible" },
       ],
     },
     {
       slug: "cre8-bstock-accumulator", name: "CRE8 bStock Accumulator", manager: "CRE8", creator: "0x7b2938433f063553a6bf70a8161121010e391a11", agentId: 1422, agentVaults: 4, symbol: "avSBA", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", official: true, buyPlan: "Monthly or −8%",
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab", "pcs-hold-spyb", "pcs-hold-aaplb", "pcs-hold-googlb"], caps: { "pcs-hold-nvdab": 24, "pcs-hold-spyb": 24, "pcs-hold-aaplb": 24, "pcs-hold-googlb": 23 } }],
-      strategy: "Buys a 12% cash tranche monthly or after an 8% basket decline. Unsupported yield assets stay held.",
+      strategy: "Spends 12% of its cash every month, or after an 8% drop across its assets. Assets without an approved lending market stay held.",
       runtimeDays: 41, returns: { "7D": 0.04, "30D": 0.18, "90D": null, ALL: 0.24 }, maxDrawdown: { "7D": -0.02, "30D": -0.05, "90D": null, ALL: -0.06 },
-      tvl: 1940000, followers: 677, status: "Simulated", sharePrice: 1.0024, fees: { perf: 10, mgmt: 0, platform: 5 }, cap: null, exitCost: "0.2–0.9% by target",
+      tvl: 1940000, followers: 677, status: "Simulated", sharePrice: 1.0024, fees: { perf: 10, mgmt: 0, platform: 10 }, cap: null, exitCost: "0.2–0.9% by target",
       positions: [
         { p: "PancakeSwap", loc: "NVDAB · SPYB · AAPLB · GOOGLB", w: 60, by: "Oracle + TWAP", st: "Accumulating" },
-        { p: "Idle", loc: "USDT in vault", w: 40, by: "Balance", st: "Next trigger eligible" },
+        { p: "Idle", loc: "USDT in fund", w: 40, by: "Balance", st: "Next trigger eligible" },
       ],
     },
     {
       slug: "mag7-rotation", name: "Mag 7 Accumulator", manager: "Tickerline", creator: "0xe6cc47c42b1e8be1dbb7ef69cd2d104a2f1368b0", agentId: 1807, agentVaults: 2, symbol: "avM7A", asset: "USDT", benchmark: "Hold SPYB", managerType: "agent", buyPlan: "Weekly or −6%",
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab", "pcs-hold-googlb", "pcs-hold-aaplb"], caps: { "pcs-hold-nvdab": 30, "pcs-hold-googlb": 25, "pcs-hold-aaplb": 20 } }],
-      strategy: "Buys a fixed NVDAB, GOOGLB and AAPLB basket in 10% cash tranches weekly or after a 6% basket decline.",
+      strategy: "Buys NVDAB, GOOGLB and AAPLB at fixed weights with 10% of its cash every week, or after a 6% drop across them.",
       runtimeDays: 52, returns: { "7D": 1.42, "30D": 4.91, "90D": null, ALL: 7.84 }, maxDrawdown: { "7D": -1.18, "30D": -3.96, "90D": null, ALL: -5.72 },
-      tvl: 1210000, followers: 512, status: "Simulated", sharePrice: 1.0784, fees: { perf: 15, mgmt: 0, platform: 5 }, cap: 1500000, exitCost: "0.2–0.7% at $100K",
+      tvl: 1210000, followers: 512, status: "Simulated", sharePrice: 1.0784, fees: { perf: 15, mgmt: 0, platform: 10 }, cap: 1500000, exitCost: "0.2–0.7% at $100K",
       positions: [
         { p: "PancakeSwap", loc: "NVDAB", w: 28, by: "Atlas · APRO · TWAP", st: "Held" },
         { p: "PancakeSwap", loc: "GOOGLB", w: 22, by: "Atlas · TWAP", st: "Held" },
         { p: "PancakeSwap", loc: "AAPLB", w: 18, by: "Atlas · TWAP", st: "Held" },
-        { p: "Idle", loc: "USDT in vault", w: 32, by: "Balance", st: "Next trigger eligible" },
+        { p: "Idle", loc: "USDT in fund", w: 32, by: "Balance", st: "Next trigger eligible" },
       ],
     },
     {
@@ -363,10 +363,10 @@
       rules: [{ g: "stocks", a: "trade", m: ["pcs-hold-nvdab"], caps: { "pcs-hold-nvdab": 70 } }],
       strategy: "Buys NVDAB every Monday with a fixed share of idle USDT. Nothing else.",
       runtimeDays: 9, returns: { "7D": 2.08, "30D": null, "90D": null, ALL: 3.41 }, maxDrawdown: { "7D": -2.64, "30D": null, "90D": null, ALL: -2.64 },
-      tvl: 184000, followers: 96, status: "Simulated", sharePrice: 1.0341, fees: { perf: 10, mgmt: 0, platform: 5 }, cap: null, exitCost: "≈ 0.4% at $100K",
+      tvl: 184000, followers: 96, status: "Simulated", sharePrice: 1.0341, fees: { perf: 10, mgmt: 0, platform: 10 }, cap: null, exitCost: "≈ 0.4% at $100K",
       positions: [
         { p: "PancakeSwap", loc: "NVDAB", w: 64, by: "Atlas · APRO · TWAP", st: "Held" },
-        { p: "Idle", loc: "USDT in vault", w: 36, by: "Balance", st: "Next buy Monday" },
+        { p: "Idle", loc: "USDT in fund", w: 36, by: "Balance", st: "Next buy Monday" },
       ],
     },
   ];
@@ -449,7 +449,7 @@
   }
   function statusTag(v) {
     const state = v.status === "Paused"
-      ? `<span class="tag paused"><span class="dot"></span>Paused</span>`
+      ? `<span class="tag paused"><span class="dot"></span>Deposits paused${v.pauseReason ? ` · ${esc(v.pauseReason)}` : ""}</span>`
       : v.status === "Simulated"
         ? ""
         : `<span class="tag"><span class="dot"></span>Live</span>`;
@@ -757,7 +757,7 @@
         $("circle", hov).setAttribute("cx", px); $("circle", hov).setAttribute("cy", py);
         const chg = (pts[i].v / pts[0].v - 1) * 100;
         tip.innerHTML = opts.format ? `<div class="d">${fmt.date(pts[i].t)}</div><b>${opts.format(pts[i].v)}</b> ${esc(opts.tip || "")}`
-          : `<div class="d">${fmt.date(pts[i].t)}</div><b>${pts[i].v.toFixed(4)}</b> Share value &nbsp;<span style="color:var(--cre8-frost)">${fmt.pct(chg)}</span>`;
+          : `<div class="d">${fmt.date(pts[i].t)}</div><b>${pts[i].v.toFixed(4)}</b> Share price &nbsp;<span style="color:var(--cre8-frost)">${fmt.pct(chg)}</span>`;
         tip.style.left = Math.min(Math.max(px, 90), W - 90) + "px";
         tip.style.top = py + "px";
         tip.style.opacity = 1;
@@ -776,7 +776,7 @@
   /* Shell: notice strip, masthead, footer                               */
   /* ------------------------------------------------------------------ */
   function shell(active) {
-    const nav = [["agent.html", "CRE8 AI"], ["vaults.html", "Vaults"], ["leaderboard.html", "Leaderboard"], ["create.html", "Create Vault"]];
+    const nav = [["agent.html", "CRE8 AI"], ["vaults.html", "Funds"], ["leaderboard.html", "Leaderboard"], ["create.html", "Create fund"]];
     const onPortfolio = active === "portfolio.html";
     const q = new URLSearchParams(location.search);
     const previewWallet = !q.has("vault") ? q.get("wallet") : null;
@@ -847,11 +847,11 @@
 
   function footerHTML() {
     const docs = `${String(DOCS_ORIGIN).replace(/\/$/, "")}/`;
-    const legal = `<p class="cf-note">Vaults and figures shown are examples. Nothing here is investment advice.</p>`;
+    const legal = `<p class="cf-note">Funds and figures shown are examples. Nothing here is investment advice.</p>`;
     if (document.body.classList.contains("landing-page")) {
       return `<footer class="footer cf-footer" id="contracts" data-bav-shell><div class="wrap">
         <div class="cf-cols">
-          <nav aria-label="Product"><h3>Product</h3><a href="${route("vaults")}">Vaults</a><a href="${route("create")}">Create a vault</a><a href="${route("portfolio")}">Portfolio</a></nav>
+          <nav aria-label="Product"><h3>Product</h3><a href="${route("vaults")}">Funds</a><a href="${route("create")}">Create a fund</a><a href="${route("portfolio")}">Portfolio</a></nav>
           <nav aria-label="Developers" id="faq"><h3>Developers</h3><a href="${docs}">Documentation</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${assetUrl("references/execution.md")}">Execution reference</a></nav>
           <nav aria-label="Legal"><h3>Legal</h3><a href="${legalUrl()}">Legal documents · Draft</a><a href="${legalUrl("privacy")}">Privacy notice</a></nav>
         </div>
@@ -863,7 +863,7 @@
       <div class="cf-row"><a class="brand footer-brand" href="${route()}" aria-label="CRE8 home">${brandLogo("light")}</a>
         <nav class="cf-inline" aria-label="Footer"><a href="${docs}">Documentation</a><a href="${legalUrl()}">Legal · Draft</a><a href="${legalUrl("privacy")}">Privacy</a><a href="${assetUrl("skill.md")}">Agent skill</a><a href="${route("#how")}">How it works</a></nav>
         <span class="cf-copy">© 2026 CRE8</span></div>
-      <details class="footer-legal"><summary>Important information</summary><p>Vaults, managers, balances and performance figures shown are examples. Public supply-rate snapshots show their own source and timestamp.</p><p>Mandate limits reduce, but do not eliminate, risk. Depositors remain exposed to market, oracle, smart-contract, counterparty and liquidity risk, and may lose some or all of their capital. Annualized figures restate past returns, not a forecast or APY. Nothing on this site is investment advice or an offer to sell any security.</p></details>
+      <details class="footer-legal"><summary>Important information</summary><p>Funds, creators, balances and performance figures shown are examples. Public lending-rate snapshots show their own source and timestamp.</p><p>A mandate reduces, but does not eliminate, risk. Holders remain exposed to market, oracle, smart-contract, counterparty and liquidity risk, and may lose some or all of their capital. Annualized figures restate past performance; they are not a forecast or a promised yield. Nothing on this site is investment advice or an offer to sell any security.</p></details>
     </div></footer>`;
   }
 

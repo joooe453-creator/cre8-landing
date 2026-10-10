@@ -1,0 +1,13 @@
+{
+  "schema": "bnb-agent-vaults/composite-mixed@1.0",
+  "capability": "MANDATE_COMPOSITE_V3_NATIVE",
+  "status": "undeployed",
+  "chainId": 97,
+  "rpcUrl": "",
+  "factory": null,
+  "deployment": null,
+  "codeHashes": {},
+  "catalog": [],
+  "nativeKeys": [],
+  "vaults": []
+}

@@ -3,15 +3,15 @@
 3:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2jue03yvau1yp.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
-:HL["/_next/static/chunks/3u1igua0azle0.css","style"]
+:HL["/_next/static/chunks/36t8ncigu0ot6.css","style"]
 :HC["/",""]
-5:T4db6,
+5:T50ad,
 <section class="page-head create-hero">
-  <div class="wrap wide"><div class="dk-head"><div><h1 class="dk-h1">Create a vault</h1></div></div></div>
+  <div class="wrap wide"><div class="dk-head"><div><h1 class="dk-h1">Create a fund</h1></div></div></div>
 </section>
 <main class="wrap wide create-main">
-  <p class="muted">Direct-spot composite funds use a separate reviewed flow. <a href="https://app.cre8.finance/composite/">Open the composite workspace →</a></p>
-  <nav class="create-stepper" id="toc" aria-label="Create a vault steps">
+  <p class="muted">Funds that run several plans at once use a separate reviewed flow. <a href="https://app.cre8.finance/composite/">Open the advanced workspace →</a></p>
+  <nav class="create-stepper" id="toc" aria-label="Create a fund steps">
     <a href="#s-1" data-create-step="1" aria-current="step"><span class="step-number">01</span><span class="step-copy"><small>Step 1</small><b>Assets</b></span><span class="ck" aria-hidden="true"></span></a>
     <a href="#s-2" data-create-step="2"><span class="step-number">02</span><span class="step-copy"><small>Step 2</small><b>Buying plan</b></span><span class="ck" aria-hidden="true"></span></a>
     <a href="#s-3" data-create-step="3"><span class="step-number">03</span><span class="step-copy"><small>Step 3</small><b>Terms</b></span><span class="ck" aria-hidden="true"></span></a>
@@ -24,19 +24,19 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
           <header class="create-card-heading"><h2>Choose assets</h2><span class="create-pick-count"><span id="selected-count">0</span> / 7</span></header>
           <div class="create-search-bar">
             <div class="target-search"><input id="search" placeholder="Name, symbol or BSC token address (0x…)" aria-label="Search assets by name, symbol or BSC token address"><button type="button" class="btn" id="find-ca">Search</button></div>
-            <div class="radio-row create-filter" aria-label="Asset category"><label><input type="radio" name="filter" value="all" checked><span>All</span></label><label><input type="radio" name="filter" value="crypto"><span>Crypto</span></label><label><input type="radio" name="filter" value="bstock"><span>bStocks</span></label></div>
+            <div class="radio-row create-filter" aria-label="Asset category"><label><input type="radio" name="filter" value="all" checked><span>All</span></label><label><input type="radio" name="filter" value="crypto"><span>Crypto</span></label><label><input type="radio" name="filter" value="bstock"><span>US stocks</span></label></div>
           </div>
           <div id="ca-status" class="hide" aria-live="polite"></div>
           <div class="mkt-list hide" id="token-search-results" tabindex="0" role="region" aria-label="Token search results"></div>
           <div class="create-cat-head" aria-hidden="true"><span>Asset</span><span>Pool liquidity</span><span>Lending</span><span></span></div>
-          <div class="mkt-list" id="target-list" tabindex="0" role="region" aria-label="Available basket assets" aria-busy="true"><div class="allocation-empty">Loading asset catalog…</div></div>
+          <div class="mkt-list" id="target-list" tabindex="0" role="region" aria-label="Available assets" aria-busy="true"><div class="allocation-empty">Loading asset catalog…</div></div>
         </section>
         <section class="create-card create-selection">
-          <h3 class="create-basket-title">Your basket</h3>
+          <h3 class="create-basket-title">Selected assets</h3>
           <div class="create-basket-head" aria-hidden="true"><span>Asset</span><span>Where it sits</span><span>Max share</span><span></span></div>
           <div class="allocation-inputs" id="selected-list"><div class="allocation-empty">Add at least one asset to continue.</div></div>
         </section>
-        <div class="create-caps-meter" id="caps-meter" role="img" aria-label="Investment limits against the 95% maximum"></div>
+        <div class="create-caps-meter" id="caps-meter" role="img" aria-label="Limits against the 95% maximum"></div>
         <ul class="checks create-step-errors" id="step-one-issues" aria-live="polite"></ul>
         <details class="create-explain create-basket-more"><summary>Weights, limits &amp; totals</summary>
           <div class="create-selection-totals"><span>Weights total <b id="weight-total">0%</b> / 100%</span><span>Limits total <b id="selected-limit-total">0%</b> / max 95%</span><span>Cash kept ≥ <b id="selected-cash">100%</b></span></div>
@@ -46,9 +46,9 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       <section id="s-2" class="create-step" data-create-panel="2" hidden>
         <section class="create-card create-plan">
           <h2>Buy &amp; store</h2>
-          <div class="create-seg" id="mode-choices" role="group" aria-label="Buying plan"><button type="button" class="on" aria-pressed="true" data-mode="agent-managed">Agent decides</button><button type="button" aria-pressed="false" data-mode="lump-sum">Buy once</button><button type="button" aria-pressed="false" data-mode="accumulate">Accumulate</button></div>
-          <dl class="create-frows" data-plan-for="agent-managed"><div><dt>Timing</dt><dd>Your agent decides</dd></div><div><dt>Orders</dt><dd>Checked against every investment limit</dd></div><div><dt>Cash floor</dt><dd>5% of the vault after any buy</dd></div><div><dt>At open</dt><dd>The 100 USDT seed stays in cash until the agent acts</dd></div></dl>
-          <dl class="create-frows hide" data-plan-for="lump-sum"><div><dt>Timing</dt><dd>One initial program with bounded recovery slots</dd></div><div><dt>Split</dt><dd>At your strategy weights, inside each limit</dd></div><div><dt>Contract</dt><dd>Onchain program; a keeper submits each eligible chunk</dd></div></dl>
+          <div class="create-seg" id="mode-choices" role="group" aria-label="Buying plan"><button type="button" class="on" aria-pressed="true" data-mode="agent-managed">AI agent decides</button><button type="button" aria-pressed="false" data-mode="lump-sum">Buy once</button><button type="button" aria-pressed="false" data-mode="accumulate">Accumulate</button></div>
+          <dl class="create-frows" data-plan-for="agent-managed"><div><dt>Timing</dt><dd>Your AI agent decides</dd></div><div><dt>Orders</dt><dd>Checked against every limit in the mandate</dd></div><div><dt>Cash floor</dt><dd>5% of the fund after any buy</dd></div><div><dt>At open</dt><dd>The 100 USDT seed stays in cash until the AI agent acts</dd></div></dl>
+          <dl class="create-frows hide" data-plan-for="lump-sum"><div><dt>Timing</dt><dd>One initial program with bounded recovery slots</dd></div><div><dt>Split</dt><dd>At your target weights, inside each limit</dd></div><div><dt>Contract</dt><dd>Onchain program; a keeper submits each eligible chunk</dd></div></dl>
           <div id="accumulate" class="hide">
             <div class="operation-block">
               <div class="toggle-row">
@@ -85,7 +85,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
           <div class="sub-h" style="margin-top:28px"><span>Optional rebalancing</span><em>Off by default</em></div>
           <div class="operation-block">
             <div class="toggle-row">
-              <div class="t">Keep basket weights on target</div>
+              <div class="t">Keep weights on target</div>
               <div class="ctl"><input type="checkbox" class="sw" id="rebalance-on"></div>
             </div>
             <div class="operation-settings hide" id="rebalance-settings">
@@ -106,10 +106,10 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
           </div>
           </details>
         </section>
-        <details class="create-explain create-destinations"><summary>Destinations, routes &amp; yield</summary>
+        <details class="create-explain create-destinations"><summary>Destinations, routes &amp; lending</summary>
         <div class="allocation-inputs" id="post-purchase-list"></div>
         <div class="yield-estimate create-yield-card">
-          <div class="yield-estimate-head"><span>Estimated portfolio yield APY</span><b id="portfolio-yield">—</b></div>
+          <div class="yield-estimate-head"><span>Estimated lending rate, blended</span><b id="portfolio-yield">—</b></div>
           <div class="yield-estimate-foot"><span id="yield-update">Loading rate snapshot…</span><button type="button" class="link" id="refresh-yields">Refresh rates</button></div>
         </div>
         </details>
@@ -119,15 +119,16 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       <section id="s-3" class="create-step" data-create-panel="3" hidden>
         <div id="mandate-form">
           <section class="create-card create-terms">
-            <h2>Vault terms</h2>
-            <div class="create-frow"><label class="create-fl" for="name">Vault name</label><div class="create-fctl"><input id="name" value="Core Basket" maxlength="64" required></div></div>
-            <div class="create-frow"><span class="create-fl">Share symbol</span><div class="create-fctl"><span class="create-fval mono" id="symbol">avSCB</span><span class="create-fhint">Set from the name</span></div></div>
-            <div class="create-frow"><label class="create-fl" for="mandate-agent">Agent address</label><div class="create-fctl"><input id="mandate-agent" class="mono" placeholder="0x…" pattern="0x[a-fA-F0-9]{40}" required spellcheck="false"><span class="create-fhint">Must differ from the wallet that opens the vault. Never enter a private key.</span></div></div>
-            <div class="create-frow"><label class="create-fl" for="fee-slider">Creator performance fee</label><div class="create-fctl create-fee-control"><input type="range" id="fee-slider" min="0" max="20" step="0.01" value="20" aria-label="Adjust creator performance fee"><div class="suffix"><input id="pf" value="20" inputmode="decimal" required aria-label="Creator performance fee, percent"><b>%</b></div><span class="create-fhint" id="fee-you">You receive 20.0%</span><p id="fee-split-note">On each holder’s realized profit at exit: Creator 20.0% · Protocol 10.0% fixed · 30.0% total. Each holder has a separate cost basis. Management fee: None.</p><input id="mf" type="hidden" value="0"></div></div>
-            <div class="create-frow"><span class="create-fl">Management fee</span><div class="create-fctl"><span class="create-fval">None</span></div></div>
-            <div class="create-frow"><span class="create-fl">Creator deposit</span><div class="create-fctl"><div class="suffix create-seed"><input id="seed" value="100" readonly aria-label="Fixed creator seed"><b>USDT</b></div><span class="create-fhint">No time lock · creator must retain at least 2% while other holders remain</span></div></div>
+            <h2>Fund terms</h2>
+            <div class="create-frow"><label class="create-fl" for="name">Fund name</label><div class="create-fctl"><input id="name" value="Core Fund" maxlength="64" required></div></div>
+            <div class="create-frow"><span class="create-fl">Share symbol</span><div class="create-fctl"><span class="create-fval mono" id="symbol">avCF</span><span class="create-fhint">Set from the name</span></div></div>
+            <div class="create-frow"><label class="create-fl" for="mandate-agent">AI agent address</label><div class="create-fctl"><input id="mandate-agent" class="mono" placeholder="0x…" pattern="0x[a-fA-F0-9]{40}" required spellcheck="false"><span class="create-fhint">Must differ from the wallet that opens the fund. Never enter a private key.</span></div></div>
+            <div class="create-frow"><label class="create-fl" for="fee-slider">Creator performance fee</label><div class="create-fctl create-fee-control"><input type="range" id="fee-slider" min="0" max="20" step="0.01" value="20" aria-label="Adjust creator performance fee"><div class="suffix"><input id="pf" value="20" inputmode="decimal" required aria-label="Creator performance fee, percent"><b>%</b></div><span class="create-fhint" id="fee-you">You receive 20.0%</span><p id="fee-split-note">Performance fee 30% (CRE8 10% + you 20%), charged only on each holder’s own realized profit when they withdraw. Set at launch; it can’t change later.</p><input id="mf" type="hidden" value="0"></div></div>
+            <div class="create-frow"><span class="create-fl">Creation fee</span><div class="create-fctl"><span class="create-fval">1% of your seed</span><span class="create-fhint">Charged once, when the fund goes live</span></div></div>
+            <div class="create-frow"><span class="create-fl">Other fees</span><div class="create-fctl"><span class="create-fval">Deposit fee 1%</span><span class="create-fhint">On every holder deposit, paid to CRE8 · no yearly, operation or withdrawal fee</span></div></div>
+            <div class="create-frow"><span class="create-fl">Creator stake</span><div class="create-fctl"><div class="suffix create-seed"><input id="seed" value="100" readonly aria-label="Fixed creator seed"><b>USDT</b></div><span class="create-fhint">No time lock · creator must retain at least 2% while other holders remain</span></div></div>
             <div class="create-frow"><span class="create-fl">Accounting asset</span><div class="create-fctl"><span class="create-fval" id="mandate-asset-label">USDT · BNB Chain</span></div></div>
-            <div class="create-frow"><label class="create-fl" for="note">Strategy note</label><div class="create-fctl"><textarea id="note" placeholder="Describe your strategy."></textarea><span class="create-fhint">Optional · description only, not binding</span></div></div>
+            <div class="create-frow"><label class="create-fl" for="note">Thesis</label><div class="create-fctl"><textarea id="note" placeholder="Your fund’s idea in one sentence."></textarea><span class="create-fhint">Optional · description only, not binding</span></div></div>
           </section>
         </div>
         <ul class="checks create-step-errors" id="step-three-issues" aria-live="polite"></ul>
@@ -142,16 +143,16 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
           <div id="preopen-checks" class="create-checks" aria-live="polite"></div>
           <ul class="checks" id="issues" aria-live="polite"></ul><ul class="checks" id="mandate-issues" aria-live="polite"></ul>
           <div class="legal-review-entry"><p><a id="mandate-terms-link" target="_blank" rel="noopener noreferrer">Terms</a> · <a id="mandate-risk-link" target="_blank" rel="noopener noreferrer">Full risk disclosure</a></p></div>
-            <div class="mandate-cta"><button type="button" class="btn ghost" id="mandate-connect" disabled>Connect creator wallet</button><button type="button" class="btn" id="mandate-launch" disabled>Deployment required to open</button><button type="button" class="btn ghost" id="mandate-export">Export vault design</button></div>
+            <div class="mandate-cta"><button type="button" class="btn ghost" id="mandate-connect" disabled>Connect creator wallet</button><button type="button" class="btn" id="mandate-launch" disabled>Deployment required to open</button><button type="button" class="btn ghost" id="mandate-export">Export fund design</button></div>
             <div id="mandate-status" class="state-note live-status" role="status" aria-live="polite"><span>Loading…</span></div>
             <div id="mandate-pending" class="state-note create-pending-transaction" hidden><div><b>Submitted launch</b><p id="mandate-pending-message" aria-live="polite"></p><a id="mandate-transaction-link" target="_blank" rel="noopener noreferrer">View transaction on explorer</a> <button type="button" class="link" id="mandate-copy-transaction">Copy hash</button><button type="button" class="btn ghost" id="mandate-check-transaction">Check transaction receipt</button> <button type="button" class="btn ghost" id="mandate-release-unknown" hidden>Release unresolved request…</button></div></div>
-          <details class="create-explain create-review-more"><summary>What depositors will read</summary>
+          <details class="create-explain create-review-more"><summary>What holders will read</summary>
           <p class="fine create-binding" id="mandate-binding" role="status">Opening requires your complete selection to have a verified deployment.</p>
           <section class="mandate-preview launch-review create-readout">
-            <dl class="kv"><dt>Assets &amp; destinations</dt><dd><div id="mandate-caps" class="review-positions"></div></dd><dt>Cash reserve</dt><dd><span id="mandate-idle">At least 5%</span> after new investment</dd><dt>Performance fee</dt><dd><span id="mandate-fee-summary">30%</span> on each holder’s realized profit above their own cost basis · no management fee</dd><dt>Creator seed</dt><dd>100 USDT with no time lock. The creator must retain at least 2% of live shares while other holders remain.</dd><dt>Rule changes</dt><dd>Lowering limits is immediate; raising waits ≥ 24h. Approved markets are fixed; operator rotation follows the onchain delay.</dd><dt>Exit</dt><dd>Cash redeem with minimum received + deadline, or in-kind redeem of underlying tokens and receipts.</dd></dl>
+            <dl class="kv"><dt>Assets &amp; destinations</dt><dd><div id="mandate-caps" class="review-positions"></div></dd><dt>Cash reserve</dt><dd><span id="mandate-idle">At least 5%</span> after new buys</dd><dt>Performance fee</dt><dd><span id="mandate-fee-summary">30% (CRE8 10% + you 20%)</span>, charged only on each holder’s own realized profit when they withdraw</dd><dt>Creation fee</dt><dd>1% of your 100 USDT seed, charged when the fund goes live</dd><dt>Deposit fee</dt><dd>1% of every holder deposit, paid to CRE8</dd><dt>Other fees</dt><dd>None. No yearly, operation or withdrawal fee; DEX swap costs go to the DEX, not CRE8.</dd><dt>Creator stake</dt><dd>100 USDT with no time lock. The creator must keep at least 2% of live shares while other holders remain.</dd><dt>Rule changes</dt><dd>Lowering limits is immediate; raising waits ≥ 24h. Approved markets are fixed; operator rotation follows the onchain delay.</dd><dt>Withdrawals</dt><dd>Withdraw as USDT with a minimum received and a deadline, or withdraw as assets (the fund’s tokens and receipts).</dd></dl>
             <details class="create-explain"><summary>Mandate and execution details</summary><p class="sentence" id="mandate-sentence">Choose assets and destinations to build your mandate.</p></details>
           </section>
-            <div class="create-preopen-facts"><div><span>Expected seed shares</span><span id="seed-share-preview">99.5 whole shares after the 0.5% entry fee</span></div><div><span>Deadline</span><span>1h funding window · cancel and reprepare when expired</span></div><div><span>Signatures</span><span>Prepare → Deploy → exact seed approval → Finalize</span></div></div>
+            <div class="create-preopen-facts"><div><span>Expected seed shares</span><span id="seed-share-preview">99 whole shares after the 1% creation fee</span></div><div><span>Deadline</span><span>1h funding window · cancel and reprepare when expired</span></div><div><span>Signatures</span><span>Prepare → Deploy → exact seed approval → Finalize</span></div></div>
           </details>
             <details class="advanced-options create-technical"><summary>Show technical configuration</summary><button type="button" class="btn ghost" id="sign">Recheck routes &amp; export reference</button><ul class="dry" id="steps"></ul><div id="launch-result"></div><button type="button" class="link" id="toggle-json">View reference JSON</button><pre class="json hide" id="json"></pre></details>
         </section>
@@ -161,18 +162,20 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     <aside class="aside create-summary">
       <section class="create-card create-sheet" aria-label="Term sheet">
         <div class="create-sheet-top"><span class="dk-label muted">[ Term sheet ]</span><span class="dk-ntag">Draft</span></div>
-        <h2 id="sheet-name">Core Basket</h2>
-        <p class="create-sheet-sub"><span id="sheet-symbol">avSCB</span> · USDT · BNB Chain</p>
-        <div id="create-summary-positions"><p class="fine">Choose assets to build your vault summary.</p></div>
+        <h2 id="sheet-name">Core Fund</h2>
+        <p class="create-sheet-sub"><span id="sheet-symbol">avCF</span> · USDT · BNB Chain</p>
+        <div id="create-summary-positions"><p class="fine">Choose assets to build your fund summary.</p></div>
         <dl class="create-summary-totals">
           <div><dt>Limits total</dt><dd id="summary-limit-total">0% / 95%</dd></div>
           <div class="create-limit-track"><span id="summary-limit-bar"></span></div>
           <div><dt>Cash kept ≥</dt><dd id="summary-cash">100%</dd></div>
-          <div><dt>Buying</dt><dd id="summary-mode">Agent-managed</dd></div>
-          <div><dt>Performance fee</dt><dd id="summary-fee">30% total</dd></div>
+          <div><dt>Run by</dt><dd id="summary-mode">AI agent</dd></div>
+          <div><dt>Performance fee</dt><dd id="summary-fee">30% · CRE8 10% + you 20%</dd></div>
           <div><dt>You receive</dt><dd id="summary-creator">20.0%</dd></div>
-          <div><dt>Management fee</dt><dd>None</dd></div>
-          <div><dt>Creator seed</dt><dd>100 USDT · retain ≥ 2%</dd></div>
+          <div><dt>Creation fee</dt><dd>1% of seed</dd></div>
+          <div><dt>Deposit fee</dt><dd>1%</dd></div>
+          <div><dt>Other fees</dt><dd>None</dd></div>
+          <div><dt>Creator stake</dt><dd>100 USDT · keep ≥ 2%</dd></div>
           <div><dt>Raising a limit</dt><dd>24h notice</dd></div>
         </dl>
         <details class="create-explain"><summary>Market gate &amp; mandate details</summary><p class="fine" id="registry-note"></p><p class="sentence" id="sentence">Loading registry…</p><div class="meta-row" id="meta"></div><ul class="rules" id="rules"></ul></details>
@@ -184,7 +187,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 
 
 
-6:T1d221,
+6:T1d252,
 (function () {
   "use strict";
   const { $, $$, esc, toast, DEMO_OWNER, hexAddr } = BAV;
@@ -394,7 +397,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         usd: Number(route.liquidityUsd.toFixed(2)),
         verifiedAt: new Date().toISOString(),
         verifiedAtBlock: Number(BigInt(blockTag)),
-        methodology: "Every route hop was checked against a Pancake factory on BNB Chain; effective TVL uses the route bottleneck and is not guaranteed execution depth.",
+        methodology: "Every route hop was checked against a Pancake factory on BNB Chain; effective TVL uses the route bottleneck and may not match actual execution depth.",
       },
       discovery: { source: "BSC JSON-RPC + Pancake factory", exactPair: true, customToken: true, verifiedAtBlock: Number(BigInt(blockTag)) },
       routeSelection: requestedPool
@@ -623,7 +626,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       const lendNote = lendStatus && !lendStatus.ok ? ` <span class="create-cat-none" title="${esc(`Lending route: ${lendStatus.reason}`)}">${lendStatus.state === "needs-history" ? "Lending pool history pending" : lendStatus.state === "fee-too-high" ? "Lending pool fee too high" : "Lending route unavailable"}</span>` : "";
       const lend = blocked ? `<span class="create-cat-reason">${esc(blocked)}</span>` : lenders.length ? lenders.map((protocol) => `<span class="create-venue-chip">${venueLogo(protocol)}${esc(protocol)}</span>`).join("") + lendNote : `<span class="create-cat-none">Hold only</span>`;
       const title = `${targetStatus(target)}${blocked ? ` · ${blocked}` : status?.ok ? ` · ${status.reason}` : ""}`;
-      return `<label class="mkt create-cat-row ${checked ? "selected" : "off"}" title="${esc(title)}"><input type="checkbox" data-target="${esc(target.id)}" ${checked ? "checked" : ""} ${(full || blocked) && !checked ? "disabled" : ""} aria-label="${checked ? "Remove" : blocked ? `${esc(assetName(target))} unavailable: ${esc(blocked)}. Add` : "Add"} ${esc(assetName(target))}"><span class="create-cat-asset"><b>${esc(target.symbol)}</b><small>${esc(assetName(target))} · ${rank}${target.category === "bstock" ? "bStock" : "Crypto"}</small></span><span class="create-cat-liq">${liquidity}${live}</span><span class="create-cat-lend">${lend}</span><span class="asset-toggle">${checked ? "Added" : blocked ? "N/A" : full ? "Max 7" : "Add"}</span></label>`;
+      return `<label class="mkt create-cat-row ${checked ? "selected" : "off"}" title="${esc(title)}"><input type="checkbox" data-target="${esc(target.id)}" ${checked ? "checked" : ""} ${(full || blocked) && !checked ? "disabled" : ""} aria-label="${checked ? "Remove" : blocked ? `${esc(assetName(target))} unavailable: ${esc(blocked)}. Add` : "Add"} ${esc(assetName(target))}"><span class="create-cat-asset"><b>${esc(target.symbol)}</b><small>${esc(assetName(target))} · ${rank}${target.category === "bstock" ? "US stock" : "Crypto"}</small></span><span class="create-cat-liq">${liquidity}${live}</span><span class="create-cat-lend">${lend}</span><span class="asset-toggle">${checked ? "Added" : blocked ? "N/A" : full ? "Max 7" : "Add"}</span></label>`;
     }).join("") || `<div class="allocation-empty">No target matches this filter.</div>`;
     $$('[data-target]').forEach((input) => input.addEventListener("change", () => {
       if (input.checked) {
@@ -631,7 +634,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         const blocked = catalogBlock(target);
         if (blocked || S.selected.size >= Math.min(7, S.registry.policy.maxTargets)) {
           input.checked = false;
-          toast(blocked ? `${displayName(target)}: ${blocked}` : `Maximum ${Math.min(7, S.registry.policy.maxTargets)} targets`);
+          toast(blocked ? `${displayName(target)}: ${blocked}` : `Maximum ${Math.min(7, S.registry.policy.maxTargets)} assets`);
           return;
         }
         S.selected.set(input.dataset.target, { weightBps: 0, marketId: target.accountingAsset ? compatibleMarkets(target.id)[0]?.id || "" : "", capBps: 7000 });
@@ -661,15 +664,15 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       const tvl = target.top30 ? `${formatUsd(status?.liquidityUsd ?? legLiquidity(target, selected.marketId)?.usd)} TVL` : `${formatUsd(target.liquidity?.usd)} TVL`;
       const markets = compatibleMarkets(id);
       const protocolCount = markets.reduce((counts, market) => ({ ...counts, [market.protocol]: (counts[market.protocol] || 0) + 1 }), {});
-      const sits = [...(target.accountingAsset ? [] : [{ id: "", name: "Hold", logo: '<span class="create-hold-ic" aria-hidden="true"></span>', aria: "Hold in vault" }]), ...markets.map((market) => {
+      const sits = [...(target.accountingAsset ? [] : [{ id: "", name: "Hold", logo: '<span class="create-hold-ic" aria-hidden="true"></span>', aria: "Hold in fund" }]), ...markets.map((market) => {
         const apy = S.yieldTools?.currentRate(S.yieldSnapshot, market);
         const lending = target.top30 ? liveStatus(target, market.id) : null;
         return { id: market.id, name: protocolCount[market.protocol] > 1 ? market.label : market.protocol, logo: venueLogo(market.protocol), rate: lending && !lending.ok ? "Route unavailable" : apy == null ? "" : formatApy(apy), aria: `${market.protocol} · ${market.label}${lending && !lending.ok ? ` · lending route: ${lending.reason}` : ""}` };
       })];
       const where = `<div class="create-sits" role="radiogroup" aria-label="Where ${esc(displayName(target))} sits">${sits.map((option) => `<button type="button" role="radio" aria-checked="${selected.marketId === option.id}" data-sits-target="${esc(id)}" data-sits-market="${esc(option.id)}" aria-label="${esc(option.aria)}" title="${esc(option.aria)}">${option.logo}<span>${esc(option.name)}</span>${option.rate ? `<small>${esc(option.rate)}</small>` : ""}</button>`).join("")}</div>`;
-      return `<div class="launch-leg create-selected-leg" data-selected="${esc(id)}"><div class="create-leg-identity"><b>${esc(target.symbol)}</b><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(assetName(target))}${target.dynamic || target.category === "bstock" ? " · plan only" : ""}</small></div>${where}<label class="field create-leg-cap"><span>Investment limit</span><div class="suffix"><input data-cap="${esc(id)}" value="${(selected.capBps ?? 7000) / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} investment limit"><b>%</b></div></label><button type="button" class="rm" data-remove="${esc(id)}" aria-label="Remove ${esc(assetName(target))}">×</button><details class="create-leg-details"><summary>Weight <b data-weight-label="${esc(id)}">${selected.weightBps / 100}%</b> · route</summary><label class="field create-leg-weight"><span>Strategy weight</span><div class="suffix"><input data-weight="${esc(id)}" value="${selected.weightBps / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} strategy weight"><b>%</b></div></label><span title="${esc(target.address)}">CA ${esc(shortAddress(target.address))}</span><span>${target.accountingAsset ? "No swap or pool-liquidity requirement; exact lending-market checks still apply." : `${routing} · ${esc(fee)} · ${esc(tvl)} · ${esc(routeName(target, route))}`}</span>${pool ? `<span title="${esc(pool)}">Pool ${esc(shortAddress(pool))}</span>` : ""}${status ? `<span class="${status.ok ? "" : "planning-note"}">Live: ${esc(status.reason)}</span>` : ""}</details></div>`;
+      return `<div class="launch-leg create-selected-leg" data-selected="${esc(id)}"><div class="create-leg-identity"><b>${esc(target.symbol)}</b><small class="${target.dynamic || target.category === "bstock" ? "planning-note" : ""}">${esc(assetName(target))}${target.dynamic || target.category === "bstock" ? " · plan only" : ""}</small></div>${where}<label class="field create-leg-cap"><span>Limit</span><div class="suffix"><input data-cap="${esc(id)}" value="${(selected.capBps ?? 7000) / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} limit"><b>%</b></div></label><button type="button" class="rm" data-remove="${esc(id)}" aria-label="Remove ${esc(assetName(target))}">×</button><details class="create-leg-details"><summary>Weight <b data-weight-label="${esc(id)}">${selected.weightBps / 100}%</b> · route</summary><label class="field create-leg-weight"><span>Target weight</span><div class="suffix"><input data-weight="${esc(id)}" value="${selected.weightBps / 100}" inputmode="decimal" aria-label="${esc(assetName(target))} target weight"><b>%</b></div></label><span title="${esc(target.address)}">CA ${esc(shortAddress(target.address))}</span><span>${target.accountingAsset ? "No swap or pool-liquidity requirement; exact lending-market checks still apply." : `${routing} · ${esc(fee)} · ${esc(tvl)} · ${esc(routeName(target, route))}`}</span>${pool ? `<span title="${esc(pool)}">Pool ${esc(shortAddress(pool))}</span>` : ""}${status ? `<span class="${status.ok ? "" : "planning-note"}">Live: ${esc(status.reason)}</span>` : ""}</details></div>`;
     });
-    $("#selected-list").innerHTML = rows.join("") || `<div class="allocation-empty">Select at least one crypto or bStock target.</div>`;
+    $("#selected-list").innerHTML = rows.join("") || `<div class="allocation-empty">Select at least one crypto or US stock.</div>`;
     added.forEach((id) => BAV.replay($$('[data-selected]').find((leg) => leg.dataset.selected === id), "bav-row-in"));
     $$('[data-cap]').forEach((input) => input.addEventListener("input", () => {
       const value = input.value.trim();
@@ -705,7 +708,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const rows = [...S.selected.entries()].map(([id, selected]) => {
       const target = S.registry.targets.find((candidate) => candidate.id === id);
       const markets = compatibleMarkets(id);
-      const options = (target.accountingAsset ? [] : [`<option value="">Keep in portfolio</option>`])
+      const options = (target.accountingAsset ? [] : [`<option value="">Keep in the fund</option>`])
         .concat(markets.map((market) => {
           const kind = market.kind === "supply-market" ? "Supply market" : "Vault";
           const deposit = S.yieldTools?.currentDepositStatus(S.yieldSnapshot, market);
@@ -730,10 +733,10 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         const reference = S.yieldSnapshot?.collateralMarkets?.[market.id];
         const age = Date.now() - Date.parse(reference?.fetchedAt);
         const nativeApy = reference?.status === "available" && age >= -60000 && age <= 86400000 ? reference.nativeApy : null;
-        return `<p class="market-note collateral-reference"><a href="${esc(market.sourceUrl)}" target="_blank" rel="noopener noreferrer">Lista ${esc(market.collateralSymbol)}/${esc(market.loanSymbol)} market ↗</a><span>${esc(market.collateralSymbol)} is collateral; lenders supply ${esc(market.loanSymbol)}. Collateral native APY ${nativeApy === null ? "unavailable" : formatApy(nativeApy)}. Campaign rewards are separate. Collateral deposits are not enabled in this vault.</span></p>`;
+        return `<p class="market-note collateral-reference"><a href="${esc(market.sourceUrl)}" target="_blank" rel="noopener noreferrer">Lista ${esc(market.collateralSymbol)}/${esc(market.loanSymbol)} market ↗</a><span>${esc(market.collateralSymbol)} is collateral; lenders supply ${esc(market.loanSymbol)}. Collateral native APY ${nativeApy === null ? "unavailable" : formatApy(nativeApy)}. Campaign rewards are separate. Collateral deposits are not enabled in this fund.</span></p>`;
       }).join("");
       const unavailableNotes = unavailable.map((market) => `<p class="market-note"><a href="${esc(market.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(market.label)}</a> · ${esc(market.reason)} · checked ${esc(new Date(market.verifiedAt).toLocaleString())}.</p>`).join("");
-      const destinationOptions = [...(target.accountingAsset ? [] : [{ id: "", label: "Hold in vault", sub: "Token held as-is, no lending yield", apy: "—", status: "Available", logo: "" }]), ...markets.map((market) => {
+      const destinationOptions = [...(target.accountingAsset ? [] : [{ id: "", label: "Hold in fund", sub: "Token held as-is, no lending interest", apy: "—", status: "Available", logo: "" }]), ...markets.map((market) => {
         const current = S.yieldTools?.currentRate(S.yieldSnapshot, market);
         const currentDeposit = S.yieldTools?.currentDepositStatus(S.yieldSnapshot, market);
         const entry = S.yieldSnapshot?.markets?.[market.id];
@@ -741,9 +744,9 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         const stale = !snapshotTime || Date.now() - Date.parse(snapshotTime) > 86400000;
         return { id: market.id, label: market.label, sub: `${market.protocol === "Aave" ? "Aave V3" : market.protocol} · ${market.kind === "supply-market" ? "Supply market" : "Exact ERC-4626 vault"} · accepts ${target.symbol}`, apy: current == null ? "—" : `${formatApy(current)} APY`, status: currentDeposit?.supplyEnabled === false ? currentDeposit.reason || "Supply unavailable" : stale ? "Snapshot stale · refresh rates" : currentDeposit?.supplyEnabled ? `Snapshot · ${new Date(snapshotTime).toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}` : "Supply status unverified", logo: venueLogo(market.protocol) };
       })];
-      return `<section class="launch-leg create-card create-destination-leg" data-post-purchase="${esc(id)}"><div class="create-destination-head"><h3>${esc(assetName(target))} <small>${esc(target.symbol)}</small></h3><span>Limit ${Number.isFinite(selected.capBps) ? selected.capBps / 100 : "—"}% NAV</span></div><select data-market="${esc(id)}" hidden aria-label="${esc(assetName(target))} destination">${options.join("")}${unavailableOptions.join("")}${referenceOptions.join("")}</select><div class="create-destination-options" role="radiogroup" aria-label="${esc(assetName(target))} destination">${destinationOptions.map((option) => `<button type="button" class="create-destination-option ${selected.marketId === option.id ? "on" : ""}" role="radio" aria-checked="${selected.marketId === option.id}" data-destination-target="${esc(id)}" data-destination-market="${esc(option.id)}"><span class="create-radio-dot" aria-hidden="true"></span>${option.logo}<span class="create-destination-copy"><b>${esc(option.label)}</b><small>${esc(option.sub)}</small></span><span class="create-destination-rate"><b>${esc(option.apy)}</b><small>${esc(option.status)}</small></span></button>`).join("")}</div>${rateDetail}${depositDetail}${note}${unavailableNotes}${referenceNotes}</section>`;
+      return `<section class="launch-leg create-card create-destination-leg" data-post-purchase="${esc(id)}"><div class="create-destination-head"><h3>${esc(assetName(target))} <small>${esc(target.symbol)}</small></h3><span>Limit ${Number.isFinite(selected.capBps) ? selected.capBps / 100 : "—"}% of fund</span></div><select data-market="${esc(id)}" hidden aria-label="${esc(assetName(target))} destination">${options.join("")}${unavailableOptions.join("")}${referenceOptions.join("")}</select><div class="create-destination-options" role="radiogroup" aria-label="${esc(assetName(target))} destination">${destinationOptions.map((option) => `<button type="button" class="create-destination-option ${selected.marketId === option.id ? "on" : ""}" role="radio" aria-checked="${selected.marketId === option.id}" data-destination-target="${esc(id)}" data-destination-market="${esc(option.id)}"><span class="create-radio-dot" aria-hidden="true"></span>${option.logo}<span class="create-destination-copy"><b>${esc(option.label)}</b><small>${esc(option.sub)}</small></span><span class="create-destination-rate"><b>${esc(option.apy)}</b><small>${esc(option.status)}</small></span></button>`).join("")}</div>${rateDetail}${depositDetail}${note}${unavailableNotes}${referenceNotes}</section>`;
     });
-    $("#post-purchase-list").innerHTML = rows.join("") || `<div class="allocation-empty">Choose targets in step 1 before configuring post-purchase handling.</div>`;
+    $("#post-purchase-list").innerHTML = rows.join("") || `<div class="allocation-empty">Choose assets in step 1, then pick where each one goes.</div>`;
     $$('[data-destination-target]').forEach((button) => button.addEventListener("click", () => {
       const select = $$('[data-market]').find((candidate) => candidate.dataset.market === button.dataset.destinationTarget);
       if (!select || select.disabled) return;
@@ -839,7 +842,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     return {
       schema: "bnb-agent-vaults/manifest@1.0",
       referenceOnly: true, deploymentEligible: false,
-      historicalFieldNotes: { postPurchaseFallback: "Historical planning field only. Continuous vault swap/supply failure reverts the entire action.", creatorPerformancePct: "Creator fee on each holder’s realized profit; the protocol charges a separate fixed 10%." },
+      historicalFieldNotes: { postPurchaseFallback: "Historical planning field only. Continuous fund swap/supply failure reverts the entire action.", creatorPerformancePct: "Creator fee on each holder’s realized profit; the protocol charges a separate fixed 10%." },
       chainId: 56,
       identity: { name: $("#name").value.trim(), symbol: $("#symbol").textContent, note: $("#note").value.trim(), noteBinding: false },
       denomination: S.registry.quoteAsset,
@@ -848,7 +851,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       execution,
       rebalancing,
       portfolio: { targets },
-      fees: { creatorPerformancePct: num($("#pf").value), protocolPerformancePct: 10, creatorManagementPct: num($("#mf").value), performanceFeeBasis: "per-holder-realized-profit", costBasis: "per-holder", entryFeePct: 0.5, operationFeePct: 0.1, operationAnnualCapPct: 1, exitFeePct: 0 },
+      fees: { creatorPerformancePct: num($("#pf").value), protocolPerformancePct: 10, creatorManagementPct: num($("#mf").value), performanceFeeBasis: "per-holder-realized-profit", costBasis: "per-holder", entryFeePct: 1, operationFeePct: 0, operationAnnualCapPct: 0, exitFeePct: 0 },
       seed: { amount: num($("#seed").value), asset: "USDT", timeLocked: false, minimumLiveOwnershipPct: 2 },
       riskControls: {
         minIdleBps: 500,
@@ -883,18 +886,18 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     for (const [id, row] of S.selected.entries()) {
       const target = S.registry?.targets.find((candidate) => candidate.id === id);
       if (!target?.top30) continue;
-      if (!target.top30.feed) out.push(["s-1", `${displayName(target)} has no reviewed Chainlink USD feed, so the vault cannot price it.`]);
+      if (!target.top30.feed) out.push(["s-1", `${displayName(target)} has no reviewed Chainlink USD feed, so the fund cannot price it.`]);
       else if (liveStatus(target, row.marketId)?.ok === false) out.push(["s-1", `${displayName(target)}${row.marketId ? " lending route" : ""}: ${liveStatus(target, row.marketId).reason}.`]);
     }
     const total = [...S.selected.values()].reduce((sum, row) => sum + row.weightBps, 0);
     const caps = [...S.selected.values()].map((row) => row.capBps);
-    if (caps.some((cap) => !Number.isInteger(cap) || cap < 0 || cap > 9500)) out.push(["s-1", "Each investment limit must be 0–95% of vault value, with at most two decimal places."]);
-    if (caps.reduce((sum, cap) => sum + cap, 0) > 9500) out.push(["s-1", "Investment limits must total at most 95%; keep at least 5% idle cash."]);
-    if (total !== 10000) out.push(["s-1", `Strategy weights must total 100% (currently ${(total / 100).toFixed(2)}%).`]);
+    if (caps.some((cap) => !Number.isInteger(cap) || cap < 0 || cap > 9500)) out.push(["s-1", "Each limit must be 0–95% of fund value, with at most two decimal places."]);
+    if (caps.reduce((sum, cap) => sum + cap, 0) > 9500) out.push(["s-1", "Limits must total at most 95%; keep at least 5% idle cash."]);
+    if (total !== 10000) out.push(["s-1", `Target weights must total 100% (currently ${(total / 100).toFixed(2)}%).`]);
     if ([...S.selected.values()].some((row) => !(row.weightBps > 0))) out.push(["s-1", "Every selected target needs a positive weight."]);
     for (const [id, row] of S.selected.entries()) {
       const target = S.registry?.targets.find((candidate) => candidate.id === id);
-      if (target?.accountingAsset && !row.marketId) out.push(["s-2", "Accounting USDT must use its exact supply destination; uninvested USDT stays in the idle reserve."]);
+      if (target?.accountingAsset && !row.marketId) out.push(["s-2", "Accounting USDT must use its exact supply destination; unused USDT stays in the idle reserve."]);
       if (!row.marketId) continue;
       const market = compatibleMarkets(id).find((candidate) => candidate.id === row.marketId);
       if (!market) {
@@ -934,9 +937,9 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     if ($("#rebalance-on").checked) {
       if (!(num($("#rebalance-drift").value) >= 5 && num($("#rebalance-drift").value) <= 20)) out.push(["s-2", "Rebalance drift must be between 5% and 20%."]);
     }
-    if (!$("#name").value.trim()) out.push(["s-3", "Name the vault."]);
+    if (!$("#name").value.trim()) out.push(["s-3", "Name the fund."]);
     if (!(num($("#pf").value) >= 0 && num($("#pf").value) <= 20)) out.push(["s-3", "Performance fee must be 0–20%."]);
-    if (num($("#mf").value) !== 0) out.push(["s-3", "Management fees are not supported by this vault."]);
+    if (num($("#mf").value) !== 0) out.push(["s-3", "Funds have no management fee."]);
     if (num($("#seed").value) !== 100) out.push(["s-3", "The creator seed is exactly 100 USDT."]);
     return out;
   }
@@ -982,12 +985,12 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     $("#create-summary-positions").innerHTML = (S.registry ? [...S.selected.entries()].map(([id, row]) => {
       const target = S.registry.targets.find((candidate) => candidate.id === id);
       const market = compatibleMarkets(id).find((candidate) => candidate.id === row.marketId);
-      return `<div class="create-summary-position"><b>${esc(target.symbol)}</b><span>${market ? venueLogo(market.protocol) : ""}${esc(market ? `${market.protocol} · ${market.kind === "supply-market" ? "lending" : "vault"}` : "Held in the vault")}</span><span title="Limit / strategy weight">${Number.isFinite(row.capBps) ? row.capBps / 100 : "—"}%</span></div>`;
-    }).join("") : "") || `<p class="fine">Choose assets to build your vault summary.</p>`;
+      return `<div class="create-summary-position"><b>${esc(target.symbol)}</b><span>${market ? venueLogo(market.protocol) : ""}${esc(market ? `${market.protocol} · ${market.kind === "supply-market" ? "lending" : "lending vault"}` : "Held in the fund")}</span><span title="Limit / target weight">${Number.isFinite(row.capBps) ? row.capBps / 100 : "—"}%</span></div>`;
+    }).join("") : "") || `<p class="fine">Choose assets to build your fund summary.</p>`;
     const SHADES = ["#16222D", "#2B4254", "#4E6A7F", "#6F93AE", "#8297A8", "#B7CDDE"];
     const legs = [...S.selected.entries()].map(([id, row], index) => ({ id, cap: Number.isFinite(row.capBps) ? row.capBps / 100 : 0, shade: SHADES[index % SHADES.length] }));
     $("#caps-meter").innerHTML = `<div class="create-caps-bar">${legs.map((leg) => `<i style="width:${Math.min(100, leg.cap)}%;background:${leg.shade}" title="${esc(S.registry?.targets.find((t) => t.id === leg.id)?.symbol || "")} ${leg.cap}%"></i>`).join("")}<span class="create-caps-floor"></span></div><div class="create-caps-labels"><span class="${capTotal > 9500 ? "bad" : ""}">Caps ${capLabel} of 95%</span><span>At least 5% stays in cash</span></div>`;
-    const planLabel = S.mode === "agent-managed" ? "Agent-managed" : S.mode === "lump-sum" ? "Buy once · plan" : "Accumulate · plan";
+    const planLabel = S.mode === "agent-managed" ? "AI agent" : S.mode === "lump-sum" ? "Plan · Buy once" : "Plan · Accumulate";
     $("#summary-mode").textContent = planLabel;
     $("#s-plan").textContent = $("#rebalance-on").checked ? `${planLabel} + rebalance` : planLabel;
     $("#s-targets").textContent = String(S.selected.size);
@@ -1010,14 +1013,14 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       const rates = Object.values(S.yieldSnapshot.markets);
       const available = rates.filter((rate) => rate.status === "available").length;
       const open = rates.filter((rate) => rate.deposit?.supplyEnabled === true).length;
-      $("#yield-update").textContent = `${age > 86400000 ? "Snapshot expired · refresh rates" : `Updated ${timestamp} · ${available}/${rates.length} rates · ${open} open destinations`} · before vault fees`;
+      $("#yield-update").textContent = `${age > 86400000 ? "Snapshot expired · refresh rates" : `Updated ${timestamp} · ${available}/${rates.length} rates · ${open} open destinations`} · before fund fees`;
     }
     $("#issues").innerHTML = errors.map(([, message]) => `<li class="bad"><i></i><span>${esc(message)}</span></li>`).join("");
     const stepOk = (step) => !errors.some(([section]) => section === `s-${step}`);
     const assetCount = `${S.selected.size} asset${S.selected.size === 1 ? "" : "s"}`;
     $("#review-design-checks").innerHTML = [
-      [`Basket · ${assetCount}`, stepOk(1), stepOk(1) ? `Caps ${capLabel} of 95%` : "Fix in step 1", ""],
-      [`Buying · ${planLabel}`, stepOk(2), !stepOk(2) ? "Fix in step 2" : S.mode === "agent-managed" && !$("#rebalance-on").checked ? "Within every limit" : "Plan only", ""],
+      [`Mandate · ${assetCount}`, stepOk(1), stepOk(1) ? `Caps ${capLabel} of 95%` : "Fix in step 1", ""],
+      [`Run by · ${planLabel}`, stepOk(2), !stepOk(2) ? "Fix in step 2" : S.mode === "agent-managed" && !$("#rebalance-on").checked ? "Within every limit" : "Plan only", ""],
       [`Performance fee ${$("#pf").value || "—"}%`, stepOk(3), stepOk(3) ? "Within 0–20%" : "Fix in step 3", ""],
     ].map(([label, ok, state, note]) => `<div class="create-check ${ok ? "ok" : "bad"}"><span class="create-check-mark" aria-hidden="true">${ok ? "✓" : "!"}</span><span class="create-check-copy"><b>${esc(label)}</b>${note ? `<small>${esc(note)}</small>` : ""}</span><span class="create-check-state">${esc(state)}</span></div>`).join("");
     $("#sign").disabled = errors.length > 0 || S.launched;
@@ -1029,13 +1032,13 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       return target ? displayName(target) : null;
     }).filter(Boolean) : [];
     $("#sentence").textContent = targetNames.length
-      ? `${name || "This vault"} may buy ${targetNames.join(", ")} within the selected investment limits. Each asset is held or supplied to its named destination. A failed swap or supply reverts the whole action.`
-      : "Select crypto or bStocks, then choose how to buy and where each asset goes.";
-    $("#meta").innerHTML = `<span class="tag">${esc(planLabel)}</span><span class="tag">${S.selected.size} targets</span><span class="tag">${$("#rebalance-on").checked ? "Rebalance on" : "No rebalance"}</span><span class="tag">5% idle</span>`;
+      ? `${name || "This fund"} may buy ${targetNames.join(", ")} within its limits. Each asset is held or lent to its named destination. A failed swap or supply reverts the whole action.`
+      : "Select crypto or US stocks, then choose how to buy and where each asset goes.";
+    $("#meta").innerHTML = `<span class="tag">${esc(planLabel)}</span><span class="tag">${S.selected.size} assets</span><span class="tag">${$("#rebalance-on").checked ? "Rebalance on" : "No rebalance"}</span><span class="tag">5% idle</span>`;
     $("#rules").innerHTML = [
-      ["Buy", "Agent orders obey each investment limit. Onchain programs use the exact committed strategy weights, time windows and per-leg quotas."],
-      ["Automation", S.mode === "agent-managed" && !$("#rebalance-on").checked ? "Agent-managed execution with onchain risk gates." : "Exact onchain Rules tuple; eligible chunks require a keeper transaction."],
-      ["Destination", marketCount ? "Use only the selected exact-asset market. Failed supply reverts; there is no automatic fallback destination." : "Hold purchased assets in the portfolio."],
+      ["Buy", "AI agent orders obey each limit. Plans run onchain with the exact committed target weights, time windows and per-asset quotas."],
+      ["Automation", S.mode === "agent-managed" && !$("#rebalance-on").checked ? "Run by the AI agent, inside onchain risk gates." : "The plan runs onchain; each eligible chunk needs a keeper transaction."],
+      ["Destination", marketCount ? "Use only the selected exact-asset market. Failed supply reverts; there is no automatic fallback destination." : "Hold bought assets in the fund."],
       ["Guard", "Recheck the asset, listing/pause state and deposit capacity before every deposit."],
     ].map(([label, value]) => `<li><b>${label}</b><span>${esc(value)}</span></li>`).join("");
     $("#json").textContent = JSON.stringify(buildManifest(), null, 2);
@@ -1052,7 +1055,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       const swap = route ? { protocol: route.protocol, poolAddress: route.poolAddress, fee: route.fee,
         path: route.path.map((hop) => ({ tokenIn: hop.tokenIn, tokenOut: hop.tokenOut, protocol: hop.protocol, poolAddress: hop.poolAddress, fee: hop.fee })) } : null;
       return { token: target.address, symbol: displayName(target), strategyWeightBps: row.weightBps, swap, destination,
-        capBps: row.capBps ?? 7000, marketLabel: market?.label || "Hold in vault" };
+        capBps: row.capBps ?? 7000, marketLabel: market?.label || "Hold in fund" };
     }) : [];
     return { manifest, issues: problems().map(([, message]) => message), positions,
       selection: { chainId: S.registry?.chainId || 56, accountingAsset: S.registry?.quoteAsset?.address || null, positions: positions.map(({ token, swap, destination, capBps }) => ({ token, swap, destination, capBps })),
@@ -1347,9 +1350,9 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob); link.download = "basket-design-reference.json"; link.click();
     setTimeout(() => URL.revokeObjectURL(link.href), 0);
-    $("#launch-result").innerHTML = `<div class="state-note"><span><b>Reference exported.</b> No vault was opened, no contract simulation was performed, and no transaction was sent.</span></div>`;
+    $("#launch-result").innerHTML = `<div class="state-note"><span><b>Reference exported.</b> No fund was opened, no contract simulation was performed, and no transaction was sent.</span></div>`;
     refresh();
-    toast("Basket design reference exported");
+    toast("Fund design reference exported");
   });
 
   let activeStep = 1;
@@ -1591,13 +1594,13 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   }
   function errors() {
     const value = design(), out = [], caps = draft().positions.map((position) => position.capBps);
-    if (!value.name || value.name.length > 64) out.push("Use a vault name of 1–64 characters.");
+    if (!value.name || value.name.length > 64) out.push("Use a fund name of 1–64 characters.");
     if (!/^[A-Za-z0-9]{1,12}$/.test(value.symbol)) out.push("The name must produce a share symbol with 1–12 letters or numbers.");
-    if (!/^0x[\da-fA-F]{40}$/.test(value.agent) || /^0x0{40}$/i.test(value.agent)) out.push("Enter a valid nonzero agent operator address before opening.");
-    if (account && account.toLowerCase() === value.agent.toLowerCase()) out.push("Use an operator address separate from the creator wallet.");
+    if (!/^0x[\da-fA-F]{40}$/.test(value.agent) || /^0x0{40}$/i.test(value.agent)) out.push("Enter a valid nonzero AI agent address before opening.");
+    if (account && account.toLowerCase() === value.agent.toLowerCase()) out.push("Use an AI agent address separate from the creator wallet.");
     if (!Number.isInteger(value.performanceFeeBps) || value.performanceFeeBps < 0 || value.performanceFeeBps > 2000) out.push("Creator performance fee must be 0–20%, with at most two decimal places.");
-    if (caps.some((cap) => !Number.isInteger(cap) || cap < 0 || cap > 9500)) out.push("Each investment limit must be 0–95% of vault value, with at most two decimal places.");
-    if (caps.reduce((sum, cap) => sum + cap, 0) > 9500) out.push("Investment limits must total at most 95% of vault value; keep at least 5% idle.");
+    if (caps.some((cap) => !Number.isInteger(cap) || cap < 0 || cap > 9500)) out.push("Each limit must be 0–95% of fund value, with at most two decimal places.");
+    if (caps.reduce((sum, cap) => sum + cap, 0) > 9500) out.push("Limits must total at most 95% of fund value; keep at least 5% idle.");
     if ($( "#seed").value !== "100") out.push("The creator seed is exactly 100 USDT.");
     if (binding?.matched) { try { canonicalRules(); } catch (error) { out.push(error.message); } }
     return out;
@@ -1621,17 +1624,17 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       catch (error) { binding = { matched: false, reason: error.message || "Selection could not be verified." }; }
     }
     const names = source.positions.map((position) => `${position.symbol} → ${position.marketLabel}`);
-    $("#mandate-sentence").textContent = names.length ? `${value.name || "This vault"} may buy ${names.join("; ")}. New investments must respect these limits; retain unused USDT as idle cash.` : "Choose assets in step 1, then select each destination in step 2.";
+    $("#mandate-sentence").textContent = names.length ? `${value.name || "This fund"} may buy ${names.join("; ")}. New buys must respect these limits; unused USDT stays as idle cash.` : "Choose assets in step 1, then select each destination in step 2.";
     $("#mandate-caps").innerHTML = source.positions.map((position) => `<div><span>${esc(position.symbol)} → ${esc(position.marketLabel)} (≤ ${Number.isFinite(position.capBps) ? position.capBps / 100 : "—"}%)</span></div>`).join("") || "Choose assets and destinations.";
-    $("#mandate-idle").textContent = Number.isFinite(total) ? `At least ${+Math.max(0, 100 - total / 100).toFixed(2)}%` : "Check investment limits";
-    $("#sheet-name").textContent = value.name || "Untitled vault";
+    $("#mandate-idle").textContent = Number.isFinite(total) ? `At least ${+Math.max(0, 100 - total / 100).toFixed(2)}%` : "Check limits";
+    $("#sheet-name").textContent = value.name || "Untitled fund";
     $("#sheet-symbol").textContent = value.symbol || "—";
     const feeValid = Number.isInteger(value.performanceFeeBps) && value.performanceFeeBps >= 0 && value.performanceFeeBps <= 2000;
-    $("#summary-fee").textContent = feeValid ? `${+(fee + 10).toFixed(2)}% total` : "Check fee";
+    $("#summary-fee").textContent = feeValid ? `${+(fee + 10).toFixed(2)}% · CRE8 10% + you ${+fee.toFixed(2)}%` : "Check fee";
     $("#summary-creator").textContent = feeValid ? `${fee.toFixed(1)}%` : "—";
     $("#fee-you").textContent = feeValid ? `You receive ${fee.toFixed(1)}%` : "Fee must be 0–20%";
-    $("#mandate-fee-summary").textContent = Number.isFinite(fee) ? `${+(fee + 10).toFixed(2)}%` : "Check total fee";
-    const reason = !source.positions.length ? "Choose crypto or bStocks to start your design."
+    $("#mandate-fee-summary").textContent = Number.isFinite(fee) ? `${+(fee + 10).toFixed(2)}% (CRE8 10% + you ${+fee.toFixed(2)}%)` : "Check total fee";
+    const reason = !source.positions.length ? "Choose crypto or US stocks to start your design."
       : binding?.matched ? "Your complete asset and destination selection has a reviewed execution configuration. Wallet and live checks are still required."
       : config?.status !== "deployed" ? "Your asset and destination design can be exported."
       : binding?.reason || "This complete selection has no reviewed execution configuration. Keep your design; it cannot be launched yet.";
@@ -1644,14 +1647,14 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const checks = [
       ["Matches a reviewed configuration", !!binding?.matched, binding?.matched ? "" : binding?.reason || "No reviewed setup matches yet."],
       ["Deployment record", config?.status === "deployed", config?.status === "deployed" ? `Chain ${config.chainId}` : "Not deployed yet"],
-      ["Operator address", operatorValid, operatorValid ? "" : "Enter a separate, nonzero address."],
+      ["AI agent address", operatorValid, operatorValid ? "" : "Enter a separate, nonzero address."],
       [walletPreview && !account ? "Creator wallet · preview only" : "Creator wallet", !!account || walletPreview, account ? "" : walletPreview ? "Preview only" : "Needed to sign"]
     ];
     const states = [binding?.matched ? "Matched" : "Not matched", config?.status === "deployed" ? "Deployed" : "Preview only", operatorValid ? "OK" : "Missing", account ? BAV.short(account) : walletPreview ? "Preview" : "Not connected"];
     $("#preopen-checks").innerHTML = checks.map(([label, ok, message], index) => `<div class="create-check ${ok ? "ok" : index < 2 ? "bad" : "pending"}"><span class="create-check-mark" aria-hidden="true">${ok ? "✓" : "!"}</span><span class="create-check-copy"><b>${esc(label)}</b><small>${esc(message)}</small></span><span class="create-check-state">${esc(states[index])}</span></div>`).join("");
     const template = binding?.matched ? config?.templates?.find((candidate) => candidate.id === binding.templateId) : null;
-    $("#seed-share-preview").textContent = `99.5 whole shares after the 0.5% entry fee${template ? ` · ${template.assetDecimals + 3} decimals` : ""}`;
-    $("#fee-split-note").textContent = Number.isInteger(value.performanceFeeBps) && value.performanceFeeBps >= 0 && value.performanceFeeBps <= 2000 ? `You receive ${fee.toFixed(1)}% of each holder’s realized profit` : "Creator performance fee must be 0–20%.";
+    $("#seed-share-preview").textContent = `99 whole shares after the 1% creation fee${template ? ` · ${template.assetDecimals + 3} decimals` : ""}`;
+    $("#fee-split-note").textContent = Number.isInteger(value.performanceFeeBps) && value.performanceFeeBps >= 0 && value.performanceFeeBps <= 2000 ? `Performance fee ${+(fee + 10).toFixed(2)}% (CRE8 10% + you ${+fee.toFixed(2)}%), charged only on each holder’s own realized profit when they withdraw. Set at launch; it can’t change later.` : "Creator performance fee must be 0–20%.";
     const ready = config?.status === "deployed" && binding?.matched;
     $("#mandate-connect").disabled = busy || checkingReceipt || !ready || source.issues.length > 0 || issues.length > 0;
     $("#mandate-launch").disabled = busy || checkingReceipt || !!launchUnresolved() || !ready || !account || source.issues.length > 0 || issues.length > 0;
@@ -1674,7 +1677,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const blob = new Blob([JSON.stringify(design(), null, 2)], { type: "application/json" });
     const link = document.createElement("a"); link.href = URL.createObjectURL(blob); link.download = "asset-first-vault-design.json"; link.click();
     setTimeout(() => URL.revokeObjectURL(link.href), 0);
-    status("Vault design exported with your exact asset and destination choices. No vault was opened or transaction sent.");
+    status("Fund design exported with your exact asset and destination choices. No fund was opened or transaction sent.");
   });
   async function connectCreatorWallet() {
     if (!client || config?.status !== "deployed" || !binding?.matched || busy || checkingReceipt) return;
@@ -1691,7 +1694,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       const saved = records.find(item => ["awaiting-wallet", "submitted", "unknown", "mined"].includes(item.state));
       if (saved) { pendingLaunch = { chainId: saved.chainId, factory: saved.vault, account: saved.from, intentId: saved.id, hash: saved.hash || null, state: saved.state, message: `Account request (${saved.action}, ${saved.stage}) for requested nonce ${saved.nonce} remains unresolved. Reconcile or review no-hash recovery before signing.` }; savePending(); }
       else if (pendingLaunch?.account?.toLowerCase() !== account.toLowerCase()) { pendingLaunch = null; savePending(); }
-      $("#mandate-connect").textContent = BAV.short(account); status(`Creator wallet ${account}. Review your selected assets, destinations, operator, investment limits and total fee.`);
+      $("#mandate-connect").textContent = BAV.short(account); status(`Creator wallet ${account}. Review your selected assets, destinations, AI agent, limits and total fee.`);
     }
     catch (error) { account = null; status(error.message || "Wallet connection failed."); }
     finally { busy = false; refresh(); }
@@ -1708,16 +1711,16 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     activeLaunchContext = { account, chainId: config.chainId, factory: config.factory };
     if (pendingLaunch && !launchUnresolved()) { pendingLaunch = null; savePending(); drawPending(); }
     busy = true; refresh();
-    status("Verifying your complete selection and live deployment. Your wallet requests three separate creation phases. Scheduler preparation and vault deployment move no seed. Only finalization requests an exact 100-USDT approval and seed transfer; wait for canonical finality between phases. Program starts must remain in the future.");
+    status("Verifying your complete selection and live deployment. Your wallet requests three separate creation phases. Scheduler preparation and fund deployment move no seed. Only finalization requests an exact 100-USDT approval and seed transfer, and the 1% creation fee is taken from that seed; wait for canonical finality between phases. Program starts must remain in the future.");
     try {
       const chainTime=client.creationSession(config,account)?null:await client.creationClock(config);
       const result = client.creationSession(config, account) ? await client.resumeCreation(config, account, status) : await client.createVault(config, { account, templateId: matched.templateId, name: value.name, symbol: value.symbol, agent: value.agent, performanceFeeBps: value.performanceFeeBps, capBps: matched.capBps, rules: canonicalRules(matched,chainTime.timestamp).rules, onStatus: status });
       pendingLaunch = result.settlement?.finalized ? null : { ...activeLaunchContext, intentId: result.intentId, hash: result.hash, state: "mined", message: "Creation mined. Wait for canonical finality; do not submit another launch." }; savePending(); drawPending();
-      status(result.completed ? `Vault creation finalized. Transaction: ${result.hash}. Vault: ${result.vault}` : `${result.stage} mined. Check canonical finality, then continue the exact saved commitment. Transaction: ${result.hash || "see wallet history"}. No completed launch is assumed.`);
+      status(result.completed ? `Fund creation finalized. Transaction: ${result.hash}. Fund contract: ${result.vault}` : `${result.stage} mined. Check canonical finality, then continue the exact saved commitment. Transaction: ${result.hash || "see wallet history"}. No completed launch is assumed.`);
       if (result.vault) {
         const link = document.createElement("a"); link.className = "btn ghost";
         link.href = `${BAV.route("vault/cre8-usdt")}${BAV.route("vault/cre8-usdt").includes("?") ? "&" : "?"}vault=${encodeURIComponent(result.vault)}`;
-        link.textContent = "View your vault & share its link"; $("#mandate-status").appendChild(link);
+        link.textContent = "View your fund & share its link"; $("#mandate-status").appendChild(link);
       }
     } catch (error) {
       const sentHash = String(error.message || "").match(/Receipt wait failed for (0x[\da-fA-F]{64})/);
@@ -1762,12 +1765,12 @@ e:"$Sreact.suspense"
 12:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
 14:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 9:X
-0:{"P":null,"c":["","create",""],"q":"","i":false,"f":[[["",{"children":["create",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3u1igua0azle0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"create-page","html":"$5","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"\" >Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"active\" aria-current=\"page\">Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"70987d7a1a75","script":"$6","pageKey":"create"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"TD3EQ5N6pLZhG9HJlTAVa"}
+0:{"P":null,"c":["","create",""],"q":"","i":false,"f":[[["",{"children":["create",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/36t8ncigu0ot6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"create-page","html":"$5","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"\" >Funds</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"active\" aria-current=\"page\">Create fund</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"4fccfef8335e","script":"$6","pageKey":"create"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"H_DrV9xoa4ysq6Sls7tyW"}
 7:["$","script","script-0",{"src":"/_next/static/chunks/2jue03yvau1yp.js","async":true,"nonce":"$undefined"}]
 8:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3u1igua0azle0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/36t8ncigu0ot6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 9:C
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 f:null
-13:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L14","7",{}]]
+13:[["$","title","0",{"children":"CRE8 — Create a fund. Let your agent run it."}],["$","meta","1",{"name":"description","content":"Onchain funds of US stocks and crypto. CRE8 AI drafts the fund; the mandate keeps it to its word."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L14","7",{}]]

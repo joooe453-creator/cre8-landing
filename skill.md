@@ -1,6 +1,6 @@
 ---
 name: bnb-agent-vaults
-description: Resolve reviewed BNB Chain baskets and prepare bounded V2 fund/Position and direct-spot composite lifecycle actions through unsigned CRE8 MCP tools.
+description: Resolve reviewed BNB Chain baskets and prepare bounded V2 fund/Position, direct-spot composite and mixed (native-position) composite lifecycle actions through unsigned CRE8 MCP tools.
 ---
 
 # BNB Agent Vaults V2
@@ -24,26 +24,44 @@ signing tool. Keep its wallet session and task scope separate from the unsigned
 protocol MCP below. Payment never increases an agent's vault authority.
 
 Call `get_execution_deployment`, `get_position_deployment`, `get_position_creation_catalog`,
-`get_composite_spot_deployment` and `list_integrations`. Discover tools through `tools/list`.
+`get_composite_spot_deployment`, `get_composite_deployment` and `list_integrations`. Discover
+tools through `tools/list`.
 `undeployed` is a hard gate: design/export only; do not invent custody addresses, RPC success,
 prices, signed approvals or deployment results. Design catalogs and structural validation
 never prove reviewed admission or live market safety. Server-reviewed records determine RPC,
 chain, code pins, allowed templates and positions. Do not submit caller-selected manifests/RPCs.
 
-For PR20 multi-asset/multi-strategy designs, call `get_strategy_v3_status` first.
-The separate `MANDATE_COMPOSITE_V3_SPOT` capability implements direct-spot creation, shares,
-physical joins, typed Buy/Sell intents and isolated withdrawals. Its manifest must be deployed
-and its factory graph verified before preparing calls; the public manifest is currently undeployed.
-All nineteen strategy tools remain `spec-only` until the complete parent, adapters,
-withdrawals and release acceptance are integrated; T15 is phase two. Do not reinterpret
-an existing V2 basket, separate LP/Debt vault or PR19 paid plan as a shared composite fund.
+For PR20 multi-asset/multi-strategy designs, call `get_strategy_v3_status` first. Its payload is
+computed, not hand-written: `executionAvailable` is true only while the published mixed manifest
+validates as `deployed`, and each of T01–T19 carries a state from the ladder `spec-only`,
+`implemented-local`, `verified-fork`, `deployed` plus `notes` transcribed from the engineering
+handoff. A tool is `executable` only when the manifest is deployed **and** its state is beyond
+`spec-only`; T15 stays `spec-only` and phase two. `releaseBlockers` lists the open release gates.
+Report these states verbatim; never upgrade a `verified-fork` note into a deployment claim, and
+never treat local or fork evidence as a signed, finalized broadcast or an external audit.
+
+Two composite capabilities exist with separate manifests. `MANDATE_COMPOSITE_V3_SPOT`
+(`get_composite_spot_deployment`) implements direct-spot creation, shares, physical joins, typed
+Buy/Sell intents and isolated withdrawals. `MANDATE_COMPOSITE_V3_NATIVE`
+(`get_composite_deployment`) is the mixed parent: the same spot scopes plus native supply, debt,
+LP, farm and staking positions, holder claim settlement and raw (in-kind) settlement, and the
+schema-3 keeper policy. Both public manifests are currently undeployed; an undeployed manifest
+disables every execution tool of that capability, and signing always stays in the user's or
+operator's wallet. Do not reinterpret an existing V2 basket, separate LP/Debt vault or PR19 paid
+plan as a shared composite fund.
 
 For direct-spot composites use `prepare_composite_spot_action`,
 `simulate_composite_spot_action` and `verify_composite_spot_receipt`; read the staged workflow
 in [`references/execution.md`](references/execution.md#direct-spot-composite-lifecycle).
+For mixed composites use `get_composite_vault_state`, `get_composite_withdrawal_state`,
+`get_composite_native_intent`, `get_composite_catalog_admission`, `prepare_composite_action`, `simulate_composite_action`,
+`verify_composite_receipt` and `build_composite_keeper_policy`; read
+[`references/execution.md`](references/execution.md#mixed-composite-lifecycle-native-positions).
 Arguments use raw integer units, exact catalog IDs and typed actions. Caller-supplied routes,
-receivers, deployment manifests and raw calldata are rejected. The existing V2 keeper and
-paid planning output do not automatically gain this new capability or wallet authority.
+receivers, deployment manifests, RPC URLs, protocol configuration and raw calldata are rejected.
+The existing V2 keeper and paid planning output do not automatically gain either capability or
+wallet authority. The keeper policy returned by `build_composite_keeper_policy` is a review
+artifact for the operator; it contains no RPC URL or key and grants no authority by itself.
 
 For an ordinary basket start with `list_phase1_markets`, select assets and each asset's hold,
 vault or supply-market destination, then `resolve_asset_selection`. Match the entire basket,
@@ -166,8 +184,9 @@ Dip thresholds must be at least 3%; enabled rebalance thresholds must be at leas
 Agent capital actions require healthy NAV and unchanged oracle prices. Their positive pre/post
 NAV losses, divided by pre-action NAV and rounded upward, accumulate by vault in 25 hourly
 buckets. These cover all trailing 24-hour losses and may retain the oldest for up to one extra
-hour; gains, cash flows and key rotation never erase prior losses. The default and maximum
-limit is 500 bps. Manager tightening is immediate; widening requires an exact 24-hour queue.
+hour; gains, cash flows and key rotation never erase prior losses. The default limit is 500 bps;
+the creator may choose 200-1000 bps. Manager tightening is immediate; widening requires an exact 24-hour queue.
+Vault pages flag a warning from 200 bps (half the limit when it is below 400) and show the stop once it trips.
 A threshold-crossing action settles and atomically disables the agent, so 5% is not a hard
 maximum-loss guarantee. Further agent actions and new entry stop. Holder exits, manager
 reductions and eligible permissionless keeper deleverage retain their separate paths.

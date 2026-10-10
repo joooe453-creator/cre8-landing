@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2jue03yvau1yp.js"],"PrototypePage"]
-3:T41ce,
+2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2w4z3o8vhx6bw.js","/_next/static/chunks/0hpo-drif-9z-.js"],"PrototypePage"]
+3:T41a4,
 (function () {
   const { $, $$, esc, fmt } = BAV;
   BAV.shell("portfolio.html");
@@ -8,7 +8,7 @@
   const preview = query.get("preview") || query.get("walletState");
   // The example states below are design references, opened only with a preview parameter; the live portfolio follows.
   if (!["preview", "walletState", "state"].some((key) => query.has(key))) return;
-  // Read-only example account built from the simulated vault records; it is never a wallet ledger.
+  // Read-only example account built from the simulated fund records; it is never a wallet ledger.
   const HOLD = [{ slug: "cre8-bstock-core", shares: 3000, cost: 3050 }, { slug: "cre8-crypto-accumulator", shares: 1250.43, cost: 1300 }, { slug: "mag7-rotation", shares: 800, cost: 820 }];
   const MANAGED = { slug: "nvda-dca", deposit: 100 };
   const SHADES = ["#16222D", "#2B4254", "#4E6A7F", "#6F93AE", "#8297A8", "#B7CDDE", "#3C5A70"];
@@ -23,12 +23,12 @@
     const data = ["example", "connected", "partial"].includes(state), partial = state === "partial";
     $("#portfolio-tag").textContent = `[ ${data ? state === "example" ? "Example portfolio" : "Design preview · Simulated balances" : "Design preview"} ]`;
     $("#portfolio-tag").hidden = !data && !preview;
-    $("#portfolio-meta").innerHTML = data ? `${state === "example" ? "Example account" : "Design preview wallet"} · <button type="button" class="dk-inline-link" id="portfolio-own">Connect a wallet to see yours</button>` : "Your vault shares, their estimated value, and what you can redeem.";
-    $("#portfolio-own")?.addEventListener("click", () => BAV.toast("Portfolio aggregation is unavailable. Open a configured vault’s detail page to connect and read actual shares."));
+    $("#portfolio-meta").innerHTML = data ? `${state === "example" ? "Example account" : "Design preview wallet"} · <button type="button" class="dk-inline-link" id="portfolio-own">Connect a wallet to see yours</button>` : "Your fund shares, their estimated value, and what you can withdraw.";
+    $("#portfolio-own")?.addEventListener("click", () => BAV.toast("Portfolio aggregation is unavailable. Open a configured fund’s page to connect and read actual shares."));
     const content = $("#portfolio-content");
     if (state === "disconnected") {
-      content.innerHTML = `<section class="dk-empty portfolio-connect"><div><h2>Connect a wallet to see your shares</h2><p>Live portfolio aggregation is not connected yet. View an example, or read actual wallet shares on a configured vault’s detail page.</p></div><div class="dk-actions portfolio-connect-actions"><button class="btn" id="portfolio-connect">Connect wallet</button><button class="btn ghost" id="portfolio-example">View example portfolio</button></div></section>`;
-      $("#portfolio-connect").addEventListener("click", () => BAV.toast("Portfolio aggregation is unavailable. Open a configured vault’s detail page to connect and read actual shares."));
+      content.innerHTML = `<section class="dk-empty portfolio-connect"><div><h2>Connect a wallet to see your shares</h2><p>Live portfolio aggregation is not connected yet. View an example, or read actual wallet shares on a configured fund’s page.</p></div><div class="dk-actions portfolio-connect-actions"><button class="btn" id="portfolio-connect">Connect wallet</button><button class="btn ghost" id="portfolio-example">View example portfolio</button></div></section>`;
+      $("#portfolio-connect").addEventListener("click", () => BAV.toast("Portfolio aggregation is unavailable. Open a configured fund’s page to connect and read actual shares."));
       $("#portfolio-example").addEventListener("click", () => { state = "example"; render(); });
       return;
     }
@@ -37,7 +37,7 @@
       return;
     }
     if (state === "empty") {
-      content.innerHTML = `<section class="dk-empty portfolio-empty"><div><h2>No vault shares in this wallet</h2><p>Design preview of an empty portfolio. When live aggregation is connected, your shares and estimated value will appear here.</p></div><div class="dk-actions"><a class="btn" href="${BAV.route("vaults")}">Browse vaults</a></div></section>`;
+      content.innerHTML = `<section class="dk-empty portfolio-empty"><div><h2>No fund shares in this wallet</h2><p>Design preview of an empty portfolio. When live aggregation is connected, your shares and estimated value will appear here.</p></div><div class="dk-actions"><a class="btn" href="${BAV.route("vaults")}">Browse funds</a></div></section>`;
       return;
     }
     // In the partial design state the last holding's share value could not be read; it is excluded from totals.
@@ -54,17 +54,17 @@
     const earned = managed && managed.returns.ALL != null ? managed.tvl * managed.returns.ALL / 100 * managed.fees.perf / 100 : null;
     const activity = [
       ...rows.map((row, index) => [Date.UTC(2026, 9, 2) - (8 + index * 13) * DAY, "Deposit", row.v.name, `${n2(row.h.cost)} USDT`]),
-      ...(managed ? [[opened, "Opened vault", managed.name, `${n2(MANAGED.deposit)} USDT`]] : []),
+      ...(managed ? [[opened, "Opened fund", managed.name, `${n2(MANAGED.deposit)} USDT`]] : []),
     ].sort((a, b) => b[0] - a[0]);
     content.innerHTML = `<dl class="dk-kpis portfolio-kpis">
         <div><dt>Net value, USDT</dt><dd class="${partial ? "caution" : ""}">${n2(total)}</dd></div>
         <div><dt>Unrealized P&amp;L, USDT</dt><dd class="${tone(pnl)}">${signed(pnl)}</dd></div>
         <div><dt>Return on cost</dt><dd class="${tone(pnl)}">${fmt.pct(cost ? pnl / cost * 100 : 0)}</dd></div>
-        <div><dt>Vaults held</dt><dd>${rows.length}</dd></div>
+        <div><dt>Funds held</dt><dd>${rows.length}</dd></div>
       </dl>
-      ${partial ? `<p class="dk-fine caution portfolio-partial">Partial data · ${esc(rows[rows.length - 1].v.name)} share value couldn’t be read and is excluded from totals.</p>` : ""}
+      ${partial ? `<p class="dk-fine caution portfolio-partial">Partial data · ${esc(rows[rows.length - 1].v.name)} share price couldn’t be read and is excluded from totals.</p>` : ""}
       <section class="dk-sec portfolio-holdings" id="hold" aria-label="Holdings"><h2>Holdings</h2>
-        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Vault</th><th class="num dk-hide-md">Shares</th><th class="num dk-hide-md">Share value</th><th class="num">Value, USDT</th><th class="num dk-hide-sm">Cost</th><th class="num">P&amp;L</th><th class="dk-hide-md">Weight</th></tr></thead><tbody>
+        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Fund</th><th class="num dk-hide-md">Shares</th><th class="num dk-hide-md">Share price</th><th class="num">Value, USDT</th><th class="num dk-hide-sm">Cost</th><th class="num">P&amp;L</th><th class="dk-hide-md">Weight</th></tr></thead><tbody>
           ${rows.map((row) => { const href = BAV.route("vault/" + row.v.slug), gain = row.known ? row.value - row.h.cost : null, weight = row.known && total ? row.value / total * 100 : null; return `<tr data-href="${esc(href)}" tabindex="0" aria-label="Open ${esc(row.v.name)}"><td><span class="nm">${esc(row.v.name)}</span><span class="mg">${esc(row.v.manager)}</span></td>
             <td class="num mono dk-hide-md">${n2(row.h.shares)}</td><td class="num mono dk-hide-md ${row.known ? "" : "caution"}">${row.known ? row.v.sharePrice.toFixed(4) : "Unavailable"}</td>
             <td class="num big ${row.known ? "" : "caution"}">${row.known ? n2(row.value) : "Unavailable"}</td><td class="num mono dk-hide-sm">${n2(row.h.cost)}</td>
@@ -79,20 +79,20 @@
         </section>
         <section class="dk-sec portfolio-attention" aria-label="Rule changes"><h2>Rule changes</h2>
           <ul class="dk-notices">
-            ${rows.filter((row) => row.v.pendingChange).map((row) => `<li><div class="top"><span class="nf">${esc(row.v.name)}</span><span class="dk-ntag warn">Pending · 24h notice</span></div><span class="ch">${esc(row.v.pendingChange.what || "Investment limit")} ${row.v.pendingChange.from ?? "—"}% → ${row.v.pendingChange.to ?? "—"}%</span></li>`).join("") || `<li><div class="top"><span class="nf">No pending changes</span><span class="dk-ntag">All vaults</span></div><span class="when">Tightening a limit is immediate · loosening waits 24h</span></li>`}
-            <li><div class="top"><span class="nf">Not deployed</span><span class="dk-ntag warn">Preview</span></div><span class="when">Shares can’t be redeemed until a verified deployment exists</span></li>
+            ${rows.filter((row) => row.v.pendingChange).map((row) => `<li><div class="top"><span class="nf">${esc(row.v.name)}</span><span class="dk-ntag warn">Pending · 24h notice</span></div><span class="ch">${esc(row.v.pendingChange.what || "Limit")} ${row.v.pendingChange.from ?? "—"}% → ${row.v.pendingChange.to ?? "—"}%</span></li>`).join("") || `<li><div class="top"><span class="nf">No pending changes</span><span class="dk-ntag">All funds</span></div><span class="when">Tightening a limit is immediate · loosening waits 24h</span></li>`}
+            <li><div class="top"><span class="nf">Not deployed</span><span class="dk-ntag warn">Preview</span></div><span class="when">Shares can’t be withdrawn until a verified deployment exists</span></li>
           </ul>
         </section>
       </div>
-      ${managed ? `<section class="dk-sec" aria-label="Vaults you manage"><h2>Vaults you manage</h2>
-        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Vault</th><th class="num">Vault size</th><th class="num dk-hide-sm">Your deposit</th><th class="num dk-hide-md">Creator floor</th><th class="num">Fees earned</th></tr></thead><tbody>
-          <tr data-href="${esc(BAV.route("vault/" + managed.slug))}" tabindex="0" aria-label="Open ${esc(managed.name)}"><td><span class="nm">${esc(managed.name)}</span><span class="mg">Performance fee ${managed.fees.perf}%</span></td><td class="num big">${compact(managed.tvl)}</td><td class="num mono dk-hide-sm">${n2(MANAGED.deposit)} USDT</td><td class="num mono dk-hide-md">No lock · 2% live</td><td class="num big ${earned ? "pos" : ""}">${earned == null ? "—" : `${n2(earned)} USDT`}</td></tr>
+      ${managed ? `<section class="dk-sec" aria-label="Funds you created"><h2>Funds you created</h2>
+        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Fund</th><th class="num">Fund size</th><th class="num dk-hide-sm">Creator stake</th><th class="num dk-hide-md">Minimum stake</th><th class="num">Fees earned</th></tr></thead><tbody>
+          <tr data-href="${esc(BAV.route("vault/" + managed.slug))}" tabindex="0" aria-label="Open ${esc(managed.name)}"><td><span class="nm">${esc(managed.name)}</span><span class="mg">Your performance fee ${managed.fees.perf}%</span></td><td class="num big">${compact(managed.tvl)}</td><td class="num mono dk-hide-sm">${n2(MANAGED.deposit)} USDT</td><td class="num mono dk-hide-md">No lock · 2% live</td><td class="num big ${earned ? "pos" : ""}">${earned == null ? "—" : `${n2(earned)} USDT`}</td></tr>
         </tbody></table></div></section>` : ""}
       <section class="dk-sec" aria-label="Activity"><h2>Activity</h2>
-        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Date</th><th>Action</th><th class="dk-hide-sm">Vault</th><th class="num">Amount</th></tr></thead><tbody>
+        <div class="dk-wrap"><table class="dk-table"><thead><tr><th>Date</th><th>Action</th><th class="dk-hide-sm">Fund</th><th class="num">Amount</th></tr></thead><tbody>
           ${activity.map(([time, action, name, amount]) => `<tr><td class="mono">${day(time)}</td><td>${esc(action)}</td><td class="dk-hide-sm">${esc(name)}</td><td class="num mono">${amount}</td></tr>`).join("")}
         </tbody></table></div></section>
-      <p class="dk-fine portfolio-explanation">Values at simulated share prices · Example account, not a wallet balance · Vaults are not deployed, so nothing here can be redeemed yet.</p>`;
+      <p class="dk-fine portfolio-explanation">Values at simulated share prices · Example account, not a wallet balance · Funds are not deployed, so nothing here can be withdrawn yet.</p>`;
     $$("tr[data-href]", content).forEach((tr) => {
       tr.addEventListener("click", () => { location.href = tr.dataset.href; });
       tr.addEventListener("keydown", (event) => { if (event.key === "Enter") location.href = tr.dataset.href; });
@@ -123,14 +123,14 @@
     $("#portfolio-meta").replaceChildren(face, document.createTextNode(account));
     const symbols = [...new Set(held.map(row => row.snapshot.assetSymbol))], priced = held.every(row => row.snapshot.pricePerShare != null);
     const value = row => row.snapshot.pricePerShare == null ? null : Number(row.snapshot.shareBalance) * Number(row.snapshot.pricePerShare);
-    const total = !held.length ? "0" : symbols.length === 1 && priced ? `${amount(held.reduce((sum, row) => sum + value(row), 0))} ${symbols[0]}` : "Mixed assets";
+    const total = !held.length ? "0" : symbols.length === 1 && priced ? `${amount(held.reduce((sum, row) => sum + value(row), 0))} ${symbols[0]}` : "Several assets";
     const rows = held.map(({ entry, snapshot, owner }) => {
       const href = `${BAV.route("vault/cre8-usdt")}?vault=${encodeURIComponent(entry.address)}`, worth = value({ snapshot });
       return `<tr><td><b>${esc(snapshot.name)}</b>${owner ? ' <span class="pf-tag">Yours</span>' : ""}</td><td class="num dk-hide-sm">${esc(amount(snapshot.shareBalance))}</td><td class="num">${worth == null ? "Unavailable" : esc(`${amount(worth)} ${snapshot.assetSymbol}`)}</td><td class="num"><a class="pf-go" href="${esc(owner ? href + "#rules-controls" : href)}">${owner ? "Manage" : "View"} →</a></td></tr>`;
     }).join("");
-    $("#portfolio-live").innerHTML = `<dl class="pf-sum"><div><dt>Est. value</dt><dd>${esc(total)}</dd></div><div><dt>Vaults</dt><dd>${held.length}</dd></div></dl>`
-      + (held.length ? `<section class="dk-sec"><header><h2>Your vaults</h2></header><div class="dk-wrap"><table class="dk-table pf-tbl"><thead><tr><th>Vault</th><th class="num dk-hide-sm">Shares</th><th class="num">Est. value</th><th></th></tr></thead><tbody>${rows}</tbody></table></div></section>`
-        : `<section class="pf-empty"><h2>No vault shares yet</h2><p>Deposit into a vault and it shows up here.</p><a class="btn" href="${esc(BAV.route("vaults"))}">Explore vaults</a></section>`)
+    $("#portfolio-live").innerHTML = `<dl class="pf-sum"><div><dt>Est. value</dt><dd>${esc(total)}</dd></div><div><dt>Funds</dt><dd>${held.length}</dd></div></dl>`
+      + (held.length ? `<section class="dk-sec"><header><h2>Your funds</h2></header><div class="dk-wrap"><table class="dk-table pf-tbl"><thead><tr><th>Fund</th><th class="num dk-hide-sm">Shares</th><th class="num">Est. value</th><th></th></tr></thead><tbody>${rows}</tbody></table></div></section>`
+        : `<section class="pf-empty"><h2>No fund shares yet</h2><p>Deposit into a fund and it shows up here.</p><a class="btn" href="${esc(BAV.route("vaults"))}">Explore funds</a></section>`)
       + '<button type="button" class="btn ghost pf-disconnect" id="portfolio-live-disconnect">Disconnect</button>';
     $("#portfolio-live-disconnect").onclick = () => client?.disconnectWallet().catch(error => status(error.message));
   }
@@ -142,7 +142,7 @@
     try {
       const account = await client.connectWallet(config, kind);
       if (runEpoch !== epoch) throw new Error("Wallet changed during connection");
-      status("Reading your vaults…");
+      status("Reading your funds…");
       const held = [], failed = [];
       for (const entry of config.vaults.slice(0, 100)) {
         try {
@@ -171,29 +171,32 @@
   } catch (error) { status(error.message); }
   window.addEventListener("bav:wallet-change", () => { epoch++; if (!reading) { showEmpty(); status(""); } });
 })();
-7:X
-c:X
-c:C
-0:{"buildId":"TD3EQ5N6pLZhG9HJlTAVa","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"bodyClass":"portfolio-page","html":"\n<section class=\"portfolio-hero\"><div class=\"wrap\"><div class=\"dk-head\"><div><h1 class=\"dk-h1\">Portfolio</h1><p class=\"dk-meta\" id=\"portfolio-meta\"></p></div><span class=\"dk-label\" id=\"portfolio-tag\"></span></div></div></section>\n<main class=\"portfolio-main\" id=\"portfolio-content\" aria-live=\"polite\"></main>\n\n\n\n\n","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"\" >Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link active\" href=\"https://app.cre8.finance/portfolio/\" aria-current=\"page\">Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"70987d7a1a75","script":"$3","pageKey":"portfolio"}],["$L4"],"$L5"]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$7","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$7","varyParams":"$c"},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$7","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@f","rootVaryParams":null,"needsRuntimeRequest":"$@10"}
-11:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
-12:"$Sreact.suspense"
-14:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
-15:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
-16:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
-17:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
-18:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
-:HL["/_next/static/chunks/3u1igua0azle0.css","style"]
-4:["$","script","script-0",{"src":"/_next/static/chunks/2jue03yvau1yp.js","async":true}]
-5:["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]
-8:["$","$1","h",{"children":[null,["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L15",null,{"children":["$","$12",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L16","7",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-a:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
-d:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3u1igua0azle0.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
-13:null
-10:true
-7:300
-7:C
-f:0
-9:"$undefined"
+9:X
+e:X
+e:C
+0:{"buildId":"H_DrV9xoa4ysq6Sls7tyW","data":[{"rsc":["$","$1","c",{"children":[[["$","$L2",null,{"bodyClass":"portfolio-page","html":"\n<section class=\"portfolio-hero\"><div class=\"wrap\"><div class=\"dk-head\"><div><h1 class=\"dk-h1\">Portfolio</h1><p class=\"dk-meta\" id=\"portfolio-meta\"></p></div><span class=\"dk-label\" id=\"portfolio-tag\"></span></div></div></section>\n<main class=\"portfolio-main\" id=\"portfolio-content\" aria-live=\"polite\"></main>\n\n\n\n\n","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"\" >Funds</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create fund</a></nav><div class=\"head-right\"><a class=\"head-link active\" href=\"https://app.cre8.finance/portfolio/\" aria-current=\"page\">Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"4fccfef8335e","script":"$3","pageKey":"portfolio"}],"$L4"],["$L5","$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+13:I[28720,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2w4z3o8vhx6bw.js","/_next/static/chunks/0hpo-drif-9z-.js"],"default"]
+14:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
+18:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
+19:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
+1a:I[39756,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+1b:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
+:HL["/_next/static/chunks/36t8ncigu0ot6.css","style"]
+4:["$","$L13",null,{}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/2w4z3o8vhx6bw.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/0hpo-drif-9z-.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+a:["$","$1","h",{"children":[null,["$","$L17",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$15",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Create a fund. Let your agent run it."}],["$","meta","1",{"name":"description","content":"Onchain funds of US stocks and crypto. CRE8 AI drafts the fund; the mandate keeps it to its word."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L19","7",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+c:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
+f:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/36t8ncigu0ot6.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}]
+16:null
+12:true
+9:300
+9:C
+11:0
 b:"$undefined"
-e:"$undefined"
-6:"$undefined"
+d:"$undefined"
+10:"$undefined"
+8:"$undefined"

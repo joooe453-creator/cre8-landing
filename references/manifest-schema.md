@@ -22,13 +22,13 @@ The exact top-level fields are:
 - `minIdleBps`: exactly `500`.
 - `ruleChangeDelaySeconds`: exactly `86400`.
 - `creatorMinOwnershipBps`: exactly `200`.
-- `depositFeeBps`: exactly `50`.
-- `operationFeeBps`: exactly `10`.
-- `operationFeeAnnualCapBps`: exactly `100` per fixed 365-day accounting epoch.
+- `depositFeeBps`: exactly `100` (1% of every deposit; on the creator's seed this 1% is the creation fee).
+- `operationFeeBps`: exactly `0` (funds pay no operation fee).
+- `operationFeeAnnualCapBps`: exactly `0`.
 - `protocolPerformanceFeeBps`: exactly `1000`.
 
 The creator seeds exactly 100 accounting-asset units during the staged finalize transaction.
-The same 0.5% entry fee applies to the seed, so `minSeedShares` must use
+The seed pays the 1% creation fee (the same rate as the deposit fee), so `minSeedShares` must use
 `expectedSeedSharesRaw(assetDecimals)` rather than a hard-coded gross 100-unit value. There is
 no time lock or separate stake. While another holder remains, creator exits must leave at least
 2% of live shares.
@@ -66,3 +66,22 @@ The separate `bnb-agent-vaults/manifest@1.0` basket export remains available onl
 explicit reference-only `build_vault_manifest` and `validate_vault_manifest` tools. Earlier
 `manifest@0.9` exports are rejected. Never translate a claimed dry-run, local planning fields or
 user-selected routes from this reference format into V2 authority.
+
+## Composite manifests are server records, not inputs
+
+`get_composite_spot_deployment` (`composite-spot@1.0`, `MANDATE_COMPOSITE_V3_SPOT`) and
+`get_composite_deployment` (`composite-mixed@1.0`, validated by `validateMixedManifest`,
+`MANDATE_COMPOSITE_V3_NATIVE`) return the only composite records the service will execute
+against. An `undeployed` record must advertise no factory, RPC, deployment evidence, catalog,
+native keys, vaults, code hashes or provenance, and disables every execution tool of that
+capability. A `deployed` mixed record is written only by `web/scripts/record-composite-deployment.mjs`
+and carries: a credential-free https RPC; the keeper's verified deployment evidence (factory,
+catalog, native helper infrastructure and 13–40 typed creation stores, each runtime equal to
+its pin); runtime pins for the factory, its component registry, every store and code part,
+every spot template dependency and every native key dependency; the direct spot templates; the
+reviewed native catalog keys (kind 12–19, the exact `Config` tail, witnesses and join gas, a
+label, and dependencies that include the asset and every witness target), each key recomputed
+as `keccak256(abi.encode("CRE8_NATIVE_CATALOG_V3", chainid, factory, Config))`; the published
+official vaults; and external provenance over every dependency. A key listed in the record is
+still checked live: admission (approved, not blocked) is read on chain before any risk is added.
+No tool validates or accepts a caller-supplied composite manifest.

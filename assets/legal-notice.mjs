@@ -21,25 +21,25 @@ export function createPageRiskRecord(options, reviewedAt = new Date().toISOStrin
 const DEPOSITOR_NOTICE = {
   id: "depositor",
   audience: "For depositors",
-  title: "Before you explore vaults",
+  title: "Before you explore funds",
   points: [
     "<strong>You could lose all your capital.</strong> Markets, smart contracts and third-party protocols carry risks. Capital and returns are not guaranteed.",
-    "<strong>Review each vault before depositing.</strong> Read its Fund prospectus and check the strategy, fees, Agent permissions and withdrawal conditions.",
-    "<strong>Agents can act within vault rules.</strong> An Agent can operate without your approval for each transaction. Risk controls cannot guarantee a limit on losses.",
+    "<strong>Review each fund before depositing.</strong> Read its Fund facts and check the mandate, plan, fees, AI agent permissions and withdrawal conditions.",
+    "<strong>AI agents can act within the fund's mandate.</strong> An AI agent can operate without your approval for each transaction. Risk controls cannot guarantee a limit on losses.",
   ],
 };
-// The vault list and each vault page share the depositor notice, so hiding it once covers both.
+// The fund list and each fund page share the depositor notice, so hiding it once covers both.
 const PAGE_NOTICES = {
   vaults: DEPOSITOR_NOTICE,
   vault: { ...DEPOSITOR_NOTICE, title: "Before you deposit" },
   create: {
     id: "creator",
-    audience: "For vault creators",
-    title: "Before you create a vault",
+    audience: "For fund creators",
+    title: "Before you create a fund",
     points: [
-      "<strong>Review the vault setup before launch.</strong> Check the assets, destinations, investment limits, fees and rules you are configuring.",
+      "<strong>Review the fund setup before launch.</strong> Check the thesis, assets, destinations, investment limits, fees and mandate you are configuring.",
       "<strong>Your seed is at risk.</strong> The seed deposit is exposed to strategy losses. Maintain the minimum creator shareholding while other holders remain.",
-      "<strong>Choose the Agent operator carefully.</strong> It can act within vault rules without your approval for each transaction. Replacing the operator requires a governance delay.",
+      "<strong>Choose the AI agent carefully.</strong> It can act within the fund's mandate without your approval for each transaction. Replacing it requires a governance delay.",
     ],
   },
 };
@@ -150,9 +150,9 @@ export async function confirmFundProspectus({ onRead }) {
   dialog.dataset.bavLegal = "";
   dialog.setAttribute("aria-labelledby", "cre8-prospectus-title");
   dialog.innerHTML = `<form method="dialog" class="legal-notice-form">
-    <header><span class="legal-notice-status">Before you deposit</span><button type="button" class="legal-notice-close" aria-label="Close prospectus reminder">×</button></header>
-    <h2 id="cre8-prospectus-title">Have you read the Fund prospectus?</h2>
-    <footer><button type="button" class="btn ghost" data-prospectus-read>Read prospectus</button><button type="submit" class="btn" data-prospectus-continue>Yes, continue</button></footer>
+    <header><span class="legal-notice-status">Before you deposit</span><button type="button" class="legal-notice-close" aria-label="Close fund facts reminder">×</button></header>
+    <h2 id="cre8-prospectus-title">Have you read the Fund facts?</h2>
+    <footer><button type="button" class="btn ghost" data-prospectus-read>Read fund facts</button><button type="submit" class="btn" data-prospectus-continue>Yes, continue</button></footer>
   </form>`;
   document.body.append(dialog);
   return new Promise((resolve) => {

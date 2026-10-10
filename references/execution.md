@@ -3,10 +3,13 @@
 This version describes the current source, not an officially deployed contract or live MCP host.
 `get_execution_deployment` returns reviewed basket `deployment@1.0`; `get_position_deployment`
 returns reviewed `positions@2.0`; `get_position_creation_catalog` returns the server-held
-`position-creation-catalog@2.0`. All three public records are undeployed; current source has
-54 unsigned tools. No tool accepts a caller
+`position-creation-catalog@2.0`; `get_composite_spot_deployment` and `get_composite_deployment`
+return the two composite manifests. All five public records are undeployed; current source has
+63 unsigned tools. No tool accepts a caller
 RPC/manifest, secret, signature request or broadcast instruction. Tool schemas and typed SDK
 canonical reconstruction jointly enforce input; arbitrary calldata is not an operation input.
+Hex identities (`vault`, `account`, `id`, `hash`) of the mixed composite tools are additionally
+bounded at the route to exact 20-byte or 32-byte `0x` strings before any SDK call.
 
 ## Ordinary creation
 
@@ -17,7 +20,7 @@ positions retain exact token/direct V3 swap/destination/cap fields from the revi
 An idle accounting asset is not an extra hold leg. Maximum seven legs and caps sum 9500.
 The resolver accepts a complete reviewed configuration, not an arbitrary mix of approved parts.
 For an ordinary fund, `minSeedShares` is not a slippage choice: it must equal
-`expectedSeedSharesRaw(assetDecimals)`, the exact 100-unit seed after the fixed 0.5% entry fee.
+`expectedSeedSharesRaw(assetDecimals)`, the exact 100-unit seed after the fixed 1% creation fee.
 The SDK rejects both higher and lower values before any staged transaction is prepared.
 
 `prepare_mandate_creation` / `simulate_mandate_creation` replace `selection` with
@@ -140,7 +143,11 @@ Position Rules tools return standalone RulesPlan. Preserve either complete repre
 | claim-fees | receiver,deadline |
 | keeper-deleverage | epoch,amount,minRepaid,deadline (Debt only) |
 
-Reduction kind is ExecutionKind 3 RebalanceSell, 4 EmergencySell, or 5 ClosingSell.
+Reduction kind is ExecutionKind 3 RebalanceSell, 4 EmergencySell, or 5 ClosingSell. Emergency and
+closing sales run only for the manager, the council or the enabled agent; a rebalance sale stays rule-bound.
+A raised token stop applies at once only while it is at least 5% below the leg's live risk price; a closer
+stop, one above the price or one set while the price cannot be read is scheduled for the 24-hour review
+(the receipt shows which). A buy-once program keeps its start, slots, interval, window and recovery timing.
 
 Rules control action: Pause0,Resume1,Emergency2,End3,Freeze4,Tighten5,Schedule6,Cancel7,
 Apply8,ResumeDeposits9. Empty unused tuple fields must stay canonical zero/empty. Token stop,
@@ -156,7 +163,7 @@ autoStopLossBps,rebalanceThresholdBps,weights,frozenMask,initialCashBps,dipCoold
 are retired and must be 0; strategy 1 (USDT lending) is rejected. Strategy enums and compatible profiles
 are validated by SDK/contract; a free-form config is not permission to enable unsupported modes.
 Dip requires at least 300 bps and enabled rebalancing requires at least 500 bps. Agent loss
-policy is per vault, defaults to 500 bps and cannot exceed 500 bps. Twenty-five hourly buckets
+policy is per vault, defaults to 500 bps and the creator may choose 200-1000 bps (Cancel carries 0). Twenty-five hourly buckets
 cover the trailing 24 hours and may retain the oldest bucket for up to one extra hour. The
 crossing action completes before the Agent is disabled; holder exits and manager reductions
 remain separate paths, so the configured percentage is not a hard maximum-loss guarantee.
@@ -223,9 +230,17 @@ publisher/RPC/archive completeness is a trust boundary. Aster API equity is not 
 
 ## PR20 composite status
 
-Call `get_strategy_v3_status` for the full strategy-v3 release report. It remains unavailable.
-The implemented direct-spot lifecycle has a separate manifest and selectors described below.
-Preserve the V2 and Position schemas and limits; do not route T01–T19 through old selectors.
+Call `get_strategy_v3_status` for the strategy-v3 release report. The payload is derived at
+build time from three sources and never hand-edited: the published mixed manifest
+(`executionAvailable` and `officialFactory` only when it validates as `deployed`), a per-tool
+table transcribed from the engineering handoff (`tools[].state` in `spec-only` →
+`implemented-local` → `verified-fork` → `deployed`, with `notes` naming the fork suite and open
+acceptance gaps), and the handoff's release blockers (`releaseBlockers[]`). `tools[].executable`
+is true only when the manifest is deployed and the state is beyond `spec-only`; the SDK's
+`assertStrategyV3Executable` refuses everything else. `rules.evidence` records that there is no
+public deployment, no signed finalized broadcast, no external audit and no hosted CI. Both
+composite lifecycles below have their own manifests and selectors. Preserve the V2 and Position
+schemas and limits; do not route T01–T19 through old selectors.
 
 ## Direct spot composite lifecycle
 
@@ -247,8 +262,11 @@ then `create-seal`. Keep verified `KernelPrepared`/`InfrastructurePrepared` rece
 recovery; the factory's pre-wire infrastructure mapping is private. Do not guess an address
 or infer a missing phase from local UI state. Simulation rejects already completed stages.
 
-The factory owner separately prepares `schedule-activation`. After at least one day and
-fresh graph/epoch/component checks the creator prepares `activate {minimumShares}`.
+The factory owner separately prepares `schedule-activation`. Once the review window has
+passed (zero on BNB Chain testnet 97, one day on every other chain; `activation.readyAt` in
+`get_composite_state`) and the fresh graph/epoch/component checks hold, the creator prepares
+`activate {minimumShares}`. The same window applies to `catalog-schedule` → `catalog-execute`
+and to an agent change.
 Only activation approves exactly 100 accounting units to the verified factory. No seed is
 pulled during the earlier stages. There are at most 8 direct scopes, caps total at most 9500
 bps, nontransferable shares and a 2% live creator ownership requirement, not staking.
@@ -259,7 +277,7 @@ and refunds determine actual used assets. Previews/minima are not ERC-4626 guara
 `allocate {scope,amount,version}`, `reserve` and `execute {id}` use manager/current enabled
 agent authority; reservation includes the scope nonce, lot, fixed Buy/Sell tokens and a
 deadline. `minimumUnits` is zero; Sell uses the principal bucket. Buy inputs can use principal
-or compound. Trade operation fees need extra cash in the same bucket.
+or compound. Funds pay no operation fee, so a buy needs only its own cash in the bucket.
 
 Withdraw using `request-withdrawal {shares,minimum}`, then `partition-withdrawal {id}`.
 Read `get_composite_withdrawal`; convert each noncash token with
@@ -276,3 +294,93 @@ vault/withdrawal/intent IDs, never model guesses. Unknown/pending/orphaned/rever
 and never authorize automatic retry. EOA browser submission reuses the shared wallet journal,
 cross-tab lock, account/provider change guard and exact approvals. Safe/4337 signing and a
 durable automated composite signer are not yet available; old keeper records cannot be reused.
+
+## Mixed composite lifecycle (native positions)
+
+Discover `get_composite_deployment` (`MANDATE_COMPOSITE_V3_NATIVE`, public manifest
+`mandate-mixed.json`, chain 97 first). It is the mixed parent of `MandateCompositeMixedVault`:
+at most 8 spot scopes plus native positions (supply on Aave/Venus/ERC4626/Lista, isolated
+collateral debt, Pancake V3/V2/Infinity LP, MasterChef farm, BNB staking, FX-wrapped variants)
+behind one share, one NAV and one withdrawal queue. Undeployed means design only: every tool
+below answers `Mixed composite contracts are undeployed; execution disabled`. A deployed manifest
+still requires the factory/catalog/helper graph, runtime pins and provenance to verify at a
+canonical block before any plan is produced. Signing stays in the user's wallet (holders,
+creators, council) or the operator's dedicated agent key (keeper); this service never signs,
+broadcasts, stores keys or accepts an RPC URL.
+
+Reads: `get_composite_vault_state {vault,account}` returns the verified graph, scopes (with their
+sealed cash group) and native positions, holder shares and locked shares, cost basis, agent
+status, `navRaw` (null when any valuation is unavailable; raw exits do not need it), the exit
+policy (`minimumRequest` is both the smallest deposit after the fee and the smallest partial
+withdrawal measured on cost basis; a whole unlocked balance always leaves), council holds
+(`councilHoldUntil` for native operator actions, `spotCouncilHoldUntil` for new spot
+reservations), creation progress read from the chain (`creation.infrastructurePhases` and
+`creation.nativePhases`), and `receipts`: the account's native exit receipts (CRE8-NR) with
+balances. `get_composite_withdrawal_state {vault,id}` returns the owner, state, minimum,
+deadline, claim tokens, native claim slices, and raw tokens that leave only in kind (an exit
+receipt names the receipt token it redeems for). `get_composite_native_intent {vault,id}`
+returns one native typed intent's stored request, status and asset version from the verified
+NativeExecutor. `get_composite_catalog_admission {vault?}` returns every reviewed catalog key's
+approved/blocked state, nonce, the factory ownership epoch and any pending proposal: the exact
+values `catalog-schedule {key,nonce,epoch}`, `catalog-revoke {key,nonce,epoch}` and
+`catalog-execute {key,nonce}` must quote. `id` and `hash` are exact 32-byte hex; `vault` and
+`account` exact 20-byte hex.
+
+`prepare_composite_action {request:{action,account,vault?,parameters},expiresAt}` returns an
+unsigned single-CALL plan. The exact action list and the per-action parameter schema are the
+SDK's `mixedParameters` (`web/lib/mandate-mixed.ts`); `mixedRequestSchema` is the `anyOf` of
+those actions and is embedded verbatim in the tool schema, so every action has a fixed,
+closed parameter set with no receiver, calldata, protocol configuration or route field.
+Action families: staged creation (`prepareKernel`, infrastructure phases, native
+infrastructure phases, wiring, spot scopes, native positions by reviewed catalog key, the
+write-once whole-fund exit policy `configure-exit-policy` (required before sealing), optional
+`configure-cash-group` (2–8 unfunded equity spot scopes) and `configure-emergency` (up to 7
+unencumbered sources for one debt position), seal, scheduled activation and activation with
+the exact 100-unit seed approval), holder lifecycle (`depositWithMin`/`mintWithMax` approving
+only the maximum budget, `requestWithdrawal`, amend/cancel, permissionless partition,
+per-position claim settlement and raw settlement through `positionAction`, cash completion or
+`claimInKind`, then `redeem-receipt {token,units}` to turn a CRE8-NR exit receipt into the
+underlying receipt token), manager native actions
+(fund, release, harvest, compound, migration, borrow/repay, unstake queue, top-up and the
+D06 emergency sources, each a typed `positionAction` with numerator/denominator/maximum/
+minimum semantics fixed per action), controls (pause, agent schedule/apply/disable, loss
+policy) and council/owner admission (catalog schedule/execute/revoke, asset approval, block,
+activation scheduling). A council cancel of an operator's staged native intent (or of a spot
+intent) opens a one-day hold: new operator reservations stop, holder settlements still run.
+Executing a staged native intent must quote exactly the stored fields; a staged intent, or a
+reserved spot intent, blocks deposits and partitioning until it is executed or cancelled.
+Expiry is at most 900 seconds after the chain header; where
+`deadlineEnforcement` is `local-only`, expiry cannot cancel delayed wallet broadcasts.
+Preserve the plan unchanged.
+
+`simulate_composite_action {plan}` and `verify_composite_receipt {plan,hash}` take the
+complete saved plan (`mixedPlanSchema`): simulation rebuilds the request, graph fingerprint
+and provenance before `eth_call`/`estimateGas` under the BSC gas reserve; verification requires
+exact from/to/data/value identity, the pinned factory and helper emitters and RPC-reported
+finality, and recovers vault, withdrawal and intent IDs only from verified events.
+Unknown, pending, orphaned, reverted, mined and finalized stay distinct; none authorizes a retry.
+Debt positions with outstanding liabilities cannot be raw-settled; reduce debt first.
+
+### Keeper policy handoff
+
+`build_composite_keeper_policy {vault,account,role:"agent"|"manager",scopes:[{id,kind:"spot"|
+"native",actions}],maxGasPriceWei,maxGasLimit?,confirmations?,withdrawals?:{fromBlock,
+maximumScanBlocks,maximumPending},maintenanceActions?,policyActions?}` reads the verified vault
+state and returns `{policy,handoff,trust}`. `scopes` (1–8, each a verified scope of the vault)
+and the gas price ceiling are required; strategy groups are derived from the vault's sealed
+cash groups for spot scopes allowed to `move`. `policy` is the keeper's
+own schema-3 execution policy (`execution/strategy-v3/ethereum.mjs` `validateExecutionPolicy`):
+chain, factory, vault, account, role, `graphHash` (= `nativeGraphHash()`), runtime pins for the
+factory, parent and every graph helper (and each native position's internal dependents),
+bounded scope authorities for spot and native scopes, groups that equal sealed cash groups,
+gas and confirmation bounds, encoded with the keeper's `{$uint}` bigint
+form so it can be saved verbatim. The route refuses any policy that embeds a URL, RPC endpoint,
+signer or key field, so the response never carries `CRE8_STRATEGY_RPC_URL` or
+`CRE8_STRATEGY_AGENT_KEY` values. The operator reviews the policy, sets `abiHash` from
+`node execution/strategy-v3/bundle-abi.mjs --check`, `strategyHash`/`observerHash` from the
+reviewed strategy and observer files and `withdrawals.fromBlock` to the vault creation block,
+then runs `node execution/strategy-v3/cli.mjs verify|prepare|execute|recover --policy …
+--strategy … --observer … --journal …` on the operator host. Only `execute` signs, with the
+dedicated key for `policy.account`; the RPC URL and key live only in that host's environment,
+never in the repository, the manifest or any MCP exchange. The policy grants no wallet
+authority: the onchain agent role and the operator's key do.

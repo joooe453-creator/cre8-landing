@@ -3,22 +3,22 @@
 3:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2jue03yvau1yp.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
-:HL["/_next/static/chunks/3u1igua0azle0.css","style"]
+:HL["/_next/static/chunks/36t8ncigu0ot6.css","style"]
 :HC["/",""]
-5:T1d27,
+5:T1d3c,
 <main class="wrap vault-content">
   <div class="vgrid">
     <div class="main">
       <div class="vault-top">
         <header class="vhead">
-          <a class="vault-back" href="https://app.cre8.finance/vaults/">← All vaults</a>
+          <a class="vault-back" href="https://app.cre8.finance/vaults/">← All funds</a>
           <div class="vault-heading">
             <h1 id="v-name"></h1>
             <p class="vault-manager" id="v-manager"></p>
             <p class="strat dk-sr" id="v-strat"></p>
             <span id="c-name" hidden></span>
             <dl class="vault-strip" id="v-strip"></dl>
-            <div class="vault-head-actions"><button type="button" class="btn ghost" id="pros-open">Fund prospectus</button><button type="button" class="pros-alert" id="pros-alert" hidden>Rule change pending</button><div class="tags" id="v-tags"></div></div>
+            <div class="vault-head-actions"><button type="button" class="btn ghost" id="pros-open">Fund facts</button><button type="button" class="pros-alert" id="pros-alert" hidden>Rule change pending</button><div class="tags" id="v-tags"></div></div>
           </div>
         </header>
         <dl class="keyfig dk-kpis" id="keyfig"></dl>
@@ -39,15 +39,15 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       </section>
       <section class="vault-allocation dk-sec">
         <header><h2>Where the money is</h2></header>
-        <div class="dk-wrap"><table class="dk-table vault-where"><thead><tr><th>Asset</th><th>Current weight</th><th>Venue</th><th class="dk-hide-sm">Earns</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
+        <div class="dk-wrap"><table class="dk-table vault-where"><thead><tr><th>Asset</th><th>Current weight</th><th>Venue</th><th class="dk-hide-sm">Return from</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
       </section>
       <section class="panel"><div class="panel-b" id="rules-controls"></div></section>
       <section class="panel vault-creator-controls hide" id="creator-controls">
-        <div class="panel-h"><h3>Vault controls</h3><span class="tag">Verified authority required</span></div>
+        <div class="panel-h"><h3>Fund controls</h3><span class="tag">Verified authority required</span></div>
         <div class="panel-b vault-controls-grid">
           <div><strong>Tighten a limit</strong><p class="fine">Takes effect immediately.</p><button class="btn ghost block" disabled>Deployment required</button></div>
           <div><strong>Propose an increase</strong><p class="fine">Waits ≥ 24h. Total limits stay ≤ 95%.</p><button class="btn ghost block" disabled>Deployment required</button></div>
-          <div><strong>Pause / resume</strong><p class="fine">After a risk-council pause, resume waits ≥ 24h and needs risk conditions met.</p><button class="btn ghost block" disabled>Deployment required</button></div>
+          <div><strong>Pause / resume</strong><p class="fine">Pausing stops new deposits and buys. After a risk-council pause, resume waits ≥ 24h and needs risk conditions met.</p><button class="btn ghost block" disabled>Deployment required</button></div>
         </div>
       </section>
     </div>
@@ -66,18 +66,18 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 </main>
 <div class="pros-scrim" id="pros-scrim"></div>
 <aside class="pros-drawer" id="pros" role="dialog" aria-modal="true" aria-labelledby="pros-title" inert>
-  <header class="pros-head"><div><p class="label">[ Fund prospectus ]</p><h2 id="pros-title">Fund prospectus</h2></div><button type="button" class="pros-x" id="pros-close" aria-label="Close the prospectus">×</button></header>
-  <nav class="pros-toc" id="pros-toc" aria-label="Prospectus sections"><a href="#ps-mandate">Mandate</a><a href="#ps-limits">Limits</a><a href="#ps-positions">Positions</a><a href="#ps-fees">Fees &amp; terms</a><a href="#ps-rules">Rule changes</a><a href="#ps-identity">Contracts</a></nav>
+  <header class="pros-head"><div><p class="label">[ Fund facts ]</p><h2 id="pros-title">Fund facts</h2></div><button type="button" class="pros-x" id="pros-close" aria-label="Close fund facts">×</button></header>
+  <nav class="pros-toc" id="pros-toc" aria-label="Fund facts sections"><a href="#ps-mandate">Mandate</a><a href="#ps-limits">Limits</a><a href="#ps-positions">Positions</a><a href="#ps-fees">Fees &amp; terms</a><a href="#ps-rules">Rule changes</a><a href="#ps-identity">Contracts</a></nav>
   <div class="pros-body" id="pros-body">
       <section id="ps-mandate" class="panel pros-sec vault-mandate">
-        <div class="panel-h"><h3>Investment mandate</h3><span class="tag">Manifest</span></div>
+        <div class="panel-h"><h3>Mandate</h3><span class="tag">Manifest</span></div>
         <div class="panel-b">
           <p class="sentence" id="v-sentence"></p>
           <div class="vault-mandate-grid" id="v-legs"></div>
-          <details class="vault-details"><summary>Read the rules &amp; AI summary</summary>
+          <details class="vault-details"><summary>Read the rules &amp; CRE8 AI summary</summary>
             <div class="vault-market-details" id="market-details"></div>
             <ul class="rules" id="rules"></ul>
-            <div class="ai-sum"><span class="tag sim">AI summary · not binding</span><div id="ai"></div></div>
+            <div class="ai-sum"><span class="tag sim">CRE8 AI summary · not binding</span><div id="ai"></div></div>
           </details>
         </div>
       </section>
@@ -122,7 +122,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 
 
 
-6:T184f9,
+6:T18ae1,
 (function () {
   const { $, $$, esc, fmt, perf, riskMeter, statusTag, historyTag, navSeries, lineChart, hexAddr, short, ASSETS, SLOTS, toast, demo, logo, CATALOG: C, vaultMarkets, vaultRisk, managerLabel, rulesLabel, platformFeeForRisk, feeBreakdown } = BAV;
   BAV.shell("vaults.html");
@@ -167,19 +167,19 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   // The creator's name and card open their page, which lists every vault they have opened.
   const maker = BAV.creatorProfile(BAV.creatorId(v)), makerUrl = maker && BAV.route(`creator/${maker.id}`);
   const joined = maker && new Date(maker.joined).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
-  $("#v-manager").innerHTML = `${maker ? `<a class="vault-creator-link" href="${esc(makerUrl)}" title="${esc(maker.address)}"><img src="${esc(BAV.creatorAvatar(v))}" alt="">${esc(BAV.creatorName(maker))}${maker.official ? BAV.officialBadge() : ""}</a> · ` : ""}${esc(A)} · ${fixed(v.followers, 0)} depositors`;
+  $("#v-manager").innerHTML = `${maker ? `<a class="vault-creator-link" href="${esc(makerUrl)}" title="${esc(maker.address)}"><img src="${esc(BAV.creatorAvatar(v))}" alt="">${esc(BAV.creatorName(maker))}${maker.official ? BAV.officialBadge() : ""}</a> · ` : ""}${esc(A)} · ${fixed(v.followers, 0)} holders`;
   if (maker) $("#creator-card-body").innerHTML = `<a class="vcc-id" href="${esc(makerUrl)}"><img src="${esc(BAV.creatorAvatar(v))}" alt=""><span><b>${esc(BAV.creatorName(maker))}${maker.official ? BAV.officialBadge() : ""}</b><small>Joined ${esc(joined)}</small></span></a>`
-    + `<dl class="vcc-stats"><div><dt>Vaults created</dt><dd>${maker.vaults.length}</dd></div><div><dt>Total vault value</dt><dd>${fmt.usd(maker.tvl)}</dd></div><div><dt>Earned for depositors</dt><dd>${fmt.usd(maker.earned)}</dd></div><div><dt>Depositors</dt><dd>${fixed(maker.depositors, 0)}</dd></div></dl>`
-    + `<a class="btn ghost block" href="${esc(makerUrl)}">${maker.vaults.length > 1 ? `View all ${maker.vaults.length} vaults` : "View creator"}</a>`;
+    + `<dl class="vcc-stats"><div><dt>Funds created</dt><dd>${maker.vaults.length}</dd></div><div><dt>Total fund value</dt><dd>${fmt.usd(maker.tvl)}</dd></div><div><dt>Profit to holders</dt><dd>${fmt.usd(maker.earned)}</dd></div><div><dt>Holders</dt><dd>${fixed(maker.depositors, 0)}</dd></div></dl>`
+    + `<a class="btn ghost block" href="${esc(makerUrl)}">${maker.vaults.length > 1 ? `View all ${maker.vaults.length} funds` : "View creator"}</a>`;
   else $("#creator-card").hidden = true;
   function drawTags() {
-    const state = unavailable() ? "Data unavailable" : previewState === "paused" ? "Paused" : previewState === "stale" ? "NAV stale" : planning ? "Configuration required" : "Active";
-    $("#v-tags").innerHTML = `<span class="tag ${previewState === "paused" || previewState === "stale" || planning ? "warn" : unavailable() ? "neg" : "pos"}">${state}</span><span class="tag accounting-chip">Accounting asset · ${esc(A)}</span>${copy ? `<span class="tag warn">Follows ${esc(copy.name)}</span>` : ""}`;
+    const state = unavailable() ? "Data unavailable" : previewState === "paused" ? "Deposits paused" : previewState === "stale" ? "Share price stale" : planning ? "Configuration required" : "Open";
+    $("#v-tags").innerHTML = `<span class="tag ${previewState === "paused" || previewState === "stale" || planning ? "warn" : unavailable() ? "neg" : "pos"}">${state}</span><span class="tag accounting-chip">Accounting asset · ${esc(A)}</span>${copy ? `<span class="tag warn">Based on ${esc(copy.name)}</span>` : ""}`;
     $("#creator-controls").classList.toggle("hide", requestedLive || params.get("role") !== "creator" || !previewConnected);
     const banners = {
-      paused: ["Vault paused — new activity paused", "The creator or risk council paused new deposits and buys in this design state. Redeem paths remain subject to protocol and token status.", "warn"],
-      stale: ["Valuation is stale", "Cash redeem needs a fresh valuation and is unavailable. In-kind redemption can remain available, subject to token and protocol checks.", "warn"],
-      unavailable: ["Couldn’t read vault data", "Values show as unavailable. No sample data substitutes for a failed live read.", "neg"],
+      paused: ["Deposits paused", "Paused by the creator or the risk council in this design state, so new deposits and buys wait. Withdrawals stay open, subject to protocol and token status.", "warn"],
+      stale: ["Share price is stale", "Withdraw as USDT needs a fresh valuation and is unavailable. Withdraw as assets can stay available, subject to token and protocol checks.", "warn"],
+      unavailable: ["Couldn’t read fund data", "Values show as unavailable. No sample data substitutes for a failed live read.", "neg"],
     };
     const banner = banners[previewState] || null;
     $("#vault-banner").classList.toggle("hide", !banner);
@@ -191,20 +191,20 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const compact = (n) => n >= 1e6 ? fixed(n / 1e6, 2) + "M" : n >= 1e4 ? fixed(n / 1e3, 1) + "K" : fixed(n, 0);
     // Return cells are filled by drawPerf so they follow the selected period.
     $("#keyfig").innerHTML = `
-      <div><dt>Vault size</dt><dd>${na ? "Unavailable" : `${compact(v.tvl)}<small>${esc(A)}</small>`}</dd></div>
+      <div><dt>Fund size</dt><dd>${na ? "Unavailable" : `${compact(v.tvl)}<small>${esc(A)}</small>`}</dd></div>
       <div><dt id="p-sub"></dt><dd id="p-big"></dd></div>
       <div><dt>Share price, ${esc(A)}</dt><dd>${na ? "Unavailable" : fixed(v.sharePrice, 4)}</dd></div>`;
     $("#vault-data-note").className = `vault-data-note ${previewState === "stale" ? "warn" : ""}`;
-    $("#vault-data-note").textContent = na ? "Vault data couldn’t be read · values unavailable" : `${previewState === "stale" ? "NAV stale · " : ""}${v.runtimeDays} days of history`;
+    $("#vault-data-note").textContent = na ? "Fund data couldn’t be read · values unavailable" : `${previewState === "stale" ? "Share price stale · " : ""}${v.runtimeDays} days of history`;
   }
-  /* Demo strip: how it buys, what it holds, where it earns — all read from the vault's rules and positions. */
+  /* Demo strip: who runs it, what it holds, where it lends — all read from the fund's rules and positions. */
   function drawStrip() {
     const rows = marketRows();
     const held = [...new Set(rows.flatMap(({ m }) => m.tokens || []))];
     const venueKey = (name) => String(name).toLowerCase().split(/\s+/)[0];
     const venues = [...new Set([...rows.filter(({ r }) => r.a === "lend").map(({ m }) => m.venue), ...v.positions.filter((x) => !["Idle", "PancakeSwap"].includes(x.p)).map((x) => venueKey(x.p))])].map((key) => C.VNAME[key] ? key : null).filter(Boolean);
-    const buying = human ? "Manager decides" : v.buyPlan || (v.continuous ? "Agent decides" : "Planning reference");
-    $("#v-strip").innerHTML = `<div><dt>Buying</dt><dd>${esc(buying)}</dd></div><div><dt>Holds</dt><dd>${esc(held.join(" · ") || A)}</dd></div><div><dt>Earns on</dt><dd>${venues.length ? venues.map((key) => `<span class="with-logo">${logo(key)}${esc(C.VNAME[key])}</span>`).join("") : "Price only"}</dd></div>`;
+    const buying = human ? "Creator" : v.buyPlan ? `Plan · ${v.buyPlan}` : v.continuous ? "AI agent" : "Planning reference";
+    $("#v-strip").innerHTML = `<div><dt>Run by</dt><dd>${esc(buying)}</dd></div><div><dt>Holds</dt><dd>${esc(held.join(" · ") || A)}</dd></div><div><dt>Lending on</dt><dd>${venues.length ? venues.map((key) => `<span class="with-logo">${logo(key)}${esc(C.VNAME[key])}</span>`).join("") : "None"}</dd></div>`;
   }
   drawKeyfig();
 
@@ -218,15 +218,15 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const points = sliceFor(period), r = v.returns[period], label = period === "ALL" ? "All" : period;
     const complete = r != null && !unavailable();
     $("#p-big").innerHTML = complete ? `<span class="${fmt.cls(r)}">${fmt.pct(r)}</span>` : "—";
-    $("#p-sub").textContent = period === "ALL" ? "Return, since inception" : `Return, ${{ "7D": 7, "30D": 30, "90D": 90 }[period]} days`;
+    $("#p-sub").textContent = `Performance ${label}`;
     $("#p-drop-label").textContent = `Max drop ${label}`;
     $("#p-drop").textContent = complete ? fmt.pct(v.maxDrawdown[period]) : "—";
     $("#p-range-start").textContent = complete ? fmt.date(points[0].t) : "";
     $("#p-range-end").textContent = complete ? fmt.date(points[points.length - 1].t) : "";
     $("#p-range").textContent = complete ? `${fmt.date(points[0].t)} → ${fmt.date(points[points.length - 1].t)}` : "";
-    $("#p-src").textContent = complete ? `Chart summary: share value moved from ${points[0].v.toFixed(4)} to ${points[points.length - 1].v.toFixed(4)} ${A} over ${label}, net of performance fees. Not a forecast.` : "";
+    $("#p-src").textContent = complete ? `Chart summary: share price moved from ${points[0].v.toFixed(4)} to ${points[points.length - 1].v.toFixed(4)} ${A} over ${label}, net of performance fees. Not a forecast.` : "";
     if (complete) { drawVaultChart(points); BAV.drawLine($("#chart")); }
-    else $("#chart").innerHTML = `<div class="vault-chart-empty"><strong>Insufficient history</strong><span>${unavailable() ? "Performance couldn’t be loaded." : `This vault has ${v.runtimeDays} days of history — not enough for ${label}. We don’t fill gaps with example curves.`}</span></div>`;
+    else $("#chart").innerHTML = `<div class="vault-chart-empty"><strong>Insufficient history</strong><span>${unavailable() ? "Performance couldn’t be loaded." : `This fund has ${v.runtimeDays} days of history — not enough for ${label}. We don’t fill gaps with example curves.`}</span></div>`;
   };
   function drawVaultChart(points) {
     const values = points.map(point => point.v), low = Math.min(...values), high = Math.max(...values), padding = (high - low) * 0.15 || 0.001;
@@ -235,7 +235,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const line = points.map((point, index) => `${index ? "L" : "M"}${x(index).toFixed(1)} ${y(point.v).toFixed(1)}`).join(" ");
     const grid = [low, (low + high) / 2, high].map((value) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(value).toFixed(1)}" y2="${y(value).toFixed(1)}"/><text class="ax" x="${W - R + 10}" y="${(y(value) + 4).toFixed(1)}">${value.toFixed(4)}</text>`).join("");
     const last = points[points.length - 1];
-    $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(v.name)} share value"><defs><linearGradient id="vault-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--fog)" stop-opacity=".28"/><stop offset="1" stop-color="var(--fog)" stop-opacity="0"/></linearGradient></defs>${grid}<path d="${line} L${x(points.length - 1).toFixed(1)} ${H - B} L${x(0).toFixed(1)} ${H - B} Z" class="area" fill="url(#vault-chart-fill)"/><path class="cline" d="${line}"/><circle class="dot" r="4.5" cx="${x(points.length - 1).toFixed(1)}" cy="${y(last.v).toFixed(1)}"/><text class="ax" x="${L}" y="${H - 8}">${esc(fmt.date(points[0].t))}</text><text class="ax" x="${W - R}" y="${H - 8}" text-anchor="end">Today</text></svg><div class="vault-chart-crosshair" hidden></div><div class="vault-chart-tooltip" hidden></div>`;
+    $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(v.name)} share price"><defs><linearGradient id="vault-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--fog)" stop-opacity=".28"/><stop offset="1" stop-color="var(--fog)" stop-opacity="0"/></linearGradient></defs>${grid}<path d="${line} L${x(points.length - 1).toFixed(1)} ${H - B} L${x(0).toFixed(1)} ${H - B} Z" class="area" fill="url(#vault-chart-fill)"/><path class="cline" d="${line}"/><circle class="dot" r="4.5" cx="${x(points.length - 1).toFixed(1)}" cy="${y(last.v).toFixed(1)}"/><text class="ax" x="${L}" y="${H - 8}">${esc(fmt.date(points[0].t))}</text><text class="ax" x="${W - R}" y="${H - 8}" text-anchor="end">Today</text></svg><div class="vault-chart-crosshair" hidden></div><div class="vault-chart-tooltip" hidden></div>`;
     const showTooltip = event => {
       const clientX = event.touches?.[0]?.clientX ?? event.clientX;
       if (!Number.isFinite(clientX)) return;
@@ -258,28 +258,28 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   BAV.flipOnChange([$("#p-big"), $("#p-drop")]);
   $("#perf-periods").innerHTML = periods.map((p) => {
     const r = v.returns[p], annualized = perf(v, p, "annualized"), points = sliceFor(p), complete = r != null;
-    return `<div><strong>${p === "ALL" ? "Since inception" : p}</strong><dl><dt>Net return</dt><dd>${complete ? fmt.pct(r) : "Insufficient history"}</dd><dt>Annualized illustration</dt><dd>${complete && annualized != null ? fmt.pct(annualized) : "—"}</dd><dt>Max drop</dt><dd>${complete ? fmt.pct(v.maxDrawdown[p]) : "—"}</dd><dt>Share value</dt><dd>${complete ? points[0].v.toFixed(4) + " → " + v.sharePrice.toFixed(4) : "—"}</dd></dl></div>`;
+    return `<div><strong>${p === "ALL" ? "All" : p}</strong><dl><dt>Performance</dt><dd>${complete ? fmt.pct(r) : "Insufficient history"}</dd><dt>Annualized illustration</dt><dd>${complete && annualized != null ? fmt.pct(annualized) : "—"}</dd><dt>Max drop</dt><dd>${complete ? fmt.pct(v.maxDrawdown[p]) : "—"}</dd><dt>Share price</dt><dd>${complete ? points[0].v.toFixed(4) + " → " + v.sharePrice.toFixed(4) : "—"}</dd></dl></div>`;
   }).join("");
 
-  /* Rules — the same sentence and rules the manager signed at launch */
-  const marketChip = (m, r) => `<span class="chip ro">${logo(m.venue)}${esc(C.label(m))} · max ${C.capTxt(C.allocationCap(r, m.id))} of vault value${m.a === "lend" && m.apy != null ? ` · APY snapshot ${C.pct(m.apy)}` : m.a === "borrow" ? ` · ${C.levTxt(C.effLev(m, r.lev))} leverage` : ""}</span>`;
+  /* Rules — the same sentence and rules the creator signed at launch */
+  const marketChip = (m, r) => `<span class="chip ro">${logo(m.venue)}${esc(C.label(m))} · max ${C.capTxt(C.allocationCap(r, m.id))} of fund value${m.a === "lend" && m.apy != null ? ` · lending rate snapshot ${C.pct(m.apy)}` : m.a === "borrow" ? ` · ${C.levTxt(C.effLev(m, r.lev))} leverage` : ""}</span>`;
   function aiSummary() {
     const r = vaultRisk(v), lev = C.maxLeverage(v.rules), hasLoop = v.rules.some((x) => x.a === "borrow");
     const base = r === "Low"
-      ? `A low-volatility ${A} vault. Returns should sit close to lending rates; the main risks are a stablecoin depeg and a lending pool running short of withdrawable cash.`
+      ? `A low-volatility ${A} fund. Performance should sit close to lending rates; the main risks are a stablecoin depeg and a lending pool running short of withdrawable cash.`
       : r === "Medium"
-        ? `A ${A}-counted vault that loops assets of the same family at up to ${C.levTxt(lev)}. It earns the gap between collateral yield and borrow cost, times leverage, and loses if borrowing costs more than the collateral pays. Leaving costs more because positions are unwound on DEXs.`
+        ? `A ${A}-counted fund that loops assets of the same family at up to ${C.levTxt(lev)}. It gains the gap between what the collateral pays and the borrow cost, times leverage, and loses if borrowing costs more than the collateral pays. Withdrawing costs more because positions are unwound on DEXs.`
         : `It holds assets that move against ${A}${hasLoop ? `, with loops up to ${C.levTxt(lev)} that can be liquidated` : ""}, so expect real swings.${v.rules.some((x) => x.g === "stocks") ? " Tokenized stock prices move on weekends, so Monday opens can gap." : ""}`;
-    return `${base} Its selected operation limits total ${C.capTxt(C.totalAllocation(v.rules))} of vault value; ${C.capTxt(C.minIdleAllocation(v.rules))} is ${v.continuous ? "unallocated cap budget. The contract checks at least 5% idle after buys; price moves can change existing weights" : "a planned idle budget in this historical reference, not an executable contract minimum"}. Trades come from the creator\'s operator key. Manager's note: “${v.strategy}”`;
+    return `${base} Its mandate limits total ${C.capTxt(C.totalAllocation(v.rules))} of fund value; ${C.capTxt(C.minIdleAllocation(v.rules))} is ${v.continuous ? "unallocated cap budget. The contract checks at least 5% idle after buys; price moves can change existing weights" : "a planned idle budget in this historical reference, not an executable contract minimum"}. Trades come from ${v.buyPlan ? "its plan" : "the creator\'s AI agent"}. Creator's note: “${v.strategy}”`;
   }
   function drawRules() {
     $("#v-sentence").textContent = v.strategy;
     $("#v-legs").innerHTML = `<div><span class="label">Assets &amp; markets</span>${marketRows().map(({ m }) => `<span>${esc(m.tokens?.join(" / ") || m.label || C.GROUPS[m.g]?.name || A)} → <span class="with-logo">${logo(m.venue)}${esc(C.label(m))}</span></span>`).join("")}</div><div><span class="label">Allowed operations</span>${v.rules.map((r) => `<span>${esc(C.ACTIONS[r.a].name)} on the named exact markets</span>`).join("")}</div><div><span class="label">Not allowed</span><span>Borrowing, leverage, LP, arbitrary transfers, withdrawing for holders, new markets</span></div>`;
     const f = v.fees, split = feeBreakdown(f.perf, f.platform), hasLoop = v.rules.some((r) => r.a === "borrow");
     $("#rules").innerHTML = [
-      ["Cannot", `Use any market not named above or send funds to the agent. Borrowing and LP positions are unavailable in phase one. ${v.continuous ? "New buys are checked against investment caps and a 5% idle minimum; price moves do not force existing positions to be sold." : `This planning reference leaves a ${C.capTxt(C.minIdleAllocation(v.rules))} planned idle budget; no contract transaction is enabled.`}`],
-      ["You pay", `${split.total}% of your realized profit at exit, calculated from your own cost basis. ${f.mgmt ? `${f.mgmt}% annualized management fee during active strategy time.` : "No management fee."} Deposits also pay 0.5%; each fund operation pays 0.1% subject to a 1% annual NAV cap.`],
-      ["Leave", v.continuous ? "Redeem a proportional slice with minimum USDT proceeds, or receive the tokens and lending receipts in kind. Liquidity and oracles can prevent a cash exit. External protocol pauses can also block receipt transfers. Shares cannot be transferred. The creator has no time lock but must retain at least 2% while other holders remain." : "Historical basket design reference. This sample cannot accept deposits or execute a redemption."],
+      ["Cannot", `Use any market not named above or send money to the AI agent. Borrowing and LP positions are unavailable in phase one. ${v.continuous ? "New buys are checked against the mandate's caps and a 5% idle minimum; price moves do not force existing positions to be sold." : `This planning reference leaves a ${C.capTxt(C.minIdleAllocation(v.rules))} planned idle budget; no contract transaction is enabled.`}`],
+      ["You pay", `Performance fee ${split.total}% (CRE8 ${split.platformTotal}% + creator ${split.creatorGross}%), charged only on your own realized profit when you withdraw. Deposits pay a 1% deposit fee to CRE8. No yearly, operation or withdrawal fee; DEX swap costs go to the DEX, not CRE8.`],
+      ["Withdraw", v.continuous ? "Withdraw as USDT: your proportional slice, with a minimum you set. Withdraw as assets: your share of the tokens and lending receipts. Liquidity and oracles can block a USDT withdrawal; external protocol pauses can also block receipt transfers. Shares cannot be transferred. The creator has no time lock but must keep a creator stake of at least 2% while other holders remain." : "Historical design reference. This sample cannot accept deposits or process a withdrawal."],
     ].map(([k, t]) => `<li><b>${k}</b><span>${t}</span></li>`).join("");
     $("#market-details").innerHTML = v.rules.flatMap(rule => C.ruleMarkets(rule).map(market => marketChip(market, rule))).join("");
     $("#ai").textContent = aiSummary();
@@ -299,14 +299,14 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       const current = unavailable() ? null : currentForMarket(m);
       const symbol = (m.tokens || []).join(" / ") || A;
       const lend = r.a === "lend";
-      const venue = lend ? `<span class="with-logo">${logo(m.venue)}${esc(C.VNAME[m.venue] || m.venue)} ${m.kind === "Vault" ? "vault" : "lending"}</span>` : "In the vault";
-      const earns = `${esc(symbol)} price${lend && m.apy != null ? ` + ~${C.pct(m.apy)}/yr` : ""}`;
+      const venue = lend ? `<span class="with-logo">${logo(m.venue)}${esc(C.VNAME[m.venue] || m.venue)} ${m.kind === "Vault" ? "vault" : "lending"}</span>` : "In the fund";
+      const earns = `${esc(symbol)} price${lend && m.apy != null ? ` + lending ~${C.pct(m.apy)}/yr` : ""}`;
       return `<tr><td class="mono"><strong>${esc(symbol)}</strong></td><td>${weightCell(current)}</td><td>${venue}</td><td class="dk-hide-sm vault-earns">${earns}</td></tr>`;
     }).join("") + `<tr class="idle"><td class="mono"><strong>${esc(A)}</strong></td><td>${weightCell(unavailable() ? null : actualIdle ?? null)}</td><td>Cash</td><td class="dk-hide-sm vault-earns">—</td></tr>`;
-    $("#allocation-note").textContent = `Limits total ${C.capTxt(C.totalAllocation(v.rules))} of NAV (max 95%) · at least 5% cash after buys`;
+    $("#allocation-note").textContent = `Limits total ${C.capTxt(C.totalAllocation(v.rules))} of fund value (max 95%) · at least 5% cash after buys`;
     $("#alloc-bar").innerHTML = all.map((x, i) => `<i style="width:${x.cap}%;background:${x.idle ? "var(--ice)" : "var(--mist)"}" title="${esc(x.name)} ${C.capTxt(x.cap)}"></i>`).join("");
     $("#alloc-bar").setAttribute("aria-label", all.map(x => `${x.name} ${C.capTxt(x.cap)}`).join(", "));
-    $("#allocation-budget-rows").innerHTML = all.map(x => `<div><strong>${esc(x.name)}</strong><span>${x.idle ? "Budget remainder" : "Limit"} ${C.capTxt(x.cap)}</span><span>${x.idle ? v.continuous ? "Separate from the 5% minimum idle check after buys" : "Planned cash budget · historical reference" : `${unavailable() ? "Unavailable" : fixed(v.tvl * x.cap / 100) + " " + A} maximum at sample NAV`}</span></div>`).join("");
+    $("#allocation-budget-rows").innerHTML = all.map(x => `<div><strong>${esc(x.name)}</strong><span>${x.idle ? "Budget remainder" : "Limit"} ${C.capTxt(x.cap)}</span><span>${x.idle ? v.continuous ? "Separate from the 5% minimum idle check after buys" : "Planned cash budget · historical reference" : `${unavailable() ? "Unavailable" : fixed(v.tvl * x.cap / 100) + " " + A} maximum at sample fund value`}</span></div>`).join("");
   }
   drawAllocationLimits();
   drawStrip();
@@ -315,13 +315,13 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const first = marketRows()[0], available = 95 - C.totalAllocation(v.rules);
     const pc = existing || (!requestedLive && params.get("pendingCap") === "1" && first && available > 0 ? { what: C.label(first.m), from: first.cap, to: first.cap + Math.min(10, available), preview: true } : null);
     $("#rc-tag").innerHTML = pc ? '<span class="tag warn">Pending</span>' : "None pending";
-    $("#rc").innerHTML = pc ? `<div class="vault-pending"><div><span class="warn">Pending cap increase</span><strong>${esc(pc.what)}</strong></div><span>${pc.from != null && pc.to != null ? `${pc.from}% → ${pc.to}%` : "Review announced limits"}</span><div>Effective time unavailable — no countdown</div><button class="btn ghost sm" id="rc-red">Review redeem</button></div>` : '<p class="muted">No pending changes.</p>';
+    $("#rc").innerHTML = pc ? `<div class="vault-pending"><div><span class="warn">Pending cap increase</span><strong>${esc(pc.what)}</strong></div><span>${pc.from != null && pc.to != null ? `${pc.from}% → ${pc.to}%` : "Review announced limits"}</span><div>Effective time unavailable — no countdown</div><button class="btn ghost sm" id="rc-red">Review withdrawal</button></div>` : '<p class="muted">No pending changes.</p>';
     $("#rc-red")?.addEventListener("click", () => openTab("red"));
   }
   function drawPositions() {
     $("#positions tbody").innerHTML = v.positions.map(x => {
       const asset = x.p === "Idle" ? A : x.loc.match(/(?:USDT|USDC|BTCB|WBNB|ETH|NVDAB|TSLAB|SPCXB|SKHYB|SPYB|AAPLB|GOOGLB)/g)?.join(" / ") || x.loc.replace(/^v/, "");
-      const venue = x.p === "Idle" ? "Vault" : x.p;
+      const venue = x.p === "Idle" ? "Fund" : x.p;
       const value = unavailable() ? "Unavailable" : fixed(v.tvl * x.w / 100);
       const balance = unavailable() ? "Read failed" : x.p === "Idle" || /USDT/i.test(x.loc) ? fixed(v.tvl * x.w / 100) + " " + A : "Unavailable";
       return `<tr><td><strong>${esc(asset)}</strong><span class="position-venue">${x.p === "Idle" ? "" : logo(x.p)}${esc(venue)}</span></td><td class="position-form">${esc(x.loc)}<span class="position-mobile-balance">${balance}</span></td><td class="r position-balance">${balance}</td><td class="r position-value"><strong>${value}</strong><span class="position-mobile-unit">${unavailable() ? "" : A}</span></td></tr>`;
@@ -471,7 +471,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   const ticketValues = { sub: "1000", red: "", minimum: { sub: "", red: "" }, deadline: "20", kind: params.get("mode") === "kind", ack: false };
   const legalUrl = (documentId) => BAV.legalNotice?.url(documentId) || `${String(window.__BAV_DOCS_ORIGIN__ || "").replace(/\/$/, "")}/legal/${documentId}/`;
   async function reviewFundProspectus() {
-    if (!BAV.legalNotice?.confirmProspectus) { status("The prospectus reminder is unavailable. Refresh before depositing."); return false; }
+    if (!BAV.legalNotice?.confirmProspectus) { status("The fund facts reminder is unavailable. Refresh before depositing."); return false; }
     return BAV.legalNotice.confirmProspectus(() => $("#pros-open")?.click());
   }
   const depositRequestSnapshot = () => JSON.stringify({ readEpoch, account, chainId: deployment?.chainId, vault: vaultAddress(), amount: $("#amt")?.value.trim(), minimum: $("#minimum-received")?.value.trim(), deadline: $("#quote-deadline")?.value });
@@ -487,29 +487,30 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     $$(".ticket .tabs button").forEach(button => { button.classList.toggle("on", button.dataset.t === tab); button.setAttribute("aria-selected", String(button.dataset.t === tab)); });
     const cash = tab === "sub", ready = activeConfig(), readable = account && live, kind = !cash && ticketValues.kind;
     const connected = readable || previewConnected, amount = ticketValues[tab];
-    const example = !requestedLive && !ready && Number(amount) > 0 ? cash ? Number(amount) / v.sharePrice : Number(amount) * v.sharePrice : null;
+    // Simulated deposits net the 1% deposit fee before shares are estimated; withdrawals carry no exit fee.
+    const example = !requestedLive && !ready && Number(amount) > 0 ? cash ? Number(amount) * 0.99 / v.sharePrice : Number(amount) * v.sharePrice : null;
     const minimumValue = (requestedLive || ready) && !readable ? "" : ticketValues.minimum[tab] || (!requestedLive && !ready && example != null ? (example * 0.995).toFixed(4) : "");
     const split = feeBreakdown(live ? Number(live.performanceFeeBps) / 100 : v.fees.perf, v.fees.platform);
     const mandateText = live?.template?.label || (requestedLive || ready ? "Unavailable until verified" : v.strategy);
-    const feeText = (requestedLive || ready) && !live ? "Unavailable until verified" : `${split.total}% total · no mgmt fee`;
+    const feeText = (requestedLive || ready) && !live ? "Unavailable until verified" : `${split.total}% (CRE8 ${split.platformTotal}% + creator ${split.creatorGross}%) · only on your realized profit`;
     const receiptRows = live?.template?.legs ? live.template.legs.map(leg => `<div><strong>${addressView(leg.kind === 0 ? leg.token : leg.receipt)}</strong><span>${["Held token", "Venus receipt", "Lista vault shares", "Aave receipt"][leg.kind]} · proportional share</span></div>`).join("") + `<div><strong>${esc(assetSymbol())}</strong><span>Proportional accounting cash</span></div>` : requestedLive || ready ? '<p class="fine">Token and receipt list unavailable until verified.</p>' : v.positions.map(position => `<div><strong>${esc(position.loc)}</strong><span>${position.w}% of your proportional slice · ${esc(position.p === "Idle" ? "cash" : position.p)}</span></div>`).join("");
     const reservedRaw = readable ? decimalRaw(live.shareBalance, live.shareDecimals) - decimalRaw(live.unlockedShares, live.shareDecimals) : 0n;
     const reservedShares = readable ? decimal(reservedRaw > 0n ? reservedRaw : 0n, live.shareDecimals) : "0";
     const balance = cash ? readable ? live.assetBalance || "Read before signing" : !ready && !requestedLive && previewConnected ? fixed(demo.balance(A)) + " " + A : "—" : readable ? kind ? live.unlockedShares : live.maxRedeem : !ready && !requestedLive && previewConnected ? fixed(demo.shares(v.slug)) : "—";
     $("#ticket-body").innerHTML = `
       <form id="vault-transaction-form">
-        ${cash ? "" : `<div class="redeem-modes"><button type="button" class="${kind ? "" : "on"}" data-redeem-mode="cash"><strong>Cash</strong><span>Swap your share back to ${esc(assetSymbol())}</span></button><button type="button" class="${kind ? "on" : ""}" data-redeem-mode="kind"><strong>In kind</strong><span>Receive underlying tokens and receipts</span></button></div><input type="checkbox" id="in-kind" ${kind ? "checked" : ""} hidden>${live?.staleNav || previewState === "stale" || unavailable() ? '<div class="vault-info"><strong class="warn">Cash redeem unavailable.</strong> A fresh valuation is required. In-kind exits are checked separately and can still fail.</div>' : ""}`}
+        ${cash ? "" : `<div class="redeem-modes"><button type="button" class="${kind ? "" : "on"}" data-redeem-mode="cash"><strong>Withdraw as ${esc(assetSymbol())}</strong><span>Swap your share back to ${esc(assetSymbol())}</span></button><button type="button" class="${kind ? "on" : ""}" data-redeem-mode="kind"><strong>Withdraw as assets</strong><span>Receive your share of the tokens and receipts</span></button></div><input type="checkbox" id="in-kind" ${kind ? "checked" : ""} hidden>${live?.staleNav || previewState === "stale" || unavailable() ? `<div class="vault-info"><strong class="warn">Withdraw as ${esc(assetSymbol())} is unavailable.</strong> A fresh valuation is required. Withdraw as assets is checked separately and can still fail.</div>` : ""}`}
         <div class="vault-amount-label"><label for="amt">${cash ? "Amount" : "Shares"}</label><span class="vault-balance-label" title="${esc(String(balance))}" aria-label="${cash ? "Wallet balance" : "Unlocked shares"}: ${esc(String(balance))}"><span>${cash ? "Wallet" : "Unlocked"}:</span><span class="vault-balance-value">${esc(balanceLabel(balance))}</span></span></div>
         <div class="amount"><input id="amt" inputmode="decimal" placeholder="0.00" value="${esc(amount)}" required><button type="button" id="amount-max">Max</button><span class="unit">${cash ? esc(assetSymbol()) : "shares"}</span></div>
         <p class="fine warn" id="amount-validation" role="alert" hidden></p>
         ${cash ? "" : '<div class="shares-percent"><button type="button" data-shares-pct="0.25">25%</button><button type="button" data-shares-pct="0.5">50%</button><button type="button" data-shares-pct="0.75">75%</button><button type="button" data-shares-pct="1">Max</button></div>'}
-        ${!cash && Number(reservedShares) > 0 ? `<p class="fine">Creator ownership reserve: <strong>${esc(reservedShares)} shares</strong> must remain so the creator keeps at least 2% while other holders remain.</p>` : ""}
-        <dl class="drows ticket-estimates"><div><dt>${cash ? "Shares received" : "Estimated net cash"}</dt><dd id="est">${(requestedLive || ready) && !readable ? "Unavailable until verified" : kind ? "Tokens + receipts · no cash quote" : !ready && !unavailable() && example != null ? "≈ " + fixed(example) + (cash ? " shares" : " " + A) : "Enter an amount"}</dd></div><div><dt>Share price</dt><dd>${live ? `${esc(displayNumber(live.pricePerShare))} ${esc(assetSymbol())}` : requestedLive || ready ? "Unavailable until verified" : unavailable() ? "Unavailable" : `${fixed(v.sharePrice, 4)} ${esc(A)}`}</dd></div><div><dt>${cash ? "Performance fee" : "Estimated performance fee"}</dt><dd id="exit-fee">${(requestedLive || ready) && !live ? "Unavailable until verified" : cash ? `${split.total}%` : kind ? "Settled from assets in kind when pricing is available" : "Preview required"}</dd></div>${cash ? '<div><dt>Conservative prequote difference</dt><dd id="entry-impact">Enter an amount</dd></div>' : ""}</dl>
-        ${cash ? "" : `<div id="kind-fields" class="${kind ? "" : "hide"}"><span class="fine">Your proportional underlying tokens and receipts</span><div class="kind-receipts">${receiptRows}</div><label class="check"><input type="checkbox" id="kind-ack" ${ticketValues.ack ? "checked" : ""}><span>I’ll handle later swaps myself. Receipt tokens carry the original protocol’s risk, and token transfers can fail.</span></label></div>`}
+        ${!cash && Number(reservedShares) > 0 ? `<p class="fine">Creator stake: <strong>${esc(reservedShares)} shares</strong> must remain so the creator keeps at least 2% while other holders remain.</p>` : ""}
+        <dl class="drows ticket-estimates"><div><dt>${cash ? "Shares received" : `Estimated ${esc(assetSymbol())} received`}</dt><dd id="est">${(requestedLive || ready) && !readable ? "Unavailable until verified" : kind ? `Tokens + receipts · no ${esc(assetSymbol())} quote` : !ready && !unavailable() && example != null ? "≈ " + fixed(example) + (cash ? " shares" : " " + A) : "Enter an amount"}</dd></div><div><dt>Share price</dt><dd>${live ? `${esc(displayNumber(live.pricePerShare))} ${esc(assetSymbol())}` : requestedLive || ready ? "Unavailable until verified" : unavailable() ? "Unavailable" : `${fixed(v.sharePrice, 4)} ${esc(A)}`}</dd></div><div><dt>${cash ? "Performance fee" : "Estimated performance fee"}</dt><dd id="exit-fee">${(requestedLive || ready) && !live ? "Unavailable until verified" : cash ? `${split.total}% · CRE8 ${split.platformTotal}% + creator ${split.creatorGross}%` : kind ? "Taken from your assets when pricing is available" : "Preview required"}</dd></div>${cash ? '<div><dt>Deposit fee</dt><dd>1% · to CRE8</dd></div><div><dt>Conservative prequote difference</dt><dd id="entry-impact">Enter an amount</dd></div>' : ""}</dl>
+        ${cash ? "" : `<div id="kind-fields" class="${kind ? "" : "hide"}"><span class="fine">Your share of the fund’s tokens and receipts</span><div class="kind-receipts">${receiptRows}</div><label class="check"><input type="checkbox" id="kind-ack" ${ticketValues.ack ? "checked" : ""}><span>I’ll handle later swaps myself. Receipt tokens carry the original protocol’s risk, and token transfers can fail.</span></label></div>`}
         <details class="ticket-more"><summary>Slippage, deadline &amp; terms</summary>
         <div class="ticket-minimum ${kind ? "hide" : ""}" id="minimum-field"><label for="minimum-received">Minimum ${cash ? "shares" : esc(assetSymbol())} received</label><input id="minimum-received" inputmode="decimal" ${kind ? "" : 'placeholder="0.00"'} value="${esc(minimumValue)}" ${kind ? "" : "required"}></div>
         <div class="ticket-deadline"><label for="quote-deadline">Deadline</label><select id="quote-deadline"><option value="2">2 min</option><option value="5">5 min</option><option value="10">10 min</option><option value="20">20 min</option><option value="30">30 min</option></select></div>
-        <div class="ticket-summary"><dl><dt>You ${cash ? "deposit" : "redeem"}</dt><dd>${cash ? esc(assetSymbol()) + " (accounting asset)" : kind ? "Tokens + receipts" : esc(assetSymbol()) + " cash"}</dd><dt>Mandate</dt><dd>${esc(mandateText)}</dd><dt>Performance fee</dt><dd>${esc(feeText)}</dd><dt>Data</dt><dd class="${live?.staleNav || previewState === "stale" || unavailable() ? "warn" : ""}">${live ? live.staleNav ? "Unavailable / stale" : "Verified on-chain read" : unavailable() ? "Unavailable" : previewState === "stale" ? "Stale" : requestedLive || ready ? "Unavailable until verified" : "—"}</dd></dl></div>
+        <div class="ticket-summary"><dl><dt>You ${cash ? "deposit" : "withdraw"}</dt><dd>${cash ? esc(assetSymbol()) + " (accounting asset)" : kind ? "Tokens + receipts" : esc(assetSymbol())}</dd><dt>Mandate</dt><dd>${esc(mandateText)}</dd><dt>Performance fee</dt><dd>${esc(feeText)}</dd><dt>Data</dt><dd class="${live?.staleNav || previewState === "stale" || unavailable() ? "warn" : ""}">${live ? live.staleNav ? "Unavailable / stale" : "Verified on-chain read" : unavailable() ? "Unavailable" : previewState === "stale" ? "Stale" : requestedLive || ready ? "Unavailable until verified" : "—"}</dd></dl></div>
         </details>
         ${cash ? `<div class="legal-review-entry"><p class="fine"><a href="${esc(legalUrl("terms"))}" target="_blank" rel="noopener noreferrer">Terms</a> · <a href="${esc(legalUrl("risk"))}" target="_blank" rel="noopener noreferrer">Full risk disclosure</a></p></div>` : ""}
         <div id="preview-flow"></div>
@@ -539,11 +540,11 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       const availableRaw = live ? decimalRaw(cash ? live.assetBalance : kind ? live.unlockedShares : live.maxRedeem, cash ? live.decimals : live.shareDecimals) : null;
       const minimumRaw = live ? decimalRaw(minimum.value, cash ? live.shareDecimals : live.decimals) : null;
       const excess = amountRaw != null && availableRaw != null && amountRaw > availableRaw;
-      const amountError = !live || !account ? "" : excess ? cash ? "Amount exceeds your wallet balance." : "Amount exceeds your redeemable shares. A creator must preserve the 2% live ownership floor while other holders remain." : !cash && availableRaw === 0n ? "No shares are currently redeemable." : amountInput.value && amountRaw == null ? "Enter a decimal amount within the token’s supported precision." : "";
+      const amountError = !live || !account ? "" : excess ? cash ? "Amount exceeds your wallet balance." : "Amount exceeds your withdrawable shares. A creator must keep a 2% creator stake while other holders remain." : !cash && availableRaw === 0n ? "No shares can be withdrawn right now." : amountInput.value && amountRaw == null ? "Enter a decimal amount within the token’s supported precision." : "";
       $("#amount-validation").hidden = !amountError; $("#amount-validation").textContent = amountError;
       button.disabled = locked || !ready || !account || !live || amountRaw == null || amountRaw <= 0n || availableRaw == null || excess || (!kind && (live.staleNav || !quoted || minimumRaw == null || minimumRaw <= 0n));
       if ((cash && !live?.depositsAllowed) || (kind && !$("#kind-ack")?.checked)) button.disabled = true;
-      button.textContent = pendingOperation() ? "Check submitted transaction" : busy ? "Check your wallet…" : !ready ? unavailable() ? "Data unavailable" : planning && !requestedLive ? "Not available" : cash && previewState === "paused" ? "Deposits paused" : !cash && !kind && previewState === "stale" ? "Cash redeem unavailable" : "Not available" : !account ? "Connect wallet first" : cash && !live?.depositsAllowed ? "Deposits paused" : !cash && availableRaw === 0n ? "No redeemable shares" : cash ? "Review & deposit" : kind ? "Review in-kind exit" : "Review & redeem";
+      button.textContent = pendingOperation() ? "Check submitted transaction" : busy ? "Check your wallet…" : !ready ? unavailable() ? "Data unavailable" : planning && !requestedLive ? "Not available" : cash && previewState === "paused" ? "Deposits paused" : !cash && !kind && previewState === "stale" ? `Withdraw as ${assetSymbol()} unavailable` : "Not available" : !account ? "Connect wallet first" : cash && !live?.depositsAllowed ? "Deposits paused" : !cash && availableRaw === 0n ? "No withdrawable shares" : cash ? "Review & deposit" : kind ? "Review withdrawal as assets" : "Review & withdraw";
       // Like the demo, a visitor without a wallet sees one action: Connect wallet.
       button.hidden = !account && !previewConnected && !pendingOperation() && !busy;
     };
@@ -551,13 +552,13 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       if (controlsLocked()) return;
       const epoch = ++quoteEpoch, amount = amountInput.value.trim(), kind = !!inKind?.checked;
       previewFlow = null; drawPreviewFlow();
-      quoted = false; $("#est").textContent = kind ? "Tokens + receipts · no cash quote" : "Preview unavailable";
+      quoted = false; $("#est").textContent = kind ? `Tokens + receipts · no ${assetSymbol()} quote` : "Preview unavailable";
       if ($("#entry-impact")) { $("#entry-impact").textContent = "Quote unavailable"; $("#entry-impact").removeAttribute("title"); }
       $("#kind-fields")?.classList.toggle("hide", !kind);
       $$("[data-redeem-mode]").forEach(b => b.classList.toggle("on", (b.dataset.redeemMode === "kind") === kind));
       if (!ready && !requestedLive && !unavailable() && /^\d+(?:\.\d+)?$/.test(amount) && Number(amount) > 0) {
-        const example = cash ? Number(amount) / v.sharePrice : Number(amount) * v.sharePrice;
-        $("#est").textContent = kind ? "Tokens + receipts · no cash quote" : "≈ " + fixed(example) + (cash ? " shares" : " " + A);
+        const example = cash ? Number(amount) * 0.99 / v.sharePrice : Number(amount) * v.sharePrice;
+        $("#est").textContent = kind ? `Tokens + receipts · no ${A} quote` : "≈ " + fixed(example) + (cash ? " shares" : " " + A);
         if (!kind) minimum.value = (example * 0.995).toFixed(4);
       }
       remember();
@@ -581,7 +582,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         const places = cash ? live.shareDecimals : live.decimals;
         const exactEstimate = cash ? quote.shares : quote.assets, estimateUnit = cash ? v.symbol : assetSymbol();
         $("#est").textContent = `${balanceLabel(exactEstimate)} ${estimateUnit}${cash ? "" : " · indicative"}`;
-        $("#est").title = `${exactEstimate} ${estimateUnit}${cash ? " · estimated shares" : " · indicative cash value, not a guaranteed payout"}`;
+        $("#est").title = `${exactEstimate} ${estimateUnit}${cash ? " · estimated shares" : " · indicative value; the payout can differ"}`;
         const nextDepositQuote = cash ? { amount, rawShares: String(quote.rawShares), impactAssets: String(quote.entryImpact.rawAssets), impactPricingAssets: String(quote.entryImpact.rawPricingAssets), impactBps: String(quote.entryImpact.bps) } : null;
         const unchangedQuote = cash && JSON.stringify(depositQuoteSnapshot) === JSON.stringify(nextDepositQuote);
         if (!unchangedQuote || !minimum.value.trim()) minimum.value = decimal(BigInt(raw) * 9950n / 10000n, places);
@@ -647,7 +648,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
         drawLiveTerms();
       } catch (error) {
         if (epochRead !== readEpoch) return;
-        account = null; live = null; readError = error.message || "Wallet or vault verification failed."; clearUnverifiedLive(readError);
+        account = null; live = null; readError = error.message || "Wallet or fund verification failed."; clearUnverifiedLive(readError);
       } finally { if (epochRead === readEpoch && busyOwner === busyToken) { busy = false; busyOwner = null; drawTicket(); if (readError) status(readError); } }
     }
     $("#wallet-connect").addEventListener("click", connectTicketWallet);
@@ -668,12 +669,12 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       operation = { action: cash ? "deposit" : kind ? "redeem-in-kind" : "redeem", phase: "preparing", hash: null, chainId: deployment.chainId, vault: vaultAddress(), account: submittedAccount, message: "Preparing transaction" };
       const submittedOperation = operation, busyToken = {}, reportStatus = message => { if (operation === submittedOperation) transactionStatus(message); };
       busyOwner = busyToken; busy = true; quoteEpoch++; updateButton();
-      transactionStatus(cash ? "Checking contracts and allowance. Your wallet may request approval, then a separate deposit signature. Waiting for the confirmed receipt." : kind ? "Checking your unlocked shares. Review the in-kind exit in your wallet; you will receive tokens and receipts." : "Simulating the proportional exit with your minimum received, then requesting your signature. Waiting for the confirmed receipt.");
+      transactionStatus(cash ? "Checking contracts and allowance. Your wallet may request approval, then a separate deposit signature. Waiting for the confirmed receipt." : kind ? "Checking your unlocked shares. Review the withdrawal as assets in your wallet; you will receive tokens and receipts." : "Simulating your proportional withdrawal with your minimum received, then requesting your signature. Waiting for the confirmed receipt.");
       try {
         const result = cash
           ? await client.deposit(deployment, { vault: vaultAddress(), account: submittedAccount, amount: submittedAmount, minShares: submittedMinimum, deadline, onStatus: reportStatus })
           : await client.redeem(deployment, { vault: vaultAddress(), account: submittedAccount, shares: submittedAmount, minAssets: kind ? "0" : submittedMinimum, deadline, inKind: kind, onStatus: reportStatus });
-        submittedOperation.phase = result.settlement?.finalized ? "confirmed" : "mined"; submittedOperation.intentId = result.intentId; submittedOperation.hash = result.hash; submittedOperation.message = `${cash ? "Deposit" : kind ? "In-kind redemption" : "Redemption"} ${result.settlement?.finalized ? "finalized" : "mined; waiting for finality"}. Transaction: ${result.hash}`;
+        submittedOperation.phase = result.settlement?.finalized ? "confirmed" : "mined"; submittedOperation.intentId = result.intentId; submittedOperation.hash = result.hash; submittedOperation.message = `${cash ? "Deposit" : kind ? "Withdrawal as assets" : "Withdrawal"} ${result.settlement?.finalized ? "finalized" : "mined; waiting for finality"}. Transaction: ${result.hash}`;
         if (operation === submittedOperation) { saveOperation(); status(submittedOperation.message); }
         if (epochRead === readEpoch && account === submittedAccount) {
           try {
@@ -713,7 +714,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   function drawPreviewFlow() {
     const element = $("#preview-flow"); if (!element) return;
     if (!previewFlow || requestedLive || activeConfig()) { element.innerHTML = ""; return; }
-    const steps = tab === "sub" ? [["Approve " + assetSymbol(), "Exact amount · separate signature. Some tokens need allowance reset to 0 first."], ["Simulate", "Checks minimum shares and deadline against current state"], ["Confirm in wallet", "Sign the deposit"], ["Pending", "Waiting for receipt · hash kept if RPC times out"], ["Confirmed", "Receipt read · shares minted"]] : [["Prepare", "Fresh valuation and route for your share"], ["Simulate", "Checks minimum received or token transfers and deadline"], ["Confirm in wallet", "Sign the redeem"], ["Pending", "Waiting for receipt"], ["Confirmed", "Receipt read · shares burned"]];
+    const steps = tab === "sub" ? [["Approve " + assetSymbol(), "Exact amount · separate signature. Some tokens need allowance reset to 0 first."], ["Simulate", "Checks minimum shares and deadline against current state"], ["Confirm in wallet", "Sign the deposit"], ["Pending", "Waiting for receipt · hash kept if RPC times out"], ["Confirmed", "Receipt read · shares minted"]] : [["Prepare", "Fresh valuation and route for your share"], ["Simulate", "Checks minimum received or token transfers and deadline"], ["Confirm in wallet", "Sign the withdrawal"], ["Pending", "Waiting for receipt"], ["Confirmed", "Receipt read · shares burned"]];
     const outcome = params.get("txOutcome") || "success", error = previewErrors[outcome], errorAt = outcome === "rejected" ? 2 : 3;
     const failed = !!error && previewFlow.step >= errorAt;
     element.innerHTML = `<div class="vault-tx-preview"><div class="vault-tx-title"><strong>Transaction steps</strong><span class="tag warn">Preview only · nothing is sent</span></div><ol>${steps.map(([label, description], index) => `<li><i class="${index < previewFlow.step ? "done" : index === previewFlow.step ? failed ? "failed" : "current" : ""}">${index < previewFlow.step ? "✓" : failed && index === previewFlow.step ? "!" : index + 1}</i><div><strong>${esc(label)}</strong><span>${esc(description)}</span></div></li>`).join("")}</ol>${failed ? `<div class="vault-tx-result"><strong class="neg">Preview only — ${error[0]}</strong><p>${error[1]}</p><button type="button" class="btn ghost sm" id="preview-reset">Review again</button></div>` : previewFlow.done ? '<div class="vault-tx-result"><strong class="pos">Preview only — design success state</strong><p>In production, success appears only after a confirmed receipt. This preview did not sign or send a transaction.</p><button type="button" class="btn ghost sm" id="preview-reset">Done</button></div>' : `<button type="button" class="btn block" id="preview-continue">Continue: ${esc(steps[previewFlow.step][0])}</button>`}</div>`;
@@ -731,18 +732,18 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     if (live.name) { $("#v-name").textContent = live.name; $("#c-name").textContent = live.name; document.title = live.name + " — CRE8"; }
     if (live.symbol) v.symbol = live.symbol;
     $("#v-strat").textContent = "Current mandate and terms read from the verified deployment. Historical performance is unavailable; no example curve is substituted.";
-    $("#v-manager").innerHTML = `Managed by ${addressView(live.owner)} · onchain policy epoch ${esc(live.policyEpoch)}`;
+    $("#v-manager").innerHTML = `Created by ${addressView(live.owner)} · onchain policy epoch ${esc(live.policyEpoch)}`;
     $("#creator-card").hidden = true;
     $("#vault-banner").classList.toggle("hide", !live.staleNav && !live.paused);
-    if (live.staleNav || live.paused) $("#vault-banner").innerHTML = `<span class="vault-banner-icon">!</span><div><strong class="warn">${live.staleNav ? "Valuation unavailable / stale" : "New activity paused"}</strong><p>${live.staleNav ? "Cash transactions require fresh valuation. In-kind exits are checked separately and can fail." : "The live pause reasons and lifecycle govern deposits and execution. Manual and lifecycle pauses can block deposits, scheduled chunks and discretionary buys. Exit routes still require current protocol and token checks."}</p></div>`;
-    $("#contracts").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Vault address</span>${addressView(vaultAddress())}</div><div><span class="label">Portfolio contract</span>${addressView(live.portfolio)}</div></div>`;
+    if (live.staleNav || live.paused) $("#vault-banner").innerHTML = `<span class="vault-banner-icon">!</span><div><strong class="warn">${live.staleNav ? "Share price unavailable / stale" : "Deposits paused"}</strong><p>${live.staleNav ? `Deposits and withdrawals as ${esc(assetSymbol())} need a fresh valuation. Withdraw as assets is checked separately and can fail.` : "Paused by the creator, the risk council or one of the fund’s onchain rules (see the live pause reasons). New deposits, scheduled buys and AI agent buys wait. Withdrawals stay open, subject to current protocol and token checks."}</p></div>`;
+    $("#contracts").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Fund contract</span>${addressView(vaultAddress())}</div><div><span class="label">Portfolio contract</span>${addressView(live.portfolio)}</div></div>`;
     $("#contract-tag").textContent = `Configured · chain ${deployment.chainId}`;
     const template = live.template || deployment.templates.find((item) => item.id === deployedVault.templateId);
     const capBps = live.caps || template?.caps;
     const feeBps = live.performanceFeeBps;
     const protocolPerformanceFeeBps = live.protocolPerformanceFeeBps;
-    if (!template || !Array.isArray(capBps) || !Number.isInteger(feeBps) || protocolPerformanceFeeBps !== 1000 || live.depositFeeBps !== 50 || live.operationFeeBps !== 10 || live.operationFeeCapBps !== 100 || live.creatorMinOwnershipBps !== 200 || !live.protocolFeeRecipient) { throw new Error("Live mandate or fee terms could not be verified. Signing remains unavailable."); }
-    $("#keyfig").innerHTML = `<div><dt>Vault size, ${esc(assetSymbol())}</dt><dd title="${esc(live.totalAssets ?? "Unavailable")}">${displayNumber(live.totalAssets)}</dd></div><div><dt>Share price, ${esc(assetSymbol())}</dt><dd title="${esc(live.pricePerShare ?? "Unavailable")}">${displayNumber(live.pricePerShare)}</dd></div><div><dt title="${esc(live.unlockedShares)} redeemable shares">Your shares · ${displayNumber(live.unlockedShares)} redeemable</dt><dd title="${esc(live.shareBalance)}">${displayNumber(live.shareBalance)}</dd></div><div><dt>${live.staleNav ? "Stale · cash blocked" : "Verified · block"}</dt><dd title="Block ${live.blockNumber}">${live.blockNumber}</dd></div>`;
+    if (!template || !Array.isArray(capBps) || !Number.isInteger(feeBps) || protocolPerformanceFeeBps !== 1000 || live.depositFeeBps !== 100 || live.operationFeeBps !== 0 || live.operationFeeCapBps !== 0 || live.creatorMinOwnershipBps !== 200 || !live.protocolFeeRecipient) { throw new Error("Live mandate or fee terms could not be verified. Signing remains unavailable."); }
+    $("#keyfig").innerHTML = `<div><dt>Fund size, ${esc(assetSymbol())}</dt><dd title="${esc(live.totalAssets ?? "Unavailable")}">${displayNumber(live.totalAssets)}</dd></div><div><dt>Share price, ${esc(assetSymbol())}</dt><dd title="${esc(live.pricePerShare ?? "Unavailable")}">${displayNumber(live.pricePerShare)}</dd></div><div><dt title="${esc(live.unlockedShares)} withdrawable shares">Your shares · ${displayNumber(live.unlockedShares)} withdrawable</dt><dd title="${esc(live.shareBalance)}">${displayNumber(live.shareBalance)}</dd></div><div><dt>${live.staleNav ? `Stale · ${esc(assetSymbol())} withdrawals blocked` : "Verified · block"}</dt><dd title="Block ${live.blockNumber}">${live.blockNumber}</dd></div>`;
     drawFeeSummary(feeBps / 100);
     const marketName = (leg, index) => `${["PancakeSwap hold", "Venus supply", "Lista vault", "Aave supply"][leg.kind]} · market ${index + 1}`;
     const actualRows = template.legs.map((leg, index) => ({ name: marketName(leg, index), address: leg.kind === 0 ? leg.token : leg.market, cap: Number(capBps[index]) / 100, bps: Number(capBps[index]) }));
@@ -754,24 +755,26 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     const navRaw = decimalRaw(live.totalAssets, live.decimals);
     $("#allocation-budget-rows").innerHTML = allRows.map(row => {
       const maximum = !row.budget && navRaw != null ? decimal(navRaw * BigInt(row.bps) / 10000n, live.decimals) : null;
-      return `<div><strong>${esc(row.name)}</strong>${addressView(row.address)}<span>${row.budget ? "Budget remainder" : "Limit"} ${row.cap}%</span><span ${maximum != null ? `title="${esc(maximum)} ${esc(assetSymbol())} maximum at current NAV"` : ""}>${row.budget ? `Separate from the ${minimumIdle}% minimum idle check after buys` : `${displayNumber(maximum)} ${esc(assetSymbol())} maximum at current NAV`}</span></div>`;
+      return `<div><strong>${esc(row.name)}</strong>${addressView(row.address)}<span>${row.budget ? "Budget remainder" : "Limit"} ${row.cap}%</span><span ${maximum != null ? `title="${esc(maximum)} ${esc(assetSymbol())} maximum at current fund value"` : ""}>${row.budget ? `Separate from the ${minimumIdle}% minimum idle check after buys` : `${displayNumber(maximum)} ${esc(assetSymbol())} maximum at current fund value`}</span></div>`;
     }).join("");
     $("#allocation-rows").innerHTML = actualRows.map(row => `<tr><td class="mono"><strong>${esc(row.name)}</strong></td><td><span class="dk-w vault-weight"><b>—</b><i style="--w:0%"></i></span></td><td>${addressView(row.address)}</td><td class="dk-hide-sm vault-earns">Limit ${row.cap}%</td></tr>`).join("") + `<tr class="idle"><td class="mono"><strong>${esc(assetSymbol())}</strong></td><td><span class="dk-w vault-weight"><b>—</b><i style="--w:0%"></i></span></td><td>Cash</td><td class="dk-hide-sm vault-earns">≥ ${minimumIdle}% after buys</td></tr>`;
-    $("#allocation-note").textContent = `Limits total ${100 - actualIdle}% of NAV · at least ${minimumIdle}% cash after buys`;
-    $("#v-tags").innerHTML = `<span class="tag">Verified configuration · chain ${deployment.chainId}</span><span class="tag">${esc(live.symbol || v.symbol)}</span><span class="tag ${live.paused ? "warn" : ""}">${live.paused ? "Paused" : "Active"}</span>`;
-    $("#creator").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Creator</span>${addressView(live.owner)}</div><div><span class="label">Agent operator</span>${addressView(live.agent)}<span>${live.agentEnabled ? "Enabled" : "Disabled"}${live.pendingAgentExecutableAt ? " · replacement scheduled after " + new Date(live.pendingAgentExecutableAt * 1000).toLocaleString() : ""}</span></div><div><span class="label">Chain</span><span class="with-logo">${logo("bnb")}BNB Chain · ${deployment.chainId}</span></div><div><span class="label">Creator ownership floor</span><span>${live.creatorMinOwnershipBps / 100}% of live supply while other holders remain</span></div></div>`;
-    $("#v-sentence").textContent = `${template.label}. Per-market investment limits (% of vault value): ${capBps.map((cap) => `${Number(cap) / 100}%`).join(", ")}.`;
+    $("#allocation-note").textContent = `Limits total ${100 - actualIdle}% of fund value · at least ${minimumIdle}% cash after buys`;
+    // Yellow from a 2% agent loss over 25 hours, red once the loss limit stopped the agent (same thresholds as the alerts).
+    const agentRisk = client.agentRiskTag(live.rulesSnapshot.agentLoss);
+    $("#v-tags").innerHTML = `<span class="tag">Verified configuration · chain ${deployment.chainId}</span><span class="tag">${esc(live.symbol || v.symbol)}</span><span class="tag ${live.paused ? "warn" : ""}">${live.paused ? "Deposits paused" : "Open"}</span>${agentRisk ? `<span class="tag ${agentRisk.level === "stopped" ? "neg" : "warn"}" title="${esc(agentRisk.text)}">${esc(agentRisk.title)}</span>` : ""}`;
+    $("#creator").innerHTML = `<div class="vault-identity-grid"><div><span class="label">Creator</span>${addressView(live.owner)}</div><div><span class="label">AI agent</span>${addressView(live.agent)}${agentRisk ? `<span class="${agentRisk.level === "stopped" ? "neg" : "warn"}">${esc(agentRisk.text)}</span>` : ""}<span>${live.agentEnabled ? "Enabled" : "Disabled"}${live.pendingAgentExecutableAt ? " · replacement scheduled after " + new Date(live.pendingAgentExecutableAt * 1000).toLocaleString() : ""}</span></div><div><span class="label">Chain</span><span class="with-logo">${logo("bnb")}BNB Chain · ${deployment.chainId}</span></div><div><span class="label">Minimum creator stake</span><span>${live.creatorMinOwnershipBps / 100}% of live supply while other holders remain</span></div></div>`;
+    $("#v-sentence").textContent = `${template.label}. Per-market limits (% of fund value): ${capBps.map((cap) => `${Number(cap) / 100}%`).join(", ")}.`;
     $("#v-sentence").closest(".panel").querySelector(".panel-h .tag").textContent = `Verified mandate · block ${live.blockNumber}`;
     $("#alloc-bar").closest(".panel").querySelector(".panel-h .label").textContent = `Actual caps · block ${live.blockNumber}`;
     $("#v-legs").innerHTML = `<div><span class="label">Assets &amp; markets</span>${actualRows.map(row => `<span>${esc(row.name)} ${addressView(row.address)}</span>`).join("")}</div><div><span class="label">Allowed operations</span><span>Exact operations from the verified immutable template</span></div><div><span class="label">Not allowed</span><span>Borrowing, leverage, LP, arbitrary transfers, withdrawing for holders, new markets</span></div>`;
-    $("#rules").innerHTML = `<li><b>Fee</b><span>${(feeBps + protocolPerformanceFeeBps) / 100}% performance fee on each holder’s realized profit above their own cost basis. Deposits pay ${live.depositFeeBps / 100}%; operations pay ${live.operationFeeBps / 100}% subject to a ${live.operationFeeCapBps / 100}% annual NAV cap. No management fee.</span></li><li><b>Leave</b><span>Proportional cash exit with a minimum received, or assets and receipts in kind. Shares cannot be transferred. The creator has no time lock and must keep at least ${live.creatorMinOwnershipBps / 100}% of live supply while other holders remain.</span></li>`;
+    $("#rules").innerHTML = `<li><b>Fees</b><span>Performance fee ${(feeBps + protocolPerformanceFeeBps) / 100}% (CRE8 ${protocolPerformanceFeeBps / 100}% + creator ${feeBps / 100}%), charged only on each holder’s own realized profit when they withdraw. Deposit fee ${live.depositFeeBps / 100}%, paid to CRE8. No yearly, operation or withdrawal fee.</span></li><li><b>Withdraw</b><span>Withdraw as ${esc(assetSymbol())} with a minimum received, or withdraw as assets (the fund’s tokens and receipts). Shares cannot be transferred. The creator has no time lock and must keep a creator stake of at least ${live.creatorMinOwnershipBps / 100}% of live supply while other holders remain.</span></li>`;
     if (live.pendingCapsHash && !/^0x0+$/.test(live.pendingCapsHash)) {
       $("#rc-tag").innerHTML = '<span class="tag warn">Pending on chain</span>';
       $("#rc").textContent = `A wider cap change is announced. Earliest execution: ${new Date(Number(live.pendingCapsExecutableAt) * 1000).toLocaleString()}. Review the new limits before it applies.`;
     } else { $("#rc-tag").textContent = "None pending"; $("#rc").textContent = "No pending wider cap change was found in the current block."; }
-    $("#market-details").textContent = "Live market rates require a current protocol snapshot; no example APY is substituted.";
-    $("#ai").textContent = "Live transactions use MANDATE_FUND_V2. Deposits acquire proportional inventory using the entrant’s budget and verified net contribution; unused assets are refunded. Each holder has a separate realized-profit cost basis. Shares are nontransferable. The creator has no time lock but must retain at least 2% while other holders remain. Estimates are not guaranteed payouts. Historical performance is unavailable.";
-    $("#terms").innerHTML = `<dt>Vault currency</dt><dd>${addressView(live.asset)}</dd><dt>Performance fee</dt><dd>${(feeBps + protocolPerformanceFeeBps) / 100}%</dd><dt>Deposit / operation fee</dt><dd>${live.depositFeeBps / 100}% / ${live.operationFeeBps / 100}% (annual cap ${live.operationFeeCapBps / 100}% NAV)</dd><dt>Market caps</dt><dd>${capBps.map((cap) => `${Number(cap) / 100}%`).join(" / ")}</dd><dt>Creator fee recipient</dt><dd class="mono">${addressView(live.feeRecipient || live.owner)}</dd><dt>Agent operator</dt><dd class="mono">${addressView(live.agent)}</dd><dt>Pause state</dt><dd>${live.paused ? "Paused" : "Active"}</dd>`;
+    $("#market-details").textContent = "Live lending rates require a current protocol snapshot; no example rate is substituted.";
+    $("#ai").textContent = "Live transactions use MANDATE_FUND_V2. Each deposit pays the 1% deposit fee, then buys a proportional slice of the fund’s holdings from the deposit budget and verified net contribution; unused assets are refunded. Each holder has a separate realized-profit cost basis. Shares are nontransferable. The creator has no time lock but must keep a creator stake of at least 2% while other holders remain. Estimates are indicative; actual payouts can differ. Historical performance is unavailable.";
+    $("#terms").innerHTML = `<dt>Fund currency</dt><dd>${addressView(live.asset)}</dd><dt>Performance fee</dt><dd>${(feeBps + protocolPerformanceFeeBps) / 100}% (CRE8 ${protocolPerformanceFeeBps / 100}% + creator ${feeBps / 100}%) · only on each holder’s own realized profit, when they withdraw</dd><dt>Deposit fee</dt><dd>${live.depositFeeBps / 100}% of every deposit · to CRE8</dd><dt>Other fees</dt><dd>None · no yearly, operation or withdrawal fee</dd><dt>Market caps</dt><dd>${capBps.map((cap) => `${Number(cap) / 100}%`).join(" / ")}</dd><dt>Creator fee recipient</dt><dd class="mono">${addressView(live.feeRecipient || live.owner)}</dd><dt>AI agent</dt><dd class="mono">${addressView(live.agent)}</dd><dt>Status</dt><dd>${live.paused ? "Deposits paused" : "Open"}</dd>`;
   }
   async function drawLiveHistory() {
     const snapshot = live; if (!snapshot) return;
@@ -782,12 +785,12 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       const artifact = await client.readHistoryArtifact(deployment, vaultAddress(), BAV.assetUrl("mandate-history.json"));
       if (snapshot !== live) return;
       const history = artifact.vaults[vaultAddress().toLowerCase()];
-      if (!artifact.available || !history) throw new Error(artifact.reason || "No published finalized history for this vault");
+      if (!artifact.available || !history) throw new Error(artifact.reason || "No published finalized history for this fund");
       if (history.indexing.status !== "complete") throw new Error("History is " + history.indexing.status + "; indexed through block " + (history.indexing.cursor?.number ?? "unavailable") + ", finalized target " + history.indexing.targetBlock);
       const totals = client.historyActivity(history, artifact.intervalSeconds);
       if (!totals.available) throw new Error("Creation-to-finalized event coverage is unavailable");
       const units = raw => decimal(BigInt(raw), snapshot.decimals) + " " + assetSymbol();
-      activity.textContent = `Confirmed cumulative program investment: ${units(totals.programInvestedRaw)}. Gross purchases: ${units(totals.purchasesRaw)}; gross sales: ${units(totals.salesRaw)}. Shareholder deposits and exits are excluded. ` + (totals.turnoverBps == null ? "Turnover unavailable: a continuous positive NAV series is required." : `Turnover: ${(totals.turnoverBps / 100).toFixed(2)}%, blocks ${totals.turnoverPeriod.fromBlock}–${totals.turnoverPeriod.toBlock}. Turnover = half of gross purchases plus sales divided by the time-weighted sampled NAV estimate for that period (trapezoidal interpolation between observations).`) + ` Finalized through block ${artifact.asOf.number}; publisher history requires independent receipt verification.`;
+      activity.textContent = `Confirmed cumulative plan buying: ${units(totals.programInvestedRaw)}. Gross purchases: ${units(totals.purchasesRaw)}; gross sales: ${units(totals.salesRaw)}. Holder deposits and withdrawals are excluded. ` + (totals.turnoverBps == null ? "Turnover unavailable: a continuous positive fund value series is required." : `Turnover: ${(totals.turnoverBps / 100).toFixed(2)}%, blocks ${totals.turnoverPeriod.fromBlock}–${totals.turnoverPeriod.toBlock}. Turnover = half of gross purchases plus sales divided by the time-weighted sampled fund value estimate for that period (trapezoidal interpolation between observations).`) + ` Finalized through block ${artifact.asOf.number}; publisher history requires independent receipt verification.`;
       const points = history.snapshots.filter(item => item.status === "complete" && item.ppsRaw !== null);
       if (history.coverage.missing > 0) throw new Error("Missing observations prevent a continuous performance chart");
       if (points.length < 2 || BigInt(points[0].ppsRaw) === 0n) throw new Error("At least two complete snapshots are needed for a performance chart");
@@ -795,10 +798,10 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       $("#chart").closest(".panel").hidden = false;
       const width = 600, height = 180, minimum = Math.min(...ratios), maximum = Math.max(...ratios), span = Math.max(maximum - minimum, 0.01);
       const line = ratios.map((value, i) => `${i * width / (ratios.length - 1)},${height - (value - minimum) / span * (height - 20) - 10}`).join(" ");
-      $("#chart").innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Finalized onchain marked share value, indexed to100"><polyline fill="none" stroke="currentColor" stroke-width="2" points="${line}" /></svg>`;
+      $("#chart").innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Finalized onchain marked share price, indexed to 100"><polyline fill="none" stroke="currentColor" stroke-width="2" points="${line}" /></svg>`;
       $("#perf-periods").textContent = Object.entries(history.returns).map(([period, bps]) => `${period}: ${bps == null ? "Unavailable" : (bps / 100).toFixed(2) + "%"}`).join(" · ");
-      $("#vault-data-note").textContent = `Published finalized onchain marked share value, net of accrued asset-denominated fee escrow. ${history.coverage.complete} complete and ${history.coverage.missing} missing snapshots. As of block ${artifact.asOf.number}. Publisher data is checked structurally; verify receipt links and canonical chain state independently. Cash exit prices can differ.`;
-      $("#perf-periods").closest("details").querySelector("p").textContent = "Return = marked share value at the end divided by its beginning, minus one. Missing periods remain unavailable; cash flows are tracked separately from performance.";
+      $("#vault-data-note").textContent = `Published finalized onchain marked share price, net of accrued asset-denominated fee escrow. ${history.coverage.complete} complete and ${history.coverage.missing} missing snapshots. As of block ${artifact.asOf.number}. Publisher data is checked structurally; verify receipt links and canonical chain state independently. Withdrawal prices can differ.`;
+      $("#perf-periods").closest("details").querySelector("p").textContent = "Performance = marked share price at the end divided by its beginning, minus one. Missing periods remain unavailable; deposits and withdrawals are tracked separately from performance.";
       const events = document.createElement("details"), heading = document.createElement("summary"); heading.textContent = "Real transaction history"; events.append(heading);
       history.events.slice(-30).reverse().forEach(item => { const row = document.createElement("p"), link = document.createElement("a"); link.textContent = `${item.name} · block ${item.blockNumber}`; link.href = `https://${deployment.chainId === 97 ? "testnet." : ""}bscscan.com/tx/${item.txHash}`; link.target = "_blank"; link.rel = "noopener noreferrer"; row.append(link); events.append(row); });
       $("#vault-data-note").append(events);
@@ -830,7 +833,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       if (!Number.isInteger(places) || places < 0 || places > 36) throw new Error("Unsupported token precision");
       return decimal(BigInt(raw), places);
     };
-    const entries = [{ custody: "Vault idle", token: snapshot.asset, holder: vaultAddress() }, { custody: "Portfolio cash", token: snapshot.asset, holder: snapshot.portfolio }];
+    const entries = [{ custody: "Fund idle cash", token: snapshot.asset, holder: vaultAddress() }, { custody: "Portfolio cash", token: snapshot.asset, holder: snapshot.portfolio }];
     snapshot.template.legs.forEach((leg) => {
       if (leg.token.toLowerCase() !== snapshot.asset.toLowerCase()) entries.push({ custody: "Portfolio underlying", token: leg.token, holder: snapshot.portfolio });
       if (leg.kind !== 0) entries.push({ custody: ["", "Venus receipt", "Lista vault shares", "Aave receipt"][leg.kind], token: leg.receipt, holder: snapshot.portfolio });
@@ -842,31 +845,31 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       if (snapshot !== live || !panel.isConnected) return;
       $("#positions tbody").innerHTML = entries.map((entry, index) => `<tr><td><strong>${esc(entry.custody)}</strong><span class="position-venue">${addressView(entry.token)}</span></td><td class="position-form">ERC-20 balanceOf<span class="position-mobile-balance">Block ${snapshot.blockNumber}</span></td><td class="r position-balance">${snapshot.blockNumber}</td><td class="r position-value"><strong title="${esc(amounts[index])}">${esc(displayNumber(amounts[index]))}</strong><span class="position-mobile-unit">token units</span></td></tr>`).join("");
       $("#position-sources").textContent = "Actual ERC-20 balances read at the verified state block. Token units are not accounting-asset values.";
-    } catch (error) { if (snapshot === live && panel.isConnected) $("#positions tbody").innerHTML = `<tr><td colspan="4">Balance read unavailable: ${esc(error.message)}. No simulated positions are shown for this vault.</td></tr>`; }
+    } catch (error) { if (snapshot === live && panel.isConnected) $("#positions tbody").innerHTML = `<tr><td colspan="4">Balance read unavailable: ${esc(error.message)}. No simulated positions are shown for this fund.</td></tr>`; }
   }
   function clearUnverifiedLive(message) {
     if (!requestedLive && !activeConfig()) return;
-    $("#v-name").textContent = "Vault data unavailable";
-    $("#c-name").textContent = "Vault data unavailable";
+    $("#v-name").textContent = "Fund data unavailable";
+    $("#c-name").textContent = "Fund data unavailable";
     $("#v-strat").textContent = "Connect to verify this address against the configured factory and immutable template before reading its live terms.";
-    $("#v-manager").textContent = "Manager and operator unavailable until verified";
+    $("#v-manager").textContent = "Creator and operator unavailable until verified";
     $("#creator-card").hidden = true;
-    $("#v-tags").innerHTML = '<span class="tag vault-identity-chip">Live vault address</span><span class="tag warn">Fresh read required</span>';
+    $("#v-tags").innerHTML = '<span class="tag vault-identity-chip">Live fund address</span><span class="tag warn">Fresh read required</span>';
     $("#creator-controls").classList.add("hide"); $("#rules-controls").textContent = "Fresh verified rules unavailable; no signing is enabled.";
     $("#vault-banner").classList.toggle("hide", !message);
     if (message) $("#vault-banner").innerHTML = `<span class="vault-banner-icon">!</span><div><strong class="warn">Live read unavailable</strong><p>${esc(message)}. Reconnect to read current data.</p></div>`;
-    $("#keyfig").innerHTML = ["Vault value (NAV)", "Share value", "Your shares", "Updated"].map(label => `<div><div class="label">${label}</div><div class="v">Unavailable</div><div class="s">Verified on-chain read required</div></div>`).join("");
+    $("#keyfig").innerHTML = ["Fund value", "Share price", "Your shares", "Updated"].map(label => `<div><div class="label">${label}</div><div class="v">Unavailable</div><div class="s">Verified on-chain read required</div></div>`).join("");
     $("#chart").closest(".panel").hidden = true;
     $("#positions tbody").innerHTML = '<tr><td colspan="4">No verified live balances have been read. No simulated positions are shown.</td></tr>';
     $("#positions-updated").textContent = "Unavailable";
     $("#position-sources").textContent = "Verified live read required.";
-    $("#v-sentence").textContent = "A verified factory and template binding are required to read this vault’s investment mandate.";
+    $("#v-sentence").textContent = "A verified factory and template binding are required to read this fund’s mandate.";
     $("#v-legs").innerHTML = ""; $("#market-details").innerHTML = ""; $("#rules").innerHTML = ""; $("#ai").textContent = "No example rules substitute for a live mandate.";
-    $("#allocation-rows").innerHTML = '<p class="fine">Current allocation and investment limits unavailable.</p>';
-    $("#allocation-note").textContent = "No live values are available until the vault address is verified.";
+    $("#allocation-rows").innerHTML = '<p class="fine">Current allocation and limits unavailable.</p>';
+    $("#allocation-note").textContent = "No live values are available until the fund address is verified.";
     $("#alloc-bar").innerHTML = ""; $("#allocation-budget-rows").innerHTML = "";
     $("#fee-kpis").innerHTML = '<div><span class="label">Live fee terms</span><strong>Unavailable</strong></div>'; $("#fee-bar").innerHTML = ""; $("#fee-note").textContent = "Verified live terms required."; $("#terms").innerHTML = "";
-    $("#creator").textContent = "Creator and operator unavailable."; $("#contracts").innerHTML = `<div><span class="label">Vault address · fresh read required</span>${addressView(vaultAddress() || params.get("vault"))}</div>`;
+    $("#creator").textContent = "Creator and operator unavailable."; $("#contracts").innerHTML = `<div><span class="label">Fund address · fresh read required</span>${addressView(vaultAddress() || params.get("vault"))}</div>`;
     $("#contract-tag").textContent = "Fresh read required";
     $("#rc-tag").textContent = "Unavailable";
     $("#rc").textContent = "Pending cap changes unavailable until verified.";
@@ -885,7 +888,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
       window.addEventListener("bav:wallet-change", () => { walletTools.hidden = true; });
       const requested = new URLSearchParams(location.search).get("vault");
       deployedVault = requested ? deployment?.vaults?.find((item) => (item.address || item.vault).toLowerCase() === requested.toLowerCase()) : deployment?.vaults?.find((item) => item.slug === v.slug);
-      if (requested && !deployedVault) throw new Error("Requested vault could not be verified against this deployment.");
+      if (requested && !deployedVault) throw new Error("Requested fund could not be verified against this deployment.");
       if (deployedVault) { const chain = $(".chain"); if (chain) { chain.innerHTML = `${logo("bnb")}<span class="chain-label">BNB Chain · ${deployment.chainId}</span>`; chain.title = `Verified configuration · BNB Chain ${deployment.chainId}`; } }
       if (activeConfig()) { previewConnected = false; previewWallet = "disconnected"; previewState = "active"; previewFlow = null; restoreOperation();
         const records = client.walletOperations(deployment.chainId);
@@ -911,28 +914,28 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 
   function drawFeeSummary(rate) {
     const creator = Number(rate), protocol = 10, total = +(creator + protocol).toFixed(2), holders = +(100 - total).toFixed(2);
-    $("#fee-kpis").innerHTML = `<div><span class="label">Total performance fee</span><strong>${total}%</strong><span class="fine">On each holder’s realized profit</span></div><div><span class="label">Management fee</span><strong>${v.fees.mgmt ? v.fees.mgmt + "%" : "None"}</strong></div><div><span class="label">Creator deposit</span><strong>≥ 100 ${esc(assetSymbol())}</strong><span class="fine">No time lock · retain at least 2% while other holders remain.</span></div>`;
+    $("#fee-kpis").innerHTML = `<div><span class="label">Performance fee</span><strong>${total}%</strong><span class="fine">CRE8 ${protocol}% + creator ${creator}% · only on each holder’s own realized profit, when they withdraw</span></div><div><span class="label">Deposit fee</span><strong>1%</strong><span class="fine">Of every deposit · to CRE8</span></div><div><span class="label">Creator stake</span><strong>≥ 100 ${esc(assetSymbol())}</strong><span class="fine">No time lock · at least 2% while other holders remain.</span></div>`;
     $("#fee-bar").innerHTML = `<div class="holders" style="flex:${holders}"><span class="fee-wide">Holders keep ≈ ${holders}</span><span class="fee-narrow">Holders ≈ ${holders}</span></div><div class="creator" style="flex:${total}">Fee ${total}</div>`;
-    $("#fee-note").textContent = "Deposits 0.5% · operations 0.1%, capped at 1% of NAV a year";
+    $("#fee-note").textContent = "No other fees: no yearly, operation or withdrawal fee. DEX swap costs are paid to the DEX, not CRE8.";
   }
   /* Terms + contracts */
   function drawTerms() {
     const f = v.fees, split = feeBreakdown(f.perf, f.platform);
     $("#terms").innerHTML = `
-      <dt>Vault currency</dt><dd>${A} <span class="mono muted">${short(ASSETS[A].address)}</span></dd>
+      <dt>Fund currency</dt><dd>${A} <span class="mono muted">${short(ASSETS[A].address)}</span></dd>
       <dt>Share token</dt><dd>${v.symbol}</dd>
       <dt>Rules</dt><dd>${rulesLabel(v)}</dd>
-      <dt>Maximum deployed</dt><dd>${C.capTxt(C.totalAllocation(v.rules))} of vault value</dd>
-      ${v.continuous ? '<dt>Minimum idle reserve</dt><dd>5% of NAV after buys</dd>' : ""}<dt>${v.continuous ? "Unallocated cap budget" : "Planned idle budget"}</dt><dd>${C.capTxt(C.minIdleAllocation(v.rules))} of vault value${v.continuous ? " · separate from the idle minimum" : " · historical reference"}</dd>
+      <dt>Maximum deployed</dt><dd>${C.capTxt(C.totalAllocation(v.rules))} of fund value</dd>
+      ${v.continuous ? '<dt>Minimum idle reserve</dt><dd>5% of fund value after buys</dd>' : ""}<dt>${v.continuous ? "Unallocated cap budget" : "Planned idle budget"}</dt><dd>${C.capTxt(C.minIdleAllocation(v.rules))} of fund value${v.continuous ? " · separate from the idle minimum" : " · historical reference"}</dd>
       <dt>Benchmark</dt><dd>${v.benchmark}</dd>
-      <dt>Total performance fee</dt><dd>${split.total.toFixed(2)}%</dd>
-      <dt>Creator management fee</dt><dd>${f.mgmt.toFixed(2)}%</dd>
-      <dt>Performance-fee basis</dt><dd>Each holder’s own realized profit above cost basis</dd>
+      <dt>Performance fee</dt><dd>${split.total}% (CRE8 ${split.platformTotal}% + creator ${split.creatorGross}%)</dd>
+      <dt>Performance-fee basis</dt><dd>Only each holder’s own realized profit above their cost, charged when they withdraw</dd>
+      <dt>Deposit fee</dt><dd>1% of every deposit · to CRE8</dd>
+      <dt>Other fees</dt><dd>None · no yearly, operation or withdrawal fee. DEX swap costs and gas go to the DEX and the network, not CRE8</dd>
       <dt>Raising a limit</dt><dd>Takes effect 24h after notice</dd>
-      <dt>Redemption</dt><dd>Proportional cash or in-kind exit</dd>
-      <dt>Entry / operation costs</dt><dd>0.5% deposit fee; 0.1% operation fee capped at 1% of annual NAV; swaps and gas vary</dd>`;
+      <dt>Withdrawals</dt><dd>Withdraw as ${A} or withdraw as assets</dd>`;
   }
-  $("#contracts").innerHTML = '<div><span class="label">Vault address</span><strong>—</strong></div>';
+  $("#contracts").innerHTML = '<div><span class="label">Fund contract</span><strong>—</strong></div>';
   $("#factsheet").addEventListener("click", () => {
     const blob = new Blob([JSON.stringify({ simulated: true, name: v.name, strategy: v.strategy, terms: v.fees, marketCaps: v.rules.map((rule) => ({ markets: [...rule.m], caps: rule.caps })) }, null, 2)], { type: "application/json" });
     const link = document.createElement("a"); link.href = URL.createObjectURL(blob); link.download = `${v.slug}-example.json`; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 0);
@@ -960,7 +963,7 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
   let last = null;
   const open = (target) => {
     last = document.activeElement;
-    $("#pros-title").textContent = $("#v-name")?.textContent || "Fund prospectus";
+    $("#pros-title").textContent = $("#v-name")?.textContent || "Fund facts";
     drawer.inert = false; drawer.classList.add("open"); scrim.classList.add("open");
     document.documentElement.classList.add("pros-lock");
     body.scrollTop = 0;
@@ -994,12 +997,12 @@ e:"$Sreact.suspense"
 12:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"MetadataBoundary"]
 14:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 9:X
-0:{"P":null,"c":["","vault","mag7-rotation",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","mag7-rotation","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3u1igua0azle0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"active\" aria-current=\"page\">Vaults</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create Vault</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"70987d7a1a75","script":"$6","pageKey":"vault"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"TD3EQ5N6pLZhG9HJlTAVa"}
+0:{"P":null,"c":["","vault","mag7-rotation",""],"q":"","i":false,"f":[[["",{"children":["vault",{"children":[["slug","mag7-rotation","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/36t8ncigu0ot6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"has-mcta vault-page","html":"$5","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"active\" aria-current=\"page\">Funds</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create fund</a></nav><div class=\"head-right\"><a class=\"head-link \" href=\"https://app.cre8.finance/portfolio/\" >Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"4fccfef8335e","script":"$6","pageKey":"vault"}],["$L7"],"$L8"]}],{},null,false,null]},null,false,null]},null,false,"$9"]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"H_DrV9xoa4ysq6Sls7tyW"}
 7:["$","script","script-0",{"src":"/_next/static/chunks/2jue03yvau1yp.js","async":true,"nonce":"$undefined"}]
 8:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3u1igua0azle0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/36t8ncigu0ot6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 9:C
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 f:null
-13:[["$","title","0",{"children":"CRE8 — Agent-managed funds on BNB Chain"}],["$","meta","1",{"name":"description","content":"Launch and follow non-custodial, policy-bound agent vaults on BNB Chain."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L14","7",{}]]
+13:[["$","title","0",{"children":"CRE8 — Create a fund. Let your agent run it."}],["$","meta","1",{"name":"description","content":"Onchain funds of US stocks and crypto. CRE8 AI drafts the fund; the mandate keeps it to its word."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L14","7",{}]]

@@ -3,7 +3,7 @@
   "status": "draft",
   "liveAllowed": false,
   "language": "zh-Hant",
-  "consentVersion": "a89575b4062c6a0cdf2b59c2ba15abd3d5ea4eb35df1ab3d2a409341b0178d1d",
+  "consentVersion": "68d1b922317422adbbbb721f4cf83d451354d6ab2db6686fb70b03a997a5a3a2",
   "effectiveDate": null,
   "operator": null,
   "openMarkets": [],
@@ -18,21 +18,21 @@
       "title": "使用前須知",
       "source": "USER_GUIDE_LEGAL_NOTICE_DRAFT.zh-TW.md",
       "version": "2026-10-07-draft.8",
-      "sha256": "e3450c6aac2257895e491052c06c10d3d22a7d31afe159408b459e679784d888"
+      "sha256": "92d5be53816056dee3548fea19028459b4c32cf1a7bfe9b0f496719c23e61a45"
     },
     {
       "id": "terms",
       "title": "使用條款",
       "source": "TERMS_OF_USE_DRAFT.zh-TW.md",
       "version": "2026-10-07-draft.8",
-      "sha256": "7be37ad64b3988926d34658bc1dfa195b8a987160a15ce96fe0241820c77fc5b"
+      "sha256": "da2290f5a476b32e6b4087b522616bd0d76e084dd9fbf17d31b64d2f03c13f5b"
     },
     {
       "id": "risk",
       "title": "金庫風險揭露",
       "source": "RISK_DISCLOSURE_DRAFT.zh-TW.md",
       "version": "2026-10-07-draft.8",
-      "sha256": "6f7d5658c5c2b5b97949b59409d02a76010c7b214bff053328447e2d62073097"
+      "sha256": "87186ca39072dd4bb1d66cafc9051dc648591c6d4a9f17627ecc1f2554fe41ef"
     },
     {
       "id": "eligibility",
