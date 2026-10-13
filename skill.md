@@ -45,7 +45,8 @@ Two composite capabilities exist with separate manifests. `MANDATE_COMPOSITE_V3_
 Buy/Sell intents and isolated withdrawals. `MANDATE_COMPOSITE_V3_NATIVE`
 (`get_composite_deployment`) is the mixed parent: the same spot scopes plus native supply, debt,
 LP, farm and staking positions, holder claim settlement and raw (in-kind) settlement, and the
-schema-3 keeper policy. Both public manifests are currently undeployed; an undeployed manifest
+schema-3 keeper policy. The mixed public manifest records a chain-97 sandbox deployment; the direct-spot
+manifest remains undeployed. An undeployed manifest
 disables every execution tool of that capability, and signing always stays in the user's or
 operator's wallet. Do not reinterpret an existing V2 basket, separate LP/Debt vault or PR19 paid
 plan as a shared composite fund.

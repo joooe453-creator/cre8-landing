@@ -62,9 +62,9 @@
       const epoch = noticeEpoch;
       try {
         legalModule ||= import(assetUrl("assets/legal-notice.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
-        const module = await legalModule;
+        const legalApi = await legalModule;
         if (epoch !== noticeEpoch) return { shown: false, reviewed: false, liveAllowed: false };
-        return await module.reviewPageRisk({ page }, { url: legalUrl, leave: leavePage });
+        return await legalApi.reviewPageRisk({ page }, { url: legalUrl, leave: leavePage });
       } catch (error) {
         legalModule = null;
         if (epoch === noticeEpoch) toast(error?.message || "Risk notice could not be loaded. The full disclosure is available in Docs.");
@@ -75,9 +75,9 @@
       const epoch = noticeEpoch;
       try {
         legalModule ||= import(assetUrl("assets/legal-notice.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
-        const module = await legalModule;
+        const legalApi = await legalModule;
         if (epoch !== noticeEpoch) return false;
-        return await module.confirmFundProspectus({ onRead });
+        return await legalApi.confirmFundProspectus({ onRead });
       } catch (error) {
         legalModule = null;
         if (epoch === noticeEpoch) toast(error?.message || "The fund facts reminder could not be loaded. Refresh before depositing.");
@@ -210,7 +210,7 @@
     // [id, kind, venue, collateral, loan, liquidation LTV %, pair LTV cap, default, borrow %, LISTA reward %, USD available, sub, collateral yield %, DEX discount %, slisBNB]
     const PAIR_ROWS = [["venus-slisbnb-bnb","corr","venus","slisBNB","BNB",72,65,55,0.39,0,379000000,"",0.834,0.17,1],["venus-asbnb-bnb","corr","venus","asBNB","BNB",60,53,43,0.39,0,379000000,"",null,0.3,0],["lista-slisbnb-bnb-fixed-term","corr","lista","slisBNB","BNB",96.5,90,80,0.5,0,142384587,"fixed-term",0.834,0.17,1],["lista-slisbnb-bnb-lp-bnb-smart-lending","corr","lista","slisBNB-BNB LP","BNB",96.5,90,80,0.5,0,7650810,"Smart Lending",null,0.1,1],["lista-slisbnb-bnb","corr","lista","slisBNB","BNB",96.5,90,80,0.29,0,5772283,"",0.834,0.17,1],["lista-slisbnb-bnb-lp-bnb-smart-lending-1","corr","lista","slisBNB-BNB LP","BNB",91.5,85,75,1.0,0,82038,"Smart Lending",null,0.1,1],["lista-asbnb-bnb","corr","lista","asBNB","BNB",96.5,90,80,0.29,0,8771,"",null,0.3,0],["lista-slisbnb-bnb-1","corr","lista","slisBNB","BNB",91.5,85,75,2.37,0,4474,"",0.834,0.17,1],["venus-susde-usdt","stable","venus","sUSDe","USDT",75,68,58,5.0,0,45800000,"",5.16,0.1,0],["venus-usde-usdt","stable","venus","USDe","USDT",70,63,53,5.0,0,45800000,"",null,0.1,0],["venus-susde-u","stable","venus","sUSDe","U",75,68,58,4.1,0,10200000,"",5.16,0.1,0],["venus-usde-u","stable","venus","USDe","U",70,63,53,4.1,0,10200000,"",null,0.1,0],["venus-susde-usdc","stable","venus","sUSDe","USDC",75,68,58,5.35,0,7900000,"",5.16,0.1,0],["venus-usde-usdc","stable","venus","USDe","USDC",70,63,53,5.35,0,7900000,"",null,0.1,0],["lista-usdt-usdc-lp-usd1-smart-lending","stable","lista","USDT-USDC LP","USD1",96.5,90,80,0.47,0.45,2164988,"Smart Lending",null,0.1,0],["lista-usd1-usdt-lp-u-smart-lending","stable","lista","USD1-USDT LP","U",96.5,90,80,0.03,0,399163,"Smart Lending",null,0.1,0],["lista-lisusd-usdt-lp-u-smart-lending","stable","lista","lisUSD-USDT LP","U",96.5,90,80,0.03,0,384333,"Smart Lending",null,0.1,0],["lista-usd1-usdt-lp-usd1-smart-lending","stable","lista","USD1-USDT LP","USD1",96.5,90,80,0.03,0,292946,"Smart Lending",null,0.1,0],["lista-lisusd-usdt-lp-usd1-smart-lending","stable","lista","lisUSD-USDT LP","USD1",96.5,90,80,0.03,0,271843,"Smart Lending",null,0.1,0],["lista-usdt-usdc-lp-u-smart-lending","stable","lista","USDT-USDC LP","U",96.5,90,80,1.0,0.47,228884,"Smart Lending",null,0.1,0],["lista-asusdf-usd1","stable","lista","asUSDF","USD1",91.5,85,75,0.08,0,205542,"",null,0.3,0],["lista-usdt-usdc-lp-usdc-smart-lending","stable","lista","USDT-USDC LP","USDC",96.5,90,80,1.46,0,100009,"Smart Lending",null,0.1,0],["lista-u-usdt-lp-usdt-smart-lending","stable","lista","U-USDT LP","USDT",96.5,90,80,6.08,0,10567,"Smart Lending",null,0.1,0],["lista-susde-usdt","stable","lista","sUSDe","USDT",91.5,85,75,6.16,0,9992,"",5.16,0.1,0],["lista-u-usdt-lp-usd1-smart-lending","stable","lista","U-USDT LP","USD1",96.5,90,80,1.7,0,2006,"Smart Lending",null,0.1,0],["lista-asusdf-usdt","stable","lista","asUSDF","USDT",91.5,85,75,31.34,0,1089,"",null,0.3,0],["venus-btcb-usdt","long","venus","BTCB","USDT",80,60,45,5.0,0,45800000,"",null,0.04,0],["venus-eth-usdt","long","venus","ETH","USDT",80,60,45,5.0,0,45800000,"",null,0.43,0],["venus-bnb-usdt","long","venus","BNB","USDT",80,60,45,5.0,0,45800000,"",null,0.06,0],["venus-wbeth-usdt","long","venus","wBETH","USDT",80,60,45,5.0,0,45800000,"",null,0.3,0],["venus-solvbtc-usdt","long","venus","SolvBTC","USDT",75,55,40,5.0,0,45800000,"",null,0.2,0],["venus-slisbnb-usdt","long","venus","slisBNB","USDT",72,52,40,5.0,0,45800000,"",0.834,0.17,1],["venus-nvdab-usdt","long","venus","NVDAB","USDT",60,40,30,5.0,0,45800000,"",null,0.3,0],["venus-tslab-usdt","long","venus","TSLAB","USDT",60,40,30,5.0,0,45800000,"",null,0.47,0],["venus-spcxb-usdt","long","venus","SPCXB","USDT",50,30,20,5.0,0,45800000,"",null,0.33,0],["venus-skhyb-usdt","long","venus","SKHYB","USDT",50,30,20,5.0,0,45800000,"",null,0.26,0],["lista-btcb-usd1","long","lista","BTCB","USD1",70.0,50,40,1.69,0,18124562,"",null,0.04,0],["venus-btcb-u","long","venus","BTCB","U",80,60,45,4.1,0,10200000,"",null,0.04,0],["venus-eth-u","long","venus","ETH","U",80,60,45,4.1,0,10200000,"",null,0.43,0],["venus-bnb-u","long","venus","BNB","U",80,60,45,4.1,0,10200000,"",null,0.06,0],["venus-wbeth-u","long","venus","wBETH","U",80,60,45,4.1,0,10200000,"",null,0.3,0],["venus-solvbtc-u","long","venus","SolvBTC","U",75,55,40,4.1,0,10200000,"",null,0.2,0],["venus-slisbnb-u","long","venus","slisBNB","U",72,52,40,4.1,0,10200000,"",0.834,0.17,1],["venus-nvdab-u","long","venus","NVDAB","U",60,40,30,4.1,0,10200000,"",null,0.3,0],["venus-tslab-u","long","venus","TSLAB","U",60,40,30,4.1,0,10200000,"",null,0.47,0],["venus-spcxb-u","long","venus","SPCXB","U",50,30,20,4.1,0,10200000,"",null,0.33,0],["venus-skhyb-u","long","venus","SKHYB","U",50,30,20,4.1,0,10200000,"",null,0.26,0],["venus-btcb-usdc","long","venus","BTCB","USDC",80,60,45,5.35,0,7900000,"",null,0.04,0],["venus-eth-usdc","long","venus","ETH","USDC",80,60,45,5.35,0,7900000,"",null,0.43,0],["venus-bnb-usdc","long","venus","BNB","USDC",80,60,45,5.35,0,7900000,"",null,0.06,0],["venus-wbeth-usdc","long","venus","wBETH","USDC",80,60,45,5.35,0,7900000,"",null,0.3,0],["venus-solvbtc-usdc","long","venus","SolvBTC","USDC",75,55,40,5.35,0,7900000,"",null,0.2,0],["venus-slisbnb-usdc","long","venus","slisBNB","USDC",72,52,40,5.35,0,7900000,"",0.834,0.17,1],["venus-nvdab-usdc","long","venus","NVDAB","USDC",60,40,30,5.35,0,7900000,"",null,0.3,0],["venus-tslab-usdc","long","venus","TSLAB","USDC",60,40,30,5.35,0,7900000,"",null,0.47,0],["venus-spcxb-usdc","long","venus","SPCXB","USDC",50,30,20,5.35,0,7900000,"",null,0.33,0],["venus-skhyb-usdc","long","venus","SKHYB","USDC",50,30,20,5.35,0,7900000,"",null,0.26,0],["lista-btcb-u","long","lista","BTCB","U",86.0,66,50,2.3,0,1893141,"",null,0.04,0],["lista-slisbnb-u","long","lista","slisBNB","U",86.0,66,50,2.28,0,1789181,"",0.834,0.17,1],["lista-btcb-usd1-fixed-term","long","lista","BTCB","USD1",86.0,66,50,1.8,0,794573,"fixed-term",null,0.04,0],["lista-spyb-usd1","long","lista","SPYB","USD1",85.0,65,50,1.49,2.44,358883,"",null,0.05,0],["lista-btcb-usdc","long","lista","BTCB","USDC",80.0,60,45,0.89,0,318961,"",null,0.04,0],["lista-btcb-usdt","long","lista","BTCB","USDT",80.0,60,45,3.5,0,215018,"",null,0.04,0],["lista-slisbnb-usd1-fixed-term","long","lista","slisBNB","USD1",86.0,66,50,2.0,0,202311,"fixed-term",0.834,0.17,1],["lista-slisbnb-usdc","long","lista","slisBNB","USDC",80.0,60,45,0.02,0,140002,"",0.834,0.17,1],["lista-slisbnb-bnb-lp-usd1-smart-lending","long","lista","slisBNB-BNB LP","USD1",75.0,55,40,1.7,0,116577,"Smart Lending",null,0.1,1],["lista-wbnb-usdc","long","lista","WBNB","USDC",80.0,60,45,0.02,0,100004,"",null,0.06,0],["lista-spyb-u","long","lista","SPYB","U",85.0,65,50,0.57,2.43,88877,"",null,0.05,0],["lista-slisbnb-usdt","long","lista","slisBNB","USDT",80.0,60,45,2.22,0,76533,"",0.834,0.17,1],["lista-crclb-u","long","lista","CRCLB","U",60.0,40,30,0.57,2.17,71226,"",null,0.63,0],["lista-crclb-usd1","long","lista","CRCLB","USD1",60.0,40,30,1.49,2.49,59907,"",null,0.63,0],["lista-sndkb-usdc","long","lista","SNDKB","USDC",50.0,30,20,0.02,0,49999,"",null,0.27,0],["lista-mub-usdc","long","lista","MUB","USDC",65.0,45,35,0.02,0,49999,"",null,9.32,0],["lista-tslab-usdc","long","lista","TSLAB","USDC",75.0,55,40,0.03,0,49978,"",null,0.47,0],["lista-qqqb-u","long","lista","QQQB","U",75.0,55,40,0.58,2.34,47776,"",null,0.01,0],["lista-qqqb-usd1","long","lista","QQQB","USD1",75.0,55,40,0.8,2.3,43755,"",null,0.01,0],["lista-googlb-u","long","lista","GOOGLB","U",70.0,50,40,0.55,7.04,38457,"",null,0.51,0],["lista-crclb-usdc","long","lista","CRCLB","USDC",60.0,40,30,0.83,2.4,25635,"",null,0.63,0],["lista-hoodb-usd1","long","lista","HOODB","USD1",60.0,40,30,0.04,0,24987,"",null,0.77,0],["lista-skhyb-usd1","long","lista","SKHYB","USD1",55.0,35,25,0.03,1.82,24783,"",null,0.26,0],["lista-hoodb-u","long","lista","HOODB","U",60.0,40,30,0.03,0,24534,"",null,0.77,0],["lista-nokb-usd1","long","lista","NOKB","USD1",60.0,40,30,0.03,0.43,23919,"",null,4.83,0],["lista-nvdab-usd1","long","lista","NVDAB","USD1",75.0,55,40,0.85,7.16,23902,"",null,0.3,0],["lista-soxlb-u","long","lista","SOXLB","U",50.0,30,20,0.19,0,23522,"",null,5.59,0],["lista-nokb-u","long","lista","NOKB","U",60.0,40,30,0.03,0.23,22938,"",null,4.83,0],["lista-metab-u","long","lista","METAB","U",70.0,50,40,0.13,0,22844,"",null,1.06,0],["lista-babab-usd1","long","lista","BABAB","USD1",65.0,45,35,0.03,0.38,22547,"",null,0.42,0],["lista-skhyb-u","long","lista","SKHYB","U",55.0,35,25,0.04,0.13,21394,"",null,0.26,0],["lista-soxlb-usd1","long","lista","SOXLB","USD1",50.0,30,20,0.04,13.84,20795,"",null,5.59,0],["lista-babab-u","long","lista","BABAB","U",65.0,45,35,0.04,0.38,20091,"",null,0.42,0],["lista-nvdab-usdc","long","lista","NVDAB","USDC",75.0,55,40,0.02,0,20000,"",null,0.3,0],["lista-wbeth-usdt","long","lista","wBETH","USDT",80.0,60,45,3.44,0,17174,"",null,0.3,0],["lista-spcxb-usdc","long","lista","SPCXB","USDC",50.0,30,20,0.92,0.43,11137,"",null,0.33,0],["lista-slisbnb-bnb-lp-usdc-smart-lending","long","lista","slisBNB-BNB LP","USDC",80.0,60,45,1.61,0,10000,"Smart Lending",null,0.1,1],["lista-tslab-usd1","long","lista","TSLAB","USD1",75.0,55,40,0.22,0.03,7546,"",null,0.47,0],["lista-mub-usd1","long","lista","MUB","USD1",65.0,45,35,0.41,1.47,6876,"",null,9.32,0],["lista-nvdab-u","long","lista","NVDAB","U",75.0,55,40,2.16,4.87,6036,"",null,0.3,0],["lista-wbeth-usd1","long","lista","wBETH","USD1",80.0,60,45,1.09,0,5875,"",null,0.3,0],["lista-tslab-u","long","lista","TSLAB","U",75.0,55,40,0.27,0.03,5738,"",null,0.47,0],["lista-msftb-usd1","long","lista","MSFTB","USD1",75.0,55,40,1.52,0.29,5581,"",null,0.56,0],["lista-slisbnb-usd1","long","lista","slisBNB","USD1",70.0,50,40,10.8,0,4865,"",0.834,0.17,1],["lista-googlb-usd1","long","lista","GOOGLB","USD1",70.0,50,40,2.28,6.7,4110,"",null,0.51,0],["lista-spcxb-u","long","lista","SPCXB","U",50.0,30,20,2.21,0.87,3872,"",null,0.33,0],["lista-tsmb-usd1","long","lista","TSMB","USD1",65.0,45,35,0.82,0.15,3117,"",null,1.11,0],["lista-tsmb-u","long","lista","TSMB","U",65.0,45,35,2.22,0.15,2598,"",null,1.11,0],["lista-bnb-usd1","long","lista","BNB","USD1",70.0,50,40,1.7,0,2417,"",null,0.06,0],["lista-eth-usd1","long","lista","ETH","USD1",70.0,50,40,1.7,0,1340,"",null,0.43,0]];
     const VNAME = { lista: "Lista", venus: "Venus", pancakeswap: "PancakeSwap", aave: "Aave" };
-    PAIR_ROWS.forEach(([id, kind, venue, coll, loan, lltv, cap, def, borrow, rew, liq, sub, yld, disc, stake]) => M.push({
+    PAIR_ROWS.forEach(([id, kind, venue, coll, loan, lltv, cap, def, borrow, rew, liq, sub, yld, , stake]) => M.push({
       id, g: groupOf(coll), a: "borrow", venue, kind: "Loop", name: `${coll} / ${loan}`, tokens: [coll, loan],
       loop: { kind, coll, loan, lltv, cap, def, borrow, rew, liq, sub, yld, stake: !!stake, max: 1 / (1 - cap / 100), dflt: 1 / (1 - def / 100) },
     }));
@@ -392,12 +392,12 @@
     try {
       const saved = localStorage.getItem(DEMO_KEY);
       if (saved) memoryDemoState = { ...freshDemoState(), ...JSON.parse(saved) };
-    } catch (_) {}
+    } catch {}
     return memoryDemoState;
   }
   function writeDemoState(state) {
     memoryDemoState = state;
-    try { localStorage.setItem(DEMO_KEY, JSON.stringify(state)); } catch (_) {}
+    try { localStorage.setItem(DEMO_KEY, JSON.stringify(state)); } catch {}
     window.dispatchEvent(new CustomEvent("bav:demo-state", { detail: state }));
     return state;
   }
@@ -503,6 +503,7 @@
   }));
   /** One wallet client per page, so a wallet connected from the header is the one the page reads. */
   const loadClient = () => import(assetUrl("assets/mandate-client.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
+  const loadSiteWallet = () => import(assetUrl("assets/site-wallet.mjs") + (window.__BAV_RUNTIME_VERSION__ ? `?v=${window.__BAV_RUNTIME_VERSION__}` : ""));
   const avatarFor = (address) => assetUrl(`assets/agents/agent-${String(parseInt(String(address).slice(-8), 16) % 24 + 1).padStart(2, "0")}.webp`);
 
   // NAV/share series, anchored so period returns match the published figures.
@@ -538,7 +539,7 @@
   const LOGO_ROLLS = (() => {
     const here = document.body && document.body.classList.contains("landing-page") ? "landing" : "app";
     let before = null;
-    try { before = sessionStorage.getItem("cre8-surface"); sessionStorage.setItem("cre8-surface", here); } catch (e) { /* storage unavailable: roll */ }
+    try { before = sessionStorage.getItem("cre8-surface"); sessionStorage.setItem("cre8-surface", here); } catch { /* storage unavailable: roll */ }
     return !before || here === "landing" || before === "landing";
   })();
   const brandLogo = (background = "light") =>
@@ -675,7 +676,10 @@
       EYES.forEach(([ex, ey]) => {
         const h = 3.2 * s * blink, w = 16 * s;
         const X = ox + (ex - map.X0) * s, Y = oy + (ey - map.Y0) * s - 0.1 * 3 * s + (3.2 * s - h) / 2;
-        ctx.beginPath(); ctx.roundRect ? ctx.roundRect(X, Y, w, h, h / 2) : ctx.rect(X, Y, w, h); ctx.fill();
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(X, Y, w, h, h / 2);
+        else ctx.rect(X, Y, w, h);
+        ctx.fill();
       });
       ctx.shadowBlur = 0;
     };
@@ -834,14 +838,21 @@
       if (walletButton.disabled) return;
       walletButton.disabled = true;
       try {
-        const client = await loadClient(), config = await client.loadDeployment(), kind = await client.pickWallet();
-        if (kind) await client.connectWallet(config, kind);
+        const client = await loadSiteWallet(), config = await client.loadSiteDeployment(), kind = await client.pickWallet();
+        if (kind) await client.connectSiteWallet(config, kind);
       } catch (error) {
         toast(error?.message || "The wallet didn't connect. Try again.");
       } finally {
         walletButton.disabled = false;
       }
     });
+    // Every page is a full load. A wallet connected earlier in this browser is read again silently (eth_accounts and
+    // eth_chainId only): nothing is prompted or signed, and a locked wallet, a revoked site or another network keeps "Connect wallet".
+    let rememberedWallet = false;
+    try { rememberedWallet = Boolean(localStorage.getItem("cre8.wallet.session")); } catch { /* storage unavailable: connect explicitly */ }
+    if (walletButton && rememberedWallet) {
+      loadSiteWallet().then(async (client) => client.restoreSiteWallet(await client.loadSiteDeployment())).catch(() => { /* stays "Connect wallet" */ });
+    }
     wireShell();
   }
 
@@ -1004,7 +1015,7 @@
     platformFeeForRisk, feeBreakdown,
     $, $$, esc, fmt, perf, periodDays, historyTag, riskMeter, statusTag,
     rng, hexAddr, short, navSeries, sparkline, lineChart, logo, agentCanvas, stackTables,
-    shell, footerHTML, wireShell, legalNotice, toast, SEAL, brandLogo, route, assetUrl, avatarFor, creatorAvatar, creatorId, creatorProfile, creatorName, creatorEarnings, officialBadge, loadClient, DEMO_OWNER, demo,
+    shell, footerHTML, wireShell, legalNotice, toast, SEAL, brandLogo, route, assetUrl, avatarFor, creatorAvatar, creatorId, creatorProfile, creatorName, creatorEarnings, officialBadge, loadClient, loadSiteWallet, DEMO_OWNER, demo,
     vault: (slug) => VAULTS.find((v) => v.slug === slug),
   };
 })();

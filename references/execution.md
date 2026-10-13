@@ -1,10 +1,11 @@
 # V2 unsigned MCP execution
 
-This version describes the current source, not an officially deployed contract or live MCP host.
+This version describes the current source and recorded deployments; it does not attest to a live MCP host.
 `get_execution_deployment` returns reviewed basket `deployment@1.0`; `get_position_deployment`
 returns reviewed `positions@2.0`; `get_position_creation_catalog` returns the server-held
 `position-creation-catalog@2.0`; `get_composite_spot_deployment` and `get_composite_deployment`
-return the two composite manifests. All five public records are undeployed; current source has
+return the two composite manifests. The mixed manifest records a BSC testnet sandbox deployment;
+the four other public records remain undeployed. Current source has
 63 unsigned tools. No tool accepts a caller
 RPC/manifest, secret, signature request or broadcast instruction. Tool schemas and typed SDK
 canonical reconstruction jointly enforce input; arbitrary calldata is not an operation input.
@@ -237,8 +238,9 @@ table transcribed from the engineering handoff (`tools[].state` in `spec-only` �
 `implemented-local` → `verified-fork` → `deployed`, with `notes` naming the fork suite and open
 acceptance gaps), and the handoff's release blockers (`releaseBlockers[]`). `tools[].executable`
 is true only when the manifest is deployed and the state is beyond `spec-only`; the SDK's
-`assertStrategyV3Executable` refuses everything else. `rules.evidence` records that there is no
-public deployment, no signed finalized broadcast, no external audit and no hosted CI. Both
+`assertStrategyV3Executable` refuses everything else. `rules.evidence.publicDeployment` follows
+the validated public-chain mixed manifest. The signed finalized strategy rehearsal, external audit
+and hosted CI evidence remain incomplete; a sandbox deployment does not complete those gates. Both
 composite lifecycles below have their own manifests and selectors. Preserve the V2 and Position
 schemas and limits; do not route T01–T19 through old selectors.
 

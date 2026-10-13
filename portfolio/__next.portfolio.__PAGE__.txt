@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2w4z3o8vhx6bw.js","/_next/static/chunks/0hpo-drif-9z-.js"],"PrototypePage"]
-3:T41a4,
+2:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/0j-gwnxbkgi_i.js","/_next/static/chunks/0b06nb1262zkn.js"],"PrototypePage"]
+3:T4d2e,
 (function () {
   const { $, $$, esc, fmt } = BAV;
   BAV.shell("portfolio.html");
@@ -109,59 +109,102 @@
   content.innerHTML = '<div class="pf-wrap"><div id="portfolio-live"></div><p class="pf-status" id="portfolio-live-status" aria-live="polite"></p>'
     + '<details class="pf-more" hidden><summary>Debt and LP positions</summary><section class="panel-b" id="portfolio-positions"></section><section class="panel-b" id="portfolio-position-creation"></section></details></div>';
   $("#portfolio-meta").textContent = ""; $("#portfolio-tag").textContent = "";
-  let client, config, epoch = 0, reading = false;
+  let client, config, siteWallet, siteConfig, epoch = 0, reading = false, connectingWallet = null, recordNotice = "", pendingAccount = "", currentAccount = "";
   const status = message => { $("#portfolio-live-status").textContent = message; };
   const amount = value => Number(value).toLocaleString("en-US", { maximumFractionDigits: 2 });
   function showEmpty() {
+    currentAccount = "";
     $("#portfolio-meta").textContent = "";
     $("#portfolio-live").innerHTML = '<section class="pf-empty"><button type="button" class="btn" id="portfolio-live-connect">Connect wallet</button></section>';
-    $("#portfolio-live-connect").disabled = !config;
+    $("#portfolio-live-connect").disabled = !siteConfig || reading;
     $("#portfolio-live-connect").onclick = connect;
   }
-  function showHoldings(account, held) {
+  function showHoldings(account, held, failedCount = 0) {
+    currentAccount = account;
     const face = document.createElement("img"); face.className = "wallet-face"; face.src = BAV.avatarFor(account); face.alt = "";
     $("#portfolio-meta").replaceChildren(face, document.createTextNode(account));
     const symbols = [...new Set(held.map(row => row.snapshot.assetSymbol))], priced = held.every(row => row.snapshot.pricePerShare != null);
     const value = row => row.snapshot.pricePerShare == null ? null : Number(row.snapshot.shareBalance) * Number(row.snapshot.pricePerShare);
-    const total = !held.length ? "0" : symbols.length === 1 && priced ? `${amount(held.reduce((sum, row) => sum + value(row), 0))} ${symbols[0]}` : "Several assets";
+    const total = failedCount ? held.length ? "Partial data" : "Unavailable" : !held.length ? "0" : symbols.length === 1 && priced ? `${amount(held.reduce((sum, row) => sum + value(row), 0))} ${symbols[0]}` : "Several assets";
     const rows = held.map(({ entry, snapshot, owner }) => {
       const href = `${BAV.route("vault/cre8-usdt")}?vault=${encodeURIComponent(entry.address)}`, worth = value({ snapshot });
       return `<tr><td><b>${esc(snapshot.name)}</b>${owner ? ' <span class="pf-tag">Yours</span>' : ""}</td><td class="num dk-hide-sm">${esc(amount(snapshot.shareBalance))}</td><td class="num">${worth == null ? "Unavailable" : esc(`${amount(worth)} ${snapshot.assetSymbol}`)}</td><td class="num"><a class="pf-go" href="${esc(owner ? href + "#rules-controls" : href)}">${owner ? "Manage" : "View"} →</a></td></tr>`;
     }).join("");
-    $("#portfolio-live").innerHTML = `<dl class="pf-sum"><div><dt>Est. value</dt><dd>${esc(total)}</dd></div><div><dt>Funds</dt><dd>${held.length}</dd></div></dl>`
+    $("#portfolio-live").innerHTML = (config?.status !== "deployed" ? "" : `<dl class="pf-sum"><div><dt>Est. value</dt><dd>${esc(total)}</dd></div><div><dt>Funds</dt><dd>${failedCount ? "Unavailable" : held.length}</dd></div></dl>`
       + (held.length ? `<section class="dk-sec"><header><h2>Your funds</h2></header><div class="dk-wrap"><table class="dk-table pf-tbl"><thead><tr><th>Fund</th><th class="num dk-hide-sm">Shares</th><th class="num">Est. value</th><th></th></tr></thead><tbody>${rows}</tbody></table></div></section>`
-        : `<section class="pf-empty"><h2>No fund shares yet</h2><p>Deposit into a fund and it shows up here.</p><a class="btn" href="${esc(BAV.route("vaults"))}">Explore funds</a></section>`)
+        : failedCount ? '<section class="pf-empty"><h2>Fund shares unavailable</h2><p>Retry the read to see your shares.</p></section>'
+          : `<section class="pf-empty"><h2>No fund shares yet</h2><p>Deposit into a fund and it shows up here.</p><a class="btn" href="${esc(BAV.route("vaults"))}">Explore funds</a></section>`))
+      + (failedCount ? '<button type="button" class="btn" id="portfolio-live-retry">Retry</button>' : "")
       + '<button type="button" class="btn ghost pf-disconnect" id="portfolio-live-disconnect">Disconnect</button>';
-    $("#portfolio-live-disconnect").onclick = () => client?.disconnectWallet().catch(error => status(error.message));
+    $("#portfolio-live-disconnect").onclick = () => siteWallet?.disconnectWallet().catch(error => status(error.message));
+    const retry = $("#portfolio-live-retry"); if (retry) retry.onclick = () => readAccount(account);
+  }
+  async function readHoldings(account, runEpoch) {
+    status("Reading your funds…");
+    const held = [], failed = [];
+    // Account connection follows the mixed deployment; each older fund record still owns its own read/signing gates.
+    for (const entry of config?.status === "deployed" ? config.vaults.slice(0, 100) : []) {
+      try {
+        const snapshot = await client.readVaultFromRpc(config, entry.address, account);
+        if (runEpoch !== epoch) throw new Error("Wallet changed during holdings read");
+        const owner = account.toLowerCase() === snapshot.owner.toLowerCase();
+        if (owner || Number(snapshot.shareBalance) > 0) held.push({ entry, snapshot, owner });
+      } catch (error) { if (runEpoch !== epoch) throw error; failed.push(`${entry.address} (${error.message})`); }
+    }
+    if (runEpoch !== epoch) throw new Error("Wallet changed during holdings read");
+    showHoldings(account, held, failed.length);
+    status([recordNotice, failed.length ? `Could not read: ${failed.join("; ")}` : ""].filter(Boolean).join(" "));
   }
   async function connect() {
-    if (!client || !config || reading) return;
-    const kind = await client.pickWallet();
+    if (!siteWallet || !siteConfig || reading) return;
+    const kind = await siteWallet.pickWallet();
     if (!kind || reading) return;
     reading = true; const runEpoch = ++epoch; $("#portfolio-live-connect").disabled = true;
+    connectingWallet = { epoch: runEpoch, chainId: siteConfig.chainId };
     try {
-      const account = await client.connectWallet(config, kind);
+      const account = await siteWallet.connectSiteWallet(siteConfig, kind);
       if (runEpoch !== epoch) throw new Error("Wallet changed during connection");
-      status("Reading your funds…");
-      const held = [], failed = [];
-      for (const entry of config.vaults.slice(0, 100)) {
-        try {
-          const snapshot = await client.readVault(config, entry.address, account);
-          if (runEpoch !== epoch) throw new Error("Wallet changed during holdings read");
-          const owner = account.toLowerCase() === snapshot.owner.toLowerCase();
-          if (owner || Number(snapshot.shareBalance) > 0) held.push({ entry, snapshot, owner });
-        } catch (error) { if (runEpoch !== epoch) throw error; failed.push(`${entry.address} (${error.message})`); }
-      }
-      showHoldings(account, held);
-      status(failed.length ? `Could not read: ${failed.join("; ")}` : "");
+      await readHoldings(account, runEpoch);
     } catch (error) { if (runEpoch === epoch) { showEmpty(); status(error.message); } }
-    finally { reading = false; }
+    finally { connectingWallet = null; await finishRead(runEpoch); }
   }
+  async function finishRead(runEpoch) {
+    reading = false;
+    if (runEpoch !== epoch) showEmpty();
+    const retry = $("#portfolio-live-connect"); if (retry) retry.disabled = !siteConfig;
+    const account = pendingAccount; pendingAccount = "";
+    if (account && siteConfig) await readAccount(account);
+  }
+  async function readAccount(account) {
+    if (reading) { pendingAccount = account; return; }
+    reading = true; const runEpoch = ++epoch;
+    try { await readHoldings(account, runEpoch); }
+    catch (error) { if (runEpoch === epoch) { showEmpty(); status(error.message); } }
+    finally { await finishRead(runEpoch); }
+  }
+  // Register before asynchronous deployment and optional-module reads so a header connection cannot be lost.
+  window.addEventListener("bav:wallet-account", event => {
+    const account = event.detail?.address;
+    if (typeof account !== "string" || !/^0x[0-9a-fA-F]{40}$/.test(account)) return;
+    if (!siteConfig) { pendingAccount = account; return; }
+    return readAccount(account);
+  });
+  window.addEventListener("bav:wallet-change", event => {
+    if (connectingWallet?.epoch === epoch && event.detail?.reason === "chainChanged" && event.detail.chainId === connectingWallet.chainId) return;
+    pendingAccount = ""; epoch++; showEmpty(); status("");
+  });
   showEmpty();
   try {
-    client = await BAV.loadClient(); config = await client.loadDeployment();
-    showEmpty();
-    // Debt and LP positions show only once their modules are deployed.
+    [client, siteWallet] = await Promise.all([BAV.loadClient(), BAV.loadSiteWallet()]);
+    siteConfig = await siteWallet.loadSiteDeployment();
+    recordNotice = "Reading additional fund records…";
+    showEmpty(); status(recordNotice);
+    if (pendingAccount) { const account = pendingAccount; pendingAccount = ""; await readAccount(account); }
+    try { config = await client.loadDeployment(); recordNotice = ""; }
+    catch (error) { config = null; recordNotice = `Additional fund record unavailable: ${error.message}`; }
+    if (currentAccount) await readAccount(currentAccount);
+    else if (!reading) status(recordNotice);
+    // Debt and LP positions show only once their modules are deployed; they do not gate account connection.
     const deployed = async (file) => (await fetch(BAV.assetUrl(file), { cache: "no-store" }).then((r) => r.ok ? r.json() : null).catch(() => null))?.status === "deployed";
     if (await deployed("mandate-positions.json") || await deployed("mandate-position-creation.json")) {
       $(".pf-more").hidden = false;
@@ -169,13 +212,12 @@
       await client.mountPositionCreationReview($("#portfolio-position-creation"), BAV.assetUrl("mandate-position-creation.json"));
     }
   } catch (error) { status(error.message); }
-  window.addEventListener("bav:wallet-change", () => { epoch++; if (!reading) { showEmpty(); status(""); } });
 })();
 9:X
 e:X
 e:C
-0:{"buildId":"H_DrV9xoa4ysq6Sls7tyW","data":[{"rsc":["$","$1","c",{"children":[[["$","$L2",null,{"bodyClass":"portfolio-page","html":"\n<section class=\"portfolio-hero\"><div class=\"wrap\"><div class=\"dk-head\"><div><h1 class=\"dk-h1\">Portfolio</h1><p class=\"dk-meta\" id=\"portfolio-meta\"></p></div><span class=\"dk-label\" id=\"portfolio-tag\"></span></div></div></section>\n<main class=\"portfolio-main\" id=\"portfolio-content\" aria-live=\"polite\"></main>\n\n\n\n\n","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"\" >Funds</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create fund</a></nav><div class=\"head-right\"><a class=\"head-link active\" href=\"https://app.cre8.finance/portfolio/\" aria-current=\"page\">Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"4fccfef8335e","script":"$3","pageKey":"portfolio"}],"$L4"],["$L5","$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
-13:I[28720,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/2w4z3o8vhx6bw.js","/_next/static/chunks/0hpo-drif-9z-.js"],"default"]
+0:{"buildId":"_yowhjLCMEp_ROb-aIcOK","data":[{"rsc":["$","$1","c",{"children":[[["$","$L2",null,{"bodyClass":"portfolio-page","html":"\n<section class=\"portfolio-hero\"><div class=\"wrap\"><div class=\"dk-head\"><div><h1 class=\"dk-h1\">Portfolio</h1><p class=\"dk-meta\" id=\"portfolio-meta\"></p></div><span class=\"dk-label\" id=\"portfolio-tag\"></span></div></div></section>\n<main class=\"portfolio-main\" id=\"portfolio-content\" aria-live=\"polite\"></main>\n\n\n\n\n","masthead":"<header class=\"masthead app-masthead\" data-bav-shell data-bav-ssr><div class=\"wrap\"><a class=\"brand\" href=\"https://cre8.finance/\" aria-label=\"CRE8 home\"><span class=\"c8-logo c8-still\" role=\"img\" aria-label=\"CRE8\"><span class=\"c8-cre\" aria-hidden=\"true\">CRE</span><span class=\"c8-tile\" aria-hidden=\"true\"><span class=\"c8-win\"><span class=\"c8-reel\"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span></span></span></span></a><nav class=\"nav\" aria-label=\"Main navigation\"><a href=\"https://app.cre8.finance/agent/\" class=\"\" >CRE8 AI</a><a href=\"https://app.cre8.finance/vaults/\" class=\"\" >Funds</a><a href=\"https://app.cre8.finance/leaderboard/\" class=\"\" >Leaderboard</a><a href=\"https://app.cre8.finance/create/\" class=\"\" >Create fund</a></nav><div class=\"head-right\"><a class=\"head-link active\" href=\"https://app.cre8.finance/portfolio/\" aria-current=\"page\">Portfolio</a><a class=\"btn sm header-wallet\" href=\"https://app.cre8.finance/portfolio/\">Connect wallet</a></div></div></header>","runtimeVersion":"799004c317e3","script":"$3","pageKey":"portfolio"}],"$L4"],["$L5","$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+13:I[28720,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/0j-gwnxbkgi_i.js","/_next/static/chunks/0b06nb1262zkn.js"],"default"]
 14:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 15:"$Sreact.suspense"
 17:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
@@ -185,8 +227,8 @@ e:C
 1b:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 :HL["/_next/static/chunks/36t8ncigu0ot6.css","style"]
 4:["$","$L13",null,{}]
-5:["$","script","script-0",{"src":"/_next/static/chunks/2w4z3o8vhx6bw.js","async":true}]
-6:["$","script","script-1",{"src":"/_next/static/chunks/0hpo-drif-9z-.js","async":true}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/0j-gwnxbkgi_i.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/0b06nb1262zkn.js","async":true}]
 7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
 a:["$","$1","h",{"children":[null,["$","$L17",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$15",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CRE8 — Create a fund. Let your agent run it."}],["$","meta","1",{"name":"description","content":"Onchain funds of US stocks and crypto. CRE8 AI drafts the fund; the mandate keeps it to its word."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L19","7",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
 c:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
