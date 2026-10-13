@@ -1,21 +1,21 @@
 {
   "schema": "bnb-agent-vaults/yield-rates@1",
   "chainId": 56,
-  "fetchedAt": "2026-10-01T15:50:19.662Z",
-  "blockNumber": 125127406,
-  "blockTime": "2026-10-01T15:50:16.000Z",
+  "fetchedAt": "2026-10-13T05:32:57.005Z",
+  "blockNumber": 127347404,
+  "blockTime": "2026-10-13T05:32:54.000Z",
   "scope": "Base lending interest only; variable rates, price returns, reward emissions and vault fees excluded.",
   "markets": {
     "venus:ETH:vETH": {
       "marketAddress": "0xf508fcd89b8bd15579dc79a6827cb4686a3592c8",
       "assetAddress": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
-      "fetchedAt": "2026-10-01T15:50:17.367Z",
+      "fetchedAt": "2026-10-13T05:32:54.347Z",
       "status": "available",
-      "baseApy": 0.011778906657616252,
+      "baseApy": 0.00770301668477863,
       "sourceUrl": "https://bscscan.com/address/0xf508fcd89b8bd15579dc79a6827cb4686a3592c8#readProxyContract",
       "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
       "inputs": {
-        "supplyRatePerBlock": "167098504",
+        "supplyRatePerBlock": "109497440",
         "blocksPerYear": 70080000
       },
       "deposit": {
@@ -29,23 +29,23 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "72000000000000000000000",
-        "suppliedRaw": "18085545058879667918505",
-        "headroomRaw": "53914454941120332081495",
+        "suppliedRaw": "18066228229216834633436",
+        "headroomRaw": "53933771770783165366564",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "venus:BTCB:vBTC": {
       "marketAddress": "0x882c173bc7ff3b7786ca16dfed3dfffb9ee7847b",
       "assetAddress": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
-      "fetchedAt": "2026-10-01T15:50:17.366Z",
+      "fetchedAt": "2026-10-13T05:32:54.341Z",
       "status": "available",
-      "baseApy": 0.0019295471774352006,
+      "baseApy": 0.0019898828558891596,
       "sourceUrl": "https://bscscan.com/address/0x882c173bc7ff3b7786ca16dfed3dfffb9ee7847b#readProxyContract",
       "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
       "inputs": {
-        "supplyRatePerBlock": "27507036",
+        "supplyRatePerBlock": "28366311",
         "blocksPerYear": 70080000
       },
       "deposit": {
@@ -59,23 +59,23 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "12000000000000000000000",
-        "suppliedRaw": "5616459655295538073620",
-        "headroomRaw": "6383540344704461926380",
+        "suppliedRaw": "5498080857144982755858",
+        "headroomRaw": "6501919142855017244142",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "venus:WBNB:vWBNB": {
       "marketAddress": "0x6bca74586218db34cdb402295796b79663d816e9",
       "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
-      "fetchedAt": "2026-10-01T15:50:17.368Z",
+      "fetchedAt": "2026-10-13T05:32:54.349Z",
       "status": "available",
-      "baseApy": 0.0005837671561670762,
+      "baseApy": 0.0005872945190045407,
       "sourceUrl": "https://bscscan.com/address/0x6bca74586218db34cdb402295796b79663d816e9#readProxyContract",
       "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
       "inputs": {
-        "supplyRatePerBlock": "8327587",
+        "supplyRatePerBlock": "8377891",
         "blocksPerYear": 70080000
       },
       "deposit": {
@@ -89,107 +89,17 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "1400000000000000000000000",
-        "suppliedRaw": "100176977653701815048895",
-        "headroomRaw": "1299823022346298184951105",
+        "suppliedRaw": "99884826376794634572536",
+        "headroomRaw": "1300115173623205365427464",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
-    },
-    "venus:NVDAB:vNVDAB": {
-      "marketAddress": "0xeb8ca841cbe1bc4832a10b15c7dab1081edad371",
-      "assetAddress": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
-      "fetchedAt": "2026-10-01T15:50:17.721Z",
-      "status": "available",
-      "baseApy": 0,
-      "sourceUrl": "https://bscscan.com/address/0xeb8ca841cbe1bc4832a10b15c7dab1081edad371#readProxyContract",
-      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
-      "inputs": {
-        "supplyRatePerBlock": "0",
-        "blocksPerYear": 70080000
-      },
-      "deposit": {
-        "supplyEnabled": true,
-        "reason": "Open at snapshot",
-        "checks": {
-          "exactAsset": true,
-          "listed": true,
-          "mintNotPaused": true,
-          "protocolNotPaused": true,
-          "hasSupplyCapacity": true
-        },
-        "supplyCapRaw": "1500000000000000000000",
-        "suppliedRaw": "1481397547657080724191",
-        "headroomRaw": "18602452342919275809",
-        "unlimitedCap": false
-      },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
-    },
-    "venus:SPCXB:vSPCXB": {
-      "marketAddress": "0xc36dfacc7a125859c106f29b9f2d874ccf29a55a",
-      "assetAddress": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
-      "fetchedAt": "2026-10-01T15:50:17.887Z",
-      "status": "available",
-      "baseApy": 0,
-      "sourceUrl": "https://bscscan.com/address/0xc36dfacc7a125859c106f29b9f2d874ccf29a55a#readProxyContract",
-      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
-      "inputs": {
-        "supplyRatePerBlock": "0",
-        "blocksPerYear": 70080000
-      },
-      "deposit": {
-        "supplyEnabled": true,
-        "reason": "Open at snapshot",
-        "checks": {
-          "exactAsset": true,
-          "listed": true,
-          "mintNotPaused": true,
-          "protocolNotPaused": true,
-          "hasSupplyCapacity": true
-        },
-        "supplyCapRaw": "2000000000000000000000",
-        "suppliedRaw": "1395373941226739003765",
-        "headroomRaw": "604626058773260996235",
-        "unlimitedCap": false
-      },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
-    },
-    "venus:TSLAB:vTSLAB": {
-      "marketAddress": "0x97421799419eb782628e73e7220d8e0a207469a3",
-      "assetAddress": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
-      "fetchedAt": "2026-10-01T15:50:17.943Z",
-      "status": "available",
-      "baseApy": 0,
-      "sourceUrl": "https://bscscan.com/address/0x97421799419eb782628e73e7220d8e0a207469a3#readProxyContract",
-      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
-      "inputs": {
-        "supplyRatePerBlock": "0",
-        "blocksPerYear": 70080000
-      },
-      "deposit": {
-        "supplyEnabled": true,
-        "reason": "Open at snapshot",
-        "checks": {
-          "exactAsset": true,
-          "listed": true,
-          "mintNotPaused": true,
-          "protocolNotPaused": true,
-          "hasSupplyCapacity": true
-        },
-        "supplyCapRaw": "236000000000000000000",
-        "suppliedRaw": "120186408945131782532",
-        "headroomRaw": "115813591054868217468",
-        "unlimitedCap": false
-      },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "venus:SKHYB:vSKHYB": {
       "marketAddress": "0x3e281461efb3d53ec20db207674373ed8ef3bba9",
       "assetAddress": "0xca750ef65f295bbecd685abf54e82caf297bdb61",
-      "fetchedAt": "2026-10-01T15:50:17.723Z",
+      "fetchedAt": "2026-10-13T05:32:54.689Z",
       "status": "available",
       "baseApy": 0,
       "sourceUrl": "https://bscscan.com/address/0x3e281461efb3d53ec20db207674373ed8ef3bba9#readProxyContract",
@@ -209,23 +119,113 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "375000000000000000000",
-        "suppliedRaw": "329662473236584908683",
-        "headroomRaw": "45337526763415091317",
+        "suppliedRaw": "354969206026467828163",
+        "headroomRaw": "20030793973532171837",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "venus:NVDAB:vNVDAB": {
+      "marketAddress": "0xeb8ca841cbe1bc4832a10b15c7dab1081edad371",
+      "assetAddress": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+      "fetchedAt": "2026-10-13T05:32:54.686Z",
+      "status": "available",
+      "baseApy": 0,
+      "sourceUrl": "https://bscscan.com/address/0xeb8ca841cbe1bc4832a10b15c7dab1081edad371#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "0",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "1500000000000000000000",
+        "suppliedRaw": "1499999999999999999994",
+        "headroomRaw": "6",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "venus:SPCXB:vSPCXB": {
+      "marketAddress": "0xc36dfacc7a125859c106f29b9f2d874ccf29a55a",
+      "assetAddress": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+      "fetchedAt": "2026-10-13T05:32:54.700Z",
+      "status": "available",
+      "baseApy": 0,
+      "sourceUrl": "https://bscscan.com/address/0xc36dfacc7a125859c106f29b9f2d874ccf29a55a#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "0",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "2000000000000000000000",
+        "suppliedRaw": "1248678481723239816709",
+        "headroomRaw": "751321518276760183291",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "venus:TSLAB:vTSLAB": {
+      "marketAddress": "0x97421799419eb782628e73e7220d8e0a207469a3",
+      "assetAddress": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+      "fetchedAt": "2026-10-13T05:32:54.826Z",
+      "status": "available",
+      "baseApy": 0,
+      "sourceUrl": "https://bscscan.com/address/0x97421799419eb782628e73e7220d8e0a207469a3#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "0",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "236000000000000000000",
+        "suppliedRaw": "71995582970111170645",
+        "headroomRaw": "164004417029888829355",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "venus:DOGE:vDOGE": {
       "marketAddress": "0xec3422ef92b2fb59e84c8b02ba73f1fe84ed8d71",
       "assetAddress": "0xba2ae424d960c26247dd6c32edc70b295c744c43",
-      "fetchedAt": "2026-10-01T15:50:18.141Z",
+      "fetchedAt": "2026-10-13T05:32:54.845Z",
       "status": "available",
-      "baseApy": 0.000016761664250263278,
+      "baseApy": 0.000016199543331704276,
       "sourceUrl": "https://bscscan.com/address/0xec3422ef92b2fb59e84c8b02ba73f1fe84ed8d71#readProxyContract",
       "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
       "inputs": {
-        "supplyRatePerBlock": "239177",
+        "supplyRatePerBlock": "231156",
         "blocksPerYear": 70080000
       },
       "deposit": {
@@ -239,23 +239,23 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "8000000000000000",
-        "suppliedRaw": "7987632108685127",
-        "headroomRaw": "12367891314873",
+        "suppliedRaw": "7939218379030452",
+        "headroomRaw": "60781620969548",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "venus:ADA:vADA": {
       "marketAddress": "0x9a0af7fdb2065ce470d72664de73cae409da28ec",
       "assetAddress": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
-      "fetchedAt": "2026-10-01T15:50:18.096Z",
+      "fetchedAt": "2026-10-13T05:32:54.830Z",
       "status": "available",
-      "baseApy": 0.00039078810690751196,
+      "baseApy": 0.00044032252899938183,
       "sourceUrl": "https://bscscan.com/address/0x9a0af7fdb2065ce470d72664de73cae409da28ec#readProxyContract",
       "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
       "inputs": {
-        "supplyRatePerBlock": "5575228",
+        "supplyRatePerBlock": "6281762",
         "blocksPerYear": 70080000
       },
       "deposit": {
@@ -269,53 +269,23 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "10000000000000000000000000",
-        "suppliedRaw": "4608106367565544862236438",
-        "headroomRaw": "5391893632434455137763562",
+        "suppliedRaw": "4151803643091584551400407",
+        "headroomRaw": "5848196356908415448599593",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
-    },
-    "venus:LINK:vLINK": {
-      "marketAddress": "0x650b940a1033b8a1b1873f78730fcfc73ec11f1f",
-      "assetAddress": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
-      "fetchedAt": "2026-10-01T15:50:18.346Z",
-      "status": "available",
-      "baseApy": 0.0004306031896985148,
-      "sourceUrl": "https://bscscan.com/address/0x650b940a1033b8a1b1873f78730fcfc73ec11f1f#readProxyContract",
-      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
-      "inputs": {
-        "supplyRatePerBlock": "6143133",
-        "blocksPerYear": 70080000
-      },
-      "deposit": {
-        "supplyEnabled": true,
-        "reason": "Open at snapshot",
-        "checks": {
-          "exactAsset": true,
-          "listed": true,
-          "mintNotPaused": true,
-          "protocolNotPaused": true,
-          "hasSupplyCapacity": true
-        },
-        "supplyCapRaw": "300000000000000000000000",
-        "suppliedRaw": "142353301601492863948679",
-        "headroomRaw": "157646698398507136051321",
-        "unlimitedCap": false
-      },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "venus:SOL:vSOL": {
       "marketAddress": "0xbf515ba4d1b52ffdceabf20d31d705ce789f2cec",
       "assetAddress": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
-      "fetchedAt": "2026-10-01T15:50:18.404Z",
+      "fetchedAt": "2026-10-13T05:32:54.977Z",
       "status": "available",
-      "baseApy": 0.005380955866439824,
+      "baseApy": 0.005322718004566439,
       "sourceUrl": "https://bscscan.com/address/0xbf515ba4d1b52ffdceabf20d31d705ce789f2cec#readProxyContract",
       "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
       "inputs": {
-        "supplyRatePerBlock": "76577764",
+        "supplyRatePerBlock": "75751156",
         "blocksPerYear": 70080000
       },
       "deposit": {
@@ -329,23 +299,53 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "72000000000000000000000",
-        "suppliedRaw": "16832965526752050729294",
-        "headroomRaw": "55167034473247949270706",
+        "suppliedRaw": "17009124847817901849181",
+        "headroomRaw": "54990875152182098150819",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "venus:LINK:vLINK": {
+      "marketAddress": "0x650b940a1033b8a1b1873f78730fcfc73ec11f1f",
+      "assetAddress": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+      "fetchedAt": "2026-10-13T05:32:54.970Z",
+      "status": "available",
+      "baseApy": 0.0004292589697672765,
+      "sourceUrl": "https://bscscan.com/address/0x650b940a1033b8a1b1873f78730fcfc73ec11f1f#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "6123960",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "300000000000000000000000",
+        "suppliedRaw": "142854710985587302260291",
+        "headroomRaw": "157145289014412697739709",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "venus:XRP:vXRP": {
       "marketAddress": "0xb248a295732e0225acd3337607cc01068e3b9c10",
       "assetAddress": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
-      "fetchedAt": "2026-10-01T15:50:18.407Z",
+      "fetchedAt": "2026-10-13T05:32:54.994Z",
       "status": "available",
-      "baseApy": 0.004004738351709849,
+      "baseApy": 0.003004787132195586,
       "sourceUrl": "https://bscscan.com/address/0xb248a295732e0225acd3337607cc01068e3b9c10#readProxyContract",
       "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
       "inputs": {
-        "supplyRatePerBlock": "57031430",
+        "supplyRatePerBlock": "42812416",
         "blocksPerYear": 70080000
       },
       "deposit": {
@@ -359,23 +359,143 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "7500000000000000000000000",
-        "suppliedRaw": "6105372487769936990053309",
-        "headroomRaw": "1394627512230063009946691",
+        "suppliedRaw": "6515986686829089375738816",
+        "headroomRaw": "984013313170910624261184",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "venus:USDC:vUSDC": {
+      "marketAddress": "0xeca88125a5adbe82614ffc12d0db554e2e2867c8",
+      "assetAddress": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "fetchedAt": "2026-10-13T05:32:55.100Z",
+      "status": "available",
+      "baseApy": 0.03759297253674744,
+      "sourceUrl": "https://bscscan.com/address/0xeca88125a5adbe82614ffc12d0db554e2e2867c8#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "526618819",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "180000000000000000000000000",
+        "suppliedRaw": "39510973221415306642329794",
+        "headroomRaw": "140489026778584693357670206",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "venus:DAI:vDAI": {
+      "marketAddress": "0x334b3ecb4dca3593bccc3c7ebd1a1c1d1780fbf1",
+      "assetAddress": "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3",
+      "fetchedAt": "2026-10-13T05:32:55.127Z",
+      "status": "available",
+      "baseApy": 0.024295165339788045,
+      "sourceUrl": "https://bscscan.com/address/0x334b3ecb4dca3593bccc3c7ebd1a1c1d1780fbf1#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "342544547",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "4000000000000000000000000",
+        "suppliedRaw": "1603916685167612529698382",
+        "headroomRaw": "2396083314832387470301618",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "venus:LTC:vLTC": {
+      "marketAddress": "0x57a5297f2cb2c0aac9d554660acd6d385ab50c6b",
+      "assetAddress": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+      "fetchedAt": "2026-10-13T05:32:55.156Z",
+      "status": "available",
+      "baseApy": 0.0004148000082210938,
+      "sourceUrl": "https://bscscan.com/address/0x57a5297f2cb2c0aac9d554660acd6d385ab50c6b#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "5917726",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "50000000000000000000000",
+        "suppliedRaw": "44339392543335281388304",
+        "headroomRaw": "5660607456664718611696",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "venus:UNI:vUNI": {
+      "marketAddress": "0x27ff564707786720c71a2e5c1490a63266683612",
+      "assetAddress": "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+      "fetchedAt": "2026-10-13T05:32:55.255Z",
+      "status": "available",
+      "baseApy": 0.00046873314871307873,
+      "sourceUrl": "https://bscscan.com/address/0x27ff564707786720c71a2e5c1490a63266683612#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "6686981",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "2200000000000000000000000",
+        "suppliedRaw": "148655379756179680996263",
+        "headroomRaw": "2051344620243820319003737",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "lista:lista-wbnb-gauntlet": {
       "marketAddress": "0x57134a64b7cd9f9eb72f8255a671f5bf2fe3e2d0",
       "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
-      "fetchedAt": "2026-10-01T15:50:18.566Z",
+      "fetchedAt": "2026-10-13T05:32:55.328Z",
       "status": "available",
-      "baseApy": 0.002154235246518641,
+      "baseApy": 0.002136358682266682,
       "sourceUrl": "https://lista.org/lending/vault/bsc/0x57134a64b7cd9f9eb72f8255a671f5bf2fe3e2d0",
       "methodology": "Official Lista vault APY; not compounded again. Emission/campaign rewards excluded.",
       "inputs": {
-        "reportedApy": "0.002154235246518641",
+        "reportedApy": "0.002136358682266682",
         "emissionApyExcluded": "0.000000000000000000"
       },
       "deposit": {
@@ -385,22 +505,52 @@
           "exactAsset": true,
           "hasDepositCapacity": true
         },
-        "headroomRaw": "2909003499974547625131889",
+        "headroomRaw": "2908996409933421618526522",
         "receiver": "0x0000000000000000000000000000000000000001"
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "venus:USDe:vUSDe": {
+      "marketAddress": "0x74ca6930108f775cc667894eea33843e691680d7",
+      "assetAddress": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
+      "fetchedAt": "2026-10-13T05:32:55.291Z",
+      "status": "available",
+      "baseApy": 0.023838628851220223,
+      "sourceUrl": "https://bscscan.com/address/0x74ca6930108f775cc667894eea33843e691680d7#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "336182727",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "1000000000000000000000000",
+        "suppliedRaw": "37107756519155094520910",
+        "headroomRaw": "962892243480844905479090",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "lista:lista-btcb": {
       "marketAddress": "0xe46b8e65006e6450bdd8cb7d3274ab4f76f4c705",
       "assetAddress": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
-      "fetchedAt": "2026-10-01T15:50:18.616Z",
+      "fetchedAt": "2026-10-13T05:32:55.391Z",
       "status": "available",
-      "baseApy": 0.003293595429006793,
+      "baseApy": 0.001676507654336386,
       "sourceUrl": "https://lista.org/lending/vault/bsc/0xe46b8e65006e6450bdd8cb7d3274ab4f76f4c705",
       "methodology": "Official Lista vault APY; not compounded again. Emission/campaign rewards excluded.",
       "inputs": {
-        "reportedApy": "0.003293595429006793",
+        "reportedApy": "0.001676507654336386",
         "emissionApyExcluded": "0.000000000000000000"
       },
       "deposit": {
@@ -410,22 +560,47 @@
           "exactAsset": true,
           "hasDepositCapacity": true
         },
-        "headroomRaw": "1998131566817913708835",
+        "headroomRaw": "1997782857788548652045",
         "receiver": "0x0000000000000000000000000000000000000001"
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
-    "lista:lista-nvdab-flap": {
-      "marketAddress": "0x23db0a080f3a59b09a5dd6570a373ee09f4dcf37",
-      "assetAddress": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
-      "fetchedAt": "2026-10-01T15:50:18.687Z",
+    "lista:lista-usdc": {
+      "marketAddress": "0x8a06ac91265dbebe6d4606f45b10993e9a571869",
+      "assetAddress": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "fetchedAt": "2026-10-13T05:32:55.421Z",
       "status": "available",
-      "baseApy": 0.2700276027836008,
-      "sourceUrl": "https://lista.org/lending/vault/bsc/0x23db0a080f3a59b09a5dd6570a373ee09f4dcf37",
+      "baseApy": 0.008185107154982569,
+      "sourceUrl": "https://lista.org/lending/vault/bsc/0x8a06ac91265dbebe6d4606f45b10993e9a571869",
       "methodology": "Official Lista vault APY; not compounded again. Emission/campaign rewards excluded.",
       "inputs": {
-        "reportedApy": "0.270027602783600752",
+        "reportedApy": "0.008185107154982569",
+        "emissionApyExcluded": "0.060692337449884657"
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "hasDepositCapacity": true
+        },
+        "headroomRaw": "515909776590063333573212930",
+        "receiver": "0x0000000000000000000000000000000000000001"
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "lista:lista-xrp-hyperithm": {
+      "marketAddress": "0x0fca33dbe0889dc7ea2d9bd568422be2401b4c02",
+      "assetAddress": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+      "fetchedAt": "2026-10-13T05:32:55.427Z",
+      "status": "available",
+      "baseApy": 0,
+      "sourceUrl": "https://lista.org/lending/vault/bsc/0x0fca33dbe0889dc7ea2d9bd568422be2401b4c02",
+      "methodology": "Official Lista vault APY; not compounded again. Emission/campaign rewards excluded.",
+      "inputs": {
+        "reportedApy": "0.000000000000000000",
         "emissionApyExcluded": "0.000000000000000000"
       },
       "deposit": {
@@ -435,22 +610,122 @@
           "exactAsset": true,
           "hasDepositCapacity": true
         },
-        "headroomRaw": "17670277560301480985270",
+        "headroomRaw": "49998819652530216643760793",
         "receiver": "0x0000000000000000000000000000000000000001"
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "lista:lista-wbnb-solv": {
+      "marketAddress": "0xb798bb56898a86b6fd49fc1eca4150efdc3ee6ea",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "fetchedAt": "2026-10-13T05:32:55.513Z",
+      "status": "available",
+      "baseApy": 0,
+      "sourceUrl": "https://lista.org/lending/vault/bsc/0xb798bb56898a86b6fd49fc1eca4150efdc3ee6ea",
+      "methodology": "Official Lista vault APY; not compounded again. Emission/campaign rewards excluded.",
+      "inputs": {
+        "reportedApy": "0.000000000000000000",
+        "emissionApyExcluded": "0.000000000000000000"
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "hasDepositCapacity": true
+        },
+        "headroomRaw": "2999978635768825503699577",
+        "receiver": "0x0000000000000000000000000000000000000001"
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "lista:lista-wbnb-mev": {
+      "marketAddress": "0xd5cfc0f894ba77e95e3325aa53eb3e6cbbb5a81e",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "fetchedAt": "2026-10-13T05:32:55.467Z",
+      "status": "available",
+      "baseApy": 0.016017963729632972,
+      "sourceUrl": "https://lista.org/lending/vault/bsc/0xd5cfc0f894ba77e95e3325aa53eb3e6cbbb5a81e",
+      "methodology": "Official Lista vault APY; not compounded again. Emission/campaign rewards excluded.",
+      "inputs": {
+        "reportedApy": "0.016017963729632972",
+        "emissionApyExcluded": "0.000000000000000000"
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "hasDepositCapacity": true
+        },
+        "headroomRaw": "89999955937721123266705313",
+        "receiver": "0x0000000000000000000000000000000000000001"
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "lista:lista-wbnb-loop": {
+      "marketAddress": "0xab251dc87dc313649d024bd69b34c8e7690ce1fc",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "fetchedAt": "2026-10-13T05:32:55.588Z",
+      "status": "available",
+      "baseApy": 0.002111907791376218,
+      "sourceUrl": "https://lista.org/lending/vault/bsc/0xab251dc87dc313649d024bd69b34c8e7690ce1fc",
+      "methodology": "Official Lista vault APY; not compounded again. Emission/campaign rewards excluded.",
+      "inputs": {
+        "reportedApy": "0.002111907791376218",
+        "emissionApyExcluded": "0.000000000000000000"
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "hasDepositCapacity": true
+        },
+        "headroomRaw": "99999961664416130329511",
+        "receiver": "0x0000000000000000000000000000000000000001"
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "lista:lista-wbnb-pangolins": {
+      "marketAddress": "0xcb995fb56ec7fc42e0c9a075dfa3a0b56de72484",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "fetchedAt": "2026-10-13T05:32:55.536Z",
+      "status": "available",
+      "baseApy": 0.00211190788381743,
+      "sourceUrl": "https://lista.org/lending/vault/bsc/0xcb995fb56ec7fc42e0c9a075dfa3a0b56de72484",
+      "methodology": "Official Lista vault APY; not compounded again. Emission/campaign rewards excluded.",
+      "inputs": {
+        "reportedApy": "0.002111907883817430",
+        "emissionApyExcluded": "0.000000000000000000"
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "hasDepositCapacity": true
+        },
+        "headroomRaw": "69997255195508972795382",
+        "receiver": "0x0000000000000000000000000000000000000001"
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "aave-btcb": {
       "marketAddress": "0x56a7ddc4e848ebf43845854205ad71d5d5f72d3d",
       "assetAddress": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
-      "fetchedAt": "2026-10-01T15:50:18.737Z",
+      "fetchedAt": "2026-10-13T05:32:55.670Z",
       "status": "available",
-      "baseApy": 0.00005095543201730362,
+      "baseApy": 0.000045564394753541744,
       "sourceUrl": "https://bscscan.com/address/0xc90df74a7c16245c5f5c5870327ceb38fe5d5328#readContract",
       "methodology": "Current liquidity-rate APR in ray units, annualized with per-second compounding. Rewards excluded.",
       "inputs": {
-        "liquidityRateRay": "50954133833418241595515"
+        "liquidityRateRay": "45563356728071247374329"
       },
       "deposit": {
         "supplyEnabled": true,
@@ -463,52 +738,23 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "1200000000000000000000",
-        "suppliedRaw": "1081839550262985551885",
-        "headroomRaw": "118160449737014448115",
+        "suppliedRaw": "1064253409243425000138",
+        "headroomRaw": "135746590756574999862",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
-    },
-    "aave-eth": {
-      "marketAddress": "0x2e94171493fabe316b6205f1585779c887771e2f",
-      "assetAddress": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
-      "fetchedAt": "2026-10-01T15:50:18.873Z",
-      "status": "available",
-      "baseApy": 0.005888137201362718,
-      "sourceUrl": "https://bscscan.com/address/0xc90df74a7c16245c5f5c5870327ceb38fe5d5328#readContract",
-      "methodology": "Current liquidity-rate APR in ray units, annualized with per-second compounding. Rewards excluded.",
-      "inputs": {
-        "liquidityRateRay": "5870869870514155474811137"
-      },
-      "deposit": {
-        "supplyEnabled": true,
-        "reason": "Open at snapshot",
-        "checks": {
-          "exactAsset": true,
-          "active": true,
-          "notFrozen": true,
-          "notPaused": true,
-          "hasSupplyCapacity": true
-        },
-        "supplyCapRaw": "10000000000000000000000",
-        "suppliedRaw": "7656053704693229759972",
-        "headroomRaw": "2343946295306770240028",
-        "unlimitedCap": false
-      },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     },
     "aave-wbnb": {
       "marketAddress": "0x9b00a09492a626678e5a3009982191586c444df9",
       "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
-      "fetchedAt": "2026-10-01T15:50:18.699Z",
+      "fetchedAt": "2026-10-13T05:32:55.614Z",
       "status": "available",
-      "baseApy": 0.00006082293072136101,
+      "baseApy": 0.0000490874502632494,
       "sourceUrl": "https://bscscan.com/address/0xc90df74a7c16245c5f5c5870327ceb38fe5d5328#readContract",
       "methodology": "Current liquidity-rate APR in ray units, annualized with per-second compounding. Rewards excluded.",
       "inputs": {
-        "liquidityRateRay": "60821081081968848617551"
+        "liquidityRateRay": "49086245513826152984674"
       },
       "deposit": {
         "supplyEnabled": true,
@@ -521,20 +767,164 @@
           "hasSupplyCapacity": true
         },
         "supplyCapRaw": "160000000000000000000000",
-        "suppliedRaw": "125825952561168903346097",
-        "headroomRaw": "34174047438831096653903",
+        "suppliedRaw": "127774857627117745917051",
+        "headroomRaw": "32225142372882254082949",
         "unlimitedCap": false
       },
-      "blockNumber": 125127406,
-      "blockTime": "2026-10-01T15:50:16.000Z"
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "aave-usdc": {
+      "marketAddress": "0x00901a076785e0906d1028c7d6372d247bec7d61",
+      "assetAddress": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "fetchedAt": "2026-10-13T05:32:55.767Z",
+      "status": "available",
+      "baseApy": 0.03170991250596668,
+      "sourceUrl": "https://bscscan.com/address/0xc90df74a7c16245c5f5c5870327ceb38fe5d5328#readContract",
+      "methodology": "Current liquidity-rate APR in ray units, annualized with per-second compounding. Rewards excluded.",
+      "inputs": {
+        "liquidityRateRay": "31217535027933183307178614"
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "active": true,
+          "notFrozen": true,
+          "notPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "21000000000000000000000000",
+        "suppliedRaw": "13440571176589723299879632",
+        "headroomRaw": "7559428823410276700120368",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
+    },
+    "aave-eth": {
+      "marketAddress": "0x2e94171493fabe316b6205f1585779c887771e2f",
+      "assetAddress": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+      "fetchedAt": "2026-10-13T05:32:55.757Z",
+      "status": "available",
+      "baseApy": 0.005026599214364947,
+      "sourceUrl": "https://bscscan.com/address/0xc90df74a7c16245c5f5c5870327ceb38fe5d5328#readContract",
+      "methodology": "Current liquidity-rate APR in ray units, annualized with per-second compounding. Rewards excluded.",
+      "inputs": {
+        "liquidityRateRay": "5014008041161104359929771"
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "active": true,
+          "notFrozen": true,
+          "notPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "10000000000000000000000",
+        "suppliedRaw": "7826064786134864274258",
+        "headroomRaw": "2173935213865135725742",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347404,
+      "blockTime": "2026-10-13T05:32:54.000Z"
     }
   },
   "collateralMarkets": {
     "0xe52b068bb5b6225de1800b434bdd465246faea79352000acad88bdff312eab95": {
-      "fetchedAt": "2026-10-01T15:50:19.262Z",
+      "fetchedAt": "2026-10-13T05:32:55.956Z",
       "status": "available",
       "nativeApy": 0,
-      "blockNumber": 125127406
+      "blockNumber": 127347404
+    }
+  },
+  "cashMarkets": {
+    "aave-usdt": {
+      "marketAddress": "0xa9251ca9de909cb71783723713b21e4233fbf1b1",
+      "assetAddress": "0x55d398326f99059ff775485246999027b3197955",
+      "fetchedAt": "2026-10-13T05:32:57.205Z",
+      "status": "available",
+      "baseApy": 0.02958603714683466,
+      "sourceUrl": "https://bscscan.com/address/0xc90df74a7c16245c5f5c5870327ceb38fe5d5328#readContract",
+      "methodology": "Current liquidity-rate APR in ray units, annualized with per-second compounding. Rewards excluded.",
+      "inputs": {
+        "liquidityRateRay": "29156815786603063283002097"
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "active": true,
+          "notFrozen": true,
+          "notPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "90000000000000000000000000",
+        "suppliedRaw": "65704835798193986105205288",
+        "headroomRaw": "24295164201806013894794712",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347411,
+      "blockTime": "2026-10-13T05:32:57.000Z"
+    },
+    "venus:USDT:vUSDT": {
+      "marketAddress": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "assetAddress": "0x55d398326f99059ff775485246999027b3197955",
+      "fetchedAt": "2026-10-13T05:32:57.204Z",
+      "status": "available",
+      "baseApy": 0.034480962925129095,
+      "sourceUrl": "https://bscscan.com/address/0xfd5840cd36d94d7229439859c0112a4185bc0255#readProxyContract",
+      "methodology": "Current supply rate, daily compounding; blocks/year read from the interest-rate model. Rewards excluded.",
+      "inputs": {
+        "supplyRatePerBlock": "483752713",
+        "blocksPerYear": 70080000
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "listed": true,
+          "mintNotPaused": true,
+          "protocolNotPaused": true,
+          "hasSupplyCapacity": true
+        },
+        "supplyCapRaw": "600000000000000000000000000",
+        "suppliedRaw": "175120896514275774413757806",
+        "headroomRaw": "424879103485724225586242194",
+        "unlimitedCap": false
+      },
+      "blockNumber": 127347411,
+      "blockTime": "2026-10-13T05:32:57.000Z"
+    },
+    "lista:lista-usdt-gauntlet": {
+      "marketAddress": "0x6d6783c146f2b0b2774c1725297f1845dc502525",
+      "assetAddress": "0x55d398326f99059ff775485246999027b3197955",
+      "fetchedAt": "2026-10-13T05:32:57.207Z",
+      "status": "available",
+      "baseApy": 0.03455448426500273,
+      "sourceUrl": "https://lista.org/lending/vault/bsc/0x6d6783c146f2b0b2774c1725297f1845dc502525",
+      "methodology": "Official Lista vault APY; not compounded again. Emission/campaign rewards excluded.",
+      "inputs": {
+        "reportedApy": "0.034554484265002728",
+        "emissionApyExcluded": "0.000000000000000000"
+      },
+      "deposit": {
+        "supplyEnabled": true,
+        "reason": "Open at snapshot",
+        "checks": {
+          "exactAsset": true,
+          "hasDepositCapacity": true
+        },
+        "headroomRaw": "89987219797076116130429204",
+        "receiver": "0x0000000000000000000000000000000000000001"
+      },
+      "blockNumber": 127347411,
+      "blockTime": "2026-10-13T05:32:57.000Z"
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "schema": "bnb-agent-vaults/phase1-market-registry@1",
   "chainId": 56,
-  "verifiedAt": "2026-10-01",
-  "verifiedAtBlock": 125127123,
+  "verifiedAt": "2026-10-13",
+  "verifiedAtBlock": 127347692,
   "quoteAsset": {
     "symbol": "USDT",
     "address": "0x55d398326f99059ff775485246999027b3197955",
@@ -2744,6 +2744,111 @@
       ]
     },
     {
+      "id": "venus:USDC:vUSDC",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:USDC",
+      "assetSymbol": "USDC",
+      "assetAddress": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "marketAddress": "0xeca88125a5adbe82614ffc12d0db554e2e2867c8",
+      "label": "Venus vUSDC",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:DAI:vDAI",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:DAI",
+      "assetSymbol": "DAI",
+      "assetAddress": "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3",
+      "marketAddress": "0x334b3ecb4dca3593bccc3c7ebd1a1c1d1780fbf1",
+      "label": "Venus vDAI",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:LTC:vLTC",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:LTC",
+      "assetSymbol": "LTC",
+      "assetAddress": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+      "marketAddress": "0x57a5297f2cb2c0aac9d554660acd6d385ab50c6b",
+      "label": "Venus vLTC",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:UNI:vUNI",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:UNI",
+      "assetSymbol": "UNI",
+      "assetAddress": "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+      "marketAddress": "0x27ff564707786720c71a2e5c1490a63266683612",
+      "label": "Venus vUNI",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
+      "id": "venus:USDe:vUSDe",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "crypto:USDe",
+      "assetSymbol": "USDe",
+      "assetAddress": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
+      "marketAddress": "0x74ca6930108f775cc667894eea33843e691680d7",
+      "label": "Venus vUSDe",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact underlying/comptroller",
+        "listed",
+        "protocol not paused",
+        "mint not paused",
+        "positive supply-cap headroom"
+      ]
+    },
+    {
       "id": "lista:lista-wbnb-gauntlet",
       "protocol": "Lista",
       "kind": "vault",
@@ -2776,14 +2881,94 @@
       ]
     },
     {
-      "id": "lista:lista-nvdab-flap",
+      "id": "lista:lista-usdc",
       "protocol": "Lista",
       "kind": "vault",
-      "targetId": "bstock:NVDAB",
-      "assetSymbol": "NVDAB",
-      "assetAddress": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
-      "marketAddress": "0x23db0a080f3a59b09a5dd6570a373ee09f4dcf37",
-      "label": "Flap NVDAB Vault",
+      "targetId": "crypto:USDC",
+      "assetSymbol": "USDC",
+      "assetAddress": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "marketAddress": "0x8a06ac91265dbebe6d4606f45b10993e9a571869",
+      "label": "Lista USDC Vault",
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact ERC-4626 asset",
+        "maxDeposit",
+        "previewDeposit/minimum shares"
+      ]
+    },
+    {
+      "id": "lista:lista-xrp-hyperithm",
+      "protocol": "Lista",
+      "kind": "vault",
+      "targetId": "crypto:XRP",
+      "assetSymbol": "XRP",
+      "assetAddress": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+      "marketAddress": "0x0fca33dbe0889dc7ea2d9bd568422be2401b4c02",
+      "label": "Hyperithm Lista XRP",
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact ERC-4626 asset",
+        "maxDeposit",
+        "previewDeposit/minimum shares"
+      ]
+    },
+    {
+      "id": "lista:lista-wbnb-mev",
+      "protocol": "Lista",
+      "kind": "vault",
+      "targetId": "crypto:WBNB",
+      "assetSymbol": "WBNB",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "marketAddress": "0xd5cfc0f894ba77e95e3325aa53eb3e6cbbb5a81e",
+      "label": "MEV BNB Vault",
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact ERC-4626 asset",
+        "maxDeposit",
+        "previewDeposit/minimum shares"
+      ]
+    },
+    {
+      "id": "lista:lista-wbnb-solv",
+      "protocol": "Lista",
+      "kind": "vault",
+      "targetId": "crypto:WBNB",
+      "assetSymbol": "WBNB",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "marketAddress": "0xb798bb56898a86b6fd49fc1eca4150efdc3ee6ea",
+      "label": "Solv-Exclusive BNB Vault",
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact ERC-4626 asset",
+        "maxDeposit",
+        "previewDeposit/minimum shares"
+      ]
+    },
+    {
+      "id": "lista:lista-wbnb-pangolins",
+      "protocol": "Lista",
+      "kind": "vault",
+      "targetId": "crypto:WBNB",
+      "assetSymbol": "WBNB",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "marketAddress": "0xcb995fb56ec7fc42e0c9a075dfa3a0b56de72484",
+      "label": "Pangolins BNB Vault",
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact ERC-4626 asset",
+        "maxDeposit",
+        "previewDeposit/minimum shares"
+      ]
+    },
+    {
+      "id": "lista:lista-wbnb-loop",
+      "protocol": "Lista",
+      "kind": "vault",
+      "targetId": "crypto:WBNB",
+      "assetSymbol": "WBNB",
+      "assetAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "marketAddress": "0xab251dc87dc313649d024bd69b34c8e7690ce1fc",
+      "label": "Loop BNB Vault",
       "revalidateBeforeEveryDeposit": true,
       "runtimeChecks": [
         "exact ERC-4626 asset",
@@ -2859,6 +3044,72 @@
         "reserve not paused",
         "supply-cap headroom"
       ]
+    },
+    {
+      "id": "aave-usdc",
+      "protocol": "Aave",
+      "kind": "supply-market",
+      "targetId": "crypto:USDC",
+      "assetSymbol": "USDC",
+      "assetAddress": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "marketAddress": "0x00901a076785e0906d1028c7d6372d247bec7d61",
+      "label": "Aave V3 USDC Reserve",
+      "rateSource": {
+        "poolAddress": "0x6807dc923806fe8fd134338eabca509979a7e0cb",
+        "dataProviderAddress": "0xc90df74a7c16245c5f5c5870327ceb38fe5d5328",
+        "addressesProviderAddress": "0xff75b6da14ffbbfd355daf7a2731456b3562ba6d"
+      },
+      "revalidateBeforeEveryDeposit": true,
+      "runtimeChecks": [
+        "exact aToken",
+        "reserve active",
+        "reserve not frozen",
+        "reserve not paused",
+        "supply-cap headroom"
+      ]
+    }
+  ],
+  "cashMarkets": [
+    {
+      "id": "venus:USDT:vUSDT",
+      "protocol": "Venus",
+      "kind": "supply-market",
+      "targetId": "accounting:USDT",
+      "assetSymbol": "USDT",
+      "assetAddress": "0x55d398326f99059ff775485246999027b3197955",
+      "marketAddress": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "label": "Venus vUSDT",
+      "rateSource": {
+        "comptrollerAddress": "0xfd36e2c2a6789db23113685031d7f16329158384"
+      },
+      "revalidateBeforeEveryDeposit": true
+    },
+    {
+      "id": "aave-usdt",
+      "protocol": "Aave",
+      "kind": "supply-market",
+      "targetId": "accounting:USDT",
+      "assetSymbol": "USDT",
+      "assetAddress": "0x55d398326f99059ff775485246999027b3197955",
+      "marketAddress": "0xa9251ca9de909cb71783723713b21e4233fbf1b1",
+      "label": "Aave V3 USDT Reserve",
+      "rateSource": {
+        "poolAddress": "0x6807dc923806fe8fd134338eabca509979a7e0cb",
+        "dataProviderAddress": "0xc90df74a7c16245c5f5c5870327ceb38fe5d5328",
+        "addressesProviderAddress": "0xff75b6da14ffbbfd355daf7a2731456b3562ba6d"
+      },
+      "revalidateBeforeEveryDeposit": true
+    },
+    {
+      "id": "lista:lista-usdt-gauntlet",
+      "protocol": "Lista",
+      "kind": "vault",
+      "targetId": "accounting:USDT",
+      "assetSymbol": "USDT",
+      "assetAddress": "0x55d398326f99059ff775485246999027b3197955",
+      "marketAddress": "0x6d6783c146f2b0b2774c1725297f1845dc502525",
+      "label": "Gauntlet USDT Vault",
+      "revalidateBeforeEveryDeposit": true
     }
   ],
   "collateralMarkets": [
@@ -2877,5 +3128,39 @@
       "selectable": false
     }
   ],
-  "unavailableMarkets": []
+  "unavailableMarkets": [
+    {
+      "id": "venus:TRX:vTRX",
+      "protocol": "Venus",
+      "targetId": "crypto:TRX",
+      "label": "Venus vTRX",
+      "reason": "Unavailable: supply paused, supply cap reached",
+      "selectable": false,
+      "sourceUrl": "https://bscscan.com/address/0xc5d3466aa484b040ee977073fcf337f2c00071c1#readProxyContract",
+      "verifiedAt": "2026-10-13T05:35:05.763Z",
+      "blockNumber": 127347692
+    },
+    {
+      "id": "lista:lista-nvdab-flap",
+      "protocol": "Lista",
+      "targetId": "bstock:NVDAB",
+      "label": "Flap NVDAB Vault",
+      "reason": "Deposits are limited to one allowlisted address (verified 2026-10-13 at block 127345261)",
+      "selectable": false,
+      "sourceUrl": "https://bscscan.com/address/0x23db0a080f3a59b09a5dd6570a373ee09f4dcf37",
+      "verifiedAt": "2026-10-01",
+      "blockNumber": 125067970
+    },
+    {
+      "id": "venus:BCH:vBCH",
+      "protocol": "Venus",
+      "targetId": "crypto:BCH",
+      "label": "Venus vBCH",
+      "reason": "No direct USDT pool: lending runs through the fund's single-pool conversion",
+      "selectable": false,
+      "sourceUrl": "https://bscscan.com/address/0x5f0388ebc2b94fa8e123f404b79ccf5f40b29176",
+      "verifiedAt": "2026-10-13T05:35:05.763Z",
+      "blockNumber": 127347692
+    }
+  ]
 }
