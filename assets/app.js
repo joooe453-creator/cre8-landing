@@ -30,6 +30,11 @@
   const STATIC_PREVIEW = window.__BAV_STATIC_PREVIEW__ === true ||
     window.location.protocol === "file:" ||
     !document.querySelector("[data-prototype-page]");
+  // A page shown inside the CRE8 AI panel (?embed=1 in a frame of this site): the panel supplies the navigation, and
+  // links to other pages open in a new tab so the conversation stays where it is. Another site's frame never gets it.
+  const EMBED = (() => {
+    try { return window.self !== window.top && window.parent.location.origin === location.origin && new URLSearchParams(location.search).get("embed") === "1"; } catch { return false; }
+  })();
   const assetUrl = (file) => STATIC_PREVIEW ? new URL(String(file), window.location.href).href : `${BASE_PATH}/${String(file).replace(/^\//, "")}`;
   const logoUrl = (file) => STATIC_PREVIEW ? `assets/logos/${file}.webp` : `${BASE_PATH}/logos/${file}.webp`;
   const route = (target = "") => {
@@ -48,6 +53,8 @@
     : `${String(DOCS_ORIGIN).replace(/\/$/, "")}/legal/${documentId ? `${encodeURIComponent(documentId)}/` : ""}`;
   // Not accepting a page notice leaves the page: back to the previous one, or home when there is none.
   function leavePage() {
+    // In the CRE8 AI panel, leaving closes the fund there; going back would move the conversation's own history.
+    if (EMBED) { window.parent.postMessage({ type: "cre8:embed-leave" }, location.origin); return; }
     const home = document.querySelector(".brand")?.href || "/";
     if (history.length < 2) { location.assign(home); return; }
     const fallback = setTimeout(() => location.assign(home), 1500);
@@ -831,6 +838,14 @@
       if (valid) try { localStorage.setItem("cre8.wallet", address.toLowerCase()); } catch { /* Notices then show again next visit. */ }
     });
     window.addEventListener("bav:wallet-change", () => paintWallet(null));
+    if (EMBED) document.addEventListener("click", (event) => {
+      const link = event.target.closest?.("a[href]");
+      if (!link || link.target || link.hasAttribute("download")) return;
+      const url = new URL(link.href, location.href);
+      if (url.origin === location.origin && url.pathname === location.pathname) return;
+      link.target = "_blank";
+      link.rel = "noopener";
+    }, true);
     // Connect wallet works on every page: it opens the wallet list here. Once connected, it leads to Portfolio.
     const walletButton = $(".header-wallet[data-connect]");
     walletButton?.addEventListener("click", async () => {
