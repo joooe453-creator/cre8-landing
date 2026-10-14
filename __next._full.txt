@@ -3,47 +3,37 @@
 3:I[37457,["/_next/static/chunks/1860_s4s3_qz8.js"],"default"]
 4:I[81384,["/_next/static/chunks/1860_s4s3_qz8.js","/_next/static/chunks/1f2_zpz1e_10k.js"],"PrototypePage"]
 b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
-:HL["/_next/static/chunks/09byazgh4oth7.css","style"]
+:HL["/_next/static/chunks/086jegh99iwqh.css","style"]
 :HC["/",""]
 :HL["/_next/static/chunks/026va0v4bymjn.css","style"]
-5:T6779,
+5:T5b62,
 <header class="cl-nav" id="mh"><div class="wrap cl-nav-in">
 <a class="brand" href="https://cre8.finance/" id="brand" aria-label="CRE8 home"></a>
-<nav class="cl-links" aria-label="Main navigation"><a href="#how">How it works</a><a href="#funds">Funds</a><a href="#ai">CRE8 AI</a><a href="#earn">Earnings</a><a href="https://docs.cre8.finance/">Docs</a></nav>
+<nav class="cl-links" aria-label="Main navigation"><a href="#how">How it works</a><a href="#ai">CRE8 AI</a><a href="#funds">Funds</a><a href="#earn">Earnings</a><a href="https://docs.cre8.finance/">Docs</a></nav>
 <a class="btn sm" href="https://app.cre8.finance/vaults/" data-wipe>Launch app</a>
 </div></header>
 <main>
-<section class="cl-hero" id="top">
-<div class="wrap cl-hero-top">
-<h1 class="cl-display" aria-label="CRE8 a fund. Let your agent run it.">CRE8 a fund.<br><span class="cl-l2">Let your agent</span> <span class="cl-nw cl-type" aria-hidden="true"><span id="cl-type">run it.</span><span class="cl-type-c" id="cl-type-c">_</span></span></h1>
-<div class="cl-hero-side">
+<section class="cl-hero" id="top" aria-labelledby="cl-hero-title">
+<div class="wrap cl-hero-in">
+<h1 class="cl-hero-h1" id="cl-hero-title"><span class="cl-l1">Wall Street built funds.</span> <span class="cl-l2">Now anyone can CRE<b class="cl-t8"><i>8</i></b> one.</span></h1>
 <div class="cl-ctas"><a class="btn" href="https://app.cre8.finance/create/" data-wipe>Open a fund</a><a class="btn ghost" href="https://app.cre8.finance/vaults/" data-wipe>Explore funds</a></div>
 </div>
-</div>
-<div class="wrap"><dl class="cl-stats" data-flap-once>
-<div><dt>Funds</dt><dd><span class="cl-flap cl-tiles" data-hero="vaults">0</span></dd></div>
-<div><dt>Holders</dt><dd><span class="cl-flap cl-tiles" data-hero="depositors">0</span></dd></div>
-<div><dt>TVL</dt><dd><span class="cl-flap cl-tiles" data-hero="tvl">$0</span></dd></div>
-<div><dt>Holders’ profit</dt><dd><span class="cl-flap cl-tiles" data-hero="earned">$0</span></dd></div>
-</dl></div>
-<figure class="cl-photo cl-band" style="--lq:url(data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABQBACdASogAAsAPpE4l0eloyIhMAgAsBIJaQAD5dZmpVqjzmTv1nuC3AoAAP7/OuF2uyOQKX3tEj0/iW+O7j6exTjHtzv2euZdyqUiKJJOyV9KnjfmrNTOja7jrvbODZFCE3vBpFv08YcetsvOueu8+5f8GPak8x81tQJxm9vuU6v5xKHNBlEs5izA4+ul1yXCAGbtIbwSErxyBwmIOQtBmSNpRgWrQAA=);--lq-m:url(data:image/webp;base64,UklGRhQBAABXRUJQVlA4IAgBAAAQBgCdASogABUAPpFCm0olo6IhqAgAsBIJaQDGRbRW1Bn0y/e+qobqLPH01KZs7npZmIjMZkBNYYAA/v5N2aPcqVY5nYSJSPY5ebp7/y1NZmSBE4np4C6+XaqQfVuTsYg9MGfsIFcTCP2yJ6AIEiY8t31KjVubqMpL7MBCN/pSDpdtXDxc4sKZL+ORPO/Xky6tNufDCI0jEZyS4C10n7cFZMZ2bneMxB/3hxXEfT4yO45W+K7URY7FERuDjMKE8oJa0p2/NTw2T99xL6XjyU6LIQL3eK/5e35sS8HzvDSr+pbwi1dRhoLdfjFrncqNcAbj+/ZL5IdYG9aQxKEdeEoVA7NJklDlTAA=)"><picture><source media="(max-width: 699px)" sizes="100vw" srcset="/img/floor-480.webp 480w, /img/floor-800.webp 800w"><img src="/img/floor-wide-1280.webp" srcset="/img/floor-wide-800.webp 800w, /img/floor-wide-1280.webp 1280w, /img/floor-wide-2000.webp 2000w" sizes="100vw" width="2000" height="667" alt="A robot in a pinstripe suit standing still on a crowded early-1900s trading floor" fetchpriority="high"></picture></figure>
+<div class="cl-hero-stage" id="cl-hero-stage" aria-hidden="true"><canvas></canvas><p class="cl-fund-label" id="cl-fund-label"><b>One fund</b><span id="cl-fund-mix"></span></p></div>
 </section>
 
-<section class="cl-sec" id="story"><div class="wrap cl-story">
-<h2 class="cl-h2">Wall Street, rebuilt onchain</h2>
-<table class="cl-spec">
-<thead><tr><th><span class="cl-sr">Role</span></th><th>Wall Street</th><th>CRE8</th></tr></thead>
-<tbody>
-<tr><td class="k">Holds</td><td class="them">Stocks here, crypto elsewhere</td><td class="us">US stocks and crypto in one fund</td></tr>
-<tr><td class="k">Run by</td><td class="them">A portfolio manager</td><td class="us">A plan or your AI agent</td></tr>
-<tr><td class="k">Rules</td><td class="them">A prospectus</td><td class="us">A mandate the contract enforces</td></tr>
-<tr><td class="k">Custody</td><td class="them">Custodian bank</td><td class="us">The fund contract</td></tr>
-<tr><td class="k">Pricing</td><td class="them">Daily NAV</td><td class="us">Share price onchain</td></tr>
-<tr><td class="k">Track record</td><td class="them">Annual reports</td><td class="us">Every trade onchain</td></tr>
-</tbody>
-</table>
-<figure class="cl-photo cl-story-img" style="--lq:url(data:image/webp;base64,UklGRgoBAABXRUJQVlA4IP4AAADwBgCdASogABUAPpE6mkkloyKhMBgIALASCWcAxN7wNWN0CthsNmEyufvyDfRIN/6QhgXZfkDkFjdH6BewcAAAAP77BhTd+hbxVRNln/Ut+HeCgkOZi09e79WKsOVoCATw//mYQf4hb6t7C5x+hdIouqFDWGNVVoadFL4UetPQweorRDAyK2Hx8eMC7v94VHDwpOxTb2QY4BE1eLbS7N4ekVnXbzqYIrE+sCkHK0gg94nvIqLWbDdNbDOMIz2yjXbJw3zLa2W8fpircEwOAVeax0K/mX4GHreTLRZW3mirsLRwog0j2jarSBV3hNN/cjXLXDySFvQXl2IoTwAAAA==)"><img src="/img/street-480.webp" srcset="/img/street-480.webp 480w, /img/street-900.webp 900w" sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 440px" width="900" height="600" alt="Robots in suits carrying briefcases walk among the crowd on Wall Street in the early 1900s" loading="lazy" decoding="async"></figure>
-</div></section>
+<section class="cl-split" id="story" aria-labelledby="cl-split-title">
+<div class="cl-split-bg"><img src="/img/floor-split-1280.webp" srcset="/img/floor-split-800.webp 800w, /img/floor-split-1280.webp 1280w, /img/floor-split-1600.webp 1600w" sizes="100vw" width="1600" height="1069" alt="A 1900s trading floor whose right half turns into a grid of data" loading="lazy" decoding="async"><canvas aria-hidden="true"></canvas></div>
+<div class="cl-split-shade"></div>
+<div class="wrap cl-split-in">
+<h2 class="cl-split-heads" id="cl-split-title"><span class="cl-ws">Wall Street</span> <span class="cl-mid">rebuilt</span> <span class="cl-oc">onchain</span></h2>
+<dl class="cl-split-rows">
+<div style="--i:0"><dt>Holds</dt><dd class="cl-ws">Stocks or crypto</dd><dd class="cl-oc">Both, in one fund</dd></div>
+<div style="--i:1"><dt>Run by</dt><dd class="cl-ws">A portfolio manager</dd><dd class="cl-oc">A plan or your AI agent</dd></div>
+<div style="--i:2"><dt>Custody</dt><dd class="cl-ws">A bank</dd><dd class="cl-oc">The fund contract</dd></div>
+<div style="--i:3"><dt>Records</dt><dd class="cl-ws">Annual reports</dd><dd class="cl-oc">Every trade onchain</dd></div>
+</dl>
+</div>
+</section>
 
 <section class="cl-flow" id="how" aria-labelledby="cl-flow-title">
 <div class="wrap"><h2 class="cl-h2" id="cl-flow-title">How it works</h2></div>
@@ -135,125 +125,220 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
 </div>
 </section>
 
-<section class="cl-sec cl-ai" id="ai" aria-labelledby="cl-ai-title"><div class="wrap">
+<section class="cl-ai" id="ai" aria-labelledby="cl-ai-title">
 <div class="cl-ai-stage">
-<div class="cl-ai-head"><h2 class="cl-ai-title" id="cl-ai-title">Or just ask CRE8&nbsp;AI.</h2>
-<p class="cl-ai-lede">Describe your thesis in one sentence. CRE8 AI drafts the fund, from what it holds to its mandate, and prepares every transaction. Nothing moves until you approve.</p>
-<div class="cl-ctas"><a class="btn" href="https://app.cre8.finance/agent/" data-wipe>Ask CRE8 AI</a></div></div>
+<div class="cl-ai-bg" aria-hidden="true"><img src="/img/doors-1280.webp" srcset="/img/doors-800.webp 800w, /img/doors-1280.webp 1280w" sizes="100vw" width="1280" height="714" alt="" loading="lazy" decoding="async"></div>
+<div class="cl-ai-head"><h2 class="cl-h2 cl-ai-title" id="cl-ai-title">Or just ask CRE8&nbsp;AI.</h2>
+<p class="cl-ai-lede">One sentence in. A fund out. Nothing moves until you approve.</p>
+<div class="cl-ctas"><a class="btn cl-btn-light" href="https://app.cre8.finance/agent/" data-wipe>Ask CRE8 AI</a></div></div>
 <div class="cl-ai-app" aria-hidden="true">
-<div class="cl-ai-bar"><img src="/assets/agents/agent-07.webp" alt="" width="30" height="30" loading="lazy"><b>CRE8 AI</b><span class="cl-ai-thread">New fund</span></div>
-<div class="cl-ai-body">
 <div class="cl-ai-chat">
-<p class="cl-ai-hello"><img src="/assets/agents/agent-07.webp" alt="" width="52" height="52" loading="lazy"><b>What’s your thesis?</b></p>
 <div class="cl-ai-log">
-<p class="cl-ai-msg me">Own the Mag 7, buying a little every week.</p>
-<div class="cl-ai-msg ai"><div class="cl-ai-run"><p class="cl-ai-step is-done"><i class="cl-ai-spin"></i>Drafted the mandate</p><p class="cl-ai-step is-done"><i class="cl-ai-spin"></i>Checked 7 bStocks on PancakeSwap</p><p class="cl-ai-step is-done"><i class="cl-ai-spin"></i>Prepared the create transaction</p></div><p>Mag 7 Weekly is ready: equal weight, weekly buys on PancakeSwap and a 15% fee.</p><p class="cl-ai-approved">Approved and confirmed in your wallet</p></div>
-<div class="cl-ai-msg ai"><div class="cl-ai-run"><p class="cl-ai-step is-done"><i class="cl-ai-spin"></i>Fund created onchain</p><p class="cl-ai-step is-done"><i class="cl-ai-spin"></i>The plan made the first buy</p></div><p>Done. The fund now buys every week, within its mandate.</p></div>
+<div class="cl-ai-msg ai on"><img src="/assets/agents/agent-07.webp" alt="" width="28" height="28" loading="lazy"><p>What should your fund hold? Describe it in one sentence.</p></div>
+<div class="cl-ai-msg me on" data-k="me"><small>Design</small><p>Own Big Tech and Bitcoin, buying a little every week.</p></div>
+<div class="cl-ai-msg ai on" data-k="reply"><img src="/assets/agents/agent-07.webp" alt="" width="28" height="28" loading="lazy"><p>Here’s Big Tech + Bitcoin. Edit anything, or tell me what to change.</p></div>
+<div class="cl-ai-changes on" data-k="changes"><p>7 changes to your fund</p><ul><li class="on"><b>+</b>NVIDIA · 15%</li><li class="on"><b>+</b>Apple · 15%</li><li class="on"><b>+</b>Alphabet · 14%</li><li class="on"><b>+</b>Microsoft · 14%</li><li class="on"><b>+</b>Meta · 14%</li><li class="on"><b>+</b>Amazon · 14%</li><li class="on"><b>+</b>Bitcoin · 14%</li></ul></div>
+<div class="cl-ai-chips on" data-k="chips"><span>Rebalance quarterly</span><span>Keep 10% in cash</span><span>Add a 20% stop-loss</span></div>
 </div>
-<div class="cl-ai-composer"><span class="cl-ai-typed"></span><i class="cl-ai-caret"></i><span class="cl-ai-send">↑</span></div>
-<div class="cl-ai-wallet"><p class="cl-ai-wallet-k">Confirm in your wallet</p><dl><div><dt>Create fund</dt><dd>Mag 7 Weekly</dd></div><div><dt>You put in</dt><dd>100 USDT</dd></div><div><dt>Network</dt><dd>BNB Chain</dd></div></dl><p class="cl-ai-wallet-btns"><span class="cl-ai-btn ghost">Reject</span><span class="cl-ai-btn cl-ai-confirm">Confirm</span></p></div>
-<svg class="cl-ai-cursor" viewBox="0 0 28 28"><path d="M5 3l17 9.2-7.6 2.1L10.6 22z"/></svg>
+<div class="cl-ai-compose"><span class="cl-ai-typed"></span><i class="cl-ai-caret"></i><b class="cl-ai-send">↑</b></div>
 </div>
-<aside class="cl-ai-fund s1 s2 s3 s4 s5">
-<p class="cl-ai-empty">Your fund takes shape here as CRE8 AI drafts it.</p>
-<p class="cl-ai-fund-k" data-s="1">Fund</p>
-<h4 data-s="1">Mag 7 Weekly</h4>
-<p class="cl-ai-status" data-s="1"><span>Status</span><b>Live</b></p>
-<div class="cl-ai-hold" data-s="2"><p><span class="cl-tks-row"><span class="cl-tk" style="--c:#1D1D1F">A</span><span class="cl-tk" style="--c:#0A84D6">M</span><span class="cl-tk" style="--c:#E8453C">G</span><span class="cl-tk" style="--c:#F59B00">A</span><span class="cl-tk" style="--c:#0866FF">M</span><span class="cl-tk" style="--c:#6FAE00">N</span><span class="cl-tk" style="--c:#D82C2C">T</span></span>Mag 7 bStocks</p><div class="cl-alloc"><i style="--c:#1D1D1F"></i><i style="--c:#0A84D6"></i><i style="--c:#E8453C"></i><i style="--c:#F59B00"></i><i style="--c:#0866FF"></i><i style="--c:#6FAE00"></i><i style="--c:#D82C2C"></i></div></div>
-<dl class="cl-ai-rules" data-s="1"><div><dt>Buys</dt><dd>Every week</dd></div><div><dt>Trades on</dt><dd><img src="/logos/pancakeswap.webp" alt="" width="16" height="16">PancakeSwap</dd></div><div><dt>Your fee</dt><dd>15% of profit</dd></div><div><dt>You put in</dt><dd>100 USDT</dd></div></dl>
-<div class="cl-ai-live" data-s="4"><div><small>Share price</small><b class="cl-flap cl-tiles" id="cl-ai-price">1.000</b></div><div><small>Run by</small><b>Weekly plan</b></div></div>
-<p class="cl-ai-first" data-s="5"><img src="/assets/agents/agent-07.webp" alt="" width="26" height="26">First buy done: 7 bStocks on PancakeSwap</p>
-</aside>
+<div class="cl-ai-panel">
+<div class="cl-ai-ptop"><b class="cl-ai-name">Big Tech + Bitcoin</b><span class="cl-ai-tag">Draft</span><span class="cl-ai-x">×</span></div>
+<div class="cl-ai-card">
+<div class="cl-ai-chead"><b>Assets</b><span class="cl-ai-count">7 of 7</span></div>
+<div class="cl-ai-th"><span>Asset</span><span>Share</span><span>Strategy</span></div>
+<p class="cl-ai-empty">Your fund takes shape here.</p>
+<div class="cl-ai-rows">
+<div class="cl-ai-row on"><div class="cl-ai-asset"><img src="/logos/stocks/nvdab.png" alt="" width="28" height="28" loading="lazy"><span><b>NVIDIA</b><small>NVDAB</small></span></div><div class="cl-ai-share">15%</div><div class="cl-ai-strat"><svg viewBox="0 0 52 22"><path d="M1 15 L8 12 L14 16 L21 9 L28 13 L35 7 L42 10 L51 3" fill="none" stroke="#4E6A7F" stroke-width="1.4"/></svg><span><b>Stack</b><small>Every Monday · 12 buys</small></span></div></div>
+<div class="cl-ai-row on"><div class="cl-ai-asset"><img src="/logos/stocks/aaplb.png" alt="" width="28" height="28" loading="lazy"><span><b>Apple</b><small>AAPLB</small></span></div><div class="cl-ai-share">15%</div><div class="cl-ai-strat"><svg viewBox="0 0 52 22"><path d="M1 15 L8 12 L14 16 L21 9 L28 13 L35 7 L42 10 L51 3" fill="none" stroke="#4E6A7F" stroke-width="1.4"/></svg><span><b>Stack</b><small>Every Monday · 12 buys</small></span></div></div>
+<div class="cl-ai-row on"><div class="cl-ai-asset"><img src="/logos/stocks/googlb.png" alt="" width="28" height="28" loading="lazy"><span><b>Alphabet</b><small>GOOGLB</small></span></div><div class="cl-ai-share">14%</div><div class="cl-ai-strat"><svg viewBox="0 0 52 22"><path d="M1 15 L8 12 L14 16 L21 9 L28 13 L35 7 L42 10 L51 3" fill="none" stroke="#4E6A7F" stroke-width="1.4"/></svg><span><b>Stack</b><small>Every Monday · 12 buys</small></span></div></div>
+<div class="cl-ai-row on"><div class="cl-ai-asset"><img src="/logos/stocks/msftb.png" alt="" width="28" height="28" loading="lazy"><span><b>Microsoft</b><small>MSFTB</small></span></div><div class="cl-ai-share">14%</div><div class="cl-ai-strat"><svg viewBox="0 0 52 22"><path d="M1 15 L8 12 L14 16 L21 9 L28 13 L35 7 L42 10 L51 3" fill="none" stroke="#4E6A7F" stroke-width="1.4"/></svg><span><b>Stack</b><small>Every Monday · 12 buys</small></span></div></div>
+<div class="cl-ai-row on"><div class="cl-ai-asset"><img src="/logos/stocks/metab.png" alt="" width="28" height="28" loading="lazy"><span><b>Meta</b><small>METAB</small></span></div><div class="cl-ai-share">14%</div><div class="cl-ai-strat"><svg viewBox="0 0 52 22"><path d="M1 15 L8 12 L14 16 L21 9 L28 13 L35 7 L42 10 L51 3" fill="none" stroke="#4E6A7F" stroke-width="1.4"/></svg><span><b>Stack</b><small>Every Monday · 12 buys</small></span></div></div>
+<div class="cl-ai-row on"><div class="cl-ai-asset"><img src="/logos/stocks/amznb.png" alt="" width="28" height="28" loading="lazy"><span><b>Amazon</b><small>AMZNB</small></span></div><div class="cl-ai-share">14%</div><div class="cl-ai-strat"><svg viewBox="0 0 52 22"><path d="M1 15 L8 12 L14 16 L21 9 L28 13 L35 7 L42 10 L51 3" fill="none" stroke="#4E6A7F" stroke-width="1.4"/></svg><span><b>Stack</b><small>Every Monday · 12 buys</small></span></div></div>
+<div class="cl-ai-row on"><div class="cl-ai-asset"><img src="/logos/tokens/btc.png" alt="" width="28" height="28" loading="lazy"><span><b>Bitcoin</b><small>BTCB</small></span></div><div class="cl-ai-share">14%</div><div class="cl-ai-strat"><svg viewBox="0 0 52 22"><path d="M1 15 L8 12 L14 16 L21 9 L28 13 L35 7 L42 10 L51 3" fill="none" stroke="#4E6A7F" stroke-width="1.4"/></svg><span><b>Stack</b><small>Every Monday · 12 buys</small></span></div></div>
 </div>
 </div>
 </div>
-</div></section>
+</div>
+</div>
+</section>
 
 <section class="cl-sec cl-vp" id="funds"><div class="wrap">
 <div class="cl-head"><h2 class="cl-h2">Funds on CRE8</h2></div>
 <div class="cl-table-wrap"><table class="cl-vt" id="cl-preview"><thead><tr><th>Fund</th><th class="cl-col-hide">Holds</th><th class="r">Fund size</th><th class="r">Return 30D</th><th class="r cl-col-hide-sm">Holders</th></tr></thead><tbody></tbody></table></div>
 <div class="cl-vp-foot"><a class="cl-textlink" href="https://app.cre8.finance/vaults/" data-wipe>See all funds</a><a class="cl-textlink" href="https://app.cre8.finance/vault/cre8-usdt/" data-wipe>Read an example fund</a></div>
 </div></section>
-<section class="cl-sec" id="sides"><div class="wrap">
-<div class="cl-head"><h2 class="cl-h2">Two sides of every fund</h2></div>
-<div class="cl-cards" id="cl-cards">
-<article class="cl-side">
-<figure class="cl-photo " style="--lq:url(data:image/webp;base64,UklGRioBAABXRUJQVlA4IB4BAACwBgCdASogABUAPpE+nEkloyMhKAqosBIJaQATwDXWAASs0Z35ChkBl89PJfauif94Xg0TLGSoMjKSpB8WAAD+6IbwAqZ7yxJK8JWgMjHX7BYcB4zOHhVmzPFKyWEMbZ0evkpD4gz5+tyd+njqDQ/sr+h4n2chyCLVnYumNRdp9SDeqzsln881mWxy9RBIXE23nlKUXwYCw0dsTw7r7X3iLvbrrtwknaE45L697qJZTWEbRDZgcXXxmKU9dqJNJZo4r8DXXlk38A8iHS1VU6ZgtV+XXvVie3ODTkrh7u62kHftQjqXlMKdnkL0t0HyS53mL5z6dTOdD2tWt1cYDna02zh4MrnbZ4d41H7vPVZAU/JVPip/P/Sc+N/hqgAA)"><img src="/img/signing-480.webp" srcset="/img/signing-480.webp 480w, /img/signing-900.webp 900w" sizes="(max-width: 700px) 86vw, 600px" width="900" height="600" alt="A robot hand signing a typed document with a fountain pen" loading="lazy" decoding="async"></figure>
-<div class="cl-side-body"><h3>Fund creators</h3>
-<table class="cl-spec"><tbody>
-<tr><td class="k">Run by</td><td>A plan or your AI agent</td></tr>
-<tr><td class="k">Performance fee</td><td>0–20%, set at launch</td></tr>
-<tr><td class="k">Paid</td><td>On each holder’s realized profit at exit</td></tr>
-<tr><td class="k">Creator stake</td><td>At least 100 USDT; keep ≥ 2% while others hold</td></tr>
-</tbody></table>
-<a class="btn" href="https://app.cre8.finance/create/" data-wipe>Open a fund</a></div>
-</article>
-<article class="cl-side">
-<figure class="cl-photo " style="--lq:url(data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAADwBQCdASogABUAPpE+mkkloyKhKAqosBIJaQATwFiArl6oUn+mgwd/P38tkWTPQA59RrNUGBJpAAD++5VAPx0HlQUQJZoqXeQsJXf92VZFWw3+hpG2Xm9WPW9dd03386V7wrBsDPNbcDbyJ+1kBm/MKxdPZpcDDmjOp4WYj7tGwuP4rW6oWfc7gslM6Xjw4JaNOnnF3sCPRZFjCZ/Eopdp11X98tPRiSdCzzI5VM5qYi07PLGxdSPbvjMaafkAk7qyNrlmKvA9DfHQu1PGMSIdO0SZIAAA)"><img src="/img/vault-480.webp" srcset="/img/vault-480.webp 480w, /img/vault-900.webp 900w" sizes="(max-width: 700px) 86vw, 600px" width="900" height="600" alt="A robot in a suit standing guard beside an open round bank vault door" loading="lazy" decoding="async"></figure>
-<div class="cl-side-body"><h3>Holders</h3>
-<table class="cl-spec"><tbody>
-<tr><td class="k">Custody</td><td>The fund contract, not a person</td></tr>
-<tr><td class="k">Agent withdrawals</td><td>Not possible</td></tr>
-<tr><td class="k">Raising a limit</td><td>Takes effect 24h after notice</td></tr>
-<tr><td class="k">Withdrawals</td><td>Any time, as USDT or as the assets</td></tr>
-</tbody></table>
-<a class="btn ghost" href="https://app.cre8.finance/vaults/" data-wipe>Explore funds</a></div>
-</article>
+<section class="cl-sec" id="sides" aria-labelledby="cl-sides-title"><div class="wrap">
+<div class="cl-head"><h2 class="cl-h2" id="cl-sides-title">Two sides of every fund</h2></div>
+<div class="cl-pair">
+<article class="cl-role cl-role-creator"><p class="cl-role-tag">Creator</p><h3>You write<br>the rules.</h3>
+<ol class="cl-cans"><li>Write a one-line thesis</li><li>Set the rules and your fee</li><li>Let a plan or your AI agent run it</li></ol>
+<a class="btn cl-btn-light" href="https://app.cre8.finance/create/" data-wipe>Open a fund</a></article>
+<article class="cl-role cl-role-holder"><p class="cl-role-tag">Holder</p><h3>The contract<br>holds the money.</h3>
+<ol class="cl-cans"><li>Deposit USDT</li><li>Withdraw any time</li><li>See every trade onchain</li></ol>
+<a class="btn ghost" href="https://app.cre8.finance/vaults/" data-wipe>Explore funds</a></article>
 </div>
-<div class="cl-dots" id="cl-dots" role="group" aria-label="Choose a card"><button type="button" aria-label="Fund creators" aria-current="true"></button><button type="button" aria-label="Holders" aria-current="false"></button></div>
 </div></section>
 
-<section class="cl-sec cl-earn" id="earn"><div class="wrap">
-<h2 class="cl-h2">How you get paid</h2>
-<div class="cl-calc" data-flap-once>
-<div><label for="cl-size">Fund size</label><input id="cl-size" inputmode="numeric" autocomplete="off" value="$1,000,000"></div>
-<div><label for="cl-ret">Return, one year</label><input id="cl-ret" inputmode="decimal" autocomplete="off" value="20%"></div>
-<div><span class="cl-calc-l" id="cl-out-l">Your take-home</span><output id="cl-out" for="cl-size cl-ret" class="cl-flap cl-tiles" aria-labelledby="cl-out-l" aria-live="polite">$40,000</output><span class="cl-per">per year</span></div>
+<section class="cl-sec cl-earn" id="earn" aria-labelledby="cl-earn-title"><div class="wrap">
+<h2 class="cl-h2" id="cl-earn-title">How you get paid</h2>
+<div class="cl-calc">
+<div><label class="cl-calc-l" for="cl-size">Fund size</label><output id="cl-size-out" for="cl-size">$1,000,000</output><input id="cl-size" type="range" min="100000" max="10000000" step="100000" value="1000000" aria-valuetext="$1,000,000"></div>
+<div><label class="cl-calc-l" for="cl-ret">Return, one year</label><output id="cl-ret-out" for="cl-ret">20%</output><input id="cl-ret" type="range" min="5" max="50" step="1" value="20" aria-valuetext="20%"></div>
+<div><span class="cl-calc-l" id="cl-out-l">Your take-home</span><span class="cl-take-num" id="cl-take" aria-hidden="true">$40,000</span><output class="cl-sr" id="cl-out" for="cl-size cl-ret" aria-labelledby="cl-out-l">$40,000</output><p class="cl-take-note">Per year, at a 20% performance fee</p></div>
 </div>
-<div class="cl-ctas cl-earn-ctas"><a class="btn cl-btn-light" href="https://app.cre8.finance/create/" data-wipe>Open a fund</a><a class="btn cl-btn-ghost-light" href="https://app.cre8.finance/vaults/" data-wipe>Explore funds</a></div>
+<div class="cl-ctas cl-earn-ctas"><a class="btn" href="https://app.cre8.finance/create/" data-wipe>Open a fund</a><a class="btn ghost" href="https://app.cre8.finance/vaults/" data-wipe>Explore funds</a></div>
 </div></section>
+</main>
+<div class="cl-foot"><div class="cl-foot-bg"><picture><source media="(max-width: 860px)" sizes="100vw" srcset="/img/sign-480.webp 480w, /img/sign-800.webp 800w"><img src="/img/sign-wide-1280.webp" srcset="/img/sign-wide-800.webp 800w, /img/sign-wide-1280.webp 1280w, /img/sign-wide-2000.webp 2000w" sizes="100vw" width="2000" height="667" alt="Street signs for CRE8 St and Wall St on the same corner" loading="lazy" decoding="async"></picture></div><div id="footer"></div></div>
 
-<section class="cl-closing" aria-label="CRE8 St and Wall St"><figure class="cl-photo cl-band" style="--lq:url(data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAADwBACdASogAAsAPpE8mkglo6KhMAgAsBIJZwCw7ywYYL3lskCx36K5EMITIHK37oAA/u9mS9zVCcan8jl/iYKIqQctL9bVH9v96v/LG81pToQlSZ8RD/nwH/XzQ8Aa+KljfTskm+0IGWvMDpOKRFggogM30eQTUZTbRn21ljMTAXAO9tRpIWOq3b5+W10dz0S8wtNc6P937WI4ploiakQ7HCVgD+v2xDuYKHbxaeBOyZQWh95tJIVid5R2ygO/zo/7DbE1KzPGwsqJBm9GCAAA);--lq-m:url(data:image/webp;base64,UklGRlgBAABXRUJQVlA4IEwBAABQBgCdASogABUAPpE4l0eloyIhMAgAsBIJZwDDO3gd4D0Ks5tlGLPxDhkOj7QCpsdZJtfzZt8wJGcdAAD+0ocb26VCncbsP4T33+YBZWI4vm3RioM2s+BVODXLQz5ASLW76V9qz5NFj/gNzISY5XCbedK2nVRdfX9/0oZF+n/hOZBglD7HIjswhUdfn8argz/ez6/jlVStWPG2cQvrlnY9wV5SY0GAmYSqIdo1nqHJxVWhVEcK15aoNxP6vZBIMsrU2dpwJr78c4X37ciQNc3DE28DvHLs9wvmyFhZIDrdIQ/lhWEqvzk8t3SwEWTe9oCgjGvro1DD7ZhCh/ZbnbtKS30nT+mumX2PAoaZvJ/p7Xn5bbdneOTFsi8mxhprwU7QxF5zu7eVIRC7H2arRiuVxmKfkIhDN7J2M3E1xSo16EB3yD+cw/g4V+sAAA==)"><picture><source media="(max-width: 699px)" sizes="100vw" srcset="/img/sign-480.webp 480w, /img/sign-800.webp 800w"><img src="/img/sign-wide-1280.webp" srcset="/img/sign-wide-800.webp 800w, /img/sign-wide-1280.webp 1280w, /img/sign-wide-2000.webp 2000w" sizes="100vw" width="2000" height="667" alt="Street signs for CRE8 St and Wall St on the same corner" loading="lazy" decoding="async"></picture></figure></section>
-</main><div id="footer"></div>
 
-
-6:T4b56,
+6:T54be,
 (function () {
   const { $, $$ } = BAV;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   $("#brand").innerHTML = BAV.brandLogo("light");
   $("#footer").outerHTML = BAV.footerHTML();
   BAV.wireShell();
-
-  /* split-flap numbers: once when first seen, then on every change */
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const flapHTML = (t) => '<span class="cl-sr">' + esc(t) + "</span>" + [...String(t)].map((ch) => '<span class="cl-fc' + (/\d/.test(ch) ? "" : " sep") + '" aria-hidden="true">' + esc(ch) + "</span>").join("");
-  function setFlap(el, text, delay = 0) {
-    (el._t || []).forEach(clearTimeout); el._t = [];
-    el.innerHTML = flapHTML(text);
-    if (reduce) return;
-    $$(".cl-fc", el).forEach((c, i) => {
-      const ch = c.textContent;
-      if (!/\d/.test(ch)) return;
-      const n = 5 + (i % 3);
-      for (let k = 1; k <= n; k++) el._t.push(setTimeout(() => {
-        c.textContent = k === n ? ch : String(Math.floor(Math.random() * 10));
-        c.classList.remove("flip"); void c.offsetWidth; c.classList.add("flip");
-      }, delay + i * 30 + k * 44));
-    });
-  }
-  /* hero totals from the same simulated catalog as the funds table */
-  const sum = (f) => BAV.VAULTS.reduce((a, v) => a + f(v), 0);
-  const usd = (n) => "$" + (n >= 1e6 ? (n / 1e6).toFixed(1) + "M" : n >= 1e3 ? Math.round(n / 1e3) + "K" : Math.round(n));
-  const hero = { vaults: String(BAV.VAULTS.length), depositors: sum((v) => v.followers).toLocaleString("en-US"), tvl: usd(sum((v) => v.tvl)), earned: usd(sum((v) => v.tvl * (v.sharePrice - 1) / v.sharePrice)) };
-  $$("[data-hero]").forEach((el) => { el.textContent = hero[el.dataset.hero]; });
-  $$(".cl-flap").forEach((el) => { el.innerHTML = flapHTML(el.textContent.trim()); });
-  const seen = new IntersectionObserver((es) => es.forEach((e) => {
-    if (!e.isIntersecting) return;
-    seen.unobserve(e.target);
-    $$(".cl-flap", e.target).forEach((el, i) => setFlap(el, $(".cl-sr", el).textContent, i * 40));
-  }), { threshold: 0.4 });
-  $$("[data-flap-once]").forEach((el) => seen.observe(el));
+  const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
+
+  /* hero: the coins (three.js, assets/hero-tokens.mjs) load after the page is drawn; without WebGL the headline stands alone */
+  (function () {
+    const stage = $("#cl-hero-stage");
+    if (!stage) return;
+    const version = window.__BAV_RUNTIME_VERSION__;
+    const fonts = document.fonts ? Promise.all([document.fonts.load('700 100px "Archivo"'), document.fonts.load('500 32px "IBM Plex Mono"')]).catch(() => {}) : Promise.resolve();
+    Promise.all([import(BAV.assetUrl("assets/hero-tokens.mjs") + (version ? "?v=" + version : "")), fonts])
+      .then(([{ mountHero }]) => {
+        if (!stage.isConnected) return;
+        const stop = mountHero({ stage, canvas: $("canvas", stage), label: $("#cl-fund-label"), mix: $("#cl-fund-mix"), reduce });
+        if (stop) stage.classList.add("is-on"); else stage.hidden = true;
+      })
+      .catch(() => { stage.hidden = true; });
+  })();
+
+  /* Wall Street, rebuilt onchain: the right half of the floor is dark until a scan line lights it up as data;
+     then it twinkles, a scan sweeps now and then, and on wide screens example prices run down the right edge */
+  (function () {
+    const section = $("#story"), box = $(".cl-split-bg", section), img = $("img", box), cv = $("canvas", box), rowsEl = $(".cl-split-rows", section);
+    if (!section || !img || !cv) return;
+    const ctx = cv.getContext("2d");
+    if (!ctx) return;
+    section.classList.add("js");
+    const QUOTES = [["NVDAB", 186.42, 0.84], ["BTC", 112840, 1.12], ["AAPLB", 232.18, 0.21], ["ETH", 4210.35, 1.53], ["MSFTB", 498.9, 0.66], ["TSLAB", 251.1, -0.42],
+      ["BNB", 1012.4, -0.37], ["METAB", 712.3, 0.48], ["TSMB", 241.05, 1.04], ["GOOGLB", 205.7, 0.31]];
+    const price = (v) => v >= 10000 ? Math.round(v).toLocaleString("en-US") : v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const SEAM = 0.56;
+    let W = 0, H = 0, fit = null, cell = 7, gw = 0, gh = 0, lum = null, bright = [], twinkles = [], flashes = [];
+    let scanStart = -1, revealed = false, nextSweep = 0, colOffset = 0, hot = -1, hotUntil = 0, column = null, running = false, last = 0, tickAt = 0;
+    function layout() {
+      const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
+      W = r.width; H = r.height;
+      if (!W || !H || !img.naturalWidth) return false;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const s = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+      fit = { w: img.naturalWidth * s, h: img.naturalHeight * s }; fit.x = (W - fit.w) / 2; fit.y = (H - fit.h) / 2;
+      cell = W < 700 ? 5 : 7; gw = Math.ceil(fit.w / cell); gh = Math.ceil(fit.h / cell);
+      const small = document.createElement("canvas"); small.width = gw; small.height = gh;
+      const sx = small.getContext("2d"); sx.imageSmoothingQuality = "high"; sx.drawImage(img, 0, 0, gw, gh);
+      const d = sx.getImageData(0, 0, gw, gh).data; lum = new Float32Array(gw * gh); bright = [];
+      for (let i = 0; i < gw * gh; i++) {
+        lum[i] = (d[i * 4] * .3 + d[i * 4 + 1] * .59 + d[i * 4 + 2] * .11) / 255;
+        const gx = i % gw, gy = (i / gw) | 0, x = fit.x + gx * cell;
+        if (gx / gw > SEAM + .03 && lum[i] > .42 && x > 0 && x < W && fit.y + gy * cell < H) bright.push(i);
+      }
+      // The price column only where the table leaves room beside it.
+      const room = W - (rowsEl.getBoundingClientRect().right - r.left);
+      column = W >= 700 && room >= 108 ? { x: W - Math.min(room - 6, 132), w: Math.min(room - 6, 132), lh: 17 } : null;
+      return true;
+    }
+    const xy = (i) => [fit.x + (i % gw) * cell, fit.y + ((i / gw) | 0) * cell];
+    function draw(now) {
+      ctx.clearRect(0, 0, W, H); ctx.drawImage(img, fit.x, fit.y, fit.w, fit.h);
+      const seamX = fit.x + fit.w * SEAM, dark = "rgba(9,14,19,.78)";
+      let scanX = null;
+      if (!revealed) {
+        if (scanStart < 0) { ctx.fillStyle = dark; ctx.fillRect(seamX - 40, 0, W, H); return; }
+        const p = Math.min(1, (now - scanStart) / 1800), e = 1 - Math.pow(1 - p, 3);
+        scanX = seamX + (W - seamX) * e;
+        const g = ctx.createLinearGradient(scanX, 0, scanX + 60, 0); g.addColorStop(0, "rgba(9,14,19,0)"); g.addColorStop(1, dark);
+        ctx.fillStyle = g; ctx.fillRect(scanX, 0, 60, H); ctx.fillStyle = dark; ctx.fillRect(scanX + 60, 0, W, H);
+        if (p >= 1) { revealed = true; nextSweep = now + 5000; }
+      } else if (now >= nextSweep) {
+        const p = (now - nextSweep) / 2600;
+        if (p <= 1) scanX = seamX + (W - seamX) * p; else nextSweep = now + 6000 + Math.random() * 3000;
+      }
+      ctx.globalCompositeOperation = "lighter";
+      twinkles = twinkles.filter((t) => now - t.t0 < t.dur);
+      for (const t of twinkles) {
+        const a = Math.sin(Math.PI * (now - t.t0) / t.dur), [x, y] = xy(t.i);
+        ctx.fillStyle = t.blue ? `rgba(120,165,200,${a})` : `rgba(235,244,250,${.8 * a})`; ctx.fillRect(x + 1, y + 1, cell - 2, cell - 2);
+      }
+      flashes = flashes.filter((f) => now - f.t0 < f.dur);
+      for (const f of flashes) {
+        if (now < f.t0) continue;
+        const a = 1 - (now - f.t0) / f.dur, [x, y] = xy(f.i);
+        ctx.fillStyle = `rgba(111,160,200,${.95 * a})`; ctx.fillRect(x + 1, y + 1, cell - 2, cell - 2);
+      }
+      if (scanX !== null) {
+        for (let k = 0; k < 14; k++) {
+          const gy = (Math.random() * gh) | 0, gx = Math.floor((scanX - fit.x) / cell) - ((Math.random() * 3) | 0), i = gy * gw + gx;
+          if (gx > 0 && gx < gw && lum[i] > .3) { const [x, y] = xy(i); ctx.fillStyle = "rgba(170,205,230,.7)"; ctx.fillRect(x + 1, y + 1, cell - 2, cell - 2); }
+        }
+        const lg = ctx.createLinearGradient(scanX - 24, 0, scanX + 2, 0); lg.addColorStop(0, "rgba(111,147,174,0)"); lg.addColorStop(1, "rgba(140,180,210,.55)");
+        ctx.fillStyle = lg; ctx.fillRect(scanX - 24, 0, 26, H); ctx.fillStyle = "rgba(190,220,240,.9)"; ctx.fillRect(scanX, 0, 1, H);
+      }
+      ctx.globalCompositeOperation = "source-over";
+      if (column && revealed) {
+        const { x, w, lh } = column, g = ctx.createLinearGradient(x - 28, 0, x, 0); g.addColorStop(0, "rgba(9,14,19,0)"); g.addColorStop(1, "rgba(9,14,19,.86)");
+        ctx.fillStyle = g; ctx.fillRect(x - 28, 0, 28, H); ctx.fillStyle = "rgba(9,14,19,.86)"; ctx.fillRect(x, 0, w, H);
+        ctx.font = '500 10.5px "IBM Plex Mono"'; ctx.textBaseline = "middle";
+        const off = colOffset % (QUOTES.length * 2 * lh);
+        for (let k = 0, y = -off; y < H + lh; k++, y += lh) {
+          const qi = Math.floor(k / 2) % QUOTES.length, [sym, px, chg] = QUOTES[qi];
+          ctx.fillStyle = qi === hot && now < hotUntil ? "#8FBCE0" : k % 2 === 0 ? "rgba(238,243,247,.92)" : "rgba(183,205,222,.75)";
+          ctx.fillText(k % 2 === 0 ? sym : `${price(px)} ${chg >= 0 ? "▲" : "▼"}`, x + 10, y + lh / 2);
+        }
+      }
+    }
+    function loop(now) {
+      if (!running) return;
+      if (!section.isConnected) { running = false; return; }
+      const dt = last ? Math.min(100, now - last) : 16; last = now;
+      if (revealed) {
+        colOffset += dt * .016;
+        if (Math.random() < dt / 40) for (let k = 0, n = 4 + ((Math.random() * 5) | 0); k < n && bright.length; k++) twinkles.push({ i: bright[(Math.random() * bright.length) | 0], t0: now, dur: 500 + Math.random() * 600, blue: Math.random() < .18 });
+        // An example price moves now and then, and a patch of the floor flashes with it.
+        if (now > tickAt) {
+          tickAt = now + 1400;
+          const i = (Math.random() * QUOTES.length) | 0, q = QUOTES[i], step = q[1] * (Math.random() - .45) * .002;
+          q[1] = Math.max(.01, q[1] + step); q[2] = +(q[2] + step / q[1] * 100).toFixed(2); hot = i; hotUntil = now + 800;
+          if (bright.length) { const c = bright[(Math.random() * bright.length) | 0]; for (let dy = 0; dy < 3; dy++) for (let dx = 0; dx < 7; dx++) flashes.push({ i: c + dy * gw + dx, t0: now + dx * 35, dur: 1100 }); }
+        }
+      }
+      draw(now); requestAnimationFrame(loop);
+    }
+    function start() {
+      try { if (!layout()) return; } catch { return; } // a canvas it may not read (file://) leaves the photo as it is
+      box.classList.add("is-on");
+      if (reduce) { revealed = true; section.classList.add("in"); draw(0); return; }
+      draw(performance.now());
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) {
+          if (scanStart < 0) { scanStart = performance.now(); section.classList.add("in"); }
+          if (!running) { running = true; last = 0; requestAnimationFrame(loop); }
+        } else running = false;
+      }, { threshold: .3 }).observe(section);
+      let timer = 0;
+      new ResizeObserver(() => { clearTimeout(timer); timer = setTimeout(() => { try { if (layout()) draw(performance.now()); } catch { /* keep the last frame */ } }, 150); }).observe(box);
+    }
+    // Without the canvas (no script, or before the photo loads) the rows still show.
+    new IntersectionObserver(([e], io) => { if (e.isIntersecting && (reduce || !img.complete)) { io.disconnect(); section.classList.add("in"); } }, { threshold: .3 }).observe(section);
+    img.loading = "eager";
+    if (img.complete && img.naturalWidth) start(); else img.addEventListener("load", start, { once: true });
+    img.addEventListener("error", () => section.classList.add("in"), { once: true });
+  })();
 
   /* funds preview from the shared simulated catalog */
   const rows = [...BAV.VAULTS].sort((a, b) => b.tvl - a.tvl).slice(0, 4);
@@ -279,53 +364,6 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     tr.addEventListener("click", () => go(tr.dataset.href));
     tr.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(tr.dataset.href); } });
   });
-
-  /* earnings calculator: creator receives the configured creator fee. */
-  const f = BAV.feeBreakdown(20), share = f.creatorNet / f.total;
-  const size = $("#cl-size"), ret = $("#cl-ret"), out = $("#cl-out");
-  const num = (s) => { const n = parseFloat(String(s).replace(/[^0-9.\-]/g, "")); return isFinite(n) ? n : 0; };
-  const takeHome = () => { const s = Math.max(0, num(size.value)), r = num(ret.value); return "$" + BAV.fmt.n(r > 0 ? s * r / 100 * f.total / 100 * share : 0); };
-  out.innerHTML = flapHTML(takeHome());
-  let calcT;
-  [size, ret].forEach((el) => el.addEventListener("input", () => { clearTimeout(calcT); calcT = setTimeout(() => setFlap(out, takeHome()), 280); }));
-  size.addEventListener("blur", () => { size.value = "$" + BAV.fmt.n(Math.max(0, num(size.value))); });
-  ret.addEventListener("blur", () => { ret.value = (+num(ret.value).toFixed(2)) + "%"; });
-
-  /* hero: "run it." and "earn it." take turns, typed like spark.finance: hold 3s with a blinking caret, delete, type */
-  (function () {
-    const word = $("#cl-type"), caret = $("#cl-type-c"), box = word && word.parentElement;
-    if (!word || !caret) return;
-    if (reduce) { caret.hidden = true; return; }
-    const words = ["run it.", "earn it."];
-    // Keep the room of the longest word so the headline never reflows while it types.
-    const fit = () => {
-      box.style.minWidth = "";
-      let widest = 0;
-      for (const w of words) { word.textContent = w; widest = Math.max(widest, box.getBoundingClientRect().width); }
-      word.textContent = shown;
-      box.style.minWidth = widest / parseFloat(getComputedStyle(box).fontSize) + "em";
-    };
-    let i = 0, shown = words[0], phase = "hold", timer = 0, visible = true, paused = false;
-    const paint = () => { word.textContent = shown; caret.classList.toggle("cl-blink", phase === "hold"); };
-    function run() {
-      if (!visible || document.hidden) { paused = true; return; }
-      let wait = 100;
-      if (phase === "hold") phase = "delete";
-      if (phase === "delete") {
-        if (shown) { shown = shown.slice(0, -1); wait = 60; } else { i = (i + 1) % words.length; phase = "type"; }
-      }
-      if (phase === "type") {
-        shown = words[i].slice(0, shown.length + 1);
-        if (shown === words[i]) { phase = "hold"; wait = 3000; }
-      }
-      paint(); timer = setTimeout(run, wait);
-    }
-    const resume = () => { if (paused && visible && !document.hidden) { paused = false; run(); } };
-    new IntersectionObserver((entries) => { visible = entries.some((e) => e.isIntersecting); resume(); }).observe(box);
-    document.addEventListener("visibilitychange", resume);
-    fit(); paint(); timer = setTimeout(run, 3000);
-    if (document.fonts) document.fonts.ready.then(fit);
-  })();
 
   /* How it works (after spark.finance): on desktop the stage follows the step being read; on phones the steps swipe */
   (function () {
@@ -426,99 +464,75 @@ b:I[68027,["/_next/static/chunks/1860_s4s3_qz8.js"],"default",1]
     document.fonts?.ready.then(() => { fit(); hold(); });
   })();
 
-  /* CRE8 AI block: a request is typed; CRE8 AI runs its steps, the user approves and confirms in the wallet,
-     the fund is created and its plan makes the first buy, while the fund panel fills in. It loops while in view. */
+  /* CRE8 AI: a thesis is typed, the reply lists its changes and the fund fills in beside the chat; it loops while in view */
   (function () {
-    const stage = $(".cl-ai-stage");
-    if (!stage || reduce) return;
-    const log = $(".cl-ai-log", stage), typed = $(".cl-ai-typed", stage), chat = $(".cl-ai-chat", stage), cursor = $(".cl-ai-cursor", stage);
-    const wallet = $(".cl-ai-wallet", stage), confirm = $(".cl-ai-confirm", stage), fund = $(".cl-ai-fund", stage), status = $(".cl-ai-status b", stage), thread = $(".cl-ai-thread", stage);
-    const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
-    const add = (parent, tag, cls, html) => { const el = document.createElement(tag); el.className = cls; if (html) el.innerHTML = html; parent.append(el); return el; };
-    const app = $(".cl-ai-app", stage);
-    let run = 0, timer = 0, foldable = null;
-    const stageFund = (n) => { for (let i = 1; i <= 5; i++) fund.classList.toggle("s" + i, i <= n); };
-    // The status flips like the split-flap board whenever it changes.
-    const setStatus = (text) => { if (status.textContent === text) return; status.textContent = text; status.classList.remove("flip"); void status.offsetWidth; status.classList.add("flip"); };
-    // On short screens the finished first steps fold into one line, as assistants do, so the chat never runs off its top.
-    const roomy = () => {
-      const box = foldable;
-      if (!box?.isConnected || box.dataset.folded || log.firstElementChild.getBoundingClientRect().top >= log.getBoundingClientRect().top + 8) return;
-      box.dataset.folded = "1"; box.replaceChildren(); add(box, "p", "cl-ai-step is-done", '<i class="cl-ai-spin"></i>Prepared the fund in 3 steps');
-    };
-    // The cursor glides to the target's centre (from the lower right when hidden), then clicks it.
-    async function click(target, live) {
-      const c = chat.getBoundingClientRect(), r = target.getBoundingClientRect();
-      if (cursor.style.opacity !== "1") { cursor.style.transition = "none"; cursor.style.translate = `${c.width - 24}px ${c.height + 10}px`; cursor.style.opacity = "0"; }
-      void cursor.offsetWidth;
-      cursor.style.transition = "translate .95s cubic-bezier(.45,0,.2,1), opacity .25s";
-      cursor.style.opacity = "1"; cursor.style.translate = `${r.left - c.left + r.width / 2 - 6}px ${r.top - c.top + r.height / 2 - 4}px`;
-      await sleep(1050); if (!live()) return false;
-      cursor.classList.add("is-click"); target.classList.add("is-pressed");
-      await sleep(280); cursor.classList.remove("is-click"); target.classList.remove("is-pressed");
-      return live();
-    }
-    async function steps(msg, labels, live, after) {
-      const box = add(msg, "div", "cl-ai-run");
-      for (const [i, label] of labels.entries()) {
-        const step = add(box, "p", "cl-ai-step", '<i class="cl-ai-spin"></i>' + label); roomy();
-        await sleep(650); if (!live()) return false;
-        step.classList.add("is-done"); after?.(i);
-      }
-      return true;
-    }
-    // The empty chat: the greeting, an empty fund panel and a Draft status.
+    const app = $(".cl-ai-app");
+    if (!app || reduce) return;
+    const log = $(".cl-ai-log", app), typed = $(".cl-ai-typed", app), send = $(".cl-ai-send", app), empty = $(".cl-ai-empty", app);
+    const name = $(".cl-ai-name", app), count = $(".cl-ai-count", app);
+    const part = (k) => $(`[data-k="${k}"]`, log), parts = ["me", "reply", "changes", "chips"];
+    const changes = $$(".cl-ai-changes li", app), rows = $$(".cl-ai-row", app);
+    const THESIS = part("me").querySelector("p").textContent, FUND = name.textContent;
+    let run = 0, inView = false;
     function reset() {
-      log.replaceChildren(); typed.textContent = ""; foldable = null; stageFund(0); stage.classList.remove("is-typing");
-      wallet.classList.remove("is-open"); cursor.style.opacity = "0"; setStatus("Draft"); thread.textContent = "New fund";
+      app.classList.remove("out", "is-typing");
+      parts.forEach((k) => part(k).classList.remove("on"));
+      changes.forEach((li) => li.classList.remove("on")); rows.forEach((row) => row.classList.remove("on"));
+      empty.style.opacity = 1; name.textContent = "New fund"; count.textContent = "0 of " + rows.length; typed.textContent = ""; send.classList.remove("ready");
     }
-    async function play() {
-      const id = ++run, live = () => id === run;
-      reset(); stage.classList.add("is-play");
-      await sleep(250); if (!live()) return;
-      stage.classList.add("is-typing");
-      for (const ch of "Own the Mag 7, buying a little every week.") { typed.textContent += ch; await sleep(24); if (!live()) return; }
-      await sleep(250); if (!live()) return;
-      stage.classList.remove("is-typing"); typed.textContent = "";
-      add(log, "p", "cl-ai-msg me", "Own the Mag 7, buying a little every week.");
-      thread.textContent = "Mag 7 Weekly";
+    async function play(id) {
+      const live = () => id === run && inView;
+      reset(); await sleep(700);
+      app.classList.add("is-typing");
+      for (let i = 1; i <= THESIS.length; i++) { if (!live()) return; typed.textContent = THESIS.slice(0, i); if (i === 1) send.classList.add("ready"); await sleep(38); }
       await sleep(450); if (!live()) return;
-      const first = add(log, "div", "cl-ai-msg ai");
-      if (!await steps(first, ["Drafted the mandate", "Checked 7 bStocks on PancakeSwap", "Prepared the create transaction"], live, (i) => { stageFund(i + 1); if (i === 2) setStatus("Ready to create"); })) return;
-      add(first, "p", "", "Mag 7 Weekly is ready: equal weight, weekly buys on PancakeSwap and a 15% fee.");
-      const actions = add(first, "div", "cl-ai-actions", '<span class="cl-ai-btn">Approve and create</span><span class="cl-ai-btn ghost">Edit</span>');
+      app.classList.remove("is-typing"); typed.textContent = ""; send.classList.remove("ready"); part("me").classList.add("on");
+      await sleep(800); if (!live()) return;
+      part("reply").classList.add("on");
+      await sleep(600); if (!live()) return;
+      part("changes").classList.add("on"); empty.style.opacity = 0; name.textContent = FUND;
+      for (let i = 0; i < rows.length; i++) { await sleep(330); if (!live()) return; changes[i]?.classList.add("on"); rows[i].classList.add("on"); count.textContent = `${i + 1} of ${rows.length}`; }
       await sleep(500); if (!live()) return;
-      if (!await click(actions.firstChild, live)) return;
-      wallet.classList.add("is-open"); setStatus("Waiting for your wallet");
-      await sleep(700); if (!live()) return;
-      if (!await click(confirm, live)) return;
-      await sleep(250); wallet.classList.remove("is-open"); cursor.style.opacity = "0";
-      if (!live()) return;
-      // Used buttons give way to a note of what was approved.
-      actions.replaceWith(Object.assign(document.createElement("p"), { className: "cl-ai-approved", textContent: "Approved and confirmed in your wallet" }));
-      const second = add(log, "div", "cl-ai-msg ai"); foldable = $(".cl-ai-run", first);
-      if (!await steps(second, ["Fund created onchain", "The plan made the first buy"], live, (i) => { stageFund(i + 4); if (i === 0) { setStatus("Live"); setFlap($("#cl-ai-price"), "1.000", 300); } })) return;
-      add(second, "p", "", "Done. The fund now buys every week, within its mandate."); roomy();
+      part("chips").classList.add("on");
+      await sleep(5500); if (!live()) return;
+      app.classList.add("out");
+      await sleep(600); if (live()) play(id);
     }
-    // Ready at the start, it plays as soon as the window is in view, and starts over each time it comes back.
     reset();
-    new IntersectionObserver((entries) => {
-      const inView = entries.some((e) => e.isIntersecting);
-      if (inView && !timer) { play(); timer = setInterval(() => { if (!document.hidden) play(); }, 15000); }
-      else if (!inView && timer) { clearInterval(timer); timer = 0; run++; reset(); }
-    }, { threshold: 0.35 }).observe(app);
+    new IntersectionObserver(([e]) => { inView = e.isIntersecting; if (inView) play(++run); else run++; }, { threshold: .35 }).observe(app);
   })();
 
-  /* two-sides cards swipe on phones */
-  const track = $("#cl-cards"), dots = $$("#cl-dots button"), cards = $$(".cl-side", track);
-  dots.forEach((d, i) => d.addEventListener("click", () => track.scrollTo({ left: cards[i].offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft), behavior: reduce ? "auto" : "smooth" })));
-  track.addEventListener("scroll", () => {
-    const mid = track.scrollLeft + track.clientWidth / 2;
-    let k = 0; cards.forEach((c, i) => { if (c.offsetLeft - track.offsetLeft <= mid) k = i; });
-    dots.forEach((d, i) => d.setAttribute("aria-current", i === k));
-  }, { passive: true });
+  /* how you get paid: the creator keeps their performance fee on the fund's profit */
+  (function () {
+    const size = $("#cl-size"), ret = $("#cl-ret"), take = $("#cl-take"), said = $("#cl-out");
+    if (!size || !ret || !take) return;
+    const f = BAV.feeBreakdown(20), share = f.creatorNet / f.total;
+    const money = (n) => "$" + Math.round(n).toLocaleString("en-US");
+    const column = (ch) => '<span class="cl-d"><span style="transform:translateY(-' + ch * 10 + '%)">' + "0123456789".split("").map((n) => "<i>" + n + "</i>").join("") + "</span></span>";
+    // Digits roll to their new value, like the 8 in the logo; a change in length redraws the number.
+    function roll(text) {
+      const cur = $$(".cl-d", take);
+      if (cur.length !== text.length || [...text].some((ch, i) => /\d/.test(ch) === cur[i].classList.contains("sep"))) {
+        take.innerHTML = [...text].map((ch) => /\d/.test(ch) ? column(ch) : '<span class="cl-d sep">' + esc(ch) + "</span>").join("");
+        return;
+      }
+      [...text].forEach((ch, i) => { if (/\d/.test(ch)) cur[i].firstElementChild.style.transform = "translateY(-" + ch * 10 + "%)"; });
+    }
+    let speak = 0;
+    function update() {
+      const s = +size.value, r = +ret.value, value = money(s * r / 100 * f.total / 100 * share);
+      $("#cl-size-out").textContent = money(s); $("#cl-ret-out").textContent = r + "%";
+      size.setAttribute("aria-valuetext", money(s)); ret.setAttribute("aria-valuetext", r + "%");
+      roll(value);
+      // Screen readers hear the result once the slider settles, not on every step.
+      clearTimeout(speak); speak = setTimeout(() => { said.textContent = value; }, 500);
+    }
+    said.setAttribute("aria-live", "polite");
+    size.addEventListener("input", update); ret.addEventListener("input", update);
+    update();
+  })();
 })();
-0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/09byazgh4oth7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"landing-page","html":"$5","masthead":"","runtimeVersion":"138b3e63bbdf","script":"$6","pageKey":"landing"}],["$L7","$L8"],"$L9"]}],{},null,false,null]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"e6-Jn0R_GHk6gBcN1hN86"}
+0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/086jegh99iwqh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1860_s4s3_qz8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-fonts":"self","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://app.cre8.finance"}],["$","script",null,{"type":"speculationrules","dangerouslySetInnerHTML":{"__html":"{\"prefetch\":[{\"where\":{\"href_matches\":\"https://app.cre8.finance/*\"},\"eagerness\":\"moderate\"}]}"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var a=window.navigation&&navigation.activation;if(!a||!a.from||a.navigationType===\"reload\"||new URL(a.from.url).origin!==location.origin)return;var l=document.createElement(\"link\");l.rel=\"expect\";l.href=\"#bav-content-end\";l.setAttribute(\"blocking\",\"render\");document.head.appendChild(l)}catch(e){}})()"}}]]}],["$","body",null,{"className":"antialiased","suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"bodyClass":"landing-page","html":"$5","masthead":"","runtimeVersion":"f42efb023127","script":"$6","pageKey":"landing"}],["$L7","$L8"],"$L9"]}],{},null,false,null]},null,false,null],"$La",false]],"m":"$undefined","G":["$b",["$Lc"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"cGSnFjImsOJ63hjU8FUQQ"}
 d:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"OutletBoundary"]
 e:"$Sreact.suspense"
 10:I[97367,["/_next/static/chunks/1860_s4s3_qz8.js"],"ViewportBoundary"]
@@ -527,8 +541,8 @@ e:"$Sreact.suspense"
 8:["$","script","script-0",{"src":"/_next/static/chunks/1f2_zpz1e_10k.js","async":true,"nonce":"$undefined"}]
 9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 a:["$","$1","h",{"children":[null,["$","$L10",null,{"children":"$L11"}],["$","div",null,{"hidden":true,"children":["$","$L12",null,{"children":["$","$e",null,{"name":"Next.Metadata","children":"$L13"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/09byazgh4oth7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/086jegh99iwqh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 14:I[27201,["/_next/static/chunks/1860_s4s3_qz8.js"],"IconMark"]
 f:null
-13:[["$","title","0",{"children":"CRE8 — Create a fund. Let your agent run it."}],["$","meta","1",{"name":"description","content":"Onchain funds of US stocks and crypto. CRE8 AI drafts the fund; the mandate keeps it to its word."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L14","7",{}]]
+13:[["$","title","0",{"children":"CRE8 — Wall Street built funds. Now anyone can CRE8 one."}],["$","meta","1",{"name":"description","content":"Onchain funds of US stocks and crypto. CRE8 AI drafts the fund; the mandate keeps it to its word."}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/logos/cre8-icon-b.ico"}],["$","link","4",{"rel":"icon","href":"/logos/cre8-icon-b.svg"}],["$","link","5",{"rel":"icon","href":"/logos/cre8-icon-b-32.png","type":"image/png","sizes":"32x32"}],["$","link","6",{"rel":"apple-touch-icon","href":"/logos/apple-touch-icon-b.png","sizes":"180x180"}],["$","$L14","7",{}]]
